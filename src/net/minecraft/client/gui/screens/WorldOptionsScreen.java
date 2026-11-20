@@ -4,7 +4,6 @@ import java.util.function.Consumer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.AbstractSelectionList;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.CycleButton;
@@ -464,7 +463,7 @@ public class WorldOptionsScreen extends Screen implements HasGamemasterPermissio
       super.extractMenuBackground(graphics);
       graphics.blit(
          RenderPipelines.GUI_TEXTURED,
-         AbstractSelectionList.INWORLD_MENU_LIST_BACKGROUND,
+         Screen.INWORLD_MENU_LIST_BACKGROUND,
          this.layout.getX(),
          this.layout.getHeaderHeight(),
          this.width,
@@ -479,21 +478,7 @@ public class WorldOptionsScreen extends Screen implements HasGamemasterPermissio
    @Override
    public void extractRenderState(final GuiGraphicsExtractor graphics, final int xm, final int ym, final float a) {
       super.extractRenderState(graphics, xm, ym, a);
-      graphics.blit(
-         RenderPipelines.GUI_TEXTURED, Screen.INWORLD_HEADER_SEPARATOR, this.layout.getX(), this.layout.getHeaderHeight() - 2, 0.0F, 0.0F, this.width, 2, 32, 2
-      );
-      graphics.blit(
-         RenderPipelines.GUI_TEXTURED,
-         Screen.INWORLD_FOOTER_SEPARATOR,
-         this.layout.getX(),
-         this.height - this.layout.getFooterHeight(),
-         0.0F,
-         0.0F,
-         this.width,
-         2,
-         32,
-         2
-      );
+      this.extractListSeparators(graphics, this.layout, 2);
    }
 
    @Override

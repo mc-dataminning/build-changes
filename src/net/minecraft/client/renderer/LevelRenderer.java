@@ -613,7 +613,7 @@ public class LevelRenderer implements AutoCloseable {
    ) {
       ProfilerFiller profiler = Profiler.get();
       profiler.push("solidTerrain");
-      GpuTextureView blockAtlas = this.textureManager.getTexture(TextureAtlas.LOCATION_BLOCKS).getTextureView();
+      GpuTextureView blockAtlas = this.textureManager.getTexture(TextureAtlas.LOCATION_BLOCKS).textureView();
       boolean improvedFog = this.gameRenderer.useImprovedTransparency();
       ChunkSectionsToRender.ImprovedFogTextures improvedFogTextures = improvedFog
          ? new ChunkSectionsToRender.ImprovedFogTextures(
@@ -681,7 +681,7 @@ public class LevelRenderer implements AutoCloseable {
          terrainParams = params;
       }
 
-      GpuTextureView blockAtlas = this.textureManager.getTexture(TextureAtlas.LOCATION_BLOCKS).getTextureView();
+      GpuTextureView blockAtlas = this.textureManager.getTexture(TextureAtlas.LOCATION_BLOCKS).textureView();
       ChunkSectionsToRender.ImprovedFogTextures improvedFogTextures = new ChunkSectionsToRender.ImprovedFogTextures(
          this.targets.sky.get().getColorTextureView(), this.targets.clouds.get().getColorTextureView(), this.targets.clouds.get().getDepthTextureView()
       );
@@ -807,7 +807,7 @@ public class LevelRenderer implements AutoCloseable {
       profiler.push("renderTranslucentFeatures");
       featureFrame.executeTranslucent(renderPass);
       profiler.pop();
-      GpuTextureView blockAtlas = this.textureManager.getTexture(TextureAtlas.LOCATION_BLOCKS).getTextureView();
+      GpuTextureView blockAtlas = this.textureManager.getTexture(TextureAtlas.LOCATION_BLOCKS).textureView();
       profiler.push("translucentTerrain");
       chunkSectionsToRender.renderGroup(
          ChunkSectionLayerGroup.TRANSLUCENT, renderPass, this.chunkLayerSampler, blockAtlas, null, this.levelRenderState.renderWireframeTerrain
@@ -926,7 +926,7 @@ public class LevelRenderer implements AutoCloseable {
    public ChunkSectionsToRender prepareChunkRenders(final Matrix4fc modelViewMatrix, final boolean respectTranslucentOrder) {
       Map<ChunkSectionLayer, List<LevelRenderer.ChunkDrawGroup>> drawGroups = Util.makeEnumMap(ChunkSectionLayer.class, var0 -> new ReferenceArrayList());
       List<DynamicGpuData.ChunkSectionInfo> sectionInfos = new ArrayList<>();
-      GpuTextureView blockAtlas = this.textureManager.getTexture(TextureAtlas.LOCATION_BLOCKS).getTextureView();
+      GpuTextureView blockAtlas = this.textureManager.getTexture(TextureAtlas.LOCATION_BLOCKS).textureView();
       int textureAtlasWidth = blockAtlas.getWidth(0);
       int textureAtlasHeight = blockAtlas.getHeight(0);
       int largestIndexCount = this.extractSectionDrawGroups(respectTranslucentOrder, sectionInfos, drawGroups);
@@ -1019,7 +1019,7 @@ public class LevelRenderer implements AutoCloseable {
       }
 
       List<DynamicGpuData.ChunkSectionInfo> sectionInfos = new ArrayList<>();
-      GpuTextureView blockAtlas = this.textureManager.getTexture(TextureAtlas.LOCATION_BLOCKS).getTextureView();
+      GpuTextureView blockAtlas = this.textureManager.getTexture(TextureAtlas.LOCATION_BLOCKS).textureView();
       int textureAtlasWidth = blockAtlas.getWidth(0);
       int textureAtlasHeight = blockAtlas.getHeight(0);
       int largestIndexCount = this.extractSectionDrawGroups(respectTranslucentOrder, sectionInfos, drawGroups);

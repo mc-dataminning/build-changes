@@ -72,7 +72,7 @@ import net.minecraft.world.entity.ai.sensing.SensorType;
 import net.minecraft.world.entity.ai.village.ReputationEventType;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
+import net.minecraft.world.entity.ai.village.poi.PoiTypeIds;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Witch;
 import net.minecraft.world.entity.npc.InventoryCarrier;
@@ -168,13 +168,13 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
    );
    public static final Map<MemoryModuleType<GlobalPos>, BiPredicate<Villager, Holder<PoiType>>> POI_MEMORIES = ImmutableMap.of(
       MemoryModuleType.HOME,
-      (BiPredicate<Villager, Holder>)(villager, poiType) -> poiType.is(PoiTypes.HOME),
+      (BiPredicate<Villager, Holder>)(villager, poiType) -> poiType.is(PoiTypeIds.HOME),
       MemoryModuleType.JOB_SITE,
       (BiPredicate<Villager, Holder>)(villager, poiType) -> villager.getVillagerData().profession().value().heldJobSite().test(poiType),
       MemoryModuleType.POTENTIAL_JOB_SITE,
       (BiPredicate<Villager, Holder>)(villager, poiType) -> VillagerProfession.ALL_ACQUIRABLE_JOBS.test(poiType),
       MemoryModuleType.MEETING_POINT,
-      (BiPredicate<Villager, Holder>)(villager, poiType) -> poiType.is(PoiTypes.MEETING)
+      (BiPredicate<Villager, Holder>)(villager, poiType) -> poiType.is(PoiTypeIds.MEETING)
    );
 
    public Villager(final EntityType<? extends Villager> entityType, final Level level) {

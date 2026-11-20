@@ -5,7 +5,6 @@ import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongList;
 import java.util.function.LongPredicate;
-import net.minecraft.util.Mth;
 
 public abstract class DynamicGraphMinFixedPoint {
    public static final long SOURCE = Long.MAX_VALUE;
@@ -67,8 +66,8 @@ public abstract class DynamicGraphMinFixedPoint {
 
    private void checkEdge(final long from, final long to, int newLevelFrom, int levelTo, int oldComputedLevel, final boolean onlyDecreased) {
       if (!this.isSource(to)) {
-         newLevelFrom = Mth.clamp(newLevelFrom, 0, this.levelCount - 1);
-         levelTo = Mth.clamp(levelTo, 0, this.levelCount - 1);
+         newLevelFrom = Math.clamp(newLevelFrom, 0, this.levelCount - 1);
+         levelTo = Math.clamp(levelTo, 0, this.levelCount - 1);
          boolean wasConsistent = oldComputedLevel == 255;
          if (wasConsistent) {
             oldComputedLevel = levelTo;
@@ -78,7 +77,7 @@ public abstract class DynamicGraphMinFixedPoint {
          if (onlyDecreased) {
             newComputedLevel = Math.min(oldComputedLevel, newLevelFrom);
          } else {
-            newComputedLevel = Mth.clamp(this.getComputedLevel(to, from, newLevelFrom), 0, this.levelCount - 1);
+            newComputedLevel = Math.clamp(this.getComputedLevel(to, from, newLevelFrom), 0, this.levelCount - 1);
          }
 
          int oldPriority = this.calculatePriority(levelTo, oldComputedLevel);
@@ -99,14 +98,14 @@ public abstract class DynamicGraphMinFixedPoint {
 
    protected final void checkNeighbor(final long from, final long to, final int level, final boolean onlyDecreased) {
       int storedOldComputedLevel = this.computedLevels.get(to) & 255;
-      int levelFrom = Mth.clamp(this.computeLevelFromNeighbor(from, to, level), 0, this.levelCount - 1);
+      int levelFrom = Math.clamp(this.computeLevelFromNeighbor(from, to, level), 0, this.levelCount - 1);
       if (onlyDecreased) {
          this.checkEdge(from, to, levelFrom, this.getLevel(to), storedOldComputedLevel, onlyDecreased);
       } else {
          boolean wasConsistent = storedOldComputedLevel == 255;
          int oldComputedLevel;
          if (wasConsistent) {
-            oldComputedLevel = Mth.clamp(this.getLevel(to), 0, this.levelCount - 1);
+            oldComputedLevel = Math.clamp(this.getLevel(to), 0, this.levelCount - 1);
          } else {
             oldComputedLevel = storedOldComputedLevel;
          }
@@ -129,7 +128,7 @@ public abstract class DynamicGraphMinFixedPoint {
       while (!this.priorityQueue.isEmpty() && count > 0) {
          count--;
          long node = this.priorityQueue.removeFirstLong();
-         int level = Mth.clamp(this.getLevel(node), 0, this.levelCount - 1);
+         int level = Math.clamp(this.getLevel(node), 0, this.levelCount - 1);
          int computedLevel = this.computedLevels.remove(node) & 255;
          if (computedLevel < level) {
             this.setLevel(node, computedLevel);

@@ -203,7 +203,7 @@ public class PortalShape {
       double relativeRight;
       if (width > 0.0) {
          double bottomStart = bottomMin.get(axis) + dimensions.width() / 2.0;
-         relativeRight = Mth.clamp(Mth.inverseLerp(position.get(axis) - bottomStart, 0.0, width), 0.0, 1.0);
+         relativeRight = Math.clamp(Mth.inverseLerp(position.get(axis) - bottomStart, 0.0, width), 0.0, 1.0);
       } else {
          relativeRight = 0.5;
       }
@@ -211,7 +211,7 @@ public class PortalShape {
       double relativeUp;
       if (height > 0.0) {
          Direction.Axis heightAxis = Direction.Axis.Y;
-         relativeUp = Mth.clamp(Mth.inverseLerp(position.get(heightAxis) - bottomMin.get(heightAxis), 0.0, height), 0.0, 1.0);
+         relativeUp = Math.clamp(Mth.inverseLerp(position.get(heightAxis) - bottomMin.get(heightAxis), 0.0, height), 0.0, 1.0);
       } else {
          relativeUp = 0.0;
       }

@@ -8,8 +8,8 @@ import java.nio.ByteBuffer;
 import java.util.Base64;
 import java.util.Map;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureResources;
 import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.Nullable;
 import org.lwjgl.system.MemoryUtil;
@@ -28,15 +28,16 @@ public class RealmsTextureManager {
       RealmsTextureManager.RealmsTexture texture = TEXTURES.get(id);
       if (texture != null && texture.image().equals(encodedImage)) {
          return texture.textureId;
-      } else {
-         NativeImage image = loadImage(encodedImage);
+      }
+
+      try (NativeImage image = loadImage(encodedImage)) {
          if (image == null) {
             Identifier missingTexture = MissingTextureAtlasSprite.getLocation();
             TEXTURES.put(id, new RealmsTextureManager.RealmsTexture(encodedImage, missingTexture));
             return missingTexture;
          } else {
             Identifier textureId = Identifier.fromNamespaceAndPath("realms", "dynamic/" + id);
-            Minecraft.getInstance().getTextureManager().register(textureId, new DynamicTexture(textureId::toString, image));
+            Minecraft.getInstance().getTextureManager().register(textureId, TextureResources.from2dImage(textureId::toString, image));
             TEXTURES.put(id, new RealmsTextureManager.RealmsTexture(encodedImage, textureId));
             return textureId;
          }

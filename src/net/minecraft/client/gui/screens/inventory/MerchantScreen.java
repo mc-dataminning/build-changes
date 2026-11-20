@@ -252,7 +252,7 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
       int numberOfOffers = this.menu.getOffers().size();
       if (this.canScroll(numberOfOffers)) {
          int maxScrollOff = numberOfOffers - 7;
-         this.scrollOff = Mth.clamp((int)(this.scrollOff - scrollY), 0, maxScrollOff);
+         this.scrollOff = Math.clamp((int)(this.scrollOff - scrollY), 0, maxScrollOff);
       }
 
       return true;
@@ -267,7 +267,7 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
          int maxScrollOff = numberOfOffers - 7;
          float scrolling = ((float)event.y() - fullScrollTopPos - 13.5F) / (fullScrollBottomPos - fullScrollTopPos - 27.0F);
          scrolling = scrolling * maxScrollOff + 0.5F;
-         this.scrollOff = Mth.clamp((int)scrolling, 0, maxScrollOff);
+         this.scrollOff = Math.clamp((int)scrolling, 0, maxScrollOff);
          return true;
       } else {
          return super.mouseDragged(event, dx, dy);

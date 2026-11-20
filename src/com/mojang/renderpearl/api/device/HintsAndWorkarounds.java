@@ -1,6 +1,10 @@
 package com.mojang.renderpearl.api.device;
 
 public record HintsAndWorkarounds(
-   boolean writeToBufferIsSlow, boolean anisotropyHasKnownIssues, boolean isExplicitDepthRequired, boolean multiDrawIndirectHasKnownIssues
+   boolean needsImeFullscreenWorkaround,
+   boolean writeToBufferIsSlow,
+   boolean anisotropyHasKnownIssues,
+   boolean isExplicitDepthRequired,
+   boolean multiDrawIndirectHasKnownIssues
 ) {
 }

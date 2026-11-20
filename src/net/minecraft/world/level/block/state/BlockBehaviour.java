@@ -54,11 +54,12 @@ import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Portal;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.SupportType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.sounds.BlockSoundSet;
+import net.minecraft.world.level.block.sounds.BlockSoundSets;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.Fluid;
@@ -87,7 +88,7 @@ public abstract class BlockBehaviour implements FeatureElement {
    protected final boolean hasCollision;
    protected final float explosionResistance;
    protected final boolean isRandomlyTicking;
-   protected final SoundType soundType;
+   protected final Optional<ResourceKey<BlockSoundSet>> blockSoundSet;
    protected final float friction;
    protected final float speedFactor;
    protected final float jumpFactor;
@@ -105,7 +106,7 @@ public abstract class BlockBehaviour implements FeatureElement {
       this.descriptionId = properties.effectiveDescriptionId();
       this.explosionResistance = properties.explosionResistance;
       this.isRandomlyTicking = properties.isRandomlyTicking;
-      this.soundType = properties.soundType;
+      this.blockSoundSet = properties.blockSoundSet;
       this.friction = properties.friction;
       this.speedFactor = properties.speedFactor;
       this.jumpFactor = properties.jumpFactor;
@@ -402,8 +403,8 @@ public abstract class BlockBehaviour implements FeatureElement {
       return this.isRandomlyTicking;
    }
 
-   protected SoundType getSoundType(final BlockState state) {
-      return this.soundType;
+   protected Optional<ResourceKey<BlockSoundSet>> getSounds(final BlockState state) {
+      return this.blockSoundSet;
    }
 
    protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
@@ -884,8 +885,16 @@ public abstract class BlockBehaviour implements FeatureElement {
          return this.getBlock().getSeed(this.asState(), pos);
       }
 
-      public SoundType getSoundType() {
-         return this.getBlock().getSoundType(this.asState());
+      public Optional<ResourceKey<BlockSoundSet>> getSounds() {
+         return this.getBlock().getSounds(this.asState());
+      }
+
+      public Optional<Holder<BlockSoundSet>> getSoundsAsHolder(final LevelReader level) {
+         return this.getSounds().flatMap(level.registryAccess()::get);
+      }
+
+      public BlockSoundSet getSounds(final LevelReader level) {
+         return this.getSoundsAsHolder(level).map(Holder::value).orElse(BlockSoundSet.EMPTY);
       }
 
       public void onProjectileHit(final Level level, final BlockState state, final BlockHitResult blockHit, final Projectile entity) {
@@ -999,7 +1008,7 @@ public abstract class BlockBehaviour implements FeatureElement {
    public static class Properties {
       private Function<BlockState, MapColor> mapColor = state -> MapColor.NONE;
       private boolean hasCollision = true;
-      private SoundType soundType = SoundType.STONE;
+      private Optional<ResourceKey<BlockSoundSet>> blockSoundSet = Optional.of(BlockSoundSets.STONE);
       private ToIntFunction<BlockState> lightEmission = state -> 0;
       private float explosionResistance;
       private float destroyTime;
@@ -1072,7 +1081,7 @@ public abstract class BlockBehaviour implements FeatureElement {
          copyTo.isRandomlyTicking = copyFrom.isRandomlyTicking;
          copyTo.lightEmission = copyFrom.lightEmission;
          copyTo.mapColor = copyFrom.mapColor;
-         copyTo.soundType = copyFrom.soundType;
+         copyTo.blockSoundSet = copyFrom.blockSoundSet;
          copyTo.friction = copyFrom.friction;
          copyTo.speedFactor = copyFrom.speedFactor;
          copyTo.bounceRestitution = copyFrom.bounceRestitution;
@@ -1140,8 +1149,13 @@ public abstract class BlockBehaviour implements FeatureElement {
          return this;
       }
 
-      public BlockBehaviour.Properties sound(final SoundType soundType) {
-         this.soundType = soundType;
+      public BlockBehaviour.Properties sound(final ResourceKey<BlockSoundSet> blockSoundSet) {
+         this.blockSoundSet = Optional.of(blockSoundSet);
+         return this;
+      }
+
+      public BlockBehaviour.Properties noSound() {
+         this.blockSoundSet = Optional.empty();
          return this;
       }
 
@@ -1270,8 +1284,8 @@ public abstract class BlockBehaviour implements FeatureElement {
                Block block = state.getBlock();
                long seed = Mth.getSeed(pos.getX(), 0, pos.getZ());
                float maxHorizontalOffset = block.getMaxHorizontalOffset();
-               double x = Mth.clamp(((float)(seed & 15L) / 15.0F - 0.5) * 0.5, -maxHorizontalOffset, maxHorizontalOffset);
-               double z = Mth.clamp(((float)(seed >> 8 & 15L) / 15.0F - 0.5) * 0.5, -maxHorizontalOffset, maxHorizontalOffset);
+               double x = Math.clamp(((float)(seed & 15L) / 15.0F - 0.5) * 0.5, -maxHorizontalOffset, maxHorizontalOffset);
+               double z = Math.clamp(((float)(seed >> 8 & 15L) / 15.0F - 0.5) * 0.5, -maxHorizontalOffset, maxHorizontalOffset);
                return new Vec3(x, 0.0, z);
             };
             case XYZ -> (state, pos) -> {
@@ -1279,8 +1293,8 @@ public abstract class BlockBehaviour implements FeatureElement {
                long seed = Mth.getSeed(pos.getX(), 0, pos.getZ());
                double y = ((float)(seed >> 4 & 15L) / 15.0F - 1.0) * block.getMaxVerticalOffset();
                float maxHorizontalOffset = block.getMaxHorizontalOffset();
-               double x = Mth.clamp(((float)(seed & 15L) / 15.0F - 0.5) * 0.5, -maxHorizontalOffset, maxHorizontalOffset);
-               double z = Mth.clamp(((float)(seed >> 8 & 15L) / 15.0F - 0.5) * 0.5, -maxHorizontalOffset, maxHorizontalOffset);
+               double x = Math.clamp(((float)(seed & 15L) / 15.0F - 0.5) * 0.5, -maxHorizontalOffset, maxHorizontalOffset);
+               double z = Math.clamp(((float)(seed >> 8 & 15L) / 15.0F - 0.5) * 0.5, -maxHorizontalOffset, maxHorizontalOffset);
                return new Vec3(x, y, z);
             };
          };

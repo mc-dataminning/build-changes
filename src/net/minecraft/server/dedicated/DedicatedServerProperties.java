@@ -31,7 +31,6 @@ import net.minecraft.server.jsonrpc.security.SecurityConfig;
 import net.minecraft.server.permissions.LevelBasedPermissionSet;
 import net.minecraft.server.permissions.PermissionLevel;
 import net.minecraft.util.GsonHelper;
-import net.minecraft.util.Mth;
 import net.minecraft.util.StrictJsonParser;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.level.DataPackConfig;
@@ -109,7 +108,7 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
    public final int networkCompressionThreshold = this.get("network-compression-threshold", 256);
    public final boolean broadcastRconToOps = this.get("broadcast-rcon-to-ops", true);
    public final boolean broadcastConsoleToOps = this.get("broadcast-console-to-ops", true);
-   public final int maxWorldSize = this.get("max-world-size", v -> Mth.clamp(v, 1, 29999984), 29999984);
+   public final int maxWorldSize = this.get("max-world-size", v -> Math.clamp(v.intValue(), 1, 29999984), 29999984);
    public final boolean syncChunkWrites = this.get("sync-chunk-writes", true);
    public final String regionFileComression = this.get("region-file-compression", "deflate");
    public final boolean enableJmxMonitoring = this.get("enable-jmx-monitoring", false);
@@ -117,7 +116,7 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
    public final boolean enableLegacyStatus = this.get("enable-legacy-status", true);
    public final Settings<DedicatedServerProperties>.MutableValue<Boolean> hideOnlinePlayers = this.getMutable("hide-online-players", false);
    public final Settings<DedicatedServerProperties>.MutableValue<Integer> entityBroadcastRangePercentage = this.getMutable(
-      "entity-broadcast-range-percentage", v -> Mth.clamp(Integer.parseInt(v), 10, 1000), 100
+      "entity-broadcast-range-percentage", v -> Math.clamp(Integer.parseInt(v), 10, 1000), 100
    );
    public final String textFilteringConfig = this.get("text-filtering-config", "");
    public final int textFilteringVersion = this.get("text-filtering-version", 0);

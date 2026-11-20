@@ -2,7 +2,6 @@ package net.minecraft.client.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.particles.ScalableParticleOptionsBase;
-import net.minecraft.util.Mth;
 
 public class DustParticleBase<T extends ScalableParticleOptionsBase> extends SingleQuadParticle {
    private final SpriteSet sprites;
@@ -42,7 +41,7 @@ public class DustParticleBase<T extends ScalableParticleOptionsBase> extends Sin
 
    @Override
    public float getQuadSize(final float a) {
-      return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
+      return this.quadSize * Math.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
    }
 
    @Override

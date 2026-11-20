@@ -20,7 +20,9 @@ public class DebugScreenEntries {
    public static final Identifier LOOKING_AT_ENTITY = register("looking_at_entity", new DebugEntryLookingAtEntity());
    public static final Identifier LOOKING_AT_ENTITY_TAGS = register("looking_at_entity_tags", new DebugEntryLookingAtEntityTags());
    public static final Identifier CHUNK_RENDER_STATS = register("chunk_render_stats", new DebugEntryChunkRenderStats());
+   public static final Identifier CHUNK_SECTION_STATUS = register("chunk_section_status", new DebugEntryChunkSectionStatus());
    public static final Identifier CHUNK_GENERATION_STATS = register("chunk_generation_stats", new DebugEntryChunkGeneration());
+   public static final Identifier CHUNK_LOAD_STATUS = register("chunk_load_status", new DebugEntryChunkLoadStatus());
    public static final Identifier ENTITY_RENDER_STATS = register("entity_render_stats", new DebugEntryEntityRenderStats());
    public static final Identifier PARTICLE_RENDER_STATS = register("particle_render_stats", new DebugEntryParticleRenderStats());
    public static final Identifier CHUNK_SOURCE_STATS = register("chunk_source_stats", new DebugEntryChunkSourceStats());
@@ -28,6 +30,7 @@ public class DebugScreenEntries {
    public static final Identifier PLAYER_SECTION_POSITION = register("player_section_position", new DebugEntrySectionPosition());
    public static final Identifier PLAYER_SPEED = register("player_speed", new DebugEntryPlayerSpeed());
    public static final Identifier LIGHT_LEVELS = register("light_levels", new DebugEntryLight());
+   public static final Identifier LIGHTMAP_TEXTURE = register("lightmap_texture", new DebugEntryLightmapTexture());
    public static final Identifier HEIGHTMAP = register("heightmap", new DebugEntryHeightmap());
    public static final Identifier BIOME = register("biome", new DebugEntryBiome());
    public static final Identifier LOCAL_DIFFICULTY = register("local_difficulty", new DebugEntryLocalDifficulty());

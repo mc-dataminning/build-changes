@@ -38,6 +38,7 @@ import org.slf4j.Logger;
 
 public class ManagementServer {
    private static final Logger LOGGER = LogUtils.getLogger();
+   static final long HANDSHAKE_TIMEOUT_MILLIS = TimeUnit.SECONDS.toMillis(10L);
    private final HostAndPort hostAndPort;
    private final AuthenticationHandler authenticationHandler;
    private @Nullable Channel serverChannel;
@@ -110,9 +111,10 @@ public class ManagementServer {
                      }
 
                      pipeline.addLast(new ChannelHandler[]{new HttpServerCodec()})
-                        .addLast(new ChannelHandler[]{new HttpObjectAggregator(65536)})
                         .addLast(new ChannelHandler[]{ManagementServer.this.authenticationHandler})
+                        .addLast(new ChannelHandler[]{new HttpObjectAggregator(65536)})
                         .addLast(new ChannelHandler[]{new WebSocketServerProtocolHandler("/")})
+                        .addLast(new ChannelHandler[]{new HandshakeTimeoutHandler(ManagementServer.HANDSHAKE_TIMEOUT_MILLIS)})
                         .addLast(new ChannelHandler[]{new WebSocketFrameAggregator(65536)})
                         .addLast(new ChannelHandler[]{new WebSocketToJsonCodec()})
                         .addLast(new ChannelHandler[]{new JsonToWebSocketEncoder()})

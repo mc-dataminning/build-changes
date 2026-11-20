@@ -2,6 +2,9 @@ package net.minecraft.client.gui.screens;
 
 import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.platform.Window;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import com.mojang.renderpearl.api.textures.FilterMode;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;
@@ -10,20 +13,18 @@ import java.util.function.IntSupplier;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.texture.MipmapStrategy;
-import net.minecraft.client.renderer.texture.ReloadableTexture;
-import net.minecraft.client.renderer.texture.TextureContents;
 import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.resources.metadata.texture.TextureMetadataSection;
+import net.minecraft.client.renderer.texture.TextureResources;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.ReloadInstance;
-import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceProvider;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
 import net.minecraft.util.Util;
+import org.slf4j.Logger;
 
 public class LoadingOverlay extends Overlay {
+   private static final Logger LOGGER = LogUtils.getLogger();
    public static final Identifier MOJANG_STUDIOS_LOGO_LOCATION = Identifier.withDefaultNamespace("textures/gui/title/mojangstudios.png");
    private static final int LOGO_BACKGROUND_COLOR = ARGB.color(255, 239, 50, 61);
    private static final int LOGO_BACKGROUND_COLOR_DARK = ARGB.color(255, 0, 0, 0);
@@ -54,7 +55,18 @@ public class LoadingOverlay extends Overlay {
    }
 
    public static void registerTextures(final TextureManager textureManager) {
-      textureManager.registerAndLoad(MOJANG_STUDIOS_LOGO_LOCATION, new LoadingOverlay.LogoTexture());
+      ResourceProvider vanillaProvider = Minecraft.getInstance().getVanillaPackResources().asResourceManager();
+
+      try (
+         InputStream resource = vanillaProvider.open(MOJANG_STUDIOS_LOGO_LOCATION);
+         NativeImage image = NativeImage.read(resource);
+      ) {
+         textureManager.register(
+            MOJANG_STUDIOS_LOGO_LOCATION, TextureResources.from2dImage(() -> "Logo", image, RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST))
+         );
+      } catch (IOException exception) {
+         LOGGER.error("Failed to load logo", exception);
+      }
    }
 
    private static int replaceAlpha(final int color, final int alpha) {
@@ -80,10 +92,10 @@ public class LoadingOverlay extends Overlay {
             this.minecraft.gui.hud.extractDeferredSubtitles();
          }
 
-         int alpha = Mth.ceil((1.0F - Mth.clamp(fadeOutAnim - 1.0F, 0.0F, 1.0F)) * 255.0F);
+         int alpha = Mth.ceil((1.0F - Math.clamp(fadeOutAnim - 1.0F, 0.0F, 1.0F)) * 255.0F);
          graphics.nextStratum();
          graphics.fill(0, 0, width, height, replaceAlpha(BRAND_BACKGROUND.getAsInt(), alpha));
-         logoAlpha = 1.0F - Mth.clamp(fadeOutAnim - 1.0F, 0.0F, 1.0F);
+         logoAlpha = 1.0F - Math.clamp(fadeOutAnim - 1.0F, 0.0F, 1.0F);
       } else if (this.fadeIn) {
          if (this.minecraft.gui.screen() != null && fadeInAnim < 1.0F) {
             this.minecraft.gui.screen().extractRenderStateWithTooltipAndSubtitles(graphics, mouseX, mouseY, a);
@@ -91,10 +103,10 @@ public class LoadingOverlay extends Overlay {
             this.minecraft.gui.hud.extractDeferredSubtitles();
          }
 
-         int alpha = Mth.ceil(Mth.clamp(fadeInAnim, 0.15, 1.0) * 255.0);
+         int alpha = Mth.ceil(Math.clamp(fadeInAnim, 0.15, 1.0) * 255.0);
          graphics.nextStratum();
          graphics.fill(0, 0, width, height, replaceAlpha(BRAND_BACKGROUND.getAsInt(), alpha));
-         logoAlpha = Mth.clamp(fadeInAnim, 0.0F, 1.0F);
+         logoAlpha = Math.clamp(fadeInAnim, 0.0F, 1.0F);
       } else {
          ARGB.setVector4fFromARGB32(this.minecraft.gameRenderer.gameRenderState().guiRenderState.clearColorOverride, BRAND_BACKGROUND.getAsInt());
          logoAlpha = 1.0F;
@@ -139,9 +151,9 @@ public class LoadingOverlay extends Overlay {
       );
       int barY = (int)(graphics.guiHeight() * 0.8325);
       float actualProgress = this.reload.getActualProgress();
-      this.currentProgress = Mth.clamp(this.currentProgress * 0.95F + actualProgress * 0.050000012F, 0.0F, 1.0F);
+      this.currentProgress = Math.clamp(this.currentProgress * 0.95F + actualProgress * 0.050000012F, 0.0F, 1.0F);
       if (fadeOutAnim < 1.0F) {
-         this.extractProgressBar(graphics, width / 2 - logoWidthHalf, barY - 5, width / 2 + logoWidthHalf, barY + 5, 1.0F - Mth.clamp(fadeOutAnim, 0.0F, 1.0F));
+         this.extractProgressBar(graphics, width / 2 - logoWidthHalf, barY - 5, width / 2 + logoWidthHalf, barY + 5, 1.0F - Math.clamp(fadeOutAnim, 0.0F, 1.0F));
       }
 
       if (fadeOutAnim >= 2.0F) {
@@ -180,20 +192,5 @@ public class LoadingOverlay extends Overlay {
       graphics.fill(x0 + 1, y1, x1 - 1, y1 - 1, white);
       graphics.fill(x0, y0, x0 + 1, y1, white);
       graphics.fill(x1, y0, x1 - 1, y1, white);
-   }
-
-   private static class LogoTexture extends ReloadableTexture {
-      public LogoTexture() {
-         super(LoadingOverlay.MOJANG_STUDIOS_LOGO_LOCATION);
-      }
-
-      @Override
-      public TextureContents loadContents(final ResourceManager resourceManager) throws IOException {
-         ResourceProvider vanillaProvider = Minecraft.getInstance().getVanillaPackResources().asResourceManager();
-
-         try (InputStream resource = vanillaProvider.open(LoadingOverlay.MOJANG_STUDIOS_LOGO_LOCATION)) {
-            return new TextureContents(NativeImage.read(resource), new TextureMetadataSection(true, true, MipmapStrategy.MEAN, 0.0F));
-         }
-      }
    }
 }

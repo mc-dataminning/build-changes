@@ -23,7 +23,7 @@ import java.util.Set;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import net.minecraft.client.renderer.texture.AbstractTexture;
+import net.minecraft.client.renderer.texture.TextureHandle;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
@@ -117,7 +117,7 @@ public class PostChain implements AutoCloseable {
       for (PostChainConfig.Input input : config.inputs()) {
          switch (input) {
             case PostChainConfig.TextureInput(String samplerName, Identifier location, int width, int height, boolean bilinear):
-               AbstractTexture var42 = textureManager.getTexture(location.withPath(path -> "textures/effect/" + path + ".png"));
+               TextureHandle var42 = textureManager.getTexture(location.withPath(path -> "textures/effect/" + path + ".png"));
                inputs.add(new PostPass.TextureInput(samplerName, var42, width, height, bilinear));
                break;
             case PostChainConfig.TargetInput(String samplerName, Identifier targetId, boolean useDepthBuffer, boolean bilinear):

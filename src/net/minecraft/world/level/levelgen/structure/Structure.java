@@ -43,6 +43,7 @@ import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
+import org.jspecify.annotations.Nullable;
 
 public abstract class Structure {
    public static final Codec<Structure> DIRECT_CODEC = BuiltInRegistries.STRUCTURE_TYPE.byNameCodec().dispatch(Structure::type, StructureType::codec);
@@ -81,7 +82,7 @@ public abstract class Structure {
       return this.terrainAdaptation() != TerrainAdjustment.NONE ? boundingBox.inflatedBy(12) : boundingBox;
    }
 
-   public StructureStart generate(
+   public @Nullable StructureStart generate(
       final Holder<Structure> selected,
       final ResourceKey<Level> dimension,
       final RegistryAccess registryAccess,
@@ -92,7 +93,6 @@ public abstract class Structure {
       final StructureTemplateManager structureTemplateManager,
       final long seed,
       final ChunkPos sourceChunkPos,
-      final int references,
       final LevelHeightAccessor heightAccessor,
       final Predicate<Holder<Biome>> validBiome
    ) {
@@ -103,8 +103,9 @@ public abstract class Structure {
       Optional<Structure.GenerationStub> generation = this.findValidGenerationPoint(context);
       if (generation.isPresent()) {
          StructurePiecesBuilder builder = generation.get().getPiecesBuilder();
-         StructureStart testStart = new StructureStart(this, sourceChunkPos, references, builder.build());
-         if (testStart.isValid()) {
+         PiecesContainer pieces = builder.build();
+         if (pieces != null) {
+            StructureStart testStart = new StructureStart(this, sourceChunkPos, 0, pieces);
             if (profiled != null) {
                profiled.finish(true);
             }
@@ -117,7 +118,7 @@ public abstract class Structure {
          profiled.finish(false);
       }
 
-      return StructureStart.INVALID_START;
+      return null;
    }
 
    protected static Optional<Structure.GenerationStub> onTopOfChunkCenter(

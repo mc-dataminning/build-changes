@@ -7,7 +7,6 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
 import net.minecraft.util.StringUtil;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -233,7 +232,7 @@ public class AnvilMenu extends ItemCombinerMenu {
             result.remove(DataComponents.CUSTOM_NAME);
          }
 
-         int finalPrice = price <= 0 ? 0 : (int)Mth.clamp(tax + price, 0L, 2147483647L);
+         int finalPrice = price <= 0 ? 0 : Math.clamp(tax + price, 0, Integer.MAX_VALUE);
          this.cost.set(finalPrice);
          if (price <= 0) {
             result = ItemStack.EMPTY;

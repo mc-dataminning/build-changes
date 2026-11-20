@@ -16,7 +16,7 @@ import net.minecraft.world.entity.ai.behavior.AcquirePoi;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
+import net.minecraft.world.entity.ai.village.poi.PoiTypeIds;
 import net.minecraft.world.level.pathfinder.Path;
 
 public class NearestBedSensor extends Sensor<Mob> {
@@ -55,7 +55,7 @@ public class NearestBedSensor extends Sensor<Mob> {
             return true;
          };
          Set<Pair<Holder<PoiType>, BlockPos>> pois = poiManager.findAllWithType(
-               e -> e.is(PoiTypes.HOME), cacheTest, body.blockPosition(), 48, PoiManager.Occupancy.ANY
+               e -> e.is(PoiTypeIds.HOME), cacheTest, body.blockPosition(), 48, PoiManager.Occupancy.ANY
             )
             .collect(Collectors.toSet());
          Path path = AcquirePoi.findPathToPois(body, pois);

@@ -8,7 +8,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.StringSplitter;
 import net.minecraft.client.input.CharacterEvent;
 import net.minecraft.client.input.KeyEvent;
-import net.minecraft.util.Mth;
 import net.minecraft.util.Util;
 
 public class TextFieldHelper {
@@ -114,7 +113,7 @@ public class TextFieldHelper {
    }
 
    private int clampToMsgLength(final int value) {
-      return Mth.clamp(value, 0, this.getMessageFn.get().length());
+      return Math.clamp(value, 0, this.getMessageFn.get().length());
    }
 
    private void insertText(String message, final String text) {
@@ -122,7 +121,7 @@ public class TextFieldHelper {
          message = this.deleteSelection(message);
       }
 
-      this.cursorPos = Mth.clamp(this.cursorPos, 0, message.length());
+      this.cursorPos = Math.clamp(this.cursorPos, 0, message.length());
       String newPageText = new StringBuilder(message).insert(this.cursorPos, text).toString();
       if (this.stringValidator.test(newPageText)) {
          this.setMessageFn.accept(newPageText);
@@ -282,8 +281,8 @@ public class TextFieldHelper {
 
    public void setSelectionRange(final int start, final int end) {
       int maxSize = this.getMessageFn.get().length();
-      this.cursorPos = Mth.clamp(start, 0, maxSize);
-      this.selectionPos = Mth.clamp(end, 0, maxSize);
+      this.cursorPos = Math.clamp(start, 0, maxSize);
+      this.selectionPos = Math.clamp(end, 0, maxSize);
    }
 
    public boolean isSelecting() {

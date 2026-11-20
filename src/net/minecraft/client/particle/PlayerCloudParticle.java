@@ -2,7 +2,6 @@ package net.minecraft.client.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 
@@ -40,7 +39,7 @@ public class PlayerCloudParticle extends SingleQuadParticle {
 
    @Override
    public float getQuadSize(final float a) {
-      return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
+      return this.quadSize * Math.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
    }
 
    @Override

@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.PresenceSharing;
-import net.minecraft.client.gui.screens.friends.FriendsOverlayScreen;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.server.IntegratedServer;
 import net.minecraft.server.MinecraftServer;
@@ -46,8 +45,8 @@ public class PresenceHandler {
             this.minecraft.execute(() -> {
                boolean refreshPresence = !Objects.equals(this.latestPresence, newPresence);
                this.latestPresence = newPresence;
-               if (refreshPresence && this.minecraft.gui.screen() instanceof FriendsOverlayScreen friendsOverlayScreen) {
-                  friendsOverlayScreen.applyPresenceUpdate();
+               if (refreshPresence && this.minecraft.gui.screen() instanceof PresenceAwareScreen presenceAwareScreen) {
+                  presenceAwareScreen.applyPresenceUpdate(this.latestPresence);
                }
             });
          }
@@ -100,7 +99,7 @@ public class PresenceHandler {
       return this.latestPresence;
    }
 
-   private PresenceStatus getPublicPresenceStatus() {
+   public PresenceStatus getPublicPresenceStatus() {
       return switch ((PresenceSharing)this.minecraft.options.sharePresence().get()) {
          case NONE -> PresenceStatus.OFFLINE;
          case LIMITED -> PresenceStatus.ONLINE;

@@ -7,8 +7,8 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 
-public class FriendsButton extends SpriteIconButton.CenteredIcon {
-   private static final Component TOOLTIP = Component.translatable("gui.friends.open.tooltip");
+public class FriendsButton extends SpriteIconButton {
+   private static final Tooltip TOOLTIP = Tooltip.create(Component.translatable("gui.friends.open.tooltip"));
    private static final Component MESSAGE = Component.translatable("gui.friends.open");
    private static final Button.CreateNarration NARRATION = var0 -> Component.translatable("gui.friends.open.narration");
    private static final Identifier[] NOTIFICATION_ICONS = new Identifier[]{
@@ -19,24 +19,11 @@ public class FriendsButton extends SpriteIconButton.CenteredIcon {
       Identifier.withDefaultNamespace("notification/5"),
       Identifier.withDefaultNamespace("notification/more")
    };
-   private static final int SPRITE_SIZE = 15;
+   private static final ScaledWidgetSprites SPRITE = new ScaledWidgetSprites(Identifier.withDefaultNamespace("friends/friends"), 16);
    private int incomingRequestCount;
 
    public FriendsButton(final int width, final Button.OnPress onPress, final boolean friendsAvailable) {
-      super(
-         width,
-         20,
-         MESSAGE,
-         15,
-         15,
-         0,
-         0,
-         new WidgetSprites(Identifier.withDefaultNamespace("friends/friends")),
-         onPress,
-         friendsAvailable ? TOOLTIP : null,
-         NARRATION,
-         false
-      );
+      super(0, 0, width, 20, MESSAGE, SPRITE, SpriteIconButton.DisplayState.ICON_ONLY, onPress, friendsAvailable ? TOOLTIP : null, NARRATION, false);
       this.active = friendsAvailable;
       this.refreshIncomingRequestCount();
    }

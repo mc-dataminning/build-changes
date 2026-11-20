@@ -523,7 +523,7 @@ public class ServerPlayer extends Player {
    public void setExperiencePoints(final int amount) {
       float limit = this.getXpNeededForNextLevel();
       float max = (limit - 1.0F) / limit;
-      float experiencePointsToSet = Mth.clamp(amount / limit, 0.0F, max);
+      float experiencePointsToSet = Math.clamp(amount / limit, 0.0F, max);
       if (experiencePointsToSet != this.experienceProgress) {
          this.experienceProgress = experiencePointsToSet;
          this.lastSentExp = -1;
@@ -1344,7 +1344,7 @@ public class ServerPlayer extends Player {
    protected void checkFallDamage(final double ya, final boolean onGround, final BlockState onState, final BlockPos pos) {
       if (this.spawnExtraParticlesOnFall && onGround && this.fallDistance > 0.0) {
          Vec3 centered = Vec3.atCenterOf(pos).add(0.0, 0.5, 0.0);
-         int particles = (int)Mth.clamp(50.0 * this.fallDistance, 0.0, 200.0);
+         int particles = (int)Math.clamp(50.0 * this.fallDistance, 0.0, 200.0);
          this.level()
             .sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, onState), centered.x, centered.y, centered.z, particles, 0.3F, 0.3F, 0.3F, 0.15F);
          this.spawnExtraParticlesOnFall = false;

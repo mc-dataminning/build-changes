@@ -337,6 +337,28 @@ public class VanillaEntityLoot extends EntityLootSubProvider {
       this.add(EntityTypes.FOX, LootTable.lootTable());
       this.add(EntityTypes.FROG, LootTable.lootTable());
       this.add(
+         EntityTypes.FROSTBITE,
+         LootTable.lootTable()
+            .withPool(
+               LootPool.lootPool()
+                  .setRolls(ContextIntProviders.exactly(1))
+                  .add(
+                     LootItem.lootTableItem(Items.ROTTEN_FLESH)
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
+                  )
+            )
+            .withPool(
+               LootPool.lootPool()
+                  .setRolls(ContextIntProviders.exactly(1))
+                  .add(
+                     LootItem.lootTableItem(Items.ICE_BALL)
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 3)))
+                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
+                  )
+            )
+      );
+      this.add(
          EntityTypes.GHAST,
          LootTable.lootTable()
             .withPool(

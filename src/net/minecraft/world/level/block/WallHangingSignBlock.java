@@ -43,7 +43,7 @@ public class WallHangingSignBlock extends SignBlock implements HangingSignBlock 
    );
 
    public WallHangingSignBlock(final WoodType type, final BlockBehaviour.Properties properties) {
-      super(type, properties.sound(type.hangingSignSoundType()));
+      super(type, properties.sound(type.hangingSignSoundSet()));
       this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
    }
 

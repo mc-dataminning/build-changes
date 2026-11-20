@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.function.Predicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderSet;
@@ -14,6 +15,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.util.valueproviders.ClampedNormalFloat;
 import net.minecraft.util.valueproviders.FloatProvider;
 import net.minecraft.util.valueproviders.FloatProviders;
@@ -42,7 +44,8 @@ public record SpeleothemClusterFeature(
    FloatProvider wetness,
    float chanceOfSpeleothemAtMaxDistanceFromCenter,
    int maxDistanceFromEdgeAffectingChanceOfSpeleothem,
-   int maxDistanceFromCenterAffectingHeightBias
+   int maxDistanceFromCenterAffectingHeightBias,
+   SpeleothemClusterFeature.PlacementOptions placementOptions
 ) implements Feature {
    public static final MapCodec<SpeleothemClusterFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
@@ -65,14 +68,70 @@ public record SpeleothemClusterFeature(
                .forGetter(SpeleothemClusterFeature::maxDistanceFromEdgeAffectingChanceOfSpeleothem),
             Codec.intRange(1, 64)
                .fieldOf("max_distance_from_center_affecting_height_bias")
-               .forGetter(SpeleothemClusterFeature::maxDistanceFromCenterAffectingHeightBias)
+               .forGetter(SpeleothemClusterFeature::maxDistanceFromCenterAffectingHeightBias),
+            SpeleothemClusterFeature.PlacementOptions.CODEC
+               .optionalFieldOf("placement_options", SpeleothemClusterFeature.PlacementOptions.DEFAULT)
+               .forGetter(SpeleothemClusterFeature::placementOptions)
          )
          .apply(i, SpeleothemClusterFeature::new)
    );
 
+   public SpeleothemClusterFeature(
+      final BlockState baseBlock,
+      final BlockState pointedBlock,
+      final HolderSet<Block> replaceableBlocks,
+      final int floorToCeilingSearchRange,
+      final IntProvider height,
+      final IntProvider radius,
+      final int maxStalagmiteStalactiteHeightDiff,
+      final int heightDeviation,
+      final IntProvider speleothemBlockLayerThickness,
+      final FloatProvider density,
+      final FloatProvider wetness,
+      final float chanceOfSpeleothemAtMaxDistanceFromCenter,
+      final int maxDistanceFromEdgeAffectingChanceOfSpeleothem,
+      final int maxDistanceFromCenterAffectingHeightBias
+   ) {
+      this(
+         baseBlock,
+         pointedBlock,
+         replaceableBlocks,
+         floorToCeilingSearchRange,
+         height,
+         radius,
+         maxStalagmiteStalactiteHeightDiff,
+         heightDeviation,
+         speleothemBlockLayerThickness,
+         density,
+         wetness,
+         chanceOfSpeleothemAtMaxDistanceFromCenter,
+         maxDistanceFromEdgeAffectingChanceOfSpeleothem,
+         maxDistanceFromCenterAffectingHeightBias,
+         SpeleothemClusterFeature.PlacementOptions.DEFAULT
+      );
+   }
+
    @Override
    public MapCodec<SpeleothemClusterFeature> codec() {
       return CODEC;
+   }
+
+   private boolean canPlaceAt(final BlockState state, final boolean allowWaterPlacement) {
+      return allowWaterPlacement ? SpeleothemUtils.isEmptyOrWater(state) : state.isAir();
+   }
+
+   private int getAvailableSpeleothemHeight(
+      final WorldGenLevel level, final BlockPos basePos, final Direction direction, final int desiredHeight, final Predicate<BlockState> canPlace
+   ) {
+      BlockPos pos = basePos;
+      int availableHeight = 0;
+
+      while (availableHeight < desiredHeight && canPlace.test(level.getBlockState(pos))) {
+         availableHeight++;
+         pos = pos.relative(direction);
+      }
+
+      return availableHeight;
    }
 
    @Override
@@ -109,21 +168,22 @@ public record SpeleothemClusterFeature(
       final int clusterHeight,
       final float density
    ) {
-      Optional<Column> baseColumn = Column.scan(
-         level, pos, this.floorToCeilingSearchRange, SpeleothemUtils::isEmptyOrWater, SpeleothemUtils::isNeitherEmptyNorWater
-      );
+      Predicate<BlockState> canPlace = state -> this.canPlaceAt(state, this.placementOptions().allowWaterPlacement);
+      Optional<Column> baseColumn = Column.scan(level, pos, this.floorToCeilingSearchRange, canPlace, SpeleothemUtils::isNeitherEmptyNorWater);
       if (!baseColumn.isEmpty()) {
-         OptionalInt ceiling = baseColumn.get().getCeiling();
-         OptionalInt baseFloor = baseColumn.get().getFloor();
+         Column scannedColumn = baseColumn.get();
+         Column placementColumn = this.filterPlacementColumn(scannedColumn);
+         OptionalInt ceiling = placementColumn.getCeiling();
+         OptionalInt baseFloor = placementColumn.getFloor();
          if (!ceiling.isEmpty() || !baseFloor.isEmpty()) {
             boolean wantPool = random.nextFloat() < chanceOfWater;
             Column column;
             if (wantPool && baseFloor.isPresent() && this.canPlacePool(level, pos.atY(baseFloor.getAsInt()))) {
                int baseFloorY = baseFloor.getAsInt();
-               column = baseColumn.get().withFloor(OptionalInt.of(baseFloorY - 1));
+               column = placementColumn.withFloor(OptionalInt.of(baseFloorY - 1));
                level.setBlock(pos.atY(baseFloorY), Blocks.WATER.defaultBlockState(), 2);
             } else {
-               column = baseColumn.get();
+               column = placementColumn;
             }
 
             OptionalInt floor = column.getFloor();
@@ -132,11 +192,9 @@ public record SpeleothemClusterFeature(
             if (ceiling.isPresent() && wantStalactite && !this.isLava(level, pos.atY(ceiling.getAsInt()))) {
                int ceilingThickness = this.speleothemBlockLayerThickness.sample(random);
                this.replaceBlocksWithBaseBlocks(level, pos.atY(ceiling.getAsInt()), ceilingThickness, Direction.UP);
-               int maxHeightForThisColumn;
-               if (floor.isPresent()) {
+               int maxHeightForThisColumn = this.getMaxHeightForThisColumn(scannedColumn, clusterHeight);
+               if (this.placementOptions().placementMode == SpeleothemClusterFeature.PlacementMode.FLOOR_AND_CEILING && floor.isPresent()) {
                   maxHeightForThisColumn = Math.min(clusterHeight, ceiling.getAsInt() - floor.getAsInt());
-               } else {
-                  maxHeightForThisColumn = clusterHeight;
                }
 
                stalactiteHeight = this.getSpeleothemHeight(random, dx, dz, density, maxHeightForThisColumn);
@@ -154,14 +212,15 @@ public record SpeleothemClusterFeature(
                      0, stalactiteHeight + Mth.randomBetweenInclusive(random, -this.maxStalagmiteStalactiteHeightDiff, this.maxStalagmiteStalactiteHeightDiff)
                   );
                } else {
-                  stalagmiteHeight = this.getSpeleothemHeight(random, dx, dz, density, clusterHeight);
+                  int maxHeightForThisColumn = this.getMaxHeightForThisColumn(scannedColumn, clusterHeight);
+                  stalagmiteHeight = this.getSpeleothemHeight(random, dx, dz, density, maxHeightForThisColumn);
                }
             } else {
                stalagmiteHeight = 0;
             }
 
-            int actualStalagmiteHeight;
             int actualStalactiteHeight;
+            int actualStalagmiteHeight;
             if (ceiling.isPresent() && floor.isPresent() && ceiling.getAsInt() - stalactiteHeight <= floor.getAsInt() + stalagmiteHeight) {
                int floorY = floor.getAsInt();
                int ceilingY = ceiling.getAsInt();
@@ -174,6 +233,16 @@ public record SpeleothemClusterFeature(
             } else {
                actualStalactiteHeight = stalactiteHeight;
                actualStalagmiteHeight = stalagmiteHeight;
+            }
+
+            if (ceiling.isPresent()) {
+               actualStalactiteHeight = this.getAvailableSpeleothemHeight(
+                  level, pos.atY(ceiling.getAsInt() - 1), Direction.DOWN, actualStalactiteHeight, canPlace
+               );
+            }
+
+            if (floor.isPresent()) {
+               actualStalagmiteHeight = this.getAvailableSpeleothemHeight(level, pos.atY(floor.getAsInt() + 1), Direction.UP, actualStalagmiteHeight, canPlace);
             }
 
             boolean mergeTips = random.nextBoolean()
@@ -190,7 +259,8 @@ public record SpeleothemClusterFeature(
                   mergeTips,
                   this.baseBlock.getBlock(),
                   this.pointedBlock.getBlock(),
-                  this.replaceableBlocks
+                  this.replaceableBlocks,
+                  this.placementOptions().baseBlockTransformer
                );
             }
 
@@ -203,11 +273,28 @@ public record SpeleothemClusterFeature(
                   mergeTips,
                   this.baseBlock.getBlock(),
                   this.pointedBlock.getBlock(),
-                  this.replaceableBlocks
+                  this.replaceableBlocks,
+                  this.placementOptions().baseBlockTransformer
                );
             }
          }
       }
+   }
+
+   Column filterPlacementColumn(final Column scannedColumn) {
+      OptionalInt floor = this.placementOptions().placementMode != SpeleothemClusterFeature.PlacementMode.CEILING_ONLY
+         ? scannedColumn.getFloor()
+         : OptionalInt.empty();
+      OptionalInt ceiling = this.placementOptions().placementMode != SpeleothemClusterFeature.PlacementMode.FLOOR_ONLY
+         ? scannedColumn.getCeiling()
+         : OptionalInt.empty();
+      return Column.create(floor, ceiling);
+   }
+
+   int getMaxHeightForThisColumn(final Column scannedColumn, final int clusterHeight) {
+      return this.placementOptions().placementMode != SpeleothemClusterFeature.PlacementMode.FLOOR_AND_CEILING && scannedColumn.getHeight().isPresent()
+         ? Math.min(clusterHeight, scannedColumn.getHeight().getAsInt())
+         : clusterHeight;
    }
 
    private boolean isLava(final LevelReader level, final BlockPos pos) {
@@ -269,5 +356,41 @@ public record SpeleothemClusterFeature(
 
    private static float randomBetweenBiased(final RandomSource random, final float min, final float maxExclusive, final float mean, final float deviation) {
       return ClampedNormalFloat.sample(random, mean, deviation, min, maxExclusive);
+   }
+
+   public enum PlacementMode implements StringRepresentable {
+      FLOOR_AND_CEILING("floor_and_ceiling"),
+      FLOOR_ONLY("floor_only"),
+      CEILING_ONLY("ceiling_only");
+
+      public static final Codec<SpeleothemClusterFeature.PlacementMode> CODEC = StringRepresentable.fromEnum(SpeleothemClusterFeature.PlacementMode::values);
+      private final String name;
+
+      PlacementMode(final String name) {
+         this.name = name;
+      }
+
+      @Override
+      public String getSerializedName() {
+         return this.name;
+      }
+   }
+
+   public record PlacementOptions(
+      SpeleothemClusterFeature.PlacementMode placementMode, SpeleothemUtils.BaseBlockTransformer baseBlockTransformer, boolean allowWaterPlacement
+   ) {
+      public static final SpeleothemClusterFeature.PlacementOptions DEFAULT = new SpeleothemClusterFeature.PlacementOptions(
+         SpeleothemClusterFeature.PlacementMode.FLOOR_AND_CEILING, SpeleothemUtils.BaseBlockTransformer.NONE, true
+      );
+      public static final Codec<SpeleothemClusterFeature.PlacementOptions> CODEC = RecordCodecBuilder.create(
+         i -> i.group(
+               SpeleothemClusterFeature.PlacementMode.CODEC.fieldOf("placement_mode").forGetter(SpeleothemClusterFeature.PlacementOptions::placementMode),
+               SpeleothemUtils.BaseBlockTransformer.CODEC
+                  .fieldOf("base_block_transformer")
+                  .forGetter(SpeleothemClusterFeature.PlacementOptions::baseBlockTransformer),
+               Codec.BOOL.fieldOf("allow_water_placement").forGetter(SpeleothemClusterFeature.PlacementOptions::allowWaterPlacement)
+            )
+            .apply(i, SpeleothemClusterFeature.PlacementOptions::new)
+      );
    }
 }

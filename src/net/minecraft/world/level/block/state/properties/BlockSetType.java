@@ -4,9 +4,11 @@ import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.Map;
 import java.util.stream.Stream;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.sounds.BlockSoundSet;
+import net.minecraft.world.level.block.sounds.BlockSoundSets;
 
 public record BlockSetType(
    String name,
@@ -14,7 +16,7 @@ public record BlockSetType(
    boolean canOpenByWindCharge,
    boolean canButtonBeActivatedByArrows,
    BlockSetType.PressurePlateSensitivity pressurePlateSensitivity,
-   SoundType soundType,
+   ResourceKey<BlockSoundSet> blockSoundSet,
    SoundEvent doorClose,
    SoundEvent doorOpen,
    SoundEvent trapdoorClose,
@@ -33,7 +35,7 @@ public record BlockSetType(
          false,
          false,
          BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         SoundType.IRON,
+         BlockSoundSets.IRON,
          SoundEvents.IRON_DOOR_CLOSE,
          SoundEvents.IRON_DOOR_OPEN,
          SoundEvents.IRON_TRAPDOOR_CLOSE,
@@ -51,7 +53,7 @@ public record BlockSetType(
          true,
          false,
          BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         SoundType.COPPER,
+         BlockSoundSets.COPPER,
          SoundEvents.COPPER_DOOR_CLOSE,
          SoundEvents.COPPER_DOOR_OPEN,
          SoundEvents.COPPER_TRAPDOOR_CLOSE,
@@ -69,7 +71,7 @@ public record BlockSetType(
          true,
          false,
          BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         SoundType.METAL,
+         BlockSoundSets.METAL,
          SoundEvents.IRON_DOOR_CLOSE,
          SoundEvents.IRON_DOOR_OPEN,
          SoundEvents.IRON_TRAPDOOR_CLOSE,
@@ -87,7 +89,7 @@ public record BlockSetType(
          true,
          false,
          BlockSetType.PressurePlateSensitivity.MOBS,
-         SoundType.STONE,
+         BlockSoundSets.STONE,
          SoundEvents.IRON_DOOR_CLOSE,
          SoundEvents.IRON_DOOR_OPEN,
          SoundEvents.IRON_TRAPDOOR_CLOSE,
@@ -105,7 +107,7 @@ public record BlockSetType(
          true,
          false,
          BlockSetType.PressurePlateSensitivity.MOBS,
-         SoundType.STONE,
+         BlockSoundSets.STONE,
          SoundEvents.IRON_DOOR_CLOSE,
          SoundEvents.IRON_DOOR_OPEN,
          SoundEvents.IRON_TRAPDOOR_CLOSE,
@@ -127,7 +129,7 @@ public record BlockSetType(
          true,
          true,
          BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         SoundType.CHERRY_WOOD,
+         BlockSoundSets.CHERRY_WOOD,
          SoundEvents.CHERRY_WOOD_DOOR_CLOSE,
          SoundEvents.CHERRY_WOOD_DOOR_OPEN,
          SoundEvents.CHERRY_WOOD_TRAPDOOR_CLOSE,
@@ -149,7 +151,7 @@ public record BlockSetType(
          true,
          true,
          BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         SoundType.NETHER_WOOD,
+         BlockSoundSets.NETHER_WOOD,
          SoundEvents.NETHER_WOOD_DOOR_CLOSE,
          SoundEvents.NETHER_WOOD_DOOR_OPEN,
          SoundEvents.NETHER_WOOD_TRAPDOOR_CLOSE,
@@ -167,7 +169,7 @@ public record BlockSetType(
          true,
          true,
          BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         SoundType.NETHER_WOOD,
+         BlockSoundSets.NETHER_WOOD,
          SoundEvents.NETHER_WOOD_DOOR_CLOSE,
          SoundEvents.NETHER_WOOD_DOOR_OPEN,
          SoundEvents.NETHER_WOOD_TRAPDOOR_CLOSE,
@@ -186,7 +188,7 @@ public record BlockSetType(
          true,
          true,
          BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         SoundType.BAMBOO_WOOD,
+         BlockSoundSets.BAMBOO_WOOD,
          SoundEvents.BAMBOO_WOOD_DOOR_CLOSE,
          SoundEvents.BAMBOO_WOOD_DOOR_OPEN,
          SoundEvents.BAMBOO_WOOD_TRAPDOOR_CLOSE,
@@ -205,7 +207,7 @@ public record BlockSetType(
          true,
          true,
          BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         SoundType.WOOD,
+         BlockSoundSets.WOOD,
          SoundEvents.WOODEN_DOOR_CLOSE,
          SoundEvents.WOODEN_DOOR_OPEN,
          SoundEvents.WOODEN_TRAPDOOR_CLOSE,

@@ -13,7 +13,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringUtil;
 import net.minecraft.util.Util;
@@ -107,13 +106,13 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
       this.setStructureName(input.getStringOr("name", ""));
       this.author = input.getStringOr("author", "");
       this.metaData = input.getStringOr("metadata", "");
-      int xOffset = Mth.clamp(input.getIntOr("posX", DEFAULT_POS.getX()), -48, 48);
-      int yOffset = Mth.clamp(input.getIntOr("posY", DEFAULT_POS.getY()), -48, 48);
-      int zOffset = Mth.clamp(input.getIntOr("posZ", DEFAULT_POS.getZ()), -48, 48);
+      int xOffset = Math.clamp(input.getIntOr("posX", DEFAULT_POS.getX()), -48, 48);
+      int yOffset = Math.clamp(input.getIntOr("posY", DEFAULT_POS.getY()), -48, 48);
+      int zOffset = Math.clamp(input.getIntOr("posZ", DEFAULT_POS.getZ()), -48, 48);
       this.structurePos = new BlockPos(xOffset, yOffset, zOffset);
-      int width = Mth.clamp(input.getIntOr("sizeX", DEFAULT_SIZE.getX()), 0, 48);
-      int height = Mth.clamp(input.getIntOr("sizeY", DEFAULT_SIZE.getY()), 0, 48);
-      int depth = Mth.clamp(input.getIntOr("sizeZ", DEFAULT_SIZE.getZ()), 0, 48);
+      int width = Math.clamp(input.getIntOr("sizeX", DEFAULT_SIZE.getX()), 0, 48);
+      int height = Math.clamp(input.getIntOr("sizeY", DEFAULT_SIZE.getY()), 0, 48);
+      int depth = Math.clamp(input.getIntOr("sizeZ", DEFAULT_SIZE.getZ()), 0, 48);
       this.structureSize = new Vec3i(width, height, depth);
       this.rotation = input.<Rotation>read("rotation", Rotation.LEGACY_CODEC).orElse(DEFAULT_ROTATION);
       this.mirror = input.<Mirror>read("mirror", Mirror.LEGACY_CODEC).orElse(DEFAULT_MIRROR);
@@ -407,7 +406,7 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
          .setIgnoreEntities(this.ignoreEntities)
          .setKnownShape(this.strict);
       if (this.integrity < 1.0F) {
-         placeSettings.clearProcessors().addProcessor(new BlockRotProcessor(Mth.clamp(this.integrity, 0.0F, 1.0F))).setRandom(createRandom(this.seed));
+         placeSettings.clearProcessors().addProcessor(new BlockRotProcessor(Math.clamp(this.integrity, 0.0F, 1.0F))).setRandom(createRandom(this.seed));
       }
 
       BlockPos pos = this.getBlockPos().offset(this.structurePos);

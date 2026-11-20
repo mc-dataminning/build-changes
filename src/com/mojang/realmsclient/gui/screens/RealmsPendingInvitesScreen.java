@@ -123,16 +123,16 @@ public class RealmsPendingInvitesScreen extends RealmsScreen {
             )
             .setMaxWidth(maxTextWidth);
          Button.CreateNarration narration = this.getCreateNarration(pendingInvite);
-         this.acceptButton = SpriteIconButton.builder(ACCEPT_INVITE, button -> this.handleInvitation(true), false)
+         this.acceptButton = SpriteIconButton.builder(ACCEPT_INVITE, var1 -> this.handleInvitation(true), false)
             .sprite(ACCEPT_SPRITE, 18, 18)
             .size(21, 21)
-            .narration(narration)
+            .createNarration(narration)
             .withTootip()
             .build();
-         this.rejectButton = SpriteIconButton.builder(REJECT_INVITE, button -> this.handleInvitation(false), false)
+         this.rejectButton = SpriteIconButton.builder(REJECT_INVITE, var1 -> this.handleInvitation(false), false)
             .sprite(REJECT_SPRITE, 18, 18)
             .size(21, 21)
-            .narration(narration)
+            .createNarration(narration)
             .withTootip()
             .build();
          this.children.addAll(List.of(this.acceptButton, this.rejectButton));

@@ -205,14 +205,14 @@ public class RealmsSlotOptionsScreen extends RealmsScreen {
          super(x, y, width, 20, CommonComponents.EMPTY, 0.0);
          this.minValue = minValue;
          this.maxValue = maxValue;
-         this.value = (Mth.clamp(currentValue, minValue, maxValue) - minValue) / (maxValue - minValue);
+         this.value = (Math.clamp(currentValue, minValue, maxValue) - minValue) / (maxValue - minValue);
          this.updateMessage();
       }
 
       @Override
       public void applyValue() {
          if (RealmsSlotOptionsScreen.this.spawnProtectionButton.active) {
-            RealmsSlotOptionsScreen.this.spawnProtection = (int)Mth.lerp(Mth.clamp(this.value, 0.0, 1.0), this.minValue, this.maxValue);
+            RealmsSlotOptionsScreen.this.spawnProtection = (int)Mth.lerp(Math.clamp(this.value, 0.0, 1.0), this.minValue, this.maxValue);
          }
       }
 

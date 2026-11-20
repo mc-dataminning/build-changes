@@ -131,6 +131,7 @@ public class BlockModelGenerators {
    public static final VariantMutator Y_ROT_90 = VariantMutator.Y_ROT.withValue(Quadrant.R90);
    public static final VariantMutator Y_ROT_180 = VariantMutator.Y_ROT.withValue(Quadrant.R180);
    public static final VariantMutator Y_ROT_270 = VariantMutator.Y_ROT.withValue(Quadrant.R270);
+   public static final VariantMutator Z_ROT_180 = VariantMutator.Z_ROT.withValue(Quadrant.R180);
    private static final Function<ConditionBuilder, ConditionBuilder> FLOWER_BED_MODEL_1_SEGMENT_CONDITION = condition -> condition;
    private static final Function<ConditionBuilder, ConditionBuilder> FLOWER_BED_MODEL_2_SEGMENT_CONDITION = condition -> condition.term(
       BlockStateProperties.FLOWER_AMOUNT, 2, 3, 4
@@ -2103,16 +2104,20 @@ public class BlockModelGenerators {
       this.blockStateOutput.accept(createCopperBulb(acceptor, baseModel, litModel, baseModelPowered, litModelPowered));
    }
 
-   private void createAmethystCluster(final Block clusterBlock) {
-      MultiVariant model = plainVariant(ModelTemplates.CROSS.create(clusterBlock, TextureMapping.cross(clusterBlock), this.modelOutput));
-      this.blockStateOutput.accept(MultiVariantGenerator.dispatch(clusterBlock, model).with(ROTATIONS_COLUMN_WITH_FACING));
+   private void createCrystalCluster(final Block crytsalClusterBlock) {
+      MultiVariant model = plainVariant(ModelTemplates.CROSS.create(crytsalClusterBlock, TextureMapping.cross(crytsalClusterBlock), this.modelOutput));
+      this.blockStateOutput.accept(MultiVariantGenerator.dispatch(crytsalClusterBlock, model).with(ROTATIONS_COLUMN_WITH_FACING));
    }
 
    private void createAmethystClusters() {
-      this.createAmethystCluster(Blocks.SMALL_AMETHYST_BUD);
-      this.createAmethystCluster(Blocks.MEDIUM_AMETHYST_BUD);
-      this.createAmethystCluster(Blocks.LARGE_AMETHYST_BUD);
-      this.createAmethystCluster(Blocks.AMETHYST_CLUSTER);
+      this.createCrystalCluster(Blocks.SMALL_AMETHYST_BUD);
+      this.createCrystalCluster(Blocks.MEDIUM_AMETHYST_BUD);
+      this.createCrystalCluster(Blocks.LARGE_AMETHYST_BUD);
+      this.createCrystalCluster(Blocks.AMETHYST_CLUSTER);
+   }
+
+   private void createIceCrystal() {
+      this.createCrystalCluster(Blocks.ICE_CRYSTAL);
    }
 
    private void createSpeleothem(final Block block) {
@@ -2126,6 +2131,33 @@ public class BlockModelGenerators {
 
       for (SpeleothemThickness speleothemThickness : SpeleothemThickness.values()) {
          generator.select(Direction.DOWN, speleothemThickness, this.createSpeleothemVariant(Direction.DOWN, speleothemThickness, block));
+      }
+
+      this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(generator));
+   }
+
+   private void createIcicle() {
+      Block block = Blocks.ICICLE;
+      PropertyDispatch.C3 generator = PropertyDispatch.initial(
+         BlockStateProperties.VERTICAL_DIRECTION, BlockStateProperties.SPELEOTHEM_THICKNESS, BlockStateProperties.ATTACHED
+      );
+      Material topTexture = TextureMapping.getBlockTexture(block, "_top");
+      Material sideTexture = TextureMapping.getBlockTexture(block, "_side");
+
+      for (SpeleothemThickness speleothemThickness : SpeleothemThickness.values()) {
+         String thicknessSuffix = "_" + Direction.DOWN.getSerializedName() + "_" + speleothemThickness.getSerializedName();
+         Material thicknessTexture = TextureMapping.getBlockTexture(block, thicknessSuffix);
+         TextureMapping mapping = TextureMapping.cross(thicknessTexture);
+         TextureMapping baseMapping = new TextureMapping()
+            .put(TextureSlot.CROSS, thicknessTexture)
+            .put(TextureSlot.TOP, topTexture)
+            .put(TextureSlot.SIDE, sideTexture);
+         Identifier icicleTemplate = ModelTemplates.ICICLE.createWithSuffix(block, thicknessSuffix, mapping, this.modelOutput);
+         Identifier icicleBaseTemplate = ModelTemplates.ICICLE_BASE.createWithSuffix(block, thicknessSuffix + "_base", baseMapping, this.modelOutput);
+         generator.select(Direction.DOWN, speleothemThickness, false, plainVariant(icicleTemplate));
+         generator.select(Direction.DOWN, speleothemThickness, true, plainVariant(icicleBaseTemplate));
+         generator.select(Direction.UP, speleothemThickness, false, plainVariant(icicleTemplate).with(Z_ROT_180));
+         generator.select(Direction.UP, speleothemThickness, true, plainVariant(icicleBaseTemplate).with(Z_ROT_180));
       }
 
       this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(generator));
@@ -3725,6 +3757,7 @@ public class BlockModelGenerators {
       this.createShelf(Blocks.SPRUCE_SHELF, Blocks.STRIPPED_SPRUCE_LOG);
       this.createShelf(Blocks.WARPED_SHELF, Blocks.STRIPPED_WARPED_STEM);
       this.createAmethystClusters();
+      this.createIceCrystal();
       this.createBookshelf();
       this.createChiseledBookshelf();
       this.createBrewingStand();
@@ -3889,6 +3922,7 @@ public class BlockModelGenerators {
       this.createPlantWithDefaultItem(Blocks.BROWN_MUSHROOM, Blocks.POTTED_BROWN_MUSHROOM, BlockModelGenerators.PlantType.NOT_TINTED);
       this.createPlantWithDefaultItem(Blocks.DEAD_BUSH, Blocks.POTTED_DEAD_BUSH, BlockModelGenerators.PlantType.NOT_TINTED);
       this.createPlantWithDefaultItem(Blocks.TORCHFLOWER, Blocks.POTTED_TORCHFLOWER, BlockModelGenerators.PlantType.NOT_TINTED);
+      this.createIcicle();
       this.createSpeleothem(Blocks.POINTED_DRIPSTONE);
       this.createSpeleothem(Blocks.SULFUR_SPIKE);
       this.createMushroomBlock(Blocks.BROWN_MUSHROOM_BLOCK);
@@ -4058,6 +4092,7 @@ public class BlockModelGenerators {
       this.createInfestedStone();
       this.copyModel(Blocks.STONE_BRICKS, Blocks.INFESTED_STONE_BRICKS);
       this.createInfestedDeepslate();
+      this.registerSimpleFlatItemModel(Items.ICE_CRYSTAL);
    }
 
    private void createLightBlock() {

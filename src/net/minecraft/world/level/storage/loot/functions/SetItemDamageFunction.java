@@ -48,7 +48,7 @@ public class SetItemDamageFunction extends LootItemConditionalFunction {
       if (itemStack.isDamageableItem()) {
          int maxDamage = itemStack.getMaxDamage();
          float base = this.add ? 1.0F - (float)itemStack.getDamageValue() / maxDamage : 0.0F;
-         float pct = 1.0F - Mth.clamp(this.damage.value().getFloat(context) + base, 0.0F, 1.0F);
+         float pct = 1.0F - Math.clamp(this.damage.value().getFloat(context) + base, 0.0F, 1.0F);
          itemStack.setDamageValue(Mth.floor(pct * maxDamage));
       } else {
          LOGGER.warn("Couldn't set damage of loot item {}", itemStack);

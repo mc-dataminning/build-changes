@@ -563,6 +563,7 @@ public class CreativeModeTabs {
                naturalBlocks.accept(Items.DRIPSTONE_BLOCK);
                naturalBlocks.accept(Items.POINTED_DRIPSTONE);
                naturalBlocks.accept(Items.PRISMARINE);
+               naturalBlocks.accept(Items.ICICLE);
                naturalBlocks.accept(Items.CINNABAR);
                naturalBlocks.accept(Items.SULFUR);
                naturalBlocks.accept(Items.SULFUR_SPIKE);
@@ -609,6 +610,7 @@ public class CreativeModeTabs {
                naturalBlocks.accept(Items.MEDIUM_AMETHYST_BUD);
                naturalBlocks.accept(Items.LARGE_AMETHYST_BUD);
                naturalBlocks.accept(Items.AMETHYST_CLUSTER);
+               naturalBlocks.accept(Items.ICE_CRYSTAL);
                naturalBlocks.accept(Items.OAK_LOG);
                naturalBlocks.accept(Items.SPRUCE_LOG);
                naturalBlocks.accept(Items.BIRCH_LOG);
@@ -1266,6 +1268,7 @@ public class CreativeModeTabs {
                   combat.accept(Items.TNT);
                   combat.accept(Items.END_CRYSTAL);
                   combat.accept(Items.SNOWBALL);
+                  combat.accept(Items.ICE_BALL);
                   combat.accept(Items.EGG);
                   combat.accept(Items.BROWN_EGG);
                   combat.accept(Items.BLUE_EGG);
@@ -1391,6 +1394,7 @@ public class CreativeModeTabs {
                ingredients.accept(Items.STRING);
                ingredients.accept(Items.FEATHER);
                ingredients.accept(Items.SNOWBALL);
+               ingredients.accept(Items.ICE_BALL);
                ingredients.accept(Items.EGG);
                ingredients.accept(Items.BROWN_EGG);
                ingredients.accept(Items.BLUE_EGG);
@@ -1563,6 +1567,7 @@ public class CreativeModeTabs {
                spawnEggs.accept(Items.BOGGED_SPAWN_EGG);
                spawnEggs.accept(Items.CAMEL_HUSK_SPAWN_EGG);
                spawnEggs.accept(Items.DROWNED_SPAWN_EGG);
+               spawnEggs.accept(Items.FROSTBITE_SPAWN_EGG);
                spawnEggs.accept(Items.HUSK_SPAWN_EGG);
                spawnEggs.accept(Items.PARCHED_SPAWN_EGG);
                spawnEggs.accept(Items.SKELETON_SPAWN_EGG);

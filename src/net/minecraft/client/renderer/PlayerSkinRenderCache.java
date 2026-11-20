@@ -73,6 +73,11 @@ public class PlayerSkinRenderCache {
       }
    }
 
+   public Supplier<PlayerSkin> createSkinLookup(final ResolvableProfile profile) {
+      Supplier<PlayerSkinRenderCache.RenderInfo> lookup = this.createLookup(profile);
+      return () -> lookup.get().playerSkin();
+   }
+
    public CompletableFuture<Optional<PlayerSkinRenderCache.RenderInfo>> lookup(final ResolvableProfile profile) {
       return (CompletableFuture<Optional<PlayerSkinRenderCache.RenderInfo>>)this.renderInfoCache.getUnchecked(profile);
    }
@@ -111,7 +116,7 @@ public class PlayerSkinRenderCache {
 
       public GpuTextureView textureView() {
          if (this.textureView == null) {
-            this.textureView = PlayerSkinRenderCache.this.textureManager.getTexture(this.playerSkin.body().texturePath()).getTextureView();
+            this.textureView = PlayerSkinRenderCache.this.textureManager.getTexture(this.playerSkin.body().texturePath()).textureView();
          }
 
          return this.textureView;

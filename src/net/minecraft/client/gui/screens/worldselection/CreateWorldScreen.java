@@ -24,6 +24,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.components.AbstractCycleButton;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.components.EditBox;
@@ -808,11 +809,11 @@ public class CreateWorldScreen extends Screen {
          }
       }
 
-      private CycleButton.ValueListSupplier<WorldCreationUiState.WorldTypeEntry> createWorldTypeValueSupplier() {
-         return new CycleButton.ValueListSupplier<WorldCreationUiState.WorldTypeEntry>() {
+      private AbstractCycleButton.ValueListSupplier<WorldCreationUiState.WorldTypeEntry> createWorldTypeValueSupplier() {
+         return new AbstractCycleButton.ValueListSupplier<WorldCreationUiState.WorldTypeEntry>() {
             @Override
             public List<WorldCreationUiState.WorldTypeEntry> getSelectedList() {
-               return CycleButton.DEFAULT_ALT_LIST_SELECTOR.getAsBoolean()
+               return AbstractCycleButton.DEFAULT_ALT_LIST_SELECTOR.getAsBoolean()
                   ? CreateWorldScreen.this.uiState.getAltPresetList()
                   : CreateWorldScreen.this.uiState.getNormalPresetList();
             }

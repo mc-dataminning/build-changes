@@ -45,9 +45,9 @@ import net.minecraft.client.renderer.state.gui.pip.GuiBookModelRenderState;
 import net.minecraft.client.renderer.state.gui.pip.GuiEntityRenderState;
 import net.minecraft.client.renderer.state.gui.pip.GuiProfilerChartRenderState;
 import net.minecraft.client.renderer.state.gui.pip.GuiSkinRenderState;
-import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureHandle;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.resources.metadata.gui.GuiMetadataSection;
 import net.minecraft.client.resources.metadata.gui.GuiSpriteScaling;
@@ -768,12 +768,12 @@ public class GuiGraphicsExtractor {
    ) {
       if (width > 0 && height > 0) {
          if (tileWidth > 0 && tileHeight > 0) {
-            AbstractTexture spriteTexture = this.minecraft.getTextureManager().getTexture(sprite.atlasLocation());
-            GpuTextureView texture = spriteTexture.getTextureView();
+            TextureHandle spriteTexture = this.minecraft.getTextureManager().getTexture(sprite.atlasLocation());
+            GpuTextureView texture = spriteTexture.textureView();
             this.innerTiledBlit(
                renderPipeline,
                texture,
-               spriteTexture.getSampler(),
+               spriteTexture.sampler(),
                tileWidth,
                tileHeight,
                x,
@@ -805,8 +805,8 @@ public class GuiGraphicsExtractor {
       final float v1,
       final int color
    ) {
-      AbstractTexture texture = this.minecraft.getTextureManager().getTexture(location);
-      this.innerBlit(renderPipeline, texture.getTextureView(), texture.getSampler(), x0, y0, x1, y1, u0, u1, v0, v1, color);
+      TextureHandle texture = this.minecraft.getTextureManager().getTexture(location);
+      this.innerBlit(renderPipeline, texture.textureView(), texture.sampler(), x0, y0, x1, y1, u0, u1, v0, v1, color);
    }
 
    private void innerBlit(
@@ -968,8 +968,8 @@ public class GuiGraphicsExtractor {
    public void map(final MapRenderState mapRenderState) {
       Minecraft minecraft = Minecraft.getInstance();
       TextureManager textureManager = minecraft.getTextureManager();
-      AbstractTexture texture = textureManager.getTexture(mapRenderState.texture);
-      this.innerBlit(RenderPipelines.GUI_TEXTURED, texture.getTextureView(), texture.getSampler(), 0, 0, 128, 128, 0.0F, 1.0F, 0.0F, 1.0F, -1);
+      TextureHandle texture = textureManager.getTexture(mapRenderState.texture);
+      this.innerBlit(RenderPipelines.GUI_TEXTURED, texture.textureView(), texture.sampler(), 0, 0, 128, 128, 0.0F, 1.0F, 0.0F, 1.0F, -1);
 
       for (MapRenderState.MapDecorationRenderState decoration : mapRenderState.decorations) {
          if (decoration.renderOnFrame) {
@@ -980,11 +980,11 @@ public class GuiGraphicsExtractor {
             this.pose.translate(-0.125F, 0.125F);
             TextureAtlasSprite atlasSprite = decoration.atlasSprite;
             if (atlasSprite != null) {
-               AbstractTexture decorationTexture = textureManager.getTexture(atlasSprite.atlasLocation());
+               TextureHandle decorationTexture = textureManager.getTexture(atlasSprite.atlasLocation());
                this.innerBlit(
                   RenderPipelines.GUI_TEXTURED,
-                  decorationTexture.getTextureView(),
-                  decorationTexture.getSampler(),
+                  decorationTexture.textureView(),
+                  decorationTexture.sampler(),
                   -1,
                   -1,
                   1,
@@ -1001,7 +1001,7 @@ public class GuiGraphicsExtractor {
             if (decoration.name != null) {
                Font font = minecraft.font;
                float width = font.width(decoration.name);
-               float scale = Mth.clamp(25.0F / width, 0.0F, 6.0F / 9.0F);
+               float scale = Math.clamp(25.0F / width, 0.0F, 6.0F / 9.0F);
                this.pose.pushMatrix();
                this.pose.translate(decoration.x / 2.0F + 64.0F - width * scale / 2.0F, decoration.y / 2.0F + 64.0F + 4.0F);
                this.pose.scale(scale, scale);
@@ -1239,7 +1239,7 @@ public class GuiGraphicsExtractor {
       final int yo,
       final ClientTooltipPositioner positioner,
       final @Nullable Identifier style,
-      boolean extraSpaceAfterFirstLine
+      final boolean extraSpaceAfterFirstLine
    ) {
       int textWidth = 0;
       int tempHeight = extraSpaceAfterFirstLine && lines.size() != 1 ? 0 : -2;

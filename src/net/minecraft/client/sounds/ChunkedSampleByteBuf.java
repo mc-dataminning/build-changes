@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.floats.FloatConsumer;
 import java.nio.ByteBuffer;
 import java.util.List;
-import net.minecraft.util.Mth;
 import org.lwjgl.BufferUtils;
 
 public class ChunkedSampleByteBuf implements FloatConsumer {
@@ -25,7 +24,7 @@ public class ChunkedSampleByteBuf implements FloatConsumer {
          this.currentBuffer = BufferUtils.createByteBuffer(this.bufferSize);
       }
 
-      int intVal = Mth.clamp((int)(sample * 32767.5F - 0.5F), -32768, 32767);
+      int intVal = Math.clamp((int)(sample * 32767.5F - 0.5F), -32768, 32767);
       this.currentBuffer.putShort((short)intVal);
       this.byteCount += 2;
    }

@@ -99,8 +99,8 @@ public class Library {
 
       ALC10.alcMakeContextCurrent(this.context);
       int totalChannelCount = this.getChannelCount();
-      int streamingChannelCount = Mth.clamp((int)Mth.sqrt(totalChannelCount), 2, 8);
-      int staticChannelCount = Mth.clamp(totalChannelCount - streamingChannelCount, 8, 255);
+      int streamingChannelCount = Math.clamp((int)Mth.sqrt(totalChannelCount), 2, 8);
+      int staticChannelCount = Math.clamp(totalChannelCount - streamingChannelCount, 8, 255);
       this.staticChannels = new Library.CountingChannelPool(staticChannelCount);
       this.streamingChannels = new Library.CountingChannelPool(streamingChannelCount);
       ALCapabilities alCapabilities = AL.createCapabilities(alcCapabilities);

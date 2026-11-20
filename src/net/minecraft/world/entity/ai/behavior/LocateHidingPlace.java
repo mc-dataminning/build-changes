@@ -6,7 +6,7 @@ import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.ai.memory.WalkTarget;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
+import net.minecraft.world.entity.ai.village.poi.PoiTypeIds;
 
 public class LocateHidingPlace {
    public static OneShot<LivingEntity> create(final int radius, final float speedModifier, final int closeEnoughDist) {
@@ -24,11 +24,11 @@ public class LocateHidingPlace {
                i,
                (walkTarget, home, hidingPlace, path, lookTarget, breedTarget, interactionTarget) -> (level, body, timestamp) -> {
                   level.getPoiManager()
-                     .find(p -> p.is(PoiTypes.HOME), blockPos -> true, body.blockPosition(), closeEnoughDist + 1, PoiManager.Occupancy.ANY)
+                     .find(p -> p.is(PoiTypeIds.HOME), blockPos -> true, body.blockPosition(), closeEnoughDist + 1, PoiManager.Occupancy.ANY)
                      .filter(p -> p.closerToCenterThan(body.position(), closeEnoughDist))
                      .or(
                         () -> level.getPoiManager()
-                           .getRandom(p -> p.is(PoiTypes.HOME), blockPos -> true, PoiManager.Occupancy.ANY, body.blockPosition(), radius, body.getRandom())
+                           .getRandom(p -> p.is(PoiTypeIds.HOME), blockPos -> true, PoiManager.Occupancy.ANY, body.blockPosition(), radius, body.getRandom())
                      )
                      .or(() -> i.<GlobalPos>tryGet(home).map(GlobalPos::pos))
                      .ifPresent(pos -> {

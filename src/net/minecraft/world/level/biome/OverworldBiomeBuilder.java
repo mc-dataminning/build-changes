@@ -919,6 +919,16 @@ public final class OverworldBiomeBuilder {
          0.0F,
          Biomes.DEEP_DARK
       );
+      this.addUndergroundBiome(
+         biomes,
+         Climate.Parameter.span(-1.0F, -0.8F),
+         Climate.Parameter.span(-1.0F, 0.7F),
+         Climate.Parameter.span(this.deepOceanContinentalness, this.oceanContinentalness),
+         this.FULL_RANGE,
+         Climate.Parameter.span(0.5F, 1.1F),
+         0.0F,
+         Biomes.ICE_CAVES
+      );
    }
 
    private ResourceKey<Biome> pickMiddleBiome(final int temperatureIndex, final int humidityIndex, final Climate.Parameter weirdness) {

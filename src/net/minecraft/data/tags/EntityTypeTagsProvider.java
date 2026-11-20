@@ -34,14 +34,22 @@ public class EntityTypeTagsProvider extends TagsProvider<EntityType<?>> {
             EntityTypeIds.ZOGLIN,
             EntityTypeIds.DROWNED,
             EntityTypeIds.HUSK,
-            EntityTypeIds.ZOMBIE_NAUTILUS
+            EntityTypeIds.ZOMBIE_NAUTILUS,
+            EntityTypeIds.FROSTBITE
          );
       this.tag(EntityTypeTags.RAIDERS)
          .add(EntityTypeIds.EVOKER, EntityTypeIds.PILLAGER, EntityTypeIds.RAVAGER, EntityTypeIds.VINDICATOR, EntityTypeIds.ILLUSIONER, EntityTypeIds.WITCH);
       this.tag(EntityTypeTags.UNDEAD).addTag(EntityTypeTags.SKELETONS).addTag(EntityTypeTags.ZOMBIES).add(EntityTypeIds.WITHER).add(EntityTypeIds.PHANTOM);
       this.tag(EntityTypeTags.BURN_IN_DAYLIGHT)
          .add(EntityTypeIds.SKELETON, EntityTypeIds.STRAY, EntityTypeIds.WITHER_SKELETON, EntityTypeIds.BOGGED)
-         .add(EntityTypeIds.ZOMBIE, EntityTypeIds.ZOMBIE_HORSE, EntityTypeIds.ZOMBIE_VILLAGER, EntityTypeIds.DROWNED, EntityTypeIds.ZOMBIE_NAUTILUS)
+         .add(
+            EntityTypeIds.ZOMBIE,
+            EntityTypeIds.ZOMBIE_HORSE,
+            EntityTypeIds.ZOMBIE_VILLAGER,
+            EntityTypeIds.DROWNED,
+            EntityTypeIds.ZOMBIE_NAUTILUS,
+            EntityTypeIds.FROSTBITE
+         )
          .add(EntityTypeIds.PHANTOM);
       this.tag(EntityTypeTags.BEEHIVE_INHABITORS).add(EntityTypeIds.BEE);
       this.tag(EntityTypeTags.ARROWS).add(EntityTypeIds.ARROW, EntityTypeIds.SPECTRAL_ARROW);
@@ -49,6 +57,7 @@ public class EntityTypeTagsProvider extends TagsProvider<EntityType<?>> {
          .addTag(EntityTypeTags.ARROWS)
          .add(EntityTypeIds.FIREWORK_ROCKET)
          .add(
+            EntityTypeIds.ICE_BALL,
             EntityTypeIds.SNOWBALL,
             EntityTypeIds.FIREBALL,
             EntityTypeIds.SMALL_FIREBALL,
@@ -59,7 +68,8 @@ public class EntityTypeTagsProvider extends TagsProvider<EntityType<?>> {
             EntityTypeIds.WIND_CHARGE,
             EntityTypeIds.BREEZE_WIND_CHARGE
          );
-      this.tag(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS).add(EntityTypeIds.RABBIT, EntityTypeIds.ENDERMITE, EntityTypeIds.SILVERFISH, EntityTypeIds.FOX);
+      this.tag(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS)
+         .add(EntityTypeIds.RABBIT, EntityTypeIds.ENDERMITE, EntityTypeIds.SILVERFISH, EntityTypeIds.FOX, EntityTypeIds.FROSTBITE);
       this.tag(EntityTypeTags.AXOLOTL_HUNT_TARGETS)
          .add(
             EntityTypeIds.TROPICAL_FISH,
@@ -71,7 +81,8 @@ public class EntityTypeTagsProvider extends TagsProvider<EntityType<?>> {
             EntityTypeIds.TADPOLE
          );
       this.tag(EntityTypeTags.AXOLOTL_ALWAYS_HOSTILES).add(EntityTypeIds.DROWNED, EntityTypeIds.GUARDIAN, EntityTypeIds.ELDER_GUARDIAN);
-      this.tag(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES).add(EntityTypeIds.STRAY, EntityTypeIds.POLAR_BEAR, EntityTypeIds.SNOW_GOLEM, EntityTypeIds.WITHER);
+      this.tag(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)
+         .add(EntityTypeIds.STRAY, EntityTypeIds.POLAR_BEAR, EntityTypeIds.SNOW_GOLEM, EntityTypeIds.WITHER, EntityTypeIds.FROSTBITE);
       this.tag(EntityTypeTags.FREEZE_HURTS_EXTRA_TYPES).add(EntityTypeIds.STRIDER, EntityTypeIds.BLAZE, EntityTypeIds.MAGMA_CUBE);
       this.tag(EntityTypeTags.CAN_BREATHE_UNDER_WATER)
          .addTag(EntityTypeTags.UNDEAD)
@@ -188,7 +199,8 @@ public class EntityTypeTagsProvider extends TagsProvider<EntityType<?>> {
             EntityTypeIds.HUSK,
             EntityTypeIds.SPIDER,
             EntityTypeIds.CAVE_SPIDER,
-            EntityTypeIds.SLIME
+            EntityTypeIds.SLIME,
+            EntityTypeIds.FROSTBITE
          );
       this.tag(EntityTypeTags.IMMUNE_TO_INFESTED).add(EntityTypeIds.SILVERFISH);
       this.tag(EntityTypeTags.IMMUNE_TO_OOZING).add(EntityTypeIds.SLIME);

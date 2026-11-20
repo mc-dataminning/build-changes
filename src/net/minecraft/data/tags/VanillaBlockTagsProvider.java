@@ -313,6 +313,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .add(new BlockItemId[]{BlockItemIds.ANDESITE});
       this.tag(BlockTags.HEIGHT_SPECIFIC_ORE_REPLACEABLES).add(new BlockItemId[]{BlockItemIds.TUFF});
       this.tag(BlockTags.DEEPSLATE_ORE_REPLACEABLES).add(new BlockItemId[]{BlockItemIds.DEEPSLATE});
+      this.tag(BlockTags.ICE_CAVE_ORE_REPLACEABLES).add(new BlockItemId[]{BlockItemIds.CALCITE}).add(new BlockItemId[]{BlockItemIds.PACKED_ICE});
       this.tag(BlockTags.SUBSTRATE_OVERWORLD).addTag(BlockTags.DIRT).addTag(BlockTags.MUD).addTag(BlockTags.MOSS_BLOCKS).addTag(BlockTags.GRASS_BLOCKS);
       this.tag(BlockTags.BASE_STONE_OVERWORLD)
          .add(new BlockItemId[]{BlockItemIds.STONE})
@@ -401,6 +402,11 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .addTag(BlockTags.SUBSTRATE_OVERWORLD)
          .add(new BlockItemId[]{BlockItemIds.SNOW_BLOCK})
          .add(new BlockItemId[]{BlockItemIds.ICE});
+      this.tag(BlockTags.LARGE_ICICLE_REPLACEABLE)
+         .add(new BlockItemId[]{BlockItemIds.CALCITE})
+         .add(new BlockItemId[]{BlockItemIds.STONE})
+         .add(new BlockItemId[]{BlockItemIds.DEEPSLATE})
+         .add(new BlockItemId[]{BlockItemIds.PACKED_ICE});
       this.tag(BlockTags.FOREST_ROCK_CAN_PLACE_ON).addTag(BlockTags.SUBSTRATE_OVERWORLD).addTag(BlockTags.BASE_STONE_OVERWORLD);
       this.tag(BlockTags.HUGE_BROWN_MUSHROOM_CAN_PLACE_ON)
          .addTag(BlockTags.SUBSTRATE_OVERWORLD)
@@ -812,7 +818,8 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .addAll(toIds(BlockItemIds.CONCRETE))
          .addTag(BlockTags.SPELEOTHEMS)
          .addAll(toIds(BlockItemIds.CONCRETE_STAIRS))
-         .addAll(toIds(BlockItemIds.CONCRETE_SLAB));
+         .addAll(toIds(BlockItemIds.CONCRETE_SLAB))
+         .add(new BlockItemId[]{BlockItemIds.ICE_CRYSTAL});
       this.tag(BlockTags.MINEABLE_WITH_SHOVEL)
          .add(
             BlockItemIds.CLAY,
@@ -1157,10 +1164,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .add(new BlockItemId[]{BlockItemIds.MUD});
       this.tag(BlockTags.CANNOT_SUPPORT_SEAGRASS).add(new BlockItemId[]{BlockItemIds.MAGMA_BLOCK});
       this.tag(BlockTags.CANNOT_SUPPORT_KELP).add(new BlockItemId[]{BlockItemIds.MAGMA_BLOCK});
-      this.tag(BlockTags.CANNOT_SUPPORT_SNOW_LAYER)
-         .add(new BlockItemId[]{BlockItemIds.ICE})
-         .add(new BlockItemId[]{BlockItemIds.PACKED_ICE})
-         .add(new BlockItemId[]{BlockItemIds.BARRIER});
+      this.tag(BlockTags.CANNOT_SUPPORT_SNOW_LAYER).add(new BlockItemId[]{BlockItemIds.ICE}).add(new BlockItemId[]{BlockItemIds.BARRIER});
       this.tag(BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT)
          .add(new BlockItemId[]{BlockItemIds.MYCELIUM})
          .add(new BlockItemId[]{BlockItemIds.PODZOL})
@@ -1217,7 +1221,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
       this.tag(BlockTags.TRIGGERS_AMBIENT_DESERT_DRY_VEGETATION_BLOCK_SOUNDS).addTag(BlockTags.TERRACOTTA).add(BlockItemIds.SAND, BlockItemIds.RED_SAND);
       this.tag(BlockTags.TRIGGERS_AMBIENT_DRIED_GHAST_BLOCK_SOUNDS).add(BlockItemIds.SOUL_SAND, BlockItemIds.SOUL_SOIL);
       this.tag(BlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE).addTag(BlockTags.OVERWORLD_NATURAL_LOGS);
-      this.tag(BlockTags.SPELEOTHEMS).add(BlockItemIds.POINTED_DRIPSTONE, BlockItemIds.SULFUR_SPIKE);
+      this.tag(BlockTags.SPELEOTHEMS).add(BlockItemIds.ICICLE, BlockItemIds.POINTED_DRIPSTONE, BlockItemIds.SULFUR_SPIKE);
       this.tag(BlockTags.SULFUR_SPIKE_REPLACEABLE).add(BlockItemIds.SULFUR, BlockItemIds.CINNABAR);
       this.tag(BlockTags.CUSHION_USES_COLLISION_SHAPE)
          .addTag(BlockTags.CAULDRONS)
@@ -1521,6 +1525,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
       this.tag(BlockTags.ENTITIES_CAN_TELEPORT_TO).addTag(BlockTags.BLOCKS_MOTION);
       this.tag(BlockTags.BLOCKS_DOLPHIN_JUMP).addTag(BlockTags.BLOCKS_MOTION);
       this.tag(BlockTags.ICE_MELTS_WHEN_DESTROYED_ABOVE).addTag(BlockTags.BLOCKS_MOTION);
+      this.tag(BlockTags.MELTS_ICICLE_ABOVE).add(new BlockItemId[]{BlockItemIds.MAGMA_BLOCK});
       this.tag(BlockTags.CAUSES_SUFFOCATION).addTag(BlockTags.BLOCKS_MOTION);
       this.tag(BlockTags.BLOCKS_MOTION_IN_HEIGHTMAP).addTag(BlockTags.BLOCKS_MOTION);
       this.tag(BlockTags.BLOCKS_MOTION_IN_HEIGHTMAP_NO_LEAVES).addTag(BlockTags.BLOCKS_MOTION_NO_LEAVES);
@@ -1674,6 +1679,18 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
       this.tag(BlockTags.CAT_DOES_NOT_TELEPORT_TO).addTag(BlockTags.DANGEROUS_FOR_TELEPORTATION);
       this.tag(BlockTags.ENDERMAN_DOES_NOT_TELEPORT_TO).addTag(BlockTags.DANGEROUS_FOR_TELEPORTATION).add(new BlockItemId[]{BlockItemIds.BEDROCK});
       this.tag(BlockTags.SHULKER_DOES_NOT_TELEPORT_TO).add(new BlockItemId[]{BlockItemIds.BEDROCK});
+      this.tag(BlockTags.PATHFINDING_AVOID_IN_AIR).add(new BlockItemId[]{BlockItemIds.COCOA_CROP});
+      this.tag(BlockTags.PATHFINDING_DAMAGE_CAUTIOUS).add(new BlockItemId[]{BlockItemIds.WITHER_ROSE}).addTag(BlockTags.SPELEOTHEMS);
+      this.tag(BlockTags.PATHFINDING_DAMAGING).add(new BlockItemId[]{BlockItemIds.CACTUS}).add(new BlockItemId[]{BlockItemIds.SWEET_BERRY_CROP});
+      this.tag(BlockTags.PATHFINDING_DROP_DOWN)
+         .addTag(BlockTags.TRAPDOORS)
+         .add(new BlockItemId[]{BlockItemIds.LILY_PAD})
+         .add(new BlockItemId[]{BlockItemIds.BIG_DRIPLEAF});
+      this.tag(BlockTags.PATHFINDING_LEAVES).addTag(BlockTags.LEAVES);
+      this.tag(BlockTags.PATHFINDING_POWDER_SNOW).add(new BlockItemId[]{BlockItemIds.POWDER_SNOW});
+      this.tag(BlockTags.PATHFINDING_OPEN).addTag(BlockTags.AIR);
+      this.tag(BlockTags.PATHFINDING_RAILS).addTag(BlockTags.RAILS);
+      this.tag(BlockTags.PATHFINDING_STICKY).add(new BlockItemId[]{BlockItemIds.HONEY_BLOCK});
    }
 
    private static ColorCollection<ResourceKey<Block>> toIds(final ColorCollection<BlockItemId> ids) {

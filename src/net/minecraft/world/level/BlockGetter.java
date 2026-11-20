@@ -262,9 +262,9 @@ public interface BlockGetter extends LevelHeightAccessor {
          if (!hitPointOpt.isEmpty()) {
             iterations++;
             Vec3 hitPoint = hitPointOpt.get();
-            double cornerHitX = Mth.clamp(hitPoint.x, cornerVisitedBlockX + 1.0E-5F, cornerVisitedBlockX + 1.0 - 1.0E-5F);
-            double cornerHitY = Mth.clamp(hitPoint.y, cornerVisitedBlockY + 1.0E-5F, cornerVisitedBlockY + 1.0 - 1.0E-5F);
-            double cornerHitZ = Mth.clamp(hitPoint.z, cornerVisitedBlockZ + 1.0E-5F, cornerVisitedBlockZ + 1.0 - 1.0E-5F);
+            double cornerHitX = Math.clamp(hitPoint.x, cornerVisitedBlockX + 1.0E-5F, cornerVisitedBlockX + 1.0 - 1.0E-5F);
+            double cornerHitY = Math.clamp(hitPoint.y, cornerVisitedBlockY + 1.0E-5F, cornerVisitedBlockY + 1.0 - 1.0E-5F);
+            double cornerHitZ = Math.clamp(hitPoint.z, cornerVisitedBlockZ + 1.0E-5F, cornerVisitedBlockZ + 1.0 - 1.0E-5F);
             int oppositeCornerX = Mth.floor(cornerHitX - boxSizeX * cornerDir.getX());
             int oppositeCornerY = Mth.floor(cornerHitY - boxSizeY * cornerDir.getY());
             int oppositeCornerZ = Mth.floor(cornerHitZ - boxSizeZ * cornerDir.getZ());

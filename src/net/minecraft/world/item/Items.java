@@ -1950,6 +1950,7 @@ public class Items {
       new Item.Properties().stacksTo(1).useItemDescriptionPrefix()
    );
    public static final Item SNOWBALL = registerItem(ItemIds.SNOWBALL, SnowballItem::new, new Item.Properties().stacksTo(16));
+   public static final Item ICE_BALL = registerItem(ItemIds.ICE_BALL, IceBallItem::new, new Item.Properties().stacksTo(16));
    public static final Item LEATHER = registerItem(ItemIds.LEATHER);
    public static final Item MILK_BUCKET = registerItem(
       ItemIds.MILK_BUCKET,
@@ -2182,6 +2183,7 @@ public class Items {
    public static final Item BOGGED_SPAWN_EGG = registerSpawnEgg(ItemIds.BOGGED_SPAWN_EGG, EntityTypes.BOGGED);
    public static final Item CAMEL_HUSK_SPAWN_EGG = registerSpawnEgg(ItemIds.CAMEL_HUSK_SPAWN_EGG, EntityTypes.CAMEL_HUSK);
    public static final Item DROWNED_SPAWN_EGG = registerSpawnEgg(ItemIds.DROWNED_SPAWN_EGG, EntityTypes.DROWNED);
+   public static final Item FROSTBITE_SPAWN_EGG = registerSpawnEgg(ItemIds.FROSTBITE_SPAWN_EGG, EntityTypes.FROSTBITE);
    public static final Item HUSK_SPAWN_EGG = registerSpawnEgg(ItemIds.HUSK_SPAWN_EGG, EntityTypes.HUSK);
    public static final Item PARCHED_SPAWN_EGG = registerSpawnEgg(ItemIds.PARCHED_SPAWN_EGG, EntityTypes.PARCHED);
    public static final Item SKELETON_SPAWN_EGG = registerSpawnEgg(ItemIds.SKELETON_SPAWN_EGG, EntityTypes.SKELETON);
@@ -2757,6 +2759,8 @@ public class Items {
    public static final Item MEDIUM_AMETHYST_BUD = registerBlock(BlockItemIds.MEDIUM_AMETHYST_BUD, Blocks.MEDIUM_AMETHYST_BUD);
    public static final Item LARGE_AMETHYST_BUD = registerBlock(BlockItemIds.LARGE_AMETHYST_BUD, Blocks.LARGE_AMETHYST_BUD);
    public static final Item AMETHYST_CLUSTER = registerBlock(BlockItemIds.AMETHYST_CLUSTER, Blocks.AMETHYST_CLUSTER);
+   public static final Item ICE_CRYSTAL = registerBlock(BlockItemIds.ICE_CRYSTAL, Blocks.ICE_CRYSTAL);
+   public static final Item ICICLE = registerBlock(BlockItemIds.ICICLE, Blocks.ICICLE);
    public static final Item POINTED_DRIPSTONE = registerBlock(BlockItemIds.POINTED_DRIPSTONE, Blocks.POINTED_DRIPSTONE);
    public static final Item SULFUR_SPIKE = registerBlock(BlockItemIds.SULFUR_SPIKE, Blocks.SULFUR_SPIKE);
    public static final Item OCHRE_FROGLIGHT = registerBlock(BlockItemIds.OCHRE_FROGLIGHT, Blocks.OCHRE_FROGLIGHT);

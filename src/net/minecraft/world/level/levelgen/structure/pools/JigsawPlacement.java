@@ -31,7 +31,7 @@ import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
+import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
 import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
 import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
@@ -260,9 +260,12 @@ public class JigsawPlacement {
          JigsawStructure.DEFAULT_LIQUID_SETTINGS
       );
       if (stub.isPresent()) {
-         StructurePiecesBuilder builder = stub.get().getPiecesBuilder();
+         PiecesContainer pieces = stub.get().getPiecesBuilder().build();
+         if (pieces == null) {
+            return true;
+         }
 
-         for (StructurePiece piece : builder.build().pieces()) {
+         for (StructurePiece piece : pieces.pieces()) {
             if (piece instanceof PoolElementStructurePiece poolPiece) {
                poolPiece.place(level, structureManager, generator, random, BoundingBox.infinite(), position, keepJigsaws);
             }

@@ -18,7 +18,6 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.protocol.game.ServerboundTestInstanceBlockActionPacket;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.TestInstanceBlockEntity;
 import org.jspecify.annotations.Nullable;
@@ -207,7 +206,7 @@ public class TestInstanceBlockEditScreen extends Screen {
 
    private static int parseSize(final String value) {
       try {
-         return Mth.clamp(Integer.parseInt(value), 1, 48);
+         return Math.clamp(Integer.parseInt(value), 1, 48);
       } catch (NumberFormatException ignored) {
          return 1;
       }

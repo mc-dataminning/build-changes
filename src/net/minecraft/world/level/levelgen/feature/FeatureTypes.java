@@ -31,7 +31,7 @@ public interface FeatureTypes {
       Registry.register(registry, "huge_red_mushroom", HugeRedMushroomFeature.CODEC);
       Registry.register(registry, "iceberg", IcebergFeature.CODEC);
       Registry.register(registry, "lake", LakeFeature.CODEC);
-      Registry.register(registry, "large_dripstone", LargeDripstoneFeature.CODEC);
+      Registry.register(registry, "large_speleothem", LargeSpeleothemFeature.CODEC);
       Registry.register(registry, "monster_room", MonsterRoomFeature.CODEC);
       Registry.register(registry, "multiface_growth", MultifaceGrowthFeature.CODEC);
       Registry.register(registry, "netherrack_replace_blobs", ReplaceBlobsFeature.CODEC);

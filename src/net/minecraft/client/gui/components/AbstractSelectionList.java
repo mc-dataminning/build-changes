@@ -26,12 +26,9 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
 import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entry<E>> extends AbstractContainerWidget {
-   private static final Identifier MENU_LIST_BACKGROUND = Identifier.withDefaultNamespace("textures/gui/menu_list_background.png");
-   public static final Identifier INWORLD_MENU_LIST_BACKGROUND = Identifier.withDefaultNamespace("textures/gui/inworld_menu_list_background.png");
    private static final int SEPARATOR_HEIGHT = 2;
    protected final Minecraft minecraft;
    protected final int defaultEntryHeight;
@@ -217,14 +214,11 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
    }
 
    protected void extractListSeparators(final GuiGraphicsExtractor graphics) {
-      Identifier headerSeparator = this.minecraft.level == null ? Screen.HEADER_SEPARATOR : Screen.INWORLD_HEADER_SEPARATOR;
-      Identifier footerSeparator = this.minecraft.level == null ? Screen.FOOTER_SEPARATOR : Screen.INWORLD_FOOTER_SEPARATOR;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, headerSeparator, this.getX(), this.getY() - 2, 0.0F, 0.0F, this.getWidth(), 2, 32, 2);
-      graphics.blit(RenderPipelines.GUI_TEXTURED, footerSeparator, this.getX(), this.getBottom(), 0.0F, 0.0F, this.getWidth(), 2, 32, 2);
+      Screen.extractListSeparators(graphics, this.getX(), this.getY(), this.getBottom(), this.getWidth(), 2, this.minecraft.level != null);
    }
 
    protected void extractListBackground(final GuiGraphicsExtractor graphics) {
-      Identifier menuListBackground = this.minecraft.level == null ? MENU_LIST_BACKGROUND : INWORLD_MENU_LIST_BACKGROUND;
+      Identifier menuListBackground = this.minecraft.level == null ? Screen.MENU_LIST_BACKGROUND : Screen.INWORLD_MENU_LIST_BACKGROUND;
       graphics.blit(
          RenderPipelines.GUI_TEXTURED,
          menuListBackground,
@@ -241,10 +235,10 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
 
    protected void enableScissor(final GuiGraphicsExtractor graphics) {
       graphics.enableScissor(
-         Mth.clamp(this.getX(), 0, graphics.guiWidth()),
-         Mth.clamp(this.getY(), 0, graphics.guiHeight()),
-         Mth.clamp(this.getRight(), 0, graphics.guiWidth()),
-         Mth.clamp(this.getBottom(), 0, graphics.guiHeight())
+         Math.clamp(this.getX(), 0, graphics.guiWidth()),
+         Math.clamp(this.getY(), 0, graphics.guiHeight()),
+         Math.clamp(this.getRight(), 0, graphics.guiWidth()),
+         Math.clamp(this.getBottom(), 0, graphics.guiHeight())
       );
    }
 

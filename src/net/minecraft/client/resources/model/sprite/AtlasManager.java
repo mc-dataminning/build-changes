@@ -1,6 +1,7 @@
 package net.minecraft.client.resources.model.sprite;
 
 import com.mojang.logging.LogUtils;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,8 +49,7 @@ public class AtlasManager implements AutoCloseable, PreparableReloadListener, Sp
 
    public AtlasManager(final TextureManager textureManager, final int maxMipmapLevels) {
       for (AtlasManager.AtlasConfig info : KNOWN_ATLASES) {
-         TextureAtlas atlasTexture = new TextureAtlas(info.textureId);
-         textureManager.register(info.textureId, atlasTexture);
+         TextureAtlas atlasTexture = new TextureAtlas(textureManager, info.textureId);
          AtlasManager.AtlasEntry atlasEntry = new AtlasManager.AtlasEntry(atlasTexture, info);
          this.atlasByTexture.put(info.textureId, atlasEntry);
          this.atlasById.put(info.definitionLocation, atlasEntry);
@@ -81,6 +81,12 @@ public class AtlasManager implements AutoCloseable, PreparableReloadListener, Sp
       this.atlasById.values().forEach(AtlasManager.AtlasEntry::close);
       this.atlasById.clear();
       this.atlasByTexture.clear();
+   }
+
+   public void tick() {
+      for (AtlasManager.AtlasEntry entry : this.atlasByTexture.values()) {
+         entry.atlas.cycleAnimationFrames();
+      }
    }
 
    @Override
@@ -154,6 +160,12 @@ public class AtlasManager implements AutoCloseable, PreparableReloadListener, Sp
                }
             }
          );
+   }
+
+   public void dumpAllSprites(final Path targetDir) {
+      for (AtlasManager.AtlasEntry entry : this.atlasByTexture.values()) {
+         entry.atlas.dumpSpriteNames(entry.config.textureId, targetDir);
+      }
    }
 
    public record AtlasConfig(Identifier textureId, Identifier definitionLocation, boolean createMipmaps, Set<MetadataSectionType<?>> additionalMetadata) {

@@ -280,6 +280,7 @@ public class KeyboardHandler {
          Path gameDirectory = this.minecraft.gameDirectory.toPath().toAbsolutePath();
          Path debugTexturePath = TextureUtil.getDebugTexturePath(gameDirectory);
          this.minecraft.getTextureManager().dumpAllSheets(debugTexturePath);
+         this.minecraft.getAtlasManager().dumpAllSprites(debugTexturePath);
          Component pathComponent = Component.literal(gameDirectory.relativize(debugTexturePath).toString())
             .withStyle(ChatFormatting.UNDERLINE)
             .withStyle(s -> s.withClickEvent(new ClickEvent.OpenFile(debugTexturePath)));

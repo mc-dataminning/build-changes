@@ -85,6 +85,7 @@ import net.minecraft.world.entity.monster.spider.CaveSpider;
 import net.minecraft.world.entity.monster.spider.Spider;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.monster.zombie.Drowned;
+import net.minecraft.world.entity.monster.zombie.Frostbite;
 import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.minecraft.world.entity.monster.zombie.ZombifiedPiglin;
 import net.minecraft.world.entity.npc.villager.Villager;
@@ -123,6 +124,7 @@ public class DefaultAttributes {
       .put(EntityTypes.BREEZE, Breeze.createAttributes().build())
       .put(EntityTypes.FOX, Fox.createAttributes().build())
       .put(EntityTypes.FROG, Frog.createAttributes().build())
+      .put(EntityTypes.FROSTBITE, Frostbite.createAttributes().build())
       .put(EntityTypes.GHAST, Ghast.createAttributes().build())
       .put(EntityTypes.HAPPY_GHAST, HappyGhast.createAttributes().build())
       .put(EntityTypes.GIANT, Giant.createAttributes().build())

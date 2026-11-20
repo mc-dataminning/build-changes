@@ -18,7 +18,7 @@ public abstract class Button extends AbstractButton {
    protected final Button.OnPress onPress;
    protected final Button.CreateNarration createNarration;
 
-   public static Button.Builder builder(final Component message, final Button.OnPress onPress) {
+   public static Button.Builder<?> builder(final Component message, final Button.OnPress onPress) {
       return new Button.Builder(message, onPress);
    }
 
@@ -51,50 +51,55 @@ public abstract class Button extends AbstractButton {
       this.defaultButtonNarrationText(output);
    }
 
-   public static class Builder {
-      private final Component message;
-      private final Button.OnPress onPress;
-      private @Nullable Tooltip tooltip;
-      private int x;
-      private int y;
-      private int width = 150;
-      private int height = 20;
-      private Button.CreateNarration createNarration = Button.DEFAULT_NARRATION;
+   public static class Builder<B extends Button.Builder<B>> {
+      protected final Component message;
+      protected final Button.OnPress onPress;
+      protected @Nullable Tooltip tooltip;
+      protected int x;
+      protected int y;
+      protected int width = 150;
+      protected int height = 20;
+      protected Button.CreateNarration createNarration = Button.DEFAULT_NARRATION;
 
-      public Builder(final Component message, final Button.OnPress onPress) {
+      protected Builder(final Component message, final Button.OnPress onPress) {
          this.message = message;
          this.onPress = onPress;
       }
 
-      public Button.Builder pos(final int x, final int y) {
+      public B pos(final int x, final int y) {
          this.x = x;
          this.y = y;
-         return this;
+         return (B)this;
       }
 
-      public Button.Builder width(final int width) {
+      public B width(final int width) {
          this.width = width;
-         return this;
+         return (B)this;
       }
 
-      public Button.Builder size(final int width, final int height) {
+      public B size(final int width, final int height) {
          this.width = width;
          this.height = height;
-         return this;
+         return (B)this;
       }
 
-      public Button.Builder bounds(final int x, final int y, final int width, final int height) {
+      public B bounds(final int x, final int y, final int width, final int height) {
          return this.pos(x, y).size(width, height);
       }
 
-      public Button.Builder tooltip(final @Nullable Tooltip tooltip) {
+      public B tooltip(final @Nullable Tooltip tooltip) {
          this.tooltip = tooltip;
-         return this;
+         return (B)this;
       }
 
-      public Button.Builder createNarration(final Button.CreateNarration createNarration) {
+      public B tooltip(final Component tooltip) {
+         this.tooltip = Tooltip.create(tooltip);
+         return (B)this;
+      }
+
+      public B createNarration(final Button.CreateNarration createNarration) {
          this.createNarration = createNarration;
-         return this;
+         return (B)this;
       }
 
       public Button build() {

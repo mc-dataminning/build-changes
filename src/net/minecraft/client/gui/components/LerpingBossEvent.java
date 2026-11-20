@@ -40,7 +40,7 @@ public class LerpingBossEvent extends BossEvent {
    @Override
    public float getProgress() {
       long timeSinceSet = Util.getMillis() - this.setTime;
-      float lerpPercent = Mth.clamp((float)timeSinceSet / 100.0F, 0.0F, 1.0F);
+      float lerpPercent = Math.clamp((float)timeSinceSet / 100.0F, 0.0F, 1.0F);
       return Mth.lerp(lerpPercent, this.progress, this.targetPercent);
    }
 }

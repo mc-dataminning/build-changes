@@ -224,7 +224,7 @@ public class CauldronInteractions {
             hand,
             itemInHand,
             Blocks.POWDER_SNOW_CAULDRON.defaultBlockState().setValue(LayeredCauldronBlock.LEVEL, 3),
-            SoundEvents.BUCKET_EMPTY_POWDER_SNOW
+            SoundEvents.BUCKET_EMPTY_POWDER_SNOW.value()
          );
    }
 

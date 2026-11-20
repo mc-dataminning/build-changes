@@ -19,7 +19,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.Mth;
 import net.minecraft.util.StringUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.jspecify.annotations.Nullable;
@@ -172,7 +171,7 @@ public class ChatScreen extends Screen {
 
    @Override
    public boolean mouseScrolled(final double x, final double y, final double scrollX, double scrollY) {
-      scrollY = Mth.clamp(scrollY, -1.0, 1.0);
+      scrollY = Math.clamp(scrollY, -1.0, 1.0);
       if (this.commandSuggestions.mouseScrolled(scrollY)) {
          return true;
       }
@@ -249,7 +248,7 @@ public class ChatScreen extends Screen {
    public void moveInHistory(final int dir) {
       int newPos = this.historyPos + dir;
       int max = this.minecraft.gui.hud.getChat().getRecentChat().size();
-      newPos = Mth.clamp(newPos, 0, max);
+      newPos = Math.clamp(newPos, 0, max);
       if (newPos != this.historyPos) {
          if (newPos == max) {
             this.historyPos = max;

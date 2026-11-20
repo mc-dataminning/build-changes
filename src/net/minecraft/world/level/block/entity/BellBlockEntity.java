@@ -8,7 +8,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -144,7 +143,7 @@ public class BellBlockEntity extends BlockEntity {
                );
                double x3 = bellPos.getX() + 0.5F + 1.0 / distBtwn * (entity.getX() - bellPos.getX());
                double z3 = bellPos.getZ() + 0.5F + 1.0 / distBtwn * (entity.getZ() - bellPos.getZ());
-               int particleCount = Mth.clamp((nearbyRaiderCount - 21) / -2, 3, 15);
+               int particleCount = Math.clamp((nearbyRaiderCount - 21) / -2, 3, 15);
 
                for (int i = 0; i < particleCount; i++) {
                   int color = particleColor.addAndGet(5);

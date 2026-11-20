@@ -215,7 +215,7 @@ public abstract class Display extends Entity {
       this.setTransformationInterpolationDuration(input.getIntOr("interpolation_duration", 0));
       this.setTransformationInterpolationDelay(input.getIntOr("start_interpolation", 0));
       int teleportDuration = input.getIntOr("teleport_duration", 0);
-      this.setPosRotInterpolationDuration(Mth.clamp(teleportDuration, 0, 59));
+      this.setPosRotInterpolationDuration(Math.clamp(teleportDuration, 0, 59));
       this.setBillboardConstraints(
          input.<Display.BillboardConstraints>read("billboard", Display.BillboardConstraints.CODEC).orElse(Display.BillboardConstraints.FIXED)
       );
@@ -377,7 +377,7 @@ public abstract class Display extends Entity {
 
       float ticksSinceUpdate = (float)(this.tickCount - this.interpolationStartClientTick);
       float partialTicksSinceLastUpdate = ticksSinceUpdate + partialTickTime;
-      float result = Mth.clamp(Mth.inverseLerp(partialTicksSinceLastUpdate, 0.0F, duration), 0.0F, 1.0F);
+      float result = Math.clamp(Mth.inverseLerp(partialTicksSinceLastUpdate, 0.0F, duration), 0.0F, 1.0F);
       this.lastProgress = result;
       return result;
    }

@@ -6,7 +6,6 @@ import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
 import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractScrollArea extends AbstractWidget {
@@ -65,7 +64,7 @@ public abstract class AbstractScrollArea extends AbstractWidget {
    }
 
    public void setScrollAmount(final double scrollAmount) {
-      this.scrollAmount = Mth.clamp(scrollAmount, 0.0, this.maxScrollAmount());
+      this.scrollAmount = Math.clamp(scrollAmount, 0.0, this.maxScrollAmount());
    }
 
    public boolean updateScrolling(final MouseButtonEvent event) {
@@ -94,7 +93,7 @@ public abstract class AbstractScrollArea extends AbstractWidget {
    }
 
    protected int scrollerHeight() {
-      return Mth.clamp((int)((float)(this.height * this.height) / this.contentHeight()), 32, this.height - 8);
+      return Math.clamp((int)((float)(this.height * this.height) / this.contentHeight()), 32, Math.max(this.height - 8, 32));
    }
 
    protected int scrollBarX() {

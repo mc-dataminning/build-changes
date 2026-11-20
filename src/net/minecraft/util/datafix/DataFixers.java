@@ -413,6 +413,7 @@ import net.minecraft.util.datafix.schemas.V4997;
 import net.minecraft.util.datafix.schemas.V5000;
 import net.minecraft.util.datafix.schemas.V501;
 import net.minecraft.util.datafix.schemas.V5116;
+import net.minecraft.util.datafix.schemas.V5121;
 import net.minecraft.util.datafix.schemas.V700;
 import net.minecraft.util.datafix.schemas.V701;
 import net.minecraft.util.datafix.schemas.V702;
@@ -436,7 +437,7 @@ public class DataFixers {
    private static final BiFunction<Integer, Schema, Schema> SAME_NAMESPACED = NamespacedSchema::new;
    private static final Result DATA_FIXER;
    private static final FileFixerUpper FILE_FIXER;
-   public static final int BLENDING_VERSION = 5118;
+   public static final int BLENDING_VERSION = 5122;
 
    private DataFixers() {
    }
@@ -1690,7 +1691,10 @@ public class DataFixers {
       fixerUpper.addFixer(new MoveNoiseBiomesFix(v5116));
       Schema v5117 = fixerUpper.addSchema(5117, SAME_NAMESPACED);
       fixerUpper.addFixer(new OptionsForceDefaultGraphicsApiFix(v5117));
-      Schema blendingSchema = fixerUpper.addSchema(5118, SAME_NAMESPACED);
+      Schema v5121 = fixerUpper.addSchema(5121, V5121::new);
+      fixerUpper.addFixer(new AddNewChoices(v5121, "Added Frostbite", References.ENTITY));
+      fixerUpper.addFixer(new OptionsRenameFieldFix(v5121, false, "Rename socialInteractions setting", "key_key.socialInteractions", "key_key.otherPlayers"));
+      Schema blendingSchema = fixerUpper.addSchema(5122, SAME_NAMESPACED);
       fixerUpper.addFixer(new BlendingDataFix(blendingSchema));
    }
 

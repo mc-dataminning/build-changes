@@ -111,6 +111,10 @@ public class Potions {
    public static final Holder<Potion> WEAVING = register(PotionIds.WEAVING, new Potion("weaving", new MobEffectInstance(MobEffects.WEAVING, 3600)));
    public static final Holder<Potion> OOZING = register(PotionIds.OOZING, new Potion("oozing", new MobEffectInstance(MobEffects.OOZING, 3600)));
    public static final Holder<Potion> INFESTED = register(PotionIds.INFESTED, new Potion("infested", new MobEffectInstance(MobEffects.INFESTED, 3600)));
+   public static final Holder<Potion> FREEZING = register(PotionIds.FREEZING, new Potion("freezing", new MobEffectInstance(MobEffects.FREEZING, 900)));
+   public static final Holder<Potion> LONG_FREEZING = register(
+      PotionIds.LONG_FREEZING, new Potion("freezing", new MobEffectInstance(MobEffects.FREEZING, 1800))
+   );
 
    private static Holder<Potion> register(final ResourceKey<Potion> key, final Potion potion) {
       return Registry.registerForHolder(BuiltInRegistries.POTION, key, potion);

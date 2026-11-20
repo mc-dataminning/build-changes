@@ -131,6 +131,7 @@ public class VanillaAdventureAdvancements extends AdvancementSubProvider {
       EntityTypes.ENDERMAN,
       EntityTypes.ENDERMITE,
       EntityTypes.EVOKER,
+      EntityTypes.FROSTBITE,
       EntityTypes.GHAST,
       EntityTypes.GUARDIAN,
       EntityTypes.HOGLIN,

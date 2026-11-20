@@ -55,6 +55,7 @@ public class VulkanDevice implements GpuDeviceBackend {
    private final VulkanQueue computeQueue;
    private final VulkanQueue transferQueue;
    private final boolean isIntegratedIntelMoltenVK;
+   private final boolean useDXGISwapchain;
    private final FeatureSet enabledFeatures;
    private final VulkanCommandEncoder commandEncoder;
    private final CheckpointExtension checkpointExtension;
@@ -74,6 +75,7 @@ public class VulkanDevice implements GpuDeviceBackend {
       this.enabledFeatures = enabledFeatureSet;
       this.checkpointExtension = checkpointExtension;
       this.renderPassCache = new RenderPassCache(this);
+      this.useDXGISwapchain = D3D12GpuSurface.available(vkDevice.getPhysicalDevice(), enabledFeatureSet);
       Set<String> extensionNames = new HashSet<>();
 
       for (String name : instance.getEnabledExtensions()) {
@@ -116,7 +118,9 @@ public class VulkanDevice implements GpuDeviceBackend {
             true
          ),
          Collections.unmodifiableSet(extensionNames),
-         new HintsAndWorkarounds(false, false, PlatformUtil.isAppleSiliconMac(physicalDevice.deviceName()), false),
+         new HintsAndWorkarounds(
+            PlatformUtil.IS_WINDOWS && !this.useDXGISwapchain, false, false, PlatformUtil.isAppleSiliconMac(physicalDevice.deviceName()), false
+         ),
          physicalDevice.deviceType()
       );
       IntIntPair graphicsQueueFamily = physicalDevice.graphicsQueueFamilyAndIndex();
@@ -184,7 +188,7 @@ public class VulkanDevice implements GpuDeviceBackend {
 
    @Override
    public GpuSurfaceBackend createSurface(final long windowHandle, final BooleanSupplier isIconified) {
-      return new VulkanGpuSurface(this, windowHandle);
+      return this.useDXGISwapchain ? new D3D12GpuSurface(this, windowHandle) : new VulkanGpuSurface(this, windowHandle);
    }
 
    public VulkanCommandEncoder createCommandEncoder() {

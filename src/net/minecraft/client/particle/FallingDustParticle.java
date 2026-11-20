@@ -5,7 +5,6 @@ import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.RenderShape;
@@ -40,7 +39,7 @@ public class FallingDustParticle extends SingleQuadParticle {
 
    @Override
    public float getQuadSize(final float a) {
-      return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
+      return this.quadSize * Math.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
    }
 
    @Override

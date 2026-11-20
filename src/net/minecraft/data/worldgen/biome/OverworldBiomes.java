@@ -34,7 +34,7 @@ public class OverworldBiomes {
    public static int calculateSkyColor(final float temperature) {
       float temp = temperature;
       temp /= 3.0F;
-      temp = Mth.clamp(temp, -1.0F, 1.0F);
+      temp = Math.clamp(temp, -1.0F, 1.0F);
       return ARGB.opaque(Mth.hsvToRgb(0.62222224F - temp * 0.05F, 0.5F + temp * 0.1F, 1.0F));
    }
 
@@ -47,13 +47,17 @@ public class OverworldBiomes {
          .specialEffects(new BiomeSpecialEffects.Builder().waterColor(4159204).build());
    }
 
-   private static void globalOverworldGeneration(final BiomeGenerationSettings.Builder generation) {
+   private static void globalOverworldGeneration(final BiomeGenerationSettings.Builder generation, final boolean hasGlowLichen, final boolean hasDirtAndGranite) {
       BiomeDefaultFeatures.addDefaultCarversAndLakes(generation);
       BiomeDefaultFeatures.addDefaultCrystalFormations(generation);
       BiomeDefaultFeatures.addDefaultMonsterRoom(generation);
-      BiomeDefaultFeatures.addDefaultUndergroundVariety(generation);
+      BiomeDefaultFeatures.addDefaultUndergroundVariety(generation, hasGlowLichen, hasDirtAndGranite);
       BiomeDefaultFeatures.addDefaultSprings(generation);
       BiomeDefaultFeatures.addSurfaceFreezing(generation);
+   }
+
+   private static void globalOverworldGeneration(final BiomeGenerationSettings.Builder generation) {
+      globalOverworldGeneration(generation, true, true);
    }
 
    public static Biome oldGrowthTaiga(final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<WorldCarver> carvers, final boolean spruce) {
@@ -229,6 +233,7 @@ public class OverworldBiomes {
       if (snowy) {
          baseBiome.setAttribute(EnvironmentAttributes.CREATURE_WORLD_GEN_SPAWN_PROBABILITY, 0.07F);
          BiomeDefaultFeatures.snowySpawns(mobs, !spikes);
+         mobs.addSpawn(EntityTypes.FROSTBITE, spikes ? 25 : 10, 4, 4);
          if (spikes) {
             generation.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, MiscOverworldPlacements.ICE_SPIKE);
             generation.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, MiscOverworldPlacements.ICE_PATCH);
@@ -437,6 +442,7 @@ public class OverworldBiomes {
          .addSpawn(EntityTypes.NAUTILUS, 2, 1, 1);
       BiomeDefaultFeatures.commonSpawns(mobs);
       mobs.addSpawn(EntityTypes.DROWNED, 5, 1, 1);
+      mobs.addSpawn(EntityTypes.FROSTBITE, 25, 4, 4);
       float temperature = deep ? 0.5F : 0.0F;
       BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
       BiomeDefaultFeatures.addIcebergs(generation);
@@ -670,6 +676,10 @@ public class OverworldBiomes {
       MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder().addSpawn(EntityTypes.SQUID, 2, 1, 4).addSpawn(EntityTypes.SALMON, 5, 1, 5);
       BiomeDefaultFeatures.commonSpawns(mobs);
       mobs.addSpawn(EntityTypes.DROWNED, frozen ? 1 : 100, 1, 1);
+      if (frozen) {
+         mobs.addSpawn(EntityTypes.FROSTBITE, 25, 4, 4);
+      }
+
       BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
       globalOverworldGeneration(generation);
       BiomeDefaultFeatures.addDefaultOres(generation);
@@ -807,10 +817,13 @@ public class OverworldBiomes {
          .build();
    }
 
-   private static Biome.BiomeBuilder basePeaks(final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<WorldCarver> carvers) {
+   private static Biome.BiomeBuilder basePeaks(
+      final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<WorldCarver> carvers, final int frozenSpawnWeight
+   ) {
       BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
       MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
       mobs.addSpawn(EntityTypes.GOAT, 5, 1, 3);
+      mobs.addSpawn(EntityTypes.FROSTBITE, frozenSpawnWeight, 4, 4);
       BiomeDefaultFeatures.commonSpawns(mobs);
       globalOverworldGeneration(generation);
       BiomeDefaultFeatures.addFrozenSprings(generation);
@@ -825,13 +838,13 @@ public class OverworldBiomes {
    }
 
    public static Biome frozenPeaks(final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<WorldCarver> carvers) {
-      return basePeaks(placedFeatures, carvers)
+      return basePeaks(placedFeatures, carvers, 25)
          .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_FROZEN_PEAKS))
          .build();
    }
 
    public static Biome jaggedPeaks(final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<WorldCarver> carvers) {
-      return basePeaks(placedFeatures, carvers)
+      return basePeaks(placedFeatures, carvers, 10)
          .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_JAGGED_PEAKS))
          .build();
    }
@@ -855,7 +868,7 @@ public class OverworldBiomes {
    public static Biome snowySlopes(final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<WorldCarver> carvers) {
       BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
       MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
-      mobs.addSpawn(EntityTypes.RABBIT, 4, 2, 3).addSpawn(EntityTypes.GOAT, 5, 1, 3);
+      mobs.addSpawn(EntityTypes.RABBIT, 4, 2, 3).addSpawn(EntityTypes.GOAT, 5, 1, 3).addSpawn(EntityTypes.FROSTBITE, 10, 4, 4);
       BiomeDefaultFeatures.commonSpawns(mobs);
       globalOverworldGeneration(generation);
       BiomeDefaultFeatures.addFrozenSprings(generation);
@@ -958,6 +971,36 @@ public class OverworldBiomes {
          .build();
    }
 
+   public static Biome iceCaves(final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<WorldCarver> carvers) {
+      MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
+      mobs.addSpawn(EntityTypes.CREEPER, 100, 4, 4);
+      mobs.addSpawn(EntityTypes.SKELETON, 90, 4, 4);
+      mobs.addSpawn(EntityTypes.STRAY, 10, 4, 4);
+      mobs.addSpawn(EntityTypes.FROSTBITE, 50, 4, 4);
+      mobs.addSpawn(EntityTypes.SLIME, 100, 4, 4);
+      mobs.addSpawn(EntityTypes.SPIDER, 100, 4, 4);
+      mobs.addSpawn(EntityTypes.ZOMBIE, 50, 4, 4);
+      mobs.addSpawn(EntityTypes.ENDERMAN, 10, 1, 4);
+      mobs.addSpawn(EntityTypes.WITCH, 5, 1, 1);
+      mobs.addSpawn(EntityTypes.ZOMBIE_VILLAGER, 5, 1, 1);
+      mobs.addSpawn(EntityTypes.GLOW_SQUID, 10, 2, 4);
+      mobs.addSpawn(EntityTypes.BAT, 10, 8, 8);
+      BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+      globalOverworldGeneration(generation, false, false);
+      BiomeDefaultFeatures.addIceCaveOres(generation);
+      BiomeDefaultFeatures.addIceCaveUndergroundVariety(generation);
+      BiomeDefaultFeatures.addDefaultSoftDisks(generation);
+      BiomeDefaultFeatures.addIceCavesFeatures(generation);
+      return baseBiome(0.0F, 0.0F)
+         .setAttribute(EnvironmentAttributes.FOG_COLOR, ARGB.vector3fFromRGB24(-15444581))
+         .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_SULFUR_CAVES))
+         .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, ARGB.vector3fFromRGB24(-15444581))
+         .specialEffects(new BiomeSpecialEffects.Builder().waterColor(-15444581).build())
+         .mobSpawnSettings(mobs.build())
+         .generationSettings(generation.build())
+         .build();
+   }
+
    public static Biome deepDark(final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<WorldCarver> carvers) {
       BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
       generation.addCarver(Carvers.CAVE);
@@ -965,7 +1008,7 @@ public class OverworldBiomes {
       generation.addCarver(Carvers.CANYON);
       BiomeDefaultFeatures.addDefaultCrystalFormations(generation);
       BiomeDefaultFeatures.addDefaultMonsterRoom(generation);
-      BiomeDefaultFeatures.addDefaultUndergroundVariety(generation);
+      BiomeDefaultFeatures.addDefaultUndergroundVariety(generation, true, true);
       BiomeDefaultFeatures.addSurfaceFreezing(generation);
       BiomeDefaultFeatures.addPlainGrass(generation);
       BiomeDefaultFeatures.addDefaultOres(generation);

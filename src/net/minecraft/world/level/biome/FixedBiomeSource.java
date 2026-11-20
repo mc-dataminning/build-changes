@@ -8,7 +8,6 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.levelgen.RandomState;
@@ -73,7 +72,7 @@ public class FixedBiomeSource extends BiomeSource implements NoiseBiomeResolver 
       final RandomState randomState,
       final LevelReader level
    ) {
-      return allowed.test(this.biome) ? Pair.of(origin.atY(Mth.clamp(origin.getY(), level.getMinY() + 1, level.getMaxY() + 1)), this.biome) : null;
+      return allowed.test(this.biome) ? Pair.of(origin.atY(Math.clamp(origin.getY(), level.getMinY() + 1, level.getMaxY() + 1)), this.biome) : null;
    }
 
    @Override

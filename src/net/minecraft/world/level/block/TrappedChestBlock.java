@@ -6,7 +6,6 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stat;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTypes;
@@ -37,7 +36,7 @@ public class TrappedChestBlock extends ChestBlock {
 
    @Override
    protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return Mth.clamp(ChestBlockEntity.getOpenCount(level, pos), 0, 15);
+      return Math.clamp(ChestBlockEntity.getOpenCount(level, pos), 0, 15);
    }
 
    @Override

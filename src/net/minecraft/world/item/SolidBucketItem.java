@@ -1,6 +1,7 @@
 package net.minecraft.world.item;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -9,15 +10,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.sounds.BlockSoundSet;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jspecify.annotations.Nullable;
 
 public class SolidBucketItem extends BlockItem implements DispensibleContainerItem {
-   private final SoundEvent placeSound;
+   private final Holder<SoundEvent> placeSound;
 
-   public SolidBucketItem(final Block content, final SoundEvent placeSound, final Item.Properties properties) {
+   public SolidBucketItem(final Block content, final Holder<SoundEvent> placeSound, final Item.Properties properties) {
       super(content, properties);
       this.placeSound = placeSound;
    }
@@ -34,7 +35,7 @@ public class SolidBucketItem extends BlockItem implements DispensibleContainerIt
    }
 
    @Override
-   protected SoundEvent getPlaceSound(final BlockState blockState) {
+   protected Holder<SoundEvent> getPlaceSound(final BlockSoundSet blockSoundSet) {
       return this.placeSound;
    }
 

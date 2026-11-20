@@ -1,5 +1,6 @@
 package com.mojang.renderpearl.backend.vulkan;
 
+import com.mojang.logging.LogUtils;
 import com.mojang.renderpearl.api.buffers.GpuBuffer;
 import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.buffers.TransientMemory;
@@ -45,8 +46,10 @@ import org.lwjgl.vulkan.VkSemaphoreWaitInfo;
 import org.lwjgl.vulkan.VkSubpassBeginInfo;
 import org.lwjgl.vulkan.VkSubpassEndInfoKHR;
 import org.lwjgl.vulkan.VkMemoryBarrier2.Buffer;
+import org.slf4j.Logger;
 
 public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable {
+   private static final Logger LOGGER = LogUtils.getLogger();
    public static final int MAX_SUBMITS_IN_FLIGHT = 2;
    private final VulkanDevice device;
    private final VulkanTransientMemory transientMemory;
@@ -317,8 +320,11 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
       this.submissionBuilder = this.device.graphicsQueue().beginSubmit();
       this.currentSubmitIndex++;
       if (!this.awaitSubmitCompletion(this.currentSubmitIndex - 2L, 5000000000L)) {
-         List<CheckpointExtension.QueueCheckpoints> checkpoints = this.device.checkpointExtension().retrieveCheckpoints(false);
-         throw new IllegalStateException("5s timeout reached when waiting for VK semaphore: " + VulkanUtils.formatCheckpoints(checkpoints));
+         LOGGER.warn("Timeout whilst waiting for submit completion; checking again!");
+         if (!this.awaitSubmitCompletion(this.currentSubmitIndex - 2L, 1000000000L)) {
+            List<CheckpointExtension.QueueCheckpoints> checkpoints = this.device.checkpointExtension().retrieveCheckpoints(false);
+            throw new IllegalStateException("6s timeout reached when waiting for VK semaphore: " + VulkanUtils.formatCheckpoints(checkpoints));
+         }
       }
 
       this.currentCommandPool().reset();

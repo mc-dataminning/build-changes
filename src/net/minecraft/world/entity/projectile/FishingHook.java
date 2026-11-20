@@ -94,7 +94,7 @@ public class FishingHook extends Projectile {
       double y1 = player.getEyeY();
       double z1 = player.getZ() - yCos * 0.3;
       this.snapTo(x1, y1, z1, yRot1, xRot1);
-      Vec3 newMovement = new Vec3(-ySin, Mth.clamp(-(xSin / xCos), -5.0F, 5.0F), -yCos);
+      Vec3 newMovement = new Vec3(-ySin, Math.clamp(-(xSin / xCos), -5.0F, 5.0F), -yCos);
       double dist = newMovement.length();
       newMovement = newMovement.multiply(
          0.6 / dist + this.random.triangle(0.5, 0.0103365),

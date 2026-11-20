@@ -109,8 +109,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.sounds.BlockSoundSet;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.border.WorldBorder;
 import net.minecraft.world.level.chunk.LevelChunk;
@@ -1170,18 +1170,21 @@ public class ClientLevel extends Level implements BlockAndTintGetter, CacheSlot.
    }
 
    private void playBreakingSound(final BlockPos pos, final BlockState blockState) {
-      SoundType soundType = blockState.getSoundType();
-      this.minecraft
-         .getSoundManager()
-         .play(
-            new SimpleSoundInstance(
-               soundType.getHitSound(),
-               SoundSource.BLOCKS,
-               (soundType.getVolume() + 1.0F) / 8.0F,
-               soundType.getPitch() * 0.5F,
-               SoundInstance.createUnseededRandom(),
-               pos
-            )
+      BlockSoundSet blockSoundSet = blockState.getSounds(this);
+      blockSoundSet.hitSound()
+         .ifPresent(
+            hitSound -> this.minecraft
+               .getSoundManager()
+               .play(
+                  new SimpleSoundInstance(
+                     (Holder<SoundEvent>)hitSound,
+                     SoundSource.BLOCKS,
+                     (blockSoundSet.volume() + 1.0F) / 8.0F,
+                     blockSoundSet.pitch() * 0.5F,
+                     SoundInstance.createUnseededRandom(),
+                     pos
+                  )
+               )
          );
    }
 

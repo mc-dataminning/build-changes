@@ -21,7 +21,6 @@ import net.minecraft.client.gui.layouts.SpacerElement;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
 import net.minecraft.util.Util;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
@@ -196,7 +195,7 @@ public class RealmsEditInviteCodeScreen extends AbstractRealmsCodeScreen {
 
       @Override
       protected void applyValue() {
-         int index = Mth.clamp((int)Math.round(this.value * (this.values.length - 1)), 0, this.values.length - 1);
+         int index = Math.clamp((int)Math.round(this.value * (this.values.length - 1)), 0, this.values.length - 1);
          InviteCodeExpiration selectedExpiration = this.values[index];
          this.value = this.sliderValue(index);
          if (selectedExpiration != RealmsEditInviteCodeScreen.this.expiration) {
@@ -209,7 +208,7 @@ public class RealmsEditInviteCodeScreen extends AbstractRealmsCodeScreen {
       public boolean keyPressed(final KeyEvent event) {
          if (this.canChangeValue && (event.isLeft() || event.isRight())) {
             int direction = event.isLeft() ? -1 : 1;
-            int index = Mth.clamp(RealmsEditInviteCodeScreen.this.expiration.ordinal() + direction, 0, this.values.length - 1);
+            int index = Math.clamp(RealmsEditInviteCodeScreen.this.expiration.ordinal() + direction, 0, this.values.length - 1);
             this.setValue(this.sliderValue(index));
             return true;
          } else {

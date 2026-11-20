@@ -14,7 +14,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.BlockUtil;
 import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.fox.Fox;
 import net.minecraft.world.item.ItemStack;
@@ -52,7 +51,7 @@ public record TeleportRandomlyConsumeEffect(float diameter, boolean directionalP
    public boolean apply(final Level level, final ItemStack stack, final LivingEntity user) {
       for (int attempt = 0; attempt < 16; attempt++) {
          double xx = user.getX() + (user.getRandom().nextDouble() - 0.5) * this.diameter;
-         double yy = Mth.clamp(
+         double yy = Math.clamp(
             user.getY() + (user.getRandom().nextDouble() - 0.5) * this.diameter, level.getMinY(), level.getMinY() + ((ServerLevel)level).getLogicalHeight() - 1
          );
          double zz = user.getZ() + (user.getRandom().nextDouble() - 0.5) * this.diameter;

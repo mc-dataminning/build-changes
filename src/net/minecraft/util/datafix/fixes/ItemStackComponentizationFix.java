@@ -18,7 +18,6 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import net.minecraft.util.Mth;
 import net.minecraft.util.datafix.ExtraDataFixUtils;
 import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
 import net.minecraft.util.datafix.schemas.NamespacedSchema;
@@ -362,7 +361,7 @@ public class ItemStackComponentizationFix extends DataFix {
    }
 
    private static Optional<Pair<String, Integer>> parseEnchantment(final Dynamic<?> entry) {
-      return entry.get("id").asString().apply2stable((id, level) -> Pair.of(id, Mth.clamp(level.intValue(), 0, 255)), entry.get("lvl").asNumber()).result();
+      return entry.get("id").asString().apply2stable((id, level) -> Pair.of(id, Math.clamp(level.intValue(), 0, 255)), entry.get("lvl").asNumber()).result();
    }
 
    private static void fixAdventureModeChecks(final ItemStackComponentizationFix.ItemStackData itemStack, final Dynamic<?> dynamic, final int hideFlags) {

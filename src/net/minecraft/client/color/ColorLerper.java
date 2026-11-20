@@ -45,9 +45,9 @@ public class ColorLerper {
          ? -1644826
          : ARGB.color(
             255,
-            Mth.clamp(Mth.floor(ARGB.red(src) * brightness), 0, 255),
-            Mth.clamp(Mth.floor(ARGB.green(src) * brightness), 0, 255),
-            Mth.clamp(Mth.floor(ARGB.blue(src) * brightness), 0, 255)
+            Math.clamp(Mth.floor(ARGB.red(src) * brightness), 0, 255),
+            Math.clamp(Mth.floor(ARGB.green(src) * brightness), 0, 255),
+            Math.clamp(Mth.floor(ARGB.blue(src) * brightness), 0, 255)
          );
    }
 

@@ -29,6 +29,7 @@ import net.minecraft.world.level.levelgen.feature.FillLayerFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.BuiltinStructureSets;
 import net.minecraft.world.level.levelgen.structure.StructureSet;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
 public class FlatLevelGeneratorSettings {
@@ -51,7 +52,7 @@ public class FlatLevelGeneratorSettings {
    private final Optional<HolderSet<StructureSet>> structureOverrides;
    private final List<FlatLayerInfo> layersInfo = Lists.newArrayList();
    private final Holder<Biome> biome;
-   private final List<BlockState> layers;
+   private final List<@Nullable BlockState> layers;
    private boolean voidGen;
    private boolean decoration;
    private boolean addLakes;
@@ -166,7 +167,7 @@ public class FlatLevelGeneratorSettings {
 
       for (int i = 0; i < layers.size(); i++) {
          BlockState layer = layers.get(i);
-         if (!Heightmap.Types.MOTION_BLOCKING.isOpaque().test(layer)) {
+         if (layer != null && !Heightmap.Types.MOTION_BLOCKING.isOpaque().test(layer)) {
             layers.set(i, null);
             newGenerationSettings.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, PlacementUtils.inlinePlaced(new FillLayerFeature(i, layer)));
          }
@@ -187,7 +188,7 @@ public class FlatLevelGeneratorSettings {
       return this.layersInfo;
    }
 
-   public List<BlockState> getLayers() {
+   public List<@Nullable BlockState> getLayers() {
       return this.layers;
    }
 

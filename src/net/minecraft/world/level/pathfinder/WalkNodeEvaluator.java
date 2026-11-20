@@ -14,12 +14,9 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.PathNavigationRegion;
-import net.minecraft.world.level.block.BaseRailBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.FenceGateBlock;
-import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
@@ -119,7 +116,7 @@ public class WalkNodeEvaluator extends NodeEvaluator {
       int jumpSize = 0;
       PathType blockPathTypeAbove = this.getCachedPathType(pos.x, pos.y + 1, pos.z);
       PathType blockPathTypeCurrent = this.getCachedPathType(pos.x, pos.y, pos.z);
-      if (this.mob.getPathfindingMalus(blockPathTypeAbove) >= 0.0F && blockPathTypeCurrent != PathType.STICKY_HONEY) {
+      if (this.mob.getPathfindingMalus(blockPathTypeAbove) >= 0.0F && blockPathTypeCurrent != PathType.STICKY) {
          jumpSize = Mth.floor(Math.max(1.0F, this.mob.maxUpStep()));
       }
 
@@ -247,7 +244,7 @@ public class WalkNodeEvaluator extends NodeEvaluator {
             && jumpSize > 0
             && (pathType != PathType.FENCE || this.canWalkOverFences())
             && pathType != PathType.UNPASSABLE_RAIL
-            && pathType != PathType.TRAPDOOR
+            && pathType != PathType.DROP_DOWN
             && pathType != PathType.POWDER_SNOW) {
             best = this.tryJumpOn(x, y, z, jumpSize, nodeHeight, travelDirection, blockPathTypeCurrent, reusablePos);
          } else if (!this.isAmphibious() && pathType == PathType.WATER && !this.canFloat()) {
@@ -468,10 +465,10 @@ public class WalkNodeEvaluator extends NodeEvaluator {
             case OPEN, WATER, LAVA, WALKABLE -> PathType.OPEN;
             case FIRE -> PathType.FIRE;
             case DAMAGING -> PathType.DAMAGING;
-            case STICKY_HONEY -> PathType.STICKY_HONEY;
+            case STICKY -> PathType.STICKY;
             case POWDER_SNOW -> PathType.ON_TOP_OF_POWDER_SNOW;
             case DAMAGE_CAUTIOUS -> PathType.DAMAGE_CAUTIOUS;
-            case TRAPDOOR -> PathType.ON_TOP_OF_TRAPDOOR;
+            case DROP_DOWN -> PathType.ON_TOP_OF_DROP_DOWN;
             default -> checkNeighbourBlocks(context, x, y, z, PathType.WALKABLE);
          };
       } else {
@@ -511,69 +508,38 @@ public class WalkNodeEvaluator extends NodeEvaluator {
    protected static PathType getPathTypeFromState(final BlockGetter level, final BlockPos pos) {
       BlockState blockState = level.getBlockState(pos);
       Block block = blockState.getBlock();
-      if (blockState.isAir()) {
-         return PathType.OPEN;
-      }
 
-      if (blockState.is(BlockTags.TRAPDOORS) || blockState.is(Blocks.LILY_PAD) || blockState.is(Blocks.BIG_DRIPLEAF)) {
-         return PathType.TRAPDOOR;
-      }
-
-      if (blockState.is(Blocks.POWDER_SNOW)) {
-         return PathType.POWDER_SNOW;
-      }
-
-      if (blockState.is(Blocks.CACTUS) || blockState.is(Blocks.SWEET_BERRY_BUSH)) {
-         return PathType.DAMAGING;
-      }
-
-      if (blockState.is(Blocks.HONEY_BLOCK)) {
-         return PathType.STICKY_HONEY;
-      }
-
-      if (blockState.is(Blocks.COCOA)) {
-         return PathType.COCOA;
-      }
-
-      if (!blockState.is(Blocks.WITHER_ROSE) && !blockState.is(BlockTags.SPELEOTHEMS)) {
-         FluidState fluidState = blockState.getFluidState();
-         if (fluidState.is(FluidTags.LAVA)) {
-            return PathType.LAVA;
+      for (PathType pathType : PathType.values()) {
+         if (pathType.isForState(blockState)) {
+            return pathType;
          }
+      }
 
-         if (isBurningBlock(blockState)) {
-            return PathType.FIRE;
-         }
+      FluidState fluidState = blockState.getFluidState();
+      if (fluidState.is(FluidTags.LAVA)) {
+         return PathType.LAVA;
+      }
 
-         if (block instanceof DoorBlock door) {
-            if (blockState.getValue(DoorBlock.OPEN)) {
-               return PathType.DOOR_OPEN;
-            } else {
-               return door.type().canOpenByHand() ? PathType.DOOR_WOOD_CLOSED : PathType.DOOR_IRON_CLOSED;
-            }
+      if (isBurningBlock(blockState)) {
+         return PathType.FIRE;
+      }
+
+      if (block instanceof DoorBlock door) {
+         if (blockState.getValue(DoorBlock.OPEN)) {
+            return PathType.DOOR_OPEN;
          } else {
-            if (block instanceof BaseRailBlock) {
-               return PathType.RAIL;
-            }
-
-            if (block instanceof LeavesBlock) {
-               return PathType.LEAVES;
-            }
-
-            if (!blockState.is(BlockTags.FENCES)
-               && !blockState.is(BlockTags.WALLS)
-               && (!(block instanceof FenceGateBlock) || blockState.getValue(FenceGateBlock.OPEN))) {
-               if (!blockState.isPathfindable(PathComputationType.LAND)) {
-                  return PathType.BLOCKED;
-               } else {
-                  return fluidState.is(FluidTags.WATER) ? PathType.WATER : PathType.OPEN;
-               }
-            } else {
-               return PathType.FENCE;
-            }
+            return door.type().canOpenByHand() ? PathType.DOOR_WOOD_CLOSED : PathType.DOOR_IRON_CLOSED;
+         }
+      } else if (!blockState.is(BlockTags.FENCES)
+         && !blockState.is(BlockTags.WALLS)
+         && (!(block instanceof FenceGateBlock) || blockState.getValue(FenceGateBlock.OPEN))) {
+         if (!blockState.isPathfindable(PathComputationType.LAND)) {
+            return PathType.BLOCKED;
+         } else {
+            return fluidState.is(FluidTags.WATER) ? PathType.WATER : PathType.OPEN;
          }
       } else {
-         return PathType.DAMAGE_CAUTIOUS;
+         return PathType.FENCE;
       }
    }
 }

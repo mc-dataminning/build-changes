@@ -321,7 +321,7 @@ public final class NaturalSpawner {
    ) {
       if (category == MobCategory.MONSTER && level.getBlockState(pos.below()).is(Blocks.NETHER_BRICKS)) {
          Structure fortress = structureManager.registryAccess().lookupOrThrow(Registries.STRUCTURE).getValue(BuiltinStructures.FORTRESS);
-         return fortress == null ? false : structureManager.getStructureAt(pos, fortress).isValid();
+         return fortress == null ? false : structureManager.getStructureAt(pos, fortress) != null;
       } else {
          return false;
       }
@@ -378,8 +378,8 @@ public final class NaturalSpawner {
                         BlockPos pos = getTopNonCollidingPos(level, spawnerData.type(), x, z);
                         if (spawnerData.type().canSummon() && SpawnPlacements.isSpawnPositionOk(spawnerData.type(), level, pos)) {
                            float width = spawnerData.type().getWidth();
-                           double fx = Mth.clamp(x, (double)xo + width, xo + 16.0 - width);
-                           double fz = Mth.clamp(z, (double)zo + width, zo + 16.0 - width);
+                           double fx = Math.clamp(x, (double)xo + width, xo + 16.0 - width);
+                           double fz = Math.clamp(z, (double)zo + width, zo + 16.0 - width);
                            if (!level.noCollision(spawnerData.type().getSpawnAABB(fx, pos.getY(), fz))
                               || !SpawnPlacements.checkSpawnRules(
                                  spawnerData.type(), level, EntitySpawnReason.CHUNK_GENERATION, BlockPos.containing(fx, pos.getY(), fz), level.getRandom()

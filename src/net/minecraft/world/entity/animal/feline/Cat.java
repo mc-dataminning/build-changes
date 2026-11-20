@@ -14,6 +14,8 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
@@ -413,6 +415,7 @@ public class Cat extends TamableAnimal {
                DyeColor color = itemStack.get(DataComponents.DYE);
                if (color != null && color != this.getCollarColor()) {
                   if (!this.level().isClientSide()) {
+                     this.level().playSound(null, this, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
                      this.setCollarColor(color);
                      itemStack.consume(1, player);
                      this.setPersistenceRequired();

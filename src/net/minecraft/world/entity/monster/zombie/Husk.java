@@ -90,6 +90,11 @@ public class Husk extends Zombie {
    }
 
    @Override
+   protected EntityType<? extends Zombie> convertsToWhenFreezing() {
+      return EntityTypes.ZOMBIE;
+   }
+
+   @Override
    public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {

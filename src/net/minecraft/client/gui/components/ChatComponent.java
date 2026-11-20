@@ -494,7 +494,7 @@ public class ChatComponent {
             double t = tickDelta / 200.0;
             t = 1.0 - t;
             t *= 10.0;
-            t = Mth.clamp(t, 0.0, 1.0);
+            t = Math.clamp(t, 0.0, 1.0);
             t *= t;
             return (float)t;
          };

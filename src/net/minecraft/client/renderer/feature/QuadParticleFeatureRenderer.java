@@ -18,7 +18,7 @@ import net.minecraft.client.renderer.StagedVertexBuffer;
 import net.minecraft.client.renderer.feature.submit.SubmitNode;
 import net.minecraft.client.renderer.oit.OitStage;
 import net.minecraft.client.renderer.state.level.QuadParticleRenderState;
-import net.minecraft.client.renderer.texture.AbstractTexture;
+import net.minecraft.client.renderer.texture.TextureHandle;
 import org.jspecify.annotations.Nullable;
 
 public class QuadParticleFeatureRenderer implements FeatureRenderer<QuadParticleFeatureRenderer.Submit> {
@@ -31,7 +31,7 @@ public class QuadParticleFeatureRenderer implements FeatureRenderer<QuadParticle
       if (!submits.isEmpty()) {
          StagedVertexBuffer stagedVertexBuffer = context.stagedVertexBuffer();
          Map<SingleQuadParticle.Layer, StagedVertexBuffer.Draw> drawByLayer = new IdentityHashMap<>();
-         Map<SingleQuadParticle.Layer, AbstractTexture> textures = new IdentityHashMap<>();
+         Map<SingleQuadParticle.Layer, TextureHandle> textures = new IdentityHashMap<>();
 
          for (QuadParticleFeatureRenderer.Submit submit : submits) {
             QuadParticleRenderState particles = submit.particles();
@@ -86,8 +86,8 @@ public class QuadParticleFeatureRenderer implements FeatureRenderer<QuadParticle
             renderPass.setPipeline(RenderSystem.getCompiledPipeline(stage != null ? getOitPipeline(stage, entry.getKey()) : entry.getKey().pipeline()));
             renderPass.setVertexBuffer(0, executeInfo.vertexBuffer().slice());
             renderPass.setIndexBuffer(executeInfo.indexBuffer(), executeInfo.indexType());
-            AbstractTexture texture = group.textures.get(entry.getKey());
-            renderPass.setUniform("Sampler0", texture.getTextureView(), texture.getSampler());
+            TextureHandle texture = group.textures.get(entry.getKey());
+            renderPass.setUniform("Sampler0", texture.textureView(), texture.sampler());
             renderPass.drawIndexed(executeInfo.indexCount(), 1, executeInfo.firstIndex(), executeInfo.baseVertex(), 0);
          }
       }
@@ -108,7 +108,7 @@ public class QuadParticleFeatureRenderer implements FeatureRenderer<QuadParticle
    }
 
    private record PreparedGroup(
-      Map<SingleQuadParticle.Layer, StagedVertexBuffer.Draw> layers, Map<SingleQuadParticle.Layer, AbstractTexture> textures, boolean translucent
+      Map<SingleQuadParticle.Layer, StagedVertexBuffer.Draw> layers, Map<SingleQuadParticle.Layer, TextureHandle> textures, boolean translucent
    ) {
    }
 

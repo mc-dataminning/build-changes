@@ -107,7 +107,7 @@ public class FirstPersonHandsAndItemsRenderer {
 
    private float calculateMapTilt(final float xRot) {
       float tilt = 1.0F - xRot / 45.0F + 0.1F;
-      tilt = Mth.clamp(tilt, 0.0F, 1.0F);
+      tilt = Math.clamp(tilt, 0.0F, 1.0F);
       return -Mth.cos(tilt * (float) Math.PI) * 0.5F + 0.5F;
    }
 

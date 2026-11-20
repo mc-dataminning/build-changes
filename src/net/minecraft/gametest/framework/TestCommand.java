@@ -457,7 +457,7 @@ public class TestCommand {
                      ((LiteralArgumentBuilder)Commands.literal("clearall").executes(c -> clear(TestFinder.builder().radius(c, 250))))
                         .then(
                            Commands.argument("radius", IntegerArgumentType.integer())
-                              .executes(c -> clear(TestFinder.builder().radius(c, Mth.clamp(IntegerArgumentType.getInteger(c, "radius"), 0, 1024))))
+                              .executes(c -> clear(TestFinder.builder().radius(c, Math.clamp(IntegerArgumentType.getInteger(c, "radius"), 0, 1024))))
                         )
                   ))
                .then(Commands.literal("stop").executes(c -> stopTests())))

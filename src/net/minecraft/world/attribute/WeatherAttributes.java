@@ -40,18 +40,18 @@ public class WeatherAttributes {
       .build();
    private static final Set<EnvironmentAttribute<?>> WEATHER_ATTRIBUTES = Sets.union(RAIN.keySet(), THUNDER.keySet());
 
-   public static void addBuiltinLayers(final EnvironmentAttributeSystem.Builder system, final WeatherAttributes.WeatherAccess weatherAccess) {
+   public static void addBuiltinLayers(final EnvironmentAttributeSystem.Builder builder, final WeatherAttributes.WeatherAccess weatherAccess) {
       for (EnvironmentAttribute<?> attribute : WEATHER_ATTRIBUTES) {
-         addLayer(system, weatherAccess, attribute);
+         addLayer(builder, weatherAccess, attribute);
       }
    }
 
    private static <Value> void addLayer(
-      final EnvironmentAttributeSystem.Builder system, final WeatherAttributes.WeatherAccess weatherAccess, final EnvironmentAttribute<Value> attribute
+      final EnvironmentAttributeSystem.Builder builder, final WeatherAttributes.WeatherAccess weatherAccess, final EnvironmentAttribute<Value> attribute
    ) {
       EnvironmentAttributeMap.Entry<Value, ?> rainEntry = RAIN.get(attribute);
       EnvironmentAttributeMap.Entry<Value, ?> thunderEntry = THUNDER.get(attribute);
-      system.addTimeBasedLayer(attribute, (result, cacheTickId) -> {
+      builder.addTimeBasedLayer(attribute, (result, cacheTickId) -> {
          float thunderLevel = weatherAccess.thunderLevel();
          float rainLevel = weatherAccess.rainLevel() - thunderLevel;
          if (rainEntry != null && rainLevel > 0.0F) {

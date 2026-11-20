@@ -15,7 +15,7 @@ import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.ai.memory.WalkTarget;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
+import net.minecraft.world.entity.ai.village.poi.PoiTypeIds;
 import net.minecraft.world.level.pathfinder.Path;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.mutable.MutableLong;
@@ -39,7 +39,7 @@ public class SetClosestHomeAsWalkTarget {
                   }
 
                   PoiManager poiManager = level.getPoiManager();
-                  Optional<BlockPos> closest = poiManager.findClosest(p -> p.is(PoiTypes.HOME), body.blockPosition(), 48, PoiManager.Occupancy.ANY);
+                  Optional<BlockPos> closest = poiManager.findClosest(p -> p.is(PoiTypeIds.HOME), body.blockPosition(), 48, PoiManager.Occupancy.ANY);
                   if (!closest.isEmpty() && !(closest.get().distSqr(body.blockPosition()) <= 4.0)) {
                      MutableInt triedCount = new MutableInt(0);
                      lastUpdate.setValue(level.getGameTime() + level.getRandom().nextInt(20));
@@ -57,7 +57,7 @@ public class SetClosestHomeAsWalkTarget {
                         return true;
                      };
                      Set<Pair<Holder<PoiType>, BlockPos>> pois = poiManager.findAllWithType(
-                           p -> p.is(PoiTypes.HOME), cacheTest, body.blockPosition(), 48, PoiManager.Occupancy.ANY
+                           p -> p.is(PoiTypeIds.HOME), cacheTest, body.blockPosition(), 48, PoiManager.Occupancy.ANY
                         )
                         .collect(Collectors.toSet());
                      Path path = AcquirePoi.findPathToPois(body, pois);

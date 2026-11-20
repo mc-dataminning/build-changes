@@ -9,7 +9,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
 import net.minecraft.world.InteractionHand;
@@ -200,7 +199,7 @@ public class ComposterBlock extends Block implements WorldlyContainerHolder {
          .create(Optional.empty());
       int layersToAdd = compostable.layers().get(lootContext, 0);
       if (layersToAdd > 0) {
-         int newLevel = Mth.clamp(fillLevel + layersToAdd, 0, 7);
+         int newLevel = Math.clamp(fillLevel + layersToAdd, 0, 7);
          BlockState newState = state.setValue(LEVEL, newLevel);
          level.setBlockAndUpdate(pos, newState);
          level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(sourceEntity, newState));

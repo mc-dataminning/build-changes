@@ -218,6 +218,11 @@ public class Drowned extends Zombie implements RangedAttackMob {
    }
 
    @Override
+   protected boolean convertsWhenFreezing() {
+      return false;
+   }
+
+   @Override
    public boolean checkSpawnObstruction(final LevelReader level) {
       return level.isUnobstructed(this);
    }
@@ -289,7 +294,14 @@ public class Drowned extends Zombie implements RangedAttackMob {
       double distanceToTarget = Math.sqrt(xd * xd + zd * zd);
       if (this.level() instanceof ServerLevel serverLevel) {
          Projectile.spawnProjectileUsingShoot(
-            trident, serverLevel, tridentItemStack, xd, yd + distanceToTarget * 0.2F, zd, 1.6F, this.rangedAttackUncertainty(serverLevel)
+            trident,
+            serverLevel,
+            tridentItemStack,
+            xd,
+            yd + distanceToTarget * trident.getTrajectoryCorrectionFactor(),
+            zd,
+            1.6F,
+            this.rangedAttackUncertainty(serverLevel)
          );
       }
 

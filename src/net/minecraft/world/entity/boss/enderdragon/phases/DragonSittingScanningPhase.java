@@ -37,7 +37,7 @@ public class DragonSittingScanningPhase extends AbstractDragonSittingPhase {
             if (angle < 0.0F || angle > 10.0F) {
                double xAttackDist = attackTarget.getX() - this.dragon.head.getX();
                double zAttackDist = attackTarget.getZ() - this.dragon.head.getZ();
-               double yRotDelta = Mth.clamp(
+               double yRotDelta = Math.clamp(
                   Mth.wrapDegrees(180.0 - Mth.atan2(xAttackDist, zAttackDist) * 180.0F / (float)Math.PI - this.dragon.getYRot()), -100.0, 100.0
                );
                this.dragon.yRotA *= 0.8F;

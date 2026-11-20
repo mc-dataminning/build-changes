@@ -30,6 +30,7 @@ public class OverworldMaterialRules {
    private static final ResourceKey<MaterialRule> SULFUR_CAVE_BANDS = createKey("overworld/sulfur_cave_bands");
    private static final ResourceKey<MaterialRule> COPPER_ORE_VEIN = createKey("overworld/copper_ore_vein");
    private static final ResourceKey<MaterialRule> IRON_ORE_VEIN = createKey("overworld/iron_ore_vein");
+   private static final ResourceKey<MaterialRule> ICE_CAVE_BANDS = createKey("overworld/ice_cave_bands");
    private static final ResourceKey<MaterialRule> BIOME_SURFACE = createKey("overworld/biome_surface");
    private static final ResourceKey<MaterialRule> DAPPLED_FOREST_SURFACE = createKey("overworld/biome_surface/dappled_forest");
    private static final ResourceKey<MaterialRule> DEFAULT_BIOME_SURFACE = createKey("overworld/biome_surface/default");
@@ -45,6 +46,7 @@ public class OverworldMaterialRules {
    private static final ResourceKey<MaterialRule> STONY_PEAKS_SURFACE = createKey("overworld/biome_surface/stony_peaks");
    private static final ResourceKey<MaterialRule> STONY_SHORE_SURFACE = createKey("overworld/biome_surface/stony_shore");
    private static final ResourceKey<MaterialRule> SULFUR_CAVES_SURFACE = createKey("overworld/biome_surface/sulfur_caves");
+   private static final ResourceKey<MaterialRule> ICE_CAVES_SURFACE = createKey("overworld/biome_surface/ice_caves");
    private static final ResourceKey<MaterialRule> WINDSWEPT_GRAVELLY_HILLS_SURFACE = createKey("overworld/biome_surface/windswept_gravelly_hills");
    private static final ResourceKey<MaterialRule> WINDSWEPT_HILLS_SURFACE = createKey("overworld/biome_surface/windswept_hills");
    private static final ResourceKey<MaterialRule> WINDSWEPT_SAVANNA_SURFACE = createKey("overworld/biome_surface/windswept_savanna");
@@ -106,22 +108,36 @@ public class OverworldMaterialRules {
             MaterialRules.ifTrue(MaterialRules.noiseCondition3d(Noises.SULFUR_CAVE_GRADIENT, 0.4F), CINNABAR)
          )
       );
+      MaterialRule iceCaveBands = MaterialRules.registerAndWrap(
+         context,
+         ICE_CAVE_BANDS,
+         MaterialRules.sequence(
+            MaterialRules.ifTrue(MaterialRules.noiseCondition3d(Noises.ICE_CAVE_GRADIENT, -0.6F, -0.5), CALCITE),
+            MaterialRules.ifTrue(MaterialRules.noiseCondition3d(Noises.ICE_CAVE_GRADIENT, -0.5, 0.2F), PACKED_ICE),
+            MaterialRules.ifTrue(MaterialRules.noiseCondition3d(Noises.ICE_CAVE_GRADIENT, 0.2F, 0.3F), CALCITE),
+            MaterialRules.ifTrue(MaterialRules.noiseCondition3d(Noises.ICE_CAVE_GRADIENT, 0.3F, 0.5), PACKED_ICE),
+            MaterialRules.ifTrue(MaterialRules.noiseCondition3d(Noises.ICE_CAVE_GRADIENT, 0.5, 0.7F), CALCITE)
+         )
+      );
       MaterialRule underground = MaterialRules.registerAndWrap(
          context,
          UNDERGROUND,
          MaterialRules.sequence(
             MaterialRules.ifTrue(MaterialRules.isBiome(biomes, Biomes.SULFUR_CAVES), sulfurCaveBands),
+            MaterialRules.ifTrue(MaterialRules.isBiome(biomes, Biomes.ICE_CAVES), iceCaveBands),
             MaterialRules.ifTrue(MaterialRules.verticalGradient("deepslate", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8)), DEEPSLATE)
          )
       );
       List<MaterialRule> oreVeins = registerOreVeins(context);
-      MaterialRule surface = registerSurface(context, sulfurCaveBands);
+      MaterialRule surface = registerSurface(context, sulfurCaveBands, iceCaveBands);
       context.register(OVERWORLD, createOverworldLike(rules, true, false, true, surface, underground, oreVeins));
       context.register(OVERWORLD_CAVES, createOverworldLike(rules, false, true, true, surface, underground, oreVeins));
       context.register(OVERWORLD_FLOATING_ISLANDS, createOverworldLike(rules, false, false, false, surface, underground, oreVeins));
    }
 
-   private static MaterialRule registerSurface(final BootstrapContext<MaterialRule> context, final MaterialRule sulfurCaveBands) {
+   private static MaterialRule registerSurface(
+      final BootstrapContext<MaterialRule> context, final MaterialRule sulfurCaveBands, final MaterialRule iceCaveBands
+   ) {
       HolderGetter<MaterialCondition> conditions = context.lookup(Registries.MATERIAL_CONDITION);
       HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
       MaterialCondition woodedBadlandsTop = MaterialRules.yBlockCheck(VerticalAnchor.absolute(97), 2);
@@ -177,6 +193,10 @@ public class OverworldMaterialRules {
          MaterialRules.ifTrue(
             MaterialRules.isBiome(biomes, Biomes.SULFUR_CAVES),
             MaterialRules.registerAndWrap(context, SULFUR_CAVES_SURFACE, MaterialRules.sequence(sulfurCaveBands, STONE))
+         ),
+         MaterialRules.ifTrue(
+            MaterialRules.isBiome(biomes, Biomes.ICE_CAVES),
+            MaterialRules.registerAndWrap(context, ICE_CAVES_SURFACE, MaterialRules.sequence(iceCaveBands, STONE))
          ),
          MaterialRules.ifTrue(MaterialRules.isBiome(biomes, Biomes.MANGROVE_SWAMP), MaterialRules.registerAndWrap(context, MANGROVE_SWAMP_SURFACE, MUD))
       );

@@ -52,13 +52,9 @@ public class OceanMonumentStructure extends Structure {
    }
 
    public static PiecesContainer regeneratePiecesAfterLoad(final ChunkPos chunkPos, final long seed, final PiecesContainer savedPieces) {
-      if (savedPieces.isEmpty()) {
-         return savedPieces;
-      }
-
       WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(RandomSupport.generateUniqueSeed()));
       random.setLargeFeatureSeed(seed, chunkPos.x(), chunkPos.z());
-      StructurePiece oldTopPiece = savedPieces.pieces().get(0);
+      StructurePiece oldTopPiece = savedPieces.pieces().getFirst();
       BoundingBox oldBoundingBox = oldTopPiece.getBoundingBox();
       int west = oldBoundingBox.minX();
       int north = oldBoundingBox.minZ();
@@ -67,7 +63,7 @@ public class OceanMonumentStructure extends Structure {
       StructurePiece topPiece = new OceanMonumentPieces.MonumentBuilding(random, west, north, orientation);
       StructurePiecesBuilder result = new StructurePiecesBuilder();
       result.addPiece(topPiece);
-      return result.build();
+      return result.buildOrThrow();
    }
 
    @Override

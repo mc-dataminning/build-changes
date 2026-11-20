@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Map.Entry;
-import net.minecraft.client.renderer.texture.AbstractTexture;
+import net.minecraft.client.renderer.texture.TextureHandle;
 import net.minecraft.resources.Identifier;
 import org.lwjgl.system.MemoryStack;
 
@@ -203,14 +203,14 @@ public class PostPass implements AutoCloseable {
       }
    }
 
-   public record TextureInput(String samplerName, AbstractTexture texture, int width, int height, boolean bilinear) implements PostPass.Input {
+   public record TextureInput(String samplerName, TextureHandle texture, int width, int height, boolean bilinear) implements PostPass.Input {
       @Override
       public void addToPass(final FramePass pass, final Map<Identifier, ResourceHandle<RenderTarget>> targets) {
       }
 
       @Override
       public GpuTextureView texture(final Map<Identifier, ResourceHandle<RenderTarget>> targets) {
-         return this.texture.getTextureView();
+         return this.texture.textureView();
       }
    }
 }

@@ -192,7 +192,7 @@ public class Goat extends Animal {
    public void setYHeadRot(final float yHeadRot) {
       int maxHeadYRot = this.getMaxHeadYRot();
       float deltaFromBody = Mth.degreesDifference(this.yBodyRot, yHeadRot);
-      float deltaFromBodyClamped = Mth.clamp(deltaFromBody, -maxHeadYRot, maxHeadYRot);
+      float deltaFromBodyClamped = Math.clamp(deltaFromBody, -maxHeadYRot, maxHeadYRot);
       super.setYHeadRot(this.yBodyRot + deltaFromBodyClamped);
    }
 
@@ -289,7 +289,7 @@ public class Goat extends Animal {
          this.lowerHeadTick -= 2;
       }
 
-      this.lowerHeadTick = Mth.clamp(this.lowerHeadTick, 0, 20);
+      this.lowerHeadTick = Math.clamp(this.lowerHeadTick, 0, 20);
       super.aiStep();
    }
 

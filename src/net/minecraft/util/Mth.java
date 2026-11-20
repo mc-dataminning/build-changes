@@ -99,22 +99,6 @@ public class Mth {
       return (long)Math.ceil(v);
    }
 
-   public static int clamp(final int value, final int min, final int max) {
-      return Math.min(Math.max(value, min), max);
-   }
-
-   public static long clamp(final long value, final long min, final long max) {
-      return Math.min(Math.max(value, min), max);
-   }
-
-   public static float clamp(final float value, final float min, final float max) {
-      return value < min ? min : Math.min(value, max);
-   }
-
-   public static double clamp(final double value, final double min, final double max) {
-      return value < min ? min : Math.min(value, max);
-   }
-
    public static double clampedLerp(final double factor, final double min, final double max) {
       if (factor < 0.0) {
          return min;
@@ -270,13 +254,13 @@ public class Mth {
 
    public static float rotateIfNecessary(final float baseAngle, final float targetAngle, final float maxAngleDiff) {
       float deltaAngle = degreesDifference(baseAngle, targetAngle);
-      float deltaAngleClamped = clamp(deltaAngle, -maxAngleDiff, maxAngleDiff);
+      float deltaAngleClamped = Math.clamp(deltaAngle, -maxAngleDiff, maxAngleDiff);
       return targetAngle - deltaAngleClamped;
    }
 
    public static float approach(final float current, final float target, float increment) {
       increment = abs(increment);
-      return current < target ? clamp(current + increment, current, target) : clamp(current - increment, target, current);
+      return current < target ? Math.clamp(current + increment, current, target) : Math.clamp(current - increment, target, current);
    }
 
    public static float approachDegrees(final float current, final float target, final float increment) {
@@ -518,7 +502,7 @@ public class Mth {
             throw new RuntimeException("Something went wrong when converting from HSV to RGB. Input was " + hue + ", " + saturation + ", " + value);
       }
 
-      return ARGB.color(alpha, clamp((int)(red * 255.0F), 0, 255), clamp((int)(green * 255.0F), 0, 255), clamp((int)(blue * 255.0F), 0, 255));
+      return ARGB.color(alpha, Math.clamp((int)(red * 255.0F), 0, 255), Math.clamp((int)(green * 255.0F), 0, 255), Math.clamp((int)(blue * 255.0F), 0, 255));
    }
 
    public static int murmurHash3Mixer(int hash) {
@@ -776,7 +760,7 @@ public class Mth {
          throw new IllegalArgumentException(String.format(Locale.ROOT, "step size expected to be >= 1, was %d", stepSize));
       }
 
-      int clampedOrigin = clamp(origin, lowerBound, upperBound);
+      int clampedOrigin = Math.clamp(origin, lowerBound, upperBound);
       return IntStream.iterate(clampedOrigin, cursor -> {
          int currentDistance = Math.abs(clampedOrigin - cursor);
          return clampedOrigin - currentDistance >= lowerBound || clampedOrigin + currentDistance <= upperBound;

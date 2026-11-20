@@ -229,7 +229,7 @@ public class Util {
    }
 
    public static int maxAllowedExecutorThreads() {
-      return Mth.clamp(Runtime.getRuntime().availableProcessors() - 1, 1, getMaxThreads());
+      return Math.clamp(Runtime.getRuntime().availableProcessors() - 1, 1, getMaxThreads());
    }
 
    private static int getMaxThreads() {

@@ -4,15 +4,16 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
 import com.mojang.renderpearl.api.GpuFormat;
 import com.mojang.renderpearl.api.device.GpuDevice;
 import com.mojang.renderpearl.api.textures.FilterMode;
+import com.mojang.renderpearl.api.textures.GpuSampler;
+import com.mojang.renderpearl.api.textures.GpuTexture;
+import com.mojang.renderpearl.api.textures.GpuTextureView;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,13 +23,11 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.function.BiFunction;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.renderer.texture.Dumpable;
 import net.minecraft.client.renderer.texture.DynamicAtlasTree;
 import net.minecraft.client.renderer.texture.DynamicAtlasTreeSlot;
-import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.client.renderer.texture.TextureResources;
 import net.minecraft.client.renderer.texture.UvMapping;
 import net.minecraft.client.resources.metadata.texture.PaletteMetadataSection;
 import net.minecraft.resources.Identifier;
@@ -121,7 +120,7 @@ public class PalettedTextureManager implements PreparableReloadListener, AutoClo
 
       try (NativeImage newTexture = baseTexture.image().mappedCopy(paletteMapping)) {
          PalettedTextureManager.Slot slot = this.allocateSlot(newTexture.getWidth(), newTexture.getHeight());
-         newTexture.writeToGpuTexture(RenderSystem.getDevice().createCommandEncoder(), slot.texture.getTexture(), 0, 0, slot.x, slot.y);
+         newTexture.writeToGpuTexture(RenderSystem.getDevice().createCommandEncoder(), slot.texture.texture(), 0, 0, slot.x, slot.y);
          return slot;
       }
    }
@@ -131,28 +130,28 @@ public class PalettedTextureManager implements PreparableReloadListener, AutoClo
          for (PalettedTextureManager.AtlasTexture atlas : this.atlasTextures) {
             DynamicAtlasTreeSlot atlasSlot = atlas.tryAllocateSlot(width, height);
             if (atlasSlot != null) {
-               return new PalettedTextureManager.Slot(atlas, atlas.location, atlasSlot.x(), atlasSlot.y(), atlasSlot.width(), atlasSlot.height());
+               return new PalettedTextureManager.Slot(atlas.texture, atlas.location, atlasSlot.x(), atlasSlot.y(), atlasSlot.width(), atlasSlot.height());
             }
          }
 
          PalettedTextureManager.AtlasTexture atlas = new PalettedTextureManager.AtlasTexture(
             Identifier.withDefaultNamespace("paletted/atlas_" + this.atlasTextures.size())
          );
-         this.textureManager.register(atlas.location, atlas);
+         this.textureManager.register(atlas.location, atlas.texture);
          this.atlasTextures.add(atlas);
          DynamicAtlasTreeSlot atlasSlot = atlas.tryAllocateSlot(width, height);
          if (atlasSlot == null) {
             throw new IllegalStateException("Could not allocate slot in fresh atlas for sprite with size " + width + "x" + height);
          } else {
-            return new PalettedTextureManager.Slot(atlas, atlas.location, atlasSlot.x(), atlasSlot.y(), atlasSlot.width(), atlasSlot.height());
+            return new PalettedTextureManager.Slot(atlas.texture, atlas.location, atlasSlot.x(), atlasSlot.y(), atlasSlot.width(), atlasSlot.height());
          }
       } else {
          PalettedTextureManager.OverflowTexture texture = new PalettedTextureManager.OverflowTexture(
             Identifier.withDefaultNamespace("paletted/overflow_" + this.overflowTextures.size()), width, height
          );
-         this.textureManager.register(texture.location, texture);
+         this.textureManager.register(texture.location, texture.texture);
          this.overflowTextures.add(texture);
-         return new PalettedTextureManager.Slot(texture, texture.location, 0, 0, width, height);
+         return new PalettedTextureManager.Slot(texture.texture, texture.location, 0, 0, width, height);
       }
    }
 
@@ -187,29 +186,23 @@ public class PalettedTextureManager implements PreparableReloadListener, AutoClo
       }, reloadExecutor);
    }
 
-   private static class AtlasTexture extends AbstractTexture implements Dumpable {
+   private static class AtlasTexture {
       private static final int SIZE = 512;
       private final Identifier location;
       private final DynamicAtlasTree tree = new DynamicAtlasTree(0, 0, 512, 512);
+      private final TextureResources texture;
 
       private AtlasTexture(final Identifier location) {
          GpuDevice device = RenderSystem.getDevice();
-         this.texture = device.createTexture(() -> "Paletted Atlas", 7, GpuFormat.RGBA8_UNORM, 512, 512, 1, 1);
-         this.textureView = device.createTextureView(this.texture);
+         GpuTexture texture = device.createTexture(() -> "Paletted Atlas", 7, GpuFormat.RGBA8_UNORM, 512, 512, 1, 1);
+         GpuTextureView textureView = device.createTextureView(texture);
+         GpuSampler sampler = RenderSystem.getSamplerCache().getRepeat(FilterMode.NEAREST);
+         this.texture = new TextureResources(texture, textureView, sampler, argb -> ARGB.alpha(argb) == 0 ? -16777216 : argb);
          this.location = location;
-         this.sampler = RenderSystem.getSamplerCache().getRepeat(FilterMode.NEAREST);
       }
 
       public @Nullable DynamicAtlasTreeSlot tryAllocateSlot(final int width, final int height) {
          return this.tree.insert(width, height, 0);
-      }
-
-      @Override
-      public void dumpContents(final Identifier selfId, final Path dir) {
-         if (this.texture != null) {
-            String outputId = selfId.toDebugFileName();
-            TextureUtil.writeAsPNG(dir, outputId, this.texture, 0, argb -> ARGB.alpha(argb) == 0 ? -16777216 : argb);
-         }
       }
    }
 
@@ -224,24 +217,29 @@ public class PalettedTextureManager implements PreparableReloadListener, AutoClo
       Identifier textureLocation();
    }
 
-   private static class OverflowTexture extends DynamicTexture {
+   private static class OverflowTexture {
       private final Identifier location;
+      private final TextureResources texture;
 
       public OverflowTexture(final Identifier location, final int width, final int height) {
-         super(location::toString, width, height, false);
+         GpuDevice device = RenderSystem.getDevice();
+         GpuTexture texture = device.createTexture(location::toString, 5, GpuFormat.RGBA8_UNORM, width, height, 1, 1);
+         GpuSampler sampler = RenderSystem.getSamplerCache().getRepeat(FilterMode.NEAREST);
+         GpuTextureView textureView = device.createTextureView(texture);
+         this.texture = new TextureResources(texture, textureView, sampler);
          this.location = location;
       }
    }
 
-   private record Slot(AbstractTexture texture, Identifier textureLocation, int x, int y, int width, int height) implements PalettedTextureManager.Handle {
+   private record Slot(TextureResources texture, Identifier textureLocation, int x, int y, int width, int height) implements PalettedTextureManager.Handle {
       @Override
       public float getU(final float offset) {
-         return (this.x + offset * this.width) / this.texture.getTexture().getWidth(0);
+         return (this.x + offset * this.width) / this.texture.texture().getWidth(0);
       }
 
       @Override
       public float getV(final float offset) {
-         return (this.y + offset * this.height) / this.texture.getTexture().getHeight(0);
+         return (this.y + offset * this.height) / this.texture.texture().getHeight(0);
       }
    }
 

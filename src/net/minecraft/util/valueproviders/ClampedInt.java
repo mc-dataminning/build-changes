@@ -4,7 +4,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 
 public record ClampedInt(IntProvider source, int minInclusive, int maxInclusive) implements IntProvider {
@@ -28,7 +27,7 @@ public record ClampedInt(IntProvider source, int minInclusive, int maxInclusive)
 
    @Override
    public int sample(final RandomSource random) {
-      return Mth.clamp(this.source.sample(random), this.minInclusive, this.maxInclusive);
+      return Math.clamp(this.source.sample(random), this.minInclusive, this.maxInclusive);
    }
 
    @Override

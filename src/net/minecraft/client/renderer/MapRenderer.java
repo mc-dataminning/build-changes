@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.MapTextureManager;
 import net.minecraft.client.resources.model.sprite.AtlasManager;
 import net.minecraft.data.AtlasIds;
-import net.minecraft.util.Mth;
 import net.minecraft.world.level.saveddata.maps.MapDecoration;
 import net.minecraft.world.level.saveddata.maps.MapId;
 import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
@@ -66,7 +65,7 @@ public class MapRenderer {
             if (decoration.name != null) {
                Font font = Minecraft.getInstance().font;
                float width = font.width(decoration.name);
-               float scale = Mth.clamp(25.0F / width, 0.0F, 6.0F / 9.0F);
+               float scale = Math.clamp(25.0F / width, 0.0F, 6.0F / 9.0F);
                poseStack.pushPose();
                poseStack.translate(decoration.x / 2.0F + 64.0F - width * scale / 2.0F, decoration.y / 2.0F + 64.0F + 4.0F, -0.025F);
                poseStack.scale(scale, scale, -1.0F);

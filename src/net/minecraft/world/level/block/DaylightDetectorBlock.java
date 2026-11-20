@@ -56,7 +56,7 @@ public class DaylightDetectorBlock extends BaseEntityBlock {
          target = Math.round(target * Mth.cos(sunAngle));
       }
 
-      target = Mth.clamp(target, 0, 15);
+      target = Math.clamp(target, 0, 15);
       if (state.getValue(POWER) != target) {
          level.setBlockAndUpdate(pos, state.setValue(POWER, target));
       }

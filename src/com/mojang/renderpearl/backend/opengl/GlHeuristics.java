@@ -108,7 +108,11 @@ public class GlHeuristics {
          ),
          Collections.unmodifiableSet(enabledExtensions),
          new HintsAndWorkarounds(
-            this.isGlOnDx12(), this.isAmd(), PlatformUtil.isAppleSiliconMac(renderer), vendorLowerCase.contains("intel") && !rendererLowerCase.contains("arc")
+            PlatformUtil.IS_WINDOWS,
+            this.isGlOnDx12(),
+            this.isAmd(),
+            PlatformUtil.isAppleSiliconMac(renderer),
+            vendorLowerCase.contains("intel") && !rendererLowerCase.contains("arc")
          ),
          this.guessDeviceType(rendererLowerCase, vendorLowerCase)
       );

@@ -290,6 +290,12 @@ public class VideoSettingsScreen extends OptionsSubScreen {
             CycleButton<Boolean> fullscreenButton = (CycleButton<Boolean>)fullscreenWidget;
             fullscreenButton.setValue(fullscreen);
          }
+
+         AbstractWidget exclusiveFullscreenWidget = this.list.findOption(this.options.exclusiveFullscreen());
+         if (exclusiveFullscreenWidget != null) {
+            CycleButton<Boolean> exclusiveFullscreenButton = (CycleButton<Boolean>)exclusiveFullscreenWidget;
+            exclusiveFullscreenButton.setValue(this.options.exclusiveFullscreen().get());
+         }
       }
    }
 

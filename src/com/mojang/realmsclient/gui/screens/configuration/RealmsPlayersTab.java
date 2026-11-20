@@ -183,7 +183,7 @@ public class RealmsPlayersTab extends GridLayoutTab implements RealmsConfigurati
          this.makeOpButton = SpriteIconButton.builder(NORMAL_USER_TEXT, button -> this.op(index), false)
             .sprite(MAKE_OP_SPRITE, 8, 7)
             .width(16 + RealmsPlayersTab.this.configurationScreen.getFont().width(NORMAL_USER_TEXT))
-            .narration(
+            .createNarration(
                defaultNarrationSupplier -> CommonComponents.joinForNarration(
                   Component.translatable("mco.invited.player.narration", playerInfo.name),
                   defaultNarrationSupplier.get(),
@@ -194,7 +194,7 @@ public class RealmsPlayersTab extends GridLayoutTab implements RealmsConfigurati
          this.removeOpButton = SpriteIconButton.builder(OP_TEXT, button -> this.deop(index), false)
             .sprite(REMOVE_OP_SPRITE, 8, 7)
             .width(16 + RealmsPlayersTab.this.configurationScreen.getFont().width(OP_TEXT))
-            .narration(
+            .createNarration(
                defaultNarrationSupplier -> CommonComponents.joinForNarration(
                   Component.translatable("mco.invited.player.narration", playerInfo.name),
                   defaultNarrationSupplier.get(),
@@ -205,7 +205,7 @@ public class RealmsPlayersTab extends GridLayoutTab implements RealmsConfigurati
          this.removeButton = SpriteIconButton.builder(REMOVE_TEXT, button -> this.uninvite(index), false)
             .sprite(REMOVE_PLAYER_SPRITE, 8, 7)
             .width(16 + RealmsPlayersTab.this.configurationScreen.getFont().width(REMOVE_TEXT))
-            .narration(
+            .createNarration(
                defaultNarrationSupplier -> CommonComponents.joinForNarration(
                   Component.translatable("mco.invited.player.narration", playerInfo.name), defaultNarrationSupplier.get()
                )

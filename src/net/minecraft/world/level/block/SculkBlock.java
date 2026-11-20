@@ -1,12 +1,15 @@
 package net.minecraft.world.level.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.sounds.BlockSoundSet;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -37,8 +40,10 @@ public class SculkBlock extends DropExperienceBlock implements SculkBehaviour {
             if (random.nextInt(xpPerGrowthSpawn) < charge) {
                BlockPos growthPlacement = chargePos.above();
                BlockState growthState = this.getRandomGrowthState(level, growthPlacement, random, spreader.isWorldGeneration());
+               BlockSoundSet blockSoundSet = growthState.getSounds(level);
                level.setBlockAndUpdate(growthPlacement, growthState);
-               level.playSound(null, chargePos, growthState.getSoundType().getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
+               blockSoundSet.placeSound()
+                  .ifPresent(placeSound -> level.playSound(null, chargePos, (Holder<SoundEvent>)placeSound, SoundSource.BLOCKS, 1.0F, 1.0F));
             }
 
             return Math.max(0, charge - xpPerGrowthSpawn);

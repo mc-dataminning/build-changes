@@ -105,7 +105,7 @@ public class MultilineTextField {
 
    public void deleteText(final int dir) {
       if (!this.hasSelection()) {
-         this.selectCursor = Mth.clamp(this.cursor + dir, 0, this.value.length());
+         this.selectCursor = Math.clamp(this.cursor + dir, 0, this.value.length());
       }
 
       this.insertText("");
@@ -139,7 +139,7 @@ public class MultilineTextField {
    }
 
    public MultilineTextField.StringView getLineView(final int lineIndex) {
-      return this.displayLines.get(Mth.clamp(lineIndex, 0, this.displayLines.size() - 1));
+      return this.displayLines.get(Math.clamp(lineIndex, 0, this.displayLines.size() - 1));
    }
 
    public void seekCursor(final Whence whence, final int cursor) {
@@ -154,7 +154,7 @@ public class MultilineTextField {
             this.cursor = this.value.length() + cursor;
       }
 
-      this.cursor = Mth.clamp(this.cursor, 0, this.value.length());
+      this.cursor = Math.clamp(this.cursor, 0, this.value.length());
       this.cursorListener.run();
       if (!this.selecting) {
          this.selectCursor = this.cursor;
@@ -173,7 +173,7 @@ public class MultilineTextField {
    public void seekCursorToPoint(final double x, final double y) {
       int left = Mth.floor(x);
       int top = Mth.floor(y / 9.0);
-      MultilineTextField.StringView lineView = this.displayLines.get(Mth.clamp(top, 0, this.displayLines.size() - 1));
+      MultilineTextField.StringView lineView = this.displayLines.get(Math.clamp(top, 0, this.displayLines.size() - 1));
       int clickedColumn = this.font.plainSubstrByWidth(this.value.substring(lineView.beginIndex, lineView.endIndex), left).length();
       this.seekCursor(Whence.ABSOLUTE, lineView.beginIndex + clickedColumn);
    }
@@ -313,7 +313,7 @@ public class MultilineTextField {
          LOGGER.error("Cursor is not within text (cursor = {}, length = {})", this.cursor, this.value.length());
          return this.displayLines.getLast();
       } else {
-         return this.displayLines.get(Mth.clamp(lineIndex + lineOffset, 0, this.displayLines.size() - 1));
+         return this.displayLines.get(Math.clamp(lineIndex + lineOffset, 0, this.displayLines.size() - 1));
       }
    }
 
@@ -323,7 +323,7 @@ public class MultilineTextField {
          return MultilineTextField.StringView.EMPTY;
       }
 
-      int startPosition = Mth.clamp(this.cursor, 0, this.value.length() - 1);
+      int startPosition = Math.clamp(this.cursor, 0, this.value.length() - 1);
 
       while (startPosition > 0 && Character.isWhitespace(this.value.charAt(startPosition - 1))) {
          startPosition--;
@@ -342,7 +342,7 @@ public class MultilineTextField {
          return MultilineTextField.StringView.EMPTY;
       }
 
-      int startPosition = Mth.clamp(this.cursor, 0, this.value.length() - 1);
+      int startPosition = Math.clamp(this.cursor, 0, this.value.length() - 1);
 
       while (startPosition < this.value.length() && !Character.isWhitespace(this.value.charAt(startPosition))) {
          startPosition++;

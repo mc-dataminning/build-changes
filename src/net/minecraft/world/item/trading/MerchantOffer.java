@@ -123,7 +123,7 @@ public class MerchantOffer {
    private int getModifiedCostCount(final ItemCost cost) {
       int basePrice = cost.count();
       int demandDiff = Math.max(0, Mth.floor(basePrice * this.demand * this.priceMultiplier));
-      return Mth.clamp(basePrice + demandDiff + this.specialPriceDiff, 1, cost.itemStack().getMaxStackSize());
+      return Math.clamp(basePrice + demandDiff + this.specialPriceDiff, 1, cost.itemStack().getMaxStackSize());
    }
 
    public ItemStack getCostB() {

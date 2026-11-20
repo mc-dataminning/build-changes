@@ -130,22 +130,6 @@ public class BreakingItemParticle extends SingleQuadParticle {
       }
    }
 
-   public static class SnowballProvider extends BreakingItemParticle.ItemParticleProvider<SimpleParticleType> {
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new BreakingItemParticle(level, x, y, z, this.getSprite(new ItemStackTemplate(Items.SNOWBALL), level, random));
-      }
-   }
-
    public static class SulfurCubeProvider extends BreakingItemParticle.ItemParticleProvider<SimpleParticleType> {
       private final SpriteSet sprites;
 

@@ -20,7 +20,7 @@ public class StandingSignBlock extends SignBlock implements PlainSignBlock {
    public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
 
    public StandingSignBlock(final WoodType type, final BlockBehaviour.Properties properties) {
-      super(type, properties.sound(type.soundType()));
+      super(type, properties.sound(type.blockSoundSet()));
       this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION, 8).setValue(WATERLOGGED, false));
    }
 

@@ -76,7 +76,7 @@ public class StructureManager {
          long key = (Long)var4.next();
          ChunkPos chunkPos = ChunkPos.unpack(key);
          StructureStart start = this.getStartForStructure(structure, this.level.getChunk(chunkPos.x(), chunkPos.z(), ChunkStatus.STRUCTURE_STARTS));
-         if (start != null && start.isValid()) {
+         if (start != null) {
             consumer.accept(start);
          }
       }
@@ -98,7 +98,7 @@ public class StructureManager {
       return this.worldOptions.generateStructures();
    }
 
-   public StructureStart getStructureAt(final BlockPos blockPos, final Structure structure) {
+   public @Nullable StructureStart getStructureAt(final BlockPos blockPos, final Structure structure) {
       int sectionX = SectionPos.blockToSectionCoord(blockPos.getX());
       int sectionZ = SectionPos.blockToSectionCoord(blockPos.getZ());
 
@@ -108,10 +108,10 @@ public class StructureManager {
          }
       }
 
-      return StructureStart.INVALID_START;
+      return null;
    }
 
-   public StructureStart getStructureAt(final BlockPos blockPos, final HolderSet<Structure> structures) {
+   public @Nullable StructureStart getStructureAt(final BlockPos blockPos, final HolderSet<Structure> structures) {
       int sectionX = SectionPos.blockToSectionCoord(blockPos.getX());
       int sectionZ = SectionPos.blockToSectionCoord(blockPos.getZ());
 
@@ -121,18 +121,18 @@ public class StructureManager {
          }
       }
 
-      return StructureStart.INVALID_START;
+      return null;
    }
 
-   public StructureStart getStructureWithPieceAt(final BlockPos blockPos, final TagKey<Structure> structureTag) {
+   public @Nullable StructureStart getStructureWithPieceAt(final BlockPos blockPos, final TagKey<Structure> structureTag) {
       return this.getStructureWithPieceAt(blockPos, structure -> structure.is(structureTag));
    }
 
-   public StructureStart getStructureWithPieceAt(final BlockPos blockPos, final HolderSet<Structure> structures) {
+   public @Nullable StructureStart getStructureWithPieceAt(final BlockPos blockPos, final HolderSet<Structure> structures) {
       return this.getStructureWithPieceAt(blockPos, structures::contains);
    }
 
-   public StructureStart getStructureWithPieceAt(final BlockPos blockPos, final Predicate<Holder<Structure>> predicate) {
+   public @Nullable StructureStart getStructureWithPieceAt(final BlockPos blockPos, final Predicate<Holder<Structure>> predicate) {
       int sectionX = SectionPos.blockToSectionCoord(blockPos.getX());
       int sectionZ = SectionPos.blockToSectionCoord(blockPos.getZ());
 
@@ -142,7 +142,7 @@ public class StructureManager {
          }
       }
 
-      return StructureStart.INVALID_START;
+      return null;
    }
 
    private Predicate<Structure> matching(final Predicate<Holder<Structure>> predicate) {
@@ -150,7 +150,7 @@ public class StructureManager {
       return structure -> structures.get(structures.getId(structure)).map(predicate::test).orElse(false);
    }
 
-   public StructureStart getStructureWithPieceAt(final int x, final int y, final int z, final Structure structure) {
+   public @Nullable StructureStart getStructureWithPieceAt(final int x, final int y, final int z, final Structure structure) {
       int sectionX = SectionPos.blockToSectionCoord(x);
       int sectionZ = SectionPos.blockToSectionCoord(z);
 
@@ -160,7 +160,7 @@ public class StructureManager {
          }
       }
 
-      return StructureStart.INVALID_START;
+      return null;
    }
 
    public boolean structureHasPieceAt(final BlockPos blockPos, final StructureStart structureStart) {

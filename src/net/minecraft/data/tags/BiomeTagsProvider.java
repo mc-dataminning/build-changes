@@ -226,7 +226,8 @@ public class BiomeTagsProvider extends TagsProvider<Biome> {
          .add(Biomes.FROZEN_RIVER)
          .add(Biomes.SNOWY_TAIGA)
          .add(Biomes.SNOWY_BEACH)
-         .addTag(BiomeTags.IS_END);
+         .addTag(BiomeTags.IS_END)
+         .add(Biomes.ICE_CAVES);
       this.tag(BiomeTags.SPAWNS_WARM_VARIANT_FROGS)
          .add(Biomes.DESERT)
          .add(Biomes.WARM_OCEAN)
@@ -258,7 +259,8 @@ public class BiomeTagsProvider extends TagsProvider<Biome> {
          .add(Biomes.WINDSWEPT_GRAVELLY_HILLS)
          .add(Biomes.WINDSWEPT_HILLS)
          .add(Biomes.STONY_PEAKS)
-         .add(Biomes.DAPPLED_FOREST);
+         .add(Biomes.DAPPLED_FOREST)
+         .add(Biomes.ICE_CAVES);
       this.tag(BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS)
          .add(Biomes.DESERT)
          .add(Biomes.WARM_OCEAN)
@@ -280,7 +282,8 @@ public class BiomeTagsProvider extends TagsProvider<Biome> {
          .add(Biomes.FROZEN_PEAKS)
          .add(Biomes.JAGGED_PEAKS)
          .add(Biomes.SNOWY_SLOPES)
-         .add(Biomes.GROVE);
+         .add(Biomes.GROVE)
+         .add(Biomes.ICE_CAVES);
       this.tag(BiomeTags.REDUCED_WATER_AMBIENT_SPAWNS).addTag(BiomeTags.IS_RIVER);
       this.tag(BiomeTags.ALLOWS_TROPICAL_FISH_SPAWNS_AT_ANY_HEIGHT).add(Biomes.LUSH_CAVES);
       this.tag(BiomeTags.POLAR_BEARS_SPAWN_ON_ALTERNATE_BLOCKS).add(Biomes.FROZEN_OCEAN).add(Biomes.DEEP_FROZEN_OCEAN);
@@ -296,7 +299,9 @@ public class BiomeTagsProvider extends TagsProvider<Biome> {
          .add(Biomes.FROZEN_PEAKS)
          .add(Biomes.JAGGED_PEAKS)
          .add(Biomes.SNOWY_SLOPES)
-         .add(Biomes.GROVE);
+         .add(Biomes.GROVE)
+         .add(Biomes.ICE_CAVES);
       this.tag(BiomeTags.SPAWNS_CORAL_VARIANT_ZOMBIE_NAUTILUS).add(Biomes.WARM_OCEAN);
+      this.tag(BiomeTags.SPAWNS_STRAYS_WITHOUT_POWDER_SNOW).add(Biomes.ICE_CAVES);
    }
 }

@@ -48,7 +48,7 @@ public class DoorBlock extends Block {
    private final BlockSetType type;
 
    protected DoorBlock(final BlockSetType type, final BlockBehaviour.Properties properties) {
-      super(properties.sound(type.soundType()));
+      super(properties.sound(type.blockSoundSet()));
       this.type = type;
       this.registerDefaultState(
          this.stateDefinition

@@ -8,7 +8,7 @@ public class CommonButtons {
       SpriteIconButton button = SpriteIconButton.builder(Component.translatable("options.language"), onPress, iconOnly)
          .width(width)
          .sprite(Identifier.withDefaultNamespace("icon/language"), 15, 15)
-         .narration(var0 -> Component.translatable("options.language.narration"))
+         .createNarration(var0 -> Component.translatable("options.language.narration"))
          .build();
       button.setTooltip(Tooltip.create(Component.translatable("options.language.tooltip")));
       return button;
@@ -19,7 +19,7 @@ public class CommonButtons {
       SpriteIconButton button = SpriteIconButton.builder(text, onPress, iconOnly)
          .width(width)
          .sprite(Identifier.withDefaultNamespace("icon/accessibility"), 15, 15)
-         .narration(var0 -> Component.translatable("accessibility.onboarding.accessibility.button.narration"))
+         .createNarration(var0 -> Component.translatable("accessibility.onboarding.accessibility.button.narration"))
          .build();
       button.setTooltip(Tooltip.create(Component.translatable("options.accessibility.tooltip")));
       return button;

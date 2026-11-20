@@ -46,7 +46,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.Style;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec2;
 import org.jspecify.annotations.Nullable;
 
@@ -144,7 +143,7 @@ public class CommandSuggestions {
    }
 
    public boolean mouseScrolled(final double scroll) {
-      return this.suggestions != null && this.suggestions.mouseScrolled(Mth.clamp(scroll, -1.0, 1.0));
+      return this.suggestions != null && this.suggestions.mouseScrolled(Math.clamp(scroll, -1.0, 1.0));
    }
 
    public boolean mouseClicked(final MouseButtonEvent event) {
@@ -161,13 +160,15 @@ public class CommandSuggestions {
                maxSuggestionWidth = Math.max(maxSuggestionWidth, this.font.width(suggestion.getText()));
             }
 
-            int x = Mth.clamp(
-               this.input.getScreenX(suggestions.getRange().getStart()), 0, this.input.getScreenX(0) + this.input.getInnerWidth() - maxSuggestionWidth
-            );
+            int x = this.getScreenX(suggestions.getRange().getStart(), maxSuggestionWidth);
             int y = this.anchorToBottom ? this.screen.height - 12 : 72;
             this.suggestions = new CommandSuggestions.SuggestionsList(x, y, maxSuggestionWidth, this.sortSuggestions(suggestions), immediateNarration);
          }
       }
+   }
+
+   private int getScreenX(final int startPos, final int maxWidth) {
+      return Math.clamp(this.input.getScreenX(startPos), 0, Math.max(this.input.getScreenX(0) + this.input.getInnerWidth() - maxWidth, 0));
    }
 
    public boolean isVisible() {
@@ -351,9 +352,7 @@ public class CommandSuggestions {
 
       this.recomputeUsageBoxWidth();
       if (!this.commandUsage.isEmpty()) {
-         this.commandUsagePosition = Mth.clamp(
-            this.input.getScreenX(suggestionContextAtCursor.startPos), 0, this.input.getScreenX(0) + this.input.getInnerWidth() - this.commandUsageWidth
-         );
+         this.commandUsagePosition = this.getScreenX(suggestionContextAtCursor.startPos, this.commandUsageWidth);
       } else {
          this.commandUsagePosition = 0;
       }
@@ -597,7 +596,7 @@ public class CommandSuggestions {
          int mouseX = (int)CommandSuggestions.this.minecraft.mouseHandler.getScaledXPos(CommandSuggestions.this.minecraft.getWindow());
          int mouseY = (int)CommandSuggestions.this.minecraft.mouseHandler.getScaledYPos(CommandSuggestions.this.minecraft.getWindow());
          if (this.rect.contains(mouseX, mouseY)) {
-            this.offset = Mth.clamp((int)(this.offset - scroll), 0, Math.max(this.suggestionList.size() - CommandSuggestions.this.suggestionLineLimit, 0));
+            this.offset = Math.clamp((int)(this.offset - scroll), 0, Math.max(this.suggestionList.size() - CommandSuggestions.this.suggestionLineLimit, 0));
             return true;
          } else {
             return false;
@@ -638,9 +637,9 @@ public class CommandSuggestions {
          int first = this.offset;
          int last = this.offset + CommandSuggestions.this.suggestionLineLimit - 1;
          if (this.current < first) {
-            this.offset = Mth.clamp(this.current, 0, Math.max(this.suggestionList.size() - CommandSuggestions.this.suggestionLineLimit, 0));
+            this.offset = Math.clamp(this.current, 0, Math.max(this.suggestionList.size() - CommandSuggestions.this.suggestionLineLimit, 0));
          } else if (this.current > last) {
-            this.offset = Mth.clamp(
+            this.offset = Math.clamp(
                this.current + CommandSuggestions.this.lineStartOffset - CommandSuggestions.this.suggestionLineLimit,
                0,
                Math.max(this.suggestionList.size() - CommandSuggestions.this.suggestionLineLimit, 0)

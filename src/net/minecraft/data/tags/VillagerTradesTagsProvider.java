@@ -353,6 +353,7 @@ public class VillagerTradesTagsProvider extends TagsProvider<VillagerTrade> {
             VillagerTrades.WANDERING_TRADER_EMERALD_RED_SAND,
             VillagerTrades.WANDERING_TRADER_EMERALD_POINTED_DRIPSTONE,
             VillagerTrades.WANDERING_TRADER_EMERALD_SULFUR_SPIKE,
+            VillagerTrades.WANDERING_TRADER_EMERALD_ICICLE,
             VillagerTrades.WANDERING_TRADER_EMERALD_ROOTED_DIRT,
             VillagerTrades.WANDERING_TRADER_EMERALD_MOSS_BLOCK,
             VillagerTrades.WANDERING_TRADER_EMERALD_PALE_MOSS_BLOCK,
@@ -361,7 +362,8 @@ public class VillagerTradesTagsProvider extends TagsProvider<VillagerTrade> {
             VillagerTrades.WANDERING_TRADER_EMERALD_FIREFLY_BUSH,
             VillagerTrades.WANDERING_TRADER_EMERALD_GOLDEN_DANDELION,
             VillagerTrades.WANDERING_TRADER_EMERALD_NAME_TAG,
-            VillagerTrades.WANDERING_TRADER_EMERALD_SHELF_MUSHROOM
+            VillagerTrades.WANDERING_TRADER_EMERALD_SHELF_MUSHROOM,
+            VillagerTrades.WANDERING_TRADER_EMERALD_ICE_CRYSTAL
          );
    }
 }

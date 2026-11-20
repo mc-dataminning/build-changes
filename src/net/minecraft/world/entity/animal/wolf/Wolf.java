@@ -18,6 +18,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
@@ -457,7 +458,15 @@ public class Wolf extends TamableAnimal implements NeutralMob {
             return InteractionResult.SUCCESS;
          }
 
-         if (!itemStack.is(ItemTags.WOLF_COLLAR_DYES) || !this.isOwnedBy(player)) {
+         if (itemStack.is(ItemTags.WOLF_COLLAR_DYES) && this.isOwnedBy(player)) {
+            DyeColor color = itemStack.get(DataComponents.DYE);
+            if (color != null && color != this.getCollarColor()) {
+               this.level().playSound(player, this, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
+               this.setCollarColor(color);
+               itemStack.consume(1, player);
+               return InteractionResult.SUCCESS;
+            }
+         } else {
             if (this.isEquippableInSlot(itemStack, EquipmentSlot.BODY) && !this.isWearingBodyArmor() && this.isOwnedBy(player) && !this.isBaby()) {
                this.setItemSlotAndDropWhenKilled(EquipmentSlot.BODY, itemStack.copyWithCount(1));
                itemStack.consume(1, player);
@@ -476,32 +485,25 @@ public class Wolf extends TamableAnimal implements NeutralMob {
                armor.setDamageValue(Math.max(0, armor.getDamageValue() - repairUnit));
                return InteractionResult.SUCCESS;
             }
-
-            InteractionResult interactionResult = super.mobInteract(player, hand);
-            if (!interactionResult.consumesAction() && this.isOwnedBy(player)) {
-               this.setOrderedToSit(!this.isOrderedToSit());
-               this.jumping = false;
-               this.navigation.stop();
-               this.setTarget(null);
-               return InteractionResult.SUCCESS.withoutItem();
-            }
-
-            return interactionResult;
          }
 
-         DyeColor color = itemStack.get(DataComponents.DYE);
-         if (color != null && color != this.getCollarColor()) {
-            this.setCollarColor(color);
-            itemStack.consume(1, player);
-            return InteractionResult.SUCCESS;
+         InteractionResult interactionResult = super.mobInteract(player, hand);
+         if (!interactionResult.consumesAction() && this.isOwnedBy(player)) {
+            this.setOrderedToSit(!this.isOrderedToSit());
+            this.jumping = false;
+            this.navigation.stop();
+            this.setTarget(null);
+            return InteractionResult.SUCCESS.withoutItem();
+         } else {
+            return interactionResult;
          }
       } else if (!this.level().isClientSide() && itemStack.is(Items.BONE) && !this.isAngry()) {
          itemStack.consume(1, player);
          this.tryToTame(player);
          return InteractionResult.SUCCESS_SERVER;
+      } else {
+         return super.mobInteract(player, hand);
       }
-
-      return super.mobInteract(player, hand);
    }
 
    private void tryToTame(final Player player) {

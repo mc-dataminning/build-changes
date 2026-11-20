@@ -431,7 +431,7 @@ public abstract class AbstractArrow extends Projectile {
          arrowDamage = EnchantmentHelper.modifyDamage(serverLevel, this.getWeaponItem(), entity, damageSource, (float)arrowDamage);
       }
 
-      int damage = Mth.ceil(Mth.clamp(pow * arrowDamage, 0.0, 2.147483647E9));
+      int damage = Mth.ceil(Math.clamp(pow * arrowDamage, 0.0, 2.147483647E9));
       if (this.getPierceLevel() > 0) {
          if (this.piercingIgnoreEntityIds == null) {
             this.piercingIgnoreEntityIds = new IntOpenHashSet(5);

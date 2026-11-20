@@ -337,6 +337,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
    private final RealmsDataFetcher realmsDataFetcher;
    private final QuickPlayLog quickPlayLog;
    private final Services services;
+   private final ProfileResolver localProfileResolver;
    private final PlayerSkinRenderCache playerSkinRenderCache;
    private final TimerQuery timerQuery;
    public @Nullable MultiPlayerGameMode gameMode;
@@ -522,6 +523,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
          initialWindowTitle,
          this.monitorManager,
          backend,
+         device,
          maxSize
       );
 
@@ -571,8 +573,8 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
       this.resourceManager.registerReloadListener(this.soundManager);
       this.atlasManager = new AtlasManager(this.textureManager, this.options.mipmapLevels().get());
       this.resourceManager.registerReloadListener(this.atlasManager);
-      ProfileResolver localProfileResolver = new LocalPlayerResolver(this, this.services.profileResolver());
-      this.playerSkinRenderCache = new PlayerSkinRenderCache(this.textureManager, this.skinManager, localProfileResolver);
+      this.localProfileResolver = new LocalPlayerResolver(this, this.services.profileResolver());
+      this.playerSkinRenderCache = new PlayerSkinRenderCache(this.textureManager, this.skinManager, this.localProfileResolver);
       ClientMannequin.registerOverrides(this.playerSkinRenderCache);
       this.fontManager = new FontManager(this.textureManager, this.atlasManager, this.playerSkinRenderCache);
       this.font = this.fontManager.createFont();
@@ -670,7 +672,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
             if (!messages.isEmpty()) {
                message.append("\n\nReported GL debug messages:\n").append(String.join("\n", messages));
             }
-         } catch (Throwable var30) {
+         } catch (Throwable var29) {
          }
 
          this.window.setWindowed(mainRenderTarget.width, mainRenderTarget.height);
@@ -1168,7 +1170,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
          profiler.push("tick");
          if (ticksToDo > 0 && this.isLevelRunningNormally()) {
             profiler.push("textures");
-            this.textureManager.tick();
+            this.atlasManager.tick();
             profiler.pop();
          }
 
@@ -1428,6 +1430,10 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
    @Override
    public void fullscreenStateChanged(final boolean fullscreen) {
       if (this.options.fullscreen().get() != fullscreen) {
+         if (fullscreen && this.window != null) {
+            this.options.exclusiveFullscreen().set(this.window.isExclusiveFullscreen());
+         }
+
          this.options.fullscreen().set(fullscreen);
          this.options.save();
          if (this.gui != null && this.gui.screen() instanceof VideoSettingsScreen videoSettingsScreen) {
@@ -2297,7 +2303,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
                return false;
             }
 
-            OnlineOptionsScreen.confirmFriendsListEnabled(this, () -> this.gui.setScreen(new FriendsOverlayScreen(current)), current);
+            OnlineOptionsScreen.confirmFriendsListEnabled(this, () -> this.gui.setScreen(new FriendsOverlayScreen(this, current)), current);
             return true;
          }
       } else {
@@ -2920,6 +2926,10 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
 
    public PlayerSkinRenderCache playerSkinRenderCache() {
       return this.playerSkinRenderCache;
+   }
+
+   public ProfileResolver localProfileResolver() {
+      return this.localProfileResolver;
    }
 
    private float getTickTargetMillis(final float defaultTickTargetMillis) {

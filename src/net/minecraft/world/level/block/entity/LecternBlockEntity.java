@@ -157,7 +157,7 @@ public class LecternBlockEntity extends BlockEntity implements Clearable, MenuPr
    }
 
    private void setPage(final int page) {
-      int newPage = Mth.clamp(page, 0, this.pageCount - 1);
+      int newPage = this.getPageInRange(page);
       if (newPage != this.page) {
          this.page = newPage;
          this.setChanged();
@@ -197,7 +197,11 @@ public class LecternBlockEntity extends BlockEntity implements Clearable, MenuPr
       super.loadAdditional(input);
       this.book = input.<ItemStack>read("Book", ItemStack.CODEC).map(book -> this.resolveBook(book, null)).orElse(ItemStack.EMPTY);
       this.pageCount = getPageCount(this.book);
-      this.page = Mth.clamp(input.getIntOr("Page", 0), 0, this.pageCount - 1);
+      this.page = this.getPageInRange(input.getIntOr("Page", 0));
+   }
+
+   private int getPageInRange(final int wantedPage) {
+      return Math.clamp(wantedPage, 0, Math.max(this.pageCount - 1, 0));
    }
 
    @Override

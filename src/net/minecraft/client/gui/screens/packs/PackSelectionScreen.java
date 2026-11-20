@@ -38,8 +38,8 @@ import net.minecraft.client.gui.screens.AlertScreen;
 import net.minecraft.client.gui.screens.ConfirmScreen;
 import net.minecraft.client.gui.screens.NoticeWithLinkScreen;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.client.renderer.texture.TextureResources;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -321,9 +321,11 @@ public class PackSelectionScreen extends Screen {
             "pack/" + Util.sanitizeName(id, Identifier::validPathChar) + "/" + Hashing.sha1().hashUnencodedChars(id) + "/icon"
          );
 
-         try (InputStream stream = resource.get()) {
+         try (
+            InputStream stream = resource.get();
             NativeImage iconImage = NativeImage.read(stream);
-            textureManager.register(location, new DynamicTexture(location::toString, iconImage));
+         ) {
+            textureManager.register(location, TextureResources.from2dImage(location::toString, iconImage));
             return location;
          }
       } catch (Exception e) {

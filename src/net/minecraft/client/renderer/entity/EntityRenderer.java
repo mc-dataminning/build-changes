@@ -317,7 +317,7 @@ public abstract class EntityRenderer<T extends Entity, S extends EntityRenderSta
             if (belowState.isCollisionShapeFullBlock(chunk, belowPos)) {
                VoxelShape belowShape = belowState.getShape(chunk, belowPos);
                if (!belowShape.isEmpty()) {
-                  float alpha = Mth.clamp(powerAtDepth * 0.5F * Lightmap.getBrightness(level.dimensionType(), brightness), 0.0F, 1.0F);
+                  float alpha = Math.clamp(powerAtDepth * 0.5F * Lightmap.getBrightness(level.dimensionType(), brightness), 0.0F, 1.0F);
                   float relativeX = (float)(pos.getX() - state.x);
                   float relativeY = (float)(pos.getY() - state.y);
                   float relativeZ = (float)(pos.getZ() - state.z);

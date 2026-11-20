@@ -888,10 +888,10 @@ public class LocalPlayer extends AbstractClientPlayer {
 
       if (this.isEyeInFluid(FluidTags.WATER)) {
          int speed = this.isSpectator() ? 10 : 1;
-         this.waterVisionTime = Mth.clamp(this.waterVisionTime + speed, 0, 600);
+         this.waterVisionTime = Math.clamp(this.waterVisionTime + speed, 0, 600);
       } else if (this.waterVisionTime > 0) {
          this.isEyeInFluid(FluidTags.WATER);
-         this.waterVisionTime = Mth.clamp(this.waterVisionTime - 10, 0, 600);
+         this.waterVisionTime = Math.clamp(this.waterVisionTime - 10, 0, 600);
       }
 
       if (abilities.flying && this.isControlledCamera()) {
@@ -990,7 +990,7 @@ public class LocalPlayer extends AbstractClientPlayer {
          step = -0.05F;
       }
 
-      this.portalEffectIntensity = Mth.clamp(this.portalEffectIntensity + step, 0.0F, 1.0F);
+      this.portalEffectIntensity = Math.clamp(this.portalEffectIntensity + step, 0.0F, 1.0F);
    }
 
    private void tickSpinningEffect() {
@@ -1203,8 +1203,8 @@ public class LocalPlayer extends AbstractClientPlayer {
          return 1.0F;
       }
 
-      float a = Mth.clamp(this.waterVisionTime / 100.0F, 0.0F, 1.0F);
-      float b = this.waterVisionTime < 100.0F ? 0.0F : Mth.clamp((this.waterVisionTime - 100.0F) / 500.0F, 0.0F, 1.0F);
+      float a = Math.clamp(this.waterVisionTime / 100.0F, 0.0F, 1.0F);
+      float b = this.waterVisionTime < 100.0F ? 0.0F : Math.clamp((this.waterVisionTime - 100.0F) / 500.0F, 0.0F, 1.0F);
       return a * 0.6F + b * 0.39999998F;
    }
 

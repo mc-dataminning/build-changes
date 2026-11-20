@@ -541,7 +541,11 @@ public class Options {
       "options.sharePresence",
       value -> Tooltip.create(value.getTooltip()),
       (var0, value) -> value.getTranslation(),
-      new OptionInstance.Enum<>(List.of(PresenceSharing.values()), PresenceSharing.CODEC),
+      new OptionInstance.Enum<>(
+         List.of(PresenceSharing.values()),
+         PresenceSharing.CODEC,
+         valueSet -> OptionInstance.ButtonFactory.iconCycleButton(valueSet, PresenceSharing::getSprites)
+      ),
       PresenceSharing.CODEC,
       PresenceSharing.ALL,
       var0 -> {}
@@ -670,7 +674,7 @@ public class Options {
    public final KeyMapping keyPlayerList = new KeyMapping("key.playerlist", 43, KeyMapping.Category.MULTIPLAYER);
    public final KeyMapping keyCommand = new KeyMapping("key.command", 56, KeyMapping.Category.MULTIPLAYER);
    public final KeyMapping keyFriends = new KeyMapping("key.friends", 18, KeyMapping.Category.MULTIPLAYER);
-   public final KeyMapping keySocialInteractions = new KeyMapping("key.socialInteractions", 19, KeyMapping.Category.MULTIPLAYER);
+   public final KeyMapping keyOtherPlayers = new KeyMapping("key.otherPlayers", 19, KeyMapping.Category.MULTIPLAYER);
    public final KeyMapping keyScreenshot = new KeyMapping("key.screenshot", 59, KeyMapping.Category.MISC);
    public final KeyMapping keyTogglePerspective = new KeyMapping("key.togglePerspective", 62, KeyMapping.Category.MISC);
    public final KeyMapping keySmoothCamera = new KeyMapping("key.smoothCamera", InputConstants.UNKNOWN.getValue(), KeyMapping.Category.MISC);
@@ -768,7 +772,7 @@ public class Options {
             this.keyPickItem,
             this.keyCommand,
             this.keyFriends,
-            this.keySocialInteractions,
+            this.keyOtherPlayers,
             this.keyToggleGui,
             this.keyToggleSpectatorShaderEffects,
             this.keyScreenshot,

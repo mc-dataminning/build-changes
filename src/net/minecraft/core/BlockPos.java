@@ -233,9 +233,9 @@ public class BlockPos extends Vec3i {
 
    public Vec3 clampLocationWithin(final Vec3 location) {
       return new Vec3(
-         Mth.clamp(location.x, this.getX() + 1.0E-5F, this.getX() + 1.0 - 1.0E-5F),
-         Mth.clamp(location.y, this.getY() + 1.0E-5F, this.getY() + 1.0 - 1.0E-5F),
-         Mth.clamp(location.z, this.getZ() + 1.0E-5F, this.getZ() + 1.0 - 1.0E-5F)
+         Math.clamp(location.x, this.getX() + 1.0E-5F, this.getX() + 1.0 - 1.0E-5F),
+         Math.clamp(location.y, this.getY() + 1.0E-5F, this.getY() + 1.0 - 1.0E-5F),
+         Math.clamp(location.z, this.getZ() + 1.0E-5F, this.getZ() + 1.0 - 1.0E-5F)
       );
    }
 
@@ -689,9 +689,9 @@ public class BlockPos extends Vec3i {
 
       public BlockPos.MutableBlockPos clamp(final Direction.Axis axis, final int minimum, final int maximum) {
          return switch (axis) {
-            case X -> this.set(Mth.clamp(this.getX(), minimum, maximum), this.getY(), this.getZ());
-            case Y -> this.set(this.getX(), Mth.clamp(this.getY(), minimum, maximum), this.getZ());
-            case Z -> this.set(this.getX(), this.getY(), Mth.clamp(this.getZ(), minimum, maximum));
+            case X -> this.set(Math.clamp(this.getX(), minimum, maximum), this.getY(), this.getZ());
+            case Y -> this.set(this.getX(), Math.clamp(this.getY(), minimum, maximum), this.getZ());
+            case Z -> this.set(this.getX(), this.getY(), Math.clamp(this.getZ(), minimum, maximum));
          };
       }
 

@@ -53,7 +53,15 @@ public class AtlasGlyphProvider {
                final float x, final float y, final int color, final int shadowColor, final Style style, final float boldOffset, final float shadowOffset
             ) {
                return new AtlasGlyphProvider.Instance(
-                  AtlasGlyphProvider.this.renderTypes, AtlasGlyphProvider.this.atlas.getTextureView(), sprite, x, y, color, shadowColor, shadowOffset, style
+                  AtlasGlyphProvider.this.renderTypes,
+                  AtlasGlyphProvider.this.atlas.getTexture().textureView(),
+                  sprite,
+                  x,
+                  y,
+                  color,
+                  shadowColor,
+                  shadowOffset,
+                  style
                );
             }
          }

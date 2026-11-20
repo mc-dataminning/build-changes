@@ -20,12 +20,8 @@ public class GlyphStitcher implements AutoCloseable {
    }
 
    public void reset() {
-      int textureCount = this.textures.size();
+      this.textures.forEach(FontTexture::close);
       this.textures.clear();
-
-      for (int i = 0; i < textureCount; i++) {
-         this.textureManager.release(this.textureName(i));
-      }
    }
 
    @Override
@@ -45,9 +41,8 @@ public class GlyphStitcher implements AutoCloseable {
       Identifier name = this.textureName(nextIndex);
       boolean isColored = glyphBitmap.isColored();
       GlyphRenderTypes renderTypes = isColored ? GlyphRenderTypes.createForColorTexture(name) : GlyphRenderTypes.createForGrayscaleTexture(name);
-      FontTexture texture = new FontTexture(name::toString, renderTypes, isColored);
+      FontTexture texture = new FontTexture(this.textureManager, name, renderTypes, isColored);
       this.textures.add(texture);
-      this.textureManager.register(name, texture);
       return texture.add(info, glyphBitmap);
    }
 

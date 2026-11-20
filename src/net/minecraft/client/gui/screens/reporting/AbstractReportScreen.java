@@ -13,11 +13,9 @@ import net.minecraft.client.gui.components.MultiLineEditBox;
 import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.Layout;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.GenericWaitingScreen;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.multiplayer.WarningScreen;
 import net.minecraft.client.multiplayer.chat.report.Report;
 import net.minecraft.client.multiplayer.chat.report.ReportingContext;
 import net.minecraft.network.chat.CommonComponents;
@@ -38,6 +36,12 @@ public abstract class AbstractReportScreen<B extends Report.Builder<?>> extends 
    protected static final Component MORE_COMMENTS_LABEL = Component.translatable("gui.abuseReport.more_comments");
    private static final Component MORE_COMMENTS_NARRATION = Component.translatable("gui.abuseReport.comments");
    private static final Component ATTESTATION_CHECKBOX = Component.translatable("gui.abuseReport.attestation").withColor(-2039584);
+   private static final Component DISCARD_TITLE = Component.translatable("gui.abuseReport.discard.title");
+   private static final Component DISCARD_MESSAGE = Component.translatable("gui.abuseReport.discard.content");
+   private static final Component CONTINUE_EDITING = Component.translatable("gui.abuseReport.discard.return");
+   private static final Component SAVE_DRAFT = Component.translatable("gui.abuseReport.discard.draft");
+   private static final Component DISCARD = Component.translatable("gui.abuseReport.discard.discard");
+   private static final Tooltip OVERWRITE_DRAFT_TOOLTIP = Tooltip.create(Component.translatable("gui.abuseReport.discard.draft.overwrite"));
    protected static final int BUTTON_WIDTH = 120;
    protected static final int MARGIN = 20;
    protected static final int SCREEN_WIDTH = 280;
@@ -49,6 +53,7 @@ public abstract class AbstractReportScreen<B extends Report.Builder<?>> extends 
    protected B reportBuilder;
    private Checkbox attestation;
    protected Button sendButton;
+   private boolean closedIntentionally;
 
    protected AbstractReportScreen(final Component title, final Screen lastScreen, final ReportingContext reportingContext, final B reportBuilder) {
       super(title);
@@ -178,55 +183,40 @@ public abstract class AbstractReportScreen<B extends Report.Builder<?>> extends 
 
    @Override
    public void onClose() {
-      if (this.reportBuilder.hasContent()) {
-         this.minecraft.gui.setScreen(new AbstractReportScreen.DiscardReportWarningScreen());
-      } else {
+      this.closedIntentionally = true;
+      if (!this.reportBuilder.hasContent()) {
          this.minecraft.gui.setScreen(this.lastScreen);
+      } else {
+         boolean draftIsForSomeoneElse = this.reportingContext.hasDraftReport()
+            && !this.reportingContext.hasDraftReportFor(this.reportBuilder.reportedProfileId());
+         this.minecraft.gui.setScreen(new DiscardReportWarningScreen(this, DISCARD_TITLE, DISCARD_MESSAGE, builder -> {
+            builder.addButton(CONTINUE_EDITING, false, var1x -> this.minecraft.gui.setScreen(this));
+            Button saveDraftButton = builder.addButton(SAVE_DRAFT, true, var1x -> {
+               this.saveDraft();
+               this.minecraft.gui.setScreen(this.lastScreen);
+            });
+            if (draftIsForSomeoneElse) {
+               saveDraftButton.setTooltip(OVERWRITE_DRAFT_TOOLTIP);
+            }
+
+            builder.addButton(DISCARD, false, var2x -> {
+               if (!draftIsForSomeoneElse) {
+                  this.clearDraft();
+               }
+
+               this.minecraft.gui.setScreen(this.lastScreen);
+            });
+         }));
       }
    }
 
    @Override
    public void removed() {
-      this.saveDraft();
+      if (!this.closedIntentionally) {
+         this.closedIntentionally = true;
+         this.saveDraft();
+      }
+
       super.removed();
-   }
-
-   private class DiscardReportWarningScreen extends WarningScreen {
-      private static final Component TITLE = Component.translatable("gui.abuseReport.discard.title").withStyle(ChatFormatting.BOLD);
-      private static final Component MESSAGE = Component.translatable("gui.abuseReport.discard.content");
-      private static final Component RETURN = Component.translatable("gui.abuseReport.discard.return");
-      private static final Component DRAFT = Component.translatable("gui.abuseReport.discard.draft");
-      private static final Component DISCARD = Component.translatable("gui.abuseReport.discard.discard");
-
-      protected DiscardReportWarningScreen() {
-         super(TITLE, MESSAGE, MESSAGE);
-      }
-
-      @Override
-      protected Layout addFooterButtons() {
-         LinearLayout footer = LinearLayout.vertical().spacing(8);
-         footer.defaultCellSetting().alignHorizontallyCenter();
-         LinearLayout firstFooterRow = footer.addChild(LinearLayout.horizontal().spacing(8));
-         firstFooterRow.addChild(Button.builder(RETURN, button -> this.onClose()).build());
-         firstFooterRow.addChild(Button.builder(DRAFT, button -> {
-            AbstractReportScreen.this.saveDraft();
-            this.minecraft.gui.setScreen(AbstractReportScreen.this.lastScreen);
-         }).build());
-         footer.addChild(Button.builder(DISCARD, button -> {
-            AbstractReportScreen.this.clearDraft();
-            this.minecraft.gui.setScreen(AbstractReportScreen.this.lastScreen);
-         }).build());
-         return footer;
-      }
-
-      @Override
-      public void onClose() {
-         this.minecraft.gui.setScreen(AbstractReportScreen.this);
-      }
-
-      @Override
-      public boolean shouldCloseOnEsc() {
-         return false;
-      }
    }
 }

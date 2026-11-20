@@ -26,7 +26,6 @@ import net.minecraft.world.level.levelgen.blending.Blender;
 import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
 import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings;
 import net.minecraft.world.level.levelgen.structure.StructureSet;
-import org.jspecify.annotations.Nullable;
 
 public class FlatLevelSource extends ChunkGenerator {
    public static final MapCodec<FlatLevelSource> CODEC = RecordCodecBuilder.mapCodec(
@@ -68,7 +67,7 @@ public class FlatLevelSource extends ChunkGenerator {
       final Blender blender,
       final RandomState randomState,
       final StructureManager structureManager,
-      final @Nullable WorldGenRegion carverBiomeRegion,
+      final WorldGenRegion carverBiomeRegion,
       final Set<Holder<Biome>> possibleBiomes
    ) {
       List<BlockState> layers = this.settings.getLayers();
@@ -98,7 +97,7 @@ public class FlatLevelSource extends ChunkGenerator {
 
       for (int y = 0; y < layers.size(); y++) {
          BlockState block = layers.get(y);
-         if (!block.isAir()) {
+         if (block != null && !block.isAir()) {
             if (block.getBlock() instanceof LiquidBlock) {
                noiseColumn.setFluid(y + minY, block);
             } else {

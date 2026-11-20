@@ -95,6 +95,11 @@ public class ZombifiedPiglin extends Zombie implements NeutralMob {
    }
 
    @Override
+   protected boolean convertsWhenFreezing() {
+      return false;
+   }
+
+   @Override
    protected void customServerAiStep(final ServerLevel level) {
       AttributeInstance speed = this.getAttribute(Attributes.MOVEMENT_SPEED);
       if (this.isAngry()) {

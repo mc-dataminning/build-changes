@@ -1,7 +1,6 @@
 package net.minecraft.client.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.Mth;
 
 public abstract class BaseAshSmokeParticle extends SingleQuadParticle {
    private final SpriteSet sprites;
@@ -53,7 +52,7 @@ public abstract class BaseAshSmokeParticle extends SingleQuadParticle {
 
    @Override
    public float getQuadSize(final float a) {
-      return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
+      return this.quadSize * Math.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
    }
 
    @Override

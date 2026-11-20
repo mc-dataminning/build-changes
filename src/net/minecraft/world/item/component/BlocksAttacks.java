@@ -131,7 +131,7 @@ public record BlocksAttacks(
          blockedDamage += reduction.resolve(source, dealtDamage, angle);
       }
 
-      return Mth.clamp(blockedDamage, 0.0F, dealtDamage);
+      return Math.clamp(blockedDamage, 0.0F, dealtDamage);
    }
 
    public record DamageReduction(float horizontalBlockingAngle, Optional<HolderSet<DamageType>> type, float base, float factor) {
@@ -162,7 +162,7 @@ public record BlocksAttacks(
          } else {
             return this.type.isPresent() && !this.type.get().contains(source.typeHolder())
                ? 0.0F
-               : Mth.clamp(this.base + this.factor * dealtDamage, 0.0F, dealtDamage);
+               : Math.clamp(this.base + this.factor * dealtDamage, 0.0F, dealtDamage);
          }
       }
    }

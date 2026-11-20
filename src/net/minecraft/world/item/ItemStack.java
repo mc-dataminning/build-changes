@@ -44,7 +44,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
 import net.minecraft.util.NullOps;
 import net.minecraft.util.StringUtil;
 import net.minecraft.util.Unit;
@@ -427,11 +426,11 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
    }
 
    public int getDamageValue() {
-      return Mth.clamp(this.getOrDefault(DataComponents.DAMAGE, 0), 0, this.getMaxDamage());
+      return Math.clamp(this.getOrDefault(DataComponents.DAMAGE, 0).intValue(), 0, this.getMaxDamage());
    }
 
    public void setDamageValue(final int value) {
-      this.set(DataComponents.DAMAGE, Mth.clamp(value, 0, this.getMaxDamage()));
+      this.set(DataComponents.DAMAGE, Math.clamp(value, 0, this.getMaxDamage()));
    }
 
    public int getMaxDamage() {

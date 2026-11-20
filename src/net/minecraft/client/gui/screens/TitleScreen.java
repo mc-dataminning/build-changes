@@ -1,5 +1,6 @@
 package net.minecraft.client.gui.screens;
 
+import com.google.common.base.Predicates;
 import com.mojang.authlib.minecraft.BanDetails;
 import com.mojang.logging.LogUtils;
 import com.mojang.realmsclient.RealmsMainScreen;
@@ -25,6 +26,7 @@ import net.minecraft.client.gui.screens.options.AccessibilityOptionsScreen;
 import net.minecraft.client.gui.screens.options.LanguageSelectScreen;
 import net.minecraft.client.gui.screens.options.OnlineOptionsScreen;
 import net.minecraft.client.gui.screens.options.OptionsScreen;
+import net.minecraft.client.gui.screens.reporting.DraftIconButton;
 import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
 import net.minecraft.client.gui.screens.worldselection.SelectWorldScreen;
 import net.minecraft.client.input.MouseButtonEvent;
@@ -123,7 +125,9 @@ public class TitleScreen extends Screen {
       this.friends = this.addRenderableWidget(
          CommonButtons.friends(
             20,
-            var1x -> OnlineOptionsScreen.confirmFriendsListEnabled(this.minecraft, () -> this.minecraft.gui.setScreen(new FriendsOverlayScreen(this)), this),
+            var1x -> OnlineOptionsScreen.confirmFriendsListEnabled(
+               this.minecraft, () -> this.minecraft.gui.setScreen(new FriendsOverlayScreen(this.minecraft, this)), this
+            ),
             !this.minecraft.isDemo() && !this.minecraft.isOfflineDeveloperMode()
          )
       );
@@ -145,7 +149,16 @@ public class TitleScreen extends Screen {
       topPos += 24;
       this.addRenderableWidget(var10001.bounds(var10002, topPos, 98, 20).build());
       this.addRenderableWidget(
-         Button.builder(Component.translatable("menu.quit"), var1x -> this.minecraft.stop()).bounds(this.width / 2 + 2, topPos, 98, 20).build()
+         new DraftIconButton(
+            this.width / 2 + 2,
+            topPos,
+            98,
+            20,
+            Component.translatable("menu.quit"),
+            var1x -> this.minecraft.getReportingContext().draftReportHandled(this.minecraft, this, this.minecraft::stop, true),
+            PauseScreen.DRAFT_REPORT_TOOLTIP,
+            Predicates.alwaysTrue()
+         )
       );
       this.addRenderableWidget(
          new PlainTextButton(
@@ -297,7 +310,7 @@ public class TitleScreen extends Screen {
          if (fade > 1.0F) {
             this.fading = false;
          } else {
-            fade = Mth.clamp(fade, 0.0F, 1.0F);
+            fade = Math.clamp(fade, 0.0F, 1.0F);
             widgetFade = Mth.clampedMap(fade, 0.5F, 1.0F, 0.0F, 1.0F);
          }
 

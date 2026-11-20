@@ -9,7 +9,7 @@ import net.minecraft.core.GlobalPos;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
+import net.minecraft.world.entity.ai.village.poi.PoiTypeIds;
 
 public record LodestoneTracker(Optional<GlobalPos> target, boolean tracked) {
    public static final Codec<LodestoneTracker> CODEC = RecordCodecBuilder.create(
@@ -30,7 +30,7 @@ public record LodestoneTracker(Optional<GlobalPos> target, boolean tracked) {
          }
 
          BlockPos blockPos = this.target.get().pos();
-         return level.isInWorldBounds(blockPos) && level.getPoiManager().existsAtPosition(PoiTypes.LODESTONE, blockPos)
+         return level.isInWorldBounds(blockPos) && level.getPoiManager().existsAtPosition(PoiTypeIds.LODESTONE, blockPos)
             ? this
             : new LodestoneTracker(Optional.empty(), true);
       } else {

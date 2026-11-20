@@ -212,7 +212,7 @@ public class EnderDragon extends Mob implements Enemy {
                   float max = currentPhase.getFlySpeed();
                   double horizontalDist = Math.sqrt(xdd * xdd + zdd * zdd);
                   if (horizontalDist > 0.0) {
-                     ydd = Mth.clamp(ydd / horizontalDist, -max, max);
+                     ydd = Math.clamp(ydd / horizontalDist, -max, max);
                   }
 
                   this.addDeltaMovement(0.0, ydd * 0.01, 0.0);
@@ -224,7 +224,7 @@ public class EnderDragon extends Mob implements Enemy {
                      .normalize();
                   float dot = Math.max(((float)dir.dot(aim) + 0.5F) / 1.5F, 0.0F);
                   if (Math.abs(xdd) > 1.0E-5F || Math.abs(zdd) > 1.0E-5F) {
-                     float yRotD = Mth.clamp(Mth.wrapDegrees(180.0F - (float)Mth.atan2(xdd, zdd) * (180.0F / (float)Math.PI) - this.getYRot()), -50.0F, 50.0F);
+                     float yRotD = Math.clamp(Mth.wrapDegrees(180.0F - (float)Mth.atan2(xdd, zdd) * (180.0F / (float)Math.PI) - this.getYRot()), -50.0F, 50.0F);
                      this.yRotA *= 0.8F;
                      this.yRotA = this.yRotA + yRotD * currentPhase.getTurnSpeed();
                      this.setYRot(this.getYRot() + this.yRotA * 0.1F);

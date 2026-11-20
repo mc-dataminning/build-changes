@@ -9,13 +9,14 @@ import net.minecraft.network.chat.Component;
 public class HeaderAndFooterLayout implements Layout {
    public static final int MAGIC_PADDING = 13;
    public static final int DEFAULT_HEADER_AND_FOOTER_HEIGHT = 33;
-   private static final int CONTENT_MARGIN_TOP = 30;
+   public static final int DEFAULT_CONTENT_MARGIN_TOP = 30;
    private final FrameLayout headerFrame = new FrameLayout();
    private final FrameLayout footerFrame = new FrameLayout();
    private final FrameLayout contentsFrame = new FrameLayout();
    private final Screen screen;
    private int headerHeight;
    private int footerHeight;
+   private int contentMarginTop = 30;
 
    public HeaderAndFooterLayout(final Screen screen) {
       this(screen, 33);
@@ -73,6 +74,10 @@ public class HeaderAndFooterLayout implements Layout {
       this.headerHeight = headerHeight;
    }
 
+   public void setContentMarginTop(final int contentMarginTop) {
+      this.contentMarginTop = contentMarginTop;
+   }
+
    public int getHeaderHeight() {
       return this.headerHeight;
    }
@@ -109,7 +114,7 @@ public class HeaderAndFooterLayout implements Layout {
       this.footerFrame.setY(this.screen.height - footerHeight);
       this.contentsFrame.setMinWidth(this.screen.width);
       this.contentsFrame.arrangeElements();
-      int preferredContentY = headerHeight + 30;
+      int preferredContentY = headerHeight + this.contentMarginTop;
       int maxContentY = this.screen.height - footerHeight - this.contentsFrame.getHeight();
       this.contentsFrame.setPosition(0, Math.min(preferredContentY, maxContentY));
    }

@@ -76,7 +76,7 @@ public class PoplarFoliagePlacer extends FoliagePlacer {
       );
       this.placeLeavesRow(level, foliageSetter, random, tree, foliagePos, currentRadius - 1, 0, doubleTrunk, foliageHeightWithOffset, flipRhombusShape);
       this.placeLeavesRow(
-         level, foliageSetter, random, tree, foliagePos, Mth.clamp(currentRadius - 2, 1, 2), -1, doubleTrunk, foliageHeightWithOffset, flipRhombusShape
+         level, foliageSetter, random, tree, foliagePos, Math.clamp(currentRadius - 2, 1, 2), -1, doubleTrunk, foliageHeightWithOffset, flipRhombusShape
       );
    }
 

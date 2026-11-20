@@ -22,7 +22,7 @@ public class SetWritableBookPagesFunction extends LootItemConditionalFunction {
    private final ListOperation pageOperation;
 
    protected SetWritableBookPagesFunction(
-      Optional<Holder<LootItemCondition>> condition, final List<Filterable<String>> pages, final ListOperation pageOperation
+      final Optional<Holder<LootItemCondition>> condition, final List<Filterable<String>> pages, final ListOperation pageOperation
    ) {
       super(condition);
       this.pages = pages;

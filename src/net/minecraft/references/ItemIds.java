@@ -150,6 +150,7 @@ public class ItemIds {
    public static final ResourceKey<Item> WATER_BUCKET = create("water_bucket");
    public static final ResourceKey<Item> LAVA_BUCKET = create("lava_bucket");
    public static final ResourceKey<Item> SNOWBALL = create("snowball");
+   public static final ResourceKey<Item> ICE_BALL = create("ice_ball");
    public static final ResourceKey<Item> LEATHER = create("leather");
    public static final ResourceKey<Item> MILK_BUCKET = create("milk_bucket");
    public static final ResourceKey<Item> PUFFERFISH_BUCKET = create("pufferfish_bucket");
@@ -311,6 +312,7 @@ public class ItemIds {
    public static final ResourceKey<Item> ENDERMAN_SPAWN_EGG = createSpawnEgg(EntityTypeIds.ENDERMAN);
    public static final ResourceKey<Item> ENDERMITE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.ENDERMITE);
    public static final ResourceKey<Item> SHULKER_SPAWN_EGG = createSpawnEgg(EntityTypeIds.SHULKER);
+   public static final ResourceKey<Item> FROSTBITE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.FROSTBITE);
    public static final ResourceKey<Item> EXPERIENCE_BOTTLE = create("experience_bottle");
    public static final ResourceKey<Item> FIRE_CHARGE = create("fire_charge");
    public static final ResourceKey<Item> WIND_CHARGE = create("wind_charge");

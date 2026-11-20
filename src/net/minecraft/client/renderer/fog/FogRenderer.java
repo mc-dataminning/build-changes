@@ -122,7 +122,7 @@ public class FogRenderer implements AutoCloseable {
 
       Vector3fc color = colorSourceEnvironment.getBaseColor(level, camera, renderDistance, partialTicks);
       float voidDarknessOnsetRange = level.getLevelData().voidDarknessOnsetRange();
-      float darkness = Mth.clamp((voidDarknessOnsetRange + level.getMinY() - (float)camera.position().y) / voidDarknessOnsetRange, 0.0F, 1.0F);
+      float darkness = Math.clamp((voidDarknessOnsetRange + level.getMinY() - (float)camera.position().y) / voidDarknessOnsetRange, 0.0F, 1.0F);
       if (darknessModifyingEnvironment != null) {
          LivingEntity livingEntity = (LivingEntity)entity;
          darkness = darknessModifyingEnvironment.getModifiedDarkness(livingEntity, darkness, partialTicks);
@@ -195,7 +195,7 @@ public class FogRenderer implements AutoCloseable {
          }
       }
 
-      float renderDistanceFogSpan = Mth.clamp(renderDistanceInBlocks / 10.0F, 4.0F, 64.0F);
+      float renderDistanceFogSpan = Math.clamp(renderDistanceInBlocks / 10.0F, 4.0F, 64.0F);
       fog.renderDistanceStart = renderDistanceInBlocks - renderDistanceFogSpan;
       fog.renderDistanceEnd = renderDistanceInBlocks;
       fog.shouldCreateBossFog = shouldCreateBossFog;

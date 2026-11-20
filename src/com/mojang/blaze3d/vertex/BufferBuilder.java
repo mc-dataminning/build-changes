@@ -6,7 +6,6 @@ import java.nio.ByteOrder;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
 import org.jspecify.annotations.Nullable;
 import org.lwjgl.system.MemoryUtil;
 
@@ -279,7 +278,7 @@ public class BufferBuilder implements VertexConsumer {
    }
 
    private static byte normalIntValue(final float c) {
-      return (byte)((int)(Mth.clamp(c, -1.0F, 1.0F) * 127.0F) & 0xFF);
+      return (byte)((int)(Math.clamp(c, -1.0F, 1.0F) * 127.0F) & 0xFF);
    }
 
    private static void putVec3f(final long pointer, final float x, final float y, final float z) {

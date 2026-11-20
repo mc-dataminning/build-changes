@@ -37,7 +37,7 @@ import net.minecraft.world.level.levelgen.feature.BlockColumnFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FossilFeature;
 import net.minecraft.world.level.levelgen.feature.GeodeFeature;
-import net.minecraft.world.level.levelgen.feature.LargeDripstoneFeature;
+import net.minecraft.world.level.levelgen.feature.LargeSpeleothemFeature;
 import net.minecraft.world.level.levelgen.feature.MonsterRoomFeature;
 import net.minecraft.world.level.levelgen.feature.MultifaceGrowthFeature;
 import net.minecraft.world.level.levelgen.feature.OverlayFeature;
@@ -49,6 +49,7 @@ import net.minecraft.world.level.levelgen.feature.SimpleBlockFeature;
 import net.minecraft.world.level.levelgen.feature.SimpleRandomSelectorFeature;
 import net.minecraft.world.level.levelgen.feature.SpeleothemClusterFeature;
 import net.minecraft.world.level.levelgen.feature.SpeleothemFeature;
+import net.minecraft.world.level.levelgen.feature.SpeleothemUtils;
 import net.minecraft.world.level.levelgen.feature.UnderwaterMagmaFeature;
 import net.minecraft.world.level.levelgen.feature.VegetationPatchFeature;
 import net.minecraft.world.level.levelgen.feature.WaterloggedVegetationPatchFeature;
@@ -69,7 +70,9 @@ public class CaveFeatures {
    public static final ResourceKey<Feature> FOSSIL_DIAMONDS = FeatureUtils.createKey("fossil_diamonds");
    public static final ResourceKey<Feature> DRIPSTONE_CLUSTER = FeatureUtils.createKey("dripstone_cluster");
    public static final ResourceKey<Feature> SULFUR_SPIKE_CLUSTER = FeatureUtils.createKey("sulfur_spike_cluster");
+   public static final ResourceKey<Feature> ICICLE_CLUSTER = FeatureUtils.createKey("icicle_cluster");
    public static final ResourceKey<Feature> LARGE_DRIPSTONE = FeatureUtils.createKey("large_dripstone");
+   public static final ResourceKey<Feature> LARGE_ICICLE = FeatureUtils.createKey("large_icicle");
    public static final ResourceKey<Feature> POINTED_DRIPSTONE = FeatureUtils.createKey("pointed_dripstone");
    public static final ResourceKey<Feature> SULFUR_SPIKE = FeatureUtils.createKey("sulfur_spike");
    public static final ResourceKey<Feature> UNDERWATER_MAGMA = FeatureUtils.createKey("underwater_magma");
@@ -81,6 +84,8 @@ public class CaveFeatures {
    public static final ResourceKey<Feature> MOSS_VEGETATION = FeatureUtils.createKey("moss_vegetation");
    public static final ResourceKey<Feature> MOSS_PATCH = FeatureUtils.createKey("moss_patch");
    public static final ResourceKey<Feature> MOSS_PATCH_BONEMEAL = FeatureUtils.createKey("moss_patch_bonemeal");
+   public static final ResourceKey<Feature> SNOW_LAYER = FeatureUtils.createKey("snow_layer");
+   public static final ResourceKey<Feature> ICE_CRYSTAL = FeatureUtils.createKey("ice_crystal");
    public static final ResourceKey<Feature> DRIPLEAF = FeatureUtils.createKey("dripleaf");
    public static final ResourceKey<Feature> CLAY_WITH_DRIPLEAVES = FeatureUtils.createKey("clay_with_dripleaves");
    public static final ResourceKey<Feature> CLAY_POOL_WITH_DRIPLEAVES = FeatureUtils.createKey("clay_pool_with_dripleaves");
@@ -179,7 +184,8 @@ public class CaveFeatures {
       );
       context.register(
          LARGE_DRIPSTONE,
-         new LargeDripstoneFeature(
+         new LargeSpeleothemFeature(
+            Blocks.DRIPSTONE_BLOCK.defaultBlockState(),
             blocks.getOrThrow(BlockTags.DRIPSTONE_REPLACEABLE),
             30,
             ClampedInt.of(UniformInt.of(3, 19), 3, 16),
@@ -274,6 +280,28 @@ public class CaveFeatures {
                   EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, 12),
                   OffsetPlacement.vertical(ConstantInt.of(-1))
                )
+            )
+         )
+      );
+      context.register(
+         ICICLE_CLUSTER,
+         new SpeleothemClusterFeature(
+            Blocks.PACKED_ICE.defaultBlockState(),
+            Blocks.ICICLE.defaultBlockState(),
+            HolderSet.empty(),
+            32,
+            UniformInt.of(3, 5),
+            ConstantInt.of(6),
+            1,
+            3,
+            UniformInt.of(2, 3),
+            UniformFloat.of(0.3F, 0.7F),
+            ConstantFloat.ZERO,
+            0.1F,
+            3,
+            8,
+            new SpeleothemClusterFeature.PlacementOptions(
+               SpeleothemClusterFeature.PlacementMode.CEILING_ONLY, SpeleothemUtils.BaseBlockTransformer.SET_ATTACHED, false
             )
          )
       );
@@ -562,6 +590,24 @@ public class CaveFeatures {
                Blocks.TUFF,
                Blocks.DEEPSLATE
             )
+         )
+      );
+      context.register(SNOW_LAYER, new SimpleBlockFeature(BlockStateProvider.of(Blocks.SNOW)));
+      context.register(ICE_CRYSTAL, new SimpleBlockFeature(BlockStateProvider.of(Blocks.ICE_CRYSTAL)));
+      context.register(
+         LARGE_ICICLE,
+         new LargeSpeleothemFeature(
+            Blocks.PACKED_ICE.defaultBlockState(),
+            blocks.getOrThrow(BlockTags.LARGE_ICICLE_REPLACEABLE),
+            30,
+            ClampedInt.of(UniformInt.of(3, 19), 3, 16),
+            UniformFloat.of(0.4F, 2.0F),
+            0.33F,
+            UniformFloat.of(0.3F, 0.9F),
+            UniformFloat.of(0.4F, 1.0F),
+            UniformFloat.of(0.0F, 0.3F),
+            4,
+            0.6F
          )
       );
    }

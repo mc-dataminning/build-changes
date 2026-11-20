@@ -44,7 +44,7 @@ public class PrimaryLevelData implements ServerLevelData, WorldData {
    private final Set<String> knownServerBrands;
    private boolean wasModded;
    private final Set<String> removedFeatureFlags;
-   private List<Integer> versionHistory;
+   private final List<Integer> versionHistory;
 
    private PrimaryLevelData(
       final @Nullable UUID singlePlayerUUID,

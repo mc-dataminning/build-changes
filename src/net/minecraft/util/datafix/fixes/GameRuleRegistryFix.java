@@ -5,7 +5,6 @@ import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import net.minecraft.util.Mth;
 
 public class GameRuleRegistryFix extends DataFix {
    public GameRuleRegistryFix(final Schema outputSchema) {
@@ -124,7 +123,7 @@ public class GameRuleRegistryFix extends DataFix {
 
       try {
          int parsedValue = Integer.parseInt(stringValue);
-         return oldValue.createInt(Mth.clamp(parsedValue, min, max));
+         return oldValue.createInt(Math.clamp(parsedValue, min, max));
       } catch (NumberFormatException ignored) {
          return oldValue;
       }

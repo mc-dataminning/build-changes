@@ -310,11 +310,10 @@ public class PlaceCommand {
          level.getStructureTemplateManager(),
          level.getSeed(),
          ChunkPos.containing(pos),
-         0,
          level,
          b -> true
       );
-      if (!start.isValid()) {
+      if (start == null) {
          throw ERROR_STRUCTURE_FAILED.create();
       }
 

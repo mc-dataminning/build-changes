@@ -464,7 +464,17 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       this.playLocalSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, sound, source, volume, pitch, distanceDelay);
    }
 
+   public void playLocalSound(
+      final BlockPos pos, final Holder<SoundEvent> sound, final SoundSource source, final float volume, final float pitch, final boolean distanceDelay
+   ) {
+      this.playLocalSound(pos, sound.value(), source, volume, pitch, distanceDelay);
+   }
+
    public void playLocalSound(final Entity sourceEntity, final SoundEvent sound, final SoundSource source, final float volume, final float pitch) {
+   }
+
+   public void playLocalSound(final Entity sourceEntity, final Holder<SoundEvent> sound, final SoundSource source, final float volume, final float pitch) {
+      this.playLocalSound(sourceEntity, sound.value(), source, volume, pitch);
    }
 
    public void playLocalSound(
@@ -911,7 +921,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    }
 
    public void setThunderLevel(final float thunderLevel) {
-      float clampedThunderLevel = Mth.clamp(thunderLevel, 0.0F, 1.0F);
+      float clampedThunderLevel = Math.clamp(thunderLevel, 0.0F, 1.0F);
       this.oThunderLevel = clampedThunderLevel;
       this.thunderLevel = clampedThunderLevel;
    }
@@ -921,7 +931,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    }
 
    public void setRainLevel(final float rainLevel) {
-      float clampedRainLevel = Mth.clamp(rainLevel, 0.0F, 1.0F);
+      float clampedRainLevel = Math.clamp(rainLevel, 0.0F, 1.0F);
       this.oRainLevel = clampedRainLevel;
       this.rainLevel = clampedRainLevel;
    }

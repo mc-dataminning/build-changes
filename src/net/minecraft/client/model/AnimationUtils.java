@@ -24,7 +24,7 @@ public class AnimationUtils {
       holdingArm.yRot = holdingInRightArm ? -0.8F : 0.8F;
       holdingArm.xRot = -0.97079635F;
       pullingArm.xRot = holdingArm.xRot;
-      float useTicks = Mth.clamp(ticksUsingItem, 0.0F, maxCrossbowChargeDuration);
+      float useTicks = Math.clamp(ticksUsingItem, 0.0F, maxCrossbowChargeDuration);
       float lerpAlpha = useTicks / maxCrossbowChargeDuration;
       pullingArm.yRot = Mth.lerp(lerpAlpha, 0.4F, 0.85F) * (holdingInRightArm ? 1 : -1);
       pullingArm.xRot = Mth.lerp(lerpAlpha, pullingArm.xRot, (float) (-Math.PI / 2));

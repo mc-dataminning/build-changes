@@ -8,7 +8,7 @@ public class GaussianSampler {
    private static final int GAUSSIAN_SAMPLE_BREADTH = 6;
    private static final double[] GAUSSIAN_SAMPLE_KERNEL = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
 
-   public static <V> void sample(Vec3 position, final GaussianSampler.Sampler<V> sampler, final GaussianSampler.Accumulator<V> accumulator) {
+   public static void sample(Vec3 position, final GaussianSampler.Accumulator accumulator) {
       position = position.subtract(0.5, 0.5, 0.5);
       int integralX = Mth.floor(position.x());
       int integralY = Mth.floor(position.y());
@@ -29,20 +29,14 @@ public class GaussianSampler {
                double weightY = Mth.lerp(relativeY, GAUSSIAN_SAMPLE_KERNEL[y + 1], GAUSSIAN_SAMPLE_KERNEL[y]);
                int sampleY = integralY - 2 + y;
                double sampleWeight = weightX * weightY * weightZ;
-               V value = sampler.get(sampleX, sampleY, sampleZ);
-               accumulator.accumulate(sampleWeight, value);
+               accumulator.accumulate(sampleX, sampleY, sampleZ, sampleWeight);
             }
          }
       }
    }
 
    @FunctionalInterface
-   public interface Accumulator<V> {
-      void accumulate(double weight, V value);
-   }
-
-   @FunctionalInterface
-   public interface Sampler<V> {
-      V get(int x, int y, int z);
+   public interface Accumulator {
+      void accumulate(int sampleX, int sampleY, int sampleZ, double weight);
    }
 }

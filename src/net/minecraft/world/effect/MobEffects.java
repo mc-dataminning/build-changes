@@ -121,6 +121,9 @@ public class MobEffects {
       "infested", new InfestedMobEffect(MobEffectCategory.HARMFUL, 9214860, 0.1F, random -> Mth.randomBetweenInclusive(random, 1, 2))
    );
    public static final Holder<MobEffect> BREATH_OF_THE_NAUTILUS = register("breath_of_the_nautilus", new MobEffect(MobEffectCategory.BENEFICIAL, 65518));
+   public static final Holder<MobEffect> FREEZING = register(
+      "freezing", new FreezingMobEffect(MobEffectCategory.HARMFUL, 10415854).withSoundOnAdded(SoundEvents.APPLY_EFFECT_FREEZING)
+   );
 
    private static Holder<MobEffect> register(final String name, final MobEffect mobEffect) {
       return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Identifier.withDefaultNamespace(name), mobEffect);

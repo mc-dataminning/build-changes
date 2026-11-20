@@ -44,7 +44,7 @@ public class BedBlock extends AbstractBedBlock {
    }
 
    @Override
-   protected InteractionResult destroyOnUse(final BlockState state, final Level level, BlockPos pos, final Player player) {
+   protected InteractionResult destroyOnUse(final BlockState state, final Level level, final BlockPos pos, final Player player) {
       level.removeBlock(pos, false);
       BlockPos blockPos = pos.relative(state.getValue(FACING).getOpposite());
       if (level.getBlockState(blockPos).is(this)) {

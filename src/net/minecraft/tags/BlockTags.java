@@ -128,6 +128,7 @@ public final class BlockTags {
    public static final TagKey<Block> STONE_ORE_REPLACEABLES = create("stone_ore_replaceables");
    public static final TagKey<Block> HEIGHT_SPECIFIC_ORE_REPLACEABLES = create("height_specific_ore_replaceables");
    public static final TagKey<Block> DEEPSLATE_ORE_REPLACEABLES = create("deepslate_ore_replaceables");
+   public static final TagKey<Block> ICE_CAVE_ORE_REPLACEABLES = create("ice_cave_ore_replaceables");
    public static final TagKey<Block> BASE_STONE_NETHER = create("base_stone_nether");
    public static final TagKey<Block> BENEATH_TREE_PODZOL_REPLACEABLE = create("beneath_tree_podzol_replaceable");
    public static final TagKey<Block> BENEATH_BAMBOO_PODZOL_REPLACEABLE = create("beneath_bamboo_podzol_replaceable");
@@ -150,6 +151,7 @@ public final class BlockTags {
    public static final TagKey<Block> LUSH_GROUND_REPLACEABLE = create("lush_ground_replaceable");
    public static final TagKey<Block> AZALEA_ROOT_REPLACEABLE = create("azalea_root_replaceable");
    public static final TagKey<Block> ICE_SPIKE_REPLACEABLE = create("ice_spike_replaceable");
+   public static final TagKey<Block> LARGE_ICICLE_REPLACEABLE = create("large_icicle_replaceable");
    public static final TagKey<Block> FOREST_ROCK_CAN_PLACE_ON = create("forest_rock_can_place_on");
    public static final TagKey<Block> HUGE_BROWN_MUSHROOM_CAN_PLACE_ON = create("huge_brown_mushroom_can_place_on");
    public static final TagKey<Block> HUGE_RED_MUSHROOM_CAN_PLACE_ON = create("huge_red_mushroom_can_place_on");
@@ -282,12 +284,23 @@ public final class BlockTags {
    public static final TagKey<Block> ENTITIES_CAN_TELEPORT_TO = create("entities_can_teleport_to");
    public static final TagKey<Block> BLOCKS_DOLPHIN_JUMP = create("blocks_dolphin_jump");
    public static final TagKey<Block> ICE_MELTS_WHEN_DESTROYED_ABOVE = create("ice_melts_when_destroyed_above");
+   public static final TagKey<Block> MELTS_ICICLE_ABOVE = create("melts_icicle_above");
    public static final TagKey<Block> CAUSES_SUFFOCATION = create("causes_suffocation");
    public static final TagKey<Block> BLOCKS_MOTION_IN_HEIGHTMAP = create("blocks_motion_in_heightmap");
    public static final TagKey<Block> BLOCKS_MOTION_IN_HEIGHTMAP_NO_LEAVES = create("blocks_motion_in_heightmap_no_leaves");
    public static final TagKey<Block> BLOCKS_LAVA_FIRE_SPREAD = create("blocks_lava_fire_spread");
    public static final TagKey<Block> BLOCKS_FLUID_FLOW = create("blocks_fluid_flow");
    public static final TagKey<Block> WASHED_AWAY_BY_FLUIDS = create("washed_away_by_fluids");
+   public static final TagKey<Block> DROP_DOWN = create("drop_down");
+   public static final TagKey<Block> PATHFINDING_AVOID_IN_AIR = create("pathfinding/avoid_in_air");
+   public static final TagKey<Block> PATHFINDING_DAMAGE_CAUTIOUS = create("pathfinding/damage_cautious");
+   public static final TagKey<Block> PATHFINDING_DAMAGING = create("pathfinding/damaging");
+   public static final TagKey<Block> PATHFINDING_DROP_DOWN = create("pathfinding/drop_down");
+   public static final TagKey<Block> PATHFINDING_LEAVES = create("pathfinding/leaves");
+   public static final TagKey<Block> PATHFINDING_OPEN = create("pathfinding/open");
+   public static final TagKey<Block> PATHFINDING_POWDER_SNOW = create("pathfinding/powder_snow");
+   public static final TagKey<Block> PATHFINDING_RAILS = create("pathfinding/rails");
+   public static final TagKey<Block> PATHFINDING_STICKY = create("pathfinding/sticky");
    public static final TagKey<Block> AIR = create("air");
 
    private BlockTags() {

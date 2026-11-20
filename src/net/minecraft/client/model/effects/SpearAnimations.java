@@ -15,7 +15,7 @@ import net.minecraft.world.item.component.KineticWeapon;
 
 public class SpearAnimations {
    private static float progress(final float time, final float start, final float end) {
-      return Mth.clamp(Mth.inverseLerp(time, start, end), 0.0F, 1.0F);
+      return Math.clamp(Mth.inverseLerp(time, start, end), 0.0F, 1.0F);
    }
 
    public static <T extends HumanoidRenderState> void thirdPersonHandUse(

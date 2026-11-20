@@ -97,7 +97,7 @@ public interface EasingType {
                break;
             }
 
-            t -= Mth.clamp(error / gradient, -0.25F, 0.25F);
+            t -= Math.clamp(error / gradient, -0.25F, 0.25F);
          }
 
          return this.solveTBisect(x, t);

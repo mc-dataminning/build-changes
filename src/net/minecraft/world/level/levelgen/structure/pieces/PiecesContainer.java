@@ -14,6 +14,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
 public record PiecesContainer(List<StructurePiece> pieces) {
@@ -27,11 +28,11 @@ public record PiecesContainer(List<StructurePiece> pieces) {
       .build();
 
    public PiecesContainer(final List<StructurePiece> pieces) {
-      this.pieces = List.copyOf(pieces);
-   }
+      if (pieces.isEmpty()) {
+         throw new IllegalArgumentException("PiecesContainer requires at least one piece");
+      }
 
-   public boolean isEmpty() {
-      return this.pieces.isEmpty();
+      this.pieces = List.copyOf(pieces);
    }
 
    public boolean isInsidePiece(final BlockPos startPos) {
@@ -54,7 +55,7 @@ public record PiecesContainer(List<StructurePiece> pieces) {
       return childrenTags;
    }
 
-   public static PiecesContainer load(final ListTag children, final StructurePieceSerializationContext context) {
+   public static @Nullable PiecesContainer load(final ListTag children, final StructurePieceSerializationContext context) {
       List<StructurePiece> pieces = Lists.newArrayList();
 
       for (int i = 0; i < children.size(); i++) {
@@ -75,7 +76,7 @@ public record PiecesContainer(List<StructurePiece> pieces) {
          }
       }
 
-      return new PiecesContainer(pieces);
+      return pieces.isEmpty() ? null : new PiecesContainer(pieces);
    }
 
    public BoundingBox calculateBoundingBox() {

@@ -49,6 +49,9 @@ public class VulkanFeatureSets {
       "Wireframe", Set.of(), Set.of(new VulkanFeature(VK10_FEATURES_STRUCT, "fillModeNonSolid"))
    );
    public static final FeatureSet CALIBRATED_TIMESTAMP_FEATURESET = new FeatureSet("Calibrated Timestamps", Set.of("VK_EXT_calibrated_timestamps"), Set.of());
+   public static final FeatureSet DXGI_FEATURESET = new FeatureSet(
+      "DXGI Surface", Set.of("VK_KHR_external_semaphore_win32", "VK_KHR_external_memory_win32"), Set.of()
+   );
 
    public static Set<FeatureSet> requiredFeatureSets() {
       return ObjectOpenHashSet.of(REQUIRED_FEATURESET);
@@ -61,7 +64,12 @@ public class VulkanFeatureSets {
    public static Set<FeatureSet> optionalFeatureSets() {
       return ObjectOpenHashSet.of(
          new FeatureSet[]{
-            CALIBRATED_TIMESTAMP_FEATURESET, WIREFRAME_FEATURESET, NV_DIAGNOSTIC_CHECKPOINT_FEATURESET, AMD_BUFFER_MARKER_FEATURESET, MULTI_DRAW_FEATURESET
+            DXGI_FEATURESET,
+            CALIBRATED_TIMESTAMP_FEATURESET,
+            WIREFRAME_FEATURESET,
+            NV_DIAGNOSTIC_CHECKPOINT_FEATURESET,
+            AMD_BUFFER_MARKER_FEATURESET,
+            MULTI_DRAW_FEATURESET
          }
       );
    }

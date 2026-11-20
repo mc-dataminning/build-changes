@@ -62,6 +62,7 @@ import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterLists;
 import net.minecraft.world.level.block.entity.BannerPatterns;
 import net.minecraft.world.level.block.entity.DecoratedPotPatterns;
 import net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerConfigs;
+import net.minecraft.world.level.block.sounds.BlockSoundSets;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.NoiseRouterData;
 import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPresets;
@@ -129,7 +130,8 @@ public class VanillaRegistries {
       .add(Registries.TRADE_SET, TradeSets::bootstrap)
       .add(Registries.DECORATED_POT_PATTERN, DecoratedPotPatterns::bootstrap)
       .add(Registries.BLOCK_TRANSFORMER, BlockTransformers::bootstrap)
-      .add(Registries.BLOCK_STATE_PROVIDER, BlockStateProviders::bootstrap);
+      .add(Registries.BLOCK_STATE_PROVIDER, BlockStateProviders::bootstrap)
+      .add(Registries.BLOCK_SOUND_SET, BlockSoundSets::bootstrap);
    private static final RegistrySetBuilder RELOADABLE_BUILDER = new RegistrySetBuilder()
       .add(Registries.LOOT_TABLE, VanillaLootTableProvider.create())
       .add(Registries.PREDICATE, LootPredicates::bootstrap)

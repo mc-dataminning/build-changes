@@ -190,12 +190,15 @@ public final class ItemTags {
    public static final TagKey<Item> CAULDRON_CAN_REMOVE_DYE = bind("cauldron_can_remove_dye");
    public static final TagKey<Item> CAT_COLLAR_DYES = bind("cat_collar_dyes");
    public static final TagKey<Item> WOLF_COLLAR_DYES = bind("wolf_collar_dyes");
+   public static final TagKey<Item> SHEEP_WOOL_DYES = bind("sheep_wool_dyes");
    public static final TagKey<Item> CUSHIONS = bind("cushions");
    public static final TagKey<Item> SKELETON_PREFERRED_WEAPONS = bind("skeleton_preferred_weapons");
    public static final TagKey<Item> DROWNED_PREFERRED_WEAPONS = bind("drowned_preferred_weapons");
+   public static final TagKey<Item> FROSTBITE_PREFERRED_WEAPONS = bind("frostbite_preferred_weapons");
    public static final TagKey<Item> PIGLIN_PREFERRED_WEAPONS = bind("piglin_preferred_weapons");
    public static final TagKey<Item> PILLAGER_PREFERRED_WEAPONS = bind("pillager_preferred_weapons");
    public static final TagKey<Item> WITHER_SKELETON_DISLIKED_WEAPONS = bind("wither_skeleton_disliked_weapons");
+   public static final TagKey<Item> KNOCKS_BACK_PLAYERS_EVEN_WITH_ZERO_DAMAGE = bind("knocks_back_players_even_with_zero_damage");
    public static final TagKey<Item> SHEARABLE_FROM_COPPER_GOLEM = bind("shearable_from_copper_golem");
    public static final TagKey<Item> METAL_NUGGETS = bind("metal_nuggets");
    public static final TagKey<Item> DOUSES_CAMPFIRES = bind("douses_campfires");

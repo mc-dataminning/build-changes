@@ -101,6 +101,7 @@ import net.minecraft.world.entity.monster.spider.CaveSpider;
 import net.minecraft.world.entity.monster.spider.Spider;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.monster.zombie.Drowned;
+import net.minecraft.world.entity.monster.zombie.Frostbite;
 import net.minecraft.world.entity.monster.zombie.Husk;
 import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.minecraft.world.entity.monster.zombie.ZombieVillager;
@@ -123,6 +124,7 @@ import net.minecraft.world.entity.projectile.hurtingprojectile.SmallFireball;
 import net.minecraft.world.entity.projectile.hurtingprojectile.WitherSkull;
 import net.minecraft.world.entity.projectile.hurtingprojectile.windcharge.BreezeWindCharge;
 import net.minecraft.world.entity.projectile.hurtingprojectile.windcharge.WindCharge;
+import net.minecraft.world.entity.projectile.throwableitemprojectile.IceBall;
 import net.minecraft.world.entity.projectile.throwableitemprojectile.Snowball;
 import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEgg;
 import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEnderpearl;
@@ -481,6 +483,16 @@ public class EntityTypes {
       EntityTypeIds.FROG,
       EntityType.Builder.of(Frog::new, MobCategory.CREATURE).sized(0.5F, 0.5F).passengerAttachments(new Vec3(0.0, 0.375, -0.25)).clientTrackingRange(10)
    );
+   public static final EntityType<Frostbite> FROSTBITE = register(
+      EntityTypeIds.FROSTBITE,
+      EntityType.Builder.of(Frostbite::new, MobCategory.MONSTER)
+         .sized(0.6F, 1.95F)
+         .eyeHeight(1.74F)
+         .passengerAttachments(2.0125F)
+         .ridingOffset(-0.7F)
+         .clientTrackingRange(8)
+         .notInPeaceful()
+   );
    public static final EntityType<MinecartFurnace> FURNACE_MINECART = register(
       EntityTypeIds.FURNACE_MINECART,
       EntityType.Builder.of(MinecartFurnace::new, MobCategory.MISC).noLootTable().sized(0.98F, 0.7F).passengerAttachments(0.1875F).clientTrackingRange(8)
@@ -556,6 +568,10 @@ public class EntityTypes {
          .ridingOffset(-0.7F)
          .clientTrackingRange(8)
          .notInPeaceful()
+   );
+   public static final EntityType<IceBall> ICE_BALL = register(
+      EntityTypeIds.ICE_BALL,
+      EntityType.Builder.<IceBall>of(IceBall::new, MobCategory.MISC).noLootTable().sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10)
    );
    public static final EntityType<Illusioner> ILLUSIONER = register(
       EntityTypeIds.ILLUSIONER,

@@ -14,7 +14,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.PoiTypeTags;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
+import net.minecraft.world.entity.ai.village.poi.PoiTypeIds;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.TradeSet;
@@ -126,7 +126,7 @@ public record VillagerProfession(
       register(
          registry,
          ARMORER,
-         PoiTypes.ARMORER,
+         PoiTypeIds.ARMORER,
          SoundEvents.VILLAGER_WORK_ARMORER,
          Int2ObjectMap.ofEntries(
             new Entry[]{
@@ -141,7 +141,7 @@ public record VillagerProfession(
       register(
          registry,
          BUTCHER,
-         PoiTypes.BUTCHER,
+         PoiTypeIds.BUTCHER,
          SoundEvents.VILLAGER_WORK_BUTCHER,
          Int2ObjectMap.ofEntries(
             new Entry[]{
@@ -156,7 +156,7 @@ public record VillagerProfession(
       register(
          registry,
          CARTOGRAPHER,
-         PoiTypes.CARTOGRAPHER,
+         PoiTypeIds.CARTOGRAPHER,
          SoundEvents.VILLAGER_WORK_CARTOGRAPHER,
          Int2ObjectMap.ofEntries(
             new Entry[]{
@@ -171,7 +171,7 @@ public record VillagerProfession(
       register(
          registry,
          CLERIC,
-         PoiTypes.CLERIC,
+         PoiTypeIds.CLERIC,
          SoundEvents.VILLAGER_WORK_CLERIC,
          Int2ObjectMap.ofEntries(
             new Entry[]{
@@ -186,7 +186,7 @@ public record VillagerProfession(
       register(
          registry,
          FARMER,
-         PoiTypes.FARMER,
+         PoiTypeIds.FARMER,
          ImmutableSet.of(Items.WHEAT, Items.WHEAT_SEEDS, Items.BEETROOT_SEEDS, Items.BONE_MEAL),
          ImmutableSet.of(Blocks.FARMLAND),
          SoundEvents.VILLAGER_WORK_FARMER,
@@ -203,7 +203,7 @@ public record VillagerProfession(
       register(
          registry,
          FISHERMAN,
-         PoiTypes.FISHERMAN,
+         PoiTypeIds.FISHERMAN,
          SoundEvents.VILLAGER_WORK_FISHERMAN,
          Int2ObjectMap.ofEntries(
             new Entry[]{
@@ -218,7 +218,7 @@ public record VillagerProfession(
       register(
          registry,
          FLETCHER,
-         PoiTypes.FLETCHER,
+         PoiTypeIds.FLETCHER,
          SoundEvents.VILLAGER_WORK_FLETCHER,
          Int2ObjectMap.ofEntries(
             new Entry[]{
@@ -233,7 +233,7 @@ public record VillagerProfession(
       register(
          registry,
          LEATHERWORKER,
-         PoiTypes.LEATHERWORKER,
+         PoiTypeIds.LEATHERWORKER,
          SoundEvents.VILLAGER_WORK_LEATHERWORKER,
          Int2ObjectMap.ofEntries(
             new Entry[]{
@@ -248,7 +248,7 @@ public record VillagerProfession(
       register(
          registry,
          LIBRARIAN,
-         PoiTypes.LIBRARIAN,
+         PoiTypeIds.LIBRARIAN,
          SoundEvents.VILLAGER_WORK_LIBRARIAN,
          Int2ObjectMap.ofEntries(
             new Entry[]{
@@ -263,7 +263,7 @@ public record VillagerProfession(
       register(
          registry,
          MASON,
-         PoiTypes.MASON,
+         PoiTypeIds.MASON,
          SoundEvents.VILLAGER_WORK_MASON,
          Int2ObjectMap.ofEntries(
             new Entry[]{
@@ -279,7 +279,7 @@ public record VillagerProfession(
       register(
          registry,
          SHEPHERD,
-         PoiTypes.SHEPHERD,
+         PoiTypeIds.SHEPHERD,
          SoundEvents.VILLAGER_WORK_SHEPHERD,
          Int2ObjectMap.ofEntries(
             new Entry[]{
@@ -294,7 +294,7 @@ public record VillagerProfession(
       register(
          registry,
          TOOLSMITH,
-         PoiTypes.TOOLSMITH,
+         PoiTypeIds.TOOLSMITH,
          SoundEvents.VILLAGER_WORK_TOOLSMITH,
          Int2ObjectMap.ofEntries(
             new Entry[]{
@@ -309,7 +309,7 @@ public record VillagerProfession(
       return register(
          registry,
          WEAPONSMITH,
-         PoiTypes.WEAPONSMITH,
+         PoiTypeIds.WEAPONSMITH,
          SoundEvents.VILLAGER_WORK_WEAPONSMITH,
          Int2ObjectMap.ofEntries(
             new Entry[]{

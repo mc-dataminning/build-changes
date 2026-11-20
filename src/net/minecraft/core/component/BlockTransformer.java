@@ -9,7 +9,6 @@ import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -135,9 +134,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
       public static final Codec<BlockTransformer.BlockTransformData> CODEC = RecordCodecBuilder.create(
          i -> i.group(
                BlockStateProvider.CODEC.fieldOf("block_state_provider").forGetter(BlockTransformer.BlockTransformData::blockStateProvider),
-               SoundEvent.CODEC
-                  .optionalFieldOf("sound", BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.EMPTY))
-                  .forGetter(BlockTransformer.BlockTransformData::sound),
+               SoundEvent.CODEC.optionalFieldOf("sound", SoundEvents.EMPTY).forGetter(BlockTransformer.BlockTransformData::sound),
                BlockTransformer.TransformParticle.CODEC
                   .optionalFieldOf("particle", BlockTransformer.TransformParticle.NONE)
                   .forGetter(BlockTransformer.BlockTransformData::particle),
@@ -193,7 +190,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
 
       public static class Builder {
          private final Holder<BlockStateProvider> targetStateProvider;
-         private Holder<SoundEvent> sound = BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.EMPTY);
+         private Holder<SoundEvent> sound = SoundEvents.EMPTY;
          private BlockTransformer.TransformParticle particle = BlockTransformer.TransformParticle.NONE;
          private List<Direction> disallowedFaces = List.of();
          private Optional<ResourceKey<LootTable>> loot = Optional.empty();

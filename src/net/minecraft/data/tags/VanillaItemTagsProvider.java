@@ -267,9 +267,11 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
          .add(ItemIds.MACE);
       this.tag(ItemTags.SKELETON_PREFERRED_WEAPONS).add(ItemIds.BOW);
       this.tag(ItemTags.DROWNED_PREFERRED_WEAPONS).add(ItemIds.TRIDENT);
+      this.tag(ItemTags.FROSTBITE_PREFERRED_WEAPONS).add(ItemIds.ICE_BALL);
       this.tag(ItemTags.PIGLIN_PREFERRED_WEAPONS).add(ItemIds.CROSSBOW, ItemIds.GOLDEN_SPEAR);
       this.tag(ItemTags.PILLAGER_PREFERRED_WEAPONS).add(ItemIds.CROSSBOW);
       this.tag(ItemTags.WITHER_SKELETON_DISLIKED_WEAPONS).add(ItemIds.BOW).add(ItemIds.CROSSBOW);
+      this.tag(ItemTags.KNOCKS_BACK_PLAYERS_EVEN_WITH_ZERO_DAMAGE).add(ItemIds.SNOWBALL);
       this.tag(ItemTags.DECORATED_POT_SHERDS)
          .add(
             ItemIds.ANGLER_POTTERY_SHERD,
@@ -684,6 +686,7 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
          );
       this.tag(ItemTags.CAT_COLLAR_DYES).addTag(ItemTags.DYES);
       this.tag(ItemTags.WOLF_COLLAR_DYES).addTag(ItemTags.DYES);
+      this.tag(ItemTags.SHEEP_WOOL_DYES).addTag(ItemTags.DYES);
       this.tag(ItemTags.DOUSES_CAMPFIRES).addTag(ItemTags.SHOVELS);
       this.tag(ItemTags.BREWING_POTION_INPUTS).add(ItemIds.POTION).add(ItemIds.SPLASH_POTION).add(ItemIds.LINGERING_POTION).add(ItemIds.GLASS_BOTTLE);
       this.tag(ItemTags.FURNACE_FUEL_BOTTOM_TAKEABLE).add(ItemIds.WATER_BUCKET).add(ItemIds.BUCKET);

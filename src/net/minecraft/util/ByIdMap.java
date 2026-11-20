@@ -73,7 +73,7 @@ public class ByIdMap {
             yield id -> id >= 0 && id < length ? sortedValues[id] : zeroValue;
          }
          case WRAP -> id -> sortedValues[Mth.positiveModulo(id, length)];
-         case CLAMP -> id -> sortedValues[Mth.clamp(id, 0, length - 1)];
+         case CLAMP -> id -> sortedValues[Math.clamp(id, 0, length - 1)];
       };
    }
 

@@ -2,9 +2,11 @@ package net.minecraft.world.level.block;
 
 import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -15,6 +17,7 @@ import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
 import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.sounds.BlockSoundSet;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -49,7 +52,9 @@ public class HoneyBlock extends HalfTransparentBlock {
       }
 
       if (entity.causeFallDamage(fallDistance, 0.2F, level.damageSources().fall())) {
-         entity.playSound(this.soundType.getFallSound(), this.soundType.getVolume() * 0.5F, this.soundType.getPitch() * 0.75F);
+         BlockSoundSet blockSoundSet = state.getSounds(level);
+         blockSoundSet.fallSound()
+            .ifPresent(fallSound -> entity.playSound((Holder<SoundEvent>)fallSound, blockSoundSet.volume() * 0.5F, blockSoundSet.pitch() * 0.75F));
       }
    }
 

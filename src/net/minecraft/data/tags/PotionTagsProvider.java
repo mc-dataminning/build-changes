@@ -57,7 +57,9 @@ public class PotionTagsProvider extends TagsProvider<Potion> {
             PotionIds.WEAKNESS,
             PotionIds.LONG_WEAKNESS,
             PotionIds.SLOW_FALLING,
-            PotionIds.LONG_SLOW_FALLING
+            PotionIds.LONG_SLOW_FALLING,
+            PotionIds.FREEZING,
+            PotionIds.LONG_FREEZING
          );
       this.tag(PotionTags.DOUSES_FIRE).add(PotionIds.WATER);
       this.tag(PotionTags.HURTS_WATER_SENSITIVE_ENTITIES).add(PotionIds.WATER);

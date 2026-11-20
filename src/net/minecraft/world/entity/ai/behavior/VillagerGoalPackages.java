@@ -16,7 +16,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
+import net.minecraft.world.entity.ai.village.poi.PoiTypeIds;
 import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.entity.raid.Raid;
@@ -60,8 +60,10 @@ public class VillagerGoalPackages {
             ),
             Pair.of(7, new GoToPotentialJobSite(speedModifier)),
             Pair.of(8, YieldJobSite.create(speedModifier)),
-            Pair.of(10, AcquirePoi.create(p -> p.is(PoiTypes.HOME), MemoryModuleType.HOME, false, Optional.of((byte)14), VillagerGoalPackages::validateBedPoi)),
-            Pair.of(10, AcquirePoi.create(p -> p.is(PoiTypes.MEETING), MemoryModuleType.MEETING_POINT, true, Optional.of((byte)14))),
+            Pair.of(
+               10, AcquirePoi.create(p -> p.is(PoiTypeIds.HOME), MemoryModuleType.HOME, false, Optional.of((byte)14), VillagerGoalPackages::validateBedPoi)
+            ),
+            Pair.of(10, AcquirePoi.create(p -> p.is(PoiTypeIds.MEETING), MemoryModuleType.MEETING_POINT, true, Optional.of((byte)14))),
             Pair.of(10, AssignProfessionFromJobSite.create()),
             Pair.of(10, ResetProfession.create())
          }
@@ -132,7 +134,7 @@ public class VillagerGoalPackages {
    public static ImmutableList<Pair<Integer, ? extends BehaviorControl<? super Villager>>> getRestPackage(final float speedModifier) {
       return ImmutableList.of(
          Pair.of(2, SetWalkTargetFromBlockMemory.create(MemoryModuleType.HOME, speedModifier, 1, 150, 1200)),
-         Pair.of(3, ValidateNearbyPoi.create(p -> p.is(PoiTypes.HOME), MemoryModuleType.HOME)),
+         Pair.of(3, ValidateNearbyPoi.create(p -> p.is(PoiTypeIds.HOME), MemoryModuleType.HOME)),
          Pair.of(3, new SleepInBed()),
          Pair.of(
             5,
@@ -163,7 +165,7 @@ public class VillagerGoalPackages {
          Pair.of(10, SetLookAndInteract.create(EntityTypes.PLAYER, 4)),
          Pair.of(2, SetWalkTargetFromBlockMemory.create(MemoryModuleType.MEETING_POINT, speedModifier, 6, 100, 200)),
          Pair.of(3, new GiveGiftToHero(100)),
-         Pair.of(3, ValidateNearbyPoi.create(p -> p.is(PoiTypes.MEETING), MemoryModuleType.MEETING_POINT)),
+         Pair.of(3, ValidateNearbyPoi.create(p -> p.is(PoiTypeIds.MEETING), MemoryModuleType.MEETING_POINT)),
          Pair.of(
             3,
             new GateBehavior(

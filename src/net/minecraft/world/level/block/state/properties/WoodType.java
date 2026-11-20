@@ -4,12 +4,19 @@ import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.Map;
 import java.util.stream.Stream;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.sounds.BlockSoundSet;
+import net.minecraft.world.level.block.sounds.BlockSoundSets;
 
 public record WoodType(
-   String name, BlockSetType setType, SoundType soundType, SoundType hangingSignSoundType, SoundEvent fenceGateClose, SoundEvent fenceGateOpen
+   String name,
+   BlockSetType setType,
+   ResourceKey<BlockSoundSet> blockSoundSet,
+   ResourceKey<BlockSoundSet> hangingSignSoundSet,
+   SoundEvent fenceGateClose,
+   SoundEvent fenceGateOpen
 ) {
    private static final Map<String, WoodType> TYPES = new Object2ObjectArrayMap();
    public static final Codec<WoodType> CODEC = Codec.stringResolver(WoodType::name, TYPES::get);
@@ -21,8 +28,8 @@ public record WoodType(
       new WoodType(
          "cherry",
          BlockSetType.CHERRY,
-         SoundType.CHERRY_WOOD,
-         SoundType.CHERRY_WOOD_HANGING_SIGN,
+         BlockSoundSets.CHERRY_WOOD,
+         BlockSoundSets.CHERRY_WOOD_HANGING_SIGN,
          SoundEvents.CHERRY_WOOD_FENCE_GATE_CLOSE,
          SoundEvents.CHERRY_WOOD_FENCE_GATE_OPEN
       )
@@ -35,8 +42,8 @@ public record WoodType(
       new WoodType(
          "crimson",
          BlockSetType.CRIMSON,
-         SoundType.NETHER_WOOD,
-         SoundType.NETHER_WOOD_HANGING_SIGN,
+         BlockSoundSets.NETHER_WOOD,
+         BlockSoundSets.NETHER_WOOD_HANGING_SIGN,
          SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE,
          SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN
       )
@@ -45,8 +52,8 @@ public record WoodType(
       new WoodType(
          "warped",
          BlockSetType.WARPED,
-         SoundType.NETHER_WOOD,
-         SoundType.NETHER_WOOD_HANGING_SIGN,
+         BlockSoundSets.NETHER_WOOD,
+         BlockSoundSets.NETHER_WOOD_HANGING_SIGN,
          SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE,
          SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN
       )
@@ -56,15 +63,15 @@ public record WoodType(
       new WoodType(
          "bamboo",
          BlockSetType.BAMBOO,
-         SoundType.BAMBOO_WOOD,
-         SoundType.BAMBOO_WOOD_HANGING_SIGN,
+         BlockSoundSets.BAMBOO_WOOD,
+         BlockSoundSets.BAMBOO_WOOD_HANGING_SIGN,
          SoundEvents.BAMBOO_WOOD_FENCE_GATE_CLOSE,
          SoundEvents.BAMBOO_WOOD_FENCE_GATE_OPEN
       )
    );
 
    public WoodType(final String name, final BlockSetType setType) {
-      this(name, setType, SoundType.WOOD, SoundType.HANGING_SIGN, SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN);
+      this(name, setType, BlockSoundSets.WOOD, BlockSoundSets.HANGING_SIGN, SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN);
    }
 
    private static WoodType register(final WoodType type) {

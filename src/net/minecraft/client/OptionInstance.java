@@ -17,10 +17,13 @@ import java.util.function.ToDoubleFunction;
 import java.util.function.ToIntFunction;
 import java.util.stream.IntStream;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.components.AbstractCycleButton;
 import net.minecraft.client.gui.components.AbstractOptionSliderButton;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.components.ResettableOptionWidget;
+import net.minecraft.client.gui.components.ScaledWidgetSprites;
+import net.minecraft.client.gui.components.SpriteIconCycleButton;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
@@ -131,7 +134,7 @@ public final class OptionInstance<T> {
    public AbstractWidget createButton(
       final Options options, final int x, final int y, final int width, final OptionInstance.ValueUpdateListener<? super T> onValueChanged
    ) {
-      return this.values.createButton(this.tooltip, options, x, y, width, onValueChanged).apply(this);
+      return this.values.buttonFactory().createButton(this, this.tooltip, options, x, y, width, onValueChanged);
    }
 
    public T get() {
@@ -167,16 +170,74 @@ public final class OptionInstance<T> {
    }
 
    public record AltEnum<T>(
-      List<T> values, List<T> altValues, BooleanSupplier altCondition, OptionInstance.CycleableValueSet.ValueSetter<T> valueSetter, Codec<T> codec
+      List<T> values,
+      List<T> altValues,
+      BooleanSupplier altCondition,
+      Codec<T> codec,
+      Function<OptionInstance.AltEnum<T>, OptionInstance.ButtonFactory<T>> buttonFactoryFunction
    ) implements OptionInstance.CycleableValueSet<T> {
+      public AltEnum(final List<T> values, final List<T> altValues, final BooleanSupplier altCondition, final Codec<T> codec) {
+         this(values, altValues, altCondition, codec, OptionInstance.ButtonFactory::textCycleButton);
+      }
+
       @Override
-      public CycleButton.ValueListSupplier<T> valueListSupplier() {
-         return CycleButton.ValueListSupplier.create(this.altCondition, this.values, this.altValues);
+      public OptionInstance.ButtonFactory<T> buttonFactory() {
+         return this.buttonFactoryFunction.apply(this);
+      }
+
+      @Override
+      public AbstractCycleButton.ValueListSupplier<T> valueListSupplier() {
+         return AbstractCycleButton.ValueListSupplier.create(this.altCondition, this.values, this.altValues);
       }
 
       @Override
       public Optional<T> validateValue(final T value) {
          return (this.altCondition.getAsBoolean() ? this.altValues : this.values).contains(value) ? Optional.of(value) : Optional.empty();
+      }
+   }
+
+   @FunctionalInterface
+   public interface ButtonFactory<T> {
+      AbstractWidget createButton(
+         OptionInstance<T> instance,
+         OptionInstance.TooltipSupplier<T> tooltip,
+         Options options,
+         int x,
+         int y,
+         int width,
+         OptionInstance.ValueUpdateListener<? super T> onValueChanged
+      );
+
+      static <T> OptionInstance.ButtonFactory<T> slider(final OptionInstance.SliderableValueSet<T> valueSet, final boolean applyValueImmediately) {
+         return (instance, tooltip, options, x, y, width, onValueChanged) -> new OptionInstance.OptionInstanceSliderButton<>(
+            options, x, y, width, 20, instance, valueSet, tooltip, onValueChanged, applyValueImmediately
+         );
+      }
+
+      static <T> OptionInstance.ButtonFactory<T> textCycleButton(final OptionInstance.CycleableValueSet<T> valueSet) {
+         return (instance, tooltip, options, x, y, width, onValueChanged) -> CycleButton.builder(instance.toString, instance::get)
+            .withValues(valueSet.valueListSupplier())
+            .withTooltip(tooltip)
+            .create(x, y, width, 20, instance.caption, (var3x, value) -> {
+               instance.set(value);
+               options.save();
+               onValueChanged.valueChanged(value);
+            });
+      }
+
+      static <T> OptionInstance.ButtonFactory<T> iconCycleButton(
+         final OptionInstance.CycleableValueSet<T> valueSet, final Function<T, ScaledWidgetSprites> iconProvider
+      ) {
+         return (instance, tooltip, options, x, y, width, onValueChanged) -> SpriteIconCycleButton.builder(instance.caption, instance.toString, instance::get)
+            .withValues(valueSet.valueListSupplier())
+            .sprite(iconProvider)
+            .size(width, 20)
+            .withTooltip(tooltip)
+            .build(x, y, (var3x, value) -> {
+               instance.set(value);
+               options.save();
+               onValueChanged.valueChanged(value);
+            });
       }
    }
 
@@ -187,9 +248,10 @@ public final class OptionInstance<T> {
 
    public record ClampingLazyMaxIntRange(int minInclusive, IntSupplier maxSupplier, int encodableMaxInclusive)
       implements OptionInstance.IntRangeBase,
-      OptionInstance.SliderableOrCyclableValueSet<Integer> {
+      OptionInstance.SliderableValueSet<Integer>,
+      OptionInstance.CycleableValueSet<Integer> {
       public Optional<Integer> validateValue(final Integer value) {
-         return Optional.of(Mth.clamp(value, this.minInclusive(), this.maxInclusive()));
+         return Optional.of(Math.clamp(value.intValue(), this.minInclusive(), this.maxInclusive()));
       }
 
       @Override
@@ -211,56 +273,39 @@ public final class OptionInstance<T> {
       }
 
       @Override
-      public boolean createCycleButton() {
-         return true;
+      public OptionInstance.ButtonFactory<Integer> buttonFactory() {
+         return OptionInstance.ButtonFactory.textCycleButton(this);
       }
 
       @Override
-      public CycleButton.ValueListSupplier<Integer> valueListSupplier() {
-         return CycleButton.ValueListSupplier.create(IntStream.range(this.minInclusive, this.maxInclusive() + 1).boxed().toList());
+      public AbstractCycleButton.ValueListSupplier<Integer> valueListSupplier() {
+         return AbstractCycleButton.ValueListSupplier.create(IntStream.range(this.minInclusive, this.maxInclusive() + 1).boxed().toList());
       }
    }
 
    public interface CycleableValueSet<T> extends OptionInstance.ValueSet<T> {
-      CycleButton.ValueListSupplier<T> valueListSupplier();
+      AbstractCycleButton.ValueListSupplier<T> valueListSupplier();
+   }
 
-      default OptionInstance.CycleableValueSet.ValueSetter<T> valueSetter() {
-         return OptionInstance::set;
+   public record Enum<T>(List<T> values, Codec<T> codec, Function<OptionInstance.Enum<T>, OptionInstance.ButtonFactory<T>> buttonFactoryFunction)
+      implements OptionInstance.CycleableValueSet<T> {
+      public Enum(final List<T> values, final Codec<T> codec) {
+         this(values, codec, OptionInstance.ButtonFactory::textCycleButton);
       }
 
       @Override
-      default Function<OptionInstance<T>, AbstractWidget> createButton(
-         final OptionInstance.TooltipSupplier<T> tooltip,
-         final Options options,
-         final int x,
-         final int y,
-         final int width,
-         final OptionInstance.ValueUpdateListener<? super T> onValueChanged
-      ) {
-         return instance -> CycleButton.builder(instance.toString, instance::get)
-            .withValues(this.valueListSupplier())
-            .withTooltip(tooltip)
-            .create(x, y, width, 20, instance.caption, (var4x, value) -> {
-               this.valueSetter().set(instance, value);
-               options.save();
-               onValueChanged.valueChanged(value);
-            });
+      public OptionInstance.ButtonFactory<T> buttonFactory() {
+         return this.buttonFactoryFunction.apply(this);
       }
 
-      interface ValueSetter<T> {
-         void set(final OptionInstance<T> instance, final T value);
-      }
-   }
-
-   public record Enum<T>(List<T> values, Codec<T> codec) implements OptionInstance.CycleableValueSet<T> {
       @Override
       public Optional<T> validateValue(final T value) {
          return this.values.contains(value) ? Optional.of(value) : Optional.empty();
       }
 
       @Override
-      public CycleButton.ValueListSupplier<T> valueListSupplier() {
-         return CycleButton.ValueListSupplier.create(this.values);
+      public AbstractCycleButton.ValueListSupplier<T> valueListSupplier() {
+         return AbstractCycleButton.ValueListSupplier.create(this.values);
       }
    }
 
@@ -353,15 +398,29 @@ public final class OptionInstance<T> {
       }
    }
 
-   public record LazyEnum<T>(Supplier<List<T>> values, Function<T, Optional<T>> validateValue, Codec<T> codec) implements OptionInstance.CycleableValueSet<T> {
+   public record LazyEnum<T>(
+      Supplier<List<T>> values,
+      Function<T, Optional<T>> validateValue,
+      Codec<T> codec,
+      Function<OptionInstance.LazyEnum<T>, OptionInstance.ButtonFactory<T>> buttonFactoryFunction
+   ) implements OptionInstance.CycleableValueSet<T> {
+      public LazyEnum(final Supplier<List<T>> values, final Function<T, Optional<T>> validateValue, final Codec<T> codec) {
+         this(values, validateValue, codec, OptionInstance.ButtonFactory::textCycleButton);
+      }
+
+      @Override
+      public OptionInstance.ButtonFactory<T> buttonFactory() {
+         return this.buttonFactoryFunction.apply(this);
+      }
+
       @Override
       public Optional<T> validateValue(final T value) {
          return this.validateValue.apply(value);
       }
 
       @Override
-      public CycleButton.ValueListSupplier<T> valueListSupplier() {
-         return CycleButton.ValueListSupplier.create(this.values.get());
+      public AbstractCycleButton.ValueListSupplier<T> valueListSupplier() {
+         return AbstractCycleButton.ValueListSupplier.create(this.values.get());
       }
    }
 
@@ -494,14 +553,14 @@ public final class OptionInstance<T> {
       @Override
       public Optional<T> next(final T current) {
          int currentIntex = this.values.indexOf(current);
-         int nextIndex = Mth.clamp(currentIntex + 1, 0, this.values.size() - 1);
+         int nextIndex = Math.clamp(currentIntex + 1, 0, this.values.size() - 1);
          return Optional.of(this.values.get(nextIndex));
       }
 
       @Override
       public Optional<T> previous(final T current) {
          int currentIntex = this.values.indexOf(current);
-         int previousIndex = Mth.clamp(currentIntex - 1, 0, this.values.size() - 1);
+         int previousIndex = Math.clamp(currentIntex - 1, 0, this.values.size() - 1);
          return Optional.of(this.values.get(previousIndex));
       }
 
@@ -512,31 +571,13 @@ public final class OptionInstance<T> {
          }
 
          int index = Mth.floor(Mth.map(slider, 0.0, 1.0, 0.0, this.values.size()));
-         return this.values.get(Mth.clamp(index, 0, this.values.size() - 1));
+         return this.values.get(Math.clamp(index, 0, this.values.size() - 1));
       }
 
       @Override
       public Optional<T> validateValue(final T value) {
          int index = this.values.indexOf(value);
          return index > -1 ? Optional.of(value) : Optional.empty();
-      }
-   }
-
-   public interface SliderableOrCyclableValueSet<T> extends OptionInstance.SliderableValueSet<T>, OptionInstance.CycleableValueSet<T> {
-      boolean createCycleButton();
-
-      @Override
-      default Function<OptionInstance<T>, AbstractWidget> createButton(
-         final OptionInstance.TooltipSupplier<T> tooltip,
-         final Options options,
-         final int x,
-         final int y,
-         final int width,
-         final OptionInstance.ValueUpdateListener<? super T> onValueChanged
-      ) {
-         return this.createCycleButton()
-            ? OptionInstance.CycleableValueSet.super.createButton(tooltip, options, x, y, width, onValueChanged)
-            : OptionInstance.SliderableValueSet.super.createButton(tooltip, options, x, y, width, onValueChanged);
       }
    }
 
@@ -558,17 +599,8 @@ public final class OptionInstance<T> {
       }
 
       @Override
-      default Function<OptionInstance<T>, AbstractWidget> createButton(
-         final OptionInstance.TooltipSupplier<T> tooltip,
-         final Options options,
-         final int x,
-         final int y,
-         final int width,
-         final OptionInstance.ValueUpdateListener<? super T> onValueChanged
-      ) {
-         return instance -> new OptionInstance.OptionInstanceSliderButton<>(
-            options, x, y, width, 20, instance, this, tooltip, onValueChanged, this.applyValueImmediately()
-         );
+      default OptionInstance.ButtonFactory<T> buttonFactory() {
+         return OptionInstance.ButtonFactory.slider(this, this.applyValueImmediately());
       }
    }
 
@@ -623,14 +655,7 @@ public final class OptionInstance<T> {
    }
 
    public interface ValueSet<T> {
-      Function<OptionInstance<T>, AbstractWidget> createButton(
-         final OptionInstance.TooltipSupplier<T> tooltip,
-         Options options,
-         final int x,
-         final int y,
-         final int width,
-         final OptionInstance.ValueUpdateListener<? super T> onValueChanged
-      );
+      OptionInstance.ButtonFactory<T> buttonFactory();
 
       Optional<T> validateValue(final T value);
 

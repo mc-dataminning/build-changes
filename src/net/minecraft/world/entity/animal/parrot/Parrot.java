@@ -92,7 +92,7 @@ public class Parrot extends ShoulderRidingEntity {
       map.put(EntityTypes.ENDERMITE, SoundEvents.PARROT_IMITATE_ENDERMITE);
       map.put(EntityTypes.EVOKER, SoundEvents.PARROT_IMITATE_EVOKER);
       map.put(EntityTypes.GHAST, SoundEvents.PARROT_IMITATE_GHAST);
-      map.put(EntityTypes.HAPPY_GHAST, SoundEvents.EMPTY);
+      map.put(EntityTypes.HAPPY_GHAST, SoundEvents.EMPTY.value());
       map.put(EntityTypes.GUARDIAN, SoundEvents.PARROT_IMITATE_GUARDIAN);
       map.put(EntityTypes.HOGLIN, SoundEvents.PARROT_IMITATE_HOGLIN);
       map.put(EntityTypes.HUSK, SoundEvents.PARROT_IMITATE_HUSK);
@@ -136,7 +136,7 @@ public class Parrot extends ShoulderRidingEntity {
       this.moveControl = new FlyingMoveControl<>(this, 10, false);
       this.setPathfindingMalus(PathType.FIRE_IN_NEIGHBOR, -1.0F);
       this.setPathfindingMalus(PathType.FIRE, -1.0F);
-      this.setPathfindingMalus(PathType.COCOA, -1.0F);
+      this.setPathfindingMalus(PathType.AVOID_IN_AIR, -1.0F);
    }
 
    @Override
@@ -213,7 +213,7 @@ public class Parrot extends ShoulderRidingEntity {
       this.oFlap = this.flap;
       this.oFlapSpeed = this.flapSpeed;
       this.flapSpeed = this.flapSpeed + (!this.onGround() && !this.isPassenger() ? 4 : -1) * 0.3F;
-      this.flapSpeed = Mth.clamp(this.flapSpeed, 0.0F, 1.0F);
+      this.flapSpeed = Math.clamp(this.flapSpeed, 0.0F, 1.0F);
       if (!this.onGround() && this.flapping < 1.0F) {
          this.flapping = 1.0F;
       }

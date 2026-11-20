@@ -40,6 +40,11 @@ public class ChatReport extends Report {
       }
    }
 
+   @Override
+   public boolean isUnreportableLater() {
+      return true;
+   }
+
    public ChatReport copy() {
       ChatReport result = new ChatReport(this.reportId, this.createdAt, this.reportedProfileId);
       result.reportedMessages.addAll(this.reportedMessages);

@@ -6,7 +6,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.components.Tooltip;
@@ -44,7 +43,6 @@ public class OnlineOptionsScreen extends OptionsSubScreen {
    private @Nullable CycleButton<Boolean> friendsListButton;
    private @Nullable CycleButton<Boolean> allowFriendRequestsButton;
    private @Nullable CycleButton<Boolean> inGameNotificationButton;
-   private @Nullable AbstractWidget presenceWidget;
 
    public OnlineOptionsScreen(final Screen lastScreen, final Options options) {
       super(lastScreen, options, TITLE);
@@ -90,7 +88,7 @@ public class OnlineOptionsScreen extends OptionsSubScreen {
       PlayerSocialManager playerSocialManager = this.minecraft.getPlayerSocialManager();
       OptionInstance<Boolean> inGameNotificationOpt = this.options.inGameNotification();
       this.friendsListButton = CycleButton.onOffBuilder(playerSocialManager.isFriendListEnabled())
-         .create(0, 0, 150, 20, FRIENDS_LIST_LABEL, (var3, newValue) -> this.onFriendsListToggled(newValue, playerSocialManager, inGameNotificationOpt));
+         .create(0, 0, 150, 20, FRIENDS_LIST_LABEL, (var3x, newValue) -> this.onFriendsListToggled(newValue, playerSocialManager, inGameNotificationOpt));
       this.friendsListButton.active = !this.minecraft.isDemo() && !this.minecraft.isOfflineDeveloperMode();
       this.allowFriendRequestsButton = CycleButton.onOffBuilder(playerSocialManager.isAllowFriendRequests())
          .withTooltip(var0 -> ALLOW_FRIEND_REQUESTS_TOOLTIP)
@@ -108,10 +106,10 @@ public class OnlineOptionsScreen extends OptionsSubScreen {
       this.inGameNotificationButton = CycleButton.onOffBuilder(inGameNotificationOpt.get())
          .withTooltip(var0 -> IN_GAME_NOTIFICATIONS_TOOLTIP)
          .create(0, 0, 150, 20, IN_GAME_NOTIFICATIONS_LABEL, (var1x, enabled) -> inGameNotificationOpt.set(enabled));
-      this.presenceWidget = this.options.sharePresence().createButton(this.options);
-      this.list.addSmall(this.inGameNotificationButton, this.presenceWidget);
+      Button xboxSettingsButton = Button.builder(XBOX_SETTINGS, var1x -> PrivacyConfirmLinkScreen.confirmLinkNow(this, CommonLinks.PRIVACY_AND_ONLINE_SETTINGS))
+         .build();
+      this.list.addSmall(this.inGameNotificationButton, xboxSettingsButton);
       this.updateFriendListDependentButtons();
-      this.list.addBig(Button.builder(XBOX_SETTINGS, var1x -> PrivacyConfirmLinkScreen.confirmLinkNow(this, CommonLinks.PRIVACY_AND_ONLINE_SETTINGS)).build());
       this.list.addHeader(SERVERS_HEADER);
       this.list.addBig(this.options.allowServerListing());
       this.list.addHeader(REALMS_HEADER);
@@ -163,10 +161,6 @@ public class OnlineOptionsScreen extends OptionsSubScreen {
       if (this.inGameNotificationButton != null) {
          this.inGameNotificationButton.setValue(this.options.inGameNotification().get());
          this.inGameNotificationButton.active = enabled;
-      }
-
-      if (this.presenceWidget != null) {
-         this.presenceWidget.active = enabled;
       }
    }
 }

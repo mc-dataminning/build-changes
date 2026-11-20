@@ -180,7 +180,7 @@ public class Blender {
       }
 
       double averageHeight = weightedHeights.doubleValue() / totalWeight.doubleValue();
-      double alpha = Mth.clamp(closestDistance.doubleValue() / (HEIGHT_BLENDING_RANGE_CELLS + 1), 0.0, 1.0);
+      double alpha = Math.clamp(closestDistance.doubleValue() / (HEIGHT_BLENDING_RANGE_CELLS + 1), 0.0, 1.0);
       alpha = 3.0 * alpha * alpha - 2.0 * alpha * alpha * alpha;
       return new Blender.BlendingOutput((float)alpha, (float)heightToOffset(averageHeight));
    }
@@ -230,7 +230,7 @@ public class Blender {
       }
 
       double averageDensity = weightedHeights.doubleValue() / totalWeight.doubleValue();
-      double alpha = Mth.clamp(closestDistance.doubleValue() / 3.0, 0.0, 1.0);
+      double alpha = Math.clamp(closestDistance.doubleValue() / 3.0, 0.0, 1.0);
       return (float)Mth.lerp(alpha, averageDensity, noiseValue);
    }
 
@@ -297,7 +297,7 @@ public class Blender {
       }
 
       float shiftNoise = SHIFT_NOISE.get(quartX, 0.0, quartZ) * 12.0F;
-      float alpha = Mth.clamp((closestDistance.floatValue() + shiftNoise) / (HEIGHT_BLENDING_RANGE_CELLS + 1), 0.0F, 1.0F);
+      float alpha = Math.clamp((closestDistance.floatValue() + shiftNoise) / (HEIGHT_BLENDING_RANGE_CELLS + 1), 0.0F, 1.0F);
       return alpha > 0.5F ? null : (Holder)closestBiome.get();
    }
 
