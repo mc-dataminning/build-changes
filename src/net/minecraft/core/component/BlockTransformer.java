@@ -18,7 +18,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.StringRepresentable;
@@ -93,7 +92,11 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
                }
 
                level.setBlock(pos, updatedShape, 11);
-               level.playSound(player, pos, transformData.sound.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
+               Holder<SoundEvent> sound = transformData.sound.orElse(null);
+               if (sound != null) {
+                  level.playSound(player, pos, sound.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
+               }
+
                transformData.particle.send(level, player, pos);
                level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, updatedShape));
                if (transformData.transformType == BlockTransformer.TransformType.COPPER_CHEST
@@ -121,7 +124,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
 
    public record BlockTransformData(
       Holder<BlockStateProvider> blockStateProvider,
-      Holder<SoundEvent> sound,
+      Optional<Holder<SoundEvent>> sound,
       BlockTransformer.TransformParticle particle,
       List<Direction> disallowedFaces,
       Optional<ResourceKey<LootTable>> loot,
@@ -134,7 +137,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
       public static final Codec<BlockTransformer.BlockTransformData> CODEC = RecordCodecBuilder.create(
          i -> i.group(
                BlockStateProvider.CODEC.fieldOf("block_state_provider").forGetter(BlockTransformer.BlockTransformData::blockStateProvider),
-               SoundEvent.CODEC.optionalFieldOf("sound", SoundEvents.EMPTY).forGetter(BlockTransformer.BlockTransformData::sound),
+               SoundEvent.CODEC.optionalFieldOf("sound").forGetter(BlockTransformer.BlockTransformData::sound),
                BlockTransformer.TransformParticle.CODEC
                   .optionalFieldOf("particle", BlockTransformer.TransformParticle.NONE)
                   .forGetter(BlockTransformer.BlockTransformData::particle),
@@ -155,7 +158,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
       public static final StreamCodec<RegistryFriendlyByteBuf, BlockTransformer.BlockTransformData> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.fromCodecWithRegistries(BlockStateProvider.CODEC),
          BlockTransformer.BlockTransformData::blockStateProvider,
-         SoundEvent.STREAM_CODEC,
+         SoundEvent.STREAM_CODEC.apply(ByteBufCodecs::optional),
          BlockTransformer.BlockTransformData::sound,
          BlockTransformer.TransformParticle.STREAM_CODEC,
          BlockTransformer.BlockTransformData::particle,
@@ -190,7 +193,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
 
       public static class Builder {
          private final Holder<BlockStateProvider> targetStateProvider;
-         private Holder<SoundEvent> sound = SoundEvents.EMPTY;
+         private Optional<Holder<SoundEvent>> sound = Optional.empty();
          private BlockTransformer.TransformParticle particle = BlockTransformer.TransformParticle.NONE;
          private List<Direction> disallowedFaces = List.of();
          private Optional<ResourceKey<LootTable>> loot = Optional.empty();
@@ -205,7 +208,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
          }
 
          public BlockTransformer.BlockTransformData.Builder sound(final Holder<SoundEvent> sound) {
-            this.sound = sound;
+            this.sound = Optional.of(sound);
             return this;
          }
 

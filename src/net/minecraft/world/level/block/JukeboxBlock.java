@@ -12,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.JukeboxPlayable;
 import net.minecraft.world.item.component.TypedEntityData;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -24,15 +25,32 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jspecify.annotations.Nullable;
 
 public class JukeboxBlock extends BaseEntityBlock {
    public static final BooleanProperty HAS_RECORD = BlockStateProperties.HAS_RECORD;
+   public static final BooleanProperty PLAYLIST_MODE = BlockStateProperties.PLAYLIST_MODE;
 
    protected JukeboxBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(HAS_RECORD, false));
+      this.registerDefaultState(this.stateDefinition.any().setValue(HAS_RECORD, false).setValue(PLAYLIST_MODE, false));
+   }
+
+   @Override
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
+      return super.getStateForPlacement(context).setValue(PLAYLIST_MODE, JukeboxBlockEntity.isInPlaylistMode(context.getLevel(), context.getClickedPos()));
+   }
+
+   @Override
+   protected void neighborChanged(
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
+   ) {
+      boolean shouldBeInPlaylistMode = JukeboxBlockEntity.isInPlaylistMode(level, pos);
+      if (state.getValue(PLAYLIST_MODE) != shouldBeInPlaylistMode) {
+         level.setBlock(pos, state.setValue(PLAYLIST_MODE, shouldBeInPlaylistMode), 2);
+      }
    }
 
    @Override
@@ -107,11 +125,17 @@ public class JukeboxBlock extends BaseEntityBlock {
 
    @Override
    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(HAS_RECORD);
+      builder.add(HAS_RECORD, PLAYLIST_MODE);
    }
 
    @Override
    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      return blockState.getValue(HAS_RECORD) ? createTickerHelper(type, BlockEntityTypes.JUKEBOX, JukeboxBlockEntity::tick) : null;
+      if (blockState.getValue(HAS_RECORD)) {
+         return createTickerHelper(type, BlockEntityTypes.JUKEBOX, JukeboxBlockEntity::tickWithRecord);
+      } else {
+         return blockState.getValue(PLAYLIST_MODE) && !level.isClientSide()
+            ? createTickerHelper(type, BlockEntityTypes.JUKEBOX, JukeboxBlockEntity::tickWithoutRecord)
+            : null;
+      }
    }
 }

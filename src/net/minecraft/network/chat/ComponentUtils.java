@@ -8,10 +8,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import javax.annotation.CheckReturnValue;
 import net.minecraft.ChatFormatting;
 import net.minecraft.locale.Language;
 import net.minecraft.network.chat.contents.TranslatableContents;
+import org.jetbrains.annotations.CheckReturnValue;
 import org.jspecify.annotations.Nullable;
 
 public class ComponentUtils {

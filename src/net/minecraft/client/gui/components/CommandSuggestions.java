@@ -147,7 +147,7 @@ public class CommandSuggestions {
    }
 
    public boolean mouseClicked(final MouseButtonEvent event) {
-      return this.suggestions != null && this.suggestions.mouseClicked((int)event.x(), (int)event.y());
+      return this.suggestions != null && this.suggestions.mouseClicked(event);
    }
 
    public void showSuggestions(final boolean immediateNarration) {
@@ -578,7 +578,13 @@ public class CommandSuggestions {
          }
       }
 
-      public boolean mouseClicked(final int x, final int y) {
+      public boolean mouseClicked(final MouseButtonEvent event) {
+         if (!event.isLeftMouse()) {
+            return false;
+         }
+
+         int x = (int)event.x();
+         int y = (int)event.y();
          if (!this.rect.contains(x, y)) {
             return false;
          }

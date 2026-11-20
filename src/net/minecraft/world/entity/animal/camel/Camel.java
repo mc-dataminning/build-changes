@@ -29,7 +29,6 @@ import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Leashable;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
@@ -47,7 +46,6 @@ import net.minecraft.world.entity.animal.equine.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -629,11 +627,7 @@ public class Camel extends AbstractHorse {
    }
 
    @Override
-   protected Holder<SoundEvent> getEquipSound(final EquipmentSlot slot, final ItemStack stack, final Equippable equippable) {
-      return slot == EquipmentSlot.SADDLE ? this.getSaddleSound() : super.getEquipSound(slot, stack, equippable);
-   }
-
-   protected Holder.Reference<SoundEvent> getSaddleSound() {
+   public Holder<SoundEvent> getSaddleEquipSound() {
       return SoundEvents.CAMEL_SADDLE;
    }
 

@@ -1168,6 +1168,7 @@ public class Items {
       (b, p) -> new StandingAndWallBlockItem(b, Blocks.DEAD_HORN_CORAL_WALL_FAN, Direction.DOWN, p)
    );
    public static final Item BLUE_ICE = registerBlock(BlockItemIds.BLUE_ICE, Blocks.BLUE_ICE);
+   public static final Item BRITTLE_ICE = registerBlock(BlockItemIds.BRITTLE_ICE, Blocks.BRITTLE_ICE);
    public static final Item CONDUIT = registerBlock(BlockItemIds.CONDUIT, Blocks.CONDUIT, new Item.Properties().rarity(Rarity.UNCOMMON));
    public static final Item POLISHED_GRANITE_STAIRS = registerBlock(BlockItemIds.POLISHED_GRANITE_STAIRS, Blocks.POLISHED_GRANITE_STAIRS);
    public static final Item SMOOTH_RED_SANDSTONE_STAIRS = registerBlock(BlockItemIds.SMOOTH_RED_SANDSTONE_STAIRS, Blocks.SMOOTH_RED_SANDSTONE_STAIRS);

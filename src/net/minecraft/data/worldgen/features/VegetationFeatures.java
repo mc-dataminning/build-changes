@@ -497,10 +497,10 @@ public class VegetationFeatures {
             BlockPredicate.ONLY_IN_AIR_PREDICATE,
             BlockPredicate.wouldSurvive(block),
             BlockPredicate.anyOf(
-               BlockPredicate.matchesFluids(CompositeDirection.EAST_DOWN, Fluids.WATER, Fluids.FLOWING_WATER),
-               BlockPredicate.matchesFluids(CompositeDirection.WEST_DOWN, Fluids.WATER, Fluids.FLOWING_WATER),
-               BlockPredicate.matchesFluids(CompositeDirection.SOUTH_DOWN, Fluids.WATER, Fluids.FLOWING_WATER),
-               BlockPredicate.matchesFluids(CompositeDirection.NORTH_DOWN, Fluids.WATER, Fluids.FLOWING_WATER)
+               BlockPredicate.matchesFluids(CompositeDirection.EAST_DOWN, Fluids.WATER),
+               BlockPredicate.matchesFluids(CompositeDirection.WEST_DOWN, Fluids.WATER),
+               BlockPredicate.matchesFluids(CompositeDirection.SOUTH_DOWN, Fluids.WATER),
+               BlockPredicate.matchesFluids(CompositeDirection.NORTH_DOWN, Fluids.WATER)
             )
          )
       );

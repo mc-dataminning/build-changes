@@ -34,19 +34,11 @@ import net.minecraft.util.GsonHelper;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.util.profiling.Zone;
-import net.minecraft.util.valueproviders.ConstantFloat;
 import net.minecraft.util.valueproviders.MultipliedFloats;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
 public class SoundManager extends SimplePreparableReloadListener<SoundManager.Preparations> {
-   public static final Identifier EMPTY_SOUND_LOCATION = Identifier.withDefaultNamespace("empty");
-   public static final Sound EMPTY_SOUND = new Sound(EMPTY_SOUND_LOCATION, ConstantFloat.of(1.0F), ConstantFloat.of(1.0F), 1, Sound.Type.FILE, false, false, 16);
-   public static final Identifier INTENTIONALLY_EMPTY_SOUND_LOCATION = Identifier.withDefaultNamespace("intentionally_empty");
-   public static final WeighedSoundEvents INTENTIONALLY_EMPTY_SOUND_EVENT = new WeighedSoundEvents(INTENTIONALLY_EMPTY_SOUND_LOCATION, null);
-   public static final Sound INTENTIONALLY_EMPTY_SOUND = new Sound(
-      INTENTIONALLY_EMPTY_SOUND_LOCATION, ConstantFloat.of(1.0F), ConstantFloat.of(1.0F), 1, Sound.Type.FILE, false, false, 16
-   );
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final String SOUNDS_PATH = "sounds.json";
    private static final Gson GSON = new GsonBuilder().registerTypeAdapter(SoundEventRegistration.class, new SoundEventRegistrationSerializer()).create();
@@ -238,7 +230,7 @@ public class SoundManager extends SimplePreparableReloadListener<SoundManager.Pr
                SoundManager.LOGGER.debug("Replaced sound event location {}", eventLocation);
             }
 
-            registration = new WeighedSoundEvents(eventLocation, soundEventRegistration.getSubtitle());
+            registration = new WeighedSoundEvents(soundEventRegistration.getSubtitle());
             this.registry.put(eventLocation, registration);
          }
 
@@ -263,23 +255,25 @@ public class SoundManager extends SimplePreparableReloadListener<SoundManager.Pr
                         return registrationx == null ? 0 : registrationx.getWeight();
                      }
 
-                     public Sound getSound(final RandomSource random) {
+                     public @Nullable Sound getSound(final RandomSource random) {
                         WeighedSoundEvents registrationx = Preparations.this.registry.get(soundLocation);
                         if (registrationx == null) {
-                           return SoundManager.EMPTY_SOUND;
+                           return null;
                         }
 
                         Sound wrappedSound = registrationx.getSound(random);
-                        return new Sound(
-                           wrappedSound.getLocation(),
-                           new MultipliedFloats(wrappedSound.getVolume(), sound.getVolume()),
-                           new MultipliedFloats(wrappedSound.getPitch(), sound.getPitch()),
-                           sound.getWeight(),
-                           Sound.Type.FILE,
-                           wrappedSound.shouldStream() || sound.shouldStream(),
-                           wrappedSound.shouldPreload(),
-                           wrappedSound.getAttenuationDistance()
-                        );
+                        return wrappedSound == null
+                           ? null
+                           : new Sound(
+                              wrappedSound.getLocation(),
+                              new MultipliedFloats(wrappedSound.getVolume(), sound.getVolume()),
+                              new MultipliedFloats(wrappedSound.getPitch(), sound.getPitch()),
+                              sound.getWeight(),
+                              Sound.Type.FILE,
+                              wrappedSound.shouldStream() || sound.shouldStream(),
+                              wrappedSound.shouldPreload(),
+                              wrappedSound.getAttenuationDistance()
+                           );
                      }
 
                      @Override

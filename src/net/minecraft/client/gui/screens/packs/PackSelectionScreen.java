@@ -49,7 +49,7 @@ import net.minecraft.server.packs.repository.PackDetector;
 import net.minecraft.server.packs.repository.PackRepository;
 import net.minecraft.server.packs.resources.IoSupplier;
 import net.minecraft.util.Util;
-import net.minecraft.world.level.validation.ForbiddenSymlinkInfo;
+import net.minecraft.world.level.validation.ContentValidationException;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
@@ -256,25 +256,22 @@ public class PackSelectionScreen extends Screen {
                            return content;
                         }
                      };
-                     List<ForbiddenSymlinkInfo> issues = new ArrayList<>();
 
                      for (Path path : files) {
                         try {
-                           Path candidate = packDetector.detectPackResources(path, issues);
+                           Path candidate = packDetector.detectPackResources(path);
                            if (candidate == null) {
                               LOGGER.warn("Path {} does not seem like pack", path);
                            } else {
                               packCandidates.add(candidate);
                               leftoverPacks.remove(candidate);
                            }
+                        } catch (ContentValidationException e) {
+                           this.minecraft.gui.setScreen(NoticeWithLinkScreen.createPackSymlinkWarningScreen(() -> this.minecraft.gui.setScreen(this)));
+                           return;
                         } catch (IOException e) {
                            LOGGER.warn("Failed to check {} for packs", path, e);
                         }
-                     }
-
-                     if (!issues.isEmpty()) {
-                        this.minecraft.gui.setScreen(NoticeWithLinkScreen.createPackSymlinkWarningScreen(() -> this.minecraft.gui.setScreen(this)));
-                        return;
                      }
 
                      if (!packCandidates.isEmpty()) {

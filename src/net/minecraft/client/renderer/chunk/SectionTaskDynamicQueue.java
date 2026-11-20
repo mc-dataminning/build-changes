@@ -25,7 +25,7 @@ public class SectionTaskDynamicQueue {
       while (iterator.hasNext()) {
          int taskIndex = iterator.nextIndex();
          SectionRenderDispatcher.RenderSection.SectionTask task = iterator.next();
-         if (task.isCancelled.get()) {
+         if (task.isCancelled) {
             iterator.remove();
          } else {
             double distance = task.getRenderOrigin().distToCenterSqr(cameraPos);

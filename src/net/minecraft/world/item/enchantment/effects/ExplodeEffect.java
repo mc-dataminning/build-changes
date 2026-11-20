@@ -34,10 +34,10 @@ public record ExplodeEffect(
    LevelBasedValue radius,
    boolean createFire,
    Level.ExplosionInteraction blockInteraction,
-   ParticleOptions smallParticle,
-   ParticleOptions largeParticle,
+   Optional<ParticleOptions> smallParticle,
+   Optional<ParticleOptions> largeParticle,
    WeightedList<ExplosionParticleInfo> blockParticles,
-   Holder<SoundEvent> sound
+   Optional<Holder<SoundEvent>> sound
 ) implements EnchantmentEntityEffect {
    public static final MapCodec<ExplodeEffect> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
@@ -49,10 +49,10 @@ public record ExplodeEffect(
             LevelBasedValue.CODEC.fieldOf("radius").forGetter(ExplodeEffect::radius),
             Codec.BOOL.optionalFieldOf("create_fire", false).forGetter(ExplodeEffect::createFire),
             Level.ExplosionInteraction.CODEC.fieldOf("block_interaction").forGetter(ExplodeEffect::blockInteraction),
-            ParticleTypes.CODEC.fieldOf("small_particle").forGetter(ExplodeEffect::smallParticle),
-            ParticleTypes.CODEC.fieldOf("large_particle").forGetter(ExplodeEffect::largeParticle),
+            ParticleTypes.CODEC.optionalFieldOf("small_particle").forGetter(ExplodeEffect::smallParticle),
+            ParticleTypes.CODEC.optionalFieldOf("large_particle").forGetter(ExplodeEffect::largeParticle),
             WeightedList.codec(ExplosionParticleInfo.CODEC).optionalFieldOf("block_particles", WeightedList.of()).forGetter(ExplodeEffect::blockParticles),
-            SoundEvent.CODEC.fieldOf("sound").forGetter(ExplodeEffect::sound)
+            SoundEvent.CODEC.optionalFieldOf("sound").forGetter(ExplodeEffect::sound)
          )
          .apply(i, ExplodeEffect::new)
    );
@@ -75,10 +75,10 @@ public record ExplodeEffect(
          Math.max(this.radius.calculate(enchantmentLevel), 0.0F),
          this.createFire,
          this.blockInteraction,
-         this.smallParticle,
-         this.largeParticle,
+         this.smallParticle.orElse(null),
+         this.largeParticle.orElse(null),
          this.blockParticles,
-         this.sound
+         this.sound.orElse(null)
       );
    }
 

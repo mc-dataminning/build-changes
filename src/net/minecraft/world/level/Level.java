@@ -676,19 +676,19 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    }
 
    public abstract void explode(
-      final @Nullable Entity source,
-      final @Nullable DamageSource damageSource,
-      final @Nullable ExplosionDamageCalculator damageCalculator,
-      final double x,
-      final double y,
-      final double z,
-      final float r,
-      final boolean fire,
-      final Level.ExplosionInteraction interactionType,
-      final ParticleOptions smallExplosionParticles,
-      final ParticleOptions largeExplosionParticles,
-      final WeightedList<ExplosionParticleInfo> blockParticles,
-      final Holder<SoundEvent> explosionSound
+      @Nullable Entity source,
+      @Nullable DamageSource damageSource,
+      @Nullable ExplosionDamageCalculator damageCalculator,
+      double x,
+      double y,
+      double z,
+      float r,
+      boolean fire,
+      Level.ExplosionInteraction interactionType,
+      @Nullable ParticleOptions smallExplosionParticles,
+      @Nullable ParticleOptions largeExplosionParticles,
+      WeightedList<ExplosionParticleInfo> blockParticles,
+      @Nullable Holder<SoundEvent> explosionSound
    );
 
    @Override

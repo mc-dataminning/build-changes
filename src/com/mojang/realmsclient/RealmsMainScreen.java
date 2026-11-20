@@ -742,8 +742,12 @@ public class RealmsMainScreen extends RealmsScreen {
 
       @Override
       public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-         this.addSnapshotRealm();
-         return true;
+         if (event.isLeftMouse()) {
+            this.addSnapshotRealm();
+            return true;
+         } else {
+            return false;
+         }
       }
 
       @Override
@@ -1270,7 +1274,7 @@ public class RealmsMainScreen extends RealmsScreen {
          RealmsMainScreen.play(this.serverData, RealmsMainScreen.this);
       }
 
-      private void createUnitializedRealm() {
+      private void createUninitializedRealm() {
          RealmsMainScreen.this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
          RealmsCreateRealmScreen createScreen = new RealmsCreateRealmScreen(RealmsMainScreen.this, this.serverData, this.serverData.isSnapshotRealm());
          RealmsMainScreen.this.minecraft.gui.setScreen(createScreen);
@@ -1278,20 +1282,24 @@ public class RealmsMainScreen extends RealmsScreen {
 
       @Override
       public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-         if (this.serverData.state == RealmsServer.State.UNINITIALIZED) {
-            this.createUnitializedRealm();
-         } else if (this.serverData.shouldPlayButtonBeActive() && doubleClick && this.isFocused()) {
-            this.playRealm();
-         }
+         if (event.isLeftMouse()) {
+            if (this.serverData.state == RealmsServer.State.UNINITIALIZED) {
+               this.createUninitializedRealm();
+            } else if (this.serverData.shouldPlayButtonBeActive() && doubleClick && this.isFocused()) {
+               this.playRealm();
+            }
 
-         return true;
+            return true;
+         } else {
+            return false;
+         }
       }
 
       @Override
       public boolean keyPressed(final KeyEvent event) {
          if (event.isSelection()) {
             if (this.serverData.state == RealmsServer.State.UNINITIALIZED) {
-               this.createUnitializedRealm();
+               this.createUninitializedRealm();
                return true;
             }
 

@@ -152,8 +152,8 @@ public record NoiseGeneratorSettings(
             List.of(
                new NoiseGeneratorSettings.DebugFunctionEntry("Final density", router.finalDensity()),
                new NoiseGeneratorSettings.DebugFunctionEntry("Temperature", router.temperature()),
-               new NoiseGeneratorSettings.DebugFunctionEntry("Vegitation", router.vegetation()),
-               new NoiseGeneratorSettings.DebugFunctionEntry("Contintents", router.continents()),
+               new NoiseGeneratorSettings.DebugFunctionEntry("Vegetation", router.vegetation()),
+               new NoiseGeneratorSettings.DebugFunctionEntry("Continents", router.continents()),
                new NoiseGeneratorSettings.DebugFunctionEntry("Erosion", router.erosion()),
                new NoiseGeneratorSettings.DebugFunctionEntry("Depth", router.depth()),
                new NoiseGeneratorSettings.DebugFunctionEntry("Ridges", router.ridges()),

@@ -19,10 +19,9 @@ public record ClientboundExplodePacket(
    float radius,
    int blockCount,
    Optional<Vec3> playerKnockback,
-   ParticleOptions explosionParticle,
-   Holder<SoundEvent> explosionSound,
-   WeightedList<ExplosionParticleInfo> blockParticles,
-   boolean playSound
+   Optional<ParticleOptions> explosionParticle,
+   Optional<Holder<SoundEvent>> explosionSound,
+   WeightedList<ExplosionParticleInfo> blockParticles
 ) implements Packet<ClientGamePacketListener> {
    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundExplodePacket> STREAM_CODEC = StreamCodec.composite(
       Vec3.STREAM_CODEC,
@@ -33,14 +32,12 @@ public record ClientboundExplodePacket(
       ClientboundExplodePacket::blockCount,
       Vec3.STREAM_CODEC.apply(ByteBufCodecs::optional),
       ClientboundExplodePacket::playerKnockback,
-      ParticleTypes.STREAM_CODEC,
+      ParticleTypes.STREAM_CODEC.apply(ByteBufCodecs::optional),
       ClientboundExplodePacket::explosionParticle,
-      SoundEvent.STREAM_CODEC,
+      SoundEvent.STREAM_CODEC.apply(ByteBufCodecs::optional),
       ClientboundExplodePacket::explosionSound,
       WeightedList.streamCodec(ExplosionParticleInfo.STREAM_CODEC),
       ClientboundExplodePacket::blockParticles,
-      ByteBufCodecs.BOOL,
-      ClientboundExplodePacket::playSound,
       ClientboundExplodePacket::new
    );
 

@@ -179,7 +179,9 @@ public class ChestBlockEntity extends RandomizableContainerBlockEntity implement
 
    @Override
    protected AbstractContainerMenu createMenu(final int containerId, final Inventory inventory) {
-      return ChestMenu.threeRows(containerId, inventory, this);
+      return this.level.getBlockEntity(this.worldPosition.below()) instanceof JukeboxBlockEntity jukebox
+         ? jukebox.createMenu(containerId, inventory, this)
+         : ChestMenu.threeRows(containerId, inventory, this);
    }
 
    public void recheckOpen() {

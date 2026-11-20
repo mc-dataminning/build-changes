@@ -21,7 +21,7 @@ public class TryFindLiquid {
             .apply(
                i,
                (var4x, walkTarget, lookTarget) -> (level, body, timestamp) -> {
-                  if (level.getFluidState(body.blockPosition()).is(fluidTag)) {
+                  if (level.getFluidState(body.blockPosition()).isSourceOfType(fluidTag)) {
                      return false;
                   }
 
@@ -34,7 +34,7 @@ public class TryFindLiquid {
                   BlockPos bodyBlockPos = body.blockPosition();
                   level.findBlocksInBoxByManhattanDistance(bodyBlockPos, range)
                      .filterPos(pos -> pos.differsHorizontally(bodyBlockPos))
-                     .filterState(state -> state.getBlock() instanceof LiquidBlock && state.getFluidState().is(fluidTag))
+                     .filterState(state -> state.getBlock() instanceof LiquidBlock && state.getFluidState().isSourceOfType(fluidTag))
                      .forEachUntil((pos, var4xx) -> {
                         BlockState aboveState = level.getBlockState(pos.above());
                         if (aboveState.isAir()) {

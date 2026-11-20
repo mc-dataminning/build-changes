@@ -546,6 +546,7 @@ public class CreativeModeTabs {
                naturalBlocks.accept(Items.ICE);
                naturalBlocks.accept(Items.PACKED_ICE);
                naturalBlocks.accept(Items.BLUE_ICE);
+               naturalBlocks.accept(Items.BRITTLE_ICE);
                naturalBlocks.accept(Items.SNOW_BLOCK);
                naturalBlocks.accept(Items.SNOW);
                naturalBlocks.accept(Items.MOSS_BLOCK);

@@ -41,9 +41,9 @@ public record SulfurCubeArchetype(
          )
          .apply(i, SulfurCubeArchetype::new)
    );
-   public static SulfurCubeArchetype.KnockbackModifiers DEFAULT_KNOCKBACK_MODIFIERS = new SulfurCubeArchetype.KnockbackModifiers(0.33F, 0.06F);
-   public static SulfurCubeArchetype.SoundSettings DEFAULT_SOUND_SETTINGS = new SulfurCubeArchetype.SoundSettings(
-      SoundEvents.SULFUR_CUBE_REGULAR_HIT, SoundEvents.SULFUR_CUBE_REGULAR_PUSH, 0.2F, 0.5F
+   public static final SulfurCubeArchetype.KnockbackModifiers DEFAULT_KNOCKBACK_MODIFIERS = new SulfurCubeArchetype.KnockbackModifiers(0.33F, 0.06F);
+   public static final SulfurCubeArchetype.SoundSettings DEFAULT_SOUND_SETTINGS = new SulfurCubeArchetype.SoundSettings(
+      Optional.of(SoundEvents.SULFUR_CUBE_REGULAR_HIT), Optional.of(SoundEvents.SULFUR_CUBE_REGULAR_PUSH), 0.2F, 0.5F
    );
 
    public record AttributeEntry(Holder<Attribute> attribute, AttributeModifier modifier) {
@@ -114,11 +114,13 @@ public record SulfurCubeArchetype(
       );
    }
 
-   public record SoundSettings(Holder<SoundEvent> hitSound, Holder<SoundEvent> pushSound, float pushSoundImpulseThreshold, float pushSoundCooldown) {
+   public record SoundSettings(
+      Optional<Holder<SoundEvent>> hitSound, Optional<Holder<SoundEvent>> pushSound, float pushSoundImpulseThreshold, float pushSoundCooldown
+   ) {
       public static final Codec<SulfurCubeArchetype.SoundSettings> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-               SoundEvent.CODEC.fieldOf("hit_sound").forGetter(SulfurCubeArchetype.SoundSettings::hitSound),
-               SoundEvent.CODEC.fieldOf("push_sound").forGetter(SulfurCubeArchetype.SoundSettings::pushSound),
+               SoundEvent.CODEC.optionalFieldOf("hit_sound").forGetter(SulfurCubeArchetype.SoundSettings::hitSound),
+               SoundEvent.CODEC.optionalFieldOf("push_sound").forGetter(SulfurCubeArchetype.SoundSettings::pushSound),
                Codec.FLOAT.fieldOf("push_sound_impulse_threshold").forGetter(SulfurCubeArchetype.SoundSettings::pushSoundImpulseThreshold),
                Codec.FLOAT.fieldOf("push_sound_cooldown").forGetter(SulfurCubeArchetype.SoundSettings::pushSoundCooldown)
             )

@@ -2353,18 +2353,23 @@ public class BlockModelGenerators {
          );
    }
 
-   private void createFrostedIce() {
+   private void createCrackingIce(final Block block) {
       this.blockStateOutput
          .accept(
-            MultiVariantGenerator.dispatch(Blocks.FROSTED_ICE)
+            MultiVariantGenerator.dispatch(block)
                .with(
                   PropertyDispatch.initial(BlockStateProperties.AGE_3)
-                     .select(0, plainVariant(this.createSuffixedVariant(Blocks.FROSTED_ICE, "_0", ModelTemplates.CUBE_ALL, TextureMapping::cube)))
-                     .select(1, plainVariant(this.createSuffixedVariant(Blocks.FROSTED_ICE, "_1", ModelTemplates.CUBE_ALL, TextureMapping::cube)))
-                     .select(2, plainVariant(this.createSuffixedVariant(Blocks.FROSTED_ICE, "_2", ModelTemplates.CUBE_ALL, TextureMapping::cube)))
-                     .select(3, plainVariant(this.createSuffixedVariant(Blocks.FROSTED_ICE, "_3", ModelTemplates.CUBE_ALL, TextureMapping::cube)))
+                     .select(0, plainVariant(this.createSuffixedVariant(block, "_0", ModelTemplates.CUBE_ALL, TextureMapping::cube)))
+                     .select(1, plainVariant(this.createSuffixedVariant(block, "_1", ModelTemplates.CUBE_ALL, TextureMapping::cube)))
+                     .select(2, plainVariant(this.createSuffixedVariant(block, "_2", ModelTemplates.CUBE_ALL, TextureMapping::cube)))
+                     .select(3, plainVariant(this.createSuffixedVariant(block, "_3", ModelTemplates.CUBE_ALL, TextureMapping::cube)))
                )
          );
+   }
+
+   private void createBrittleIce() {
+      this.createCrackingIce(Blocks.BRITTLE_ICE);
+      this.registerSimpleItemModel(Blocks.BRITTLE_ICE, ModelLocationUtils.getModelLocation(Blocks.BRITTLE_ICE, "_0"));
    }
 
    private void createGrassBlocks() {
@@ -3698,7 +3703,7 @@ public class BlockModelGenerators {
       this.createTrivialCube(Blocks.GRAVEL);
       this.createTrivialCube(Blocks.HONEYCOMB_BLOCK);
       this.createTrivialCube(Blocks.ICE);
-      this.createTrivialBlock(Blocks.JUKEBOX, TexturedModel.CUBE_TOP);
+      this.createTrivialBlock(Blocks.JUKEBOX, TexturedModel.CUBE_BOTTOM_TOP);
       this.createTrivialBlock(Blocks.LODESTONE, TexturedModel.COLUMN);
       this.createTrivialBlock(Blocks.MELON, TexturedModel.COLUMN);
       this.createNonTemplateModelBlock(Blocks.MANGROVE_ROOTS);
@@ -3776,7 +3781,8 @@ public class BlockModelGenerators {
       );
       this.createFire();
       this.createSoulFire();
-      this.createFrostedIce();
+      this.createCrackingIce(Blocks.FROSTED_ICE);
+      this.createBrittleIce();
       this.createGrassBlocks();
       this.createCocoa();
       this.createShelfMushroom();

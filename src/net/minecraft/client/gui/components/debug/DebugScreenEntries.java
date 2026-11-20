@@ -1,82 +1,119 @@
 package net.minecraft.client.gui.components.debug;
 
-import java.util.HashMap;
 import java.util.Map;
+import net.minecraft.client.core.registries.ClientRegistries;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
+import net.minecraft.resources.ResourceKey;
 
 public class DebugScreenEntries {
-   private static final Map<Identifier, DebugScreenEntry> ENTRIES_BY_ID = new HashMap<>();
-   public static final Identifier GAME_VERSION = register("game_version", new DebugEntryVersion());
-   public static final Identifier FPS = register("fps", new DebugEntryFps());
-   public static final Identifier TPS = register("tps", new DebugEntryTps());
-   public static final Identifier MEMORY = register("memory", new DebugEntryMemory());
-   public static final Identifier DETAILED_MEMORY = register("detailed_memory", new DebugEntryDetailedMemory());
-   public static final Identifier SYSTEM_SPECS = register("system_specs", new DebugEntrySystemSpecs());
-   public static final Identifier LOOKING_AT_BLOCK_STATE = register("looking_at_block_state", new DebugEntryLookingAt.BlockStateInfo());
-   public static final Identifier LOOKING_AT_BLOCK_TAGS = register("looking_at_block_tags", new DebugEntryLookingAt.BlockTagInfo());
-   public static final Identifier LOOKING_AT_FLUID_STATE = register("looking_at_fluid_state", new DebugEntryLookingAt.FluidStateInfo());
-   public static final Identifier LOOKING_AT_FLUID_TAGS = register("looking_at_fluid_tags", new DebugEntryLookingAt.FluidTagInfo());
-   public static final Identifier LOOKING_AT_ENTITY = register("looking_at_entity", new DebugEntryLookingAtEntity());
-   public static final Identifier LOOKING_AT_ENTITY_TAGS = register("looking_at_entity_tags", new DebugEntryLookingAtEntityTags());
-   public static final Identifier CHUNK_RENDER_STATS = register("chunk_render_stats", new DebugEntryChunkRenderStats());
-   public static final Identifier CHUNK_SECTION_STATUS = register("chunk_section_status", new DebugEntryChunkSectionStatus());
-   public static final Identifier CHUNK_GENERATION_STATS = register("chunk_generation_stats", new DebugEntryChunkGeneration());
-   public static final Identifier CHUNK_LOAD_STATUS = register("chunk_load_status", new DebugEntryChunkLoadStatus());
-   public static final Identifier ENTITY_RENDER_STATS = register("entity_render_stats", new DebugEntryEntityRenderStats());
-   public static final Identifier PARTICLE_RENDER_STATS = register("particle_render_stats", new DebugEntryParticleRenderStats());
-   public static final Identifier CHUNK_SOURCE_STATS = register("chunk_source_stats", new DebugEntryChunkSourceStats());
-   public static final Identifier PLAYER_POSITION = register("player_position", new DebugEntryPosition());
-   public static final Identifier PLAYER_SECTION_POSITION = register("player_section_position", new DebugEntrySectionPosition());
-   public static final Identifier PLAYER_SPEED = register("player_speed", new DebugEntryPlayerSpeed());
-   public static final Identifier LIGHT_LEVELS = register("light_levels", new DebugEntryLight());
-   public static final Identifier LIGHTMAP_TEXTURE = register("lightmap_texture", new DebugEntryLightmapTexture());
-   public static final Identifier HEIGHTMAP = register("heightmap", new DebugEntryHeightmap());
-   public static final Identifier BIOME = register("biome", new DebugEntryBiome());
-   public static final Identifier LOCAL_DIFFICULTY = register("local_difficulty", new DebugEntryLocalDifficulty());
-   public static final Identifier DAY_COUNT = register("day_count", new DebugEntryDayCount());
-   public static final Identifier ENTITY_SPAWN_COUNTS = register("entity_spawn_counts", new DebugEntrySpawnCounts());
-   public static final Identifier SOUND_MOOD = register("sound_mood", new DebugEntrySoundMood());
-   public static final Identifier SOUND_CACHE = register("sound_cache", new DebugEntrySoundCache());
-   public static final Identifier POST_EFFECTS = register("post_effects", new DebugEntryPostEffects());
-   public static final Identifier ENTITY_HITBOXES = register("entity_hitboxes", new DebugEntryNoop());
-   public static final Identifier CHUNK_BORDERS = register("chunk_borders", new DebugEntryNoop());
-   public static final Identifier THREE_DIMENSIONAL_CROSSHAIR = register("3d_crosshair", new DebugEntryNoop());
-   public static final Identifier CHUNK_SECTION_PATHS = register("chunk_section_paths", new DebugEntryNoop());
-   public static final Identifier GPU_UTILIZATION = register("gpu_utilization", new DebugEntryGpuUtilization());
-   public static final Identifier SIMPLE_PERFORMANCE_IMPACTORS = register("simple_performance_impactors", new DebugEntrySimplePerformanceImpactors());
-   public static final Identifier CHUNK_SECTION_OCTREE = register("chunk_section_octree", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_WATER_LEVELS = register("visualize_water_levels", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_HEIGHTMAP = register("visualize_heightmap", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_COLLISION_BOXES = register("visualize_collision_boxes", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_ENTITY_SUPPORTING_BLOCKS = register("visualize_entity_supporting_blocks", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_BLOCK_LIGHT_LEVELS = register("visualize_block_light_levels", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_SKY_LIGHT_LEVELS = register("visualize_sky_light_levels", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_SOLID_FACES = register("visualize_solid_faces", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_CHUNKS_ON_SERVER = register("visualize_chunks_on_server", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_SKY_LIGHT_SECTIONS = register("visualize_sky_light_sections", new DebugEntryNoop());
-   public static final Identifier CHUNK_SECTION_VISIBILITY = register("chunk_section_visibility", new DebugEntryNoop());
-   public static final Map<DebugScreenProfile, Map<Identifier, DebugScreenEntryStatus>> PROFILES;
+   public static final ResourceKey<DebugScreenEntry> GAME_VERSION = key("game_version");
+   public static final ResourceKey<DebugScreenEntry> FPS = key("fps");
+   public static final ResourceKey<DebugScreenEntry> TPS = key("tps");
+   public static final ResourceKey<DebugScreenEntry> MEMORY = key("memory");
+   public static final ResourceKey<DebugScreenEntry> DETAILED_MEMORY = key("detailed_memory");
+   public static final ResourceKey<DebugScreenEntry> SYSTEM_SPECS = key("system_specs");
+   public static final ResourceKey<DebugScreenEntry> LOOKING_AT_BLOCK_STATE = key("looking_at_block_state");
+   public static final ResourceKey<DebugScreenEntry> LOOKING_AT_BLOCK_TAGS = key("looking_at_block_tags");
+   public static final ResourceKey<DebugScreenEntry> LOOKING_AT_FLUID_STATE = key("looking_at_fluid_state");
+   public static final ResourceKey<DebugScreenEntry> LOOKING_AT_FLUID_TAGS = key("looking_at_fluid_tags");
+   public static final ResourceKey<DebugScreenEntry> LOOKING_AT_ENTITY = key("looking_at_entity");
+   public static final ResourceKey<DebugScreenEntry> LOOKING_AT_ENTITY_TAGS = key("looking_at_entity_tags");
+   public static final ResourceKey<DebugScreenEntry> CHUNK_RENDER_STATS = key("chunk_render_stats");
+   public static final ResourceKey<DebugScreenEntry> CHUNK_GENERATION_STATS = key("chunk_generation_stats");
+   public static final ResourceKey<DebugScreenEntry> ENTITY_RENDER_STATS = key("entity_render_stats");
+   public static final ResourceKey<DebugScreenEntry> PARTICLE_RENDER_STATS = key("particle_render_stats");
+   public static final ResourceKey<DebugScreenEntry> CHUNK_SECTION_STATUS = key("chunk_section_status");
+   public static final ResourceKey<DebugScreenEntry> CHUNK_LOAD_STATUS = key("chunk_load_status");
+   public static final ResourceKey<DebugScreenEntry> PLAYER_POSITION = key("player_position");
+   public static final ResourceKey<DebugScreenEntry> PLAYER_SECTION_POSITION = key("player_section_position");
+   public static final ResourceKey<DebugScreenEntry> PLAYER_SPEED = key("player_speed");
+   public static final ResourceKey<DebugScreenEntry> LIGHT_LEVELS = key("light_levels");
+   public static final ResourceKey<DebugScreenEntry> LIGHTMAP_TEXTURE = key("lightmap_texture");
+   public static final ResourceKey<DebugScreenEntry> HEIGHTMAP = key("heightmap");
+   public static final ResourceKey<DebugScreenEntry> BIOME = key("biome");
+   public static final ResourceKey<DebugScreenEntry> LOCAL_DIFFICULTY = key("local_difficulty");
+   public static final ResourceKey<DebugScreenEntry> DAY_COUNT = key("day_count");
+   public static final ResourceKey<DebugScreenEntry> ENTITY_SPAWN_COUNTS = key("entity_spawn_counts");
+   public static final ResourceKey<DebugScreenEntry> SOUND_MOOD = key("sound_mood");
+   public static final ResourceKey<DebugScreenEntry> SOUND_CACHE = key("sound_cache");
+   public static final ResourceKey<DebugScreenEntry> POST_EFFECTS = key("post_effects");
+   public static final ResourceKey<DebugScreenEntry> ENTITY_HITBOXES = key("entity_hitboxes");
+   public static final ResourceKey<DebugScreenEntry> CHUNK_BORDERS = key("chunk_borders");
+   public static final ResourceKey<DebugScreenEntry> THREE_DIMENSIONAL_CROSSHAIR = key("3d_crosshair");
+   public static final ResourceKey<DebugScreenEntry> CHUNK_SECTION_PATHS = key("chunk_section_paths");
+   public static final ResourceKey<DebugScreenEntry> GPU_UTILIZATION = key("gpu_utilization");
+   public static final ResourceKey<DebugScreenEntry> SIMPLE_PERFORMANCE_IMPACTORS = key("simple_performance_impactors");
+   public static final ResourceKey<DebugScreenEntry> CHUNK_SECTION_OCTREE = key("chunk_section_octree");
+   public static final ResourceKey<DebugScreenEntry> VISUALIZE_WATER_LEVELS = key("visualize_water_levels");
+   public static final ResourceKey<DebugScreenEntry> VISUALIZE_HEIGHTMAP = key("visualize_heightmap");
+   public static final ResourceKey<DebugScreenEntry> VISUALIZE_COLLISION_BOXES = key("visualize_collision_boxes");
+   public static final ResourceKey<DebugScreenEntry> VISUALIZE_ENTITY_SUPPORTING_BLOCKS = key("visualize_entity_supporting_blocks");
+   public static final ResourceKey<DebugScreenEntry> VISUALIZE_BLOCK_LIGHT_LEVELS = key("visualize_block_light_levels");
+   public static final ResourceKey<DebugScreenEntry> VISUALIZE_SKY_LIGHT_LEVELS = key("visualize_sky_light_levels");
+   public static final ResourceKey<DebugScreenEntry> VISUALIZE_SOLID_FACES = key("visualize_solid_faces");
+   public static final ResourceKey<DebugScreenEntry> VISUALIZE_CHUNKS_ON_SERVER = key("visualize_chunks_on_server");
+   public static final ResourceKey<DebugScreenEntry> VISUALIZE_SKY_LIGHT_SECTIONS = key("visualize_sky_light_sections");
+   public static final ResourceKey<DebugScreenEntry> CHUNK_SECTION_VISIBILITY = key("chunk_section_visibility");
+   public static final Map<DebugScreenProfile, Map<ResourceKey<DebugScreenEntry>, DebugScreenEntryStatus>> PROFILES;
 
-   private static Identifier register(final String id, final DebugScreenEntry entry) {
-      return register(Identifier.withDefaultNamespace(id), entry);
+   private static ResourceKey<DebugScreenEntry> key(final String name) {
+      return ResourceKey.create(ClientRegistries.DEBUG_SCREEN_ENTRY, Identifier.withDefaultNamespace(name));
    }
 
-   private static Identifier register(final Identifier identifier, final DebugScreenEntry entry) {
-      ENTRIES_BY_ID.put(identifier, entry);
-      return identifier;
-   }
-
-   public static Map<Identifier, DebugScreenEntry> allEntries() {
-      return Map.copyOf(ENTRIES_BY_ID);
-   }
-
-   public static @Nullable DebugScreenEntry getEntry(final Identifier id) {
-      return ENTRIES_BY_ID.get(id);
+   public static Object bootstrap(final Registry<DebugScreenEntry> registry) {
+      Registry.register(registry, GAME_VERSION, new DebugEntryVersion());
+      Registry.register(registry, FPS, new DebugEntryFps());
+      Registry.register(registry, TPS, new DebugEntryTps());
+      Registry.register(registry, MEMORY, new DebugEntryMemory());
+      Registry.register(registry, DETAILED_MEMORY, new DebugEntryDetailedMemory());
+      Registry.register(registry, SYSTEM_SPECS, new DebugEntrySystemSpecs());
+      Registry.register(registry, LOOKING_AT_BLOCK_STATE, new DebugEntryLookingAt.BlockStateInfo());
+      Registry.register(registry, LOOKING_AT_BLOCK_TAGS, new DebugEntryLookingAt.BlockTagInfo());
+      Registry.register(registry, LOOKING_AT_FLUID_STATE, new DebugEntryLookingAt.FluidStateInfo());
+      Registry.register(registry, LOOKING_AT_FLUID_TAGS, new DebugEntryLookingAt.FluidTagInfo());
+      Registry.register(registry, LOOKING_AT_ENTITY, new DebugEntryLookingAtEntity());
+      Registry.register(registry, LOOKING_AT_ENTITY_TAGS, new DebugEntryLookingAtEntityTags());
+      Registry.register(registry, CHUNK_RENDER_STATS, new DebugEntryChunkRenderStats());
+      Registry.register(registry, CHUNK_GENERATION_STATS, new DebugEntryChunkGeneration());
+      Registry.register(registry, ENTITY_RENDER_STATS, new DebugEntryEntityRenderStats());
+      Registry.register(registry, PARTICLE_RENDER_STATS, new DebugEntryParticleRenderStats());
+      Registry.register(registry, CHUNK_SECTION_STATUS, new DebugEntryChunkSectionStatus());
+      Registry.register(registry, CHUNK_LOAD_STATUS, new DebugEntryChunkLoadStatus());
+      Registry.register(registry, PLAYER_POSITION, new DebugEntryPosition());
+      Registry.register(registry, PLAYER_SECTION_POSITION, new DebugEntrySectionPosition());
+      Registry.register(registry, PLAYER_SPEED, new DebugEntryPlayerSpeed());
+      Registry.register(registry, LIGHT_LEVELS, new DebugEntryLight());
+      Registry.register(registry, LIGHTMAP_TEXTURE, new DebugEntryLightmapTexture());
+      Registry.register(registry, HEIGHTMAP, new DebugEntryHeightmap());
+      Registry.register(registry, BIOME, new DebugEntryBiome());
+      Registry.register(registry, LOCAL_DIFFICULTY, new DebugEntryLocalDifficulty());
+      Registry.register(registry, DAY_COUNT, new DebugEntryDayCount());
+      Registry.register(registry, ENTITY_SPAWN_COUNTS, new DebugEntrySpawnCounts());
+      Registry.register(registry, SOUND_MOOD, new DebugEntrySoundMood());
+      Registry.register(registry, SOUND_CACHE, new DebugEntrySoundCache());
+      Registry.register(registry, POST_EFFECTS, new DebugEntryPostEffects());
+      Registry.register(registry, ENTITY_HITBOXES, new DebugEntryNoop());
+      Registry.register(registry, CHUNK_BORDERS, new DebugEntryNoop());
+      Registry.register(registry, THREE_DIMENSIONAL_CROSSHAIR, new DebugEntryNoop());
+      Registry.register(registry, CHUNK_SECTION_PATHS, new DebugEntryNoop());
+      Registry.register(registry, GPU_UTILIZATION, new DebugEntryGpuUtilization());
+      Registry.register(registry, SIMPLE_PERFORMANCE_IMPACTORS, new DebugEntrySimplePerformanceImpactors());
+      Registry.register(registry, CHUNK_SECTION_OCTREE, new DebugEntryNoop());
+      Registry.register(registry, VISUALIZE_WATER_LEVELS, new DebugEntryNoop());
+      Registry.register(registry, VISUALIZE_HEIGHTMAP, new DebugEntryNoop());
+      Registry.register(registry, VISUALIZE_COLLISION_BOXES, new DebugEntryNoop());
+      Registry.register(registry, VISUALIZE_ENTITY_SUPPORTING_BLOCKS, new DebugEntryNoop());
+      Registry.register(registry, VISUALIZE_BLOCK_LIGHT_LEVELS, new DebugEntryNoop());
+      Registry.register(registry, VISUALIZE_SKY_LIGHT_LEVELS, new DebugEntryNoop());
+      Registry.register(registry, VISUALIZE_SOLID_FACES, new DebugEntryNoop());
+      Registry.register(registry, VISUALIZE_CHUNKS_ON_SERVER, new DebugEntryNoop());
+      Registry.register(registry, VISUALIZE_SKY_LIGHT_SECTIONS, new DebugEntryNoop());
+      return Registry.register(registry, CHUNK_SECTION_VISIBILITY, new DebugEntryNoop());
    }
 
    static {
-      Map<Identifier, DebugScreenEntryStatus> defaultProfile = Map.of(
+      Map<ResourceKey<DebugScreenEntry>, DebugScreenEntryStatus> defaultProfile = Map.of(
          THREE_DIMENSIONAL_CROSSHAIR,
          DebugScreenEntryStatus.IN_OVERLAY,
          GAME_VERSION,
@@ -96,7 +133,7 @@ public class DebugScreenEntries {
          SIMPLE_PERFORMANCE_IMPACTORS,
          DebugScreenEntryStatus.IN_OVERLAY
       );
-      Map<Identifier, DebugScreenEntryStatus> performance = Map.of(
+      Map<ResourceKey<DebugScreenEntry>, DebugScreenEntryStatus> performance = Map.of(
          TPS,
          DebugScreenEntryStatus.IN_OVERLAY,
          FPS,

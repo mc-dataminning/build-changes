@@ -16,7 +16,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import org.jspecify.annotations.Nullable;
@@ -64,12 +63,12 @@ public class BarrierBlock extends Block implements SimpleWaterloggedBlock {
 
    @Override
    protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource() : super.getFluidState(state);
    }
 
    @Override
    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER));
+      return this.defaultBlockState().setValue(WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).isSourceOfType(Fluids.WATER));
    }
 
    @Override
@@ -83,7 +82,9 @@ public class BarrierBlock extends Block implements SimpleWaterloggedBlock {
    }
 
    @Override
-   public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
-      return user instanceof Player player && player.isCreative() ? SimpleWaterloggedBlock.super.canPlaceLiquid(user, level, pos, state, type) : false;
+   public boolean canPlaceLiquid(
+      final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final FluidState fluidState
+   ) {
+      return user instanceof Player player && player.isCreative() ? SimpleWaterloggedBlock.super.canPlaceLiquid(user, level, pos, state, fluidState) : false;
    }
 }

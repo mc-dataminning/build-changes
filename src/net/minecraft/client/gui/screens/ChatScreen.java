@@ -190,7 +190,7 @@ public class ChatScreen extends Screen {
          return true;
       }
 
-      if (event.button() == 1) {
+      if (event.isLeftMouse()) {
          int screenHeight = this.minecraft.getWindow().getGuiScaledHeight();
          ActiveTextCollector.ClickableStyleFinder finder = new ActiveTextCollector.ClickableStyleFinder(this.getFont(), (int)event.x(), (int)event.y())
             .includeInsertions(this.insertionClickMode());

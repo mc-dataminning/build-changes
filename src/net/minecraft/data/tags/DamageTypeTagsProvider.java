@@ -211,5 +211,6 @@ public class DamageTypeTagsProvider extends TagsProvider<DamageType> {
          .addTag(DamageTypeTags.IS_PLAYER_ATTACK);
       this.tag(DamageTypeTags.IS_MACE_SMASH).add(DamageTypes.MACE_SMASH);
       this.tag(DamageTypeTags.BYPASSES_COOLDOWN);
+      this.tag(DamageTypeTags.NO_HURT_SOUND);
    }
 }

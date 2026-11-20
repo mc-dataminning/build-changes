@@ -26,23 +26,12 @@ import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.gamerules.GameRules;
 import org.jspecify.annotations.Nullable;
 
-public abstract class LavaFluid extends FlowingFluid {
+public class LavaFluid extends FlowingFluid {
    public static final int LIGHT_EMISSION = 15;
    public static final float MIN_LEVEL_CUTOFF = 0.44444445F;
-
-   @Override
-   public Fluid getFlowing() {
-      return Fluids.FLOWING_LAVA;
-   }
-
-   @Override
-   public Fluid getSource() {
-      return Fluids.LAVA;
-   }
 
    @Override
    public Item getBucket() {
@@ -158,17 +147,12 @@ public abstract class LavaFluid extends FlowingFluid {
    }
 
    @Override
-   public boolean isSame(final Fluid other) {
-      return other == Fluids.LAVA || other == Fluids.FLOWING_LAVA;
-   }
-
-   @Override
    public int getDropOff(final LevelReader level) {
       return isFastLava(level) ? 1 : 2;
    }
 
    @Override
-   public boolean canBeReplacedWith(final FluidState state, final BlockGetter level, final BlockPos pos, final Fluid other, final Direction direction) {
+   public boolean canBeReplacedWith(final FluidState state, final BlockGetter level, final BlockPos pos, final FluidState other, final Direction direction) {
       return state.getHeight(level, pos) >= 0.44444445F && other.is(FluidTags.WATER);
    }
 
@@ -182,8 +166,8 @@ public abstract class LavaFluid extends FlowingFluid {
       int result = this.getTickDelay(level);
       if (!oldFluidState.isEmpty()
          && !newFluidState.isEmpty()
-         && !oldFluidState.getValue(FALLING)
-         && !newFluidState.getValue(FALLING)
+         && !oldFluidState.isFalling()
+         && !newFluidState.isFalling()
          && newFluidState.getHeight(level, pos) > oldFluidState.getHeight(level, pos)
          && level.getRandom().nextInt(4) != 0) {
          result *= 4;
@@ -205,7 +189,7 @@ public abstract class LavaFluid extends FlowingFluid {
    protected void spreadTo(final LevelAccessor level, final BlockPos pos, final BlockState state, final Direction direction, final FluidState target) {
       if (direction == Direction.DOWN) {
          FluidState fluidState = level.getFluidState(pos);
-         if (this.is(FluidTags.LAVA) && fluidState.is(FluidTags.WATER)) {
+         if (fluidState.is(FluidTags.WATER)) {
             if (state.getBlock() instanceof LiquidBlock) {
                level.setBlockAndUpdate(pos, Blocks.STONE.defaultBlockState());
             }
@@ -235,35 +219,5 @@ public abstract class LavaFluid extends FlowingFluid {
 
    private static boolean isFastLava(final LevelReader level) {
       return level.environmentAttributes().getDimensionValue(EnvironmentAttributes.FAST_LAVA);
-   }
-
-   public static class Flowing extends LavaFluid {
-      @Override
-      protected void createFluidStateDefinition(final StateDefinition.Builder<Fluid, FluidState> builder) {
-         super.createFluidStateDefinition(builder);
-         builder.add(LEVEL);
-      }
-
-      @Override
-      public int getAmount(final FluidState fluidState) {
-         return fluidState.getValue(LEVEL);
-      }
-
-      @Override
-      public boolean isSource(final FluidState fluidState) {
-         return false;
-      }
-   }
-
-   public static class Source extends LavaFluid {
-      @Override
-      public int getAmount(final FluidState fluidState) {
-         return 8;
-      }
-
-      @Override
-      public boolean isSource(final FluidState fluidState) {
-         return true;
-      }
    }
 }

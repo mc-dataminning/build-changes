@@ -1,5 +1,6 @@
 package net.minecraft.client.resources.sounds;
 
+import java.util.Objects;
 import net.minecraft.client.sounds.SoundManager;
 import net.minecraft.client.sounds.WeighedSoundEvents;
 import net.minecraft.resources.Identifier;
@@ -40,30 +41,30 @@ public abstract class AbstractSoundInstance implements SoundInstance {
    }
 
    @Override
-   public @Nullable WeighedSoundEvents getOrResolve(final SoundManager soundManager) {
-      if (this.identifier.equals(SoundManager.INTENTIONALLY_EMPTY_SOUND_LOCATION)) {
-         this.sound = SoundManager.INTENTIONALLY_EMPTY_SOUND;
-         return SoundManager.INTENTIONALLY_EMPTY_SOUND_EVENT;
+   public boolean resolveAndSelectSound(final SoundManager soundManager) {
+      WeighedSoundEvents soundEvent = soundManager.getSoundEvent(this.identifier);
+      if (soundEvent == null) {
+         return false;
       }
 
-      this.soundEvent = soundManager.getSoundEvent(this.identifier);
-      if (this.soundEvent == null) {
-         this.sound = SoundManager.EMPTY_SOUND;
-      } else {
-         this.sound = this.soundEvent.getSound(this.random);
+      Sound sound = soundEvent.getSound(this.random);
+      if (sound == null) {
+         return false;
       }
 
-      return this.soundEvent;
+      this.soundEvent = soundEvent;
+      this.sound = sound;
+      return true;
    }
 
    @Override
-   public @Nullable Sound getSound() {
-      return this.sound;
+   public Sound getSound() {
+      return Objects.requireNonNull(this.sound, "Not resolved");
    }
 
    @Override
-   public @Nullable WeighedSoundEvents getSoundEvent() {
-      return this.soundEvent;
+   public WeighedSoundEvents getSoundEvent() {
+      return Objects.requireNonNull(this.soundEvent, "Not resolved");
    }
 
    @Override
@@ -83,12 +84,12 @@ public abstract class AbstractSoundInstance implements SoundInstance {
 
    @Override
    public float getVolume() {
-      return this.volume * this.sound.getVolume().sample(this.random);
+      return this.volume * this.getSound().getVolume().sample(this.random);
    }
 
    @Override
    public float getPitch() {
-      return this.pitch * this.sound.getPitch().sample(this.random);
+      return this.pitch * this.getSound().getPitch().sample(this.random);
    }
 
    @Override

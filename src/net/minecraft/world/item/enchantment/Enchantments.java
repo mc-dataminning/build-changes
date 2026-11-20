@@ -403,7 +403,7 @@ public class Enchantments {
                      BlockPredicate.allOf(
                         BlockPredicate.matchesTag(Direction.UP, BlockTags.AIR),
                         BlockPredicate.matchesBlocks(Blocks.WATER),
-                        BlockPredicate.matchesFluids(Fluids.WATER),
+                        BlockPredicate.matchesSourceFluids(Fluids.WATER),
                         BlockPredicate.unobstructed()
                      )
                   ),
@@ -1223,10 +1223,10 @@ public class Enchantments {
                   LevelBasedValue.constant(3.5F),
                   false,
                   Level.ExplosionInteraction.TRIGGER,
-                  ParticleTypes.GUST_EMITTER_SMALL,
-                  ParticleTypes.GUST_EMITTER_LARGE,
+                  Optional.of(ParticleTypes.GUST_EMITTER_SMALL),
+                  Optional.of(ParticleTypes.GUST_EMITTER_LARGE),
                   WeightedList.of(),
-                  SoundEvents.WIND_CHARGE_BURST
+                  Optional.of(SoundEvents.WIND_CHARGE_BURST)
                ),
                LootItemEntityPropertyCondition.hasProperties(
                   LootContext.EntityTarget.DIRECT_ATTACKER,

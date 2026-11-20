@@ -113,7 +113,7 @@ public class OverlayRecipeComponent implements GuiEventListener, Renderable {
 
    @Override
    public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-      if (event.button() != 1) {
+      if (!event.isLeftMouse()) {
          return false;
       }
 

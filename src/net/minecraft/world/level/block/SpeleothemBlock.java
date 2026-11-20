@@ -136,7 +136,7 @@ public abstract class SpeleothemBlock extends Block implements SimpleWaterlogged
       return this.defaultBlockState()
          .setValue(TIP_DIRECTION, tipDirection)
          .setValue(THICKNESS, thickness)
-         .setValue(WATERLOGGED, level.getFluidState(pos).is(Fluids.WATER));
+         .setValue(WATERLOGGED, level.getFluidState(pos).isSourceOfType(Fluids.WATER));
    }
 
    private @Nullable Direction calculateTipDirection(final LevelReader level, final BlockPos pos, final Direction defaultTipDirection) {
@@ -260,7 +260,7 @@ public abstract class SpeleothemBlock extends Block implements SimpleWaterlogged
 
    @Override
    protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource() : super.getFluidState(state);
    }
 
    @Override
@@ -411,7 +411,7 @@ public abstract class SpeleothemBlock extends Block implements SimpleWaterlogged
       BlockState state = this.defaultBlockState()
          .setValue(TIP_DIRECTION, direction)
          .setValue(THICKNESS, thickness)
-         .setValue(WATERLOGGED, level.getFluidState(pos).is(Fluids.WATER));
+         .setValue(WATERLOGGED, level.getFluidState(pos).isSourceOfType(Fluids.WATER));
       level.setBlockAndUpdate(pos, state);
    }
 

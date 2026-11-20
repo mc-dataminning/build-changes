@@ -180,8 +180,12 @@ public class ReportReasonSelectionScreen extends Screen {
 
          @Override
          public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-            ReasonSelectionList.this.setSelected(this);
-            return super.mouseClicked(event, doubleClick);
+            if (event.isLeftMouse()) {
+               ReasonSelectionList.this.setSelected(this);
+               return true;
+            } else {
+               return false;
+            }
          }
 
          public ReportReason getReason() {

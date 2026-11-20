@@ -1,6 +1,7 @@
 package net.minecraft.world.entity.animal.cow;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
@@ -28,6 +29,7 @@ import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractCow extends Animal {
    private static final EntityDimensions BABY_DIMENSIONS = EntityTypes.COW.getDimensions().scale(0.5F).withEyeHeight(0.665F);
@@ -58,23 +60,23 @@ public abstract class AbstractCow extends Animal {
    }
 
    @Override
-   protected SoundEvent getAmbientSound() {
-      return this.getSoundSet().ambientSound().value();
+   protected @Nullable SoundEvent getAmbientSound() {
+      return this.getSoundSet().ambientSound().map(Holder::value).orElse(null);
    }
 
    @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return this.getSoundSet().hurtSound().value();
+   protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
+      return this.getSoundSet().hurtSound().map(Holder::value).orElse(null);
    }
 
    @Override
-   protected SoundEvent getDeathSound() {
-      return this.getSoundSet().deathSound().value();
+   protected @Nullable SoundEvent getDeathSound() {
+      return this.getSoundSet().deathSound().map(Holder::value).orElse(null);
    }
 
    @Override
    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-      this.playSound(this.getSoundSet().stepSound().value(), 0.15F, 1.0F);
+      this.getSoundSet().stepSound().ifPresent(s -> this.playSound((Holder<SoundEvent>)s, 0.15F, 1.0F));
    }
 
    @Override

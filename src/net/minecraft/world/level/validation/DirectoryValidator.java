@@ -11,59 +11,75 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import net.minecraft.util.Util;
+import org.jspecify.annotations.Nullable;
 
 public class DirectoryValidator {
+   private static final int FILE_ATTRIBUTE_REPARSE_POINT = 1024;
+   private static final boolean IS_WINDOWS = Util.getPlatform() == Util.OS.WINDOWS;
    private final PathMatcher symlinkTargetAllowList;
 
    public DirectoryValidator(final PathMatcher symlinkTargetAllowList) {
       this.symlinkTargetAllowList = symlinkTargetAllowList;
    }
 
-   public void validateSymlink(final Path path, final List<ForbiddenSymlinkInfo> issues) throws IOException {
-      Path target = Files.readSymbolicLink(path);
-      if (!this.symlinkTargetAllowList.matches(target)) {
-         issues.add(new ForbiddenSymlinkInfo(path, target));
+   public @Nullable Path validateAndResolveLink(final Path path) throws IOException, ContentValidationException {
+      return this.validateAndResolveLink(path, Files.readAttributes(path, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS));
+   }
+
+   public @Nullable Path validateAndResolveLink(final Path path, final BasicFileAttributes attributes) throws IOException, ContentValidationException {
+      if (attributes.isSymbolicLink()) {
+         Path target = Files.readSymbolicLink(path);
+         if (!this.symlinkTargetAllowList.matches(target)) {
+            throw new ContentValidationException(path, List.of(new ForbiddenLinkInfo(path, target)));
+         } else {
+            return target;
+         }
+      } else {
+         if (IS_WINDOWS && attributes.isOther()) {
+            Map<String, Object> dosAttributes = Files.readAttributes(path, "dos:attributes", LinkOption.NOFOLLOW_LINKS);
+            int flags = (Integer)dosAttributes.get("attributes");
+            if ((flags & 1024) != 0) {
+               throw new ContentValidationException(path, List.of(new ForbiddenLinkInfo(path, path.toRealPath(), true)));
+            }
+         }
+
+         return null;
       }
    }
 
-   public List<ForbiddenSymlinkInfo> validateSymlink(final Path path) throws IOException {
-      List<ForbiddenSymlinkInfo> result = new ArrayList<>();
-      this.validateSymlink(path, result);
-      return result;
-   }
-
-   public List<ForbiddenSymlinkInfo> validateDirectory(Path directory, final boolean allowTopSymlink) throws IOException {
-      List<ForbiddenSymlinkInfo> issues = new ArrayList<>();
-
+   public void validateDirectory(Path directory, final boolean allowTopSymlink) throws IOException, ContentValidationException {
       BasicFileAttributes targetAttributes;
       try {
          targetAttributes = Files.readAttributes(directory, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
       } catch (NoSuchFileException e) {
-         return issues;
+         return;
       }
 
       if (targetAttributes.isRegularFile()) {
          throw new IOException("Path " + directory + " is not a directory");
       }
 
-      if (targetAttributes.isSymbolicLink()) {
-         if (!allowTopSymlink) {
-            this.validateSymlink(directory, issues);
-            return issues;
+      if (allowTopSymlink) {
+         if (targetAttributes.isSymbolicLink()) {
+            directory = Files.readSymbolicLink(directory);
          }
-
-         directory = Files.readSymbolicLink(directory);
+      } else {
+         this.validateAndResolveLink(directory, targetAttributes);
       }
 
-      this.validateKnownDirectory(directory, issues);
-      return issues;
+      this.validateKnownDirectory(directory);
    }
 
-   public void validateKnownDirectory(final Path directory, final List<ForbiddenSymlinkInfo> issues) throws IOException {
+   public void validateKnownDirectory(final Path directory) throws IOException, ContentValidationException {
+      final List<ForbiddenLinkInfo> issues = new ArrayList<>();
       Files.walkFileTree(directory, new SimpleFileVisitor<Path>() {
          private void validateSymlink(final Path path, final BasicFileAttributes attrs) throws IOException {
-            if (attrs.isSymbolicLink()) {
-               DirectoryValidator.this.validateSymlink(path, issues);
+            try {
+               DirectoryValidator.this.validateAndResolveLink(path, attrs);
+            } catch (ContentValidationException e) {
+               issues.addAll(e.getIssues());
             }
          }
 
@@ -77,5 +93,8 @@ public class DirectoryValidator {
             return super.visitFile(file, attrs);
          }
       });
+      if (!issues.isEmpty()) {
+         throw new ContentValidationException(directory, issues);
+      }
    }
 }

@@ -1218,10 +1218,10 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       final float r,
       final boolean fire,
       final Level.ExplosionInteraction interactionType,
-      final ParticleOptions smallExplosionParticles,
-      final ParticleOptions largeExplosionParticles,
+      final @Nullable ParticleOptions smallExplosionParticles,
+      final @Nullable ParticleOptions largeExplosionParticles,
       final WeightedList<ExplosionParticleInfo> blockParticles,
-      final Holder<SoundEvent> explosionSound
+      final @Nullable Holder<SoundEvent> explosionSound
    ) {
       Explosion.BlockInteraction blockInteraction = switch (interactionType) {
          case NONE -> Explosion.BlockInteraction.KEEP;
@@ -1235,17 +1235,14 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       Vec3 center = new Vec3(x, y, z);
       ServerExplosion explosion = new ServerExplosion(this, source, damageSource, damageCalculator, center, r, fire, blockInteraction);
       int blockCount = explosion.explode();
-      ParticleOptions explosionParticle = explosion.isSmall() ? smallExplosionParticles : largeExplosionParticles;
+      Optional<ParticleOptions> explosionParticle = Optional.ofNullable(explosion.isSmall() ? smallExplosionParticles : largeExplosionParticles);
+      Optional<Holder<SoundEvent>> effectiveExplosionSound = source != null && source.isSilent() ? Optional.empty() : Optional.ofNullable(explosionSound);
 
       for (ServerPlayer player : this.players) {
          if (player.distanceToSqr(center) < 4096.0) {
             Optional<Vec3> playerKnockback = Optional.ofNullable(explosion.getHitPlayers().get(player));
             player.connection
-               .send(
-                  new ClientboundExplodePacket(
-                     center, r, blockCount, playerKnockback, explosionParticle, explosionSound, blockParticles, source == null || !source.isSilent()
-                  )
-               );
+               .send(new ClientboundExplodePacket(center, r, blockCount, playerKnockback, explosionParticle, effectiveExplosionSound, blockParticles));
          }
       }
    }

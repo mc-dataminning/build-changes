@@ -14,7 +14,6 @@ import java.util.function.Function;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-import javax.annotation.concurrent.Immutable;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.Mth;
@@ -27,7 +26,6 @@ import net.minecraft.world.phys.Vec3;
 import org.apache.commons.lang3.Validate;
 import org.jspecify.annotations.Nullable;
 
-@Immutable
 public class BlockPos extends Vec3i {
    public static final Codec<BlockPos> CODEC = Codec.INT_STREAM
       .comapFlatMap(
@@ -232,10 +230,13 @@ public class BlockPos extends Vec3i {
    }
 
    public Vec3 clampLocationWithin(final Vec3 location) {
+      double x = this.getX();
+      double y = this.getY();
+      double z = this.getZ();
       return new Vec3(
-         Math.clamp(location.x, this.getX() + 1.0E-5F, this.getX() + 1.0 - 1.0E-5F),
-         Math.clamp(location.y, this.getY() + 1.0E-5F, this.getY() + 1.0 - 1.0E-5F),
-         Math.clamp(location.z, this.getZ() + 1.0E-5F, this.getZ() + 1.0 - 1.0E-5F)
+         Math.clamp(location.x, x + 1.0E-5F, x + 1.0 - 1.0E-5F),
+         Math.clamp(location.y, y + 1.0E-5F, y + 1.0 - 1.0E-5F),
+         Math.clamp(location.z, z + 1.0E-5F, z + 1.0 - 1.0E-5F)
       );
    }
 

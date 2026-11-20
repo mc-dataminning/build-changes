@@ -112,12 +112,9 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
    }
 
    @Override
-   public void onPacketError(final Packet packet, final Exception cause) {
+   public void onPacketError(final Packet<?> packet, final Exception cause) {
       LOGGER.error("Failed to handle packet {}, disconnecting", packet, cause);
-      ClientCommonPacketListener.super.onPacketError(packet, cause);
-      Optional<Path> report = this.storeDisconnectionReport(packet, cause);
-      Optional<URI> bugReportLink = this.serverLinks.findKnownType(ServerLinks.KnownLinkType.BUG_REPORT).map(ServerLinks.Entry::link);
-      this.connection.disconnect(new DisconnectionDetails(Component.translatable("disconnect.packetError"), report, bugReportLink));
+      throw PacketUtils.makeReportedException(cause, packet, this);
    }
 
    @Override
@@ -127,9 +124,9 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
       return new DisconnectionDetails(reason, report, bugReportUrl);
    }
 
-   private Optional<Path> storeDisconnectionReport(final @Nullable Packet packet, final Throwable cause) {
+   private Optional<Path> storeDisconnectionReport(final @Nullable Packet<?> packet, final Throwable cause) {
       CrashReport report = CrashReport.forThrowable(cause, "Packet handling error");
-      PacketUtils.fillCrashReport(report, this, packet);
+      PacketUtils.fillCrashReport(report, this, (Packet<? extends ClientCommonPacketListenerImpl>)packet);
       Path debugDir = this.minecraft.gameDirectory.toPath().resolve("debug");
       Path reportFile = debugDir.resolve("disconnect-" + Util.getFilenameFormattedDateTime() + "-client.txt");
       Optional<ServerLinks.Entry> bugReportLink = this.serverLinks.findKnownType(ServerLinks.KnownLinkType.BUG_REPORT);

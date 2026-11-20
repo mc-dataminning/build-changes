@@ -59,6 +59,7 @@ public final class BlockTags {
    public static final TagKey<Block> COMPLETES_FIND_TREE_TUTORIAL = BlockItemTags.COMPLETES_FIND_TREE_TUTORIAL.block();
    public static final TagKey<Block> SHULKER_BOXES = BlockItemTags.SHULKER_BOXES.block();
    public static final TagKey<Block> COPPER_CHESTS = BlockItemTags.COPPER_CHESTS.block();
+   public static final TagKey<Block> JUKEBOX_CONTAINERS = BlockItemTags.JUKEBOX_CONTAINERS.block();
    public static final TagKey<Block> LIGHTNING_RODS = BlockItemTags.LIGHTNING_RODS.block();
    public static final TagKey<Block> COPPER = BlockItemTags.COPPER.block();
    public static final TagKey<Block> CHAINS = BlockItemTags.CHAINS.block();
@@ -81,6 +82,7 @@ public final class BlockTags {
    public static final TagKey<Block> FLOWER_POTS = create("flower_pots");
    public static final TagKey<Block> ENDERMAN_HOLDABLE = create("enderman_holdable");
    public static final TagKey<Block> ICE = create("ice");
+   public static final TagKey<Block> FACE_OCCLUDING_ICE_BLOCKS = create("face_occluding_ice_blocks");
    public static final TagKey<Block> VALID_SPAWN = create("valid_spawn");
    public static final TagKey<Block> IMPERMEABLE = create("impermeable");
    public static final TagKey<Block> UNDERWATER_BONEMEALS = create("underwater_bonemeals");
@@ -129,6 +131,7 @@ public final class BlockTags {
    public static final TagKey<Block> HEIGHT_SPECIFIC_ORE_REPLACEABLES = create("height_specific_ore_replaceables");
    public static final TagKey<Block> DEEPSLATE_ORE_REPLACEABLES = create("deepslate_ore_replaceables");
    public static final TagKey<Block> ICE_CAVE_ORE_REPLACEABLES = create("ice_cave_ore_replaceables");
+   public static final TagKey<Block> ICE_CREVASSE_REPLACEABLES = create("ice_crevasse_replaceables");
    public static final TagKey<Block> BASE_STONE_NETHER = create("base_stone_nether");
    public static final TagKey<Block> BENEATH_TREE_PODZOL_REPLACEABLE = create("beneath_tree_podzol_replaceable");
    public static final TagKey<Block> BENEATH_BAMBOO_PODZOL_REPLACEABLE = create("beneath_bamboo_podzol_replaceable");

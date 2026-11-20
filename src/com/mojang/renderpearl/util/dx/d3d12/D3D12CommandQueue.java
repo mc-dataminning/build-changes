@@ -9,11 +9,8 @@ import java.lang.invoke.MethodHandle;
 public class D3D12CommandQueue extends D3D12Pageable {
    private final MethodHandle executeCommandLists = this.vtable(
       10L,
-      FunctionDescriptor.of(
-         COMUnknown.Types.HRESULT,
-         COMUnknown.Types.SELF_PTR,
-         COMUnknown.Types.UINT32.withName("commandListCount"),
-         COMUnknown.Types.POINTER.withName("ppCommandLists")
+      FunctionDescriptor.ofVoid(
+         COMUnknown.Types.SELF_PTR, COMUnknown.Types.UINT32.withName("commandListCount"), COMUnknown.Types.POINTER.withName("ppCommandLists")
       )
    );
    private final MethodHandle signal = this.vtable(
@@ -33,11 +30,11 @@ public class D3D12CommandQueue extends D3D12Pageable {
       super(address);
    }
 
-   public int executeCommandList(final D3D12GraphicsCommandList commandList) {
+   public void executeCommandList(final D3D12GraphicsCommandList commandList) {
       try (Arena arena = Arena.ofConfined()) {
          MemorySegment listList = arena.allocate(COMUnknown.Types.POINTER);
          listList.set(COMUnknown.Types.POINTER, 0L, commandList.address());
-         return (int)this.executeCommandLists.invokeExact((MemorySegment)this.address(), (int)1, (MemorySegment)listList);
+         this.executeCommandLists.invokeExact((MemorySegment)this.address(), (int)1, (MemorySegment)listList);
       } catch (Throwable e) {
          throw new RuntimeException(e);
       }

@@ -23,6 +23,7 @@ import net.minecraft.world.entity.animal.armadillo.Armadillo;
 import net.minecraft.world.entity.animal.equine.AbstractChestedHorse;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.item.PrimedTnt;
+import net.minecraft.world.item.ArmorStandItem;
 import net.minecraft.world.item.BoneMealItem;
 import net.minecraft.world.item.DispensibleContainerItem;
 import net.minecraft.world.item.HoneycombItem;
@@ -84,6 +85,7 @@ public interface DispenseItemBehavior {
                );
                ArmorStand armorStand = EntityTypes.ARMOR_STAND.spawn(serverLevel, postSpawnConfig, pos, EntitySpawnReason.DISPENSER, false, false);
                if (armorStand != null) {
+                  ArmorStandItem.playSound(serverLevel, armorStand);
                   dispensed.shrink(1);
                }
 
@@ -174,6 +176,7 @@ public interface DispenseItemBehavior {
                   return super.execute(source, dispensed);
                }
 
+               bucket.getPickupSound().ifPresent(soundEvent -> level.playSound(null, target, soundEvent, SoundSource.BLOCKS));
                level.gameEvent(null, GameEvent.FLUID_PICKUP, target);
                Item targetType = pickup.getItem();
                return this.consumeWithRemainder(source, dispensed, new ItemStack(targetType));

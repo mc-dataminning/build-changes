@@ -571,6 +571,7 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
          Equippable equippable = itemStack.get(DataComponents.EQUIPPABLE);
          if (equippable != null
             && equippable.canBeSheared()
+            && equippable.slot() == slot
             && (!EnchantmentHelper.has(itemStack, EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) || player.isCreative())) {
             this.shearItem(player, hand, heldItem, slot, itemStack);
             this.playSound(equippable.shearingSound().value());

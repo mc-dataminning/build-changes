@@ -35,6 +35,7 @@ public class SimpleGizmoCollector implements GizmoCollector {
 
    public static class GizmoInstance implements GizmoProperties {
       private final Gizmo gizmo;
+      private boolean withEntityHitboxes;
       private boolean isAlwaysOnTop;
       private long startTimeMillis;
       private long expireTimeMillis;
@@ -42,6 +43,12 @@ public class SimpleGizmoCollector implements GizmoCollector {
 
       private GizmoInstance(final Gizmo gizmo) {
          this.gizmo = gizmo;
+      }
+
+      @Override
+      public GizmoProperties withEntityHitboxes() {
+         this.withEntityHitboxes = true;
+         return this;
       }
 
       @Override
@@ -71,6 +78,10 @@ public class SimpleGizmoCollector implements GizmoCollector {
          } else {
             return 1.0F;
          }
+      }
+
+      public boolean isWithEntityHitboxes() {
+         return this.withEntityHitboxes;
       }
 
       public boolean isAlwaysOnTop() {

@@ -46,6 +46,7 @@ public class References {
    public static final TypeReference ENTITY_TREE = reference("entity_tree");
    public static final TypeReference ENTITY = reference("entity");
    public static final TypeReference BLOCK_NAME = reference("block_name");
+   public static final TypeReference FLUID_NAME = reference("fluid_name");
    public static final TypeReference ITEM_NAME = reference("item_name");
    public static final TypeReference GAME_EVENT_NAME = reference("game_event_name");
    public static final TypeReference UNTAGGED_SPAWNER = reference("untagged_spawner");

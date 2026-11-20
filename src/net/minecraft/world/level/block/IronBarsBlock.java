@@ -43,7 +43,7 @@ public class IronBarsBlock extends CrossCollisionBlock {
          .setValue(SOUTH, this.attachsTo(southState, southState.isFaceSturdy(level, south, Direction.NORTH)))
          .setValue(WEST, this.attachsTo(westState, westState.isFaceSturdy(level, west, Direction.EAST)))
          .setValue(EAST, this.attachsTo(eastState, eastState.isFaceSturdy(level, east, Direction.WEST)))
-         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
+         .setValue(WATERLOGGED, replacedFluidState.isSourceOfType(Fluids.WATER));
    }
 
    @Override

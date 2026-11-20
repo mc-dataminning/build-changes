@@ -269,21 +269,25 @@ public class RealmsSelectWorldTemplateScreen extends RealmsScreen {
 
       @Override
       public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-         RealmsSelectWorldTemplateScreen.this.selectedTemplate = this.template;
-         RealmsSelectWorldTemplateScreen.this.updateButtonStates();
-         if (doubleClick && this.isFocused()) {
-            RealmsSelectWorldTemplateScreen.this.callback.accept(this.template);
-         }
+         if (event.isLeftMouse()) {
+            RealmsSelectWorldTemplateScreen.this.selectedTemplate = this.template;
+            RealmsSelectWorldTemplateScreen.this.updateButtonStates();
+            if (doubleClick && this.isFocused()) {
+               RealmsSelectWorldTemplateScreen.this.callback.accept(this.template);
+            }
 
-         if (this.websiteButton != null) {
-            this.websiteButton.mouseClicked(event, doubleClick);
-         }
+            if (this.websiteButton != null) {
+               this.websiteButton.mouseClicked(event, doubleClick);
+            }
 
-         if (this.trailerButton != null) {
-            this.trailerButton.mouseClicked(event, doubleClick);
-         }
+            if (this.trailerButton != null) {
+               this.trailerButton.mouseClicked(event, doubleClick);
+            }
 
-         return super.mouseClicked(event, doubleClick);
+            return true;
+         } else {
+            return false;
+         }
       }
 
       @Override

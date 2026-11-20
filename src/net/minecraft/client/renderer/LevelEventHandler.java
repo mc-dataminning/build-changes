@@ -251,6 +251,12 @@ public class LevelEventHandler {
          case 1057:
             this.level.playLocalSound(pos, SoundEvents.FROSTBITE_CONVERTED_TO_ZOMBIE, SoundSource.HOSTILE, 2.0F, random.nextFloat() * 0.1F + 0.9F, false);
             break;
+         case 1058:
+            this.level
+               .playLocalSound(
+                  pos, SoundEvents.DROWNED_CONVERTED_TO_ZOMBIE, SoundSource.HOSTILE, 2.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F, false
+               );
+            break;
          case 1500:
             ComposterBlock.handleFill(this.level, pos, data > 0);
             break;
@@ -608,7 +614,10 @@ public class LevelEventHandler {
                   );
             }
 
-            this.level.playLocalSound(pos, SoundEvents.COBWEB_PLACE, SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F, true);
+            this.level
+               .playLocalSound(
+                  pos, SoundEvents.COBWEB.placeSound().orElseThrow(), SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F, true
+               );
             break;
          case 3019:
             this.level

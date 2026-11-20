@@ -89,7 +89,6 @@ public class D3D12GpuSurface implements GpuSurfaceBackend {
    private final long vkImportedSemaphore;
    private boolean blitModeActive;
    private @Nullable DXGISwapchain3 swapchain;
-   private @Nullable Win32Handle waitHandle;
    private final List<D3D12Resource> dxImagesToClose = new ReferenceArrayList();
    private final List<D3D12Resource> dxgiSwapchainImages = new ReferenceArrayList();
    private final List<D3D12Resource> d3dBlitTargets = new ReferenceArrayList();
@@ -347,7 +346,6 @@ public class D3D12GpuSurface implements GpuSurfaceBackend {
 
    private void destroySwapchain() {
       if (this.swapchain != null) {
-         assert this.waitHandle != null;
          VK12.vkDeviceWaitIdle(this.vulkanDevice.vkDevice());
          this.commandQueue.signal(this.fence, ++this.fenceValue);
          this.fence.waitValue(this.fenceValue);
@@ -362,9 +360,9 @@ public class D3D12GpuSurface implements GpuSurfaceBackend {
          this.allocators.forEach(COMUnknown::close);
          if (this.commandList != null) {
             this.commandList.close();
+            this.commandList = null;
          }
 
-         this.waitHandle.close();
          this.swapchain.close();
          this.swapchain = null;
          this.vkImportedImages.clear();
@@ -399,16 +397,14 @@ public class D3D12GpuSurface implements GpuSurfaceBackend {
             sampleDesc.quality(0);
             swapchainDesc.bufferUsage(0);
             swapchainDesc.bufferCount(3);
-            swapchainDesc.scaling(1);
+            swapchainDesc.scaling(0);
             swapchainDesc.swapEffect(4);
             swapchainDesc.alphaMode(3);
-            swapchainDesc.flags((this.allowTearing ? 2048 : 0) | 64);
+            swapchainDesc.flags(this.allowTearing ? 2048 : 0);
             this.swapchain = this.dxgiFactory.createSwapchain(this.commandQueue, this.win32Window, swapchainDesc);
             this.dxgiFactory.makeWindowAssociation(this.win32Window, 3);
-            this.waitHandle = this.swapchain.waitHandle();
+            this.swapchain.setMaximumLatency(2);
          }
-
-         this.swapchain.setMaximumLatency(2);
 
          for (int i = 0; i < 3; i++) {
             D3D12Resource image = this.swapchain.getBuffer(i);
@@ -555,14 +551,6 @@ public class D3D12GpuSurface implements GpuSurfaceBackend {
 
    @Override
    public void acquireNextTexture() throws SurfaceException {
-      if (this.waitHandle == null) {
-         throw new IllegalStateException();
-      }
-
-      int waitResult = this.waitHandle.waitSingleObject(1000, true);
-      if (waitResult != 0) {
-         throw new IllegalStateException("Invalid result code waiting for swapchain image to be ready " + Integer.toHexString(waitResult));
-      }
    }
 
    @Override
@@ -717,7 +705,7 @@ public class D3D12GpuSurface implements GpuSurfaceBackend {
          this.commandList.reset(allocatorx);
          this.commandList.copyResource(this.dxgiSwapchainImages.get(currentImageIndex), d3dBlitTarget);
          this.commandList.end();
-         DXUtils.crashIfFailure(this.commandQueue.executeCommandList(this.commandList));
+         this.commandQueue.executeCommandList(this.commandList);
       }
    }
 

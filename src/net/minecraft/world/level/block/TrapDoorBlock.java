@@ -148,7 +148,7 @@ public class TrapDoorBlock extends HorizontalDirectionalBlock implements SimpleW
          state = state.setValue(OPEN, true).setValue(POWERED, true);
       }
 
-      return state.setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
+      return state.setValue(WATERLOGGED, replacedFluidState.isSourceOfType(Fluids.WATER));
    }
 
    @Override
@@ -158,7 +158,7 @@ public class TrapDoorBlock extends HorizontalDirectionalBlock implements SimpleW
 
    @Override
    protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource() : super.getFluidState(state);
    }
 
    @Override

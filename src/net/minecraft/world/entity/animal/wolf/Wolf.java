@@ -232,7 +232,7 @@ public class Wolf extends TamableAnimal implements NeutralMob {
 
    @Override
    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-      this.playSound(this.getSoundSet().stepSound().value(), 0.15F, 1.0F);
+      this.getSoundSet().stepSound().ifPresent(s -> this.playSound(s.value(), 0.15F, 1.0F));
    }
 
    @Override
@@ -278,24 +278,26 @@ public class Wolf extends TamableAnimal implements NeutralMob {
    }
 
    @Override
-   protected SoundEvent getAmbientSound() {
+   protected @Nullable SoundEvent getAmbientSound() {
       if (this.isAngry()) {
-         return this.getSoundSet().growlSound().value();
+         return this.getSoundSet().growlSound().map(Holder::value).orElse(null);
       } else if (this.random.nextInt(3) == 0) {
-         return this.isTame() && this.getHealth() < 20.0F ? this.getSoundSet().whineSound().value() : this.getSoundSet().pantSound().value();
+         return this.isTame() && this.getHealth() < 20.0F
+            ? this.getSoundSet().whineSound().map(Holder::value).orElse(null)
+            : this.getSoundSet().pantSound().map(Holder::value).orElse(null);
       } else {
-         return this.getSoundSet().ambientSound().value();
+         return this.getSoundSet().ambientSound().map(Holder::value).orElse(null);
       }
    }
 
    @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return this.canArmorAbsorb(source) ? SoundEvents.WOLF_ARMOR_DAMAGE : this.getSoundSet().hurtSound().value();
+   protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
+      return this.canArmorAbsorb(source) ? SoundEvents.WOLF_ARMOR_DAMAGE : this.getSoundSet().hurtSound().map(Holder::value).orElse(null);
    }
 
    @Override
-   protected SoundEvent getDeathSound() {
-      return this.getSoundSet().deathSound().value();
+   protected @Nullable SoundEvent getDeathSound() {
+      return this.getSoundSet().deathSound().map(Holder::value).orElse(null);
    }
 
    @Override

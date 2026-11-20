@@ -14,6 +14,8 @@ import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
+import net.minecraft.world.item.FireChargeItem;
+import net.minecraft.world.item.FlintAndSteelItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -114,8 +116,10 @@ public class TntBlock extends Block {
          level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
          Item item = itemStack.getItem();
          if (itemStack.is(Items.FLINT_AND_STEEL)) {
+            FlintAndSteelItem.playSound(level, pos);
             itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
          } else {
+            FireChargeItem.playSound(level, pos);
             itemStack.consume(1, player);
          }
 

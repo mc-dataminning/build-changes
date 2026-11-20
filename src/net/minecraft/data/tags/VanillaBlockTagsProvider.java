@@ -143,7 +143,8 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.FIRE_CORAL_BLOCK,
             BlockItemIds.HORN_CORAL_BLOCK
          );
-      this.tag(BlockTags.ICE).add(BlockItemIds.ICE, BlockItemIds.PACKED_ICE, BlockItemIds.BLUE_ICE).add(BlockIds.FROSTED_ICE);
+      this.tag(BlockTags.ICE).add(BlockItemIds.ICE, BlockItemIds.PACKED_ICE, BlockItemIds.BLUE_ICE, BlockItemIds.BRITTLE_ICE).add(BlockIds.FROSTED_ICE);
+      this.tag(BlockTags.FACE_OCCLUDING_ICE_BLOCKS).add(BlockItemIds.ICE, BlockItemIds.BRITTLE_ICE).add(BlockIds.FROSTED_ICE);
       this.tag(BlockTags.VALID_SPAWN).add(BlockItemIds.GRASS_BLOCK, BlockItemIds.PODZOL);
       this.tag(BlockTags.IMPERMEABLE).addAll(toIds(BlockItemIds.STAINED_GLASS)).add(BlockItemIds.GLASS, BlockItemIds.TINTED_GLASS, BlockItemIds.BARRIER);
       this.tag(BlockTags.UNDERWATER_BONEMEALS).add(new BlockItemId[]{BlockItemIds.SEAGRASS}).addTag(BlockTags.CORALS).addTag(BlockTags.WALL_CORALS);
@@ -314,6 +315,11 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
       this.tag(BlockTags.HEIGHT_SPECIFIC_ORE_REPLACEABLES).add(new BlockItemId[]{BlockItemIds.TUFF});
       this.tag(BlockTags.DEEPSLATE_ORE_REPLACEABLES).add(new BlockItemId[]{BlockItemIds.DEEPSLATE});
       this.tag(BlockTags.ICE_CAVE_ORE_REPLACEABLES).add(new BlockItemId[]{BlockItemIds.CALCITE}).add(new BlockItemId[]{BlockItemIds.PACKED_ICE});
+      this.tag(BlockTags.ICE_CREVASSE_REPLACEABLES)
+         .addTag(BlockTags.STONE_ORE_REPLACEABLES)
+         .addTag(BlockTags.DEEPSLATE_ORE_REPLACEABLES)
+         .addTag(BlockTags.HEIGHT_SPECIFIC_ORE_REPLACEABLES)
+         .addTag(BlockTags.ICE_CAVE_ORE_REPLACEABLES);
       this.tag(BlockTags.SUBSTRATE_OVERWORLD).addTag(BlockTags.DIRT).addTag(BlockTags.MUD).addTag(BlockTags.MOSS_BLOCKS).addTag(BlockTags.GRASS_BLOCKS);
       this.tag(BlockTags.BASE_STONE_OVERWORLD)
          .add(new BlockItemId[]{BlockItemIds.STONE})
@@ -819,7 +825,8 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .addTag(BlockTags.SPELEOTHEMS)
          .addAll(toIds(BlockItemIds.CONCRETE_STAIRS))
          .addAll(toIds(BlockItemIds.CONCRETE_SLAB))
-         .add(new BlockItemId[]{BlockItemIds.ICE_CRYSTAL});
+         .add(new BlockItemId[]{BlockItemIds.ICE_CRYSTAL})
+         .add(new BlockItemId[]{BlockItemIds.BRITTLE_ICE});
       this.tag(BlockTags.MINEABLE_WITH_SHOVEL)
          .add(
             BlockItemIds.CLAY,

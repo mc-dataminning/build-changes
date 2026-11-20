@@ -26,7 +26,7 @@ public class WaterloggedTransparentBlock extends TransparentBlock implements Sim
    @Override
    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-      return super.getStateForPlacement(context).setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
+      return super.getStateForPlacement(context).setValue(WATERLOGGED, replacedFluidState.isSourceOfType(Fluids.WATER));
    }
 
    @Override
@@ -49,7 +49,7 @@ public class WaterloggedTransparentBlock extends TransparentBlock implements Sim
 
    @Override
    protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource() : super.getFluidState(state);
    }
 
    @Override

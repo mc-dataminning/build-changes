@@ -85,7 +85,7 @@ public class PoiSection {
          LOGGER.error("POI data mismatch: never registered at {}", pos);
       } else {
          this.byType.get(poiRecord.getPoiType()).remove(poiRecord);
-         LOGGER.debug("Removed POI of type {} @ {}", LogUtils.defer(poiRecord::getPoiType), LogUtils.defer(poiRecord::getPos));
+         LOGGER.debug("Removed POI of type {} @ {}", LogUtils.defer(() -> poiRecord.getPoiType().getRegisteredName()), LogUtils.defer(poiRecord::getPos));
          this.setDirty.run();
       }
    }

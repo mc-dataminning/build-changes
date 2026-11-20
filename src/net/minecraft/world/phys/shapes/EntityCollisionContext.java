@@ -59,9 +59,7 @@ public class EntityCollisionContext implements CollisionContext {
 
    @Override
    public boolean canStandOnFluid(final FluidState fluidStateAbove, final FluidState fluid) {
-      return !(this.entity instanceof LivingEntity livingEntity)
-         ? false
-         : livingEntity.canStandOnFluid(fluid) && !fluidStateAbove.getType().isSame(fluid.getType());
+      return !(this.entity instanceof LivingEntity livingEntity) ? false : livingEntity.canStandOnFluid(fluid) && !fluidStateAbove.is(fluid.getType());
    }
 
    @Override

@@ -33,6 +33,23 @@ public record BlockSoundSet(
          .apply(i, BlockSoundSet::new)
    );
 
+   public BlockSoundSet(final float volume, final float pitch, final BlockSoundCollection<Optional<Holder<SoundEvent>>> soundCollection) {
+      this(
+         volume,
+         pitch,
+         soundCollection.breakSound(),
+         soundCollection.stepSound(),
+         soundCollection.placeSound(),
+         soundCollection.hitSound(),
+         soundCollection.fallSound()
+      );
+   }
+
+   public BlockSoundSet(final BlockSoundCollection<Optional<Holder<SoundEvent>>> soundCollection) {
+      this(1.0F, 1.0F, soundCollection);
+   }
+
+   @Deprecated
    public BlockSoundSet(
       final float volume,
       final float pitch,
@@ -53,6 +70,7 @@ public record BlockSoundSet(
       );
    }
 
+   @Deprecated
    public BlockSoundSet(
       final @Nullable Holder<SoundEvent> breakSound,
       final @Nullable Holder<SoundEvent> stepSound,

@@ -495,7 +495,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
 
    @Override
    public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-      if (event.button() == 1) {
+      if (event.isLeftMouse()) {
          double xm = event.x() - this.leftPos;
          double ym = event.y() - this.topPos;
 
@@ -516,7 +516,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
 
    @Override
    public boolean mouseReleased(final MouseButtonEvent event) {
-      if (event.button() == 1) {
+      if (event.isLeftMouse()) {
          double xm = event.x() - this.leftPos;
          double ym = event.y() - this.topPos;
          this.scrolling = false;

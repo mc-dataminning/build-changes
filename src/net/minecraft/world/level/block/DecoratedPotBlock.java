@@ -84,7 +84,7 @@ public class DecoratedPotBlock extends BaseEntityBlock implements SimpleWaterlog
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
       return this.defaultBlockState()
          .setValue(HORIZONTAL_FACING, context.getHorizontalDirection())
-         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER))
+         .setValue(WATERLOGGED, replacedFluidState.isSourceOfType(Fluids.WATER))
          .setValue(CRACKED, false);
    }
 
@@ -202,7 +202,7 @@ public class DecoratedPotBlock extends BaseEntityBlock implements SimpleWaterlog
 
    @Override
    protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource() : super.getFluidState(state);
    }
 
    @Override

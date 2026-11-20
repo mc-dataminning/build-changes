@@ -257,12 +257,14 @@ public class Cat extends TamableAnimal {
    protected @Nullable SoundEvent getAmbientSound() {
       if (this.isTame()) {
          if (this.isInLove()) {
-            return this.getSoundSet().purrSound().value();
+            return this.getSoundSet().purrSound().map(Holder::value).orElse(null);
          } else {
-            return this.random.nextInt(4) == 0 ? this.getSoundSet().purreowSound().value() : this.getSoundSet().ambientSound().value();
+            return this.random.nextInt(4) == 0
+               ? this.getSoundSet().purreowSound().map(Holder::value).orElse(null)
+               : this.getSoundSet().ambientSound().map(Holder::value).orElse(null);
          }
       } else {
-         return this.getSoundSet().strayAmbientSound().value();
+         return this.getSoundSet().strayAmbientSound().map(Holder::value).orElse(null);
       }
    }
 
@@ -272,17 +274,17 @@ public class Cat extends TamableAnimal {
    }
 
    public void hiss() {
-      this.makeSound(this.getSoundSet().hissSound().value());
+      this.getSoundSet().hissSound().ifPresent(s -> this.makeSound(s.value()));
    }
 
    @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return this.getSoundSet().hurtSound().value();
+   protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
+      return this.getSoundSet().hurtSound().map(Holder::value).orElse(null);
    }
 
    @Override
-   protected SoundEvent getDeathSound() {
-      return this.getSoundSet().deathSound().value();
+   protected @Nullable SoundEvent getDeathSound() {
+      return this.getSoundSet().deathSound().map(Holder::value).orElse(null);
    }
 
    public static AttributeSupplier.Builder createAttributes() {
@@ -296,14 +298,14 @@ public class Cat extends TamableAnimal {
 
    @Override
    protected void playEatingSound() {
-      this.playSound(this.getSoundSet().eatSound().value(), 1.0F, 1.0F);
+      this.getSoundSet().eatSound().ifPresent(s -> this.playSound(s.value(), 1.0F, 1.0F));
    }
 
    @Override
    public void tick() {
       super.tick();
       if (this.temptGoal != null && this.temptGoal.isRunning() && !this.isTame() && this.tickCount % 100 == 0) {
-         this.playSound(this.getSoundSet().begForFoodSound().value(), 1.0F, 1.0F);
+         this.getSoundSet().begForFoodSound().ifPresent(s -> this.playSound(s.value(), 1.0F, 1.0F));
       }
 
       this.handleLieDown();
@@ -311,7 +313,7 @@ public class Cat extends TamableAnimal {
 
    private void handleLieDown() {
       if ((this.isLying() || this.isRelaxStateOne()) && this.tickCount % 5 == 0) {
-         this.playSound(this.getSoundSet().purrSound().value(), 0.6F + 0.4F * (this.random.nextFloat() - this.random.nextFloat()), 1.0F);
+         this.getSoundSet().purrSound().ifPresent(s -> this.playSound(s.value(), 0.6F + 0.4F * (this.random.nextFloat() - this.random.nextFloat()), 1.0F));
       }
 
       this.updateLieDownAmount();

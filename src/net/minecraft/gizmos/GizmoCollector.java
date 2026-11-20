@@ -3,6 +3,11 @@ package net.minecraft.gizmos;
 public interface GizmoCollector {
    GizmoProperties IGNORED = new GizmoProperties() {
       @Override
+      public GizmoProperties withEntityHitboxes() {
+         return this;
+      }
+
+      @Override
       public GizmoProperties setAlwaysOnTop() {
          return this;
       }

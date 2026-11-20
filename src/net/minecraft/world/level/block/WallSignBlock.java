@@ -53,7 +53,7 @@ public class WallSignBlock extends SignBlock implements PlainSignBlock {
             Direction facing = direction.getOpposite();
             state = state.setValue(FACING, facing);
             if (state.canSurvive(level, pos)) {
-               return state.setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
+               return state.setValue(WATERLOGGED, replacedFluidState.isSourceOfType(Fluids.WATER));
             }
          }
       }

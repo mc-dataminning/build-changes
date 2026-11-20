@@ -23,7 +23,7 @@ public class PacketProcessor implements AutoCloseable {
       return Thread.currentThread() == this.runningThread;
    }
 
-   public <T extends PacketListener> void scheduleIfPossible(final T listener, final Packet<T> packet) {
+   public <T extends PacketListener & PacketProcessor.Handler> void scheduleIfPossible(final T listener, final Packet<? super T> packet) {
       if (this.closed) {
          throw new RejectedExecutionException("Server already shutting down");
       }
@@ -44,14 +44,18 @@ public class PacketProcessor implements AutoCloseable {
       this.closed = true;
    }
 
-   private record ListenerAndPacket<T extends PacketListener>(T listener, Packet<T> packet) {
+   public interface Handler {
+      void onPacketError(Packet<?> packet, Exception cause) throws ReportedException;
+   }
+
+   private record ListenerAndPacket<T extends PacketListener & PacketProcessor.Handler>(T listener, Packet<? super T> packet) {
       public void handle() {
          if (this.listener.shouldHandleMessage(this.packet)) {
             try {
                this.packet.handle(this.listener);
             } catch (Exception e) {
                if (e instanceof ReportedException re && re.getCause() instanceof OutOfMemoryError) {
-                  throw PacketUtils.makeReportedException(e, this.packet, this.listener);
+                  throw PacketUtils.makeReportedException(e, (Packet<? extends T>)this.packet, this.listener);
                }
 
                this.listener.onPacketError(this.packet, e);

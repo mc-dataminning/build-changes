@@ -8,6 +8,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.CaveFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ClampedNormalInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -51,6 +52,7 @@ public class CavePlacements {
    public static final ResourceKey<PlacedFeature> AMETHYST_GEODE = PlacementUtils.createKey("amethyst_geode");
    public static final ResourceKey<PlacedFeature> SNOW_LAYERS = PlacementUtils.createKey("snow_layers");
    public static final ResourceKey<PlacedFeature> ICE_CRYSTALS = PlacementUtils.createKey("ice_crystals");
+   public static final ResourceKey<PlacedFeature> ICE_CREVASSE = PlacementUtils.createKey("ice_crevasse");
    public static final ResourceKey<PlacedFeature> SCULK_PATCH_DEEP_DARK = PlacementUtils.createKey("sculk_patch_deep_dark");
    public static final ResourceKey<PlacedFeature> SCULK_PATCH_ANCIENT_CITY = PlacementUtils.createKey("sculk_patch_ancient_city");
    public static final ResourceKey<PlacedFeature> SCULK_VEIN = PlacementUtils.createKey("sculk_vein");
@@ -69,6 +71,7 @@ public class CavePlacements {
       Holder<Feature> sulfurSpike = configuredFeatures.getOrThrow(CaveFeatures.SULFUR_SPIKE);
       Holder<Feature> snowLayer = configuredFeatures.getOrThrow(CaveFeatures.SNOW_LAYER);
       Holder<Feature> iceCrystal = configuredFeatures.getOrThrow(CaveFeatures.ICE_CRYSTAL);
+      Holder<Feature> iceCrevasse = configuredFeatures.getOrThrow(CaveFeatures.ICE_CREVASSE);
       Holder<Feature> underwaterMagma = configuredFeatures.getOrThrow(CaveFeatures.UNDERWATER_MAGMA);
       Holder<Feature> glowLichen = configuredFeatures.getOrThrow(CaveFeatures.GLOW_LICHEN);
       Holder<Feature> rootedAzaleaTree = configuredFeatures.getOrThrow(CaveFeatures.ROOTED_AZALEA_TREE);
@@ -344,6 +347,18 @@ public class CavePlacements {
          CountPlacement.of(UniformInt.of(48, 64)),
          InSquarePlacement.spread(),
          PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT,
+         BiomeFilter.biome()
+      );
+      PlacementUtils.register(
+         context,
+         ICE_CREVASSE,
+         iceCrevasse,
+         CountPlacement.of(ConstantInt.of(8)),
+         InSquarePlacement.spread(),
+         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(24), VerticalAnchor.belowTop(64)),
+         EnvironmentScanPlacement.scanningFor(
+            Direction.DOWN, BlockPredicate.matchesTag(BlockTags.ICE_CREVASSE_REPLACEABLES), BlockPredicate.ONLY_IN_AIR_PREDICATE, 32
+         ),
          BiomeFilter.biome()
       );
    }

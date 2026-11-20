@@ -2,6 +2,7 @@ package net.minecraft.world.level.block;
 
 import java.util.Optional;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -64,8 +65,8 @@ public class MushroomBlock extends VegetationBlock implements BonemealableBlock 
    }
 
    @Override
-   protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.isSolidRender();
+   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
+      return canSupportCenter(level, pos.below(), Direction.UP);
    }
 
    protected boolean canSpreadTo(final LevelReader level, final BlockPos pos) {

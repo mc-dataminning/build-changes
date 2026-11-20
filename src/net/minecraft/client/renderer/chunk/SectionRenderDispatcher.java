@@ -14,7 +14,6 @@ import java.nio.ByteBuffer;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Map.Entry;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
@@ -81,15 +80,15 @@ public class SectionRenderDispatcher {
    private void runTask() {
       if (!this.closed) {
          SectionRenderDispatcher.RenderSection.SectionTask task = this.queue.poll(this.cameraPosition.get());
-         if (task != null && !task.isCompleted.get() && !task.isCancelled.get()) {
+         if (task != null && !task.isCompleted && !task.isCancelled) {
             try {
                SectionBufferBuilderPack buffer = Objects.requireNonNull(this.bufferPool.acquire());
-               SectionRenderDispatcher.RenderSection.SectionTask.SectionTaskResult result = task.doTask(buffer);
-               task.isCompleted.set(true);
-               if (result == SectionRenderDispatcher.RenderSection.SectionTask.SectionTaskResult.SUCCESSFUL) {
-                  buffer.clearAll();
-               } else {
-                  buffer.discardAll();
+               switch (task.runTask(buffer)) {
+                  case SUCCESSFUL:
+                     buffer.clearAll();
+                     break;
+                  case CANCELLED:
+                     buffer.discardAll();
                }
 
                this.bufferPool.release(buffer);
@@ -195,8 +194,8 @@ public class SectionRenderDispatcher {
    public class RenderSection implements RotatingSectionStorage.Value {
       public final int index;
       public final AtomicReference<SectionMesh> sectionMesh = new AtomicReference<>(CompiledSectionMesh.UNCOMPILED);
-      private SectionRenderDispatcher.RenderSection.@Nullable CompileTask lastCompileTask;
-      private SectionRenderDispatcher.RenderSection.@Nullable ResortTransparencyTask lastResortTransparencyTask;
+      private final AtomicReference<SectionRenderDispatcher.RenderSection.@Nullable CompileTask> currentCompileTask = new AtomicReference<>(null);
+      private final AtomicReference<SectionRenderDispatcher.RenderSection.@Nullable ResortTransparencyTask> currentResortTask = new AtomicReference<>(null);
       private AABB bb;
       private volatile long sectionNode = SectionPos.asLong(-1, -1, -1);
       private final BlockPos.MutableBlockPos renderOrigin = new BlockPos.MutableBlockPos(-1, -1, -1);
@@ -260,8 +259,9 @@ public class SectionRenderDispatcher {
 
       public void resortTransparency() {
          if (this.getSectionMesh() instanceof CompiledSectionMesh mesh) {
-            this.lastResortTransparencyTask = new SectionRenderDispatcher.RenderSection.ResortTransparencyTask(mesh);
-            SectionRenderDispatcher.this.schedule(this.lastResortTransparencyTask);
+            SectionRenderDispatcher.RenderSection.ResortTransparencyTask task = new SectionRenderDispatcher.RenderSection.ResortTransparencyTask(mesh);
+            this.currentResortTask.set(task);
+            SectionRenderDispatcher.this.schedule(task);
          }
       }
 
@@ -270,30 +270,31 @@ public class SectionRenderDispatcher {
       }
 
       public boolean hasCompileTaskScheduled() {
-         return this.lastCompileTask != null && !this.lastCompileTask.isCompleted.get();
+         return this.currentCompileTask.get() != null;
       }
 
       public boolean transparencyResortingScheduled() {
-         return this.lastResortTransparencyTask != null && !this.lastResortTransparencyTask.isCompleted.get();
+         return this.currentResortTask.get() != null;
       }
 
       private void cancelTasks() {
-         if (this.lastCompileTask != null) {
-            this.lastCompileTask.cancel();
-            this.lastCompileTask = null;
+         SectionRenderDispatcher.RenderSection.CompileTask compileTask = this.currentCompileTask.getAndSet(null);
+         if (compileTask != null) {
+            compileTask.cancel();
          }
 
-         if (this.lastResortTransparencyTask != null) {
-            this.lastResortTransparencyTask.cancel();
-            this.lastResortTransparencyTask = null;
+         SectionRenderDispatcher.RenderSection.ResortTransparencyTask resortTask = this.currentResortTask.getAndSet(null);
+         if (resortTask != null) {
+            resortTask.cancel();
          }
       }
 
       private SectionRenderDispatcher.RenderSection.SectionTask createCompileTask(final RenderSectionRegion region) {
          this.cancelTasks();
          boolean isRecompile = this.sectionMesh.get() != CompiledSectionMesh.UNCOMPILED;
-         this.lastCompileTask = new SectionRenderDispatcher.RenderSection.CompileTask(region, isRecompile);
-         return this.lastCompileTask;
+         SectionRenderDispatcher.RenderSection.CompileTask task = new SectionRenderDispatcher.RenderSection.CompileTask(region, isRecompile);
+         this.currentCompileTask.set(task);
+         return task;
       }
 
       public void compileAsync(final RenderSectionRegion region) {
@@ -303,7 +304,7 @@ public class SectionRenderDispatcher {
 
       public void compileSync(final RenderSectionRegion region) {
          SectionRenderDispatcher.RenderSection.SectionTask task = this.createCompileTask(region);
-         task.doTask(SectionRenderDispatcher.this.fixedBuffers);
+         task.runTask(SectionRenderDispatcher.this.fixedBuffers);
       }
 
       private SectionMesh setSectionMesh(final SectionMesh sectionMesh) {
@@ -410,13 +411,13 @@ public class SectionRenderDispatcher {
 
          @Override
          public SectionRenderDispatcher.RenderSection.SectionTask.SectionTaskResult doTask(final SectionBufferBuilderPack buffers) {
-            if (this.isCancelled.get()) {
+            if (this.isCancelled) {
                return SectionRenderDispatcher.RenderSection.SectionTask.SectionTaskResult.CANCELLED;
             }
 
             long sectionNode = RenderSection.this.sectionNode;
             SectionPos sectionPos = SectionPos.of(sectionNode);
-            if (this.isCancelled.get()) {
+            if (this.isCancelled) {
                return SectionRenderDispatcher.RenderSection.SectionTask.SectionTaskResult.CANCELLED;
             }
 
@@ -447,7 +448,7 @@ public class SectionRenderDispatcher {
                   boolean success = false;
 
                   while (!success) {
-                     if (this.isCancelled.get()) {
+                     if (this.isCancelled) {
                         results.release();
                         SectionRenderDispatcher.this.copyLock.lock();
 
@@ -476,8 +477,8 @@ public class SectionRenderDispatcher {
          }
 
          @Override
-         public void cancel() {
-            this.isCancelled.compareAndSet(false, true);
+         public void complete() {
+            RenderSection.this.currentCompileTask.compareAndSet(this, null);
          }
       }
 
@@ -491,7 +492,7 @@ public class SectionRenderDispatcher {
 
          @Override
          public SectionRenderDispatcher.RenderSection.SectionTask.SectionTaskResult doTask(final SectionBufferBuilderPack buffers) {
-            if (this.isCancelled.get()) {
+            if (this.isCancelled) {
                return SectionRenderDispatcher.RenderSection.SectionTask.SectionTaskResult.CANCELLED;
             }
 
@@ -513,7 +514,7 @@ public class SectionRenderDispatcher {
                boolean success = false;
 
                while (!success) {
-                  if (this.isCancelled.get()) {
+                  if (this.isCancelled) {
                      indexBuffer.close();
                      return SectionRenderDispatcher.RenderSection.SectionTask.SectionTaskResult.CANCELLED;
                   }
@@ -535,23 +536,36 @@ public class SectionRenderDispatcher {
          }
 
          @Override
-         public void cancel() {
-            this.isCancelled.set(true);
+         public void complete() {
+            RenderSection.this.currentResortTask.compareAndSet(this, null);
          }
       }
 
       public abstract class SectionTask {
-         protected final AtomicBoolean isCancelled = new AtomicBoolean(false);
-         protected final AtomicBoolean isCompleted = new AtomicBoolean(false);
+         protected volatile boolean isCancelled;
+         protected volatile boolean isCompleted;
          private final boolean isRecompile;
 
          public SectionTask(final boolean isRecompile) {
             this.isRecompile = isRecompile;
          }
 
-         public abstract SectionRenderDispatcher.RenderSection.SectionTask.SectionTaskResult doTask(final SectionBufferBuilderPack buffers);
+         public final SectionRenderDispatcher.RenderSection.SectionTask.SectionTaskResult runTask(final SectionBufferBuilderPack buffers) {
+            try {
+               return this.doTask(buffers);
+            } finally {
+               this.isCompleted = true;
+               this.complete();
+            }
+         }
 
-         public abstract void cancel();
+         protected abstract SectionRenderDispatcher.RenderSection.SectionTask.SectionTaskResult doTask(final SectionBufferBuilderPack buffers);
+
+         protected abstract void complete();
+
+         public void cancel() {
+            this.isCancelled = true;
+         }
 
          public boolean isRecompile() {
             return this.isRecompile;

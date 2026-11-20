@@ -19,7 +19,7 @@ public class EmptyFluid extends Fluid {
    }
 
    @Override
-   public boolean canBeReplacedWith(final FluidState state, final BlockGetter level, final BlockPos pos, final Fluid other, final Direction direction) {
+   public boolean canBeReplacedWith(final FluidState state, final BlockGetter level, final BlockPos pos, final FluidState other, final Direction direction) {
       return true;
    }
 
@@ -60,6 +60,11 @@ public class EmptyFluid extends Fluid {
 
    @Override
    public boolean isSource(final FluidState fluidState) {
+      return false;
+   }
+
+   @Override
+   public boolean isFalling(final FluidState fluidState) {
       return false;
    }
 

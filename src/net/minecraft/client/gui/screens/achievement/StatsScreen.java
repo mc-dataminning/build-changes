@@ -588,9 +588,9 @@ public class StatsScreen extends Screen {
          @Override
          public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
             graphics.text(StatsScreen.this.font, this.mobName, this.getContentX() + 2, this.getContentY() + 1, -1);
-            graphics.text(StatsScreen.this.font, this.kills, this.getContentX() + 2 + 10, this.getContentY() + 1 + 9, this.hasKills ? -4539718 : -8355712);
+            graphics.text(StatsScreen.this.font, this.kills, this.getContentX() + 2 + 10, this.getContentY() + 2 + 9, this.hasKills ? -4539718 : -8355712);
             graphics.text(
-               StatsScreen.this.font, this.killedBy, this.getContentX() + 2 + 10, this.getContentY() + 1 + 9 * 2, this.wasKilledBy ? -4539718 : -8355712
+               StatsScreen.this.font, this.killedBy, this.getContentX() + 2 + 10, this.getContentY() + 2 + 9 * 2, this.wasKilledBy ? -4539718 : -8355712
             );
          }
 

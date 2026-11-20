@@ -82,7 +82,16 @@ public class EntityTypeTagsProvider extends TagsProvider<EntityType<?>> {
          );
       this.tag(EntityTypeTags.AXOLOTL_ALWAYS_HOSTILES).add(EntityTypeIds.DROWNED, EntityTypeIds.GUARDIAN, EntityTypeIds.ELDER_GUARDIAN);
       this.tag(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)
-         .add(EntityTypeIds.STRAY, EntityTypeIds.POLAR_BEAR, EntityTypeIds.SNOW_GOLEM, EntityTypeIds.WITHER, EntityTypeIds.FROSTBITE);
+         .add(
+            EntityTypeIds.STRAY,
+            EntityTypeIds.POLAR_BEAR,
+            EntityTypeIds.SNOW_GOLEM,
+            EntityTypeIds.WITHER,
+            EntityTypeIds.FROSTBITE,
+            EntityTypeIds.ZOMBIE,
+            EntityTypeIds.DROWNED,
+            EntityTypeIds.HUSK
+         );
       this.tag(EntityTypeTags.FREEZE_HURTS_EXTRA_TYPES).add(EntityTypeIds.STRIDER, EntityTypeIds.BLAZE, EntityTypeIds.MAGMA_CUBE);
       this.tag(EntityTypeTags.CAN_BREATHE_UNDER_WATER)
          .addTag(EntityTypeTags.UNDEAD)
@@ -286,5 +295,6 @@ public class EntityTypeTagsProvider extends TagsProvider<EntityType<?>> {
       this.tag(EntityTypeTags.CANNOT_BE_AGE_LOCKED).add(EntityTypeIds.ZOMBIE_HORSE, EntityTypeIds.SKELETON_HORSE, EntityTypeIds.VILLAGER);
       this.tag(EntityTypeTags.NOT_AFFECTED_BY_GEYSERS).add(EntityTypeIds.ENDER_DRAGON);
       this.tag(EntityTypeTags.CANNOT_BE_DISMOUNTED_BY_ITEM_USAGE).add(EntityTypeIds.INTERACTION);
+      this.tag(EntityTypeTags.DOES_NOT_BREAK_BRITTLE_ICE).add(EntityTypeIds.FROSTBITE);
    }
 }

@@ -85,7 +85,7 @@ public class FenceBlock extends CrossCollisionBlock {
          .setValue(EAST, this.connectsTo(eastState, eastState.isFaceSturdy(level, east, Direction.WEST), Direction.WEST))
          .setValue(SOUTH, this.connectsTo(southState, southState.isFaceSturdy(level, south, Direction.NORTH), Direction.NORTH))
          .setValue(WEST, this.connectsTo(westState, westState.isFaceSturdy(level, west, Direction.EAST), Direction.EAST))
-         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
+         .setValue(WATERLOGGED, replacedFluidState.isSourceOfType(Fluids.WATER));
    }
 
    @Override

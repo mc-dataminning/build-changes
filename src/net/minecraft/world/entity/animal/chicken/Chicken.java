@@ -152,23 +152,23 @@ public class Chicken extends Animal {
    }
 
    @Override
-   protected SoundEvent getAmbientSound() {
-      return this.getSoundSet().ambientSound().value();
+   protected @Nullable SoundEvent getAmbientSound() {
+      return this.getSoundSet().ambientSound().map(Holder::value).orElse(null);
    }
 
    @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return this.getSoundSet().hurtSound().value();
+   protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
+      return this.getSoundSet().hurtSound().map(Holder::value).orElse(null);
    }
 
    @Override
-   protected SoundEvent getDeathSound() {
-      return this.getSoundSet().deathSound().value();
+   protected @Nullable SoundEvent getDeathSound() {
+      return this.getSoundSet().deathSound().map(Holder::value).orElse(null);
    }
 
    @Override
    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-      this.playSound(this.getSoundSet().stepSound().value(), 0.15F, 1.0F);
+      this.getSoundSet().stepSound().ifPresent(s -> this.playSound(s.value(), 0.15F, 1.0F));
    }
 
    public @Nullable Chicken getBreedOffspring(final ServerLevel level, final AgeableMob partner) {

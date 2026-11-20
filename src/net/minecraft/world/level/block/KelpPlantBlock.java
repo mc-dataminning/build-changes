@@ -7,7 +7,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -25,7 +24,7 @@ public class KelpPlantBlock extends GrowingPlantBodyBlock implements LiquidBlock
 
    @Override
    protected FluidState getFluidState(final BlockState state) {
-      return Fluids.WATER.getSource(false);
+      return Fluids.WATER.getSource();
    }
 
    @Override
@@ -34,7 +33,9 @@ public class KelpPlantBlock extends GrowingPlantBodyBlock implements LiquidBlock
    }
 
    @Override
-   public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
+   public boolean canPlaceLiquid(
+      final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final FluidState fluidState
+   ) {
       return false;
    }
 

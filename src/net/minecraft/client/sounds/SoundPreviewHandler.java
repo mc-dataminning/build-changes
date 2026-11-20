@@ -2,7 +2,6 @@ package net.minecraft.client.sounds;
 
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.animal.cow.CowSoundVariants;
@@ -15,19 +14,19 @@ public final class SoundPreviewHandler {
    public static void preview(final SoundManager soundManager, final SoundSource category, final float volume) {
       stopOtherCategoryPreview(soundManager, category);
       if (canPlaySound(soundManager)) {
-         SoundEvent previewSound = switch (category) {
-            case RECORDS -> (SoundEvent)SoundEvents.NOTE_BLOCK_GUITAR.value();
-            case WEATHER -> SoundEvents.LIGHTNING_BOLT_THUNDER;
-            case BLOCKS -> (SoundEvent)SoundEvents.GRASS_PLACE.value();
-            case HOSTILE -> SoundEvents.ZOMBIE_AMBIENT;
-            case NEUTRAL -> (SoundEvent)SoundEvents.COW_SOUNDS.get(CowSoundVariants.SoundSet.CLASSIC).ambientSound().value();
-            case PLAYERS -> (SoundEvent)SoundEvents.GENERIC_EAT.value();
-            case AMBIENT -> (SoundEvent)SoundEvents.AMBIENT_CAVE.value();
-            case UI -> (SoundEvent)SoundEvents.UI_BUTTON_CLICK.value();
-            default -> (SoundEvent)SoundEvents.EMPTY.value();
+         SoundInstance previewSound = switch (category) {
+            case RECORDS -> SimpleSoundInstance.forUI(SoundEvents.NOTE_BLOCK_GUITAR, 1.0F, volume);
+            case WEATHER -> SimpleSoundInstance.forUI(SoundEvents.LIGHTNING_BOLT_THUNDER, 1.0F, volume);
+            case BLOCKS -> SimpleSoundInstance.forUI(SoundEvents.GRASS.placeSound().orElseThrow(), 1.0F, volume);
+            case HOSTILE -> SimpleSoundInstance.forUI(SoundEvents.ZOMBIE_AMBIENT, 1.0F, volume);
+            case NEUTRAL -> SimpleSoundInstance.forUI(SoundEvents.COW_SOUNDS.get(CowSoundVariants.SoundSet.CLASSIC).ambientSound().orElseThrow(), 1.0F, volume);
+            case PLAYERS -> SimpleSoundInstance.forUI(SoundEvents.GENERIC_EAT, 1.0F, volume);
+            case AMBIENT -> SimpleSoundInstance.forUI(SoundEvents.AMBIENT_CAVE, 1.0F, volume);
+            case UI -> SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F, volume);
+            default -> null;
          };
-         if (previewSound != SoundEvents.EMPTY.value()) {
-            activePreview = SimpleSoundInstance.forUI(previewSound, 1.0F, volume);
+         if (previewSound != null) {
+            activePreview = previewSound;
             soundManager.play(activePreview);
          }
       }

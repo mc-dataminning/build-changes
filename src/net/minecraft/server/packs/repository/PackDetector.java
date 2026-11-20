@@ -6,9 +6,8 @@ import java.nio.file.LinkOption;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.List;
+import net.minecraft.world.level.validation.ContentValidationException;
 import net.minecraft.world.level.validation.DirectoryValidator;
-import net.minecraft.world.level.validation.ForbiddenSymlinkInfo;
 import org.jspecify.annotations.Nullable;
 
 public abstract class PackDetector<T> {
@@ -18,7 +17,7 @@ public abstract class PackDetector<T> {
       this.validator = validator;
    }
 
-   public @Nullable T detectPackResources(final Path content, final List<ForbiddenSymlinkInfo> issues) throws IOException {
+   public @Nullable T detectPackResources(final Path content) throws IOException, ContentValidationException {
       Path targetContext = content;
 
       BasicFileAttributes attributes;
@@ -28,23 +27,15 @@ public abstract class PackDetector<T> {
          return null;
       }
 
-      if (attributes.isSymbolicLink()) {
-         this.validator.validateSymlink(content, issues);
-         if (!issues.isEmpty()) {
-            return null;
-         }
-
-         targetContext = Files.readSymbolicLink(content);
+      Path linkTarget = this.validator.validateAndResolveLink(content, attributes);
+      if (linkTarget != null) {
+         targetContext = linkTarget;
          attributes = Files.readAttributes(targetContext, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
       }
 
       if (attributes.isDirectory()) {
-         this.validator.validateKnownDirectory(targetContext, issues);
-         if (!issues.isEmpty()) {
-            return null;
-         } else {
-            return !Files.isRegularFile(targetContext.resolve("pack.mcmeta")) ? null : this.createDirectoryPack(targetContext);
-         }
+         this.validator.validateKnownDirectory(targetContext);
+         return !Files.isRegularFile(targetContext.resolve("pack.mcmeta")) ? null : this.createDirectoryPack(targetContext);
       } else {
          return attributes.isRegularFile() && targetContext.getFileName().toString().endsWith(".zip") ? this.createZipPack(targetContext) : null;
       }

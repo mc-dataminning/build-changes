@@ -33,6 +33,7 @@ public record StatePropertiesPredicate(List<StatePropertiesPredicate.PropertyMat
    public static final StreamCodec<ByteBuf, StatePropertiesPredicate> STREAM_CODEC = StatePropertiesPredicate.PropertyMatcher.STREAM_CODEC
       .apply(ByteBufCodecs.list())
       .map(StatePropertiesPredicate::new, StatePropertiesPredicate::properties);
+   public static final StatePropertiesPredicate EMPTY = new StatePropertiesPredicate(List.of());
 
    public <S extends StateHolder<?, S>> boolean matches(final StateDefinition<?, S> definition, final S state) {
       for (StatePropertiesPredicate.PropertyMatcher matcher : this.properties) {
@@ -90,8 +91,8 @@ public record StatePropertiesPredicate(List<StatePropertiesPredicate.PropertyMat
          return this.hasProperty(property, value.getSerializedName());
       }
 
-      public Optional<StatePropertiesPredicate> build() {
-         return Optional.of(new StatePropertiesPredicate(this.matchers.build()));
+      public StatePropertiesPredicate build() {
+         return new StatePropertiesPredicate(this.matchers.build());
       }
    }
 

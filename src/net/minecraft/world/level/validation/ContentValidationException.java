@@ -5,23 +5,26 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ContentValidationException extends Exception {
-   private final Path directory;
-   private final List<ForbiddenSymlinkInfo> entries;
+   private final Path path;
+   private final List<ForbiddenLinkInfo> entries;
 
-   public ContentValidationException(final Path directory, final List<ForbiddenSymlinkInfo> entries) {
-      this.directory = directory;
+   public ContentValidationException(final Path path, final List<ForbiddenLinkInfo> entries) {
+      this.path = path;
       this.entries = entries;
    }
 
    @Override
    public String getMessage() {
-      return getMessage(this.directory, this.entries);
+      return "Failed to validate '"
+         + this.path
+         + "'. Found forbidden symlinks: "
+         + this.entries
+            .stream()
+            .map(e -> e.link() + "->" + e.target() + (e.isJuction() ? " (Allowing Junctions is not supported)" : ""))
+            .collect(Collectors.joining(", "));
    }
 
-   public static String getMessage(final Path directory, final List<ForbiddenSymlinkInfo> entries) {
-      return "Failed to validate '"
-         + directory
-         + "'. Found forbidden symlinks: "
-         + entries.stream().map(e -> e.link() + "->" + e.target()).collect(Collectors.joining(", "));
+   public List<ForbiddenLinkInfo> getIssues() {
+      return this.entries;
    }
 }

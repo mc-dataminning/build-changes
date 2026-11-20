@@ -126,7 +126,7 @@ public class MiscOverworldFeatures {
                      BlockStateProvider.of(Blocks.POTENT_SULFUR.defaultBlockState().setValue(PotentSulfurBlock.STATE, PotentSulfurState.WET))
                   ),
                   EnvironmentScanPlacement.scanningFor(
-                     Direction.DOWN, BlockPredicate.allOf(BlockPredicate.solid(), BlockPredicate.matchesFluids(Direction.UP, Fluids.WATER)), 4
+                     Direction.DOWN, BlockPredicate.allOf(BlockPredicate.solid(), BlockPredicate.matchesSourceFluids(Direction.UP, Fluids.WATER)), 4
                   )
                )
             )
@@ -245,7 +245,9 @@ public class MiscOverworldFeatures {
                   BlockStateProvider.holderOf(Blocks.DIRT),
                   List.of(
                      new RuleBasedStateProvider.Rule(
-                        BlockPredicate.not(BlockPredicate.anyOf(BlockPredicate.solid(Direction.UP), BlockPredicate.matchesFluids(Direction.UP, Fluids.WATER))),
+                        BlockPredicate.not(
+                           BlockPredicate.anyOf(BlockPredicate.solid(Direction.UP), BlockPredicate.matchesSourceFluids(Direction.UP, Fluids.WATER))
+                        ),
                         BlockStateProvider.holderOf(Blocks.GRASS_BLOCK)
                      )
                   )

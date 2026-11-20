@@ -52,7 +52,6 @@ import net.minecraft.world.entity.variant.SpawnContext;
 import net.minecraft.world.entity.variant.VariantUtils;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
@@ -137,28 +136,28 @@ public class Pig extends Animal implements ItemSteerable {
    }
 
    @Override
-   protected SoundEvent getAmbientSound() {
-      return this.getSoundSet().ambientSound().value();
+   protected @Nullable SoundEvent getAmbientSound() {
+      return this.getSoundSet().ambientSound().map(Holder::value).orElse(null);
    }
 
    @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return this.getSoundSet().hurtSound().value();
+   protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
+      return this.getSoundSet().hurtSound().map(Holder::value).orElse(null);
    }
 
    @Override
-   protected SoundEvent getDeathSound() {
-      return this.getSoundSet().deathSound().value();
+   protected @Nullable SoundEvent getDeathSound() {
+      return this.getSoundSet().deathSound().map(Holder::value).orElse(null);
    }
 
    @Override
    protected void playEatingSound() {
-      this.makeSound(this.getSoundSet().eatSound().value());
+      this.getSoundSet().eatSound().ifPresent(s -> this.makeSound(s.value()));
    }
 
    @Override
    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-      this.playSound(this.getSoundSet().stepSound().value(), 0.15F, 1.0F);
+      this.getSoundSet().stepSound().ifPresent(s -> this.playSound(s.value(), 0.15F, 1.0F));
    }
 
    @Override
@@ -192,8 +191,8 @@ public class Pig extends Animal implements ItemSteerable {
    }
 
    @Override
-   protected Holder<SoundEvent> getEquipSound(final EquipmentSlot slot, final ItemStack stack, final Equippable equippable) {
-      return slot == EquipmentSlot.SADDLE ? SoundEvents.PIG_SADDLE : super.getEquipSound(slot, stack, equippable);
+   public Holder<SoundEvent> getSaddleEquipSound() {
+      return SoundEvents.PIG_SADDLE;
    }
 
    @Override

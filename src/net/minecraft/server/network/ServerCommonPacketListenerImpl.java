@@ -78,9 +78,10 @@ public abstract class ServerCommonPacketListenerImpl implements ServerCommonPack
    }
 
    @Override
-   public void onPacketError(final Packet packet, final Exception e) throws ReportedException {
-      ServerCommonPacketListener.super.onPacketError(packet, e);
+   public void onPacketError(final Packet<?> packet, final Exception e) throws ReportedException {
+      LOGGER.error("Failed to handle packet {}, suppressing error", packet, e);
       this.server.reportPacketHandlingException(e, packet.type());
+      this.disconnect(Connection.PACKET_HANDLER_ERROR_DISCONNECT_REASON);
    }
 
    @Override

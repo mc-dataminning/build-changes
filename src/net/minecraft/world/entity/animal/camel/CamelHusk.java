@@ -122,7 +122,7 @@ public class CamelHusk extends Camel {
    }
 
    @Override
-   protected Holder.Reference<SoundEvent> getSaddleSound() {
+   public Holder<SoundEvent> getSaddleEquipSound() {
       return SoundEvents.CAMEL_HUSK_SADDLE;
    }
 

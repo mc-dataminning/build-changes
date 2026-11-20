@@ -64,12 +64,12 @@ public class SculkSensorBlock extends DropExperienceEntityBlock implements Simpl
    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockPos pos = context.getClickedPos();
       FluidState replacedFluidState = context.getLevel().getFluidState(pos);
-      return this.defaultBlockState().setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
+      return this.defaultBlockState().setValue(WATERLOGGED, replacedFluidState.isSourceOfType(Fluids.WATER));
    }
 
    @Override
    protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource() : super.getFluidState(state);
    }
 
    @Override

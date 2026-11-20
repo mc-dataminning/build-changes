@@ -5,7 +5,9 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.material.Fluid;
 
 public final class FluidTags {
+   @Deprecated
    public static final TagKey<Fluid> WATER = create("water");
+   @Deprecated
    public static final TagKey<Fluid> LAVA = create("lava");
    public static final TagKey<Fluid> SUPPORTS_SUGAR_CANE_ADJACENTLY = create("supports_sugar_cane_adjacently");
    public static final TagKey<Fluid> SUPPORTS_LILY_PAD = create("supports_lily_pad");

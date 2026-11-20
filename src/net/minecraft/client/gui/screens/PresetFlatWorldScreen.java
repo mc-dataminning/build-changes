@@ -293,8 +293,12 @@ public class PresetFlatWorldScreen extends Screen {
 
          @Override
          public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-            this.select();
-            return super.mouseClicked(event, doubleClick);
+            if (event.isLeftMouse()) {
+               this.select();
+               return true;
+            } else {
+               return false;
+            }
          }
 
          private void select() {

@@ -87,15 +87,15 @@ public class BookEditScreen extends Screen {
       this.addRenderableWidget(this.page);
       this.updatePageContent();
       this.numberOfPages = this.getPageNumberMessage();
-      this.backButton = this.addRenderableWidget(new PageButton(left + 43, top + 157, false, button -> this.pageBack(), true));
-      this.forwardButton = this.addRenderableWidget(new PageButton(left + 116, top + 157, true, button -> this.pageForward(), true));
+      this.backButton = this.addRenderableWidget(new PageButton(left + 43, top + 157, false, var1x -> this.pageBack(), true));
+      this.forwardButton = this.addRenderableWidget(new PageButton(left + 116, top + 157, true, var1x -> this.pageForward(), true));
       this.addRenderableWidget(
-         Button.builder(SIGN_BOOK_LABEL, button -> this.minecraft.gui.setScreen(this.signScreen))
+         Button.builder(SIGN_BOOK_LABEL, var1x -> this.minecraft.gui.setScreen(this.signScreen))
             .pos(this.width / 2 - 98 - 2, this.menuControlsTop())
             .width(98)
             .build()
       );
-      this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, button -> {
+      this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, var1x -> {
          this.minecraft.gui.setScreen(null);
          this.saveChanges();
       }).pos(this.width / 2 + 2, this.menuControlsTop()).width(98).build());
@@ -158,6 +158,7 @@ public class BookEditScreen extends Screen {
 
    private void updateButtonVisibility() {
       this.backButton.setVisible(this.currentPage > 0);
+      this.forwardButton.setVisible(this.currentPage < 99);
    }
 
    private void eraseEmptyTrailingPages() {

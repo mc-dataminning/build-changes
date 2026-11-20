@@ -3,6 +3,8 @@ package net.minecraft.data.worldgen.biome;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.placement.EndPlacements;
+import net.minecraft.util.ARGB;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
@@ -20,6 +22,8 @@ public class EndBiomes {
          .temperature(0.5F)
          .downfall(0.5F)
          .specialEffects(new BiomeSpecialEffects.Builder().waterColor(4159204).build())
+         .setAttribute(EnvironmentAttributes.FOG_COLOR, ARGB.vector3fFromRGB24(-15199464))
+         .setAttribute(EnvironmentAttributes.SKY_COLOR, ARGB.vector3fFromRGB24(-16777216))
          .mobSpawnSettings(mobs.build())
          .generationSettings(generation.build())
          .build();

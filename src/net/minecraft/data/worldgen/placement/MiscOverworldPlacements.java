@@ -138,7 +138,7 @@ public class MiscOverworldPlacements {
          diskClay,
          InSquarePlacement.spread(),
          PlacementUtils.HEIGHTMAP_TOP_SOLID,
-         BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)),
+         BlockPredicateFilter.forPredicate(BlockPredicate.matchesSourceFluids(Fluids.WATER)),
          BiomeFilter.biome()
       );
       PlacementUtils.register(
@@ -147,7 +147,7 @@ public class MiscOverworldPlacements {
          diskGravel,
          InSquarePlacement.spread(),
          PlacementUtils.HEIGHTMAP_TOP_SOLID,
-         BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)),
+         BlockPredicateFilter.forPredicate(BlockPredicate.matchesSourceFluids(Fluids.WATER)),
          BiomeFilter.biome()
       );
       PlacementUtils.register(
@@ -157,7 +157,7 @@ public class MiscOverworldPlacements {
          CountPlacement.of(3),
          InSquarePlacement.spread(),
          PlacementUtils.HEIGHTMAP_TOP_SOLID,
-         BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)),
+         BlockPredicateFilter.forPredicate(BlockPredicate.matchesSourceFluids(Fluids.WATER)),
          BiomeFilter.biome()
       );
       PlacementUtils.register(

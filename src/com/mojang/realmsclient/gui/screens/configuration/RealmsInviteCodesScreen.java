@@ -301,8 +301,12 @@ public class RealmsInviteCodesScreen extends AbstractRealmsCodeScreen {
 
          @Override
          public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-            InviteCodeSelectionList.this.setSelected(this);
-            return true;
+            if (event.isLeftMouse()) {
+               InviteCodeSelectionList.this.setSelected(this);
+               return true;
+            } else {
+               return false;
+            }
          }
 
          @Override

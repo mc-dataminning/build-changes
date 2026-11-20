@@ -180,6 +180,10 @@ public class Zombie extends Monster {
       return this.drowningTracker.isConverting();
    }
 
+   public boolean isFreezingConverting() {
+      return this.freezingTracker.isConverting();
+   }
+
    public boolean canBreakDoors() {
       return this.canBreakDoors;
    }

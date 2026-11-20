@@ -49,7 +49,7 @@ public class BiomeTagsProvider extends TagsProvider<Biome> {
          .add(Biomes.PALE_GARDEN)
          .add(Biomes.GROVE);
       this.tag(BiomeTags.IS_SAVANNA).add(Biomes.SAVANNA).add(Biomes.SAVANNA_PLATEAU).add(Biomes.WINDSWEPT_SAVANNA);
-      this.tag(BiomeTags.IS_CAVE).add(Biomes.LUSH_CAVES).add(Biomes.DEEP_DARK).add(Biomes.DRIPSTONE_CAVES).add(Biomes.SULFUR_CAVES);
+      this.tag(BiomeTags.IS_CAVE).add(Biomes.LUSH_CAVES).add(Biomes.DEEP_DARK).add(Biomes.DRIPSTONE_CAVES).add(Biomes.SULFUR_CAVES).add(Biomes.ICE_CAVES);
       this.tag(BiomeTags.IS_NETHER).addAll(MultiNoiseBiomeSourceParameterList.Preset.NETHER.usedBiomes());
       List<ResourceKey<Biome>> overworldBiomes = MultiNoiseBiomeSourceParameterList.Preset.OVERWORLD.usedBiomes().toList();
       this.tag(BiomeTags.IS_OVERWORLD).addAll(overworldBiomes);
@@ -81,7 +81,8 @@ public class BiomeTagsProvider extends TagsProvider<Biome> {
          .add(Biomes.SAVANNA_PLATEAU)
          .add(Biomes.DRIPSTONE_CAVES)
          .add(Biomes.LUSH_CAVES)
-         .add(Biomes.SULFUR_CAVES);
+         .add(Biomes.SULFUR_CAVES)
+         .add(Biomes.ICE_CAVES);
       this.tag(BiomeTags.HAS_MINESHAFT_MESA).addTag(BiomeTags.IS_BADLANDS);
       this.tag(BiomeTags.MINESHAFT_BLOCKING).add(Biomes.DEEP_DARK);
       this.tag(BiomeTags.HAS_OCEAN_MONUMENT).addTag(BiomeTags.IS_DEEP_OCEAN);

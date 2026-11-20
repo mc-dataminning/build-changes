@@ -1,25 +1,16 @@
 package net.minecraft.core.registries;
 
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Objects;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 import net.minecraft.advancements.predicates.entity.EntitySubPredicate;
 import net.minecraft.advancements.predicates.entity.EntitySubPredicates;
 import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.advancements.triggers.CriterionTrigger;
 import net.minecraft.commands.synchronization.ArgumentTypeInfo;
 import net.minecraft.commands.synchronization.ArgumentTypeInfos;
-import net.minecraft.core.DefaultedMappedRegistry;
 import net.minecraft.core.DefaultedRegistry;
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.MappedRegistry;
-import net.minecraft.core.RegistrationInfo;
 import net.minecraft.core.Registry;
 import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.component.DataComponentInitializers;
@@ -36,8 +27,6 @@ import net.minecraft.gametest.framework.TestEnvironmentDefinition;
 import net.minecraft.network.chat.numbers.NumberFormatType;
 import net.minecraft.network.chat.numbers.NumberFormatTypes;
 import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.Bootstrap;
 import net.minecraft.server.dialog.Dialog;
 import net.minecraft.server.dialog.DialogTypes;
 import net.minecraft.server.dialog.action.Action;
@@ -59,7 +48,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.StatType;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.Util;
 import net.minecraft.util.context.ContextKeySet;
 import net.minecraft.util.debug.DebugSubscription;
 import net.minecraft.util.debug.DebugSubscriptions;
@@ -177,274 +165,218 @@ import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntPr
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviderTypes;
 import net.minecraft.world.level.storage.loot.providers.score.ScoreboardNameProvider;
 import net.minecraft.world.level.storage.loot.providers.score.ScoreboardNameProviders;
-import org.slf4j.Logger;
 
 public class BuiltInRegistries {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Map<Identifier, Supplier<?>> LOADERS = Maps.newLinkedHashMap();
-   private static final WritableRegistry<WritableRegistry<?>> WRITABLE_REGISTRY = new MappedRegistry<>(
-      ResourceKey.createRegistryKey(Registries.ROOT_REGISTRY_NAME), Lifecycle.stable()
-   );
+   private static final BuiltinRegistryBuilder BUILDER = new BuiltinRegistryBuilder(Registries.ROOT_REGISTRY_NAME);
    public static final DataComponentInitializers DATA_COMPONENT_INITIALIZERS = new DataComponentInitializers();
-   public static final DefaultedRegistry<GameEvent> GAME_EVENT = registerDefaulted(Registries.GAME_EVENT, "step", GameEvent::bootstrap);
-   public static final Registry<SoundEvent> SOUND_EVENT = registerSimple(Registries.SOUND_EVENT, var0 -> SoundEvents.ITEM_PICKUP);
-   public static final DefaultedRegistry<Fluid> FLUID = registerDefaultedWithIntrusiveHolders(Registries.FLUID, "empty", var0 -> Fluids.EMPTY);
-   public static final Registry<MobEffect> MOB_EFFECT = registerSimple(Registries.MOB_EFFECT, MobEffects::bootstrap);
-   public static final DefaultedRegistry<Block> BLOCK = registerDefaultedWithIntrusiveHolders(Registries.BLOCK, "air", var0 -> Blocks.AIR);
-   public static final Registry<DebugSubscription<?>> DEBUG_SUBSCRIPTION = registerSimple(Registries.DEBUG_SUBSCRIPTION, DebugSubscriptions::bootstrap);
-   public static final DefaultedRegistry<EntityType<?>> ENTITY_TYPE = registerDefaultedWithIntrusiveHolders(
+   public static final DefaultedRegistry<GameEvent> GAME_EVENT = BUILDER.registerDefaulted(Registries.GAME_EVENT, "step", GameEvent::bootstrap);
+   public static final Registry<SoundEvent> SOUND_EVENT = BUILDER.registerSimple(Registries.SOUND_EVENT, var0 -> SoundEvents.ITEM_PICKUP);
+   public static final DefaultedRegistry<Fluid> FLUID = BUILDER.registerDefaultedWithIntrusiveHolders(Registries.FLUID, "empty", var0 -> Fluids.EMPTY);
+   public static final Registry<MobEffect> MOB_EFFECT = BUILDER.registerSimple(Registries.MOB_EFFECT, MobEffects::bootstrap);
+   public static final DefaultedRegistry<Block> BLOCK = BUILDER.registerDefaultedWithIntrusiveHolders(Registries.BLOCK, "air", var0 -> Blocks.AIR);
+   public static final Registry<DebugSubscription<?>> DEBUG_SUBSCRIPTION = BUILDER.registerSimple(Registries.DEBUG_SUBSCRIPTION, DebugSubscriptions::bootstrap);
+   public static final DefaultedRegistry<EntityType<?>> ENTITY_TYPE = BUILDER.registerDefaultedWithIntrusiveHolders(
       Registries.ENTITY_TYPE, "pig", var0 -> EntityTypes.PIG
    );
-   public static final DefaultedRegistry<Item> ITEM = registerDefaultedWithIntrusiveHolders(Registries.ITEM, "air", var0 -> Items.AIR);
-   public static final Registry<Potion> POTION = registerSimple(Registries.POTION, Potions::bootstrap);
-   public static final Registry<ParticleType<?>> PARTICLE_TYPE = registerSimple(Registries.PARTICLE_TYPE, var0 -> ParticleTypes.BLOCK);
-   public static final Registry<BlockEntityType<?>> BLOCK_ENTITY_TYPE = registerSimpleWithIntrusiveHolders(
+   public static final DefaultedRegistry<Item> ITEM = BUILDER.registerDefaultedWithIntrusiveHolders(Registries.ITEM, "air", var0 -> Items.AIR);
+   public static final Registry<Potion> POTION = BUILDER.registerSimple(Registries.POTION, Potions::bootstrap);
+   public static final Registry<ParticleType<?>> PARTICLE_TYPE = BUILDER.registerSimple(Registries.PARTICLE_TYPE, var0 -> ParticleTypes.BLOCK);
+   public static final Registry<BlockEntityType<?>> BLOCK_ENTITY_TYPE = BUILDER.registerSimpleWithIntrusiveHolders(
       Registries.BLOCK_ENTITY_TYPE, var0 -> BlockEntityTypes.FURNACE
    );
-   public static final Registry<Identifier> CUSTOM_STAT = registerSimple(Registries.CUSTOM_STAT, var0 -> Stats.JUMP);
-   public static final DefaultedRegistry<ChunkStatus> CHUNK_STATUS = registerDefaulted(Registries.CHUNK_STATUS, "empty", var0 -> ChunkStatus.EMPTY);
-   public static final Registry<MapCodec<? extends RuleTest>> RULE_TEST_TYPE = registerSimple(Registries.RULE_TEST_TYPE, RuleTestTypes::bootstrap);
-   public static final Registry<RuleBlockEntityModifierType<?>> RULE_BLOCK_ENTITY_MODIFIER = registerSimple(
+   public static final Registry<Identifier> CUSTOM_STAT = BUILDER.registerSimple(Registries.CUSTOM_STAT, var0 -> Stats.JUMP);
+   public static final DefaultedRegistry<ChunkStatus> CHUNK_STATUS = BUILDER.registerDefaulted(Registries.CHUNK_STATUS, "empty", var0 -> ChunkStatus.EMPTY);
+   public static final Registry<MapCodec<? extends RuleTest>> RULE_TEST_TYPE = BUILDER.registerSimple(Registries.RULE_TEST_TYPE, RuleTestTypes::bootstrap);
+   public static final Registry<RuleBlockEntityModifierType<?>> RULE_BLOCK_ENTITY_MODIFIER = BUILDER.registerSimple(
       Registries.RULE_BLOCK_ENTITY_MODIFIER, var0 -> RuleBlockEntityModifierType.PASSTHROUGH
    );
-   public static final Registry<PosRuleTestType<?>> POS_RULE_TEST = registerSimple(Registries.POS_RULE_TEST, var0 -> PosRuleTestType.ALWAYS_TRUE_TEST);
-   public static final Registry<MenuType<?>> MENU = registerSimple(Registries.MENU, var0 -> MenuType.ANVIL);
-   public static final Registry<RecipeType<?>> RECIPE_TYPE = registerSimple(Registries.RECIPE_TYPE, var0 -> RecipeType.CRAFTING);
-   public static final Registry<RecipeSerializer<?>> RECIPE_SERIALIZER = registerSimple(Registries.RECIPE_SERIALIZER, RecipeSerializers::bootstrap);
-   public static final Registry<Attribute> ATTRIBUTE = registerSimple(Registries.ATTRIBUTE, Attributes::bootstrap);
-   public static final Registry<PositionSourceType<?>> POSITION_SOURCE_TYPE = registerSimple(Registries.POSITION_SOURCE_TYPE, var0 -> PositionSourceType.BLOCK);
-   public static final Registry<ArgumentTypeInfo<?, ?>> COMMAND_ARGUMENT_TYPE = registerSimple(Registries.COMMAND_ARGUMENT_TYPE, ArgumentTypeInfos::bootstrap);
-   public static final Registry<StatType<?>> STAT_TYPE = registerSimple(Registries.STAT_TYPE, var0 -> Stats.ITEM_USED);
-   public static final DefaultedRegistry<VillagerType> VILLAGER_TYPE = registerDefaulted(Registries.VILLAGER_TYPE, "plains", VillagerType::bootstrap);
-   public static final DefaultedRegistry<VillagerProfession> VILLAGER_PROFESSION = registerDefaulted(
+   public static final Registry<PosRuleTestType<?>> POS_RULE_TEST = BUILDER.registerSimple(Registries.POS_RULE_TEST, var0 -> PosRuleTestType.ALWAYS_TRUE_TEST);
+   public static final Registry<MenuType<?>> MENU = BUILDER.registerSimple(Registries.MENU, var0 -> MenuType.ANVIL);
+   public static final Registry<RecipeType<?>> RECIPE_TYPE = BUILDER.registerSimple(Registries.RECIPE_TYPE, var0 -> RecipeType.CRAFTING);
+   public static final Registry<RecipeSerializer<?>> RECIPE_SERIALIZER = BUILDER.registerSimple(Registries.RECIPE_SERIALIZER, RecipeSerializers::bootstrap);
+   public static final Registry<Attribute> ATTRIBUTE = BUILDER.registerSimple(Registries.ATTRIBUTE, Attributes::bootstrap);
+   public static final Registry<PositionSourceType<?>> POSITION_SOURCE_TYPE = BUILDER.registerSimple(
+      Registries.POSITION_SOURCE_TYPE, var0 -> PositionSourceType.BLOCK
+   );
+   public static final Registry<ArgumentTypeInfo<?, ?>> COMMAND_ARGUMENT_TYPE = BUILDER.registerSimple(
+      Registries.COMMAND_ARGUMENT_TYPE, ArgumentTypeInfos::bootstrap
+   );
+   public static final Registry<StatType<?>> STAT_TYPE = BUILDER.registerSimple(Registries.STAT_TYPE, var0 -> Stats.ITEM_USED);
+   public static final DefaultedRegistry<VillagerType> VILLAGER_TYPE = BUILDER.registerDefaulted(Registries.VILLAGER_TYPE, "plains", VillagerType::bootstrap);
+   public static final DefaultedRegistry<VillagerProfession> VILLAGER_PROFESSION = BUILDER.registerDefaulted(
       Registries.VILLAGER_PROFESSION, "none", VillagerProfession::bootstrap
    );
-   public static final Registry<PoiType> POINT_OF_INTEREST_TYPE = registerSimple(Registries.POINT_OF_INTEREST_TYPE, PoiTypes::bootstrap);
-   public static final DefaultedRegistry<MemoryModuleType<?>> MEMORY_MODULE_TYPE = registerDefaulted(
+   public static final Registry<PoiType> POINT_OF_INTEREST_TYPE = BUILDER.registerSimple(Registries.POINT_OF_INTEREST_TYPE, PoiTypes::bootstrap);
+   public static final DefaultedRegistry<MemoryModuleType<?>> MEMORY_MODULE_TYPE = BUILDER.registerDefaulted(
       Registries.MEMORY_MODULE_TYPE, "dummy", var0 -> MemoryModuleType.DUMMY
    );
-   public static final DefaultedRegistry<SensorType<?>> SENSOR_TYPE = registerDefaulted(Registries.SENSOR_TYPE, "dummy", var0 -> SensorType.DUMMY);
-   public static final Registry<Activity> ACTIVITY = registerSimple(Registries.ACTIVITY, var0 -> Activity.IDLE);
-   public static final Registry<MapCodec<? extends LootPoolEntryContainer>> LOOT_POOL_ENTRY_TYPE = registerSimple(
+   public static final DefaultedRegistry<SensorType<?>> SENSOR_TYPE = BUILDER.registerDefaulted(Registries.SENSOR_TYPE, "dummy", var0 -> SensorType.DUMMY);
+   public static final Registry<Activity> ACTIVITY = BUILDER.registerSimple(Registries.ACTIVITY, var0 -> Activity.IDLE);
+   public static final Registry<MapCodec<? extends LootPoolEntryContainer>> LOOT_POOL_ENTRY_TYPE = BUILDER.registerSimple(
       Registries.LOOT_POOL_ENTRY_TYPE, LootPoolEntries::bootstrap
    );
-   public static final Registry<MapCodec<? extends LootItemFunction>> LOOT_FUNCTION_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends LootItemFunction>> LOOT_FUNCTION_TYPE = BUILDER.registerSimple(
       Registries.LOOT_FUNCTION_TYPE, LootItemFunctions::bootstrap
    );
-   public static final Registry<MapCodec<? extends LootItemCondition>> LOOT_CONDITION_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends LootItemCondition>> LOOT_CONDITION_TYPE = BUILDER.registerSimple(
       Registries.LOOT_CONDITION_TYPE, LootItemConditionTypes::bootstrap
    );
-   public static final Registry<MapCodec<? extends ContextFloatProvider>> CONTEXT_FLOAT_PROVIDER_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends ContextFloatProvider>> CONTEXT_FLOAT_PROVIDER_TYPE = BUILDER.registerSimple(
       Registries.CONTEXT_FLOAT_PROVIDER_TYPE, ContextFloatProviderTypes::bootstrap
    );
-   public static final Registry<MapCodec<? extends ContextIntProvider>> CONTEXT_INT_PROVIDER_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends ContextIntProvider>> CONTEXT_INT_PROVIDER_TYPE = BUILDER.registerSimple(
       Registries.CONTEXT_INT_PROVIDER_TYPE, ContextIntProviderTypes::bootstrap
    );
-   public static final Registry<MapCodec<? extends NbtProvider>> LOOT_NBT_PROVIDER_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends NbtProvider>> LOOT_NBT_PROVIDER_TYPE = BUILDER.registerSimple(
       Registries.LOOT_NBT_PROVIDER_TYPE, NbtProviders::bootstrap
    );
-   public static final Registry<MapCodec<? extends ScoreboardNameProvider>> LOOT_SCORE_PROVIDER_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends ScoreboardNameProvider>> LOOT_SCORE_PROVIDER_TYPE = BUILDER.registerSimple(
       Registries.LOOT_SCORE_PROVIDER_TYPE, ScoreboardNameProviders::bootstrap
    );
-   public static final Registry<MapCodec<? extends FloatProvider>> FLOAT_PROVIDER_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends FloatProvider>> FLOAT_PROVIDER_TYPE = BUILDER.registerSimple(
       Registries.FLOAT_PROVIDER_TYPE, FloatProviders::bootstrap
    );
-   public static final Registry<MapCodec<? extends IntProvider>> INT_PROVIDER_TYPE = registerSimple(Registries.INT_PROVIDER_TYPE, IntProviders::bootstrap);
-   public static final Registry<HeightProviderType<?>> HEIGHT_PROVIDER_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends IntProvider>> INT_PROVIDER_TYPE = BUILDER.registerSimple(
+      Registries.INT_PROVIDER_TYPE, IntProviders::bootstrap
+   );
+   public static final Registry<HeightProviderType<?>> HEIGHT_PROVIDER_TYPE = BUILDER.registerSimple(
       Registries.HEIGHT_PROVIDER_TYPE, var0 -> HeightProviderType.CONSTANT
    );
-   public static final Registry<BlockPredicateType<?>> BLOCK_PREDICATE_TYPE = registerSimple(Registries.BLOCK_PREDICATE_TYPE, var0 -> BlockPredicateType.NOT);
-   public static final Registry<MapCodec<? extends WorldCarver>> CARVER_TYPE = registerSimple(Registries.CARVER_TYPE, WorldCarverTypes::bootstrap);
-   public static final Registry<MapCodec<? extends Feature>> FEATURE_TYPE = registerSimple(Registries.FEATURE_TYPE, FeatureTypes::bootstrap);
-   public static final Registry<MapCodec<? extends StructurePlacement>> STRUCTURE_PLACEMENT = registerSimple(
+   public static final Registry<BlockPredicateType<?>> BLOCK_PREDICATE_TYPE = BUILDER.registerSimple(
+      Registries.BLOCK_PREDICATE_TYPE, var0 -> BlockPredicateType.NOT
+   );
+   public static final Registry<MapCodec<? extends WorldCarver>> CARVER_TYPE = BUILDER.registerSimple(Registries.CARVER_TYPE, WorldCarverTypes::bootstrap);
+   public static final Registry<MapCodec<? extends Feature>> FEATURE_TYPE = BUILDER.registerSimple(Registries.FEATURE_TYPE, FeatureTypes::bootstrap);
+   public static final Registry<MapCodec<? extends StructurePlacement>> STRUCTURE_PLACEMENT = BUILDER.registerSimple(
       Registries.STRUCTURE_PLACEMENT, StructurePlacements::bootstrap
    );
-   public static final Registry<StructurePieceType> STRUCTURE_PIECE = registerSimple(Registries.STRUCTURE_PIECE, var0 -> StructurePieceType.MINE_SHAFT_ROOM);
-   public static final Registry<StructureType<?>> STRUCTURE_TYPE = registerSimple(Registries.STRUCTURE_TYPE, var0 -> StructureType.JIGSAW);
-   public static final Registry<MapCodec<? extends PlacementModifier>> PLACEMENT_MODIFIER_TYPE = registerSimple(
+   public static final Registry<StructurePieceType> STRUCTURE_PIECE = BUILDER.registerSimple(
+      Registries.STRUCTURE_PIECE, var0 -> StructurePieceType.MINE_SHAFT_ROOM
+   );
+   public static final Registry<StructureType<?>> STRUCTURE_TYPE = BUILDER.registerSimple(Registries.STRUCTURE_TYPE, var0 -> StructureType.JIGSAW);
+   public static final Registry<MapCodec<? extends PlacementModifier>> PLACEMENT_MODIFIER_TYPE = BUILDER.registerSimple(
       Registries.PLACEMENT_MODIFIER_TYPE, PlacementModifierTypes::bootstrap
    );
-   public static final Registry<MapCodec<? extends BlockStateProvider>> BLOCK_STATE_PROVIDER_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends BlockStateProvider>> BLOCK_STATE_PROVIDER_TYPE = BUILDER.registerSimple(
       Registries.BLOCK_STATE_PROVIDER_TYPE, BlockStateProviderTypes::bootstrap
    );
-   public static final Registry<FoliagePlacerType<?>> FOLIAGE_PLACER_TYPE = registerSimple(
+   public static final Registry<FoliagePlacerType<?>> FOLIAGE_PLACER_TYPE = BUILDER.registerSimple(
       Registries.FOLIAGE_PLACER_TYPE, var0 -> FoliagePlacerType.BLOB_FOLIAGE_PLACER
    );
-   public static final Registry<TrunkPlacerType<?>> TRUNK_PLACER_TYPE = registerSimple(
+   public static final Registry<TrunkPlacerType<?>> TRUNK_PLACER_TYPE = BUILDER.registerSimple(
       Registries.TRUNK_PLACER_TYPE, var0 -> TrunkPlacerType.STRAIGHT_TRUNK_PLACER
    );
-   public static final Registry<RootPlacerType<?>> ROOT_PLACER_TYPE = registerSimple(Registries.ROOT_PLACER_TYPE, var0 -> RootPlacerType.MANGROVE_ROOT_PLACER);
-   public static final Registry<TreeDecoratorType<?>> TREE_DECORATOR_TYPE = registerSimple(Registries.TREE_DECORATOR_TYPE, var0 -> TreeDecoratorType.LEAVE_VINE);
-   public static final Registry<FeatureSizeType<?>> FEATURE_SIZE_TYPE = registerSimple(
+   public static final Registry<RootPlacerType<?>> ROOT_PLACER_TYPE = BUILDER.registerSimple(
+      Registries.ROOT_PLACER_TYPE, var0 -> RootPlacerType.MANGROVE_ROOT_PLACER
+   );
+   public static final Registry<TreeDecoratorType<?>> TREE_DECORATOR_TYPE = BUILDER.registerSimple(
+      Registries.TREE_DECORATOR_TYPE, var0 -> TreeDecoratorType.LEAVE_VINE
+   );
+   public static final Registry<FeatureSizeType<?>> FEATURE_SIZE_TYPE = BUILDER.registerSimple(
       Registries.FEATURE_SIZE_TYPE, var0 -> FeatureSizeType.TWO_LAYERS_FEATURE_SIZE
    );
-   public static final Registry<MapCodec<? extends BiomeSource>> BIOME_SOURCE = registerSimple(Registries.BIOME_SOURCE, BiomeSources::bootstrap);
-   public static final Registry<MapCodec<? extends ChunkGenerator>> CHUNK_GENERATOR = registerSimple(Registries.CHUNK_GENERATOR, ChunkGenerators::bootstrap);
-   public static final Registry<MapCodec<? extends MaterialCondition>> MATERIAL_CONDITION_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends BiomeSource>> BIOME_SOURCE = BUILDER.registerSimple(Registries.BIOME_SOURCE, BiomeSources::bootstrap);
+   public static final Registry<MapCodec<? extends ChunkGenerator>> CHUNK_GENERATOR = BUILDER.registerSimple(
+      Registries.CHUNK_GENERATOR, ChunkGenerators::bootstrap
+   );
+   public static final Registry<MapCodec<? extends MaterialCondition>> MATERIAL_CONDITION_TYPE = BUILDER.registerSimple(
       Registries.MATERIAL_CONDITION_TYPE, MaterialRules::bootstrapConditions
    );
-   public static final Registry<MapCodec<? extends MaterialRule>> MATERIAL_RULE_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends MaterialRule>> MATERIAL_RULE_TYPE = BUILDER.registerSimple(
       Registries.MATERIAL_RULE_TYPE, MaterialRules::bootstrapRules
    );
-   public static final Registry<MapCodec<? extends DensityFunction>> DENSITY_FUNCTION_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends DensityFunction>> DENSITY_FUNCTION_TYPE = BUILDER.registerSimple(
       Registries.DENSITY_FUNCTION_TYPE, DensityFunctions::bootstrap
    );
-   public static final Registry<MapCodec<? extends StructureProcessor>> STRUCTURE_PROCESSOR = registerSimple(
+   public static final Registry<MapCodec<? extends StructureProcessor>> STRUCTURE_PROCESSOR = BUILDER.registerSimple(
       Registries.STRUCTURE_PROCESSOR, StructureProcessorTypes::bootstrap
    );
-   public static final Registry<StructurePoolElementType<?>> STRUCTURE_POOL_ELEMENT = registerSimple(
+   public static final Registry<StructurePoolElementType<?>> STRUCTURE_POOL_ELEMENT = BUILDER.registerSimple(
       Registries.STRUCTURE_POOL_ELEMENT, var0 -> StructurePoolElementType.EMPTY
    );
-   public static final Registry<MapCodec<? extends PoolAliasBinding>> POOL_ALIAS_BINDING_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends PoolAliasBinding>> POOL_ALIAS_BINDING_TYPE = BUILDER.registerSimple(
       Registries.POOL_ALIAS_BINDING, PoolAliasBindings::bootstrap
    );
-   public static final Registry<CreativeModeTab> CREATIVE_MODE_TAB = registerSimple(Registries.CREATIVE_MODE_TAB, CreativeModeTabs::bootstrap);
-   public static final Registry<CriterionTrigger<?>> TRIGGER_TYPES = registerSimple(Registries.TRIGGER_TYPE, CriteriaTriggers::bootstrap);
-   public static final Registry<NumberFormatType<?>> NUMBER_FORMAT_TYPE = registerSimple(Registries.NUMBER_FORMAT_TYPE, NumberFormatTypes::bootstrap);
-   public static final Registry<DataComponentType<?>> DATA_COMPONENT_TYPE = registerSimple(Registries.DATA_COMPONENT_TYPE, DataComponents::bootstrap);
-   public static final Registry<GameRule<?>> GAME_RULE = registerSimple(Registries.GAME_RULE, GameRules::bootstrap);
-   public static final Registry<Codec<? extends EntitySubPredicate>> ENTITY_SUB_PREDICATE_TYPE = registerSimple(
+   public static final Registry<CreativeModeTab> CREATIVE_MODE_TAB = BUILDER.registerSimple(Registries.CREATIVE_MODE_TAB, CreativeModeTabs::bootstrap);
+   public static final Registry<CriterionTrigger<?>> TRIGGER_TYPES = BUILDER.registerSimple(Registries.TRIGGER_TYPE, CriteriaTriggers::bootstrap);
+   public static final Registry<NumberFormatType<?>> NUMBER_FORMAT_TYPE = BUILDER.registerSimple(Registries.NUMBER_FORMAT_TYPE, NumberFormatTypes::bootstrap);
+   public static final Registry<DataComponentType<?>> DATA_COMPONENT_TYPE = BUILDER.registerSimple(Registries.DATA_COMPONENT_TYPE, DataComponents::bootstrap);
+   public static final Registry<GameRule<?>> GAME_RULE = BUILDER.registerSimple(Registries.GAME_RULE, GameRules::bootstrap);
+   public static final Registry<Codec<? extends EntitySubPredicate>> ENTITY_SUB_PREDICATE_TYPE = BUILDER.registerSimple(
       Registries.ENTITY_SUB_PREDICATE_TYPE, EntitySubPredicates::bootstrap
    );
-   public static final Registry<DataComponentPredicate.Type<?>> DATA_COMPONENT_PREDICATE_TYPE = registerSimple(
+   public static final Registry<DataComponentPredicate.Type<?>> DATA_COMPONENT_PREDICATE_TYPE = BUILDER.registerSimple(
       Registries.DATA_COMPONENT_PREDICATE_TYPE, DataComponentPredicates::bootstrap
    );
-   public static final Registry<MapDecorationType> MAP_DECORATION_TYPE = registerSimple(Registries.MAP_DECORATION_TYPE, MapDecorationTypes::bootstrap);
-   public static final Registry<DataComponentType<?>> ENCHANTMENT_EFFECT_COMPONENT_TYPE = registerSimple(
+   public static final Registry<MapDecorationType> MAP_DECORATION_TYPE = BUILDER.registerSimple(Registries.MAP_DECORATION_TYPE, MapDecorationTypes::bootstrap);
+   public static final Registry<DataComponentType<?>> ENCHANTMENT_EFFECT_COMPONENT_TYPE = BUILDER.registerSimple(
       Registries.ENCHANTMENT_EFFECT_COMPONENT_TYPE, EnchantmentEffectComponents::bootstrap
    );
-   public static final Registry<MapCodec<? extends LevelBasedValue>> ENCHANTMENT_LEVEL_BASED_VALUE_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends LevelBasedValue>> ENCHANTMENT_LEVEL_BASED_VALUE_TYPE = BUILDER.registerSimple(
       Registries.ENCHANTMENT_LEVEL_BASED_VALUE_TYPE, LevelBasedValue::bootstrap
    );
-   public static final Registry<MapCodec<? extends EnchantmentEntityEffect>> ENCHANTMENT_ENTITY_EFFECT_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends EnchantmentEntityEffect>> ENCHANTMENT_ENTITY_EFFECT_TYPE = BUILDER.registerSimple(
       Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, EnchantmentEntityEffect::bootstrap
    );
-   public static final Registry<MapCodec<? extends EnchantmentLocationBasedEffect>> ENCHANTMENT_LOCATION_BASED_EFFECT_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends EnchantmentLocationBasedEffect>> ENCHANTMENT_LOCATION_BASED_EFFECT_TYPE = BUILDER.registerSimple(
       Registries.ENCHANTMENT_LOCATION_BASED_EFFECT_TYPE, EnchantmentLocationBasedEffect::bootstrap
    );
-   public static final Registry<MapCodec<? extends EnchantmentValueEffect>> ENCHANTMENT_VALUE_EFFECT_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends EnchantmentValueEffect>> ENCHANTMENT_VALUE_EFFECT_TYPE = BUILDER.registerSimple(
       Registries.ENCHANTMENT_VALUE_EFFECT_TYPE, EnchantmentValueEffect::bootstrap
    );
-   public static final Registry<MapCodec<? extends EnchantmentProvider>> ENCHANTMENT_PROVIDER_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends EnchantmentProvider>> ENCHANTMENT_PROVIDER_TYPE = BUILDER.registerSimple(
       Registries.ENCHANTMENT_PROVIDER_TYPE, EnchantmentProviderTypes::bootstrap
    );
-   public static final Registry<ConsumeEffect.Type<?>> CONSUME_EFFECT_TYPE = registerSimple(
+   public static final Registry<ConsumeEffect.Type<?>> CONSUME_EFFECT_TYPE = BUILDER.registerSimple(
       Registries.CONSUME_EFFECT_TYPE, var0 -> ConsumeEffect.Type.APPLY_EFFECTS
    );
-   public static final Registry<RecipeDisplay.Type<?>> RECIPE_DISPLAY = registerSimple(Registries.RECIPE_DISPLAY, RecipeDisplays::bootstrap);
-   public static final Registry<SlotDisplay.Type<?>> SLOT_DISPLAY = registerSimple(Registries.SLOT_DISPLAY, SlotDisplays::bootstrap);
-   public static final Registry<RecipeBookCategory> RECIPE_BOOK_CATEGORY = registerSimple(Registries.RECIPE_BOOK_CATEGORY, RecipeBookCategories::bootstrap);
-   public static final Registry<TicketType> TICKET_TYPE = registerSimple(Registries.TICKET_TYPE, var0 -> TicketType.UNKNOWN);
-   public static final Registry<IncomingRpcMethod<?, ?>> INCOMING_RPC_METHOD = registerSimple(Registries.INCOMING_RPC_METHOD, IncomingRpcMethods::bootstrap);
-   public static final Registry<OutgoingRpcMethod<?, ?>> OUTGOING_RPC_METHOD = registerSimple(
+   public static final Registry<RecipeDisplay.Type<?>> RECIPE_DISPLAY = BUILDER.registerSimple(Registries.RECIPE_DISPLAY, RecipeDisplays::bootstrap);
+   public static final Registry<SlotDisplay.Type<?>> SLOT_DISPLAY = BUILDER.registerSimple(Registries.SLOT_DISPLAY, SlotDisplays::bootstrap);
+   public static final Registry<RecipeBookCategory> RECIPE_BOOK_CATEGORY = BUILDER.registerSimple(
+      Registries.RECIPE_BOOK_CATEGORY, RecipeBookCategories::bootstrap
+   );
+   public static final Registry<TicketType> TICKET_TYPE = BUILDER.registerSimple(Registries.TICKET_TYPE, var0 -> TicketType.UNKNOWN);
+   public static final Registry<IncomingRpcMethod<?, ?>> INCOMING_RPC_METHOD = BUILDER.registerSimple(
+      Registries.INCOMING_RPC_METHOD, IncomingRpcMethods::bootstrap
+   );
+   public static final Registry<OutgoingRpcMethod<?, ?>> OUTGOING_RPC_METHOD = BUILDER.registerSimple(
       Registries.OUTGOING_RPC_METHOD, var0 -> OutgoingRpcMethods.SERVER_STARTED
    );
-   public static final Registry<MapCodec<? extends TestEnvironmentDefinition<?>>> TEST_ENVIRONMENT_DEFINITION_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends TestEnvironmentDefinition<?>>> TEST_ENVIRONMENT_DEFINITION_TYPE = BUILDER.registerSimple(
       Registries.TEST_ENVIRONMENT_DEFINITION_TYPE, TestEnvironmentDefinition::bootstrap
    );
-   public static final Registry<MapCodec<? extends GameTestInstance>> TEST_INSTANCE_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends GameTestInstance>> TEST_INSTANCE_TYPE = BUILDER.registerSimple(
       Registries.TEST_INSTANCE_TYPE, GameTestInstance::bootstrap
    );
-   public static final Registry<MapCodec<? extends SpawnCondition>> SPAWN_CONDITION_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends SpawnCondition>> SPAWN_CONDITION_TYPE = BUILDER.registerSimple(
       Registries.SPAWN_CONDITION_TYPE, SpawnConditions::bootstrap
    );
-   public static final Registry<MapCodec<? extends Dialog>> DIALOG_TYPE = registerSimple(Registries.DIALOG_TYPE, DialogTypes::bootstrap);
-   public static final Registry<MapCodec<? extends Action>> DIALOG_ACTION_TYPE = registerSimple(Registries.DIALOG_ACTION_TYPE, ActionTypes::bootstrap);
-   public static final Registry<MapCodec<? extends InputControl>> INPUT_CONTROL_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends Dialog>> DIALOG_TYPE = BUILDER.registerSimple(Registries.DIALOG_TYPE, DialogTypes::bootstrap);
+   public static final Registry<MapCodec<? extends Action>> DIALOG_ACTION_TYPE = BUILDER.registerSimple(Registries.DIALOG_ACTION_TYPE, ActionTypes::bootstrap);
+   public static final Registry<MapCodec<? extends InputControl>> INPUT_CONTROL_TYPE = BUILDER.registerSimple(
       Registries.INPUT_CONTROL_TYPE, InputControlTypes::bootstrap
    );
-   public static final Registry<MapCodec<? extends DialogBody>> DIALOG_BODY_TYPE = registerSimple(Registries.DIALOG_BODY_TYPE, DialogBodyTypes::bootstrap);
-   public static final Registry<MapCodec<? extends Permission>> PERMISSION_TYPE = registerSimple(Registries.PERMISSION_TYPE, PermissionTypes::bootstrap);
-   public static final Registry<MapCodec<? extends PermissionCheck>> PERMISSION_CHECK_TYPE = registerSimple(
+   public static final Registry<MapCodec<? extends DialogBody>> DIALOG_BODY_TYPE = BUILDER.registerSimple(
+      Registries.DIALOG_BODY_TYPE, DialogBodyTypes::bootstrap
+   );
+   public static final Registry<MapCodec<? extends Permission>> PERMISSION_TYPE = BUILDER.registerSimple(Registries.PERMISSION_TYPE, PermissionTypes::bootstrap);
+   public static final Registry<MapCodec<? extends PermissionCheck>> PERMISSION_CHECK_TYPE = BUILDER.registerSimple(
       Registries.PERMISSION_CHECK_TYPE, PermissionCheckTypes::bootstrap
    );
-   public static final Registry<EnvironmentAttribute<?>> ENVIRONMENT_ATTRIBUTE = registerSimple(
+   public static final Registry<EnvironmentAttribute<?>> ENVIRONMENT_ATTRIBUTE = BUILDER.registerSimple(
       Registries.ENVIRONMENT_ATTRIBUTE, EnvironmentAttributes::bootstrap
    );
-   public static final Registry<AttributeType<?>> ATTRIBUTE_TYPE = registerSimple(Registries.ATTRIBUTE_TYPE, AttributeTypes::bootstrap);
-   public static final Registry<MapCodec<? extends SlotSource>> SLOT_SOURCE_TYPE = registerSimple(Registries.SLOT_SOURCE_TYPE, SlotSources::bootstrap);
-   public static final Registry<ContextKeySet> CONTEXT_KEY_SET = registerSimple(Registries.CONTEXT_KEY_SET, LootContextParamSets::bootstrap);
-   public static final Registry<Consumer<GameTestHelper>> TEST_FUNCTION = registerSimple(Registries.TEST_FUNCTION, BuiltinTestFunctions::bootstrap);
-   public static final Registry<? extends Registry<?>> REGISTRY = WRITABLE_REGISTRY;
-
-   private static <T> Registry<T> registerSimple(final ResourceKey<? extends Registry<T>> name, final BuiltInRegistries.RegistryBootstrap<T> loader) {
-      return internalRegister(name, new MappedRegistry<>(name, Lifecycle.stable(), false), loader);
-   }
-
-   private static <T> Registry<T> registerSimpleWithIntrusiveHolders(
-      final ResourceKey<? extends Registry<T>> name, final BuiltInRegistries.RegistryBootstrap<T> loader
-   ) {
-      return internalRegister(name, new MappedRegistry<>(name, Lifecycle.stable(), true), loader);
-   }
-
-   private static <T> DefaultedRegistry<T> registerDefaulted(
-      final ResourceKey<? extends Registry<T>> name, final String defaultKey, final BuiltInRegistries.RegistryBootstrap<T> loader
-   ) {
-      return internalRegister(name, new DefaultedMappedRegistry<>(defaultKey, name, Lifecycle.stable(), false), loader);
-   }
-
-   private static <T> DefaultedRegistry<T> registerDefaultedWithIntrusiveHolders(
-      final ResourceKey<? extends Registry<T>> name, final String defaultKey, final BuiltInRegistries.RegistryBootstrap<T> loader
-   ) {
-      return internalRegister(name, new DefaultedMappedRegistry<>(defaultKey, name, Lifecycle.stable(), true), loader);
-   }
-
-   private static <T, R extends WritableRegistry<T>> R internalRegister(
-      final ResourceKey<? extends Registry<T>> name, final R registry, final BuiltInRegistries.RegistryBootstrap<T> loader
-   ) {
-      Bootstrap.checkBootstrapCalled(() -> "registry " + name.identifier());
-      Identifier key = name.identifier();
-      LOADERS.put(key, () -> loader.run(registry));
-      WRITABLE_REGISTRY.register((ResourceKey<WritableRegistry<?>>)name, registry, RegistrationInfo.BUILT_IN);
-      return registry;
-   }
+   public static final Registry<AttributeType<?>> ATTRIBUTE_TYPE = BUILDER.registerSimple(Registries.ATTRIBUTE_TYPE, AttributeTypes::bootstrap);
+   public static final Registry<MapCodec<? extends SlotSource>> SLOT_SOURCE_TYPE = BUILDER.registerSimple(Registries.SLOT_SOURCE_TYPE, SlotSources::bootstrap);
+   public static final Registry<ContextKeySet> CONTEXT_KEY_SET = BUILDER.registerSimple(Registries.CONTEXT_KEY_SET, LootContextParamSets::bootstrap);
+   public static final Registry<Consumer<GameTestHelper>> TEST_FUNCTION = BUILDER.registerSimple(Registries.TEST_FUNCTION, BuiltinTestFunctions::bootstrap);
+   public static final Registry<? extends Registry<?>> REGISTRY = BUILDER.build();
 
    public static void bootStrap() {
-      createContents();
-      freeze();
-      validate(REGISTRY);
-   }
-
-   private static void createContents() {
-      LOADERS.forEach((key, value) -> {
-         if (value.get() == null) {
-            LOGGER.error("Unable to bootstrap registry '{}'", key);
-         }
-      });
-   }
-
-   private static void freeze() {
-      REGISTRY.freeze();
-
-      for (Registry<?> registry : REGISTRY) {
-         bindBootstrappedTagsToEmpty(registry);
-         registry.freeze();
-      }
-   }
-
-   private static <T extends Registry<?>> void validate(final Registry<T> registry) {
-      registry.forEach(r -> {
-         if (r.keySet().isEmpty()) {
-            Util.logAndPauseIfInIde("Registry '" + registry.getKey((T)r) + "' was empty after loading");
-         }
-
-         if (r instanceof DefaultedRegistry) {
-            Identifier key = ((DefaultedRegistry)r).getDefaultKey();
-            Objects.requireNonNull(r.getValue(key), "Missing default of DefaultedMappedRegistry: " + key);
-         }
-      });
+      BUILDER.bootStrap();
    }
 
    public static <T> HolderGetter<T> acquireBootstrapRegistrationLookup(final Registry<T> registry) {
       return ((WritableRegistry)registry).createRegistrationLookup();
-   }
-
-   private static void bindBootstrappedTagsToEmpty(final Registry<?> registry) {
-      ((MappedRegistry)registry).bindAllTagsToEmpty();
-   }
-
-   @FunctionalInterface
-   private interface RegistryBootstrap<T> {
-      Object run(Registry<T> registry);
    }
 }

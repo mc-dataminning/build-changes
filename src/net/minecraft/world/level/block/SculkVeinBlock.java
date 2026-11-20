@@ -165,7 +165,7 @@ public class SculkVeinBlock extends MultifaceSpreadeableBlock implements SculkBe
             }
 
             FluidState fluidState = existingState.getFluidState();
-            if (!fluidState.isEmpty() && !fluidState.is(Fluids.WATER)) {
+            if (!fluidState.isEmpty() && !fluidState.isSourceOfType(Fluids.WATER)) {
                return false;
             } else {
                return existingState.is(BlockTags.FIRE)

@@ -112,7 +112,7 @@ public class CeilingHangingSignBlock extends SignBlock implements HangingSignBlo
       return this.defaultBlockState()
          .setValue(ATTACHED, attachedToMiddle)
          .setValue(ROTATION, rotationSegment)
-         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
+         .setValue(WATERLOGGED, replacedFluidState.isSourceOfType(Fluids.WATER));
    }
 
    @Override

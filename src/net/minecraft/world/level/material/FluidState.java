@@ -8,6 +8,7 @@ import net.minecraft.core.TypedInstance;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
@@ -40,6 +41,14 @@ public final class FluidState extends StateHolder<Fluid, FluidState> implements 
 
    public boolean isSourceOfType(final Fluid fluidType) {
       return this.owner == fluidType && this.owner.isSource(this);
+   }
+
+   public boolean isSourceOfType(final TagKey<Fluid> fluidTag) {
+      return this.owner.builtInRegistryHolder().is(fluidTag) && this.owner.isSource(this);
+   }
+
+   public boolean isFalling() {
+      return this.owner.isFalling(this);
    }
 
    public boolean isEmpty() {
@@ -78,7 +87,7 @@ public final class FluidState extends StateHolder<Fluid, FluidState> implements 
          for (int oz = -1; oz <= 1; oz++) {
             BlockPos offset = above.offset(ox, 0, oz);
             FluidState fluidState = level.getFluidState(offset);
-            if (!fluidState.getType().isSame(this.getType()) && !level.getBlockState(offset).isSolidRender()) {
+            if (!fluidState.is(this.getType()) && !level.getBlockState(offset).isSolidRender()) {
                return true;
             }
          }
@@ -124,7 +133,7 @@ public final class FluidState extends StateHolder<Fluid, FluidState> implements 
       return this.getType().getExplosionResistance();
    }
 
-   public boolean canBeReplacedWith(final BlockGetter level, final BlockPos pos, final Fluid other, final Direction direction) {
+   public boolean canBeReplacedWith(final BlockGetter level, final BlockPos pos, final FluidState other, final Direction direction) {
       return this.getType().canBeReplacedWith(this, level, pos, other, direction);
    }
 

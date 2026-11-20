@@ -17,7 +17,7 @@ public class TryFindLandNearLiquid {
       return BehaviorBuilder.create(
          i -> i.group(i.absent(MemoryModuleType.ATTACK_TARGET), i.absent(MemoryModuleType.WALK_TARGET), i.registered(MemoryModuleType.LOOK_TARGET))
             .apply(i, (var4x, walkTarget, lookTarget) -> (level, body, timestamp) -> {
-               if (level.getFluidState(body.blockPosition()).is(fluidTag)) {
+               if (level.getFluidState(body.blockPosition()).isSourceOfType(fluidTag)) {
                   return false;
                } else if (timestamp < nextOkStartTime.longValue()) {
                   nextOkStartTime.setValue(timestamp + 40L);
@@ -39,7 +39,8 @@ public class TryFindLandNearLiquid {
 
                         for (Direction direction : Direction.Plane.HORIZONTAL) {
                            testPos.setWithOffset(pos, direction);
-                           if (level.getBlockState(testPos).isAir() && level.getBlockState(testPos.move(Direction.DOWN)).getFluidState().is(fluidTag)) {
+                           if (level.getBlockState(testPos).isAir()
+                              && level.getBlockState(testPos.move(Direction.DOWN)).getFluidState().isSourceOfType(fluidTag)) {
                               return true;
                            }
                         }

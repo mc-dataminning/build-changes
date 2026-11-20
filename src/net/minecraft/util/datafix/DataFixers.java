@@ -146,6 +146,7 @@ import net.minecraft.util.datafix.fixes.FilteredSignsFix;
 import net.minecraft.util.datafix.fixes.FireResistantToDamageResistantComponentFix;
 import net.minecraft.util.datafix.fixes.FixProjectileStoredItem;
 import net.minecraft.util.datafix.fixes.FixWolfHealth;
+import net.minecraft.util.datafix.fixes.FluidRenameFix;
 import net.minecraft.util.datafix.fixes.FoodToConsumableFix;
 import net.minecraft.util.datafix.fixes.ForcePoiRebuild;
 import net.minecraft.util.datafix.fixes.ForcedChunkToTicketFix;
@@ -414,6 +415,7 @@ import net.minecraft.util.datafix.schemas.V5000;
 import net.minecraft.util.datafix.schemas.V501;
 import net.minecraft.util.datafix.schemas.V5116;
 import net.minecraft.util.datafix.schemas.V5121;
+import net.minecraft.util.datafix.schemas.V5123;
 import net.minecraft.util.datafix.schemas.V700;
 import net.minecraft.util.datafix.schemas.V701;
 import net.minecraft.util.datafix.schemas.V702;
@@ -1696,6 +1698,15 @@ public class DataFixers {
       fixerUpper.addFixer(new OptionsRenameFieldFix(v5121, false, "Rename socialInteractions setting", "key_key.socialInteractions", "key_key.otherPlayers"));
       Schema blendingSchema = fixerUpper.addSchema(5122, SAME_NAMESPACED);
       fixerUpper.addFixer(new BlendingDataFix(blendingSchema));
+      Schema v5123 = fixerUpper.addSchema(5123, V5123::new);
+      fixerUpper.addFixer(new WriteAndReadFix(v5123, "Add fluid name type and move things to schema", References.CHUNK));
+      fixerUpper.addFixer(
+         FluidRenameFix.create(
+            v5123,
+            "Remove flowing fluid types fix",
+            createRenamer(Map.of("minecraft:flowing_water", "minecraft:water", "minecraft:flowing_lava", "minecraft:lava"))
+         )
+      );
    }
 
    private static UnaryOperator<String> createRenamerNoNamespace(final Map<String, String> map) {

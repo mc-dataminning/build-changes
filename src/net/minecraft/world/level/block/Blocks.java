@@ -1,6 +1,7 @@
 package net.minecraft.world.level.block;
 
 import java.util.Iterator;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 import net.minecraft.core.BlockPos;
@@ -680,7 +681,7 @@ public class Blocks {
       BlockItemIds.OAK_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(BlockSoundSets.GRASS)
    );
    public static final Block SPRUCE_LEAVES = register(
-      BlockItemIds.SPRUCE_LEAVES, p -> new LeavesBlock(AmbientLeavesBlockSoundPlayer.noAmbientSound(), p), leavesProperties(BlockSoundSets.GRASS)
+      BlockItemIds.SPRUCE_LEAVES, p -> new LeavesBlock(Optional.empty(), p), leavesProperties(BlockSoundSets.GRASS)
    );
    public static final Block BIRCH_LEAVES = register(
       BlockItemIds.BIRCH_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(BlockSoundSets.GRASS)
@@ -693,7 +694,7 @@ public class Blocks {
    );
    public static final Block CHERRY_LEAVES = register(
       BlockItemIds.CHERRY_LEAVES,
-      p -> new UntintedParticleLeavesBlock(0.1F, ParticleTypes.CHERRY_LEAVES, AmbientLeavesBlockSoundPlayer.noAmbientSound(), p),
+      p -> new UntintedParticleLeavesBlock(0.1F, ParticleTypes.CHERRY_LEAVES, Optional.empty(), p),
       BlockBehaviour.Properties.of()
          .mapColor(MapColor.COLOR_PINK)
          .strength(0.2F)
@@ -711,7 +712,7 @@ public class Blocks {
    );
    public static final Block PALE_OAK_LEAVES = register(
       BlockItemIds.PALE_OAK_LEAVES,
-      p -> new UntintedParticleLeavesBlock(0.02F, ParticleTypes.PALE_OAK_LEAVES, AmbientLeavesBlockSoundPlayer.noAmbientSound(), p),
+      p -> new UntintedParticleLeavesBlock(0.02F, ParticleTypes.PALE_OAK_LEAVES, Optional.empty(), p),
       BlockBehaviour.Properties.of()
          .mapColor(MapColor.METAL)
          .strength(0.2F)
@@ -732,7 +733,7 @@ public class Blocks {
       p -> new UntintedParticleLeavesBlock(
          0.01F,
          ParticleTypes.RED_POPLAR_LEAVES,
-         AmbientLeavesBlockSoundPlayer.of(SoundEvents.POPLAR_LEAVES_AMBIENT, BlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
+         Optional.of(AmbientLeavesBlockSoundPlayer.of(SoundEvents.POPLAR_LEAVES_AMBIENT, BlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE)),
          p
       ),
       leavesProperties(BlockSoundSets.POPLAR_LEAVES).mapColor(MapColor.COLOR_RED)
@@ -742,7 +743,7 @@ public class Blocks {
       p -> new UntintedParticleLeavesBlock(
          0.01F,
          ParticleTypes.ORANGE_POPLAR_LEAVES,
-         AmbientLeavesBlockSoundPlayer.of(SoundEvents.POPLAR_LEAVES_AMBIENT, BlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
+         Optional.of(AmbientLeavesBlockSoundPlayer.of(SoundEvents.POPLAR_LEAVES_AMBIENT, BlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE)),
          p
       ),
       leavesProperties(BlockSoundSets.POPLAR_LEAVES).mapColor(MapColor.COLOR_ORANGE)
@@ -752,23 +753,19 @@ public class Blocks {
       p -> new UntintedParticleLeavesBlock(
          0.01F,
          ParticleTypes.YELLOW_POPLAR_LEAVES,
-         AmbientLeavesBlockSoundPlayer.of(SoundEvents.POPLAR_LEAVES_AMBIENT, BlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
+         Optional.of(AmbientLeavesBlockSoundPlayer.of(SoundEvents.POPLAR_LEAVES_AMBIENT, BlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE)),
          p
       ),
       leavesProperties(BlockSoundSets.POPLAR_LEAVES).mapColor(MapColor.COLOR_YELLOW)
    );
    public static final Block AZALEA_LEAVES = register(
       BlockItemIds.AZALEA_LEAVES,
-      p -> new UntintedParticleLeavesBlock(
-         0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, -9399763), AmbientLeavesBlockSoundPlayer.noAmbientSound(), p
-      ),
+      p -> new UntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, -9399763), Optional.empty(), p),
       leavesProperties(BlockSoundSets.AZALEA_LEAVES)
    );
    public static final Block FLOWERING_AZALEA_LEAVES = register(
       BlockItemIds.FLOWERING_AZALEA_LEAVES,
-      p -> new UntintedParticleLeavesBlock(
-         0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, -9399763), AmbientLeavesBlockSoundPlayer.noAmbientSound(), p
-      ),
+      p -> new UntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, -9399763), Optional.empty(), p),
       leavesProperties(BlockSoundSets.AZALEA_LEAVES)
    );
    public static final Block SPONGE = register(
@@ -3279,7 +3276,12 @@ public class Blocks {
    );
    public static final Block PACKED_ICE = register(
       BlockItemIds.PACKED_ICE,
-      BlockBehaviour.Properties.of().mapColor(MapColor.ICE).instrument(NoteBlockInstrument.CHIME).friction(0.98F).strength(0.5F).sound(BlockSoundSets.GLASS)
+      BlockBehaviour.Properties.of()
+         .mapColor(MapColor.ICE)
+         .instrument(NoteBlockInstrument.CHIME)
+         .friction(0.98F)
+         .strength(0.5F)
+         .sound(BlockSoundSets.PACKED_ICE)
    );
    public static final Block SUNFLOWER = register(
       BlockItemIds.SUNFLOWER,
@@ -3884,10 +3886,24 @@ public class Blocks {
          .mapColor(MapColor.ICE)
          .friction(0.98F)
          .strength(0.5F)
-         .sound(BlockSoundSets.GLASS)
+         .sound(BlockSoundSets.FROSTED_ICE)
          .noOcclusion()
          .isValidSpawn((state, blockGetter, blockPos, entityType) -> entityType == EntityTypes.POLAR_BEAR)
          .isRedstoneConductor(Blocks::never)
+   );
+   public static final Block BRITTLE_ICE = register(
+      BlockIds.BRITTLE_ICE,
+      BrittleIceBlock::new,
+      BlockBehaviour.Properties.of()
+         .mapColor(MapColor.ICE)
+         .friction(0.98F)
+         .strength(0.5F)
+         .sound(BlockSoundSets.BRITTLE_ICE)
+         .noOcclusion()
+         .instrument(NoteBlockInstrument.CHIME)
+         .isValidSpawn((state, blockGetter, blockPos, entityType) -> entityType == EntityTypes.POLAR_BEAR)
+         .isRedstoneConductor(Blocks::never)
+         .pushReaction(PushReaction.POPPED)
    );
    public static final Block MAGMA_BLOCK = register(
       BlockItemIds.MAGMA_BLOCK,
@@ -4417,7 +4433,7 @@ public class Blocks {
    public static final Block BLUE_ICE = register(
       BlockItemIds.BLUE_ICE,
       HalfTransparentBlock::new,
-      BlockBehaviour.Properties.of().mapColor(MapColor.ICE).strength(2.8F).friction(0.989F).sound(BlockSoundSets.GLASS)
+      BlockBehaviour.Properties.of().mapColor(MapColor.ICE).strength(2.8F).friction(0.989F).sound(BlockSoundSets.BLUE_ICE)
    );
    public static final Block CONDUIT = register(
       BlockItemIds.CONDUIT,
@@ -5119,7 +5135,7 @@ public class Blocks {
    public static final Block AMETHYST_BLOCK = register(
       BlockItemIds.AMETHYST_BLOCK,
       AmethystBlock::new,
-      BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(1.5F).sound(BlockSoundSets.AMETHYST).requiresCorrectToolForDrops()
+      BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(1.5F).sound(BlockSoundSets.AMETHYST_BLOCK).requiresCorrectToolForDrops()
    );
    public static final Block ICE_CRYSTAL = register(
       BlockItemIds.ICE_CRYSTAL,
@@ -5141,7 +5157,7 @@ public class Blocks {
          .mapColor(MapColor.COLOR_PURPLE)
          .randomTicks()
          .strength(1.5F)
-         .sound(BlockSoundSets.AMETHYST)
+         .sound(BlockSoundSets.AMETHYST_BLOCK)
          .requiresCorrectToolForDrops()
          .pushReaction(PushReaction.POPPED)
    );

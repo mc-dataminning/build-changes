@@ -161,18 +161,18 @@ public class DriedGhastBlock extends HorizontalDirectionalBlock implements Simpl
    @Override
    public BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-      boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
+      boolean isWaterSource = replacedFluidState.isSourceOfType(Fluids.WATER);
       return super.getStateForPlacement(context).setValue(WATERLOGGED, isWaterSource).setValue(FACING, context.getHorizontalDirection().getOpposite());
    }
 
    @Override
    protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource() : super.getFluidState(state);
    }
 
    @Override
    public boolean placeLiquid(final LevelAccessor level, final BlockPos pos, final BlockState state, final FluidState fluidState) {
-      if (!state.getValue(BlockStateProperties.WATERLOGGED) && fluidState.is(Fluids.WATER)) {
+      if (!state.getValue(BlockStateProperties.WATERLOGGED) && fluidState.isSourceOfType(Fluids.WATER)) {
          if (!level.isClientSide()) {
             level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.WATERLOGGED, true));
             level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));

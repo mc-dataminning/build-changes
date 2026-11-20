@@ -122,7 +122,7 @@ public class ShelfBlock extends BaseEntityBlock implements SelectableSlotContain
       return this.defaultBlockState()
          .setValue(FACING, context.getHorizontalDirection().getOpposite())
          .setValue(POWERED, context.getLevel().hasNeighborSignal(context.getClickedPos()))
-         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
+         .setValue(WATERLOGGED, replacedFluidState.isSourceOfType(Fluids.WATER));
    }
 
    @Override
@@ -282,7 +282,7 @@ public class ShelfBlock extends BaseEntityBlock implements SelectableSlotContain
 
    @Override
    protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource() : super.getFluidState(state);
    }
 
    @Override

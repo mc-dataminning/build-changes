@@ -25,21 +25,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.gamerules.GameRules;
 import org.jspecify.annotations.Nullable;
 
-public abstract class WaterFluid extends FlowingFluid {
-   @Override
-   public Fluid getFlowing() {
-      return Fluids.FLOWING_WATER;
-   }
-
-   @Override
-   public Fluid getSource() {
-      return Fluids.WATER;
-   }
-
+public class WaterFluid extends FlowingFluid {
    @Override
    public Item getBucket() {
       return Items.WATER_BUCKET;
@@ -47,7 +36,7 @@ public abstract class WaterFluid extends FlowingFluid {
 
    @Override
    public void animateTick(final Level level, final BlockPos pos, final FluidState fluidState, final RandomSource random) {
-      if (!fluidState.isSource() && !fluidState.getValue(FALLING)) {
+      if (!fluidState.isSource() && !fluidState.isFalling()) {
          if (random.nextInt(64) == 0) {
             level.playLocalSound(
                pos.getX() + 0.5,
@@ -99,11 +88,6 @@ public abstract class WaterFluid extends FlowingFluid {
    }
 
    @Override
-   public boolean isSame(final Fluid other) {
-      return other == Fluids.WATER || other == Fluids.FLOWING_WATER;
-   }
-
-   @Override
    public int getDropOff(final LevelReader level) {
       return 1;
    }
@@ -114,7 +98,7 @@ public abstract class WaterFluid extends FlowingFluid {
    }
 
    @Override
-   public boolean canBeReplacedWith(final FluidState state, final BlockGetter level, final BlockPos pos, final Fluid other, final Direction direction) {
+   public boolean canBeReplacedWith(final FluidState state, final BlockGetter level, final BlockPos pos, final FluidState other, final Direction direction) {
       return direction == Direction.DOWN && !other.is(FluidTags.WATER);
    }
 
@@ -126,35 +110,5 @@ public abstract class WaterFluid extends FlowingFluid {
    @Override
    public Optional<SoundEvent> getPickupSound() {
       return Optional.of(SoundEvents.BUCKET_FILL);
-   }
-
-   public static class Flowing extends WaterFluid {
-      @Override
-      protected void createFluidStateDefinition(final StateDefinition.Builder<Fluid, FluidState> builder) {
-         super.createFluidStateDefinition(builder);
-         builder.add(LEVEL);
-      }
-
-      @Override
-      public int getAmount(final FluidState fluidState) {
-         return fluidState.getValue(LEVEL);
-      }
-
-      @Override
-      public boolean isSource(final FluidState fluidState) {
-         return false;
-      }
-   }
-
-   public static class Source extends WaterFluid {
-      @Override
-      public int getAmount(final FluidState fluidState) {
-         return 8;
-      }
-
-      @Override
-      public boolean isSource(final FluidState fluidState) {
-         return true;
-      }
    }
 }

@@ -187,10 +187,10 @@ public class RecipeBookPage {
 
          for (RecipeButton button : this.buttons) {
             if (button.mouseClicked(event, doubleClick)) {
-               if (event.button() == 1) {
+               if (event.isLeftMouse()) {
                   this.lastClickedRecipe = button.getCurrentRecipe();
                   this.lastClickedRecipeCollection = button.getCollection();
-               } else if (event.button() == 3 && !this.overlay.isVisible() && !button.isOnlyOption()) {
+               } else if (event.isRightMouse() && !this.overlay.isVisible() && !button.isOnlyOption()) {
                   this.overlay
                      .init(
                         button.getCollection(),

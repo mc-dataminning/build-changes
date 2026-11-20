@@ -52,13 +52,13 @@ public class HeavyCoreBlock extends Block implements SimpleWaterloggedBlock {
 
    @Override
    protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource() : super.getFluidState(state);
    }
 
    @Override
    public BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-      return this.defaultBlockState().setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
+      return this.defaultBlockState().setValue(WATERLOGGED, replacedFluidState.isSourceOfType(Fluids.WATER));
    }
 
    @Override
