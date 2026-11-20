@@ -104,6 +104,11 @@ public class VulkanRenderPass implements RenderPassBackend {
    }
 
    @Override
+   public void nextSubpass() {
+      VK12.vkCmdNextSubpass(this.commandBuffer, 0);
+   }
+
+   @Override
    public void pushDebugGroup(final Supplier<String> label) {
       this.pushedDebugGroups++;
       this.device.instance().debug().beginDebugGroup(this.commandBuffer(), label);
@@ -346,6 +351,14 @@ public class VulkanRenderPass implements RenderPassBackend {
 
                   set.descriptorType(4);
                   set.pTexelBufferView(bufferViewPtr);
+               } else if (uniform.type() == UniformType.INPUT_ATTACHMENT) {
+                  VulkanGpuTextureView value = (VulkanGpuTextureView)uniformValue;
+                  org.lwjgl.vulkan.VkDescriptorImageInfo.Buffer imageInfo = VkDescriptorImageInfo.calloc(1, stack);
+                  imageInfo.sampler(0L);
+                  imageInfo.imageView(value.vkImageView());
+                  imageInfo.imageLayout(1);
+                  set.descriptorType(10);
+                  set.pImageInfo(imageInfo);
                }
             }
 

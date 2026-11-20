@@ -16,11 +16,11 @@ public interface CompiledRenderPipeline extends UncheckedAutoCloseable {
       List<CompiledRenderPipeline.CreateInfo.Uniform> uniforms,
       int pushConstantsSize,
       @Nullable DepthStencilState depthStencilState,
-      GpuFormat depthStencilFormat,
       PolygonMode polygonMode,
       boolean cull,
       List<@Nullable ColorTargetState> colorTargetStates,
-      PrimitiveTopology primitiveTopology
+      PrimitiveTopology primitiveTopology,
+      RenderPassLayout.Subpass subpass
    ) {
       public static int MIN_VERTEX_STRIDE_ALIGNMENT = 4;
       public static int MAX_VERTEX_BUFFERS = 8;
@@ -29,7 +29,7 @@ public interface CompiledRenderPipeline extends UncheckedAutoCloseable {
       public record AttribBinding(int bufferSlot, int location, int offset, GpuFormat format) {
       }
 
-      public record Uniform(String name, int binding, UniformType type, @Nullable GpuFormat gpuFormat) {
+      public record Uniform(String name, int inputAttachmentIndex, int binding, UniformType type, @Nullable GpuFormat gpuFormat) {
       }
 
       public record VertexBuffer(int bufferSlot, int stride, int stepRate) {

@@ -91,6 +91,7 @@ public class SpawnUtil {
             && !blockState.is(Blocks.FROSTED_ICE)
             && !blockState.is(Blocks.TINTED_GLASS)
             && !blockState.is(Blocks.GLASS)
+            && !blockState.is(Blocks.BRITTLE_ICE)
          ? (aboveState.isAir() || aboveState.liquid()) && (blockState.isSolid() || blockState.is(Blocks.POWDER_SNOW))
          : false;
       SpawnUtil.Strategy ON_TOP_OF_COLLIDER = (level, pos, blockState, abovePos, aboveState) -> aboveState.getCollisionShape(level, abovePos).isEmpty()

@@ -40,7 +40,7 @@ public enum ChatTrustLevel implements StringRepresentable {
    }
 
    private static boolean containsModifiedStyle(final Component decoratedContent) {
-      return decoratedContent.<Boolean>visit((style, contents) -> isModifiedStyle(style) ? Optional.of(true) : Optional.empty(), Style.EMPTY).orElse(false);
+      return decoratedContent.<Boolean>visit((style, var1) -> isModifiedStyle(style) ? Optional.of(true) : Optional.empty(), true, Style.EMPTY).orElse(false);
    }
 
    private static boolean isModifiedStyle(final Style style) {

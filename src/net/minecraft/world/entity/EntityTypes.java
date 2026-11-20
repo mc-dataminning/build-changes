@@ -666,7 +666,7 @@ public class EntityTypes {
          .sized(0.52F, 0.52F)
          .eyeHeight(0.325F)
          .spawnDimensionsScale(4.0F)
-         .clientTrackingRange(8)
+         .clientTrackingRange(10)
          .notInPeaceful()
    );
    public static final EntityType<Boat> MANGROVE_BOAT = register(

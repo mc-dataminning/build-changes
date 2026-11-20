@@ -5,12 +5,12 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.render.TextureSetup;
 import net.minecraft.client.multiplayer.LevelLoadTracker;
 import net.minecraft.client.renderer.blockentity.AbstractEndPortalRenderer;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureHandle;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -150,7 +150,7 @@ public class LevelLoadingScreen extends Screen {
    public void extractBackground(final GuiGraphicsExtractor graphics) {
       switch (this.reason) {
          case NETHER_PORTAL:
-            graphics.blitSprite(RenderPipelines.GUI_OPAQUE_TEXTURED_BACKGROUND, this.getNetherPortalSprite(), 0, 0, graphics.guiWidth(), graphics.guiHeight());
+            graphics.blitSprite(GuiPipeline.OPAQUE_TEXTURED_BACKGROUND, this.getNetherPortalSprite(), 0, 0, graphics.guiWidth(), graphics.guiHeight());
             break;
          case END_PORTAL:
             TextureManager textureManager = Minecraft.getInstance().getTextureManager();
@@ -159,7 +159,7 @@ public class LevelLoadingScreen extends Screen {
             TextureSetup textureSetup = TextureSetup.doubleTexture(
                skyTexture.textureView(), skyTexture.sampler(), portalTexture.textureView(), portalTexture.sampler()
             );
-            graphics.fill(RenderPipelines.endPortal(new RenderPipelines.EndPortalParameters(false, true)), textureSetup, 0, 0, this.width, this.height);
+            graphics.fill(GuiPipeline.END_PORTAL, textureSetup, 0, 0, this.width, this.height);
             break;
          case OTHER:
             this.extractPanorama(graphics);

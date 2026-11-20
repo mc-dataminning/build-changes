@@ -2,7 +2,7 @@ package net.minecraft.gizmos;
 
 import net.minecraft.world.phys.Vec3;
 
-public record CircleGizmo(Vec3 pos, float radius, GizmoStyle style) implements Gizmo {
+public record CircleGizmo(Vec3 pos, float radius, CircleGizmo.Plane plane, GizmoStyle style) implements Gizmo {
    private static final int CIRCLE_VERTICES = 20;
    private static final float SEGMENT_SIZE_RADIANS = (float) (Math.PI / 10);
 
@@ -13,7 +13,12 @@ public record CircleGizmo(Vec3 pos, float radius, GizmoStyle style) implements G
 
          for (int i = 0; i < 20; i++) {
             float theta = i * (float) (Math.PI / 10);
-            Vec3 point = this.pos.add((float)(this.radius * Math.cos(theta)), 0.0, (float)(this.radius * Math.sin(theta)));
+
+            Vec3 point = switch (this.plane) {
+               case XZ -> this.pos.add((float)(this.radius * Math.cos(theta)), 0.0, (float)(this.radius * Math.sin(theta)));
+               case XY -> this.pos.add((float)(this.radius * Math.cos(theta)), (float)(this.radius * Math.sin(theta)), 0.0);
+               case YZ -> this.pos.add(0.0, (float)(this.radius * Math.cos(theta)), (float)(this.radius * Math.sin(theta)));
+            };
             points[i] = point;
          }
 
@@ -31,5 +36,11 @@ public record CircleGizmo(Vec3 pos, float radius, GizmoStyle style) implements G
             }
          }
       }
+   }
+
+   public enum Plane {
+      XZ,
+      XY,
+      YZ;
    }
 }

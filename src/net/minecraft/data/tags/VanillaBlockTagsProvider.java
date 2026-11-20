@@ -259,7 +259,8 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .addTag(BlockTags.SIGNS)
          .addTag(BlockTags.BANNERS)
          .addTag(BlockTags.PRESSURE_PLATES)
-         .add(new BlockItemId[]{BlockItemIds.CACTUS_FLOWER});
+         .add(new BlockItemId[]{BlockItemIds.CACTUS_FLOWER})
+         .add(BlockItemIds.BROWN_MUSHROOM, BlockItemIds.RED_MUSHROOM);
       this.tag(BlockTags.CLIMBABLE)
          .add(BlockItemIds.LADDER, BlockItemIds.VINE, BlockItemIds.SCAFFOLDING, BlockItemIds.WEEPING_VINES)
          .add(BlockIds.WEEPING_VINES_PLANT)
@@ -736,7 +737,6 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.PACKED_ICE_BRICKS,
             BlockItemIds.PACKED_ICE_BRICK_SLAB,
             BlockItemIds.PACKED_ICE_BRICK_STAIRS,
-            BlockItemIds.PACKED_ICE_BRICK_WALL,
             BlockItemIds.CHISELED_PACKED_ICE,
             BlockItemIds.BLUE_ICE,
             BlockItemIds.PISTON,
@@ -756,10 +756,42 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.INFESTED_DEEPSLATE,
             BlockItemIds.INFESTED_STONE,
             BlockItemIds.INFESTED_MOSSY_STONE_BRICKS,
-            BlockItemIds.INFESTED_STONE_BRICKS
+            BlockItemIds.INFESTED_STONE_BRICKS,
+            BlockItemIds.COBBLESTONE_WALL,
+            BlockItemIds.MOSSY_COBBLESTONE_WALL,
+            BlockItemIds.BRICK_WALL,
+            BlockItemIds.PRISMARINE_WALL,
+            BlockItemIds.RED_SANDSTONE_WALL,
+            BlockItemIds.MOSSY_STONE_BRICK_WALL,
+            BlockItemIds.GRANITE_WALL,
+            BlockItemIds.STONE_BRICK_WALL,
+            BlockItemIds.NETHER_BRICK_WALL,
+            BlockItemIds.ANDESITE_WALL,
+            BlockItemIds.RED_NETHER_BRICK_WALL,
+            BlockItemIds.SANDSTONE_WALL,
+            BlockItemIds.END_STONE_BRICK_WALL,
+            BlockItemIds.DIORITE_WALL,
+            BlockItemIds.BLACKSTONE_WALL,
+            BlockItemIds.POLISHED_BLACKSTONE_BRICK_WALL,
+            BlockItemIds.POLISHED_BLACKSTONE_WALL,
+            BlockItemIds.COBBLED_DEEPSLATE_WALL,
+            BlockItemIds.POLISHED_DEEPSLATE_WALL,
+            BlockItemIds.DEEPSLATE_TILE_WALL,
+            BlockItemIds.DEEPSLATE_BRICK_WALL,
+            BlockItemIds.MUD_BRICK_WALL,
+            BlockItemIds.TUFF_WALL,
+            BlockItemIds.POLISHED_TUFF_WALL,
+            BlockItemIds.TUFF_BRICK_WALL,
+            BlockItemIds.RESIN_BRICK_WALL,
+            BlockItemIds.CINNABAR_WALL,
+            BlockItemIds.POLISHED_CINNABAR_WALL,
+            BlockItemIds.CINNABAR_BRICK_WALL,
+            BlockItemIds.SULFUR_WALL,
+            BlockItemIds.POLISHED_SULFUR_WALL,
+            BlockItemIds.SULFUR_BRICK_WALL,
+            BlockItemIds.PACKED_ICE_BRICK_WALL
          )
          .addTag(BlockTags.STONE_BUTTONS)
-         .addTag(BlockTags.WALLS)
          .addTag(BlockTags.SHULKER_BOXES)
          .addTag(BlockTags.ANVIL)
          .addTag(BlockTags.CAULDRONS)
@@ -773,49 +805,39 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.CRAFTER,
             BlockItemIds.TUFF_SLAB,
             BlockItemIds.TUFF_STAIRS,
-            BlockItemIds.TUFF_WALL,
             BlockItemIds.CHISELED_TUFF,
             BlockItemIds.POLISHED_TUFF,
             BlockItemIds.POLISHED_TUFF_SLAB,
             BlockItemIds.POLISHED_TUFF_STAIRS,
-            BlockItemIds.POLISHED_TUFF_WALL,
             BlockItemIds.TUFF_BRICKS,
             BlockItemIds.TUFF_BRICK_SLAB,
             BlockItemIds.TUFF_BRICK_STAIRS,
-            BlockItemIds.TUFF_BRICK_WALL,
             BlockItemIds.CHISELED_TUFF_BRICKS,
             BlockItemIds.HEAVY_CORE,
             BlockItemIds.RESIN_BRICKS,
             BlockItemIds.RESIN_BRICK_SLAB,
-            BlockItemIds.RESIN_BRICK_WALL,
             BlockItemIds.RESIN_BRICK_STAIRS,
             BlockItemIds.CHISELED_RESIN_BRICKS,
             BlockItemIds.CINNABAR,
             BlockItemIds.CINNABAR_SLAB,
             BlockItemIds.CINNABAR_STAIRS,
-            BlockItemIds.CINNABAR_WALL,
             BlockItemIds.POLISHED_CINNABAR,
             BlockItemIds.POLISHED_CINNABAR_SLAB,
             BlockItemIds.POLISHED_CINNABAR_STAIRS,
-            BlockItemIds.POLISHED_CINNABAR_WALL,
             BlockItemIds.CINNABAR_BRICKS,
             BlockItemIds.CINNABAR_BRICK_SLAB,
             BlockItemIds.CINNABAR_BRICK_STAIRS,
-            BlockItemIds.CINNABAR_BRICK_WALL,
             BlockItemIds.CHISELED_CINNABAR,
             BlockItemIds.SULFUR,
             BlockItemIds.POTENT_SULFUR,
             BlockItemIds.SULFUR_SLAB,
             BlockItemIds.SULFUR_STAIRS,
-            BlockItemIds.SULFUR_WALL,
             BlockItemIds.POLISHED_SULFUR,
             BlockItemIds.POLISHED_SULFUR_SLAB,
             BlockItemIds.POLISHED_SULFUR_STAIRS,
-            BlockItemIds.POLISHED_SULFUR_WALL,
             BlockItemIds.SULFUR_BRICKS,
             BlockItemIds.SULFUR_BRICK_SLAB,
             BlockItemIds.SULFUR_BRICK_STAIRS,
-            BlockItemIds.SULFUR_BRICK_WALL,
             BlockItemIds.CHISELED_SULFUR
          )
          .addTag(BlockTags.COPPER_CHESTS)
@@ -855,6 +877,10 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.RED_SAND,
             BlockItemIds.SNOW_BLOCK,
             BlockItemIds.SNOW,
+            BlockItemIds.SNOW_BRICKS,
+            BlockItemIds.SNOW_BRICK_SLAB,
+            BlockItemIds.SNOW_BRICK_WALL,
+            BlockItemIds.SNOW_BRICK_STAIRS,
             BlockItemIds.SOUL_SAND,
             BlockItemIds.DIRT_PATH,
             BlockItemIds.SOUL_SOIL,
@@ -1176,7 +1202,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .add(new BlockItemId[]{BlockItemIds.SOUL_SAND})
          .add(new BlockItemId[]{BlockItemIds.SOUL_SOIL});
       this.tag(BlockTags.SUPPORTS_COCOA).addTag(BlockTags.JUNGLE_LOGS);
-      this.tag(BlockTags.SUPPORTS_LILY_PAD).add(new BlockItemId[]{BlockItemIds.ICE}).add(BlockIds.FROSTED_ICE);
+      this.tag(BlockTags.SUPPORTS_LILY_PAD).add(BlockItemIds.ICE, BlockItemIds.BRITTLE_ICE).add(BlockIds.FROSTED_ICE);
       this.tag(BlockTags.SUPPORTS_FROGSPAWN);
       this.tag(BlockTags.SUPPORT_OVERRIDE_CACTUS_FLOWER).add(new BlockItemId[]{BlockItemIds.CACTUS}).add(new BlockItemId[]{BlockItemIds.FARMLAND});
       this.tag(BlockTags.SUPPORT_OVERRIDE_SNOW_LAYER)
@@ -1377,6 +1403,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.FARMLAND,
             BlockItemIds.FURNACE,
             BlockItemIds.SNOW_BLOCK,
+            BlockItemIds.SNOW_BRICKS,
             BlockItemIds.CACTUS,
             BlockItemIds.CLAY,
             BlockItemIds.JUKEBOX,
@@ -1695,7 +1722,9 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.SWEET_BERRY_CROP,
             BlockItemIds.WITHER_ROSE,
             BlockItemIds.POINTED_DRIPSTONE,
-            BlockItemIds.POWDER_SNOW
+            BlockItemIds.POWDER_SNOW,
+            BlockItemIds.SULFUR_SPIKE,
+            BlockItemIds.ICICLE
          );
       this.tag(BlockTags.CAT_DOES_NOT_TELEPORT_TO).addTag(BlockTags.DANGEROUS_FOR_TELEPORTATION);
       this.tag(BlockTags.ENDERMAN_DOES_NOT_TELEPORT_TO).addTag(BlockTags.DANGEROUS_FOR_TELEPORTATION).add(new BlockItemId[]{BlockItemIds.BEDROCK});

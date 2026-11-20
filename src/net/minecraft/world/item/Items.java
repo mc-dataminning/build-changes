@@ -793,6 +793,10 @@ public class Items {
    public static final Item SNOW = registerBlock(BlockItemIds.SNOW, Blocks.SNOW);
    public static final Item ICE = registerBlock(BlockItemIds.ICE, Blocks.ICE);
    public static final Item SNOW_BLOCK = registerBlock(BlockItemIds.SNOW_BLOCK, Blocks.SNOW_BLOCK);
+   public static final Item SNOW_BRICKS = registerBlock(BlockItemIds.SNOW_BRICKS, Blocks.SNOW_BRICKS);
+   public static final Item SNOW_BRICK_STAIRS = registerBlock(BlockItemIds.SNOW_BRICK_STAIRS, Blocks.SNOW_BRICK_STAIRS);
+   public static final Item SNOW_BRICK_SLAB = registerBlock(BlockItemIds.SNOW_BRICK_SLAB, Blocks.SNOW_BRICK_SLAB);
+   public static final Item SNOW_BRICK_WALL = registerBlock(BlockItemIds.SNOW_BRICK_WALL, Blocks.SNOW_BRICK_WALL);
    public static final Item CACTUS = registerBlock(
       BlockItemIds.CACTUS, Blocks.CACTUS, new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_LOW_MEDIUM)
    );

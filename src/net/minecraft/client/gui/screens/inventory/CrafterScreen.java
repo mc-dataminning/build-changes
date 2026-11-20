@@ -2,7 +2,7 @@ package net.minecraft.client.gui.screens.inventory;
 
 import com.mojang.blaze3d.platform.cursor.CursorTypes;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
@@ -91,7 +91,7 @@ public class CrafterScreen extends AbstractContainerScreen<CrafterMenu> {
    }
 
    private void extractDisabledSlot(final GuiGraphicsExtractor graphics, final CrafterSlot cs) {
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, DISABLED_SLOT_LOCATION_SPRITE, cs.x - 1, cs.y - 1, 18, 18);
+      graphics.blitSprite(GuiPipeline.TEXTURED, DISABLED_SLOT_LOCATION_SPRITE, cs.x - 1, cs.y - 1, 18, 18);
    }
 
    @Override
@@ -117,7 +117,7 @@ public class CrafterScreen extends AbstractContainerScreen<CrafterMenu> {
          redstoneArrowTexture = UNPOWERED_REDSTONE_LOCATION_SPRITE;
       }
 
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, redstoneArrowTexture, xo, yo, 16, 16);
+      graphics.blitSprite(GuiPipeline.TEXTURED, redstoneArrowTexture, xo, yo, 16, 16);
    }
 
    @Override
@@ -125,6 +125,6 @@ public class CrafterScreen extends AbstractContainerScreen<CrafterMenu> {
       super.extractBackground(graphics);
       int xo = (this.width - this.imageWidth) / 2;
       int yo = (this.height - this.imageHeight) / 2;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
+      graphics.blit(GuiPipeline.TEXTURED, CONTAINER_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
    }
 }

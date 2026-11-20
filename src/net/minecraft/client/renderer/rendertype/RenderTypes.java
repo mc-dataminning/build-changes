@@ -604,12 +604,12 @@ public class RenderTypes {
    );
    private static final Function<Identifier, RenderType> BLOCK_SCREEN_EFFECT = Util.memoize(
       texture -> RenderType.create(
-         "block_screen_effect", RenderSetup.nonOitBuilder(RenderPipelines.BLOCK_SCREEN_EFFECT).withTexture("Sampler0", texture).createRenderSetup()
+         "block_screen_effect", RenderSetup.nonOitBuilder(RenderPipelines.SCREEN_EFFECT).withTexture("Sampler0", texture).createRenderSetup()
       )
    );
    private static final Function<Identifier, RenderType> FIRE_SCREEN_EFFECT = Util.memoize(
       texture -> RenderType.create(
-         "fire_screen_effect", RenderSetup.nonOitBuilder(RenderPipelines.FIRE_SCREEN_EFFECT).withTexture("Sampler0", texture).createRenderSetup()
+         "fire_screen_effect", RenderSetup.nonOitBuilder(RenderPipelines.SCREEN_EFFECT).withTexture("Sampler0", texture).createRenderSetup()
       )
    );
 

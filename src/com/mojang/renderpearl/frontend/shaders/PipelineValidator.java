@@ -10,6 +10,7 @@ import com.mojang.renderpearl.api.pipeline.ShaderType;
 import com.mojang.renderpearl.api.pipeline.SpvModule;
 import com.mojang.renderpearl.api.pipeline.UniformType;
 import com.mojang.renderpearl.util.ShaderCompileException;
+import it.unimi.dsi.fastutil.bytes.ByteList;
 import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ReferenceMap;
@@ -135,6 +136,10 @@ public class PipelineValidator {
       Int2ReferenceMap<CompiledRenderPipeline.CreateInfo.Uniform> pipelineUniformsByBinding = new Int2ReferenceOpenHashMap();
 
       for (CompiledRenderPipeline.CreateInfo.Uniform pipelineUniform : createInfo.uniforms()) {
+         if (pipelineUniform.inputAttachmentIndex() == -1) {
+            throw new ShaderCompileException("Cannot define an input attachment uniform with an unused attachment");
+         }
+
          pipelineUniformsByBinding.put(pipelineUniform.binding(), pipelineUniform);
       }
 
@@ -170,12 +175,25 @@ public class PipelineValidator {
                   case 3 -> UniformType.COMBINED_IMAGE_SAMPLER;
                   case 4 -> UniformType.COMBINED_IMAGE_SAMPLER;
                   case 5 -> UniformType.TEXEL_BUFFER;
+                  case 6 -> UniformType.INPUT_ATTACHMENT;
                   default -> throw new ShaderCompileException("Unexpected SpvDim (" + definedDimensions + ") for uniform (" + pipelineUniform.name() + ")");
                };
                if (pipelineUniform.type() != expectedUniformType) {
                   throw new ShaderCompileException(
                      "Unexpected dimensions for uniform (" + pipelineUniform.name() + "), does not match RenderPipeline definition"
                   );
+               }
+            }
+
+            if (expectedResourceType == 5) {
+               ByteList subpassInputs = createInfo.subpass().inputAttachments();
+               int index = descriptor.inputAttachmentIndex();
+               if (index >= subpassInputs.size()) {
+                  throw new ShaderCompileException("Input attachment index " + index + " out of range for subpass");
+               }
+
+               if (subpassInputs.getByte(index) == -1) {
+                  throw new ShaderCompileException("Input attachment " + index + " defined as unused for subpass");
                }
             }
          }
@@ -252,14 +270,14 @@ public class PipelineValidator {
          Int2ObjectMap<PipelineValidator.InterfaceVariableInfo> outputSlotMap = generateSlotMap(
             shadersByType.get(ShaderType.VERTEX).reflect().outputs(), vertexStageName, ShaderType.VERTEX
          );
-         String var36 = shadersByType.get(ShaderType.FRAGMENT).name();
+         String var37 = shadersByType.get(ShaderType.FRAGMENT).name();
          Int2ObjectMap<PipelineValidator.InterfaceVariableInfo> inputSlotMap = generateSlotMap(
             shadersByType.get(ShaderType.FRAGMENT).reflect().inputs(), vertexStageName, ShaderType.FRAGMENT
          );
-         ObjectIterator var42 = inputSlotMap.int2ObjectEntrySet().iterator();
+         ObjectIterator var43 = inputSlotMap.int2ObjectEntrySet().iterator();
 
-         while (var42.hasNext()) {
-            Entry<PipelineValidator.InterfaceVariableInfo> entry = (Entry<PipelineValidator.InterfaceVariableInfo>)var42.next();
+         while (var43.hasNext()) {
+            Entry<PipelineValidator.InterfaceVariableInfo> entry = (Entry<PipelineValidator.InterfaceVariableInfo>)var43.next();
             int location = entry.getIntKey();
             PipelineValidator.InterfaceVariableInfo input = (PipelineValidator.InterfaceVariableInfo)entry.getValue();
             assert input != null;
@@ -267,7 +285,7 @@ public class PipelineValidator {
             if (output == null) {
                throw new ShaderCompileException(
                   String.format(
-                     Locale.ROOT, "Vertex shader (%s) missing output at location %d consumed by Fragment shader (%s)", vertexStageName, location, var36
+                     Locale.ROOT, "Vertex shader (%s) missing output at location %d consumed by Fragment shader (%s)", vertexStageName, location, var37
                   )
                );
             }
@@ -279,7 +297,7 @@ public class PipelineValidator {
                         Locale.ROOT,
                         "Vertex shader (%s) and Fragment shader (%s) have base type mismatch at location %d of %s and %s.",
                         vertexStageName,
-                        var36,
+                        var37,
                         location,
                         SpvUtil.baseTypeString(output.baseType()),
                         SpvUtil.baseTypeString(input.baseType())
@@ -293,7 +311,7 @@ public class PipelineValidator {
                         Locale.ROOT,
                         "Vertex shader (%s) and Fragment shader (%s) have vector length mismatch at location %d of %d and %d.",
                         vertexStageName,
-                        var36,
+                        var37,
                         location,
                         output.vectorLength(),
                         input.vectorLength()
@@ -307,7 +325,7 @@ public class PipelineValidator {
                         Locale.ROOT,
                         "Vertex shader (%s) and Fragment shader (%s) have mismatched interpolation at location %d, flat in %s",
                         vertexStageName,
-                        var36,
+                        var37,
                         location,
                         output.flatInterpolated() ? "vertex" : "fragment"
                      )

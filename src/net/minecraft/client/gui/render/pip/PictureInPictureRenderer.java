@@ -9,16 +9,15 @@ import com.mojang.renderpearl.api.device.GpuDevice;
 import com.mojang.renderpearl.api.textures.FilterMode;
 import com.mojang.renderpearl.api.textures.GpuTexture;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.util.Optional;
-import java.util.OptionalDouble;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.render.GuiRenderer;
 import net.minecraft.client.gui.render.TextureSetup;
 import net.minecraft.client.renderer.Projection;
 import net.minecraft.client.renderer.ProjectionMatrixBuffer;
+import net.minecraft.client.renderer.RenderPassLayouts;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.SubmitNodeStorage;
 import net.minecraft.client.renderer.feature.FeatureRenderDispatcher;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.renderer.state.gui.BlitRenderState;
 import net.minecraft.client.renderer.state.gui.GuiRenderState;
 import net.minecraft.client.renderer.state.gui.pip.PictureInPictureRenderState;
@@ -54,7 +53,7 @@ public abstract class PictureInPictureRenderer<T extends PictureInPictureRenderS
             FeatureRenderDispatcher.PreparedFrame frame = featureRenderDispatcher.prepareFrame(this.submitNodeStorage);
             RenderPass renderPass = RenderSystem.getDevice()
                .createCommandEncoder()
-               .createRenderPass(() -> "Picture in picture", this.textureView, Optional.empty(), this.depthTextureView, OptionalDouble.empty());
+               .createRenderPass(() -> "Picture in picture", RenderPassLayouts.COLOR_DEPTH, this.textureView, this.depthTextureView);
          ) {
             RenderSystem.bindDefaultUniforms(renderPass);
             FeatureRenderDispatcher.renderAllFeatures(renderPass, frame);
@@ -68,7 +67,7 @@ public abstract class PictureInPictureRenderer<T extends PictureInPictureRenderS
    protected void blitTexture(final T renderState, final GuiRenderState guiRenderState) {
       guiRenderState.addBlitToCurrentLayer(
          new BlitRenderState(
-            RenderPipelines.GUI_TEXTURED_PREMULTIPLIED_ALPHA,
+            GuiPipeline.TEXTURED_PREMULTIPLIED_ALPHA,
             TextureSetup.singleTexture(this.textureView, RenderSystem.getSamplerCache().getRepeat(FilterMode.NEAREST)),
             renderState.pose(),
             renderState.x0(),

@@ -27,6 +27,7 @@ import net.minecraft.world.level.block.state.properties.StructureMode;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
+import net.minecraft.world.level.levelgen.structure.templatesystem.CornerConstraint;
 import net.minecraft.world.level.levelgen.structure.templatesystem.JigsawReplacementProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
@@ -44,7 +45,8 @@ public class SinglePoolElement extends StructurePoolElement {
       SinglePoolElement::encodeTemplate, Identifier.CODEC.map(Either::left)
    );
    public static final MapCodec<SinglePoolElement> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(templateCodec(), processorsCodec(), projectionCodec(), overrideLiquidSettingsCodec()).apply(i, SinglePoolElement::new)
+      i -> i.group(templateCodec(), processorsCodec(), projectionCodec(), overrideLiquidSettingsCodec(), cornerConstraintCodec())
+         .apply(i, SinglePoolElement::new)
    );
    protected final Either<Identifier, StructureTemplate> template;
    protected final Holder<StructureProcessorList> processors;
@@ -71,9 +73,10 @@ public class SinglePoolElement extends StructurePoolElement {
       final Either<Identifier, StructureTemplate> template,
       final Holder<StructureProcessorList> processors,
       final StructureTemplatePool.Projection projection,
-      final Optional<LiquidSettings> overrideLiquidSettings
+      final Optional<LiquidSettings> overrideLiquidSettings,
+      final Optional<CornerConstraint> cornerConstraint
    ) {
-      super(projection);
+      super(projection, cornerConstraint);
       this.template = template;
       this.processors = processors;
       this.overrideLiquidSettings = overrideLiquidSettings;

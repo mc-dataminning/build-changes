@@ -1,7 +1,6 @@
 package com.mojang.blaze3d.pipeline;
 
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.renderpearl.api.GpuFormat;
 import com.mojang.renderpearl.api.pipeline.BindGroupLayout;
 import com.mojang.renderpearl.api.pipeline.ColorTargetState;
 import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
@@ -22,7 +21,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
-import net.minecraft.SharedConstants;
 import net.minecraft.client.renderer.ShaderDefines;
 import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.Nullable;
@@ -33,15 +31,12 @@ public class RenderPipeline {
    private final ShaderDefines shaderDefines;
    private final List<BindGroupLayout> bindGroupLayouts;
    private final @Nullable DepthStencilState depthStencilState;
-   private final GpuFormat depthStencilFormat;
    private final PolygonMode polygonMode;
    private final boolean cull;
    private final List<@Nullable ColorTargetState> colorTargetStates;
    private final List<@Nullable VertexFormat> vertexFormatPerBuffer;
    private final PrimitiveTopology primitiveTopology;
    private final int pushConstantSize;
-   private final int sortKey;
-   private static int sortKeySeed;
 
    protected RenderPipeline(
       final Identifier location,
@@ -50,35 +45,23 @@ public class RenderPipeline {
       final Collection<BindGroupLayout> bindGroupLayouts,
       final @Nullable ColorTargetState[] colorTargetStates,
       final @Nullable DepthStencilState depthStencilState,
-      final GpuFormat depthStencilFormat,
       final PolygonMode polygonMode,
       final boolean cull,
       final @Nullable VertexFormat[] vertexFormatPerBuffer,
       final PrimitiveTopology primitiveTopology,
-      final int pushConstantSize,
-      final int sortKey
+      final int pushConstantSize
    ) {
       this.location = location;
       this.shaders = Collections.unmodifiableMap(new EnumMap<>(shaders));
       this.shaderDefines = shaderDefines;
       this.bindGroupLayouts = List.copyOf(bindGroupLayouts);
       this.depthStencilState = depthStencilState;
-      this.depthStencilFormat = depthStencilFormat;
       this.polygonMode = polygonMode;
       this.cull = cull;
       this.colorTargetStates = ReferenceLists.unmodifiable(new ReferenceArrayList(colorTargetStates));
       this.vertexFormatPerBuffer = ReferenceLists.unmodifiable(new ReferenceArrayList(vertexFormatPerBuffer));
       this.primitiveTopology = primitiveTopology;
       this.pushConstantSize = pushConstantSize;
-      this.sortKey = sortKey;
-   }
-
-   public int getSortKey() {
-      return SharedConstants.DEBUG_SHUFFLE_UI_RENDERING_ORDER ? super.hashCode() * (sortKeySeed + 1) : this.sortKey;
-   }
-
-   public static void updateSortKeySeed() {
-      sortKeySeed = Math.round(100000.0F * (float)Math.random());
    }
 
    @Override
@@ -100,10 +83,6 @@ public class RenderPipeline {
 
    public @Nullable DepthStencilState getDepthStencilState() {
       return this.depthStencilState;
-   }
-
-   public GpuFormat getDepthStencilFormat() {
-      return this.depthStencilFormat;
    }
 
    public Identifier getLocation() {
@@ -157,13 +136,11 @@ public class RenderPipeline {
    }
 
    public static class Builder {
-      private static int nextPipelineSortKey;
       private Optional<Identifier> location = Optional.empty();
       private final Map<ShaderType, Identifier> shaders = new EnumMap<>(ShaderType.class);
       private Optional<ShaderDefines.Builder> definesBuilder = Optional.empty();
       private Optional<Set<BindGroupLayout>> bindGroupLayouts = Optional.empty();
       private Optional<DepthStencilState> depthStencilState = Optional.empty();
-      private Optional<GpuFormat> depthStencilFormat = Optional.empty();
       private Optional<PolygonMode> polygonMode = Optional.empty();
       private Optional<Boolean> cull = Optional.empty();
       private final @Nullable ColorTargetState[] colorTargetStates = new ColorTargetState[8];
@@ -284,15 +261,6 @@ public class RenderPipeline {
          return this;
       }
 
-      public RenderPipeline.Builder withDepthStencilFormat(final GpuFormat depthStencilFormat) {
-         if (!depthStencilFormat.hasDepthAspect()) {
-            throw new IllegalArgumentException("Depth/stencil format must have a depth aspect");
-         }
-
-         this.depthStencilFormat = Optional.of(depthStencilFormat);
-         return this;
-      }
-
       public RenderPipeline.Builder withVertexBinding(final int bindingIndex, final VertexFormat vertexFormat) {
          this.vertexFormatPerBuffer[bindingIndex] = vertexFormat;
          return this;
@@ -337,10 +305,6 @@ public class RenderPipeline {
             this.depthStencilState = snippet.depthStencilState;
          }
 
-         if (snippet.depthStencilFormat.isPresent()) {
-            this.depthStencilFormat = snippet.depthStencilFormat;
-         }
-
          if (snippet.cull.isPresent()) {
             this.cull = snippet.cull;
          }
@@ -380,7 +344,6 @@ public class RenderPipeline {
             this.colorTargetStates,
             this.activeColorTargetStateCount,
             this.depthStencilState,
-            this.depthStencilFormat,
             this.polygonMode,
             this.cull,
             this.vertexFormatPerBuffer,
@@ -420,13 +383,11 @@ public class RenderPipeline {
             this.bindGroupLayouts.orElse(Collections.emptySet()),
             activeColorTargetStates,
             this.depthStencilState.orElse(null),
-            this.depthStencilFormat.orElse(GpuFormat.D32_FLOAT),
             this.polygonMode.orElse(PolygonMode.FILL),
             this.cull.orElse(true),
             this.vertexFormatPerBuffer,
             this.primitiveTopology.get(),
-            this.pushConstantSize,
-            nextPipelineSortKey++
+            this.pushConstantSize
          );
       }
    }
@@ -438,7 +399,6 @@ public class RenderPipeline {
       @Nullable ColorTargetState[] colorTargetStates,
       int activeColorTargetStateCount,
       Optional<DepthStencilState> depthStencilState,
-      Optional<GpuFormat> depthStencilFormat,
       Optional<PolygonMode> polygonMode,
       Optional<Boolean> cull,
       @Nullable VertexFormat[] vertexFormatPerBuffer,

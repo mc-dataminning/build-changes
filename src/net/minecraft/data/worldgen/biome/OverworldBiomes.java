@@ -47,17 +47,20 @@ public class OverworldBiomes {
          .specialEffects(new BiomeSpecialEffects.Builder().waterColor(4159204).build());
    }
 
-   private static void globalOverworldGeneration(final BiomeGenerationSettings.Builder generation, final boolean hasGlowLichen, final boolean hasDirtAndGranite) {
+   private static void globalOverworldGeneration(final BiomeGenerationSettings.Builder generation, final boolean hasUndergroundVariety) {
       BiomeDefaultFeatures.addDefaultCarversAndLakes(generation);
       BiomeDefaultFeatures.addDefaultCrystalFormations(generation);
       BiomeDefaultFeatures.addDefaultMonsterRoom(generation);
-      BiomeDefaultFeatures.addDefaultUndergroundVariety(generation, hasGlowLichen, hasDirtAndGranite);
+      if (hasUndergroundVariety) {
+         BiomeDefaultFeatures.addDefaultUndergroundVariety(generation);
+      }
+
       BiomeDefaultFeatures.addDefaultSprings(generation);
       BiomeDefaultFeatures.addSurfaceFreezing(generation);
    }
 
    private static void globalOverworldGeneration(final BiomeGenerationSettings.Builder generation) {
-      globalOverworldGeneration(generation, true, true);
+      globalOverworldGeneration(generation, true);
    }
 
    public static Biome oldGrowthTaiga(final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<WorldCarver> carvers, final boolean spruce) {
@@ -986,7 +989,7 @@ public class OverworldBiomes {
       mobs.addSpawn(EntityTypes.GLOW_SQUID, 10, 2, 4);
       mobs.addSpawn(EntityTypes.BAT, 10, 8, 8);
       BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
-      globalOverworldGeneration(generation, false, false);
+      globalOverworldGeneration(generation, false);
       BiomeDefaultFeatures.addIceCaveOres(generation);
       BiomeDefaultFeatures.addIceCaveUndergroundVariety(generation);
       BiomeDefaultFeatures.addDefaultSoftDisks(generation);
@@ -1008,7 +1011,7 @@ public class OverworldBiomes {
       generation.addCarver(Carvers.CANYON);
       BiomeDefaultFeatures.addDefaultCrystalFormations(generation);
       BiomeDefaultFeatures.addDefaultMonsterRoom(generation);
-      BiomeDefaultFeatures.addDefaultUndergroundVariety(generation, true, true);
+      BiomeDefaultFeatures.addDefaultUndergroundVariety(generation);
       BiomeDefaultFeatures.addSurfaceFreezing(generation);
       BiomeDefaultFeatures.addPlainGrass(generation);
       BiomeDefaultFeatures.addDefaultOres(generation);

@@ -8,8 +8,8 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.screens.TitleScreen;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.realms.RealmsScreen;
 import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.Nullable;
@@ -125,23 +125,23 @@ public class RealmsNotificationsScreen extends RealmsScreen {
       int baseY = topPos + 48 + 2;
       int iconRight = buttonRight - 3;
       if (hasUnseenNotifications) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, UNSEEN_NOTIFICATION_SPRITE, iconRight - 12, baseY + 3, 10, 10);
+         graphics.blitSprite(GuiPipeline.TEXTURED, UNSEEN_NOTIFICATION_SPRITE, iconRight - 12, baseY + 3, 10, 10);
          iconRight -= 16;
       }
 
       if (this.currentConfiguration != null && this.currentConfiguration.showOldNotifications()) {
          if (hasUnreadNews) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, NEWS_SPRITE, iconRight - 14, baseY + 1, 14, 14);
+            graphics.blitSprite(GuiPipeline.TEXTURED, NEWS_SPRITE, iconRight - 14, baseY + 1, 14, 14);
             iconRight -= 16;
          }
 
          if (pendingInvitesCount != 0) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, INVITE_SPRITE, iconRight - 14, baseY + 1, 14, 14);
+            graphics.blitSprite(GuiPipeline.TEXTURED, INVITE_SPRITE, iconRight - 14, baseY + 1, 14, 14);
             iconRight -= 16;
          }
 
          if (trialAvailable) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, TRIAL_AVAILABLE_SPRITE, iconRight - 10, baseY + 4, 8, 8);
+            graphics.blitSprite(GuiPipeline.TEXTURED, TRIAL_AVAILABLE_SPRITE, iconRight - 10, baseY + 4, 8, 8);
          }
       }
    }

@@ -2,7 +2,7 @@ package net.minecraft.client.multiplayer.chat;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -57,7 +57,7 @@ public record GuiMessageTag(int indicatorColor, GuiMessageTag.@Nullable Icon ico
       }
 
       public void extractRenderState(final GuiGraphicsExtractor graphics, final int x, final int y) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.sprite, x, y, this.width, this.height);
+         graphics.blitSprite(GuiPipeline.TEXTURED, this.sprite, x, y, this.width, this.height);
       }
    }
 }

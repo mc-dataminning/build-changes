@@ -1,6 +1,7 @@
 package net.minecraft.data.advancements.packs;
 
 import java.util.Optional;
+import java.util.function.Supplier;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRequirements;
@@ -240,6 +241,25 @@ public class VanillaNetherAdvancements extends AdvancementSubProvider {
          )
          .addCriterion("potion", BrewedPotionTrigger.TriggerInstance.brewedPotion())
          .save(this.output, "nether/brew_potion");
+      Supplier<MobEffectsPredicate.Builder> potionEffectsBuilder = () -> MobEffectsPredicate.Builder.effects()
+         .and(MobEffects.SPEED)
+         .and(MobEffects.SLOWNESS)
+         .and(MobEffects.STRENGTH)
+         .and(MobEffects.JUMP_BOOST)
+         .and(MobEffects.REGENERATION)
+         .and(MobEffects.FIRE_RESISTANCE)
+         .and(MobEffects.WATER_BREATHING)
+         .and(MobEffects.INVISIBILITY)
+         .and(MobEffects.NIGHT_VISION)
+         .and(MobEffects.WEAKNESS)
+         .and(MobEffects.POISON)
+         .and(MobEffects.SLOW_FALLING)
+         .and(MobEffects.RESISTANCE)
+         .and(MobEffects.OOZING)
+         .and(MobEffects.INFESTED)
+         .and(MobEffects.WIND_CHARGED)
+         .and(MobEffects.WEAVING)
+         .and(MobEffects.FREEZING);
       AdvancementHolder allPotions = Advancement.Builder.advancement()
          .parent(brewPotion)
          .display(
@@ -252,29 +272,7 @@ public class VanillaNetherAdvancements extends AdvancementSubProvider {
             false
          )
          .rewards(AdvancementRewards.Builder.experience(100))
-         .addCriterion(
-            "all_effects",
-            EffectsChangedTrigger.TriggerInstance.hasEffects(
-               MobEffectsPredicate.Builder.effects()
-                  .and(MobEffects.SPEED)
-                  .and(MobEffects.SLOWNESS)
-                  .and(MobEffects.STRENGTH)
-                  .and(MobEffects.JUMP_BOOST)
-                  .and(MobEffects.REGENERATION)
-                  .and(MobEffects.FIRE_RESISTANCE)
-                  .and(MobEffects.WATER_BREATHING)
-                  .and(MobEffects.INVISIBILITY)
-                  .and(MobEffects.NIGHT_VISION)
-                  .and(MobEffects.WEAKNESS)
-                  .and(MobEffects.POISON)
-                  .and(MobEffects.SLOW_FALLING)
-                  .and(MobEffects.RESISTANCE)
-                  .and(MobEffects.OOZING)
-                  .and(MobEffects.INFESTED)
-                  .and(MobEffects.WIND_CHARGED)
-                  .and(MobEffects.WEAVING)
-            )
-         )
+         .addCriterion("all_effects", EffectsChangedTrigger.TriggerInstance.hasEffects(potionEffectsBuilder.get()))
          .save(this.output, "nether/all_potions");
       Advancement.Builder.advancement()
          .parent(allPotions)
@@ -291,18 +289,7 @@ public class VanillaNetherAdvancements extends AdvancementSubProvider {
          .addCriterion(
             "all_effects",
             EffectsChangedTrigger.TriggerInstance.hasEffects(
-               MobEffectsPredicate.Builder.effects()
-                  .and(MobEffects.SPEED)
-                  .and(MobEffects.SLOWNESS)
-                  .and(MobEffects.STRENGTH)
-                  .and(MobEffects.JUMP_BOOST)
-                  .and(MobEffects.REGENERATION)
-                  .and(MobEffects.FIRE_RESISTANCE)
-                  .and(MobEffects.WATER_BREATHING)
-                  .and(MobEffects.INVISIBILITY)
-                  .and(MobEffects.NIGHT_VISION)
-                  .and(MobEffects.WEAKNESS)
-                  .and(MobEffects.POISON)
+               potionEffectsBuilder.get()
                   .and(MobEffects.WITHER)
                   .and(MobEffects.HASTE)
                   .and(MobEffects.MINING_FATIGUE)
@@ -311,18 +298,12 @@ public class VanillaNetherAdvancements extends AdvancementSubProvider {
                   .and(MobEffects.ABSORPTION)
                   .and(MobEffects.HUNGER)
                   .and(MobEffects.NAUSEA)
-                  .and(MobEffects.RESISTANCE)
-                  .and(MobEffects.SLOW_FALLING)
                   .and(MobEffects.CONDUIT_POWER)
                   .and(MobEffects.DOLPHINS_GRACE)
                   .and(MobEffects.BLINDNESS)
                   .and(MobEffects.BAD_OMEN)
                   .and(MobEffects.HERO_OF_THE_VILLAGE)
                   .and(MobEffects.DARKNESS)
-                  .and(MobEffects.OOZING)
-                  .and(MobEffects.INFESTED)
-                  .and(MobEffects.WIND_CHARGED)
-                  .and(MobEffects.WEAVING)
                   .and(MobEffects.TRIAL_OMEN)
                   .and(MobEffects.RAID_OMEN)
                   .and(MobEffects.BREATH_OF_THE_NAUTILUS)

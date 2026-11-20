@@ -185,7 +185,7 @@ public class ZombieNautilus extends AbstractNautilus {
    }
 
    @Override
-   protected boolean canBeABaby() {
+   public boolean canBeABaby() {
       return false;
    }
 }

@@ -7,7 +7,7 @@ import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -57,7 +57,7 @@ public class AdvancementToast implements Toast {
    @Override
    public void extractRenderState(final GuiGraphicsExtractor graphics, final Font font, final long fullyVisibleForMs) {
       DisplayInfo display = this.advancement.value().display().orElse(null);
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BACKGROUND_SPRITE, 0, 0, this.width(), this.height());
+      graphics.blitSprite(GuiPipeline.TEXTURED, BACKGROUND_SPRITE, 0, 0, this.width(), this.height());
       if (display != null) {
          List<FormattedCharSequence> lines = font.split(display.title(), 125);
          int titleColor = display.type() == AdvancementType.CHALLENGE ? -30465 : -256;

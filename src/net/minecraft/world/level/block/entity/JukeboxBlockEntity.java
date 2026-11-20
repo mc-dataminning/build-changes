@@ -77,7 +77,9 @@ public class JukeboxBlockEntity extends BlockEntity implements ContainerSingleIt
    private void notifyItemChangedInJukebox(final boolean wasInserted) {
       if (this.level != null && this.level.getBlockState(this.getBlockPos()) == this.getBlockState()) {
          this.level.setBlock(this.getBlockPos(), this.getBlockState().setValue(JukeboxBlock.HAS_RECORD, wasInserted), 2);
-         this.level.gameEvent(GameEvent.BLOCK_CHANGE, this.getBlockPos(), GameEvent.Context.of(this.getBlockState()));
+         if (!isInPlaylistMode(this.level, this.getBlockPos())) {
+            this.level.gameEvent(GameEvent.BLOCK_CHANGE, this.getBlockPos(), GameEvent.Context.of(this.getBlockState()));
+         }
       }
    }
 
@@ -87,7 +89,9 @@ public class JukeboxBlockEntity extends BlockEntity implements ContainerSingleIt
          ItemStack itemBeforePoppingOut = this.getTheItem();
          if (!itemBeforePoppingOut.isEmpty()) {
             this.removeTheItem();
-            Vec3 itemPos = Vec3.atLowerCornerWithOffset(pos, 0.5, 1.01, 0.5).offsetRandomXZ(this.level.getRandom(), 0.7F);
+            Vec3 itemPos = isInPlaylistMode(this.level, pos)
+               ? Vec3.atBottomCenterOf(pos).add(0.0, 2.2F, 0.0)
+               : Vec3.atLowerCornerWithOffset(pos, 0.5, 1.01, 0.5).offsetRandomXZ(this.level.getRandom(), 0.7F);
             ItemStack itemStack = itemBeforePoppingOut.copy();
             ItemEntity entity = new ItemEntity(this.level, itemPos.x(), itemPos.y(), itemPos.z(), itemStack);
             entity.setDefaultPickUpDelay();

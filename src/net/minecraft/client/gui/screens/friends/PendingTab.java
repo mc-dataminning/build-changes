@@ -4,13 +4,13 @@ import java.util.List;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.ImageWidget;
 import net.minecraft.client.gui.components.LoadingDotsWidget;
 import net.minecraft.client.gui.components.MultiLineTextWidget;
 import net.minecraft.client.gui.layouts.LayoutSettings;
 import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.Component;
 
 class PendingTab extends AbstractFriendsTab {
@@ -120,7 +120,7 @@ class PendingTab extends AbstractFriendsTab {
    public void extractBackground(final GuiGraphicsExtractor graphics) {
       if (this.showingSearchBar) {
          graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED,
+            GuiPipeline.TEXTURED,
             BACKGROUND_LIGHT_SPRITE,
             this.headerFrame.getX(),
             this.headerFrame.getY(),

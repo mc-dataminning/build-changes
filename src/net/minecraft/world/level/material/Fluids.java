@@ -19,6 +19,8 @@ public class Fluids {
             .dripParticle(ParticleTypes.DRIPPING_WATER)
             .explosionResistance(100.0F)
             .drag(0.8F)
+            .fogType(FogType.WATER)
+            .fallDistanceMultiplier(0.0F)
       )
    );
    public static final FlowingFluid LAVA = register(
@@ -31,6 +33,8 @@ public class Fluids {
             .explosionResistance(100.0F)
             .randomTicking()
             .drag(0.5F)
+            .fogType(FogType.LAVA)
+            .fallDistanceMultiplier(0.5F)
       )
    );
 

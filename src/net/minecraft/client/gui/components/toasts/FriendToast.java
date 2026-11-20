@@ -5,9 +5,9 @@ import java.util.UUID;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.PlayerFaceExtractor;
 import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.FormattedCharSequence;
@@ -63,7 +63,7 @@ public class FriendToast implements Toast {
    @Override
    public void extractRenderState(final GuiGraphicsExtractor graphics, final Font font, final long fullyVisibleForMs) {
       int height = this.height();
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BACKGROUND_SPRITE.get(true, false), 0, 0, this.width(), height);
+      graphics.blitSprite(GuiPipeline.TEXTURED, BACKGROUND_SPRITE.get(true, false), 0, 0, this.width(), height);
       int textLeft;
       if (this.skinProfile != null) {
          PlayerFaceExtractor.extractRenderState(graphics, this.skinProfile, 6, 6, 20);

@@ -12,15 +12,18 @@ import java.util.Objects;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 import net.minecraft.SharedConstants;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.NarratorStatus;
 import net.minecraft.client.gui.ComponentPath;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.components.TabOrderedElement;
+import net.minecraft.client.gui.components.Updatable;
 import net.minecraft.client.gui.components.events.AbstractContainerEventHandler;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
@@ -34,7 +37,6 @@ import net.minecraft.client.gui.navigation.ScreenDirection;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
@@ -48,7 +50,7 @@ import net.minecraft.world.item.TooltipFlag;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
-public abstract class Screen extends AbstractContainerEventHandler implements Renderable {
+public abstract class Screen extends AbstractContainerEventHandler implements Renderable, Updatable {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final Component SCREEN_USAGE_NARRATION = Component.translatable("narrator.screen.usage");
    public static final Identifier MENU_BACKGROUND = Identifier.withDefaultNamespace("textures/gui/menu_background.png");
@@ -68,6 +70,7 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
    public int width;
    public int height;
    private final List<Renderable> renderables = new ArrayList<>();
+   private final List<Updatable> updatables = new ArrayList<>();
    protected final Font font;
    private static final long NARRATE_SUPPRESS_AFTER_INIT_TIME = TimeUnit.SECONDS.toMillis(2L);
    private static final long NARRATE_DELAY_NARRATOR_ENABLED = NARRATE_SUPPRESS_AFTER_INIT_TIME;
@@ -210,14 +213,13 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
       return this.addWidget(widget);
    }
 
-   protected <T extends Renderable> T addRenderableOnly(final T renderable) {
-      this.renderables.add(renderable);
-      return renderable;
-   }
-
    protected <T extends GuiEventListener & NarratableEntry> T addWidget(final T widget) {
       this.children.add(widget);
       this.narratables.add(widget);
+      if (widget instanceof Updatable updatable) {
+         this.updatables.add(updatable);
+      }
+
       return widget;
    }
 
@@ -228,6 +230,10 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
 
       if (widget instanceof NarratableEntry narratableEntry) {
          this.narratables.remove(narratableEntry);
+      }
+
+      if (widget instanceof Updatable updatable) {
+         this.updatables.remove(updatable);
       }
 
       if (this.getFocused() == widget) {
@@ -241,6 +247,7 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
       this.renderables.clear();
       this.children.clear();
       this.narratables.clear();
+      this.updatables.clear();
    }
 
    public static List<Component> getTooltipFromItem(final Minecraft minecraft, final ItemStack itemStack) {
@@ -378,6 +385,13 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
    public void tick() {
    }
 
+   @Override
+   public void update(final DeltaTracker deltaTracker) {
+      for (Updatable updatable : this.updatables) {
+         updatable.update(deltaTracker);
+      }
+   }
+
    public void removed() {
    }
 
@@ -397,6 +411,14 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
       }
 
       this.minecraft.gui.hud.extractDeferredSubtitles();
+   }
+
+   protected static void extractBackgroundScreen(final GuiGraphicsExtractor graphics, final Screen screen) {
+      graphics.extractWithoutMouse(() -> {
+         screen.extractBackground(graphics);
+         graphics.nextStratum();
+         screen.extractRenderState(graphics);
+      });
    }
 
    protected void extractBlurredBackground(final GuiGraphicsExtractor graphics) {
@@ -429,7 +451,7 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
       final int height
    ) {
       int size = 32;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, menuBackground, x, y, u, v, width, height, 32, 32);
+      graphics.blit(GuiPipeline.TEXTURED, menuBackground, x, y, u, v, width, height, 32, 32);
    }
 
    public void extractTransparentBackground(final GuiGraphicsExtractor graphics) {
@@ -447,8 +469,8 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
    ) {
       Identifier headerSeparator = inWorld ? INWORLD_HEADER_SEPARATOR : HEADER_SEPARATOR;
       Identifier footerSeparator = inWorld ? INWORLD_FOOTER_SEPARATOR : FOOTER_SEPARATOR;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, headerSeparator, left, top - 2, 0.0F, 0.0F, width, separatorHeight, 32, separatorHeight);
-      graphics.blit(RenderPipelines.GUI_TEXTURED, footerSeparator, left, bottom, 0.0F, 0.0F, width, separatorHeight, 32, separatorHeight);
+      graphics.blit(GuiPipeline.TEXTURED, headerSeparator, left, top - 2, 0.0F, 0.0F, width, separatorHeight, 32, separatorHeight);
+      graphics.blit(GuiPipeline.TEXTURED, footerSeparator, left, bottom, 0.0F, 0.0F, width, separatorHeight, 32, separatorHeight);
    }
 
    public boolean isPauseScreen() {

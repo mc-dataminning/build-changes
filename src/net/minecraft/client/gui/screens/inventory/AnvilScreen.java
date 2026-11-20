@@ -1,9 +1,9 @@
 package net.minecraft.client.gui.screens.inventory;
 
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ServerboundRenameItemPacket;
@@ -121,19 +121,14 @@ public class AnvilScreen extends ItemCombinerScreen<AnvilMenu> {
    public void extractBackground(final GuiGraphicsExtractor graphics) {
       super.extractBackground(graphics);
       graphics.blitSprite(
-         RenderPipelines.GUI_TEXTURED,
-         this.menu.getSlot(0).hasItem() ? TEXT_FIELD_SPRITE : TEXT_FIELD_DISABLED_SPRITE,
-         this.leftPos + 59,
-         this.topPos + 20,
-         110,
-         16
+         GuiPipeline.TEXTURED, this.menu.getSlot(0).hasItem() ? TEXT_FIELD_SPRITE : TEXT_FIELD_DISABLED_SPRITE, this.leftPos + 59, this.topPos + 20, 110, 16
       );
    }
 
    @Override
    protected void extractErrorIcon(final GuiGraphicsExtractor graphics, final int xo, final int yo) {
       if ((this.menu.getSlot(0).hasItem() || this.menu.getSlot(1).hasItem()) && !this.menu.getSlot(this.menu.getResultSlot()).hasItem()) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_SPRITE, xo + 99, yo + 45, 28, 21);
+         graphics.blitSprite(GuiPipeline.TEXTURED, ERROR_SPRITE, xo + 99, yo + 45, 28, 21);
       }
    }
 

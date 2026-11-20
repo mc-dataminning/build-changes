@@ -3,9 +3,12 @@ package com.mojang.renderpearl.backend.opengl;
 import com.mojang.renderpearl.api.GpuFormat;
 import com.mojang.renderpearl.util.UncheckedAutoCloseable;
 
-public sealed interface Uniform extends UncheckedAutoCloseable permits Uniform.Sampler, Uniform.Ubo, Uniform.Utb {
+public sealed interface Uniform extends UncheckedAutoCloseable permits Uniform.InputAttachment, Uniform.Sampler, Uniform.Ubo, Uniform.Utb {
    @Override
    default void close() {
+   }
+
+   record InputAttachment(int samplerIndex) implements Uniform {
    }
 
    record Sampler(int samplerIndex) implements Uniform {

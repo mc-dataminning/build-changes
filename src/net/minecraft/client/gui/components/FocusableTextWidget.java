@@ -150,7 +150,7 @@ public class FocusableTextWidget extends MultiLineTextWidget {
    public boolean keyPressed(final KeyEvent event) {
       if (this.isActive() && event.isSelection()) {
          Optional<Style> clickableStyle = this.getMessage()
-            .visit((style, text) -> style.getClickEvent() != null ? Optional.of(style) : Optional.empty(), Style.EMPTY);
+            .visit((style, text) -> style.getClickEvent() != null ? Optional.of(style) : Optional.empty(), Style.EMPTY, Style.EMPTY);
          if (clickableStyle.isPresent() && this.handleStyleClick(clickableStyle.get())) {
             return true;
          }

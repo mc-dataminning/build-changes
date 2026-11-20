@@ -7,7 +7,6 @@ import net.minecraft.network.chat.Style;
 
 public class StringDecomposer {
    private static final char REPLACEMENT_CHAR = '�';
-   private static final Optional<Object> STOP_ITERATION = Optional.of(Unit.INSTANCE);
 
    private static boolean feedChar(final Style style, final FormattedCharSink output, final int pos, final char ch) {
       return Character.isSurrogate(ch) ? output.accept(pos, style, 65533) : output.accept(pos, style, ch);
@@ -128,7 +127,10 @@ public class StringDecomposer {
    }
 
    public static boolean iterateFormatted(final FormattedText component, final Style rootStyle, final FormattedCharSink output) {
-      return component.visit((style, contents) -> iterateFormatted(contents, 0, style, output) ? Optional.empty() : STOP_ITERATION, rootStyle).isEmpty();
+      return component.visit(
+            (style, contents) -> iterateFormatted(contents, 0, style, output) ? Optional.empty() : FormattedText.STOP_ITERATION, Unit.INSTANCE, rootStyle
+         )
+         .isEmpty();
    }
 
    public static String filterBrokenSurrogates(final String input) {

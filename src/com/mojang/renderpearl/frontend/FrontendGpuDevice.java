@@ -285,8 +285,8 @@ public class FrontendGpuDevice implements GpuDevice {
                createInfo.uniforms(),
                ReferenceLists.unmodifiable(new ReferenceArrayList(createInfo.colorTargetStates())),
                createInfo.depthStencilState() != null,
-               createInfo.depthStencilFormat(),
-               createInfo.pushConstantsSize()
+               createInfo.pushConstantsSize(),
+               createInfo.subpass()
             );
       };
    }

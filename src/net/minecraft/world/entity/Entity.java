@@ -31,6 +31,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
+import java.util.function.BooleanSupplier;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 import net.minecraft.CrashReport;
@@ -141,7 +142,6 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
@@ -251,7 +251,6 @@ public abstract class Entity
    public int tickCount;
    private int remainingFireTicks;
    protected final EntityFluidInteraction fluidInteraction = new EntityFluidInteraction();
-   protected boolean wasEyeInWater;
    private int invulnerableTime;
    protected boolean firstTick = true;
    protected final SynchedEntityData entityData;
@@ -295,6 +294,7 @@ public abstract class Entity
    private float crystalSoundIntensity;
    private int lastCrystalSoundPlayTick;
    private boolean hasVisualFire;
+   private int extinguishSoundCooldown;
    private Vec3 lastKnownSpeed = Vec3.ZERO;
    private @Nullable Vec3 lastKnownPosition;
    private @Nullable BlockState inBlockState = null;
@@ -545,9 +545,9 @@ public abstract class Entity
          this.spawnSprintParticle();
       }
 
+      this.extinguishSoundCooldown--;
       this.wasInPowderSnow = this.isInPowderSnow;
       this.isInPowderSnow = false;
-      this.wasEyeInWater = this.isEyeInFluid(FluidTags.WATER);
       this.updateFluidInteraction();
       this.updateSwimming();
       if (this.level() instanceof ServerLevel serverLevel) {
@@ -564,10 +564,6 @@ public abstract class Entity
          }
       } else {
          this.clearFire();
-      }
-
-      if (this.isInLava()) {
-         this.fallDistance *= 0.5;
       }
 
       this.checkBelowWorld();
@@ -765,16 +761,6 @@ public abstract class Entity
          Vec3 movement = this.collide(delta);
          double movementLength = movement.lengthSqr();
          if (movementLength > 1.0E-7 || delta.lengthSqr() - movementLength < 1.0E-7) {
-            if (this.fallDistance != 0.0 && movementLength >= 1.0) {
-               double checkDistance = Math.min(movement.length(), 8.0);
-               Vec3 checkTo = this.position().add(movement.normalize().scale(checkDistance));
-               BlockHitResult hitResult = this.level()
-                  .clip(new ClipContext(this.position(), checkTo, ClipContext.Block.FALLDAMAGE_RESETTING, ClipContext.Fluid.WATER, this));
-               if (hitResult.getType() != HitResult.Type.MISS) {
-                  this.resetFallDistance();
-               }
-            }
-
             Vec3 pos = this.position();
             Vec3 newPosition = pos.add(movement);
             this.addMovementThisTick(new Entity.Movement(pos, newPosition, delta));
@@ -802,28 +788,20 @@ public abstract class Entity
 
          BlockPos effectPos = this.getOnPosLegacy();
          BlockState effectState = this.level().getBlockState(effectPos);
-         if (this.isLocalInstanceAuthoritative()) {
-            this.checkFallDamage(movement.y, this.onGround(), effectState, effectPos);
+         if (this.canSimulateMovement() && (movedVertically && this.verticalCollision || this.horizontalCollision)) {
+            this.restituteMovementAfterCollisions(effectState, xCollision, zCollision, movement);
          }
 
-         if (this.isRemoved()) {
-            profiler.pop();
-         } else {
-            if (this.canSimulateMovement() && (movedVertically && this.verticalCollision || this.horizontalCollision)) {
-               this.restituteMovementAfterCollisions(effectState, xCollision, zCollision, movement);
+         if (!this.level().isClientSide() || this.isLocalInstanceAuthoritative()) {
+            Entity.MovementEmission emission = this.getMovementEmission();
+            if (emission.emitsAnything() && !this.isPassenger()) {
+               this.applyMovementEmissionAndPlaySound(emission, movement, effectPos, effectState);
             }
-
-            if (!this.level().isClientSide() || this.isLocalInstanceAuthoritative()) {
-               Entity.MovementEmission emission = this.getMovementEmission();
-               if (emission.emitsAnything() && !this.isPassenger()) {
-                  this.applyMovementEmissionAndPlaySound(emission, movement, effectPos, effectState);
-               }
-            }
-
-            float blockSpeedFactor = this.getBlockSpeedFactor();
-            this.setDeltaMovement(this.getDeltaMovement().multiply(blockSpeedFactor, 1.0, blockSpeedFactor));
-            profiler.pop();
          }
+
+         float blockSpeedFactor = this.getBlockSpeedFactor();
+         this.setDeltaMovement(this.getDeltaMovement().multiply(blockSpeedFactor, 1.0, blockSpeedFactor));
+         profiler.pop();
       }
    }
 
@@ -983,9 +961,9 @@ public abstract class Entity
 
    private void applyEffectsFromBlocks(final List<Entity.Movement> movements) {
       if (this.isAffectedByBlocks()) {
+         BlockPos effectPos = this.getOnPosLegacy();
+         BlockState effectState = this.level().getBlockState(effectPos);
          if (this.onGround()) {
-            BlockPos effectPos = this.getOnPosLegacy();
-            BlockState effectState = this.level().getBlockState(effectPos);
             effectState.getBlock().stepOn(this.level(), effectPos, effectState, this);
          }
 
@@ -994,6 +972,16 @@ public abstract class Entity
          int previousRemainingFireTicks = this.getRemainingFireTicks();
          this.checkInsideBlocks(movements, this.insideEffectCollector);
          this.insideEffectCollector.applyAndClear(this);
+         if (this.isLocalInstanceAuthoritative()) {
+            double y = 0.0;
+
+            for (Entity.Movement movementPart : movements) {
+               y += movementPart.to.y - movementPart.from.y;
+            }
+
+            this.updateFallDistanceAndCheckFallDamage(y, this.onGround(), effectState, effectPos);
+         }
+
          if (this.isInRain()) {
             this.clearFire();
          }
@@ -1045,7 +1033,8 @@ public abstract class Entity
    }
 
    protected void playEntityOnFireExtinguishedSound() {
-      if (!this.level.isClientSide()) {
+      if (!this.level.isClientSide() && this.extinguishSoundCooldown <= 0) {
+         this.extinguishSoundCooldown = 20;
          this.level()
             .playSound(
                null,
@@ -1382,14 +1371,16 @@ public abstract class Entity
                VoxelShape intersectShape = state.getEntityInsideCollisionShape(this.level(), blockIntersection, this);
                boolean insideBlock = intersectShape == Shapes.block()
                   || this.collidedWithShapeMovingFrom(from, to, intersectShape.move(new Vec3(blockIntersection)).toAabbs());
-               boolean insideFluid = this.collidedWithFluid(state.getFluidState(), blockIntersection, from, to);
+               FluidState fluidState = state.getFluidState();
+               boolean insideFluid = this.collidedWithFluid(fluidState, blockIntersection, from, to);
                if ((insideBlock || insideFluid) && visitedBlocks.add(blockIntersection.asLong())) {
                   if (insideBlock) {
                      try {
                         boolean isPrecise = movedFar || deflatedBoundingBoxAtTarget.intersects(blockIntersection);
                         effectCollector.advanceStep(iteration);
                         state.entityInside(this.level(), blockIntersection, this, effectCollector, isPrecise);
-                        this.onInsideBlock(state);
+                        BooleanSupplier centerPassedThroughBlock = () -> intersectShape.clip(from, to, blockIntersection) != null;
+                        this.onInsideBlock(state, centerPassedThroughBlock);
                      } catch (Throwable t) {
                         CrashReport report = CrashReport.forThrowable(t, "Colliding entity with block");
                         CrashReportCategory category = report.addCategory("Block being collided with");
@@ -1402,7 +1393,8 @@ public abstract class Entity
 
                   if (insideFluid) {
                      effectCollector.advanceStep(iteration);
-                     state.getFluidState().entityInside(this.level(), blockIntersection, this, effectCollector);
+                     this.fluidInteraction.visitedFluidDuringMovement(fluidState.getType());
+                     fluidState.entityInside(this.level(), blockIntersection, this, effectCollector);
                   }
 
                   if (debugEntityBlockIntersections) {
@@ -1443,7 +1435,10 @@ public abstract class Entity
       return boundingBoxAtFrom.collidedAlongVector(travelVector, aabbs);
    }
 
-   protected void onInsideBlock(final BlockState state) {
+   protected void onInsideBlock(final BlockState state, final BooleanSupplier centerInsideBlock) {
+      if (state.is(BlockTags.FALL_DAMAGE_RESETTING) && centerInsideBlock.getAsBoolean()) {
+         this.resetFallDistance();
+      }
    }
 
    public BlockPos adjustSpawnLocation(final ServerLevel level, final BlockPos spawnSuggestion) {
@@ -1591,20 +1586,25 @@ public abstract class Entity
       return false;
    }
 
-   public final void doCheckFallDamage(final double xa, final double ya, final double za, final boolean onGround) {
+   public void updateFallDistanceAndCheckFallDamageForClientControlledEntity(final Vec3 movement, final boolean onGround) {
       if (!this.touchingUnloadedChunk()) {
-         this.checkSupportingBlock(onGround, new Vec3(xa, ya, za));
+         this.checkSupportingBlock(onGround, movement);
          BlockPos pos = this.getOnPosLegacy();
          BlockState state = this.level().getBlockState(pos);
-         this.checkFallDamage(ya, onGround, state, pos);
+         this.updateFallDistanceAndCheckFallDamage(movement.y, onGround, state, pos);
       }
    }
 
-   protected void checkFallDamage(final double ya, final boolean onGround, final BlockState onState, final BlockPos pos) {
-      if (!this.isInWater() && ya < 0.0) {
-         this.fallDistance -= (float)ya;
+   private void updateFallDistanceAndCheckFallDamage(final double movementY, final boolean onGround, final BlockState state, final BlockPos pos) {
+      if (movementY < 0.0) {
+         this.fallDistance -= (float)movementY;
       }
 
+      this.fallDistance = this.fallDistance * this.fluidInteraction.getFallDistanceMultiplier();
+      this.checkFallDamage(onGround, state, pos);
+   }
+
+   protected void checkFallDamage(final boolean onGround, final BlockState onState, final BlockPos pos) {
       if (onGround) {
          if (this.fallDistance > 0.0) {
             onState.getBlock().fallOn(this.level(), onState, pos, this, this.fallDistance);
@@ -1642,7 +1642,7 @@ public abstract class Entity
    }
 
    public boolean isInWater() {
-      return this.fluidInteraction.isInFluid(FluidTags.WATER);
+      return this.fluidInteraction.isInFluid(FluidIds.WATER);
    }
 
    private boolean isInRain() {
@@ -1655,19 +1655,31 @@ public abstract class Entity
    }
 
    public boolean isInLiquid() {
-      return this.isInWater() || this.isInLava();
+      return this.fluidInteraction.isInFluid();
+   }
+
+   public boolean isInSwimmableLiquid() {
+      return this.fluidInteraction.isInFluid(FluidTags.SWIMMABLE);
    }
 
    public boolean isInFloatableFluid() {
       return this.fluidInteraction.isInFluid(FluidTags.ENTITY_FLOATABLE);
    }
 
-   public boolean isUnderWater() {
-      return this.wasEyeInWater && this.isInWater();
-   }
-
    public boolean isInShallowWater() {
       return this.isInWater() && !this.isUnderWater();
+   }
+
+   public boolean isUnderWater() {
+      return this.fluidInteraction.isEyeInFluid(FluidIds.WATER);
+   }
+
+   public boolean isEyeInFluid(final TagKey<Fluid> type) {
+      return this.fluidInteraction.isEyeInFluid(type);
+   }
+
+   public boolean isInLava() {
+      return this.fluidInteraction.isInFluid(FluidIds.LAVA);
    }
 
    public boolean isInClouds() {
@@ -1686,21 +1698,19 @@ public abstract class Entity
 
    public void updateSwimming() {
       if (this.isSwimming()) {
-         this.setSwimming(this.isSprinting() && this.isInWater() && !this.isPassenger());
+         this.setSwimming(this.isSprinting() && this.isInSwimmableLiquid() && !this.isPassenger());
       } else {
          this.setSwimming(
-            this.isSprinting() && this.isUnderWater() && !this.isPassenger() && this.level().getFluidState(this.blockPosition).is(FluidTags.WATER)
+            this.isSprinting()
+               && this.isEyeInFluid(FluidTags.SWIMMABLE)
+               && !this.isPassenger()
+               && this.level().getFluidState(this.blockPosition).is(FluidTags.SWIMMABLE)
          );
       }
    }
 
    protected boolean updateFluidInteraction() {
       boolean inAnyFluid = this.fluidInteraction.update(this, !this.isPushedByFluid());
-      boolean inWater = this.fluidInteraction.isInFluid(FluidTags.WATER);
-      if (inWater) {
-         this.resetFallDistance();
-      }
-
       if (!this.firstTick) {
          this.fluidInteraction.forEnteredFluids(this::onEnterFluid);
       }
@@ -1759,7 +1769,7 @@ public abstract class Entity
    }
 
    public boolean canSpawnSprintParticle() {
-      return this.isSprinting() && !this.isInWater() && !this.isSpectator() && !this.isCrouching() && !this.isInLava() && this.isAlive();
+      return this.isSprinting() && !this.isInLiquid() && !this.isSpectator() && !this.isCrouching() && this.isAlive();
    }
 
    protected void spawnSprintParticle() {
@@ -1780,14 +1790,6 @@ public abstract class Entity
 
          this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockState), x, this.getY() + 0.1, z, movement.x * -4.0, 1.5, movement.z * -4.0);
       }
-   }
-
-   public boolean isEyeInFluid(final TagKey<Fluid> type) {
-      return this.fluidInteraction.isEyeInFluid(type);
-   }
-
-   public boolean isInLava() {
-      return !this.firstTick && this.fluidInteraction.isInFluid(FluidTags.LAVA);
    }
 
    public void moveRelative(final float speed, final Vec3 input) {
@@ -2298,14 +2300,14 @@ public abstract class Entity
    }
 
    public @Nullable ItemEntity spawnAtLocation(final ServerLevel level, final ItemStack itemStack, final Vec3 offset) {
-      if (itemStack.isEmpty()) {
+      if (!itemStack.isEmpty() && !itemStack.isBroken()) {
+         ItemEntity entity = new ItemEntity(level, this.getX() + offset.x, this.getY() + offset.y, this.getZ() + offset.z, itemStack);
+         entity.setDefaultPickUpDelay();
+         level.addFreshEntity(entity);
+         return entity;
+      } else {
          return null;
       }
-
-      ItemEntity entity = new ItemEntity(level, this.getX() + offset.x, this.getY() + offset.y, this.getZ() + offset.z, itemStack);
-      entity.setDefaultPickUpDelay();
-      level.addFreshEntity(entity);
-      return entity;
    }
 
    public @Nullable ItemEntity spawnAtLocation(final ServerLevel level, final ItemStack itemStack, final float offset) {
@@ -2824,7 +2826,7 @@ public abstract class Entity
    }
 
    public boolean isVisuallyCrawling() {
-      return this.isVisuallySwimming() && !this.isInWater();
+      return this.isVisuallySwimming() && !this.isInSwimmableLiquid();
    }
 
    public void setSwimming(final boolean swimming) {

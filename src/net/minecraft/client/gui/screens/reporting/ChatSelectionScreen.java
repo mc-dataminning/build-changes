@@ -10,6 +10,7 @@ import net.minecraft.Optionull;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ActiveTextCollector;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.TextAlignment;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.MultiLineLabel;
@@ -24,7 +25,6 @@ import net.minecraft.client.multiplayer.chat.GuiMessageTag;
 import net.minecraft.client.multiplayer.chat.LoggedChatMessage;
 import net.minecraft.client.multiplayer.chat.report.ChatReport;
 import net.minecraft.client.multiplayer.chat.report.ReportingContext;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.locale.Language;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
@@ -350,7 +350,7 @@ public class ChatSelectionScreen extends Screen {
          private void extractSelectedCheckmark(final GuiGraphicsExtractor graphics, final int rowTop, final int rowLeft, final int rowHeight) {
             int left = rowLeft;
             int top = rowTop + (rowHeight - 8) / 2;
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ChatSelectionScreen.CHECKMARK_SPRITE, left, top, 9, 8);
+            graphics.blitSprite(GuiPipeline.TEXTURED, ChatSelectionScreen.CHECKMARK_SPRITE, left, top, 9, 8);
          }
 
          private int getMaximumTextWidth() {

@@ -5,6 +5,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.MultiLineTextWidget;
 import net.minecraft.client.gui.components.ObjectSelectionList;
 import net.minecraft.client.gui.components.SelectableEntry;
@@ -12,7 +13,6 @@ import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.screens.ConfirmScreen;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.Style;
@@ -143,7 +143,7 @@ public class TransferableSelectionList extends ObjectSelectionList<TransferableS
             graphics.fill(x0, y0, x1, y1, -8978432);
          }
 
-         graphics.blit(RenderPipelines.GUI_TEXTURED, this.pack.getIconTexture(), this.getContentX(), this.getContentY(), 0.0F, 0.0F, 32, 32, 32, 32);
+         graphics.blit(GuiPipeline.TEXTURED, this.pack.getIconTexture(), this.getContentX(), this.getContentY(), 0.0F, 0.0F, 32, 32, 32, 32);
          if (!this.nameWidget.getMessage().equals(this.pack.getTitle())) {
             this.nameWidget.setMessage(this.pack.getTitle());
          }
@@ -163,48 +163,42 @@ public class TransferableSelectionList extends ObjectSelectionList<TransferableS
 
             if (this.pack.canSelect()) {
                if (this.mouseOverIcon(relX, relY, 32)) {
-                  graphics.blitSprite(
-                     RenderPipelines.GUI_TEXTURED, TransferableSelectionList.SELECT_HIGHLIGHTED_SPRITE, this.getContentX(), this.getContentY(), 32, 32
-                  );
+                  graphics.blitSprite(GuiPipeline.TEXTURED, TransferableSelectionList.SELECT_HIGHLIGHTED_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
                   TransferableSelectionList.this.handleCursor(graphics);
                } else {
-                  graphics.blitSprite(RenderPipelines.GUI_TEXTURED, TransferableSelectionList.SELECT_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
+                  graphics.blitSprite(GuiPipeline.TEXTURED, TransferableSelectionList.SELECT_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
                }
             } else {
                if (this.pack.canUnselect()) {
                   if (this.mouseOverLeftHalf(relX, relY, 32)) {
                      graphics.blitSprite(
-                        RenderPipelines.GUI_TEXTURED, TransferableSelectionList.UNSELECT_HIGHLIGHTED_SPRITE, this.getContentX(), this.getContentY(), 32, 32
+                        GuiPipeline.TEXTURED, TransferableSelectionList.UNSELECT_HIGHLIGHTED_SPRITE, this.getContentX(), this.getContentY(), 32, 32
                      );
                      TransferableSelectionList.this.handleCursor(graphics);
                   } else {
-                     graphics.blitSprite(
-                        RenderPipelines.GUI_TEXTURED, TransferableSelectionList.UNSELECT_SPRITE, this.getContentX(), this.getContentY(), 32, 32
-                     );
+                     graphics.blitSprite(GuiPipeline.TEXTURED, TransferableSelectionList.UNSELECT_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
                   }
                }
 
                if (this.pack.canMoveUp()) {
                   if (this.mouseOverTopRightQuarter(relX, relY, 32)) {
                      graphics.blitSprite(
-                        RenderPipelines.GUI_TEXTURED, TransferableSelectionList.MOVE_UP_HIGHLIGHTED_SPRITE, this.getContentX(), this.getContentY(), 32, 32
+                        GuiPipeline.TEXTURED, TransferableSelectionList.MOVE_UP_HIGHLIGHTED_SPRITE, this.getContentX(), this.getContentY(), 32, 32
                      );
                      TransferableSelectionList.this.handleCursor(graphics);
                   } else {
-                     graphics.blitSprite(RenderPipelines.GUI_TEXTURED, TransferableSelectionList.MOVE_UP_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
+                     graphics.blitSprite(GuiPipeline.TEXTURED, TransferableSelectionList.MOVE_UP_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
                   }
                }
 
                if (this.pack.canMoveDown()) {
                   if (this.mouseOverBottomRightQuarter(relX, relY, 32)) {
                      graphics.blitSprite(
-                        RenderPipelines.GUI_TEXTURED, TransferableSelectionList.MOVE_DOWN_HIGHLIGHTED_SPRITE, this.getContentX(), this.getContentY(), 32, 32
+                        GuiPipeline.TEXTURED, TransferableSelectionList.MOVE_DOWN_HIGHLIGHTED_SPRITE, this.getContentX(), this.getContentY(), 32, 32
                      );
                      TransferableSelectionList.this.handleCursor(graphics);
                   } else {
-                     graphics.blitSprite(
-                        RenderPipelines.GUI_TEXTURED, TransferableSelectionList.MOVE_DOWN_SPRITE, this.getContentX(), this.getContentY(), 32, 32
-                     );
+                     graphics.blitSprite(GuiPipeline.TEXTURED, TransferableSelectionList.MOVE_DOWN_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
                   }
                }
             }

@@ -15,6 +15,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.HotbarManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.social.EntityPortraitWidget;
 import net.minecraft.client.input.CharacterEvent;
@@ -25,7 +26,6 @@ import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.client.multiplayer.SessionSearchTrees;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.player.inventory.Hotbar;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.searchtree.SearchTree;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
@@ -750,7 +750,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
       }
 
       graphics.blit(
-         RenderPipelines.GUI_TEXTURED, selectedTab.getBackgroundTexture(), this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256
+         GuiPipeline.TEXTURED, selectedTab.getBackgroundTexture(), this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256
       );
       if (this.insideScrollbar(graphics.mouseX(), graphics.mouseY())) {
          if (this.canScroll()) {
@@ -766,7 +766,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
       int yscr2 = yscr + 112;
       if (selectedTab.canScroll()) {
          Identifier sprite = this.canScroll() ? SCROLLER_SPRITE : SCROLLER_DISABLED_SPRITE;
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, xscr, yscr + (int)((yscr2 - yscr - 17) * this.scrollOffs), 12, 15);
+         graphics.blitSprite(GuiPipeline.TEXTURED, sprite, xscr, yscr + (int)((yscr2 - yscr - 17) * this.scrollOffs), 12, 15);
       }
 
       this.extractTabButton(graphics, selectedTab);
@@ -833,7 +833,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
          graphics.requestCursor(CursorTypes.POINTING_HAND);
       }
 
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprites[Math.clamp(pos, 0, sprites.length)], x, y, 26, 32);
+      graphics.blitSprite(GuiPipeline.TEXTURED, sprites[Math.clamp(pos, 0, sprites.length)], x, y, 26, 32);
       int iconX = x + 13 - 8;
       int iconY = y + 16 - 8 + (isTop ? 1 : -1);
       graphics.item(tab.getIconItem(), iconX, iconY);

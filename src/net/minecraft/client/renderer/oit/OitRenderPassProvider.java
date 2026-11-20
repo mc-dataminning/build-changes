@@ -6,9 +6,9 @@ import com.mojang.renderpearl.api.commands.RenderPassDescriptor;
 import com.mojang.renderpearl.api.textures.FilterMode;
 import com.mojang.renderpearl.api.textures.GpuSampler;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.util.Optional;
 import java.util.function.Supplier;
 import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.RenderPassLayouts;
 
 public class OitRenderPassProvider {
    public static RenderPass createRenderPass(
@@ -25,11 +25,15 @@ public class OitRenderPassProvider {
    private static RenderPass createDepthBoundsPass(
       final Supplier<String> label, final OitRenderPassProvider.Parameters params, final boolean shouldClearTargets
    ) {
-      RenderPassDescriptor descriptor = RenderPassDescriptor.builder(() -> "OIT Depth Bounds for " + label.get())
-         .withColorAttachment(params.depthBoundsTargetView, shouldClearTargets ? Optional.of(LevelRenderer.DEPTH_BOUNDS_CLEAR_COLOR) : Optional.empty())
-         .withDepthAttachment(params.depthTextureView)
-         .build();
-      RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(descriptor);
+      RenderPassDescriptor.Builder descriptor = RenderPassDescriptor.builder(() -> "OIT Depth Bounds for " + label.get(), RenderPassLayouts.OIT_DEPTH_BOUNDS);
+      if (shouldClearTargets) {
+         descriptor.withAttachment(params.depthBoundsTargetView, LevelRenderer.DEPTH_BOUNDS_CLEAR_COLOR);
+      } else {
+         descriptor.withAttachment(params.depthBoundsTargetView);
+      }
+
+      descriptor.withAttachment(params.depthTextureView);
+      RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(descriptor.build());
       RenderSystem.bindDefaultUniforms(renderPass);
       return renderPass;
    }
@@ -37,13 +41,17 @@ public class OitRenderPassProvider {
    private static RenderPass createTransmittancePass(
       final Supplier<String> label, final OitRenderPassProvider.Parameters params, final boolean shouldClearTargets
    ) {
-      RenderPassDescriptor.Builder descriptor = RenderPassDescriptor.builder(() -> "OIT Transmittance for " + label.get())
-         .withDepthAttachment(params.depthTextureView);
+      RenderPassDescriptor.Builder descriptor = RenderPassDescriptor.builder(() -> "OIT Transmittance for " + label.get(), RenderPassLayouts.OIT_TRANSMITTANCE);
 
       for (int i = 0; i < 2; i++) {
-         descriptor.withColorAttachment(params.transmittanceTargetViews[i], shouldClearTargets ? Optional.of(LevelRenderer.ZERO_CLEAR_COLOR) : Optional.empty());
+         if (shouldClearTargets) {
+            descriptor.withAttachment(params.transmittanceTargetViews[i], LevelRenderer.ZERO_CLEAR_COLOR);
+         } else {
+            descriptor.withAttachment(params.transmittanceTargetViews[i]);
+         }
       }
 
+      descriptor.withAttachment(params.depthTextureView);
       GpuSampler nearestSampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST);
       RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(descriptor.build());
       RenderSystem.bindDefaultUniforms(renderPass);
@@ -52,11 +60,15 @@ public class OitRenderPassProvider {
    }
 
    private static RenderPass createAccumulatePass(final Supplier<String> label, final OitRenderPassProvider.Parameters params, final boolean shouldClearTargets) {
-      RenderPassDescriptor descriptor = RenderPassDescriptor.builder(() -> "OIT Accumulate for " + label.get())
-         .withColorAttachment(params.accumulateTargetView, shouldClearTargets ? Optional.of(LevelRenderer.ZERO_CLEAR_COLOR) : Optional.empty())
-         .withDepthAttachment(params.depthTextureView)
-         .build();
-      RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(descriptor);
+      RenderPassDescriptor.Builder descriptor = RenderPassDescriptor.builder(() -> "OIT Accumulate for " + label.get(), RenderPassLayouts.OIT_ACCUMULATE);
+      if (shouldClearTargets) {
+         descriptor.withAttachment(params.accumulateTargetView, LevelRenderer.ZERO_CLEAR_COLOR);
+      } else {
+         descriptor.withAttachment(params.accumulateTargetView);
+      }
+
+      descriptor.withAttachment(params.depthTextureView);
+      RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(descriptor.build());
       GpuSampler nearestSampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST);
       RenderSystem.bindDefaultUniforms(renderPass);
 

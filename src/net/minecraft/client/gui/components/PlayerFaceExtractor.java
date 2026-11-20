@@ -2,8 +2,8 @@ package net.minecraft.client.gui.components;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.PlayerSkin;
 import net.minecraft.world.item.component.ResolvableProfile;
@@ -46,7 +46,7 @@ public class PlayerFaceExtractor {
    ) {
       int skinHeadV = 8 + (flip ? 8 : 0);
       int skinHeadHeight = 8 * (flip ? -1 : 1);
-      graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 8.0F, skinHeadV, size, size, 8, skinHeadHeight, 64, 64, color);
+      graphics.blit(GuiPipeline.TEXTURED, texture, x, y, 8.0F, skinHeadV, size, size, 8, skinHeadHeight, 64, 64, color);
       if (hat) {
          extractHat(graphics, texture, x, y, size, flip, color);
       }
@@ -57,6 +57,6 @@ public class PlayerFaceExtractor {
    ) {
       int skinHatV = 8 + (flip ? 8 : 0);
       int skinHatHeight = 8 * (flip ? -1 : 1);
-      graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 40.0F, skinHatV, size, size, 8, skinHatHeight, 64, 64, color);
+      graphics.blit(GuiPipeline.TEXTURED, texture, x, y, 40.0F, skinHatV, size, size, 8, skinHatHeight, 64, 64, color);
    }
 }

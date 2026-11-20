@@ -9,7 +9,7 @@ import org.lwjgl.util.spvc.Spvc;
 import org.lwjgl.util.spvc.SpvcReflectedResource;
 
 public class SpvUtil {
-   public static final IntList DESCRIPTOR_TYPES = IntList.of(new int[]{1, 2, 6, 7, 10, 11});
+   public static final IntList DESCRIPTOR_TYPES = IntList.of(new int[]{5, 1, 2, 6, 7, 10, 11});
 
    public static void crashIfError(final int result, final String message) {
       if (result != 0) {
@@ -46,6 +46,7 @@ public class SpvUtil {
          case COMBINED_IMAGE_SAMPLER -> 7;
          case UNIFORM_BUFFER -> 1;
          case TEXEL_BUFFER -> 7;
+         case INPUT_ATTACHMENT -> 5;
       };
    }
 

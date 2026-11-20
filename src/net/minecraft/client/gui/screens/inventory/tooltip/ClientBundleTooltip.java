@@ -4,7 +4,7 @@ import com.mojang.serialization.DataResult;
 import java.util.List;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -153,15 +153,15 @@ public class ClientBundleTooltip implements ClientTooltipComponent {
       boolean hasHighlight = itemVisualOrderIndex == this.contents.getSelectedItemIndex();
       ItemStack item = shownItems.get(itemVisualOrderIndex).create();
       if (hasHighlight) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_HIGHLIGHT_BACK_SPRITE, drawX, drawY, 24, 24);
+         graphics.blitSprite(GuiPipeline.TEXTURED, SLOT_HIGHLIGHT_BACK_SPRITE, drawX, drawY, 24, 24);
       } else {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_BACKGROUND_SPRITE, drawX, drawY, 24, 24);
+         graphics.blitSprite(GuiPipeline.TEXTURED, SLOT_BACKGROUND_SPRITE, drawX, drawY, 24, 24);
       }
 
       graphics.item(item, drawX + 4, drawY + 4, slotIndex);
       graphics.itemDecorations(font, item, drawX + 4, drawY + 4);
       if (hasHighlight) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_HIGHLIGHT_FRONT_SPRITE, drawX, drawY, 24, 24);
+         graphics.blitSprite(GuiPipeline.TEXTURED, SLOT_HIGHLIGHT_FRONT_SPRITE, drawX, drawY, 24, 24);
       }
    }
 
@@ -190,8 +190,8 @@ public class ClientBundleTooltip implements ClientTooltipComponent {
    }
 
    private static void extractProgressbar(final int x, final int y, final Font font, final GuiGraphicsExtractor graphics, final Fraction weight) {
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, getProgressBarTexture(weight), x + 1, y, getProgressBarFill(weight), 13);
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, PROGRESSBAR_BORDER_SPRITE, x, y, 96, 13);
+      graphics.blitSprite(GuiPipeline.TEXTURED, getProgressBarTexture(weight), x + 1, y, getProgressBarFill(weight), 13);
+      graphics.blitSprite(GuiPipeline.TEXTURED, PROGRESSBAR_BORDER_SPRITE, x, y, 96, 13);
       Component progressBarFillText = getProgressBarFillText(weight);
       if (progressBarFillText != null) {
          graphics.centeredText(font, progressBarFillText, x + 48, y + 3, -1);

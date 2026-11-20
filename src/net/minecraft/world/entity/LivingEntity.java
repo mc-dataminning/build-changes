@@ -358,11 +358,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
    }
 
    @Override
-   protected void checkFallDamage(final double ya, final boolean onGround, final BlockState onState, final BlockPos pos) {
-      if (!this.isInWater()) {
-         this.updateFluidInteraction();
-      }
-
+   protected void checkFallDamage(final boolean onGround, final BlockState onState, final BlockPos pos) {
       if (this.level() instanceof ServerLevel level && onGround && this.fallDistance > 0.0) {
          this.onChangedBlock(level, pos);
          double power = Math.max(0, Mth.floor(this.calculateFallPower(this.fallDistance)));
@@ -385,7 +381,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
          }
       }
 
-      super.checkFallDamage(ya, onGround, onState, pos);
+      super.checkFallDamage(onGround, onState, pos);
       if (onGround) {
          this.lastClimbablePos = Optional.empty();
       }

@@ -19,8 +19,9 @@ import net.minecraft.util.profiling.metrics.MetricSampler;
 import net.minecraft.util.profiling.metrics.MetricsRegistry;
 import net.minecraft.util.profiling.metrics.MetricsSamplerProvider;
 import org.slf4j.Logger;
-import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
+import oshi.spi.SystemInfoFactory;
+import oshi.spi.SystemInfoProvider;
 
 public class ServerMetricsSamplersProvider implements MetricsSamplerProvider {
    private static final Logger LOGGER = LogUtils.getLogger();
@@ -84,7 +85,7 @@ public class ServerMetricsSamplersProvider implements MetricsSamplerProvider {
    }
 
    public static class CpuStats {
-      private final SystemInfo systemInfo = new SystemInfo();
+      private final SystemInfoProvider systemInfo = SystemInfoFactory.create();
       private final CentralProcessor processor = this.systemInfo.getHardware().getProcessor();
       public final int nrOfCpus = this.processor.getLogicalProcessorCount();
       private long[][] previousCpuLoadTick = this.processor.getProcessorCpuLoadTicks();

@@ -98,8 +98,6 @@ import net.minecraft.world.level.chunk.storage.SerializableChunkData;
 import net.minecraft.world.level.chunk.storage.SimpleRegionStorage;
 import net.minecraft.world.level.entity.ChunkStatusUpdateListener;
 import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
-import net.minecraft.world.level.levelgen.NoiseRouterData;
 import net.minecraft.world.level.levelgen.RandomState;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.minecraft.world.level.storage.LevelStorageSource;
@@ -176,12 +174,7 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
       this.level = level;
       RegistryAccess registryAccess = level.registryAccess();
       long levelSeed = level.getSeed();
-      if (generator instanceof NoiseBasedChunkGenerator noiseGenerator) {
-         this.randomState = RandomState.create(registryAccess.lookupOrThrow(Registries.NOISE), levelSeed, noiseGenerator.generatorSettings().value());
-      } else {
-         this.randomState = RandomState.create(registryAccess.lookupOrThrow(Registries.NOISE), levelSeed, false, 63, NoiseRouterData.none());
-      }
-
+      this.randomState = RandomState.createForGenerator(registryAccess.lookupOrThrow(Registries.NOISE), levelSeed, generator, level);
       this.chunkGeneratorState = generator.createState(registryAccess.lookupOrThrow(Registries.STRUCTURE_SET), this.randomState, levelSeed);
       this.mainThreadExecutor = mainThreadExecutor;
       ConsecutiveExecutor worldgen = new ConsecutiveExecutor(executor, "worldgen");
@@ -1202,10 +1195,7 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
             }
 
             trackedEntity.lastSectionPos = newPos;
-         }
-
-         if (sectionPosChanged || trackedEntity.entity.needsSync || this.distanceManager.inEntityTickingRange(newPos.chunk().pack())) {
-            trackedEntity.serverEntity.sendChanges();
+            trackedEntity.sectionPosChanged = true;
          }
       }
 
@@ -1216,6 +1206,15 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
             ChunkMap.TrackedEntity trackedEntity = (ChunkMap.TrackedEntity)var3.next();
             trackedEntity.updatePlayers(movedPlayers);
          }
+      }
+   }
+
+   protected void sendEntityChanges() {
+      ObjectIterator var1 = this.entityMap.values().iterator();
+
+      while (var1.hasNext()) {
+         ChunkMap.TrackedEntity trackedEntity = (ChunkMap.TrackedEntity)var1.next();
+         trackedEntity.sendChanges();
       }
    }
 
@@ -1334,6 +1333,7 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
       private final Entity entity;
       private final int range;
       private SectionPos lastSectionPos;
+      private boolean sectionPosChanged;
       private final Set<ServerPlayerConnection> seenBy = Sets.newIdentityHashSet();
 
       public TrackedEntity(final Entity entity, final int range, final UpdateInterval updateInterval, final boolean trackDelta) {
@@ -1437,6 +1437,13 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
       public void updatePlayers(final List<ServerPlayer> players) {
          for (ServerPlayer player : players) {
             this.updatePlayer(player);
+         }
+      }
+
+      public void sendChanges() {
+         if (this.sectionPosChanged || this.entity.needsSync || ChunkMap.this.distanceManager.inEntityTickingRange(this.lastSectionPos.chunk().pack())) {
+            this.serverEntity.sendChanges();
+            this.sectionPosChanged = false;
          }
       }
    }

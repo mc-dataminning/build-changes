@@ -15,11 +15,11 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.LogoRenderer;
 import net.minecraft.client.gui.render.TextureSetup;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.renderer.blockentity.AbstractEndPortalRenderer;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.renderer.texture.TextureHandle;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.network.chat.CommonComponents;
@@ -280,7 +280,7 @@ public class WinScreen extends Screen {
    }
 
    private void extractVignette(final GuiGraphicsExtractor graphics) {
-      graphics.blit(RenderPipelines.VIGNETTE, VIGNETTE_LOCATION, 0, 0, 0.0F, 0.0F, this.width, this.height, this.width, this.height);
+      graphics.blit(GuiPipeline.VIGNETTE, VIGNETTE_LOCATION, 0, 0, 0.0F, 0.0F, this.width, this.height, this.width, this.height);
    }
 
    @Override
@@ -292,7 +292,7 @@ public class WinScreen extends Screen {
          TextureSetup textureSetup = TextureSetup.doubleTexture(
             skyTexture.textureView(), skyTexture.sampler(), portalTexture.textureView(), portalTexture.sampler()
          );
-         graphics.fill(RenderPipelines.endPortal(new RenderPipelines.EndPortalParameters(false, true)), textureSetup, 0, 0, this.width, this.height);
+         graphics.fill(GuiPipeline.END_PORTAL, textureSetup, 0, 0, this.width, this.height);
       } else {
          super.extractBackground(graphics);
       }

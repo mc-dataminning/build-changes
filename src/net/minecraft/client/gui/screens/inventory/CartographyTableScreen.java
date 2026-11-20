@@ -1,7 +1,7 @@
 package net.minecraft.client.gui.screens.inventory;
 
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.renderer.state.MapRenderState;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
@@ -35,7 +35,7 @@ public class CartographyTableScreen extends AbstractContainerScreen<CartographyT
       super.extractBackground(graphics);
       int xo = this.leftPos;
       int yo = this.topPos;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, BG_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
+      graphics.blit(GuiPipeline.TEXTURED, BG_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
       ItemStack additionalItem = this.menu.getSlot(1).getItem();
       boolean isDuplication = additionalItem.is(Items.MAP);
       boolean isScaling = additionalItem.is(Items.PAPER);
@@ -50,13 +50,13 @@ public class CartographyTableScreen extends AbstractContainerScreen<CartographyT
             if (mapData.locked) {
                locked = true;
                if (isScaling || isLocking) {
-                  graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_SPRITE, xo + 35, yo + 31, 28, 21);
+                  graphics.blitSprite(GuiPipeline.TEXTURED, ERROR_SPRITE, xo + 35, yo + 31, 28, 21);
                }
             }
 
             if (isScaling && (!map.is(ItemTags.EXTENDABLE_MAPS) || mapData.scale >= 4)) {
                locked = true;
-               graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_SPRITE, xo + 35, yo + 31, 28, 21);
+               graphics.blitSprite(GuiPipeline.TEXTURED, ERROR_SPRITE, xo + 35, yo + 31, 28, 21);
             }
          }
       } else {
@@ -78,20 +78,20 @@ public class CartographyTableScreen extends AbstractContainerScreen<CartographyT
       int xo = this.leftPos;
       int yo = this.topPos;
       if (isScaling && !locked) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SCALED_MAP_SPRITE, xo + 67, yo + 13, 66, 66);
+         graphics.blitSprite(GuiPipeline.TEXTURED, SCALED_MAP_SPRITE, xo + 67, yo + 13, 66, 66);
          this.extractMap(graphics, id, data, xo + 85, yo + 31, 0.226F);
       } else if (isDuplication) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, DUPLICATED_MAP_SPRITE, xo + 67 + 16, yo + 13, 50, 66);
+         graphics.blitSprite(GuiPipeline.TEXTURED, DUPLICATED_MAP_SPRITE, xo + 67 + 16, yo + 13, 50, 66);
          this.extractMap(graphics, id, data, xo + 86, yo + 16, 0.34F);
          graphics.nextStratum();
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, DUPLICATED_MAP_SPRITE, xo + 67, yo + 13 + 16, 50, 66);
+         graphics.blitSprite(GuiPipeline.TEXTURED, DUPLICATED_MAP_SPRITE, xo + 67, yo + 13 + 16, 50, 66);
          this.extractMap(graphics, id, data, xo + 70, yo + 32, 0.34F);
       } else if (isLocking) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, MAP_SPRITE, xo + 67, yo + 13, 66, 66);
+         graphics.blitSprite(GuiPipeline.TEXTURED, MAP_SPRITE, xo + 67, yo + 13, 66, 66);
          this.extractMap(graphics, id, data, xo + 71, yo + 17, 0.45F);
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, LOCKED_SPRITE, xo + 118, yo + 60, 10, 14);
+         graphics.blitSprite(GuiPipeline.TEXTURED, LOCKED_SPRITE, xo + 118, yo + 60, 10, 14);
       } else {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, MAP_SPRITE, xo + 67, yo + 13, 66, 66);
+         graphics.blitSprite(GuiPipeline.TEXTURED, MAP_SPRITE, xo + 67, yo + 13, 66, 66);
          this.extractMap(graphics, id, data, xo + 71, yo + 17, 0.45F);
       }
    }

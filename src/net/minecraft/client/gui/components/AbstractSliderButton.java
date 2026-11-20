@@ -4,11 +4,11 @@ import com.mojang.blaze3d.platform.cursor.CursorTypes;
 import net.minecraft.client.InputType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.sounds.SoundManager;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -64,9 +64,9 @@ public abstract class AbstractSliderButton extends AbstractWidget.WithInactiveMe
 
    @Override
    public void extractWidgetRenderState(final GuiGraphicsExtractor graphics) {
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.getSprite(), this.getX(), this.getY(), this.getWidth(), this.getHeight(), ARGB.white(this.alpha));
+      graphics.blitSprite(GuiPipeline.TEXTURED, this.getSprite(), this.getX(), this.getY(), this.getWidth(), this.getHeight(), ARGB.white(this.alpha));
       graphics.blitSprite(
-         RenderPipelines.GUI_TEXTURED,
+         GuiPipeline.TEXTURED,
          this.getHandleSprite(),
          this.getX() + (int)(this.value * (this.width - 8)),
          this.getY(),

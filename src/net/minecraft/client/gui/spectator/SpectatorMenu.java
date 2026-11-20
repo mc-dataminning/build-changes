@@ -4,8 +4,8 @@ import com.google.common.base.MoreObjects;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.spectator.categories.SpectatorPage;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -127,9 +127,7 @@ public class SpectatorMenu {
 
       @Override
       public void extractIcon(final GuiGraphicsExtractor graphics, final float brightness, final float alpha) {
-         graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED, SpectatorMenu.CLOSE_SPRITE, 0, 0, 16, 16, ARGB.colorFromFloat(alpha, brightness, brightness, brightness)
-         );
+         graphics.blitSprite(GuiPipeline.TEXTURED, SpectatorMenu.CLOSE_SPRITE, 0, 0, 16, 16, ARGB.colorFromFloat(alpha, brightness, brightness, brightness));
       }
 
       @Override
@@ -161,9 +159,9 @@ public class SpectatorMenu {
       public void extractIcon(final GuiGraphicsExtractor graphics, final float brightness, final float alpha) {
          int color = ARGB.colorFromFloat(alpha, brightness, brightness, brightness);
          if (this.direction < 0) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SpectatorMenu.SCROLL_LEFT_SPRITE, 0, 0, 16, 16, color);
+            graphics.blitSprite(GuiPipeline.TEXTURED, SpectatorMenu.SCROLL_LEFT_SPRITE, 0, 0, 16, 16, color);
          } else {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SpectatorMenu.SCROLL_RIGHT_SPRITE, 0, 0, 16, 16, color);
+            graphics.blitSprite(GuiPipeline.TEXTURED, SpectatorMenu.SCROLL_RIGHT_SPRITE, 0, 0, 16, 16, color);
          }
       }
 

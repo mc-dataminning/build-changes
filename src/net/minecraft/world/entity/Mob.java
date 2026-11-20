@@ -589,8 +589,7 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
       Vec3 equipmentSpawnOffset = this.getAttachments().getAverage(EntityAttachment.PASSENGER);
       this.setItemSlot(slot, ItemStack.EMPTY);
       this.gameEvent(GameEvent.SHEAR, player);
-      if (this.level() instanceof ServerLevel serverLevel) {
-         this.spawnAtLocation(serverLevel, itemStackToShear, equipmentSpawnOffset);
+      if (this.level() instanceof ServerLevel serverLevel && this.spawnAtLocation(serverLevel, itemStackToShear, equipmentSpawnOffset) != null) {
          CriteriaTriggers.PLAYER_SHEARED_EQUIPMENT.trigger((ServerPlayer)player, itemStackToShear, this);
       }
    }

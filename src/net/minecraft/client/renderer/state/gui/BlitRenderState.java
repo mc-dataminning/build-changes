@@ -1,7 +1,7 @@
 package net.minecraft.client.renderer.state.gui;
 
-import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.client.gui.render.TextureSetup;
 import org.joml.Matrix3x2f;
@@ -9,7 +9,7 @@ import org.joml.Matrix3x2fc;
 import org.jspecify.annotations.Nullable;
 
 public record BlitRenderState(
-   RenderPipeline pipeline,
+   GuiPipeline pipeline,
    TextureSetup textureSetup,
    Matrix3x2fc pose,
    int x0,
@@ -25,7 +25,7 @@ public record BlitRenderState(
    @Nullable ScreenRectangle bounds
 ) implements GuiElementRenderState {
    public BlitRenderState(
-      final RenderPipeline pipeline,
+      final GuiPipeline pipeline,
       final TextureSetup textureSetup,
       final Matrix3x2f pose,
       final int x0,

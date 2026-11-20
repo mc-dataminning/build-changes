@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.layouts.FrameLayout;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -99,11 +100,18 @@ public class PopupScreen extends Screen {
    }
 
    @Override
+   public void update(final DeltaTracker deltaTracker) {
+      if (this.backgroundScreen != null) {
+         this.backgroundScreen.update(deltaTracker);
+      }
+
+      super.update(deltaTracker);
+   }
+
+   @Override
    public void extractBackground(final GuiGraphicsExtractor graphics) {
       if (this.backgroundScreen != null) {
-         this.backgroundScreen.extractBackground(graphics);
-         graphics.nextStratum();
-         this.backgroundScreen.extractRenderState(graphics);
+         extractBackgroundScreen(graphics, this.backgroundScreen);
          graphics.nextStratum();
          this.extractTransparentBackground(graphics);
       } else {
@@ -111,12 +119,7 @@ public class PopupScreen extends Screen {
       }
 
       graphics.blitSprite(
-         RenderPipelines.GUI_TEXTURED,
-         BACKGROUND_SPRITE,
-         this.layout.getX() - 18,
-         this.layout.getY() - 18,
-         this.layout.getWidth() + 36,
-         this.layout.getHeight() + 36
+         GuiPipeline.TEXTURED, BACKGROUND_SPRITE, this.layout.getX() - 18, this.layout.getY() - 18, this.layout.getWidth() + 36, this.layout.getHeight() + 36
       );
    }
 

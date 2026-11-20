@@ -424,8 +424,13 @@ public class Zombie extends Monster {
       super.addAdditionalSaveData(output);
       output.putBoolean("IsBaby", this.isBaby());
       output.putBoolean("CanBreakDoors", this.canBreakDoors());
-      this.drowningTracker.addAdditionalSaveData(output);
-      this.freezingTracker.addAdditionalSaveData(output);
+      if (this.convertsInWater()) {
+         this.drowningTracker.addAdditionalSaveData(output);
+      }
+
+      if (this.convertsWhenFreezing()) {
+         this.freezingTracker.addAdditionalSaveData(output);
+      }
    }
 
    @Override
@@ -433,8 +438,13 @@ public class Zombie extends Monster {
       super.readAdditionalSaveData(input);
       this.setBaby(input.getBooleanOr("IsBaby", false));
       this.setCanBreakDoors(input.getBooleanOr("CanBreakDoors", false));
-      this.drowningTracker.readAdditionalSaveData(input);
-      this.freezingTracker.readAdditionalSaveData(input);
+      if (this.convertsInWater()) {
+         this.drowningTracker.readAdditionalSaveData(input);
+      }
+
+      if (this.convertsWhenFreezing()) {
+         this.freezingTracker.readAdditionalSaveData(input);
+      }
    }
 
    @Override

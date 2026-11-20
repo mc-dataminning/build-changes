@@ -167,6 +167,7 @@ public final class NoiseBasedChunkGenerator extends ChunkGenerator {
       final RandomState randomState,
       final @Nullable WorldGenRegion carverBiomeRegion,
       final NoiseBiomeResolver noiseBiomeResolver,
+      final LevelHeightAccessor heightAccessor,
       final VerticalAnchor.Context verticalAnchorContext
    ) {
       if (SharedConstants.DEBUG_DISABLE_CARVERS) {
@@ -177,8 +178,8 @@ public final class NoiseBasedChunkGenerator extends ChunkGenerator {
       int range = 8;
       ChunkPos pos = chunk.getPos();
       int protectedBlocksOnTop = chunk.isUpgrading() ? 0 : 7;
-      int maxY = verticalAnchorContext.maxY() - protectedBlocksOnTop;
-      CarvingMask mask = new CarvingMask(verticalAnchorContext.minY() + 1, maxY);
+      int maxY = heightAccessor.getMaxY() - protectedBlocksOnTop;
+      CarvingMask mask = new CarvingMask(heightAccessor.getMinY() + 1, maxY);
 
       for (int dx = -8; dx <= 8; dx++) {
          for (int dz = -8; dz <= 8; dz++) {
@@ -254,24 +255,19 @@ public final class NoiseBasedChunkGenerator extends ChunkGenerator {
       try (NoiseChunk noiseChunk = this.createNoiseChunk(randomState, volume, chunkSamplerFields)) {
          Climate.Sampler noiseClimateSampler = this.settings.value().noiseRouter().createClimateSampler(noiseChunk.cachingSamplers());
          NoiseBiomeResolver noiseBiomeResolver = this.biomeSource.createResolver(noiseClimateSampler);
-         VerticalAnchor.Context verticalAnchorContext = VerticalAnchor.Context.from(this, chunk.getHeightAccessorForGeneration());
 
          CarvingMask carvingMask;
          try (Zone terrainBuilder = profiler.zone("generateCarvingMask")) {
-            carvingMask = this.generateCarvingMask(chunk, blender, randomState, carverBiomeRegion, noiseBiomeResolver, verticalAnchorContext);
+            carvingMask = this.generateCarvingMask(
+               chunk, blender, randomState, carverBiomeRegion, noiseBiomeResolver, chunk.getHeightAccessorForGeneration(), randomState.verticalAnchors()
+            );
          }
 
          ChunkTerrainBuilder terrainBuilder = new ChunkTerrainBuilder(
-            randomState,
-            noiseChunk.cachingSamplers(),
-            noiseChunk.volumeWithBlocks(),
-            verticalAnchorContext,
-            this.settings.value().materialRule().value(),
-            chunk,
-            possibleBiomes
+            randomState, noiseChunk.cachingSamplers(), noiseChunk.volumeWithBlocks(), this.settings.value().materialRule().value(), chunk, possibleBiomes
          );
 
-         try (Zone var17 = profiler.zone("fillChunk")) {
+         try (Zone var16 = profiler.zone("fillChunk")) {
             terrainBuilder.fillChunk(chunk, noiseChunk, carvingMask);
          }
 

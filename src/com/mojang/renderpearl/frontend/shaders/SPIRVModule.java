@@ -257,7 +257,7 @@ public class SPIRVModule implements SpvModule {
          Buffer resources = SpvcReflectedResource.create(spvcList, (int)spvcCount);
 
          for (int i = 0; i < spvcCount; i++) {
-            SpvcReflectedResource resource = (SpvcReflectedResource)resources.get(i);
+            final SpvcReflectedResource resource = (SpvcReflectedResource)resources.get(i);
             final String name = resource.nameString();
             if (!Spvc.spvc_compiler_get_binary_offset_for_decoration(compiler, resource.id(), 34, intReturnBuffer)) {
                throw new ShaderCompileException("Couldn't find byte offset for set decoration of " + name);
@@ -304,6 +304,11 @@ public class SPIRVModule implements SpvModule {
                @Override
                public void binding(final int binding) {
                   spirv.put(bindingOffset, binding);
+               }
+
+               @Override
+               public int inputAttachmentIndex() {
+                  return Spvc.spvc_compiler_get_decoration(compiler, resource.id(), 43);
                }
             });
          }

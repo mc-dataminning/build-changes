@@ -13,10 +13,10 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.Optionull;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.Hud;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.client.renderer.entity.player.AvatarRenderer;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.MutableComponent;
@@ -264,7 +264,7 @@ public class PlayerTabOverlay implements Renderable {
          sprite = PING_1_SPRITE;
       }
 
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, xo + slotWidth - 11, yo, 10, 8);
+      graphics.blitSprite(GuiPipeline.TEXTURED, sprite, xo + slotWidth - 11, yo, 10, 8);
    }
 
    private void extractTablistScore(
@@ -308,40 +308,30 @@ public class PlayerTabOverlay implements Renderable {
             Identifier sprite = blink ? HEART_CONTAINER_BLINKING_SPRITE : HEART_CONTAINER_SPRITE;
 
             for (int heart = fullHearts; heart < heartsToRender; heart++) {
-               graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, left + heart * widthPerHeart, yo, 9, 9);
+               graphics.blitSprite(GuiPipeline.TEXTURED, sprite, left + heart * widthPerHeart, yo, 9, 9);
             }
 
             for (int heart = 0; heart < fullHearts; heart++) {
-               graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, left + heart * widthPerHeart, yo, 9, 9);
+               graphics.blitSprite(GuiPipeline.TEXTURED, sprite, left + heart * widthPerHeart, yo, 9, 9);
                if (blink) {
                   if (heart * 2 + 1 < health.displayedValue()) {
-                     graphics.blitSprite(RenderPipelines.GUI_TEXTURED, HEART_FULL_BLINKING_SPRITE, left + heart * widthPerHeart, yo, 9, 9);
+                     graphics.blitSprite(GuiPipeline.TEXTURED, HEART_FULL_BLINKING_SPRITE, left + heart * widthPerHeart, yo, 9, 9);
                   }
 
                   if (heart * 2 + 1 == health.displayedValue()) {
-                     graphics.blitSprite(RenderPipelines.GUI_TEXTURED, HEART_HALF_BLINKING_SPRITE, left + heart * widthPerHeart, yo, 9, 9);
+                     graphics.blitSprite(GuiPipeline.TEXTURED, HEART_HALF_BLINKING_SPRITE, left + heart * widthPerHeart, yo, 9, 9);
                   }
                }
 
                if (heart * 2 + 1 < score) {
                   graphics.blitSprite(
-                     RenderPipelines.GUI_TEXTURED,
-                     heart >= 10 ? HEART_ABSORBING_FULL_BLINKING_SPRITE : HEART_FULL_SPRITE,
-                     left + heart * widthPerHeart,
-                     yo,
-                     9,
-                     9
+                     GuiPipeline.TEXTURED, heart >= 10 ? HEART_ABSORBING_FULL_BLINKING_SPRITE : HEART_FULL_SPRITE, left + heart * widthPerHeart, yo, 9, 9
                   );
                }
 
                if (heart * 2 + 1 == score) {
                   graphics.blitSprite(
-                     RenderPipelines.GUI_TEXTURED,
-                     heart >= 10 ? HEART_ABSORBING_HALF_BLINKING_SPRITE : HEART_HALF_SPRITE,
-                     left + heart * widthPerHeart,
-                     yo,
-                     9,
-                     9
+                     GuiPipeline.TEXTURED, heart >= 10 ? HEART_ABSORBING_HALF_BLINKING_SPRITE : HEART_HALF_SPRITE, left + heart * widthPerHeart, yo, 9, 9
                   );
                }
             }

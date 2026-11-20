@@ -250,6 +250,22 @@ public class BoundingBox {
       consumer.accept(pos.set(this.minX, this.minY, this.minZ));
    }
 
+   public void forAllTopCorners(final Consumer<BlockPos> consumer) {
+      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+      consumer.accept(pos.set(this.maxX, this.maxY, this.maxZ));
+      consumer.accept(pos.set(this.minX, this.maxY, this.maxZ));
+      consumer.accept(pos.set(this.maxX, this.maxY, this.minZ));
+      consumer.accept(pos.set(this.minX, this.maxY, this.minZ));
+   }
+
+   public void forAllBottomCorners(final Consumer<BlockPos> consumer) {
+      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+      consumer.accept(pos.set(this.maxX, this.minY, this.maxZ));
+      consumer.accept(pos.set(this.minX, this.minY, this.maxZ));
+      consumer.accept(pos.set(this.maxX, this.minY, this.minZ));
+      consumer.accept(pos.set(this.minX, this.minY, this.minZ));
+   }
+
    @Override
    public String toString() {
       return MoreObjects.toStringHelper(this)

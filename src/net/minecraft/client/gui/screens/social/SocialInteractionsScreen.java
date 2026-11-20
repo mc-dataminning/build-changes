@@ -4,9 +4,11 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.SpriteIconCycleButton;
@@ -26,7 +28,6 @@ import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -165,11 +166,18 @@ public class SocialInteractionsScreen extends Screen {
    }
 
    @Override
+   public void update(final DeltaTracker deltaTracker) {
+      if (this.backgroundScreen != null) {
+         this.backgroundScreen.update(deltaTracker);
+      }
+
+      super.update(deltaTracker);
+   }
+
+   @Override
    public void extractBackground(final GuiGraphicsExtractor graphics) {
       if (this.backgroundScreen != null) {
-         this.backgroundScreen.extractBackground(graphics);
-         graphics.nextStratum();
-         this.backgroundScreen.extractRenderState(graphics);
+         extractBackgroundScreen(graphics, this.backgroundScreen);
          graphics.nextStratum();
          this.extractBlurredBackground(graphics);
       } else {
@@ -177,7 +185,7 @@ public class SocialInteractionsScreen extends Screen {
       }
 
       graphics.blitSprite(
-         RenderPipelines.GUI_TEXTURED,
+         GuiPipeline.TEXTURED,
          BACKGROUND_SPRITE,
          this.contentLayout.getX() - 8,
          this.contentLayout.getY() - 8,

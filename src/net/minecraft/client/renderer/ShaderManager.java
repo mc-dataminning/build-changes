@@ -9,7 +9,6 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 import com.mojang.blaze3d.pipeline.PipelineBuilder;
 import com.mojang.blaze3d.pipeline.PipelineCache;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.pipeline.ShaderSource;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
@@ -77,9 +76,9 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
       return CompletableFuture.<ShaderManager.Configs>supplyAsync(() -> loadConfigs(manager), taskExecutor)
          .thenComposeAsync(
             configs -> {
-               List<RenderPipeline> staticPipelines = RenderPipelines.staticPipelinesToPrecompile();
-               List<RenderPipeline> dynamicPipelines = RenderPipelines.dynamicPipelinesToPrecompile(context);
-               List<RenderPipeline> requiredPipelines = Streams.concat(new Stream[]{staticPipelines.stream(), dynamicPipelines.stream()}).toList();
+               List<PipelineCache.Key> staticPipelines = RenderPipelines.staticPipelinesToPrecompile();
+               List<PipelineCache.Key> dynamicPipelines = RenderPipelines.dynamicPipelinesToPrecompile(context);
+               List<PipelineCache.Key> requiredPipelines = Streams.concat(new Stream[]{staticPipelines.stream(), dynamicPipelines.stream()}).toList();
                return compilePipelines(pipelineBuilder, configs, requiredPipelines, taskExecutor, reloadExecutor)
                   .thenApply(
                      compiledRequiredPipelines -> new ShaderManager.PendingResults(
@@ -102,14 +101,14 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
    private static CompletableFuture<List<@Nullable CompiledRenderPipeline>> compilePipelines(
       final PipelineBuilder pipelineBuilder,
       final ShaderSource shaderSource,
-      final List<RenderPipeline> pipelines,
+      final List<PipelineCache.Key> pipelines,
       final Executor taskExecutor,
       final Executor reloadExecutor
    ) {
       return Util.sequence(
          pipelines.stream()
             .map(
-               pipeline -> pipelineBuilder.compilePipeline(pipeline, shaderSource, taskExecutor)
+               pipelineKey -> pipelineBuilder.compilePipeline(pipelineKey.pipeline(), pipelineKey.subpass(), shaderSource, taskExecutor)
                   .thenApplyAsync(CompiledRenderPipeline.Pending::finishCompile, reloadExecutor)
             )
             .toList()
@@ -208,12 +207,12 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
       pipelineCache.clear();
 
       for (int i = 0; i < compilations.requiredPipelines.size(); i++) {
-         RenderPipeline pipeline = compilations.requiredPipelines.get(i);
+         PipelineCache.Key pipeline = compilations.requiredPipelines.get(i);
          CompiledRenderPipeline compiled = compilations.compiledRequiredPipelines.get(i);
          if (compiled != null) {
             pipelineCache.insert(pipeline, compiled);
          } else {
-            failedLoads.add(pipeline.getLocation());
+            failedLoads.add(pipeline.pipeline().getLocation());
          }
       }
 
@@ -313,7 +312,7 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
    }
 
    private record PendingResults(
-      ShaderManager.Configs configs, List<RenderPipeline> requiredPipelines, List<@Nullable CompiledRenderPipeline> compiledRequiredPipelines
+      ShaderManager.Configs configs, List<PipelineCache.Key> requiredPipelines, List<@Nullable CompiledRenderPipeline> compiledRequiredPipelines
    ) {
    }
 

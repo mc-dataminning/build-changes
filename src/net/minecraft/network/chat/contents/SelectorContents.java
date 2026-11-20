@@ -43,12 +43,12 @@ public record SelectorContents(CompilableString<EntitySelector> selector, Option
    }
 
    @Override
-   public <T> Optional<T> visit(final FormattedText.StyledContentConsumer<T> output, final Style currentStyle) {
+   public <T> Optional<T> visitUnbounded(final FormattedText.StyledContentConsumer<T> output, final Style currentStyle) {
       return output.accept(currentStyle, this.selector.source());
    }
 
    @Override
-   public <T> Optional<T> visit(final FormattedText.ContentConsumer<T> output) {
+   public <T> Optional<T> visitUnbounded(final FormattedText.ContentConsumer<T> output) {
       return output.accept(this.selector.source());
    }
 

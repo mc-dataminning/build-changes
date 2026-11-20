@@ -16,6 +16,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.util.Interval;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.VisibleForDebug;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.densityfunction.op.upscale.Upscaler;
 import net.minecraft.world.level.levelgen.synth.Noise;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
@@ -176,5 +177,7 @@ public interface DensityFunction {
       RandomSource createEndIslandRandom();
 
       Upscaler.Cache upscalerCache();
+
+      VerticalAnchor.Context verticalAnchors();
    }
 }

@@ -148,6 +148,10 @@ public enum ConversionType {
       if (from instanceof Zombie fromZombie && fromZombie.canBreakDoors() && to instanceof Zombie toZombie) {
          toZombie.setCanBreakDoors(true);
       }
+
+      if (from instanceof Bucketable fromBucketable && to instanceof Bucketable toBucketable) {
+         toBucketable.setFromBucket(fromBucketable.fromBucket());
+      }
    }
 
    private static <T> void copyComponent(final Mob from, final Mob to, final DataComponentType<T> componentType) {

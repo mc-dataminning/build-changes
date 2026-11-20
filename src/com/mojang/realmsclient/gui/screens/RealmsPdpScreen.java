@@ -8,6 +8,7 @@ import java.util.List;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ObjectSelectionList;
 import net.minecraft.client.gui.components.RealmsButton;
@@ -15,7 +16,6 @@ import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.ConfirmLinkScreen;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.realms.RealmsScreen;
@@ -177,7 +177,7 @@ public class RealmsPdpScreen extends RealmsScreen {
       @Override
       public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          int contentY = this.getContentY() + 4;
-         graphics.blit(RenderPipelines.GUI_TEXTURED, this.image, this.getContentX() + 4, contentY, 0.0F, 0.0F, 80, 45, 80, 45);
+         graphics.blit(GuiPipeline.TEXTURED, this.image, this.getContentX() + 4, contentY, 0.0F, 0.0F, 80, 45, 80, 45);
          int textY = graphics.textWithWordWrap(RealmsPdpScreen.this.font, this.title, this.titleX(), contentY, 182, -1) + 4;
 
          for (Component description : this.descriptions) {
@@ -213,7 +213,7 @@ public class RealmsPdpScreen extends RealmsScreen {
          if (this.subtitle != null) {
             int iconX = this.getContentXMiddle() - Math.min(182, RealmsPdpScreen.this.font.width(this.subtitle.subTitle)) / 2 - 12;
             int iconY = textY + (9 - 8) / 2;
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.subtitle.icon, iconX, iconY, 8, 8);
+            graphics.blitSprite(GuiPipeline.TEXTURED, this.subtitle.icon, iconX, iconY, 8, 8);
             int subtitleX = this.getContentXMiddle() - Math.min(182, RealmsPdpScreen.this.font.width(this.subtitle.subTitle)) / 2;
             graphics.textWithWordWrap(RealmsPdpScreen.this.font, this.subtitle.subTitle, subtitleX, textY, 182, -1);
          }

@@ -15,6 +15,7 @@ import net.minecraft.DefaultUncaughtExceptionHandler;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.LoadingDotsWidget;
 import net.minecraft.client.gui.components.ObjectSelectionList;
 import net.minecraft.client.gui.components.SelectableEntry;
@@ -23,7 +24,6 @@ import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.multiplayer.ServerList;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.server.LanServer;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
@@ -332,7 +332,7 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
 
          int statusIconX = this.getContentRight() - 10 - 5;
          if (this.statusIcon != null) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.statusIcon, statusIconX, this.getContentY(), 10, 8);
+            graphics.blitSprite(GuiPipeline.TEXTURED, this.statusIcon, statusIconX, this.getContentY(), 10, 8);
          }
 
          byte[] currentIconBytes = this.serverData.getIconBytes();
@@ -370,31 +370,27 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
             int relX = graphics.mouseX() - this.getContentX();
             int relY = graphics.mouseY() - this.getContentY();
             if (this.mouseOverRightHalf(relX, relY, 32)) {
-               graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ServerSelectionList.JOIN_HIGHLIGHTED_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
+               graphics.blitSprite(GuiPipeline.TEXTURED, ServerSelectionList.JOIN_HIGHLIGHTED_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
                ServerSelectionList.this.handleCursor(graphics);
             } else {
-               graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ServerSelectionList.JOIN_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
+               graphics.blitSprite(GuiPipeline.TEXTURED, ServerSelectionList.JOIN_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
             }
 
             if (index > 0) {
                if (this.mouseOverTopLeftQuarter(relX, relY, 32)) {
-                  graphics.blitSprite(
-                     RenderPipelines.GUI_TEXTURED, ServerSelectionList.MOVE_UP_HIGHLIGHTED_SPRITE, this.getContentX(), this.getContentY(), 32, 32
-                  );
+                  graphics.blitSprite(GuiPipeline.TEXTURED, ServerSelectionList.MOVE_UP_HIGHLIGHTED_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
                   ServerSelectionList.this.handleCursor(graphics);
                } else {
-                  graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ServerSelectionList.MOVE_UP_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
+                  graphics.blitSprite(GuiPipeline.TEXTURED, ServerSelectionList.MOVE_UP_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
                }
             }
 
             if (index < this.screen.getServers().size() - 1) {
                if (this.mouseOverBottomLeftQuarter(relX, relY, 32)) {
-                  graphics.blitSprite(
-                     RenderPipelines.GUI_TEXTURED, ServerSelectionList.MOVE_DOWN_HIGHLIGHTED_SPRITE, this.getContentX(), this.getContentY(), 32, 32
-                  );
+                  graphics.blitSprite(GuiPipeline.TEXTURED, ServerSelectionList.MOVE_DOWN_HIGHLIGHTED_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
                   ServerSelectionList.this.handleCursor(graphics);
                } else {
-                  graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ServerSelectionList.MOVE_DOWN_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
+                  graphics.blitSprite(GuiPipeline.TEXTURED, ServerSelectionList.MOVE_DOWN_SPRITE, this.getContentX(), this.getContentY(), 32, 32);
                }
             }
          }
@@ -440,7 +436,7 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
       }
 
       protected void extractIcon(final GuiGraphicsExtractor graphics, final int rowLeft, final int rowTop, final Identifier location) {
-         graphics.blit(RenderPipelines.GUI_TEXTURED, location, rowLeft, rowTop, 0.0F, 0.0F, 32, 32, 32, 32);
+         graphics.blit(GuiPipeline.TEXTURED, location, rowLeft, rowTop, 0.0F, 0.0F, 32, 32, 32, 32);
       }
 
       private boolean uploadServerIcon(final byte @Nullable [] serverIconBytes) {

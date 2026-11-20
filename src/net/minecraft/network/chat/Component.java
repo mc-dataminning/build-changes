@@ -4,7 +4,6 @@ import com.mojang.brigadier.Message;
 import com.mojang.datafixers.util.Either;
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -27,27 +26,14 @@ import net.minecraft.world.level.ChunkPos;
 import org.jspecify.annotations.Nullable;
 
 public interface Component extends Message, FormattedText {
+   int STRING_SIZE_LIMIT = 1048576;
+
    Style getStyle();
 
    ComponentContents getContents();
 
-   @Override
    default String getString() {
-      return FormattedText.super.getString();
-   }
-
-   default String getString(final int limit) {
-      StringBuilder builder = new StringBuilder();
-      this.visit(contents -> {
-         int remaining = limit - builder.length();
-         if (remaining <= 0) {
-            return STOP_ITERATION;
-         }
-
-         builder.append(contents.length() <= remaining ? contents : contents.substring(0, remaining));
-         return Optional.empty();
-      });
-      return builder.toString();
+      return FormattedText.super.getString(1048576);
    }
 
    List<Component> getSiblings();
@@ -67,15 +53,15 @@ public interface Component extends Message, FormattedText {
    FormattedCharSequence getVisualOrderText();
 
    @Override
-   default <T> Optional<T> visit(final FormattedText.StyledContentConsumer<T> output, final Style parentStyle) {
+   default <T> Optional<T> visitUnbounded(final FormattedText.StyledContentConsumer<T> output, final Style parentStyle) {
       Style selfStyle = this.getStyle().applyTo(parentStyle);
-      Optional<T> selfResult = this.getContents().visit(output, selfStyle);
+      Optional<T> selfResult = this.getContents().visitUnbounded(output, selfStyle);
       if (selfResult.isPresent()) {
          return selfResult;
       }
 
       for (Component sibling : this.getSiblings()) {
-         Optional<T> result = sibling.visit(output, selfStyle);
+         Optional<T> result = sibling.visitUnbounded(output, selfStyle);
          if (result.isPresent()) {
             return result;
          }
@@ -85,46 +71,20 @@ public interface Component extends Message, FormattedText {
    }
 
    @Override
-   default <T> Optional<T> visit(final FormattedText.ContentConsumer<T> output) {
-      Optional<T> selfResult = this.getContents().visit(output);
+   default <T> Optional<T> visitUnbounded(final FormattedText.ContentConsumer<T> output) {
+      Optional<T> selfResult = this.getContents().visitUnbounded(output);
       if (selfResult.isPresent()) {
          return selfResult;
       }
 
       for (Component sibling : this.getSiblings()) {
-         Optional<T> result = sibling.visit(output);
+         Optional<T> result = sibling.visitUnbounded(output);
          if (result.isPresent()) {
             return result;
          }
       }
 
       return Optional.empty();
-   }
-
-   default List<Component> toFlatList() {
-      return this.toFlatList(Style.EMPTY);
-   }
-
-   default List<Component> toFlatList(final Style rootStyle) {
-      List<Component> result = new ArrayList<>();
-      this.visit((style, contents) -> {
-         if (!contents.isEmpty()) {
-            result.add(literal(contents).withStyle(style));
-         }
-
-         return Optional.empty();
-      }, rootStyle);
-      return result;
-   }
-
-   default boolean contains(final Component other) {
-      if (this.equals(other)) {
-         return true;
-      }
-
-      List<Component> flat = this.toFlatList();
-      List<Component> otherFlat = other.toFlatList(this.getStyle());
-      return Collections.indexOfSubList(flat, otherFlat) != -1;
    }
 
    static Component nullToEmpty(final @Nullable String text) {

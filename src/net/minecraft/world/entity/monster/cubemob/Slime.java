@@ -100,7 +100,7 @@ public class Slime extends AbstractCubeMob implements Enemy {
    }
 
    @Override
-   protected boolean canBeABaby() {
+   public boolean canBeABaby() {
       return false;
    }
 

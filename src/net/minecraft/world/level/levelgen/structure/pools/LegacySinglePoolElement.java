@@ -9,6 +9,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
+import net.minecraft.world.level.levelgen.structure.templatesystem.CornerConstraint;
 import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
@@ -16,16 +17,18 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 
 public class LegacySinglePoolElement extends SinglePoolElement {
    public static final MapCodec<LegacySinglePoolElement> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(templateCodec(), processorsCodec(), projectionCodec(), overrideLiquidSettingsCodec()).apply(i, LegacySinglePoolElement::new)
+      i -> i.group(templateCodec(), processorsCodec(), projectionCodec(), overrideLiquidSettingsCodec(), cornerConstraintCodec())
+         .apply(i, LegacySinglePoolElement::new)
    );
 
    protected LegacySinglePoolElement(
       final Either<Identifier, StructureTemplate> template,
       final Holder<StructureProcessorList> processors,
       final StructureTemplatePool.Projection projection,
-      final Optional<LiquidSettings> liquidSettings
+      final Optional<LiquidSettings> liquidSettings,
+      final Optional<CornerConstraint> cornerConstraint
    ) {
-      super(template, processors, projection, liquidSettings);
+      super(template, processors, projection, liquidSettings, cornerConstraint);
    }
 
    @Override

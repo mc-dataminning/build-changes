@@ -1,6 +1,7 @@
 package net.minecraft.client.gui.screens;
 
 import com.mojang.text2speech.Narrator;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.NarratorStatus;
 import net.minecraft.client.Options;
@@ -129,9 +130,14 @@ public class AccessibilityOnboardingScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics) {
-      super.extractRenderState(graphics);
+   public void tick() {
+      super.tick();
       this.handleInitialNarrationDelay();
+   }
+
+   @Override
+   public void update(final DeltaTracker deltaTracker) {
+      super.update(deltaTracker);
       if (this.fadeInStart == 0.0F && this.fadingIn) {
          this.fadeInStart = (float)Util.getMillis();
       }
@@ -163,7 +169,11 @@ public class AccessibilityOnboardingScreen extends Screen {
 
          this.fadeWidgets(widgetAlpha);
       }
+   }
 
+   @Override
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       this.logoRenderer.extractRenderState(graphics, this.width, 1.0F);
    }
 

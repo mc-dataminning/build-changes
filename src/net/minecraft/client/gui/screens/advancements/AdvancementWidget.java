@@ -11,7 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.StringSplitter;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
@@ -164,7 +164,7 @@ public class AdvancementWidget {
             iconFrame = AdvancementWidgetType.UNOBTAINED;
          }
 
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, iconFrame.frameSprite(this.display.type()), xo + this.x + 3, yo + this.y, 26, 26);
+         graphics.blitSprite(GuiPipeline.TEXTURED, iconFrame.frameSprite(this.display.type()), xo + this.x + 3, yo + this.y, 26, 26);
          graphics.fakeItem(this.icon, xo + this.x + 8, yo + this.y + 5);
       }
 
@@ -235,18 +235,16 @@ public class AdvancementWidget {
       int backgroundHeight = titleBarHeight + descriptionHeight;
       if (!this.description.isEmpty()) {
          if (topSide) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, TITLE_BOX_SPRITE, titleLeft, titleBarBottom - backgroundHeight, this.width, backgroundHeight);
+            graphics.blitSprite(GuiPipeline.TEXTURED, TITLE_BOX_SPRITE, titleLeft, titleBarBottom - backgroundHeight, this.width, backgroundHeight);
          } else {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, TITLE_BOX_SPRITE, titleLeft, titleTop, this.width, backgroundHeight);
+            graphics.blitSprite(GuiPipeline.TEXTURED, TITLE_BOX_SPRITE, titleLeft, titleTop, this.width, backgroundHeight);
          }
       }
 
       if (firstHalf != secondHalf) {
+         graphics.blitSprite(GuiPipeline.TEXTURED, firstHalf.boxSprite(), 200, titleBarHeight, 0, 0, titleLeft, titleTop, firstHalfWidth, titleBarHeight);
          graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED, firstHalf.boxSprite(), 200, titleBarHeight, 0, 0, titleLeft, titleTop, firstHalfWidth, titleBarHeight
-         );
-         graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED,
+            GuiPipeline.TEXTURED,
             secondHalf.boxSprite(),
             200,
             titleBarHeight,
@@ -258,10 +256,10 @@ public class AdvancementWidget {
             titleBarHeight
          );
       } else {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, firstHalf.boxSprite(), titleLeft, titleTop, this.width, titleBarHeight);
+         graphics.blitSprite(GuiPipeline.TEXTURED, firstHalf.boxSprite(), titleLeft, titleTop, this.width, titleBarHeight);
       }
 
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, iconFrame.frameSprite(this.display.type()), xo + this.x + 3, yo + this.y, 26, 26);
+      graphics.blitSprite(GuiPipeline.TEXTURED, iconFrame.frameSprite(this.display.type()), xo + this.x + 3, yo + this.y, 26, 26);
       int descriptionLeft = titleLeft + 5;
       if (leftSide) {
          this.extractMultilineText(graphics, this.titleLines, descriptionLeft, titleTop + 9, -1);

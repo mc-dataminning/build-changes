@@ -5,6 +5,7 @@ import com.mojang.realmsclient.util.RealmsPersistence;
 import java.net.URI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageWidget;
 import net.minecraft.client.gui.components.ScaledWidgetSprites;
@@ -16,7 +17,6 @@ import net.minecraft.client.gui.layouts.LayoutSettings;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.ConfirmLinkScreen;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.Nullable;
@@ -128,7 +128,7 @@ public final class RealmsHeader {
 
       private void extractNotificationCounter(final GuiGraphicsExtractor graphics) {
          graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED,
+            GuiPipeline.TEXTURED,
             NOTIFICATION_ICONS[Math.min(this.notificationCount, NOTIFICATION_ICONS.length) - 1],
             this.getX() + this.getWidth() + -5,
             this.getY() + -3,

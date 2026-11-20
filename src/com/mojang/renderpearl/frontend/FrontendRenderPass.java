@@ -1,17 +1,17 @@
 package com.mojang.renderpearl.frontend;
 
-import com.mojang.renderpearl.api.GpuFormat;
+import com.mojang.logging.LogUtils;
 import com.mojang.renderpearl.api.buffers.GpuBuffer;
 import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.commands.GpuQueryPool;
 import com.mojang.renderpearl.api.commands.RenderPass;
-import com.mojang.renderpearl.api.commands.RenderPassDescriptor;
 import com.mojang.renderpearl.api.device.DeviceFeatures;
 import com.mojang.renderpearl.api.device.DeviceLimits;
-import com.mojang.renderpearl.api.pipeline.ColorTargetState;
 import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
 import com.mojang.renderpearl.api.pipeline.IndexType;
+import com.mojang.renderpearl.api.pipeline.RenderPassLayout;
 import com.mojang.renderpearl.api.textures.GpuSampler;
+import com.mojang.renderpearl.api.textures.GpuTexture;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
 import com.mojang.renderpearl.backend.api.RenderPassBackend;
 import com.mojang.renderpearl.backend.common.BaseGpuBuffer;
@@ -22,26 +22,28 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
-import org.joml.Vector4fc;
 import org.jspecify.annotations.Nullable;
 import org.lwjgl.PointerBuffer;
 import org.lwjgl.vulkan.VkDrawIndexedIndirectCommand;
 import org.lwjgl.vulkan.VkDrawIndirectCommand;
+import org.slf4j.Logger;
 
 public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploader {
+   private static final Logger LOGGER = LogUtils.getLogger();
    private final RenderPassBackend backend;
    private final FrontendGpuDevice device;
    private final DeviceFeatures deviceFeatures;
    private final DeviceLimits deviceLimits;
    private final Runnable onFinish;
    private final RenderPass.@Nullable RenderArea renderArea;
-   private final List<RenderPassDescriptor.@Nullable Attachment<Optional<Vector4fc>>> colorAttachments;
-   private final @Nullable GpuFormat depthAttachmentFormat;
+   private final RenderPassLayout layout;
+   private final List<GpuTextureView> attachmentTextureViews;
+   private final List<GpuTexture> attachmentTextures;
    private boolean isClosed;
    private int pushedDebugGroups;
+   private int currentSubpassIndex = 0;
    private @Nullable FrontendRenderPipeline boundPipeline;
    private final @Nullable GpuBufferSlice[] vertexBuffers = new GpuBufferSlice[CompiledRenderPipeline.CreateInfo.MAX_VERTEX_BUFFERS];
    protected @Nullable GpuBuffer indexBuffer;
@@ -51,19 +53,67 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
    public FrontendRenderPass(
       final RenderPassBackend backend,
       final FrontendGpuDevice device,
-      final List<RenderPassDescriptor.@Nullable Attachment<Optional<Vector4fc>>> colorAttachments,
-      final @Nullable GpuFormat depthAttachmentFormat,
+      final RenderPassLayout layout,
       final Runnable onFinish,
-      final RenderPass.@Nullable RenderArea renderArea
+      final RenderPass.@Nullable RenderArea renderArea,
+      final List<GpuTextureView> attachmentTextureViews
    ) {
       this.backend = backend;
       this.device = device;
       this.deviceFeatures = device.getDeviceInfo().features();
       this.deviceLimits = device.getDeviceInfo().limits();
-      this.colorAttachments = colorAttachments;
-      this.depthAttachmentFormat = depthAttachmentFormat;
+      this.layout = layout;
       this.onFinish = onFinish;
       this.renderArea = renderArea;
+      this.attachmentTextureViews = attachmentTextureViews;
+      this.attachmentTextures = attachmentTextureViews.stream().map(GpuTextureView::texture).toList();
+      if (this.layout().subpasses().size() != 1) {
+         this.pushDebugGroup(() -> this.layout().subpass(0).name());
+      }
+   }
+
+   @Override
+   public void close() {
+      while (this.currentSubpassIndex < this.layout.subpasses().size() - 1) {
+         this.nextSubpass();
+         LOGGER.warn(
+            "Subpass '{}' from RenderPassLayout '{}' skipped on renderpass close, this is likely a bug!",
+            this.layout.subpass(this.currentSubpassIndex).name(),
+            this.layout.name()
+         );
+      }
+
+      if (this.layout().subpasses().size() != 1) {
+         this.popDebugGroup();
+      }
+
+      if (!this.isClosed) {
+         this.isClosed = true;
+         if (this.pushedDebugGroups > 0) {
+            throw new IllegalStateException("Render pass had debug groups left open!");
+         }
+
+         this.onFinish.run();
+      }
+   }
+
+   @Override
+   public RenderPassLayout layout() {
+      return this.layout;
+   }
+
+   @Override
+   public RenderPassLayout.Subpass activeSubpass() {
+      return this.layout.subpass(this.currentSubpassIndex);
+   }
+
+   @Override
+   public void nextSubpass() {
+      this.currentSubpassIndex++;
+      this.boundPipeline = null;
+      this.popDebugGroup();
+      this.backend.nextSubpass();
+      this.pushDebugGroup(() -> this.layout().subpass(this.currentSubpassIndex).name());
    }
 
    @Override
@@ -101,56 +151,53 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
 
    @Override
    public void setPipeline(final CompiledRenderPipeline pipeline) {
-      if (!(pipeline instanceof FrontendRenderPipeline frontendPipeline)) {
-         throw new IllegalArgumentException("Pipeline must be instance of FrontendCompiledRenderPipeline");
-      } else {
-         List<ColorTargetState> colorTargetStates = frontendPipeline.colorTargetStates();
-         if (colorTargetStates.size() != this.colorAttachments.size()) {
-            throw new IllegalStateException("Render pass color attachment count must match pipeline color target state count.");
-         }
-
-         for (int i = 0; i < this.colorAttachments.size(); i++) {
-            RenderPassDescriptor.Attachment<Optional<Vector4fc>> attachment = this.colorAttachments.get(i);
-            if (attachment != null) {
-               ColorTargetState colorTargetState = colorTargetStates.get(i);
-               if (colorTargetState == null || colorTargetState.format() != attachment.textureView().texture().getFormat()) {
-                  throw new IllegalStateException("Render pass color attachment " + i + " format doesn't match pipeline format.");
-               }
+      if (pipeline instanceof FrontendRenderPipeline frontendPipeline) {
+         if (!frontendPipeline.subpass().equals(this.activeSubpass())) {
+            RenderPassLayout.Subpass expectedSubpass = frontendPipeline.subpass();
+            RenderPassLayout.Subpass activeSubpass = this.activeSubpass();
+            if (expectedSubpass.index() != activeSubpass.index()) {
+               throw new IllegalStateException(
+                  "Pipeline's subpass index " + expectedSubpass.index() + " does not match the active subpass's index " + activeSubpass.index()
+               );
+            } else {
+               throw new IllegalArgumentException(
+                  String.format(
+                     Locale.ROOT,
+                     "Pipeline was compiled for Subpass '%s' from RenderPassLayout '%s' which is not compatible with active Subpass '%s' from RenderPassLayout %s'",
+                     frontendPipeline.subpass().name(),
+                     frontendPipeline.subpass().renderPassLayout().name(),
+                     activeSubpass.name(),
+                     activeSubpass.renderPassLayout().name()
+                  )
+               );
             }
+         } else {
+            this.boundPipeline = frontendPipeline;
+            this.backend.setPipeline(frontendPipeline.backendRenderPipeline());
+            this.uniforms.forEach(this::setUniform);
+            this.constantsPushed = false;
          }
-
-         if (this.depthAttachmentFormat != null && frontendPipeline.depthStencilFormat() != this.depthAttachmentFormat) {
-            throw new IllegalStateException(
-               "Render pass depth/stencil attachment format "
-                  + this.depthAttachmentFormat
-                  + " doesn't match pipeline format "
-                  + frontendPipeline.depthStencilFormat()
-                  + "."
-            );
-         }
-
-         if (frontendPipeline.wantsDepthTexture() && this.depthAttachmentFormat == null) {
-            throw new IllegalStateException(
-               String.format(Locale.ROOT, "Render pipeline %s wants a depth texture but none was provided", frontendPipeline.name())
-            );
-         }
-
-         if (!frontendPipeline.wantsDepthTexture() && this.depthAttachmentFormat != null) {
-            throw new IllegalStateException(
-               String.format(Locale.ROOT, "Render pipeline %s doesn't want a depth texture but one was provided", frontendPipeline.name())
-            );
-         }
-
-         this.boundPipeline = frontendPipeline;
-         this.backend.setPipeline(frontendPipeline.backendRenderPipeline());
-         this.uniforms.forEach(this::setUniform);
-         this.constantsPushed = false;
+      } else {
+         throw new IllegalArgumentException("Pipeline must be instance of FrontendCompiledRenderPipeline");
       }
+   }
+
+   @Override
+   public void setUniform(final String name, final @Nullable GpuTextureView textureView) {
+      if (textureView != null && !this.attachmentTextureViews.contains(textureView)) {
+         throw new IllegalArgumentException("TextureView that is not a RenderPass attachment cannot be bound as an input attachment");
+      }
+
+      this.setUniform(name, (Object)textureView);
    }
 
    @Override
    public void setUniform(final String name, final @Nullable GpuTextureView textureView, final @Nullable GpuSampler sampler) {
       if (textureView != null && sampler != null) {
+         if (this.attachmentTextures.contains(textureView.texture())) {
+            throw new IllegalArgumentException("Texture that is a RenderPass attachment cannot be bound as a sampled texture");
+         }
+
          TextureViewAndSampler pair = new TextureViewAndSampler(textureView, sampler);
          this.setUniform(name, pair);
       } else {
@@ -510,18 +557,6 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
       this.backend.drawIndirect(commands, drawCount);
    }
 
-   @Override
-   public void close() {
-      if (!this.isClosed) {
-         this.isClosed = true;
-         if (this.pushedDebugGroups > 0) {
-            throw new IllegalStateException("Render pass had debug groups left open!");
-         }
-
-         this.onFinish.run();
-      }
-   }
-
    private void validateDraw(final Collection<String> dynamicUniforms, final boolean dynamicVertexBuffer, final boolean indexed) {
       if (this.boundPipeline == null) {
          throw new IllegalStateException("Can't draw without a render pipeline");
@@ -606,23 +641,23 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
                      TextureViewAndSampler var10000 = var9;
 
                      try {
-                        var32 = var10000.view();
+                        var34 = var10000.view();
                      } catch (Throwable var18) {
                         throw new MatchException(var18.toString(), var18);
                      }
 
-                     GpuTextureView length = var32;
+                     GpuTextureView length = var34;
                      GpuTextureView textureView = length;
                      var10000 = var9;
 
                      try {
-                        var34 = var10000.sampler();
+                        var36 = var10000.sampler();
                      } catch (Throwable var17) {
                         throw new MatchException(var17.toString(), var17);
                      }
 
-                     GpuSampler var28 = var34;
-                     GpuSampler sampler = var28;
+                     GpuSampler var30 = var36;
+                     GpuSampler sampler = var30;
                      if (textureView.isClosed()) {
                         throw new IllegalStateException("Texture view " + uniform.name() + " (" + textureView.texture().getLabel() + ") has been closed!");
                      }
@@ -636,6 +671,29 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
                      if (sampler.isClosed()) {
                         throw new IllegalStateException("Sampler for " + uniform.name() + " (" + textureView.texture().getLabel() + ") has been closed!");
                      }
+                     break;
+                  case INPUT_ATTACHMENT:
+                     if (!(value instanceof GpuTextureView textureView)) {
+                        throw new IllegalStateException("InputAttachment must be GpuTextureView");
+                     }
+
+                     if (textureView.isClosed()) {
+                        throw new IllegalStateException("Texture view " + uniform.name() + " (" + textureView.texture().getLabel() + ") has been closed!");
+                     }
+
+                     if ((textureView.texture().usage() & 4) == 0) {
+                        throw new IllegalStateException(
+                           "Texture view " + uniform.name() + " (" + textureView.texture().getLabel() + ") must have USAGE_TEXTURE_BINDING!"
+                        );
+                     }
+
+                     int attachmentIndex = this.activeSubpass().inputAttachments().getByte(uniform.inputAttachmentIndex());
+                     if (this.attachmentTextures.get(attachmentIndex) != textureView.texture()) {
+                        throw new IllegalStateException("Input attachment uniform must match input attachment binding from RenderPass and shader");
+                     }
+                     break;
+                  default:
+                     throw new IllegalStateException("Unhandled uniform type");
                }
             }
          }

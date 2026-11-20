@@ -129,42 +129,45 @@ public class JigsawPlacement {
          return Optional.empty();
       } else {
          int centerY = bottomY + localAnchorPosition.getY();
-         return Optional.of(
-            new Structure.GenerationStub(
-               new BlockPos(centerX, centerY, centerZ),
-               builder -> {
-                  List<PoolElementStructurePiece> pieces = new ArrayList<>();
-                  pieces.add(centerPiece);
-                  if (maxDepth > 0) {
-                     AABB aabb = new AABB(
-                        centerX - maxDistanceFromCenter.horizontal(),
-                        Math.max(centerY - maxDistanceFromCenter.vertical(), heightAccessor.getMinY() + dimensionPadding.bottom()),
-                        centerZ - maxDistanceFromCenter.horizontal(),
-                        centerX + maxDistanceFromCenter.horizontal() + 1,
-                        Math.min(centerY + maxDistanceFromCenter.vertical() + 1, heightAccessor.getMaxY() + 1 - dimensionPadding.top()),
-                        centerZ + maxDistanceFromCenter.horizontal() + 1
-                     );
-                     VoxelShape shape = Shapes.join(Shapes.create(aabb), Shapes.create(AABB.of(box)), BooleanOp.ONLY_FIRST);
-                     addPieces(
-                        context.randomState(),
-                        maxDepth,
-                        doExpansionHack,
-                        chunkGenerator,
-                        structureTemplateManager,
-                        heightAccessor,
-                        random,
-                        pools,
-                        centerPiece,
-                        pieces,
-                        shape,
-                        poolAliasLookup,
-                        liquidSettings
-                     );
-                     pieces.forEach(builder::addPiece);
+         return centerElement.getCornerConstraint().isPresent()
+               && !centerElement.getCornerConstraint().get().test(centerPiece.getBoundingBox(), context.randomState())
+            ? Optional.empty()
+            : Optional.of(
+               new Structure.GenerationStub(
+                  new BlockPos(centerX, centerY, centerZ),
+                  builder -> {
+                     List<PoolElementStructurePiece> pieces = new ArrayList<>();
+                     pieces.add(centerPiece);
+                     if (maxDepth > 0) {
+                        AABB aabb = new AABB(
+                           centerX - maxDistanceFromCenter.horizontal(),
+                           Math.max(centerY - maxDistanceFromCenter.vertical(), heightAccessor.getMinY() + dimensionPadding.bottom()),
+                           centerZ - maxDistanceFromCenter.horizontal(),
+                           centerX + maxDistanceFromCenter.horizontal() + 1,
+                           Math.min(centerY + maxDistanceFromCenter.vertical() + 1, heightAccessor.getMaxY() + 1 - dimensionPadding.top()),
+                           centerZ + maxDistanceFromCenter.horizontal() + 1
+                        );
+                        VoxelShape shape = Shapes.join(Shapes.create(aabb), Shapes.create(AABB.of(box)), BooleanOp.ONLY_FIRST);
+                        addPieces(
+                           context.randomState(),
+                           maxDepth,
+                           doExpansionHack,
+                           chunkGenerator,
+                           structureTemplateManager,
+                           heightAccessor,
+                           random,
+                           pools,
+                           centerPiece,
+                           pieces,
+                           shape,
+                           poolAliasLookup,
+                           liquidSettings
+                        );
+                        pieces.forEach(builder::addPiece);
+                     }
                   }
-               }
-            )
-         );
+               )
+            );
       }
    }
 
@@ -324,7 +327,7 @@ public class JigsawPlacement {
          BoundingBox sourceBB = sourcePiece.getBoundingBox();
          int sourceBoxY = sourceBB.minY();
 
-         label129:
+         label136:
          for (StructureTemplate.JigsawBlockInfo sourceJigsaw : sourceElement.getShuffledJigsawBlocks(
             this.structureTemplateManager, sourceBoxPosition, sourceRotation, this.random
          )) {
@@ -440,55 +443,62 @@ public class JigsawPlacement {
                                        targetGroundLevelDelta = targetElement.getGroundLevelDelta();
                                     }
 
-                                    PoolElementStructurePiece targetPiece = new PoolElementStructurePiece(
-                                       this.structureTemplateManager,
-                                       targetElement,
-                                       targetBoxPosition,
-                                       targetGroundLevelDelta,
-                                       targetRotation,
-                                       targetBB,
-                                       liquidSettings
-                                    );
-                                    int junctionY;
-                                    if (sourceRigid) {
-                                       junctionY = sourceBoxY + sourceJigsawLocalY;
-                                    } else if (targetRigid) {
-                                       junctionY = targetBoxY + targetJigsawLocalY;
-                                    } else {
-                                       if (sourceJigsawBaseHeight == Integer.MIN_VALUE) {
-                                          sourceJigsawBaseHeight = this.chunkGenerator
-                                             .getFirstFreeHeight(
-                                                sourceJigsawPos.getX(), sourceJigsawPos.getZ(), Heightmap.Types.WORLD_SURFACE_WG, heightAccessor, randomState
-                                             );
+                                    if (!targetElement.getCornerConstraint().isPresent()
+                                       || targetElement.getCornerConstraint().get().test(targetBB, randomState)) {
+                                       PoolElementStructurePiece targetPiece = new PoolElementStructurePiece(
+                                          this.structureTemplateManager,
+                                          targetElement,
+                                          targetBoxPosition,
+                                          targetGroundLevelDelta,
+                                          targetRotation,
+                                          targetBB,
+                                          liquidSettings
+                                       );
+                                       int junctionY;
+                                       if (sourceRigid) {
+                                          junctionY = sourceBoxY + sourceJigsawLocalY;
+                                       } else if (targetRigid) {
+                                          junctionY = targetBoxY + targetJigsawLocalY;
+                                       } else {
+                                          if (sourceJigsawBaseHeight == Integer.MIN_VALUE) {
+                                             sourceJigsawBaseHeight = this.chunkGenerator
+                                                .getFirstFreeHeight(
+                                                   sourceJigsawPos.getX(),
+                                                   sourceJigsawPos.getZ(),
+                                                   Heightmap.Types.WORLD_SURFACE_WG,
+                                                   heightAccessor,
+                                                   randomState
+                                                );
+                                          }
+
+                                          junctionY = sourceJigsawBaseHeight + deltaY / 2;
                                        }
 
-                                       junctionY = sourceJigsawBaseHeight + deltaY / 2;
+                                       sourcePiece.addJunction(
+                                          new JigsawJunction(
+                                             targetJigsawPos.getX(),
+                                             junctionY - sourceJigsawLocalY + sourceGroundLevelDelta,
+                                             targetJigsawPos.getZ(),
+                                             deltaY,
+                                             targetProjection
+                                          )
+                                       );
+                                       targetPiece.addJunction(
+                                          new JigsawJunction(
+                                             sourceJigsawPos.getX(),
+                                             junctionY - targetJigsawLocalY + targetGroundLevelDelta,
+                                             sourceJigsawPos.getZ(),
+                                             -deltaY,
+                                             sourceProjection
+                                          )
+                                       );
+                                       this.pieces.add(targetPiece);
+                                       if (depth + 1 <= this.maxDepth) {
+                                          JigsawPlacement.PieceState state = new JigsawPlacement.PieceState(targetPiece, childrenFree, depth + 1);
+                                          this.placing.add(state, placementPriority);
+                                       }
+                                       continue label136;
                                     }
-
-                                    sourcePiece.addJunction(
-                                       new JigsawJunction(
-                                          targetJigsawPos.getX(),
-                                          junctionY - sourceJigsawLocalY + sourceGroundLevelDelta,
-                                          targetJigsawPos.getZ(),
-                                          deltaY,
-                                          targetProjection
-                                       )
-                                    );
-                                    targetPiece.addJunction(
-                                       new JigsawJunction(
-                                          sourceJigsawPos.getX(),
-                                          junctionY - targetJigsawLocalY + targetGroundLevelDelta,
-                                          sourceJigsawPos.getZ(),
-                                          -deltaY,
-                                          sourceProjection
-                                       )
-                                    );
-                                    this.pieces.add(targetPiece);
-                                    if (depth + 1 <= this.maxDepth) {
-                                       JigsawPlacement.PieceState state = new JigsawPlacement.PieceState(targetPiece, childrenFree, depth + 1);
-                                       this.placing.add(state, placementPriority);
-                                    }
-                                    continue label129;
                                  }
                               }
                            }

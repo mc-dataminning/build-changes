@@ -649,7 +649,7 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
          .add(BlockItemIds.OCHRE_FROGLIGHT, BlockItemIds.PEARLESCENT_FROGLIGHT, BlockItemIds.VERDANT_FROGLIGHT);
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_LIGHT).addTag(ItemTags.WOOL);
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_SLIDING)
-         .add(BlockItemIds.BLUE_ICE, BlockItemIds.PACKED_ICE, BlockItemIds.PACKED_ICE_BRICKS, BlockItemIds.CHISELED_PACKED_ICE, BlockItemIds.SNOW_BLOCK);
+         .add(BlockItemIds.PACKED_ICE, BlockItemIds.PACKED_ICE_BRICKS, BlockItemIds.CHISELED_PACKED_ICE, BlockItemIds.SNOW_BLOCK, BlockItemIds.SNOW_BRICKS);
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_SLIDING)
          .add(BlockItemIds.BROWN_MUSHROOM_BLOCK, BlockItemIds.RED_MUSHROOM_BLOCK, BlockItemIds.MUSHROOM_STEM, BlockItemIds.MYCELIUM)
          .addTag(ItemTags.WART_BLOCKS)
@@ -658,6 +658,7 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_HIGH_RESISTANCE).add(BlockItemIds.SOUL_SAND, BlockItemIds.SOUL_SOIL);
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_EXPLOSIVE).add(new BlockItemId[]{BlockItemIds.TNT});
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_HOT).add(new BlockItemId[]{BlockItemIds.MAGMA_BLOCK});
+      this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_COLD).add(new BlockItemId[]{BlockItemIds.BLUE_ICE});
       this.tag(ItemTags.SULFUR_CUBE_SWALLOWABLE)
          .addTag(ItemTags.SULFUR_CUBE_ARCHETYPE_BOUNCY)
          .addTag(ItemTags.SULFUR_CUBE_ARCHETYPE_REGULAR)
@@ -670,7 +671,8 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
          .addTag(ItemTags.SULFUR_CUBE_ARCHETYPE_HIGH_RESISTANCE)
          .addTag(ItemTags.SULFUR_CUBE_ARCHETYPE_EXPLOSIVE)
          .addTag(ItemTags.SULFUR_CUBE_ARCHETYPE_HOT)
-         .addTag(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_BOUNCY);
+         .addTag(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_BOUNCY)
+         .addTag(ItemTags.SULFUR_CUBE_ARCHETYPE_COLD);
       this.tag(ItemTags.LOOM_DYES).addTag(ItemTags.DYES);
       this.tag(ItemTags.LOOM_PATTERNS)
          .add(

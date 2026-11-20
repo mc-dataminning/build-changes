@@ -37,12 +37,12 @@ public interface PlainTextContents extends ComponentContents {
 
    record LiteralContents(String text) implements PlainTextContents {
       @Override
-      public <T> Optional<T> visit(final FormattedText.ContentConsumer<T> output) {
+      public <T> Optional<T> visitUnbounded(final FormattedText.ContentConsumer<T> output) {
          return output.accept(this.text);
       }
 
       @Override
-      public <T> Optional<T> visit(final FormattedText.StyledContentConsumer<T> output, final Style currentStyle) {
+      public <T> Optional<T> visitUnbounded(final FormattedText.StyledContentConsumer<T> output, final Style currentStyle) {
          return output.accept(currentStyle, this.text);
       }
 

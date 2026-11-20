@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.AbstractSelectionList;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
@@ -30,7 +31,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.CommonComponents;
@@ -150,12 +150,12 @@ public class StatsScreen extends Screen {
    @Override
    public void extractRenderState(final GuiGraphicsExtractor graphics) {
       super.extractRenderState(graphics);
-      graphics.blit(RenderPipelines.GUI_TEXTURED, Screen.FOOTER_SEPARATOR, 0, this.height - this.layout.getFooterHeight(), 0.0F, 0.0F, this.width, 2, 32, 2);
+      graphics.blit(GuiPipeline.TEXTURED, Screen.FOOTER_SEPARATOR, 0, this.height - this.layout.getFooterHeight(), 0.0F, 0.0F, this.width, 2, 32, 2);
    }
 
    @Override
    protected void extractMenuBackground(final GuiGraphicsExtractor graphics) {
-      graphics.blit(RenderPipelines.GUI_TEXTURED, CreateWorldScreen.TAB_HEADER_BACKGROUND, 0, 0, 0.0F, 0.0F, this.width, this.layout.getHeaderHeight(), 16, 16);
+      graphics.blit(GuiPipeline.TEXTURED, CreateWorldScreen.TAB_HEADER_BACKGROUND, 0, 0, 0.0F, 0.0F, this.width, this.layout.getHeaderHeight(), 16, 16);
       this.extractMenuBackground(graphics, 0, this.layout.getHeaderHeight(), this.width, this.height);
    }
 
@@ -398,7 +398,7 @@ public class StatsScreen extends Screen {
             if (ItemStatisticsList.this.sortColumn != null) {
                int offset = ItemStatisticsList.this.getColumnX(ItemStatisticsList.this.getColumnIndex(ItemStatisticsList.this.sortColumn)) - 36;
                Identifier sprite = ItemStatisticsList.this.sortOrder == 1 ? StatsScreen.SORT_UP_SPRITE : StatsScreen.SORT_DOWN_SPRITE;
-               graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, this.getContentX() + offset, this.getContentY() + 1, 18, 18);
+               graphics.blitSprite(GuiPipeline.TEXTURED, sprite, this.getContentX() + offset, this.getContentY() + 1, 18, 18);
             }
          }
 
@@ -430,8 +430,8 @@ public class StatsScreen extends Screen {
             @Override
             public void extractContents(final GuiGraphicsExtractor graphics) {
                Identifier background = this.sprites.get(this.isActive(), this.isHoveredOrFocused());
-               graphics.blitSprite(RenderPipelines.GUI_TEXTURED, background, this.getX(), this.getY(), this.width, this.height);
-               graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.sprite, this.getX(), this.getY(), this.width, this.height);
+               graphics.blitSprite(GuiPipeline.TEXTURED, background, this.getX(), this.getY(), this.width, this.height);
+               graphics.blitSprite(GuiPipeline.TEXTURED, this.sprite, this.getX(), this.getY(), this.width, this.height);
             }
          }
       }
@@ -500,7 +500,7 @@ public class StatsScreen extends Screen {
 
             @Override
             protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics) {
-               graphics.blitSprite(RenderPipelines.GUI_TEXTURED, StatsScreen.SLOT_SPRITE, ItemRow.this.getContentX(), ItemRow.this.getContentY(), 18, 18);
+               graphics.blitSprite(GuiPipeline.TEXTURED, StatsScreen.SLOT_SPRITE, ItemRow.this.getContentX(), ItemRow.this.getContentY(), 18, 18);
                super.extractWidgetRenderState(graphics);
             }
 

@@ -87,6 +87,7 @@ import net.minecraft.util.datafix.fixes.DebugProfileLookingAtSplitFix;
 import net.minecraft.util.datafix.fixes.DebugProfileOverlayReferenceFix;
 import net.minecraft.util.datafix.fixes.DebugProfileRenameEntryFix;
 import net.minecraft.util.datafix.fixes.DecoratedPotFieldRenameFix;
+import net.minecraft.util.datafix.fixes.DefaultComponentSoundRemainderFix;
 import net.minecraft.util.datafix.fixes.DropChancesFormatFix;
 import net.minecraft.util.datafix.fixes.DropInvalidSignDataFix;
 import net.minecraft.util.datafix.fixes.DyeItemRenameFix;
@@ -1672,6 +1673,8 @@ public class DataFixers {
             createRenamer(Map.of("minecraft:flowing_water", "minecraft:water", "minecraft:flowing_lava", "minecraft:lava"))
          )
       );
+      Schema v5125 = fixerUpper.addSchema(5125, SAME_NAMESPACED);
+      fixerUpper.addFixer(new DefaultComponentSoundRemainderFix(v5125));
    }
 
    private static UnaryOperator<String> createRenamerNoNamespace(final Map<String, String> map) {

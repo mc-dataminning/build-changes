@@ -7,7 +7,6 @@ import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.Music;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -66,17 +65,23 @@ public class MusicManager {
    }
 
    public void startPlaying(final Music music) {
-      SoundEvent soundEvent = music.sound().value();
-      this.currentMusic = SimpleSoundInstance.forMusic(soundEvent);
-      switch (this.minecraft.getSoundManager().play(this.currentMusic)) {
-         case STARTED:
+      SimpleSoundInstance nextMusic = SimpleSoundInstance.forMusic(music.sound().value());
+
+      this.currentMusic = switch (this.minecraft.getSoundManager().play(nextMusic)) {
+         case STARTED -> {
             this.minecraft.gui.toastManager().showNowPlayingToast();
             this.toastShown = true;
-            break;
-         case STARTED_SILENTLY:
+            yield nextMusic;
+         }
+         case STARTED_SILENTLY -> {
             this.toastShown = false;
-      }
-
+            yield nextMusic;
+         }
+         case NOT_STARTED -> {
+            this.minecraft.gui.toastManager().hideNowPlayingToast();
+            yield null;
+         }
+      };
       this.nextSongDelay = Integer.MAX_VALUE;
    }
 

@@ -1,6 +1,7 @@
 package net.minecraft.world.entity.projectile.throwableitemprojectile;
 
 import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -210,10 +211,10 @@ public class ThrownEnderpearl extends ThrowableItemProjectile {
    }
 
    @Override
-   protected void onInsideBlock(final BlockState state) {
-      super.onInsideBlock(state);
+   protected void onInsideBlock(final BlockState state, final BooleanSupplier centerInsideBlock) {
+      super.onInsideBlock(state, centerInsideBlock);
       if (state.is(Blocks.END_GATEWAY) && this.getOwner() instanceof ServerPlayer player) {
-         player.onInsideBlock(state);
+         player.onInsideBlock(state, centerInsideBlock);
       }
    }
 

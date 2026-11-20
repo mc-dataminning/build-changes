@@ -1290,12 +1290,7 @@ public class Blocks {
    public static final Block CRIMSON_SHELF = register(
       BlockItemIds.CRIMSON_SHELF,
       ShelfBlock::new,
-      BlockBehaviour.Properties.of()
-         .mapColor(MapColor.CRIMSON_STEM)
-         .instrument(NoteBlockInstrument.BASS)
-         .sound(BlockSoundSets.SHELF)
-         .ignitedByLava()
-         .strength(2.0F, 3.0F)
+      BlockBehaviour.Properties.of().mapColor(MapColor.CRIMSON_STEM).instrument(NoteBlockInstrument.BASS).sound(BlockSoundSets.SHELF).strength(2.0F, 3.0F)
    );
    public static final Block DARK_OAK_SHELF = register(
       BlockItemIds.DARK_OAK_SHELF,
@@ -1370,12 +1365,7 @@ public class Blocks {
    public static final Block WARPED_SHELF = register(
       BlockItemIds.WARPED_SHELF,
       ShelfBlock::new,
-      BlockBehaviour.Properties.of()
-         .mapColor(MapColor.WARPED_STEM)
-         .instrument(NoteBlockInstrument.BASS)
-         .sound(BlockSoundSets.SHELF)
-         .ignitedByLava()
-         .strength(2.0F, 3.0F)
+      BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_STEM).instrument(NoteBlockInstrument.BASS).sound(BlockSoundSets.SHELF).strength(2.0F, 3.0F)
    );
    public static final Block MOSSY_COBBLESTONE = register(
       BlockItemIds.MOSSY_COBBLESTONE,
@@ -1395,11 +1385,7 @@ public class Blocks {
       p -> new TorchBlock(ParticleTypes.FLAME, p),
       BlockBehaviour.Properties.of().noCollision().instabreak().lightLevel(state -> 14).sound(BlockSoundSets.WOOD).pushReaction(PushReaction.POPPED)
    );
-   public static final Block WALL_TORCH = register(
-      BlockIds.WALL_TORCH,
-      p -> new WallTorchBlock(ParticleTypes.FLAME, p),
-      wallVariant(TORCH, true).noCollision().instabreak().lightLevel(state -> 14).sound(BlockSoundSets.WOOD).pushReaction(PushReaction.POPPED)
-   );
+   public static final Block WALL_TORCH = register(BlockIds.WALL_TORCH, p -> new WallTorchBlock(ParticleTypes.FLAME, p), wallVariant(TORCH, true));
    public static final Block FIRE = register(
       BlockIds.FIRE,
       FireBlock::new,
@@ -1627,115 +1613,23 @@ public class Blocks {
       BlockItemIds.RAIL, RailBlock::new, BlockBehaviour.Properties.of().noCollision().strength(0.7F).sound(BlockSoundSets.METAL)
    );
    public static final Block COBBLESTONE_STAIRS = registerLegacyStair(BlockItemIds.COBBLESTONE_STAIRS, COBBLESTONE);
-   public static final Block OAK_WALL_SIGN = register(
-      BlockIds.OAK_WALL_SIGN,
-      p -> new WallSignBlock(WoodType.OAK, p),
-      wallVariant(OAK_SIGN, true).mapColor(MapColor.WOOD).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision().strength(1.0F).ignitedByLava()
-   );
-   public static final Block SPRUCE_WALL_SIGN = register(
-      BlockIds.SPRUCE_WALL_SIGN,
-      p -> new WallSignBlock(WoodType.SPRUCE, p),
-      wallVariant(SPRUCE_SIGN, true)
-         .mapColor(SPRUCE_LOG.defaultMapColor())
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
-   );
-   public static final Block BIRCH_WALL_SIGN = register(
-      BlockIds.BIRCH_WALL_SIGN,
-      p -> new WallSignBlock(WoodType.BIRCH, p),
-      wallVariant(BIRCH_SIGN, true).mapColor(MapColor.SAND).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision().strength(1.0F).ignitedByLava()
-   );
-   public static final Block ACACIA_WALL_SIGN = register(
-      BlockIds.ACACIA_WALL_SIGN,
-      p -> new WallSignBlock(WoodType.ACACIA, p),
-      wallVariant(ACACIA_SIGN, true)
-         .mapColor(MapColor.COLOR_ORANGE)
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
-   );
-   public static final Block CHERRY_WALL_SIGN = register(
-      BlockIds.CHERRY_WALL_SIGN,
-      p -> new WallSignBlock(WoodType.CHERRY, p),
-      wallVariant(CHERRY_SIGN, true)
-         .mapColor(CHERRY_LOG.defaultMapColor())
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
-   );
-   public static final Block JUNGLE_WALL_SIGN = register(
-      BlockIds.JUNGLE_WALL_SIGN,
-      p -> new WallSignBlock(WoodType.JUNGLE, p),
-      wallVariant(JUNGLE_SIGN, true)
-         .mapColor(JUNGLE_LOG.defaultMapColor())
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
-   );
+   public static final Block OAK_WALL_SIGN = register(BlockIds.OAK_WALL_SIGN, p -> new WallSignBlock(WoodType.OAK, p), wallVariant(OAK_SIGN, true));
+   public static final Block SPRUCE_WALL_SIGN = register(BlockIds.SPRUCE_WALL_SIGN, p -> new WallSignBlock(WoodType.SPRUCE, p), wallVariant(SPRUCE_SIGN, true));
+   public static final Block BIRCH_WALL_SIGN = register(BlockIds.BIRCH_WALL_SIGN, p -> new WallSignBlock(WoodType.BIRCH, p), wallVariant(BIRCH_SIGN, true));
+   public static final Block ACACIA_WALL_SIGN = register(BlockIds.ACACIA_WALL_SIGN, p -> new WallSignBlock(WoodType.ACACIA, p), wallVariant(ACACIA_SIGN, true));
+   public static final Block CHERRY_WALL_SIGN = register(BlockIds.CHERRY_WALL_SIGN, p -> new WallSignBlock(WoodType.CHERRY, p), wallVariant(CHERRY_SIGN, true));
+   public static final Block JUNGLE_WALL_SIGN = register(BlockIds.JUNGLE_WALL_SIGN, p -> new WallSignBlock(WoodType.JUNGLE, p), wallVariant(JUNGLE_SIGN, true));
    public static final Block DARK_OAK_WALL_SIGN = register(
-      BlockIds.DARK_OAK_WALL_SIGN,
-      p -> new WallSignBlock(WoodType.DARK_OAK, p),
-      wallVariant(DARK_OAK_SIGN, true)
-         .mapColor(DARK_OAK_LOG.defaultMapColor())
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
+      BlockIds.DARK_OAK_WALL_SIGN, p -> new WallSignBlock(WoodType.DARK_OAK, p), wallVariant(DARK_OAK_SIGN, true)
    );
    public static final Block PALE_OAK_WALL_SIGN = register(
-      BlockIds.PALE_OAK_WALL_SIGN,
-      p -> new WallSignBlock(WoodType.PALE_OAK, p),
-      wallVariant(PALE_OAK_SIGN, true)
-         .mapColor(PALE_OAK_PLANKS.defaultMapColor())
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
+      BlockIds.PALE_OAK_WALL_SIGN, p -> new WallSignBlock(WoodType.PALE_OAK, p), wallVariant(PALE_OAK_SIGN, true)
    );
    public static final Block MANGROVE_WALL_SIGN = register(
-      BlockIds.MANGROVE_WALL_SIGN,
-      p -> new WallSignBlock(WoodType.MANGROVE, p),
-      wallVariant(MANGROVE_SIGN, true)
-         .mapColor(MANGROVE_LOG.defaultMapColor())
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
+      BlockIds.MANGROVE_WALL_SIGN, p -> new WallSignBlock(WoodType.MANGROVE, p), wallVariant(MANGROVE_SIGN, true)
    );
-   public static final Block POPLAR_WALL_SIGN = register(
-      BlockIds.POPLAR_WALL_SIGN,
-      p -> new WallSignBlock(WoodType.POPLAR, p),
-      wallVariant(POPLAR_SIGN, true)
-         .mapColor(POPLAR_PLANKS.defaultMapColor())
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
-   );
-   public static final Block BAMBOO_WALL_SIGN = register(
-      BlockIds.BAMBOO_WALL_SIGN,
-      p -> new WallSignBlock(WoodType.BAMBOO, p),
-      wallVariant(BAMBOO_SIGN, true)
-         .mapColor(BAMBOO_PLANKS.defaultMapColor())
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
-   );
+   public static final Block POPLAR_WALL_SIGN = register(BlockIds.POPLAR_WALL_SIGN, p -> new WallSignBlock(WoodType.POPLAR, p), wallVariant(POPLAR_SIGN, true));
+   public static final Block BAMBOO_WALL_SIGN = register(BlockIds.BAMBOO_WALL_SIGN, p -> new WallSignBlock(WoodType.BAMBOO, p), wallVariant(BAMBOO_SIGN, true));
    public static final Block OAK_HANGING_SIGN = register(
       BlockItemIds.OAK_HANGING_SIGN,
       p -> new CeilingHangingSignBlock(WoodType.OAK, p),
@@ -1862,135 +1756,43 @@ public class Blocks {
          .ignitedByLava()
    );
    public static final Block OAK_WALL_HANGING_SIGN = register(
-      BlockIds.OAK_WALL_HANGING_SIGN,
-      p -> new WallHangingSignBlock(WoodType.OAK, p),
-      wallVariant(OAK_HANGING_SIGN, true)
-         .mapColor(OAK_LOG.defaultMapColor())
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
+      BlockIds.OAK_WALL_HANGING_SIGN, p -> new WallHangingSignBlock(WoodType.OAK, p), wallVariant(OAK_HANGING_SIGN, true)
    );
    public static final Block SPRUCE_WALL_HANGING_SIGN = register(
-      BlockIds.SPRUCE_WALL_HANGING_SIGN,
-      p -> new WallHangingSignBlock(WoodType.SPRUCE, p),
-      wallVariant(SPRUCE_HANGING_SIGN, true)
-         .mapColor(MapColor.WOOD)
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
+      BlockIds.SPRUCE_WALL_HANGING_SIGN, p -> new WallHangingSignBlock(WoodType.SPRUCE, p), wallVariant(SPRUCE_HANGING_SIGN, true)
    );
    public static final Block BIRCH_WALL_HANGING_SIGN = register(
-      BlockIds.BIRCH_WALL_HANGING_SIGN,
-      p -> new WallHangingSignBlock(WoodType.BIRCH, p),
-      wallVariant(BIRCH_HANGING_SIGN, true)
-         .mapColor(MapColor.SAND)
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
+      BlockIds.BIRCH_WALL_HANGING_SIGN, p -> new WallHangingSignBlock(WoodType.BIRCH, p), wallVariant(BIRCH_HANGING_SIGN, true)
    );
    public static final Block ACACIA_WALL_HANGING_SIGN = register(
-      BlockIds.ACACIA_WALL_HANGING_SIGN,
-      p -> new WallHangingSignBlock(WoodType.ACACIA, p),
-      wallVariant(ACACIA_HANGING_SIGN, true)
-         .mapColor(MapColor.COLOR_ORANGE)
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
+      BlockIds.ACACIA_WALL_HANGING_SIGN, p -> new WallHangingSignBlock(WoodType.ACACIA, p), wallVariant(ACACIA_HANGING_SIGN, true)
    );
    public static final Block CHERRY_WALL_HANGING_SIGN = register(
-      BlockIds.CHERRY_WALL_HANGING_SIGN,
-      p -> new WallHangingSignBlock(WoodType.CHERRY, p),
-      wallVariant(CHERRY_HANGING_SIGN, true)
-         .mapColor(MapColor.TERRACOTTA_PINK)
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
+      BlockIds.CHERRY_WALL_HANGING_SIGN, p -> new WallHangingSignBlock(WoodType.CHERRY, p), wallVariant(CHERRY_HANGING_SIGN, true)
    );
    public static final Block JUNGLE_WALL_HANGING_SIGN = register(
-      BlockIds.JUNGLE_WALL_HANGING_SIGN,
-      p -> new WallHangingSignBlock(WoodType.JUNGLE, p),
-      wallVariant(JUNGLE_HANGING_SIGN, true)
-         .mapColor(JUNGLE_LOG.defaultMapColor())
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
+      BlockIds.JUNGLE_WALL_HANGING_SIGN, p -> new WallHangingSignBlock(WoodType.JUNGLE, p), wallVariant(JUNGLE_HANGING_SIGN, true)
    );
    public static final Block DARK_OAK_WALL_HANGING_SIGN = register(
-      BlockIds.DARK_OAK_WALL_HANGING_SIGN,
-      p -> new WallHangingSignBlock(WoodType.DARK_OAK, p),
-      wallVariant(DARK_OAK_HANGING_SIGN, true)
-         .mapColor(DARK_OAK_LOG.defaultMapColor())
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
+      BlockIds.DARK_OAK_WALL_HANGING_SIGN, p -> new WallHangingSignBlock(WoodType.DARK_OAK, p), wallVariant(DARK_OAK_HANGING_SIGN, true)
    );
    public static final Block PALE_OAK_WALL_HANGING_SIGN = register(
-      BlockIds.PALE_OAK_WALL_HANGING_SIGN,
-      p -> new WallHangingSignBlock(WoodType.PALE_OAK, p),
-      wallVariant(PALE_OAK_HANGING_SIGN, true)
-         .mapColor(PALE_OAK_PLANKS.defaultMapColor())
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
+      BlockIds.PALE_OAK_WALL_HANGING_SIGN, p -> new WallHangingSignBlock(WoodType.PALE_OAK, p), wallVariant(PALE_OAK_HANGING_SIGN, true)
    );
    public static final Block MANGROVE_WALL_HANGING_SIGN = register(
-      BlockIds.MANGROVE_WALL_HANGING_SIGN,
-      p -> new WallHangingSignBlock(WoodType.MANGROVE, p),
-      wallVariant(MANGROVE_HANGING_SIGN, true)
-         .mapColor(MANGROVE_LOG.defaultMapColor())
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
+      BlockIds.MANGROVE_WALL_HANGING_SIGN, p -> new WallHangingSignBlock(WoodType.MANGROVE, p), wallVariant(MANGROVE_HANGING_SIGN, true)
    );
    public static final Block POPLAR_WALL_HANGING_SIGN = register(
-      BlockIds.POPLAR_WALL_HANGING_SIGN,
-      p -> new WallHangingSignBlock(WoodType.POPLAR, p),
-      wallVariant(POPLAR_HANGING_SIGN, true)
-         .mapColor(POPLAR_PLANKS.defaultMapColor())
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
+      BlockIds.POPLAR_WALL_HANGING_SIGN, p -> new WallHangingSignBlock(WoodType.POPLAR, p), wallVariant(POPLAR_HANGING_SIGN, true)
    );
    public static final Block CRIMSON_WALL_HANGING_SIGN = register(
-      BlockIds.CRIMSON_WALL_HANGING_SIGN,
-      p -> new WallHangingSignBlock(WoodType.CRIMSON, p),
-      wallVariant(CRIMSON_HANGING_SIGN, true).mapColor(MapColor.CRIMSON_STEM).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision().strength(1.0F)
+      BlockIds.CRIMSON_WALL_HANGING_SIGN, p -> new WallHangingSignBlock(WoodType.CRIMSON, p), wallVariant(CRIMSON_HANGING_SIGN, true)
    );
    public static final Block WARPED_WALL_HANGING_SIGN = register(
-      BlockIds.WARPED_WALL_HANGING_SIGN,
-      p -> new WallHangingSignBlock(WoodType.WARPED, p),
-      wallVariant(WARPED_HANGING_SIGN, true).mapColor(MapColor.WARPED_STEM).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision().strength(1.0F)
+      BlockIds.WARPED_WALL_HANGING_SIGN, p -> new WallHangingSignBlock(WoodType.WARPED, p), wallVariant(WARPED_HANGING_SIGN, true)
    );
    public static final Block BAMBOO_WALL_HANGING_SIGN = register(
-      BlockIds.BAMBOO_WALL_HANGING_SIGN,
-      p -> new WallHangingSignBlock(WoodType.BAMBOO, p),
-      wallVariant(BAMBOO_HANGING_SIGN, true)
-         .mapColor(MapColor.COLOR_YELLOW)
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .ignitedByLava()
+      BlockIds.BAMBOO_WALL_HANGING_SIGN, p -> new WallHangingSignBlock(WoodType.BAMBOO, p), wallVariant(BAMBOO_HANGING_SIGN, true)
    );
    public static final Block LEVER = register(
       BlockItemIds.LEVER,
@@ -2166,11 +1968,7 @@ public class Blocks {
       RedstoneTorchBlock::new,
       BlockBehaviour.Properties.of().noCollision().instabreak().lightLevel(litBlockEmission(7)).sound(BlockSoundSets.WOOD).pushReaction(PushReaction.POPPED)
    );
-   public static final Block REDSTONE_WALL_TORCH = register(
-      BlockIds.REDSTONE_WALL_TORCH,
-      RedstoneWallTorchBlock::new,
-      wallVariant(REDSTONE_TORCH, true).noCollision().instabreak().lightLevel(litBlockEmission(7)).sound(BlockSoundSets.WOOD).pushReaction(PushReaction.POPPED)
-   );
+   public static final Block REDSTONE_WALL_TORCH = register(BlockIds.REDSTONE_WALL_TORCH, RedstoneWallTorchBlock::new, wallVariant(REDSTONE_TORCH, true));
    public static final Block STONE_BUTTON = register(BlockItemIds.STONE_BUTTON, p -> new ButtonBlock(BlockSetType.STONE, 20, p), buttonProperties());
    public static final Block SNOW = register(
       BlockItemIds.SNOW,
@@ -2202,6 +2000,13 @@ public class Blocks {
    public static final Block SNOW_BLOCK = register(
       BlockItemIds.SNOW_BLOCK, BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(0.2F).sound(BlockSoundSets.SNOW)
    );
+   public static final Block SNOW_BRICKS = register(
+      BlockItemIds.SNOW_BRICKS,
+      BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).friction(0.6F).requiresCorrectToolForDrops().strength(0.6F).sound(BlockSoundSets.SNOW)
+   );
+   public static final Block SNOW_BRICK_SLAB = registerSlab(BlockItemIds.SNOW_BRICK_SLAB, SNOW_BRICKS);
+   public static final Block SNOW_BRICK_STAIRS = registerStair(BlockItemIds.SNOW_BRICK_STAIRS, SNOW_BRICKS);
+   public static final Block SNOW_BRICK_WALL = registerWall(BlockItemIds.SNOW_BRICK_WALL, SNOW_BRICKS);
    public static final Block CACTUS = register(
       BlockItemIds.CACTUS,
       CactusBlock::new,
@@ -2307,9 +2112,7 @@ public class Blocks {
       BlockBehaviour.Properties.of().noCollision().instabreak().lightLevel(state -> 10).sound(BlockSoundSets.WOOD).pushReaction(PushReaction.POPPED)
    );
    public static final Block SOUL_WALL_TORCH = register(
-      BlockIds.SOUL_WALL_TORCH,
-      p -> new WallTorchBlock(ParticleTypes.SOUL_FIRE_FLAME, p),
-      wallVariant(SOUL_TORCH, true).noCollision().instabreak().lightLevel(state -> 10).sound(BlockSoundSets.WOOD).pushReaction(PushReaction.POPPED)
+      BlockIds.SOUL_WALL_TORCH, p -> new WallTorchBlock(ParticleTypes.SOUL_FIRE_FLAME, p), wallVariant(SOUL_TORCH, true)
    );
    public static final Block COPPER_TORCH = register(
       BlockItemIds.COPPER_TORCH,
@@ -2317,9 +2120,7 @@ public class Blocks {
       BlockBehaviour.Properties.of().noCollision().instabreak().lightLevel(state -> 14).sound(BlockSoundSets.WOOD).pushReaction(PushReaction.POPPED)
    );
    public static final Block COPPER_WALL_TORCH = register(
-      BlockIds.COPPER_WALL_TORCH,
-      p -> new WallTorchBlock(ParticleTypes.COPPER_FIRE_FLAME, p),
-      wallVariant(COPPER_TORCH, true).noCollision().instabreak().lightLevel(state -> 14).sound(BlockSoundSets.WOOD).pushReaction(PushReaction.POPPED)
+      BlockIds.COPPER_WALL_TORCH, p -> new WallTorchBlock(ParticleTypes.COPPER_FIRE_FLAME, p), wallVariant(COPPER_TORCH, true)
    );
    public static final Block GLOWSTONE = register(
       BlockItemIds.GLOWSTONE,
@@ -3010,7 +2811,7 @@ public class Blocks {
    public static final Block SKELETON_WALL_SKULL = register(
       BlockIds.SKELETON_WALL_SKULL,
       p -> new WallSkullBlock(SkullBlock.Types.SKELETON, p),
-      wallVariant(SKELETON_SKULL, true).strength(1.0F).pushReaction(PushReaction.POPPED)
+      wallVariant(SKELETON_SKULL, true).instrument(NoteBlock.DEFAULT_INSTRUMENT)
    );
    public static final Block WITHER_SKELETON_SKULL = register(
       BlockItemIds.WITHER_SKELETON_SKULL,
@@ -3018,7 +2819,7 @@ public class Blocks {
       BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.WITHER_SKELETON).strength(1.0F).pushReaction(PushReaction.POPPED).noOcclusion()
    );
    public static final Block WITHER_SKELETON_WALL_SKULL = register(
-      BlockIds.WITHER_SKELETON_WALL_SKULL, WitherWallSkullBlock::new, wallVariant(WITHER_SKELETON_SKULL, true).strength(1.0F).pushReaction(PushReaction.POPPED)
+      BlockIds.WITHER_SKELETON_WALL_SKULL, WitherWallSkullBlock::new, wallVariant(WITHER_SKELETON_SKULL, true).instrument(NoteBlock.DEFAULT_INSTRUMENT)
    );
    public static final Block ZOMBIE_HEAD = register(
       BlockItemIds.ZOMBIE_HEAD,
@@ -3026,9 +2827,7 @@ public class Blocks {
       BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.ZOMBIE).strength(1.0F).pushReaction(PushReaction.POPPED).noOcclusion()
    );
    public static final Block ZOMBIE_WALL_HEAD = register(
-      BlockIds.ZOMBIE_WALL_HEAD,
-      p -> new WallSkullBlock(SkullBlock.Types.ZOMBIE, p),
-      wallVariant(ZOMBIE_HEAD, true).strength(1.0F).pushReaction(PushReaction.POPPED)
+      BlockIds.ZOMBIE_WALL_HEAD, p -> new WallSkullBlock(SkullBlock.Types.ZOMBIE, p), wallVariant(ZOMBIE_HEAD, true).instrument(NoteBlock.DEFAULT_INSTRUMENT)
    );
    public static final Block PLAYER_HEAD = register(
       BlockItemIds.PLAYER_HEAD,
@@ -3036,7 +2835,7 @@ public class Blocks {
       BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.CUSTOM_HEAD).strength(1.0F).pushReaction(PushReaction.POPPED).noOcclusion()
    );
    public static final Block PLAYER_WALL_HEAD = register(
-      BlockIds.PLAYER_WALL_HEAD, PlayerWallHeadBlock::new, wallVariant(PLAYER_HEAD, true).strength(1.0F).pushReaction(PushReaction.POPPED)
+      BlockIds.PLAYER_WALL_HEAD, PlayerWallHeadBlock::new, wallVariant(PLAYER_HEAD, true).instrument(NoteBlock.DEFAULT_INSTRUMENT)
    );
    public static final Block CREEPER_HEAD = register(
       BlockItemIds.CREEPER_HEAD,
@@ -3046,7 +2845,7 @@ public class Blocks {
    public static final Block CREEPER_WALL_HEAD = register(
       BlockIds.CREEPER_WALL_HEAD,
       p -> new WallSkullBlock(SkullBlock.Types.CREEPER, p),
-      wallVariant(CREEPER_HEAD, true).strength(1.0F).pushReaction(PushReaction.POPPED)
+      wallVariant(CREEPER_HEAD, true).instrument(NoteBlock.DEFAULT_INSTRUMENT)
    );
    public static final Block DRAGON_HEAD = register(
       BlockItemIds.DRAGON_HEAD,
@@ -3054,9 +2853,7 @@ public class Blocks {
       BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.DRAGON).strength(1.0F).pushReaction(PushReaction.POPPED).noOcclusion()
    );
    public static final Block DRAGON_WALL_HEAD = register(
-      BlockIds.DRAGON_WALL_HEAD,
-      p -> new WallSkullBlock(SkullBlock.Types.DRAGON, p),
-      wallVariant(DRAGON_HEAD, true).strength(1.0F).pushReaction(PushReaction.POPPED)
+      BlockIds.DRAGON_WALL_HEAD, p -> new WallSkullBlock(SkullBlock.Types.DRAGON, p), wallVariant(DRAGON_HEAD, true).instrument(NoteBlock.DEFAULT_INSTRUMENT)
    );
    public static final Block PIGLIN_HEAD = register(
       BlockItemIds.PIGLIN_HEAD,
@@ -3064,7 +2861,7 @@ public class Blocks {
       BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.PIGLIN).strength(1.0F).pushReaction(PushReaction.POPPED).noOcclusion()
    );
    public static final Block PIGLIN_WALL_HEAD = register(
-      BlockIds.PIGLIN_WALL_HEAD, PiglinWallSkullBlock::new, wallVariant(PIGLIN_HEAD, true).strength(1.0F).pushReaction(PushReaction.POPPED)
+      BlockIds.PIGLIN_WALL_HEAD, PiglinWallSkullBlock::new, wallVariant(PIGLIN_HEAD, true).instrument(NoteBlock.DEFAULT_INSTRUMENT)
    );
    public static final Block ANVIL = register(
       BlockItemIds.ANVIL,
@@ -3288,6 +3085,7 @@ public class Blocks {
       BlockBehaviour.Properties.of()
          .mapColor(MapColor.ICE)
          .instrument(NoteBlockInstrument.CHIME)
+         .requiresCorrectToolForDrops()
          .friction(0.6F)
          .strength(0.5F)
          .sound(BlockSoundSets.PACKED_ICE)
@@ -3384,17 +3182,7 @@ public class Blocks {
          .ignitedByLava()
    );
    public static final ColorCollection<Block> WALL_BANNER = ColorCollection.registerBlocks(
-      BlockIds.WALL_BANNER,
-      Blocks::register,
-      WallBannerBlock::new,
-      color -> wallVariant(BANNER.pick(color), true)
-         .mapColor(MapColor.WOOD)
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASS)
-         .noCollision()
-         .strength(1.0F)
-         .sound(BlockSoundSets.WOOD)
-         .ignitedByLava()
+      BlockIds.WALL_BANNER, Blocks::register, WallBannerBlock::new, color -> wallVariant(BANNER.pick(color), true)
    );
    public static final Block RED_SANDSTONE = register(
       BlockItemIds.RED_SANDSTONE,
@@ -4329,109 +4117,34 @@ public class Blocks {
          .pushReaction(PushReaction.POPPED)
    );
    public static final Block DEAD_TUBE_CORAL_WALL_FAN = register(
-      BlockIds.DEAD_TUBE_CORAL_WALL_FAN,
-      BaseCoralWallFanBlock::new,
-      wallVariant(DEAD_TUBE_CORAL_FAN, false)
-         .mapColor(MapColor.COLOR_GRAY)
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASEDRUM)
-         .requiresCorrectToolForDrops()
-         .noCollision()
-         .instabreak()
+      BlockIds.DEAD_TUBE_CORAL_WALL_FAN, BaseCoralWallFanBlock::new, wallVariant(DEAD_TUBE_CORAL_FAN, false)
    );
    public static final Block DEAD_BRAIN_CORAL_WALL_FAN = register(
-      BlockIds.DEAD_BRAIN_CORAL_WALL_FAN,
-      BaseCoralWallFanBlock::new,
-      wallVariant(DEAD_BRAIN_CORAL_FAN, false)
-         .mapColor(MapColor.COLOR_GRAY)
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASEDRUM)
-         .requiresCorrectToolForDrops()
-         .noCollision()
-         .instabreak()
+      BlockIds.DEAD_BRAIN_CORAL_WALL_FAN, BaseCoralWallFanBlock::new, wallVariant(DEAD_BRAIN_CORAL_FAN, false)
    );
    public static final Block DEAD_BUBBLE_CORAL_WALL_FAN = register(
-      BlockIds.DEAD_BUBBLE_CORAL_WALL_FAN,
-      BaseCoralWallFanBlock::new,
-      wallVariant(DEAD_BUBBLE_CORAL_FAN, false)
-         .mapColor(MapColor.COLOR_GRAY)
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASEDRUM)
-         .requiresCorrectToolForDrops()
-         .noCollision()
-         .instabreak()
+      BlockIds.DEAD_BUBBLE_CORAL_WALL_FAN, BaseCoralWallFanBlock::new, wallVariant(DEAD_BUBBLE_CORAL_FAN, false)
    );
    public static final Block DEAD_FIRE_CORAL_WALL_FAN = register(
-      BlockIds.DEAD_FIRE_CORAL_WALL_FAN,
-      BaseCoralWallFanBlock::new,
-      wallVariant(DEAD_FIRE_CORAL_FAN, false)
-         .mapColor(MapColor.COLOR_GRAY)
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASEDRUM)
-         .requiresCorrectToolForDrops()
-         .noCollision()
-         .instabreak()
+      BlockIds.DEAD_FIRE_CORAL_WALL_FAN, BaseCoralWallFanBlock::new, wallVariant(DEAD_FIRE_CORAL_FAN, false)
    );
    public static final Block DEAD_HORN_CORAL_WALL_FAN = register(
-      BlockIds.DEAD_HORN_CORAL_WALL_FAN,
-      BaseCoralWallFanBlock::new,
-      wallVariant(DEAD_HORN_CORAL_FAN, false)
-         .mapColor(MapColor.COLOR_GRAY)
-         .forceSolidOn()
-         .instrument(NoteBlockInstrument.BASEDRUM)
-         .requiresCorrectToolForDrops()
-         .noCollision()
-         .instabreak()
+      BlockIds.DEAD_HORN_CORAL_WALL_FAN, BaseCoralWallFanBlock::new, wallVariant(DEAD_HORN_CORAL_FAN, false)
    );
    public static final Block TUBE_CORAL_WALL_FAN = register(
-      BlockIds.TUBE_CORAL_WALL_FAN,
-      p -> new CoralWallFanBlock(DEAD_TUBE_CORAL_WALL_FAN, p),
-      wallVariant(TUBE_CORAL_FAN, false)
-         .mapColor(MapColor.COLOR_BLUE)
-         .noCollision()
-         .instabreak()
-         .sound(BlockSoundSets.WET_GRASS)
-         .pushReaction(PushReaction.POPPED)
+      BlockIds.TUBE_CORAL_WALL_FAN, p -> new CoralWallFanBlock(DEAD_TUBE_CORAL_WALL_FAN, p), wallVariant(TUBE_CORAL_FAN, false)
    );
    public static final Block BRAIN_CORAL_WALL_FAN = register(
-      BlockIds.BRAIN_CORAL_WALL_FAN,
-      p -> new CoralWallFanBlock(DEAD_BRAIN_CORAL_WALL_FAN, p),
-      wallVariant(BRAIN_CORAL_FAN, false)
-         .mapColor(MapColor.COLOR_PINK)
-         .noCollision()
-         .instabreak()
-         .sound(BlockSoundSets.WET_GRASS)
-         .pushReaction(PushReaction.POPPED)
+      BlockIds.BRAIN_CORAL_WALL_FAN, p -> new CoralWallFanBlock(DEAD_BRAIN_CORAL_WALL_FAN, p), wallVariant(BRAIN_CORAL_FAN, false)
    );
    public static final Block BUBBLE_CORAL_WALL_FAN = register(
-      BlockIds.BUBBLE_CORAL_WALL_FAN,
-      p -> new CoralWallFanBlock(DEAD_BUBBLE_CORAL_WALL_FAN, p),
-      wallVariant(BUBBLE_CORAL_FAN, false)
-         .mapColor(MapColor.COLOR_PURPLE)
-         .noCollision()
-         .instabreak()
-         .sound(BlockSoundSets.WET_GRASS)
-         .pushReaction(PushReaction.POPPED)
+      BlockIds.BUBBLE_CORAL_WALL_FAN, p -> new CoralWallFanBlock(DEAD_BUBBLE_CORAL_WALL_FAN, p), wallVariant(BUBBLE_CORAL_FAN, false)
    );
    public static final Block FIRE_CORAL_WALL_FAN = register(
-      BlockIds.FIRE_CORAL_WALL_FAN,
-      p -> new CoralWallFanBlock(DEAD_FIRE_CORAL_WALL_FAN, p),
-      wallVariant(FIRE_CORAL_FAN, false)
-         .mapColor(MapColor.COLOR_RED)
-         .noCollision()
-         .instabreak()
-         .sound(BlockSoundSets.WET_GRASS)
-         .pushReaction(PushReaction.POPPED)
+      BlockIds.FIRE_CORAL_WALL_FAN, p -> new CoralWallFanBlock(DEAD_FIRE_CORAL_WALL_FAN, p), wallVariant(FIRE_CORAL_FAN, false)
    );
    public static final Block HORN_CORAL_WALL_FAN = register(
-      BlockIds.HORN_CORAL_WALL_FAN,
-      p -> new CoralWallFanBlock(DEAD_HORN_CORAL_WALL_FAN, p),
-      wallVariant(HORN_CORAL_FAN, false)
-         .mapColor(MapColor.COLOR_YELLOW)
-         .noCollision()
-         .instabreak()
-         .sound(BlockSoundSets.WET_GRASS)
-         .pushReaction(PushReaction.POPPED)
+      BlockIds.HORN_CORAL_WALL_FAN, p -> new CoralWallFanBlock(DEAD_HORN_CORAL_WALL_FAN, p), wallVariant(HORN_CORAL_FAN, false)
    );
    public static final Block SEA_PICKLE = register(
       BlockItemIds.SEA_PICKLE,
@@ -4960,20 +4673,9 @@ public class Blocks {
       BlockBehaviour.Properties.of().mapColor(WARPED_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS).forceSolidOn().noCollision().strength(1.0F)
    );
    public static final Block CRIMSON_WALL_SIGN = register(
-      BlockIds.CRIMSON_WALL_SIGN,
-      p -> new WallSignBlock(WoodType.CRIMSON, p),
-      wallVariant(CRIMSON_SIGN, true)
-         .mapColor(CRIMSON_PLANKS.defaultMapColor())
-         .instrument(NoteBlockInstrument.BASS)
-         .forceSolidOn()
-         .noCollision()
-         .strength(1.0F)
+      BlockIds.CRIMSON_WALL_SIGN, p -> new WallSignBlock(WoodType.CRIMSON, p), wallVariant(CRIMSON_SIGN, true)
    );
-   public static final Block WARPED_WALL_SIGN = register(
-      BlockIds.WARPED_WALL_SIGN,
-      p -> new WallSignBlock(WoodType.WARPED, p),
-      wallVariant(WARPED_SIGN, true).mapColor(WARPED_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS).forceSolidOn().noCollision().strength(1.0F)
-   );
+   public static final Block WARPED_WALL_SIGN = register(BlockIds.WARPED_WALL_SIGN, p -> new WallSignBlock(WoodType.WARPED, p), wallVariant(WARPED_SIGN, true));
    public static final Block STRUCTURE_BLOCK = register(
       BlockItemIds.STRUCTURE_BLOCK,
       StructureBlock::new,
@@ -6037,7 +5739,7 @@ public class Blocks {
    }
 
    private static BlockBehaviour.Properties wallVariant(final Block standingBlock, final boolean copyName) {
-      BlockBehaviour.Properties wallProperties = BlockBehaviour.Properties.of().overrideLootTable(standingBlock.getLootTable());
+      BlockBehaviour.Properties wallProperties = BlockBehaviour.Properties.ofFullCopy(standingBlock).overrideLootTable(standingBlock.getLootTable());
       if (copyName) {
          wallProperties = wallProperties.overrideDescription(standingBlock.getDescriptionId());
       }

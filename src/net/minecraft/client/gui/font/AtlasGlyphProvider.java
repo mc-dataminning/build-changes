@@ -1,7 +1,6 @@
 package net.minecraft.client.gui.font;
 
 import com.mojang.blaze3d.font.GlyphInfo;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
 import java.util.HashMap;
@@ -9,6 +8,7 @@ import java.util.Map;
 import java.util.function.Function;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GlyphSource;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.font.glyphs.BakedGlyph;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.texture.TextureAtlas;
@@ -105,7 +105,7 @@ public class AtlasGlyphProvider {
       }
 
       @Override
-      public RenderPipeline guiPipeline() {
+      public GuiPipeline guiPipeline() {
          return this.renderTypes.guiPipeline();
       }
    }

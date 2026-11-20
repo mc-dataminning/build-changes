@@ -22,6 +22,7 @@ import java.util.OptionalInt;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.BooleanSupplier;
 import java.util.stream.Collectors;
 import net.minecraft.ChatFormatting;
 import net.minecraft.CrashReport;
@@ -103,6 +104,7 @@ import net.minecraft.stats.ServerRecipeBook;
 import net.minecraft.stats.ServerStatsCounter;
 import net.minecraft.stats.Stat;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.HashOps;
 import net.minecraft.util.Mth;
@@ -174,11 +176,13 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.trading.MerchantOffers;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractBedBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.RespawnAnchorBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -188,6 +192,7 @@ import net.minecraft.world.level.block.entity.SignTextSlot;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gamerules.GameRules;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.level.saveddata.maps.MapId;
 import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
@@ -385,6 +390,44 @@ public class ServerPlayer extends Player {
    }
 
    @Override
+   public void updateFallDistanceAndCheckFallDamageForClientControlledEntity(final Vec3 movement, final boolean onGround) {
+      if (movement.y < 0.0) {
+         this.fallDamageResettingHack(this.position().subtract(movement));
+      }
+
+      super.updateFallDistanceAndCheckFallDamageForClientControlledEntity(movement, onGround);
+   }
+
+   public void fallDamageResettingHack(final Vec3 fromPos) {
+      Vec3 toPos = this.position();
+      BlockGetter.forEachBlockIntersectedBetween(
+         fromPos,
+         toPos,
+         this.getBoundingBox(),
+         (pos, var4) -> {
+            BlockState state = this.level().getBlockState(pos);
+            if (this.isFallDamageResettingPortal(state)
+               || state.is(BlockTags.FALL_DAMAGE_RESETTING) && state.getEntityInsideCollisionShape(this.level(), pos, this).clip(fromPos, toPos, pos) != null) {
+               this.resetFallDistance();
+            }
+
+            FluidState fluidState = state.getFluidState();
+            if (this.collidedWithFluid(fluidState, pos, fromPos, toPos)) {
+               this.fluidInteraction.visitedFluidDuringMovement(fluidState.getType());
+            }
+
+            return true;
+         }
+      );
+   }
+
+   private boolean isFallDamageResettingPortal(final BlockState state) {
+      return state.is(Blocks.END_PORTAL)
+         || state.is(Blocks.END_GATEWAY)
+         || state.is(Blocks.NETHER_PORTAL) && this.level().getGameRules().get(GameRules.PLAYERS_NETHER_PORTAL_DEFAULT_DELAY) == 0;
+   }
+
+   @Override
    public BlockPos adjustSpawnLocation(final ServerLevel level, final BlockPos spawnSuggestion) {
       CompletableFuture<Vec3> future = PlayerSpawnFinder.findSpawn(level, spawnSuggestion);
       this.server.managedBlock(future::isDone);
@@ -573,8 +616,12 @@ public class ServerPlayer extends Player {
    }
 
    @Override
-   public void onInsideBlock(final BlockState state) {
+   public void onInsideBlock(final BlockState state, final BooleanSupplier centerInsideBlock) {
+      super.onInsideBlock(state, centerInsideBlock);
       CriteriaTriggers.ENTER_BLOCK.trigger(this, state);
+      if (this.isFallDamageResettingPortal(state)) {
+         this.resetFallDistance();
+      }
    }
 
    @Override
@@ -1341,7 +1388,7 @@ public class ServerPlayer extends Player {
    }
 
    @Override
-   protected void checkFallDamage(final double ya, final boolean onGround, final BlockState onState, final BlockPos pos) {
+   protected void checkFallDamage(final boolean onGround, final BlockState onState, final BlockPos pos) {
       if (this.spawnExtraParticlesOnFall && onGround && this.fallDistance > 0.0) {
          Vec3 centered = Vec3.atCenterOf(pos).add(0.0, 0.5, 0.0);
          int particles = (int)Math.clamp(50.0 * this.fallDistance, 0.0, 200.0);
@@ -1350,7 +1397,7 @@ public class ServerPlayer extends Player {
          this.spawnExtraParticlesOnFall = false;
       }
 
-      super.checkFallDamage(ya, onGround, onState, pos);
+      super.checkFallDamage(onGround, onState, pos);
    }
 
    @Override

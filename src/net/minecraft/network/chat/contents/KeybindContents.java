@@ -31,13 +31,13 @@ public class KeybindContents implements ComponentContents {
    }
 
    @Override
-   public <T> Optional<T> visit(final FormattedText.ContentConsumer<T> output) {
-      return this.getNestedComponent().visit(output);
+   public <T> Optional<T> visitUnbounded(final FormattedText.ContentConsumer<T> output) {
+      return this.getNestedComponent().visitUnbounded(output);
    }
 
    @Override
-   public <T> Optional<T> visit(final FormattedText.StyledContentConsumer<T> output, final Style currentStyle) {
-      return this.getNestedComponent().visit(output, currentStyle);
+   public <T> Optional<T> visitUnbounded(final FormattedText.StyledContentConsumer<T> output, final Style currentStyle) {
+      return this.getNestedComponent().visitUnbounded(output, currentStyle);
    }
 
    @Override

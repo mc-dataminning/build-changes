@@ -8,6 +8,7 @@ import com.mojang.logging.LogUtils;
 import com.mojang.renderpearl.api.device.GpuDevice;
 import com.mojang.renderpearl.api.pipeline.BindGroupLayout;
 import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
+import com.mojang.renderpearl.api.pipeline.RenderPassLayout;
 import com.mojang.renderpearl.api.pipeline.ShaderType;
 import com.mojang.renderpearl.api.pipeline.SpvModule;
 import com.mojang.renderpearl.util.ShaderCompileException;
@@ -46,7 +47,9 @@ public class PipelineBuilder implements UncheckedAutoCloseable {
       this.compiler.close();
    }
 
-   private CompiledRenderPipeline.CreateInfo generateBackendCreateInfo(final RenderPipeline pipeline, final ShaderSource shaderSource) {
+   private CompiledRenderPipeline.CreateInfo generateBackendCreateInfo(
+      final RenderPipeline pipeline, final RenderPassLayout.Subpass subpass, final ShaderSource shaderSource
+   ) {
       EnumMap<ShaderType, SpvModule> shaderSources = new EnumMap<>(ShaderType.class);
 
       try {
@@ -126,7 +129,11 @@ public class PipelineBuilder implements UncheckedAutoCloseable {
                if (newBinding >= uniformResourceTypes.size()) {
                   uniformResourceTypes.add(descriptor.resourceType());
                   uniformDimensions.add(type.dimensions());
-                  uniforms.add(new CompiledRenderPipeline.CreateInfo.Uniform(uniformName, newBinding, pipelineUniform.type(), pipelineUniform.gpuFormat()));
+                  uniforms.add(
+                     new CompiledRenderPipeline.CreateInfo.Uniform(
+                        uniformName, descriptor.inputAttachmentIndex(), newBinding, pipelineUniform.type(), pipelineUniform.gpuFormat()
+                     )
+                  );
                } else {
                   if (descriptor.resourceType() != uniformResourceTypes.getInt(newBinding)) {
                      throw new ShaderCompileException("Uniform type for " + descriptor.name() + " does not match across all stages");
@@ -150,11 +157,11 @@ public class PipelineBuilder implements UncheckedAutoCloseable {
             List.copyOf(uniforms),
             pipeline.pushConstantSize(),
             pipeline.getDepthStencilState(),
-            pipeline.getDepthStencilFormat(),
             pipeline.getPolygonMode(),
             pipeline.isCull(),
             pipeline.getColorTargetStates(),
-            pipeline.getPrimitiveTopology()
+            pipeline.getPrimitiveTopology(),
+            subpass
          );
       } catch (ShaderCompileException e) {
          LOGGER.error("Couldn't compile pipeline ({}): ", pipeline.getLocation(), e);
@@ -164,28 +171,28 @@ public class PipelineBuilder implements UncheckedAutoCloseable {
    }
 
    public CompletableFuture<CompiledRenderPipeline.Pending> compilePipeline(
-      final RenderPipeline pipeline, final ShaderSource shaderSource, final Executor executor
+      final RenderPipeline pipeline, final RenderPassLayout.Subpass subpass, final ShaderSource shaderSource, final Executor executor
    ) {
-      return CompletableFuture.supplyAsync(() -> this.compilePipeline(pipeline, shaderSource), executor);
+      return CompletableFuture.supplyAsync(() -> this.compilePipeline(pipeline, subpass, shaderSource), executor);
    }
 
-   public CompiledRenderPipeline.Pending compilePipeline(final RenderPipeline pipeline, final ShaderSource shaderSource) {
+   public CompiledRenderPipeline.Pending compilePipeline(final RenderPipeline pipeline, final RenderPassLayout.Subpass subpass, final ShaderSource shaderSource) {
       Zone tracyZone = TracyClient.beginZone("Frontend Compile and reflection", false);
 
       CompiledRenderPipeline.CreateInfo createInfo;
       try {
          tracyZone.addText(pipeline.getLocation().toString());
-         createInfo = this.generateBackendCreateInfo(pipeline, shaderSource);
-      } catch (Throwable var8) {
+         createInfo = this.generateBackendCreateInfo(pipeline, subpass, shaderSource);
+      } catch (Throwable var9) {
          if (tracyZone != null) {
             try {
                tracyZone.close();
-            } catch (Throwable var7) {
-               var8.addSuppressed(var7);
+            } catch (Throwable var8) {
+               var9.addSuppressed(var8);
             }
          }
 
-         throw var8;
+         throw var9;
       }
 
       if (tracyZone != null) {

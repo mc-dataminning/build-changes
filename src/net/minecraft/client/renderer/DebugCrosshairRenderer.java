@@ -11,8 +11,6 @@ import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.commands.RenderPass;
 import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.util.Optional;
-import java.util.OptionalDouble;
 import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.renderer.pipeline.variant.LineRenderPipelineVariant;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
@@ -67,14 +65,14 @@ public class DebugCrosshairRenderer implements AutoCloseable {
 
       try (RenderPass renderPass = RenderSystem.getDevice()
             .createCommandEncoder()
-            .createRenderPass(() -> "3d crosshair", colorTexture, Optional.empty(), depthTexture, OptionalDouble.empty())) {
-         renderPass.setPipeline(RenderSystem.getCompiledPipeline(renderPipelineOutline));
+            .createRenderPass(() -> "3d crosshair", RenderPassLayouts.COLOR_DEPTH, colorTexture, depthTexture)) {
+         renderPass.setPipeline(RenderSystem.getCompiledPipeline(renderPipelineOutline, renderPass.activeSubpass()));
          RenderSystem.bindDefaultUniforms(renderPass);
          renderPass.setVertexBuffer(0, this.crosshairBuffer.slice());
          renderPass.setIndexBuffer(indexBuffer, this.crosshairIndicies.type());
          renderPass.setUniform("DynamicTransforms", dynamicTransform);
          renderPass.drawIndexed(18, 1, 0, 0, 0);
-         renderPass.setPipeline(RenderSystem.getCompiledPipeline(renderPipelineFill));
+         renderPass.setPipeline(RenderSystem.getCompiledPipeline(renderPipelineFill, renderPass.activeSubpass()));
          renderPass.drawIndexed(18, 1, 18, 0, 0);
       }
 

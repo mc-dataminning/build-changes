@@ -583,6 +583,12 @@ public class BlockFamilies {
       .chiseled(Blocks.CHISELED_PACKED_ICE)
       .generateStonecutterRecipe()
       .getFamily();
+   public static final BlockFamily SNOW_BLOCK = familyBuilder(Blocks.SNOW_BLOCK).bricks(Blocks.SNOW_BRICKS).dontGenerateModel().getFamily();
+   public static final BlockFamily SNOW_BRICKS = familyBuilder(Blocks.SNOW_BRICKS)
+      .slab(Blocks.SNOW_BRICK_SLAB)
+      .stairs(Blocks.SNOW_BRICK_STAIRS)
+      .wall(Blocks.SNOW_BRICK_WALL)
+      .getFamily();
 
    private static BlockFamily.Builder familyBuilder(final Block base) {
       BlockFamily.Builder builder = new BlockFamily.Builder(base);

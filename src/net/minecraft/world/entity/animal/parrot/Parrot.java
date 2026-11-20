@@ -150,7 +150,7 @@ public class Parrot extends ShoulderRidingEntity {
    }
 
    @Override
-   protected boolean canBeABaby() {
+   public boolean canBeABaby() {
       return false;
    }
 
@@ -304,7 +304,7 @@ public class Parrot extends ShoulderRidingEntity {
    }
 
    @Override
-   protected void checkFallDamage(final double ya, final boolean onGround, final BlockState onState, final BlockPos pos) {
+   protected void checkFallDamage(final boolean onGround, final BlockState onState, final BlockPos pos) {
    }
 
    @Override

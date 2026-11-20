@@ -9,13 +9,12 @@ import com.mojang.renderpearl.api.commands.GpuFence;
 import com.mojang.renderpearl.api.commands.GpuQueryPool;
 import com.mojang.renderpearl.api.commands.RenderPass;
 import com.mojang.renderpearl.api.commands.RenderPassDescriptor;
+import com.mojang.renderpearl.api.pipeline.RenderPassLayout;
 import com.mojang.renderpearl.api.textures.GpuTexture;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
 import com.mojang.renderpearl.backend.api.CommandEncoderBackend;
 import java.nio.ByteBuffer;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.function.Supplier;
+import java.util.List;
 import org.jetbrains.annotations.ApiStatus.Internal;
 import org.joml.Vector4fc;
 import org.jspecify.annotations.Nullable;
@@ -58,70 +57,65 @@ public class FrontendCommandEncoder implements CommandEncoder {
    }
 
    @Override
-   public RenderPass createRenderPass(final Supplier<String> label, final GpuTextureView colorTexture, final Optional<Vector4fc> clearColor) {
-      return this.createRenderPass(label, colorTexture, clearColor, null, OptionalDouble.empty());
-   }
-
-   @Override
-   public RenderPass createRenderPass(
-      final Supplier<String> label,
-      final GpuTextureView colorTexture,
-      final Optional<Vector4fc> clearColor,
-      final @Nullable GpuTextureView depthTexture,
-      final OptionalDouble clearDepth
-   ) {
-      return this.createRenderPass(
-         label, colorTexture, clearColor, depthTexture, clearDepth, new RenderPass.RenderArea(0, 0, colorTexture.getWidth(0), colorTexture.getHeight(0))
-      );
-   }
-
-   @Override
-   public RenderPass createRenderPass(
-      final Supplier<String> label,
-      final GpuTextureView colorTexture,
-      final Optional<Vector4fc> clearColor,
-      final @Nullable GpuTextureView depthTexture,
-      final OptionalDouble clearDepth,
-      final RenderPass.RenderArea renderArea
-   ) {
-      RenderPassDescriptor.Builder descriptor = RenderPassDescriptor.builder(label).withColorAttachment(colorTexture, clearColor);
-      if (depthTexture != null) {
-         descriptor.withDepthAttachment(depthTexture, clearDepth);
-      }
-
-      descriptor.withRenderArea(renderArea);
-      return this.createRenderPass(descriptor.build());
-   }
-
-   @Override
    public RenderPass createRenderPass(final RenderPassDescriptor descriptor) {
       if (this.isInRenderPass) {
          throw new IllegalStateException("Close the existing render pass before creating a new one!");
       }
 
-      int maxColorAttachments = this.device.getDeviceInfo().limits().maxColorAttachments();
-      int colorAttachmentCount = descriptor.colorAttachments().size();
-      if (colorAttachmentCount > maxColorAttachments) {
-         throw new IllegalStateException(
-            "Render pass created with " + colorAttachmentCount + " color attachments but device only supports " + maxColorAttachments
-         );
+      if (descriptor.attachments().size() != descriptor.layout().attachmentFormats().size()) {
+         throw new IllegalArgumentException("Attachment count does not match RenderPassLayout");
       }
 
-      int totalAttachments = colorAttachmentCount + (descriptor.depthAttachment() != null ? 1 : 0);
-      if (totalAttachments == 0) {
-         throw new IllegalArgumentException("At least one attachment (depth or color) must be specified");
+      int attachmentWidth = descriptor.attachments().getFirst().textureView().getWidth(0);
+      int attachmentHeight = descriptor.attachments().getFirst().textureView().getHeight(0);
+
+      for (int i = 0; i < descriptor.attachments().size(); i++) {
+         RenderPassDescriptor.Attachment attachment = descriptor.attachments().get(i);
+         if (attachment.textureView().texture().getFormat() != descriptor.layout().attachmentFormats().get(i)) {
+            throw new IllegalArgumentException(
+               "Attachment "
+                  + i
+                  + " format "
+                  + attachment.textureView().texture().getFormat()
+                  + " does not match RenderPassLayout "
+                  + descriptor.layout().attachmentFormats().get(i)
+            );
+         }
+
+         if ((attachment.textureView().texture().usage() & 8) == 0) {
+            throw new IllegalStateException("Attachment " + i + " must have USAGE_RENDER_ATTACHMENT");
+         }
+
+         if (attachment.textureView().texture().getDepthOrLayers() > 1) {
+            throw new UnsupportedOperationException("Attachment " + i + ": Textures with multiple depths or layers are not yet supported as an attachment");
+         }
+
+         if (attachment.textureView().getWidth(0) != attachmentWidth || attachment.textureView().getHeight(0) != attachmentHeight) {
+            throw new IllegalArgumentException(
+               "Attachment "
+                  + i
+                  + ": size does not match expected attachment size. Is "
+                  + attachment.textureView().getWidth(0)
+                  + "x"
+                  + attachment.textureView().getHeight(0)
+                  + " expected "
+                  + attachmentWidth
+                  + "x"
+                  + attachmentHeight
+            );
+         }
       }
 
-      int attachmentWidth;
-      int attachmentHeight;
-      if (colorAttachmentCount != 0) {
-         RenderPassDescriptor.Attachment<Optional<Vector4fc>> firstAttachment = descriptor.colorAttachments().getFirst();
-         assert firstAttachment != null;
-         attachmentWidth = firstAttachment.textureView().getWidth(0);
-         attachmentHeight = firstAttachment.textureView().getHeight(0);
-      } else {
-         attachmentWidth = descriptor.depthAttachment().textureView().getWidth(0);
-         attachmentHeight = descriptor.depthAttachment().textureView().getHeight(0);
+      for (RenderPassLayout.Subpass subpass : descriptor.layout().subpasses()) {
+         for (int i = 0; i < subpass.inputAttachments().size(); i++) {
+            byte inputAttachmentIndex = subpass.inputAttachments().getByte(i);
+            if (inputAttachmentIndex != -1) {
+               int textureUsage = descriptor.attachments().get(inputAttachmentIndex).textureView().texture().usage();
+               if ((textureUsage & 4) == 0) {
+                  throw new IllegalStateException("Attachment " + i + " used as an InputAttachment must have USAGE_TEXTURE_BINDING");
+               }
+            }
+         }
       }
 
       RenderPass.RenderArea renderArea = descriptor.renderArea();
@@ -129,81 +123,14 @@ public class FrontendCommandEncoder implements CommandEncoder {
          && renderArea.y() >= 0
          && renderArea.x() + renderArea.width() <= attachmentWidth
          && renderArea.y() + renderArea.height() <= attachmentHeight) {
-         for (int i = 0; i < colorAttachmentCount; i++) {
-            RenderPassDescriptor.Attachment<Optional<Vector4fc>> colorAttachment = descriptor.colorAttachments().get(i);
-            if (colorAttachment != null) {
-               GpuTextureView colorTexture = colorAttachment.textureView();
-               if (colorTexture.isClosed()) {
-                  throw new IllegalStateException("Color texture " + i + " is closed");
-               }
-
-               if ((colorTexture.texture().usage() & 8) == 0) {
-                  throw new IllegalStateException("Color texture " + i + " must have USAGE_RENDER_ATTACHMENT");
-               }
-
-               if (colorTexture.texture().getDepthOrLayers() > 1) {
-                  throw new UnsupportedOperationException(
-                     "Color texture " + i + ": Textures with multiple depths or layers are not yet supported as an attachment"
-                  );
-               }
-
-               if (colorTexture.getWidth(0) != attachmentWidth || colorTexture.getHeight(0) != attachmentHeight) {
-                  throw new IllegalArgumentException(
-                     "Color texture "
-                        + i
-                        + ": size does not match expected attachment size. Is "
-                        + colorTexture.getWidth(0)
-                        + "x"
-                        + colorTexture.getHeight(0)
-                        + " expected "
-                        + attachmentWidth
-                        + "x"
-                        + attachmentHeight
-                  );
-               }
-            }
-         }
-
-         if (descriptor.depthAttachment() != null) {
-            GpuTextureView depthTexture = descriptor.depthAttachment().textureView();
-            if (depthTexture.isClosed()) {
-               throw new IllegalStateException("Depth texture is closed");
-            }
-
-            if ((depthTexture.texture().usage() & 8) == 0) {
-               throw new IllegalStateException("Depth texture must have USAGE_RENDER_ATTACHMENT");
-            }
-
-            if (depthTexture.texture().getDepthOrLayers() > 1) {
-               throw new UnsupportedOperationException("Depth texture: Textures with multiple depths or layers are not yet supported as an attachment");
-            }
-
-            if (depthTexture.getWidth(0) != attachmentWidth || depthTexture.getHeight(0) != attachmentHeight) {
-               throw new IllegalArgumentException(
-                  "Depth texture: size does not match expected attachment size. Is "
-                     + depthTexture.getWidth(0)
-                     + "x"
-                     + depthTexture.getHeight(0)
-                     + " expected "
-                     + attachmentWidth
-                     + "x"
-                     + attachmentHeight
-               );
-            }
-         }
-
          this.isInRenderPass = true;
          if (this.profiler != null) {
             this.profiler.pushZone(this, descriptor.label().get());
          }
 
+         List<GpuTextureView> attachmentViews = descriptor.attachments().stream().map(RenderPassDescriptor.Attachment::textureView).toList();
          return new FrontendRenderPass(
-            this.backend.createRenderPass(descriptor),
-            this.device,
-            descriptor.colorAttachments(),
-            descriptor.depthAttachment() != null ? descriptor.depthAttachment().textureView().texture().getFormat() : null,
-            this::submitRenderPass,
-            renderArea
+            this.backend.createRenderPass(descriptor), this.device, descriptor.layout(), this::submitRenderPass, renderArea, attachmentViews
          );
       } else {
          throw new IllegalArgumentException(

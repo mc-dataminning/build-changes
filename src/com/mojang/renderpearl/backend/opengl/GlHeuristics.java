@@ -93,9 +93,7 @@ public class GlHeuristics {
          capabilities.GL_ARB_clip_control,
          "OpenGL",
          1.0F,
-         new DeviceLimits(
-            maxSupportedAnisotropy, GL33C.glGetInteger(35380), getMaxSupportedTextureSize(), Long.MAX_VALUE, 0, GL33C.glGetInteger(34852), drawIndirectCount
-         ),
+         new DeviceLimits(maxSupportedAnisotropy, GL33C.glGetInteger(35380), getMaxSupportedTextureSize(), Long.MAX_VALUE, 0, drawIndirectCount),
          new DeviceFeatures(
             false,
             true,

@@ -102,7 +102,6 @@ public class VulkanDevice implements GpuDeviceBackend {
             physicalDevice.vkPhysicalDeviceMultiDrawPropertiesEXT().maxMultiDrawCount() < 0
                ? Integer.MAX_VALUE
                : physicalDevice.vkPhysicalDeviceMultiDrawPropertiesEXT().maxMultiDrawCount(),
-            limits.maxColorAttachments(),
             indirectDrawCount
          ),
          new DeviceFeatures(

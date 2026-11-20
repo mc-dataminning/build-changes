@@ -426,7 +426,7 @@ public class VillagerTrades {
       register(
          context, FARMER_3_MELON_EMERALD, VillagerTrade.builder(new TradeCost(Items.MELON, 4), new ItemStackTemplate(Items.EMERALD), 12, 20, 0.05F).build()
       );
-      register(context, FARMER_4_EMERALD_CAKE, VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.CAKE), 12, 15, 0.05F).build());
+      register(context, FARMER_4_EMERALD_CAKE, VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CAKE), 12, 15, 0.05F).build());
       register(
          context,
          FARMER_4_EMERALD_SUSPICIOUS_STEW,
@@ -899,7 +899,7 @@ public class VillagerTrades {
       register(
          context,
          WEAPONSMITH_1_EMERALD_ENCHANTED_IRON_SWORD,
-         VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.IRON_SWORD), 12, 1, 0.2F)
+         VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.IRON_SWORD), 3, 1, 0.2F)
             .addModifiers(enchantedItem(items, enchantmentsForTradedEquipment, Items.IRON_SWORD))
             .build()
       );

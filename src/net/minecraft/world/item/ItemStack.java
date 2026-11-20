@@ -159,9 +159,11 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       DataResult<?> result = validateComponents(itemStack.getComponents());
       if (result.isError()) {
          return result.map(unit -> itemStack);
+      } else if (itemStack.getCount() > itemStack.getMaxStackSize()) {
+         return DataResult.error(() -> "Item stack with stack size of " + itemStack.getCount() + " was larger than maximum: " + itemStack.getMaxStackSize());
       } else {
-         return itemStack.getCount() > itemStack.getMaxStackSize()
-            ? DataResult.error(() -> "Item stack with stack size of " + itemStack.getCount() + " was larger than maximum: " + itemStack.getMaxStackSize())
+         return itemStack.isBroken()
+            ? DataResult.error(() -> "Item stack damage " + itemStack.getDamageValue() + " was equal to or greater than maximum: " + itemStack.getMaxDamage())
             : DataResult.success(itemStack);
       }
    }

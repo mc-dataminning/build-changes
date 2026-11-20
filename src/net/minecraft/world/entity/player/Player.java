@@ -1478,7 +1478,7 @@ public abstract class Player extends Avatar implements ContainerUser {
 
    @Override
    protected void playStepSound(final BlockPos onPos, final BlockState onState) {
-      if (this.isInWater()) {
+      if (this.isInSwimmableLiquid()) {
          this.waterSwimSound();
          this.playMuffledStepSound(onState);
       } else {

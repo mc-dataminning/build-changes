@@ -5,6 +5,7 @@ import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.commands.GpuQueryPool;
 import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
 import com.mojang.renderpearl.api.pipeline.IndexType;
+import com.mojang.renderpearl.api.pipeline.RenderPassLayout;
 import com.mojang.renderpearl.backend.api.BackendRenderPipeline;
 import com.mojang.renderpearl.backend.api.RenderPassBackend;
 import com.mojang.renderpearl.util.ScissorState;
@@ -35,14 +36,21 @@ class GlRenderPass implements RenderPassBackend {
    protected boolean anyUniformDirty = false;
    protected @Nullable GpuBufferSlice pushConstants;
    protected boolean pushConstantsDirty = false;
-   protected final int colorAttachmentCount;
+   private final RenderPassLayout renderPassLayout;
+   private int currentSubpass = 0;
 
-   public GlRenderPass(final GlCommandEncoder encoder, final GlDevice device, final int colorAttachmentCount, final ScissorState defaultScissorState) {
+   public GlRenderPass(final GlCommandEncoder encoder, final GlDevice device, final ScissorState defaultScissorState, final RenderPassLayout renderPassLayout) {
       this.encoder = encoder;
       this.device = device;
-      this.colorAttachmentCount = colorAttachmentCount;
       this.defaultScissorState = defaultScissorState;
       this.scissorState.setFrom(defaultScissorState);
+      this.renderPassLayout = renderPassLayout;
+   }
+
+   @Override
+   public void nextSubpass() {
+      this.currentSubpass++;
+      this.encoder.beginSubpass(this.renderPassLayout, this.currentSubpass);
    }
 
    @Override

@@ -149,7 +149,9 @@ public class WeatherEffectRenderer implements AutoCloseable {
          GpuBuffer indexBuffer = autoIndices.getBuffer();
          IndexType indexType = autoIndices.type();
          renderPass.setPipeline(
-            RenderSystem.getCompiledPipeline(RenderPipelines.particle(new RenderPipelines.ParticleParameters(ParticleRenderPipelineVariant.WEATHER, oitStage)))
+            RenderSystem.getCompiledPipeline(
+               RenderPipelines.particle(new RenderPipelines.ParticleParameters(ParticleRenderPipelineVariant.WEATHER, oitStage)), renderPass.activeSubpass()
+            )
          );
          RenderSystem.bindDefaultUniforms(renderPass);
          renderPass.setUniform("DynamicTransforms", dynamicTransforms);

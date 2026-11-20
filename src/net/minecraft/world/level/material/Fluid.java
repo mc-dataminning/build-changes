@@ -36,6 +36,8 @@ public abstract class Fluid {
    private FluidState defaultFluidState;
    private final Holder.Reference<Fluid> builtInRegistryHolder = BuiltInRegistries.FLUID.createIntrusiveHolder(this);
    private final float drag;
+   private final FogType fogType;
+   private final float fallDistanceMultiplier;
 
    protected Fluid(final Fluid.Properties properties) {
       StateDefinition.Builder<Fluid, FluidState> builder = new StateDefinition.Builder<>(this);
@@ -48,6 +50,8 @@ public abstract class Fluid {
       this.explosionResistance = properties.explosionResistance;
       this.randomTicking = properties.randomTicking;
       this.drag = properties.drag;
+      this.fogType = properties.fogType;
+      this.fallDistanceMultiplier = properties.fallDistanceMultiplier;
    }
 
    protected void createFluidStateDefinition(final StateDefinition.Builder<Fluid, FluidState> builder) {
@@ -71,6 +75,10 @@ public abstract class Fluid {
 
    public ResourceKey<Item> getBucket() {
       return this.bucketItem;
+   }
+
+   public float getFallDistanceMultiplier() {
+      return this.fallDistanceMultiplier;
    }
 
    protected void animateTick(final Level level, final BlockPos pos, final FluidState fluidState, final RandomSource random) {
@@ -147,6 +155,10 @@ public abstract class Fluid {
       return this.drag;
    }
 
+   public FogType getFogType() {
+      return this.fogType;
+   }
+
    public static class Properties {
       private ResourceKey<Item> bucketItem = BlockItemIds.AIR.item();
       private Optional<SoundEvent> pickupSound = Optional.empty();
@@ -154,6 +166,8 @@ public abstract class Fluid {
       private float explosionResistance;
       private boolean randomTicking;
       private float drag = 1.0F;
+      private FogType fogType = FogType.NONE;
+      private float fallDistanceMultiplier;
 
       private Properties() {
       }
@@ -189,6 +203,16 @@ public abstract class Fluid {
 
       public Fluid.Properties drag(final float drag) {
          this.drag = drag;
+         return this;
+      }
+
+      public Fluid.Properties fogType(final FogType fogType) {
+         this.fogType = fogType;
+         return this;
+      }
+
+      public Fluid.Properties fallDistanceMultiplier(final float fallDistanceMultiplier) {
+         this.fallDistanceMultiplier = fallDistanceMultiplier;
          return this;
       }
    }

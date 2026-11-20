@@ -24,7 +24,7 @@ public class DataComponentInitializers {
       Map<ResourceKey<?>, DataComponentMap.Builder> results = new HashMap<>();
 
       for (DataComponentInitializers.InitializerEntry<?> initializer : this.initializers) {
-         DataComponentMap.Builder builder = results.computeIfAbsent(initializer.key, k -> DataComponentMap.builder());
+         DataComponentMap.Builder builder = results.computeIfAbsent(initializer.key, var0 -> DataComponentMap.builder());
          initializer.run(builder, context);
       }
 
@@ -116,7 +116,7 @@ public class DataComponentInitializers {
       }
 
       default <C> DataComponentInitializers.Initializer<T> add(final DataComponentType<C> type, final C value) {
-         return this.andThen((components, context, key) -> components.set(type, value));
+         return this.andThen((components, var3, var4) -> components.set(type, value));
       }
    }
 
@@ -142,7 +142,7 @@ public class DataComponentInitializers {
       C create(HolderLookup.Provider context);
 
       default <T> DataComponentInitializers.Initializer<T> asInitializer(final DataComponentType<C> type) {
-         return (components, context, key) -> components.set(type, this.create(context));
+         return (components, context, var4) -> components.set(type, this.create(context));
       }
    }
 }

@@ -17,7 +17,6 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
-import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.GlobalMemory;
 import oshi.hardware.GraphicsCard;
@@ -27,6 +26,8 @@ import oshi.hardware.VirtualMemory;
 import oshi.hardware.CentralProcessor.ProcessorIdentifier;
 import oshi.software.os.OSProcess;
 import oshi.software.os.OperatingSystem;
+import oshi.spi.SystemInfoFactory;
+import oshi.spi.SystemInfoProvider;
 
 public class SystemReport {
    public static final long BYTES_PER_MEBIBYTE = 1048576L;
@@ -73,8 +74,8 @@ public class SystemReport {
       this.setDetail("Memory (heap)", () -> printMemoryUsage(ManagementFactory.getMemoryMXBean().getHeapMemoryUsage()));
       this.setDetail("Memory (non-heap)", () -> printMemoryUsage(ManagementFactory.getMemoryMXBean().getNonHeapMemoryUsage()));
       this.setDetail("CPUs", () -> String.valueOf(Runtime.getRuntime().availableProcessors()));
-      this.ignoreErrors("hardware", () -> this.putHardware(new SystemInfo()));
-      this.ignoreErrors("software", () -> this.putSoftware(new SystemInfo()));
+      this.ignoreErrors("hardware", () -> this.putHardware(SystemInfoFactory.create()));
+      this.ignoreErrors("software", () -> this.putSoftware(SystemInfoFactory.create()));
       this.setDetail("JVM Flags", () -> printJvmFlags(arg -> arg.startsWith("-X")));
       this.setDetail("Debug Flags", () -> printJvmFlags(arg -> arg.startsWith("-D" + debugFlagPrefix)));
    }
@@ -109,7 +110,7 @@ public class SystemReport {
       }
    }
 
-   private void putHardware(final SystemInfo systemInfo) {
+   private void putHardware(final SystemInfoProvider systemInfo) {
       HardwareAbstractionLayer hardware = systemInfo.getHardware();
       this.ignoreErrors("processor", () -> this.putProcessor(hardware.getProcessor()));
       this.ignoreErrors("graphics", () -> this.putGraphics(hardware.getGraphicsCards()));
@@ -117,7 +118,7 @@ public class SystemReport {
       this.ignoreErrors("storage", this::putStorage);
    }
 
-   private void putSoftware(final SystemInfo systemInfo) {
+   private void putSoftware(final SystemInfoProvider systemInfo) {
       OperatingSystem os = systemInfo.getOperatingSystem();
       this.setDetail("Operating System Version", os::toString);
       this.setDetail("Process Elevated", os::isElevated);
@@ -215,7 +216,8 @@ public class SystemReport {
          }
       );
       this.setDetail("Process Virtual Size (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(process.getVirtualSize())));
-      this.setDetail("Process Resident Size (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(process.getResidentSetSize())));
+      this.setDetail("Process Resident Size (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(process.getResidentMemory())));
+      this.setDetail("Process Resident Private Size (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(process.getPrivateResidentMemory())));
    }
 
    private void putSpaceForProperty(final String env) {

@@ -169,7 +169,7 @@ public abstract class AgeableMob extends PathfinderMob {
       }
    }
 
-   protected boolean canBeABaby() {
+   public boolean canBeABaby() {
       return true;
    }
 

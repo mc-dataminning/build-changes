@@ -19,6 +19,10 @@ import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.ConditionalEffect;
+import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
+import net.minecraft.world.item.enchantment.effects.EnchantmentLocationBasedEffect;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 
 public record SulfurCubeArchetype(
    HolderSet<Item> items,
@@ -27,7 +31,8 @@ public record SulfurCubeArchetype(
    Optional<SulfurCubeArchetype.ExplosionData> explosion,
    Optional<SulfurCubeArchetype.ContactDamage> contactDamage,
    SulfurCubeArchetype.KnockbackModifiers knockbackModifiers,
-   SulfurCubeArchetype.SoundSettings soundSettings
+   SulfurCubeArchetype.SoundSettings soundSettings,
+   List<ConditionalEffect<EnchantmentLocationBasedEffect>> locationBasedEffects
 ) {
    public static final Codec<SulfurCubeArchetype> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
@@ -37,7 +42,12 @@ public record SulfurCubeArchetype(
             SulfurCubeArchetype.ExplosionData.CODEC.optionalFieldOf("explosion").forGetter(SulfurCubeArchetype::explosion),
             SulfurCubeArchetype.ContactDamage.CODEC.optionalFieldOf("contact_damage").forGetter(SulfurCubeArchetype::contactDamage),
             SulfurCubeArchetype.KnockbackModifiers.CODEC.fieldOf("knockback_modifiers").forGetter(SulfurCubeArchetype::knockbackModifiers),
-            SulfurCubeArchetype.SoundSettings.CODEC.fieldOf("sound_settings").forGetter(SulfurCubeArchetype::soundSettings)
+            SulfurCubeArchetype.SoundSettings.CODEC.fieldOf("sound_settings").forGetter(SulfurCubeArchetype::soundSettings),
+            EnchantmentEffectComponents.validatedListCodec(
+                  ConditionalEffect.codec(EnchantmentLocationBasedEffect.CODEC), LootContextParamSets.ENCHANTED_LOCATION
+               )
+               .optionalFieldOf("location_based_effects", List.of())
+               .forGetter(SulfurCubeArchetype::locationBasedEffects)
          )
          .apply(i, SulfurCubeArchetype::new)
    );

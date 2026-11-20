@@ -8,7 +8,6 @@ public record DeviceLimits(
    int maxTextureSize,
    long maxMemoryAllocationSize,
    int maxMultiDrawDirectInterleavedDrawCount,
-   int maxColorAttachments,
    int maxDrawIndirectDrawCount
 ) {
    public int maxTextureSizeForFormat(final GpuFormat format) {

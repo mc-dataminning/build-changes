@@ -2,19 +2,13 @@ package net.minecraft.world.level;
 
 import java.util.function.Predicate;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -56,30 +50,7 @@ public class ClipContext {
    public enum Block implements ClipContext.ShapeGetter {
       COLLIDER(BlockBehaviour.BlockStateBase::getCollisionShape),
       OUTLINE(BlockBehaviour.BlockStateBase::getShape),
-      VISUAL(BlockBehaviour.BlockStateBase::getVisualShape),
-      FALLDAMAGE_RESETTING(
-         (state, level, pos, collisionContext) -> {
-            if (state.is(BlockTags.FALL_DAMAGE_RESETTING)) {
-               return Shapes.block();
-            }
-
-            if (collisionContext instanceof EntityCollisionContext entityCollisionContext
-               && entityCollisionContext.getEntity() != null
-               && entityCollisionContext.getEntity().is(EntityTypes.PLAYER)) {
-               if (state.is(Blocks.END_GATEWAY) || state.is(Blocks.END_PORTAL)) {
-                  return Shapes.block();
-               }
-
-               if (level instanceof ServerLevel serverLevel
-                  && state.is(Blocks.NETHER_PORTAL)
-                  && serverLevel.getGameRules().get(GameRules.PLAYERS_NETHER_PORTAL_DEFAULT_DELAY) == 0) {
-                  return Shapes.block();
-               }
-            }
-
-            return Shapes.empty();
-         }
-      );
+      VISUAL(BlockBehaviour.BlockStateBase::getVisualShape);
 
       private final ClipContext.ShapeGetter shapeGetter;
 

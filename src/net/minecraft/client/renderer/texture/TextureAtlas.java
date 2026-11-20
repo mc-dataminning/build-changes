@@ -23,9 +23,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Map.Entry;
 import net.minecraft.SharedConstants;
+import net.minecraft.client.renderer.RenderPassLayouts;
 import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
@@ -180,9 +180,9 @@ public class TextureAtlas implements AutoCloseable {
          for (int level = 0; level < this.mipLevelCount; level++) {
             try (RenderPass renderPass = RenderSystem.getDevice()
                   .createCommandEncoder()
-                  .createRenderPass(() -> "Animate " + this.location, this.mipViews[level], Optional.empty())) {
+                  .createRenderPass(() -> "Animate " + this.location, RenderPassLayouts.COLOR_ONLY, this.mipViews[level])) {
                RenderSystem.bindDefaultUniforms(renderPass);
-               renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.ANIMATE_SPRITE_BLIT));
+               renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.ANIMATE_SPRITE_BLIT, renderPass.activeSubpass()));
 
                for (int i = 0; i < staticSprites.size(); i++) {
                   renderPass.setUniform("Sprite", scratchTextures.get(i)[level], sampler);
@@ -237,7 +237,7 @@ public class TextureAtlas implements AutoCloseable {
          for (int level = 0; level <= this.maxMipLevel; level++) {
             try (RenderPass renderPass = RenderSystem.getDevice()
                   .createCommandEncoder()
-                  .createRenderPass(() -> "Animate " + this.location, this.mipViews[level], Optional.empty())) {
+                  .createRenderPass(() -> "Animate " + this.location, RenderPassLayouts.COLOR_ONLY, this.mipViews[level])) {
                RenderSystem.bindDefaultUniforms(renderPass);
 
                for (SpriteContents.AnimationState animationState : this.animatedTexturesStates) {

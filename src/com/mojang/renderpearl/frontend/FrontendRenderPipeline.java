@@ -1,8 +1,8 @@
 package com.mojang.renderpearl.frontend;
 
-import com.mojang.renderpearl.api.GpuFormat;
 import com.mojang.renderpearl.api.pipeline.ColorTargetState;
 import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
+import com.mojang.renderpearl.api.pipeline.RenderPassLayout;
 import com.mojang.renderpearl.backend.api.BackendRenderPipeline;
 import it.unimi.dsi.fastutil.ints.IntList;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
@@ -17,8 +17,8 @@ public record FrontendRenderPipeline(
    List<CompiledRenderPipeline.CreateInfo.Uniform> uniforms,
    List<@Nullable ColorTargetState> colorTargetStates,
    boolean wantsDepthTexture,
-   GpuFormat depthStencilFormat,
-   int pushConstantSize
+   int pushConstantSize,
+   RenderPassLayout.Subpass subpass
 ) implements CompiledRenderPipeline {
    @Override
    public boolean isClosed() {

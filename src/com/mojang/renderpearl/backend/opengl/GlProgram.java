@@ -3,6 +3,7 @@ package com.mojang.renderpearl.backend.opengl;
 import com.google.common.annotations.VisibleForTesting;
 import com.mojang.logging.LogUtils;
 import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
+import com.mojang.renderpearl.api.pipeline.UniformType;
 import com.mojang.renderpearl.util.ShaderCompileException;
 import com.mojang.renderpearl.util.UncheckedAutoCloseable;
 import it.unimi.dsi.fastutil.ints.Int2ReferenceMap;
@@ -93,14 +94,16 @@ public class GlProgram implements UncheckedAutoCloseable {
                   yield new Uniform.Utb(stateManager, samplerIndex, Objects.requireNonNull(uniformDescription.gpuFormat()));
                }
             }
-            case COMBINED_IMAGE_SAMPLER -> {
+            case COMBINED_IMAGE_SAMPLER, INPUT_ATTACHMENT -> {
                int location = GL33C.glGetUniformLocation(this.programId, uniformName);
                if (location == -1) {
                   yield null;
                } else {
                   int samplerIndex = nextSamplerIndex++;
                   GL33C.glUniform1i(location, samplerIndex);
-                  yield new Uniform.Sampler(samplerIndex);
+                  yield uniformDescription.type() == UniformType.COMBINED_IMAGE_SAMPLER
+                     ? new Uniform.Sampler(samplerIndex)
+                     : new Uniform.InputAttachment(samplerIndex);
                }
             }
          };

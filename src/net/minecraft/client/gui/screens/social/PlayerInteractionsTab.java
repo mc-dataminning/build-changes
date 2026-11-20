@@ -5,13 +5,13 @@ import java.util.List;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.ImageWidget;
 import net.minecraft.client.gui.components.MultiLineTextWidget;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.layouts.SpacerElement;
 import net.minecraft.client.gui.screens.PrivacyConfirmLinkScreen;
 import net.minecraft.client.gui.screens.friends.AbstractFriendsTab;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.CommonLinks;
@@ -107,7 +107,7 @@ class PlayerInteractionsTab extends AbstractFriendsTab {
    @Override
    public void extractBackground(final GuiGraphicsExtractor graphics) {
       graphics.blitSprite(
-         RenderPipelines.GUI_TEXTURED,
+         GuiPipeline.TEXTURED,
          BACKGROUND_LIGHT_SPRITE,
          this.headerFrame.getX(),
          this.headerFrame.getY(),

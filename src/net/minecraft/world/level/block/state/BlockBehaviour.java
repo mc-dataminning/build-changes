@@ -51,6 +51,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.NoteBlock;
 import net.minecraft.world.level.block.Portal;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.Rotation;
@@ -1006,10 +1007,10 @@ public abstract class BlockBehaviour implements FeatureElement {
    }
 
    public static class Properties {
-      private Function<BlockState, MapColor> mapColor = state -> MapColor.NONE;
+      private Function<BlockState, MapColor> mapColor = var0 -> MapColor.NONE;
       private boolean hasCollision = true;
       private Optional<ResourceKey<BlockSoundSet>> blockSoundSet = Optional.of(BlockSoundSets.STONE);
-      private ToIntFunction<BlockState> lightEmission = state -> 0;
+      private ToIntFunction<BlockState> lightEmission = var0 -> 0;
       private float explosionResistance;
       private float destroyTime;
       private boolean requiresCorrectToolForDrops;
@@ -1033,17 +1034,15 @@ public abstract class BlockBehaviour implements FeatureElement {
       private boolean forceSolidOn;
       private PushReaction pushReaction = PushReaction.PUSH_PULL;
       private boolean spawnTerrainParticles = true;
-      private NoteBlockInstrument instrument = NoteBlockInstrument.HARP;
+      private NoteBlockInstrument instrument = NoteBlock.DEFAULT_INSTRUMENT;
       private boolean replaceable;
-      private BlockBehaviour.StateArgumentPredicate<EntityType<?>> isValidSpawn = (state, level, pos, entityType) -> state.isFaceSturdy(
-            level, pos, Direction.UP
-         )
+      private BlockBehaviour.StateArgumentPredicate<EntityType<?>> isValidSpawn = (state, level, pos, var3) -> state.isFaceSturdy(level, pos, Direction.UP)
          && state.getLightEmission() < 14;
       private BlockBehaviour.StatePredicate isRedstoneConductor = BlockBehaviour.BlockStateBase::isCollisionShapeFullBlock;
       private BlockBehaviour.StatePredicate isSuffocating = (state, level, pos) -> state.is(BlockTags.CAUSES_SUFFOCATION)
          && state.isCollisionShapeFullBlock(level, pos);
       private BlockBehaviour.StateArgumentPredicate<AABB> isViewBlocking = (state, level, pos, var4) -> this.isSuffocating.test(state, level, pos);
-      private BlockBehaviour.PostProcess postProcess = (state, level, pos) -> null;
+      private BlockBehaviour.PostProcess postProcess = (var0, var1, var2) -> null;
       private Predicate<BlockState> emissiveRendering = var0 -> false;
       private boolean dynamicShape;
       private FeatureFlagSet requiredFeatures = FeatureFlags.VANILLA_SET;

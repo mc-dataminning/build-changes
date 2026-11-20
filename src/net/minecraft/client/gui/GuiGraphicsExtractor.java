@@ -1,6 +1,5 @@
 package net.minecraft.client.gui;
 
-import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.platform.cursor.CursorType;
 import com.mojang.blaze3d.platform.cursor.CursorTypes;
@@ -33,7 +32,6 @@ import net.minecraft.client.model.object.book.BookModel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.item.TrackingItemStackRenderState;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.renderer.state.MapRenderState;
 import net.minecraft.client.renderer.state.gui.BlitRenderState;
 import net.minecraft.client.renderer.state.gui.ColoredRectangleRenderState;
@@ -202,10 +200,10 @@ public class GuiGraphicsExtractor {
    }
 
    public void fill(final int x0, final int y0, final int x1, final int y1, final int col) {
-      this.fill(RenderPipelines.GUI, x0, y0, x1, y1, col);
+      this.fill(GuiPipeline.DEFAULT, x0, y0, x1, y1, col);
    }
 
-   public void fill(final RenderPipeline pipeline, int x0, int y0, int x1, int y1, final int col) {
+   public void fill(final GuiPipeline pipeline, int x0, int y0, int x1, int y1, final int col) {
       if (x0 < x1) {
          int tmp = x0;
          x0 = x1;
@@ -222,11 +220,11 @@ public class GuiGraphicsExtractor {
    }
 
    public void fillGradient(final int x0, final int y0, final int x1, final int y1, final int col1, final int col2) {
-      this.innerFill(RenderPipelines.GUI, TextureSetup.noTexture(), x0, y0, x1, y1, col1, col2);
+      this.innerFill(GuiPipeline.DEFAULT, TextureSetup.noTexture(), x0, y0, x1, y1, col1, col2);
    }
 
-   public void fill(final RenderPipeline renderPipeline, final TextureSetup textureSetup, final int x0, final int y0, final int x1, final int y1) {
-      this.innerFill(renderPipeline, textureSetup, x0, y0, x1, y1, -1, null);
+   public void fill(final GuiPipeline guiPipeline, final TextureSetup textureSetup, final int x0, final int y0, final int x1, final int y1) {
+      this.innerFill(guiPipeline, textureSetup, x0, y0, x1, y1, -1, null);
    }
 
    public void outline(final int x, final int y, final int width, final int height, final int color) {
@@ -237,7 +235,7 @@ public class GuiGraphicsExtractor {
    }
 
    private void innerFill(
-      final RenderPipeline renderPipeline,
+      final GuiPipeline guiPipeline,
       final TextureSetup textureSetup,
       final int x0,
       final int y0,
@@ -249,17 +247,17 @@ public class GuiGraphicsExtractor {
       this.guiRenderState
          .addGuiElement(
             new ColoredRectangleRenderState(
-               renderPipeline, textureSetup, new Matrix3x2f(this.pose), x0, y0, x1, y1, color1, color2 != null ? color2 : color1, this.scissorStack.peek()
+               guiPipeline, textureSetup, new Matrix3x2f(this.pose), x0, y0, x1, y1, color1, color2 != null ? color2 : color1, this.scissorStack.peek()
             )
          );
    }
 
    public void textHighlight(final int x0, final int y0, final int x1, final int y1, final boolean invertText) {
       if (invertText) {
-         this.fill(RenderPipelines.GUI_INVERT, x0, y0, x1, y1, -1);
+         this.fill(GuiPipeline.INVERT, x0, y0, x1, y1, -1);
       }
 
-      this.fill(RenderPipelines.GUI_TEXT_HIGHLIGHT, x0, y0, x1, y1, -16776961);
+      this.fill(GuiPipeline.TEXT_HIGHLIGHT, x0, y0, x1, y1, -16776961);
    }
 
    public void text(final Font font, final @Nullable String str, final int x, final int y, final int color) {
@@ -327,7 +325,7 @@ public class GuiGraphicsExtractor {
    }
 
    public void blit(
-      final RenderPipeline renderPipeline,
+      final GuiPipeline guiPipeline,
       final Identifier texture,
       final int x,
       final int y,
@@ -339,11 +337,11 @@ public class GuiGraphicsExtractor {
       final int textureHeight,
       final int color
    ) {
-      this.blit(renderPipeline, texture, x, y, u, v, width, height, width, height, textureWidth, textureHeight, color);
+      this.blit(guiPipeline, texture, x, y, u, v, width, height, width, height, textureWidth, textureHeight, color);
    }
 
    public void blit(
-      final RenderPipeline renderPipeline,
+      final GuiPipeline guiPipeline,
       final Identifier texture,
       final int x,
       final int y,
@@ -354,11 +352,11 @@ public class GuiGraphicsExtractor {
       final int textureWidth,
       final int textureHeight
    ) {
-      this.blit(renderPipeline, texture, x, y, u, v, width, height, width, height, textureWidth, textureHeight);
+      this.blit(guiPipeline, texture, x, y, u, v, width, height, width, height, textureWidth, textureHeight);
    }
 
    public void blit(
-      final RenderPipeline renderPipeline,
+      final GuiPipeline guiPipeline,
       final Identifier texture,
       final int x,
       final int y,
@@ -371,11 +369,11 @@ public class GuiGraphicsExtractor {
       final int textureWidth,
       final int textureHeight
    ) {
-      this.blit(renderPipeline, texture, x, y, u, v, width, height, srcWidth, srcHeight, textureWidth, textureHeight, -1);
+      this.blit(guiPipeline, texture, x, y, u, v, width, height, srcWidth, srcHeight, textureWidth, textureHeight, -1);
    }
 
    public void blit(
-      final RenderPipeline renderPipeline,
+      final GuiPipeline guiPipeline,
       final Identifier texture,
       final int x,
       final int y,
@@ -390,7 +388,7 @@ public class GuiGraphicsExtractor {
       final int color
    ) {
       this.innerBlit(
-         renderPipeline,
+         guiPipeline,
          texture,
          x,
          x + width,
@@ -407,7 +405,7 @@ public class GuiGraphicsExtractor {
    public void blit(
       final Identifier location, final int x0, final int y0, final int x1, final int y1, final float u0, final float u1, final float v0, final float v1
    ) {
-      this.innerBlit(RenderPipelines.GUI_TEXTURED, location, x0, x1, y0, y1, u0, u1, v0, v1, -1);
+      this.innerBlit(GuiPipeline.TEXTURED, location, x0, x1, y0, y1, u0, u1, v0, v1, -1);
    }
 
    public void blit(
@@ -422,40 +420,40 @@ public class GuiGraphicsExtractor {
       final float v0,
       final float v1
    ) {
-      this.innerBlit(RenderPipelines.GUI_TEXTURED, textureView, sampler, x0, y0, x1, y1, u0, u1, v0, v1, -1);
+      this.innerBlit(GuiPipeline.TEXTURED, textureView, sampler, x0, y0, x1, y1, u0, u1, v0, v1, -1);
    }
 
-   public void blitSprite(final RenderPipeline renderPipeline, final Identifier location, final int x, final int y, final int width, final int height) {
-      this.blitSprite(renderPipeline, location, x, y, width, height, -1);
+   public void blitSprite(final GuiPipeline guiPipeline, final Identifier location, final int x, final int y, final int width, final int height) {
+      this.blitSprite(guiPipeline, location, x, y, width, height, -1);
    }
 
    public void blitSprite(
-      final RenderPipeline renderPipeline, final Identifier location, final int x, final int y, final int width, final int height, final float alpha
+      final GuiPipeline guiPipeline, final Identifier location, final int x, final int y, final int width, final int height, final float alpha
    ) {
-      this.blitSprite(renderPipeline, location, x, y, width, height, ARGB.white(alpha));
+      this.blitSprite(guiPipeline, location, x, y, width, height, ARGB.white(alpha));
    }
 
    public void blitSprite(
-      final RenderPipeline renderPipeline, final Identifier location, final int x, final int y, final int width, final int height, final int color
+      final GuiPipeline guiPipeline, final Identifier location, final int x, final int y, final int width, final int height, final int color
    ) {
       TextureAtlasSprite sprite = this.guiSprites.getSprite(location);
       GuiSpriteScaling scaling = getSpriteScaling(sprite);
       switch (scaling) {
          case GuiSpriteScaling.Stretch stretch:
-            this.blitSprite(renderPipeline, sprite, x, y, width, height, color);
+            this.blitSprite(guiPipeline, sprite, x, y, width, height, color);
             break;
          case GuiSpriteScaling.Tile tile:
-            this.blitTiledSprite(renderPipeline, sprite, x, y, width, height, 0, 0, tile.width(), tile.height(), tile.width(), tile.height(), color);
+            this.blitTiledSprite(guiPipeline, sprite, x, y, width, height, 0, 0, tile.width(), tile.height(), tile.width(), tile.height(), color);
             break;
          case GuiSpriteScaling.NineSlice nineSlice:
-            this.blitNineSlicedSprite(renderPipeline, sprite, nineSlice, x, y, width, height, color);
+            this.blitNineSlicedSprite(guiPipeline, sprite, nineSlice, x, y, width, height, color);
             break;
          default:
       }
    }
 
    public void blitSprite(
-      final RenderPipeline renderPipeline,
+      final GuiPipeline guiPipeline,
       final Identifier location,
       final int spriteWidth,
       final int spriteHeight,
@@ -466,11 +464,11 @@ public class GuiGraphicsExtractor {
       final int width,
       final int height
    ) {
-      this.blitSprite(renderPipeline, location, spriteWidth, spriteHeight, textureX, textureY, x, y, width, height, -1);
+      this.blitSprite(guiPipeline, location, spriteWidth, spriteHeight, textureX, textureY, x, y, width, height, -1);
    }
 
    public void blitSprite(
-      final RenderPipeline renderPipeline,
+      final GuiPipeline guiPipeline,
       final Identifier location,
       final int spriteWidth,
       final int spriteHeight,
@@ -485,30 +483,28 @@ public class GuiGraphicsExtractor {
       TextureAtlasSprite sprite = this.guiSprites.getSprite(location);
       GuiSpriteScaling scaling = getSpriteScaling(sprite);
       if (scaling instanceof GuiSpriteScaling.Stretch) {
-         this.blitSprite(renderPipeline, sprite, spriteWidth, spriteHeight, textureX, textureY, x, y, width, height, color);
+         this.blitSprite(guiPipeline, sprite, spriteWidth, spriteHeight, textureX, textureY, x, y, width, height, color);
       } else {
          this.enableScissor(x, y, x + width, y + height);
-         this.blitSprite(renderPipeline, location, x - textureX, y - textureY, spriteWidth, spriteHeight, color);
+         this.blitSprite(guiPipeline, location, x - textureX, y - textureY, spriteWidth, spriteHeight, color);
          this.disableScissor();
       }
    }
 
-   public void blitSprite(final RenderPipeline renderPipeline, final TextureAtlasSprite sprite, final int x, final int y, final int width, final int height) {
-      this.blitSprite(renderPipeline, sprite, x, y, width, height, -1);
+   public void blitSprite(final GuiPipeline guiPipeline, final TextureAtlasSprite sprite, final int x, final int y, final int width, final int height) {
+      this.blitSprite(guiPipeline, sprite, x, y, width, height, -1);
    }
 
    public void blitSprite(
-      final RenderPipeline renderPipeline, final TextureAtlasSprite sprite, final int x, final int y, final int width, final int height, final int color
+      final GuiPipeline guiPipeline, final TextureAtlasSprite sprite, final int x, final int y, final int width, final int height, final int color
    ) {
       if (width != 0 && height != 0) {
-         this.innerBlit(
-            renderPipeline, sprite.atlasLocation(), x, x + width, y, y + height, sprite.getU0(), sprite.getU1(), sprite.getV0(), sprite.getV1(), color
-         );
+         this.innerBlit(guiPipeline, sprite.atlasLocation(), x, x + width, y, y + height, sprite.getU0(), sprite.getU1(), sprite.getV0(), sprite.getV1(), color);
       }
    }
 
    private void blitSprite(
-      final RenderPipeline renderPipeline,
+      final GuiPipeline guiPipeline,
       final TextureAtlasSprite sprite,
       final int spriteWidth,
       final int spriteHeight,
@@ -522,7 +518,7 @@ public class GuiGraphicsExtractor {
    ) {
       if (width != 0 && height != 0) {
          this.innerBlit(
-            renderPipeline,
+            guiPipeline,
             sprite.atlasLocation(),
             x,
             x + width,
@@ -538,7 +534,7 @@ public class GuiGraphicsExtractor {
    }
 
    private void blitNineSlicedSprite(
-      final RenderPipeline renderPipeline,
+      final GuiPipeline guiPipeline,
       final TextureAtlasSprite sprite,
       final GuiSpriteScaling.NineSlice nineSlice,
       final int x,
@@ -553,11 +549,11 @@ public class GuiGraphicsExtractor {
       int borderTop = Math.min(border.top(), height / 2);
       int borderBottom = Math.min(border.bottom(), height / 2);
       if (width == nineSlice.width() && height == nineSlice.height()) {
-         this.blitSprite(renderPipeline, sprite, nineSlice.width(), nineSlice.height(), 0, 0, x, y, width, height, color);
+         this.blitSprite(guiPipeline, sprite, nineSlice.width(), nineSlice.height(), 0, 0, x, y, width, height, color);
       } else if (height == nineSlice.height()) {
-         this.blitSprite(renderPipeline, sprite, nineSlice.width(), nineSlice.height(), 0, 0, x, y, borderLeft, height, color);
+         this.blitSprite(guiPipeline, sprite, nineSlice.width(), nineSlice.height(), 0, 0, x, y, borderLeft, height, color);
          this.blitNineSliceInnerSegment(
-            renderPipeline,
+            guiPipeline,
             nineSlice,
             sprite,
             x + borderLeft,
@@ -573,7 +569,7 @@ public class GuiGraphicsExtractor {
             color
          );
          this.blitSprite(
-            renderPipeline,
+            guiPipeline,
             sprite,
             nineSlice.width(),
             nineSlice.height(),
@@ -586,9 +582,9 @@ public class GuiGraphicsExtractor {
             color
          );
       } else if (width == nineSlice.width()) {
-         this.blitSprite(renderPipeline, sprite, nineSlice.width(), nineSlice.height(), 0, 0, x, y, width, borderTop, color);
+         this.blitSprite(guiPipeline, sprite, nineSlice.width(), nineSlice.height(), 0, 0, x, y, width, borderTop, color);
          this.blitNineSliceInnerSegment(
-            renderPipeline,
+            guiPipeline,
             nineSlice,
             sprite,
             x,
@@ -604,7 +600,7 @@ public class GuiGraphicsExtractor {
             color
          );
          this.blitSprite(
-            renderPipeline,
+            guiPipeline,
             sprite,
             nineSlice.width(),
             nineSlice.height(),
@@ -617,9 +613,9 @@ public class GuiGraphicsExtractor {
             color
          );
       } else {
-         this.blitSprite(renderPipeline, sprite, nineSlice.width(), nineSlice.height(), 0, 0, x, y, borderLeft, borderTop, color);
+         this.blitSprite(guiPipeline, sprite, nineSlice.width(), nineSlice.height(), 0, 0, x, y, borderLeft, borderTop, color);
          this.blitNineSliceInnerSegment(
-            renderPipeline,
+            guiPipeline,
             nineSlice,
             sprite,
             x + borderLeft,
@@ -635,7 +631,7 @@ public class GuiGraphicsExtractor {
             color
          );
          this.blitSprite(
-            renderPipeline,
+            guiPipeline,
             sprite,
             nineSlice.width(),
             nineSlice.height(),
@@ -648,7 +644,7 @@ public class GuiGraphicsExtractor {
             color
          );
          this.blitSprite(
-            renderPipeline,
+            guiPipeline,
             sprite,
             nineSlice.width(),
             nineSlice.height(),
@@ -661,7 +657,7 @@ public class GuiGraphicsExtractor {
             color
          );
          this.blitNineSliceInnerSegment(
-            renderPipeline,
+            guiPipeline,
             nineSlice,
             sprite,
             x + borderLeft,
@@ -677,7 +673,7 @@ public class GuiGraphicsExtractor {
             color
          );
          this.blitSprite(
-            renderPipeline,
+            guiPipeline,
             sprite,
             nineSlice.width(),
             nineSlice.height(),
@@ -690,7 +686,7 @@ public class GuiGraphicsExtractor {
             color
          );
          this.blitNineSliceInnerSegment(
-            renderPipeline,
+            guiPipeline,
             nineSlice,
             sprite,
             x,
@@ -706,7 +702,7 @@ public class GuiGraphicsExtractor {
             color
          );
          this.blitNineSliceInnerSegment(
-            renderPipeline,
+            guiPipeline,
             nineSlice,
             sprite,
             x + borderLeft,
@@ -722,7 +718,7 @@ public class GuiGraphicsExtractor {
             color
          );
          this.blitNineSliceInnerSegment(
-            renderPipeline,
+            guiPipeline,
             nineSlice,
             sprite,
             x + width - borderRight,
@@ -741,7 +737,7 @@ public class GuiGraphicsExtractor {
    }
 
    private void blitNineSliceInnerSegment(
-      final RenderPipeline renderPipeline,
+      final GuiPipeline guiPipeline,
       final GuiSpriteScaling.NineSlice nineSlice,
       final TextureAtlasSprite sprite,
       final int x,
@@ -759,7 +755,7 @@ public class GuiGraphicsExtractor {
       if (width > 0 && height > 0) {
          if (nineSlice.stretchInner()) {
             this.innerBlit(
-               renderPipeline,
+               guiPipeline,
                sprite.atlasLocation(),
                x,
                x + width,
@@ -772,13 +768,13 @@ public class GuiGraphicsExtractor {
                color
             );
          } else {
-            this.blitTiledSprite(renderPipeline, sprite, x, y, width, height, textureX, textureY, textureWidth, textureHeight, spriteWidth, spriteHeight, color);
+            this.blitTiledSprite(guiPipeline, sprite, x, y, width, height, textureX, textureY, textureWidth, textureHeight, spriteWidth, spriteHeight, color);
          }
       }
    }
 
    private void blitTiledSprite(
-      final RenderPipeline renderPipeline,
+      final GuiPipeline guiPipeline,
       final TextureAtlasSprite sprite,
       final int x,
       final int y,
@@ -797,7 +793,7 @@ public class GuiGraphicsExtractor {
             TextureHandle spriteTexture = this.minecraft.getTextureManager().getTexture(sprite.atlasLocation());
             GpuTextureView texture = spriteTexture.textureView();
             this.innerTiledBlit(
-               renderPipeline,
+               guiPipeline,
                texture,
                spriteTexture.sampler(),
                tileWidth,
@@ -819,7 +815,7 @@ public class GuiGraphicsExtractor {
    }
 
    private void innerBlit(
-      final RenderPipeline renderPipeline,
+      final GuiPipeline guiPipeline,
       final Identifier location,
       final int x0,
       final int x1,
@@ -832,11 +828,11 @@ public class GuiGraphicsExtractor {
       final int color
    ) {
       TextureHandle texture = this.minecraft.getTextureManager().getTexture(location);
-      this.innerBlit(renderPipeline, texture.textureView(), texture.sampler(), x0, y0, x1, y1, u0, u1, v0, v1, color);
+      this.innerBlit(guiPipeline, texture.textureView(), texture.sampler(), x0, y0, x1, y1, u0, u1, v0, v1, color);
    }
 
    private void innerBlit(
-      final RenderPipeline pipeline,
+      final GuiPipeline guiPipeline,
       final GpuTextureView textureView,
       final GpuSampler sampler,
       final int x0,
@@ -852,7 +848,7 @@ public class GuiGraphicsExtractor {
       this.guiRenderState
          .addGuiElement(
             new BlitRenderState(
-               pipeline,
+               guiPipeline,
                TextureSetup.singleTexture(textureView, sampler),
                new Matrix3x2f(this.pose),
                x0,
@@ -870,7 +866,7 @@ public class GuiGraphicsExtractor {
    }
 
    private void innerTiledBlit(
-      final RenderPipeline pipeline,
+      final GuiPipeline guiPipeline,
       final GpuTextureView textureView,
       final GpuSampler sampler,
       final int tileWidth,
@@ -888,7 +884,7 @@ public class GuiGraphicsExtractor {
       this.guiRenderState
          .addGuiElement(
             new TiledBlitRenderState(
-               pipeline,
+               guiPipeline,
                TextureSetup.singleTexture(textureView, sampler),
                new Matrix3x2f(this.pose),
                tileWidth,
@@ -967,8 +963,8 @@ public class GuiGraphicsExtractor {
       if (itemStack.isBarVisible()) {
          int left = x + 2;
          int top = y + 13;
-         this.fill(RenderPipelines.GUI, left, top, left + 13, top + 2, -16777216);
-         this.fill(RenderPipelines.GUI, left, top, left + itemStack.getBarWidth(), top + 1, ARGB.opaque(itemStack.getBarColor()));
+         this.fill(GuiPipeline.DEFAULT, left, top, left + 13, top + 2, -16777216);
+         this.fill(GuiPipeline.DEFAULT, left, top, left + itemStack.getBarWidth(), top + 1, ARGB.opaque(itemStack.getBarColor()));
       }
    }
 
@@ -987,7 +983,7 @@ public class GuiGraphicsExtractor {
       if (cooldown > 0.0F) {
          int top = y + Mth.floor(16.0F * (1.0F - cooldown));
          int bottom = top + Mth.ceil(16.0F * cooldown);
-         this.fill(RenderPipelines.GUI, x, top, x + 16, bottom, Integer.MAX_VALUE);
+         this.fill(GuiPipeline.DEFAULT, x, top, x + 16, bottom, Integer.MAX_VALUE);
       }
    }
 
@@ -995,7 +991,7 @@ public class GuiGraphicsExtractor {
       Minecraft minecraft = Minecraft.getInstance();
       TextureManager textureManager = minecraft.getTextureManager();
       TextureHandle texture = textureManager.getTexture(mapRenderState.texture);
-      this.innerBlit(RenderPipelines.GUI_TEXTURED, texture.textureView(), texture.sampler(), 0, 0, 128, 128, 0.0F, 1.0F, 0.0F, 1.0F, -1);
+      this.innerBlit(GuiPipeline.TEXTURED, texture.textureView(), texture.sampler(), 0, 0, 128, 128, 0.0F, 1.0F, 0.0F, 1.0F, -1);
 
       for (MapRenderState.MapDecorationRenderState decoration : mapRenderState.decorations) {
          if (decoration.renderOnFrame) {
@@ -1008,7 +1004,7 @@ public class GuiGraphicsExtractor {
             if (atlasSprite != null) {
                TextureHandle decorationTexture = textureManager.getTexture(atlasSprite.atlasLocation());
                this.innerBlit(
-                  RenderPipelines.GUI_TEXTURED,
+                  GuiPipeline.TEXTURED,
                   decorationTexture.textureView(),
                   decorationTexture.sampler(),
                   -1,

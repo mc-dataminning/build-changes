@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.function.Supplier;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.LoadingDotsWidget;
 import net.minecraft.client.gui.components.tabs.Tab;
 import net.minecraft.client.gui.components.tabs.TabManager;
@@ -25,7 +27,6 @@ import net.minecraft.client.gui.screens.social.SocialInteractionsPlayerList;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.PlayerSkin;
@@ -145,11 +146,18 @@ public class FriendsOverlayScreen extends Screen implements PresenceAwareScreen 
    }
 
    @Override
+   public void update(final DeltaTracker deltaTracker) {
+      if (this.backgroundScreen != null) {
+         this.backgroundScreen.update(deltaTracker);
+      }
+
+      super.update(deltaTracker);
+   }
+
+   @Override
    public void extractBackground(final GuiGraphicsExtractor graphics) {
       if (this.backgroundScreen != null) {
-         this.backgroundScreen.extractBackground(graphics);
-         graphics.nextStratum();
-         this.backgroundScreen.extractRenderState(graphics);
+         extractBackgroundScreen(graphics, this.backgroundScreen);
          graphics.nextStratum();
          this.extractBlurredBackground(graphics);
       } else {
@@ -157,7 +165,7 @@ public class FriendsOverlayScreen extends Screen implements PresenceAwareScreen 
       }
 
       graphics.blitSprite(
-         RenderPipelines.GUI_TEXTURED,
+         GuiPipeline.TEXTURED,
          BACKGROUND_SPRITE,
          this.contentLayout.getX() - 8,
          this.contentLayout.getY() - 8,
@@ -284,7 +292,16 @@ public class FriendsOverlayScreen extends Screen implements PresenceAwareScreen 
          this.minecraft
             .gui
             .setScreen(
-               new FriendOptionsScreen(this, playerId, gameProfile.name(), this.friendsListActions, skinGetter, true, true, gameProfileFromChat != null)
+               new FriendOptionsScreen(
+                  this,
+                  playerId,
+                  gameProfile.name(),
+                  this.friendsListActions,
+                  skinGetter,
+                  true,
+                  true,
+                  this.minecraft.player != null && gameProfileFromChat != null
+               )
             );
       } else {
          ResolvableProfile skinProfile = ResolvableProfile.createUnresolved(playerId);

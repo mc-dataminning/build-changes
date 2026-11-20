@@ -10,7 +10,6 @@ import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.attribute.EnvironmentAttributeProbe;
 import net.minecraft.world.effect.MobEffects;
@@ -444,20 +443,15 @@ public class Camera implements TrackedWaypoint.Camera {
    }
 
    private FogType calculateFogType() {
-      FluidState fluidState1 = this.level.getFluidState(this.blockPosition);
-      if (fluidState1.is(FluidTags.WATER) && this.position.y < this.blockPosition.getY() + fluidState1.getHeightForCamera(this.level, this.blockPosition)) {
-         return FogType.WATER;
-      }
-
       Camera.NearPlane plane = this.getNearPlane(this.minecraft.options.fov().get().intValue());
 
       for (Vec3 point : Arrays.asList(plane.forward, plane.getTopLeft(), plane.getTopRight(), plane.getBottomLeft(), plane.getBottomRight())) {
          Vec3 offsetPos = this.position.add(point);
          BlockPos checkPos = BlockPos.containing(offsetPos);
          FluidState fluidState = this.level.getFluidState(checkPos);
-         if (fluidState.is(FluidTags.LAVA)) {
+         if (!fluidState.isEmpty()) {
             if (offsetPos.y <= fluidState.getHeightForCamera(this.level, checkPos) + checkPos.getY()) {
-               return FogType.LAVA;
+               return fluidState.getType().getFogType();
             }
          } else {
             BlockState state = this.level.getBlockState(checkPos);

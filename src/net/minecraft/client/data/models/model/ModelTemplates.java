@@ -21,7 +21,6 @@ public class ModelTemplates {
    public static final ModelTemplate CUBE_COLUMN = create("cube_column", TextureSlot.END, TextureSlot.SIDE);
    public static final ModelTemplate CUBE_COLUMN_HORIZONTAL = create("cube_column_horizontal", "_horizontal", TextureSlot.END, TextureSlot.SIDE);
    public static final ModelTemplate CUBE_COLUMN_MIRRORED = create("cube_column_mirrored", "_mirrored", TextureSlot.END, TextureSlot.SIDE);
-   public static final ModelTemplate CUBE_TOP = create("cube_top", TextureSlot.TOP, TextureSlot.SIDE);
    public static final ModelTemplate CUBE_BOTTOM_TOP = create("cube_bottom_top", TextureSlot.TOP, TextureSlot.BOTTOM, TextureSlot.SIDE);
    public static final ModelTemplate CUBE_BOTTOM_TOP_INDENTED = create(
       "template_cube_bottom_top_indented", TextureSlot.TOP, TextureSlot.BOTTOM, TextureSlot.SIDE

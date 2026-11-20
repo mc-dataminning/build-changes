@@ -10,13 +10,13 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.ObjectSelectionList;
 import net.minecraft.client.gui.screens.worldselection.WorldCreationContext;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.RegistryAccess;
@@ -314,7 +314,7 @@ public class PresetFlatWorldScreen extends Screen {
          }
 
          private void blitSlotBg(final GuiGraphicsExtractor graphics, final int x, final int y) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, PresetFlatWorldScreen.SLOT_SPRITE, x, y, 18, 18);
+            graphics.blitSprite(GuiPipeline.TEXTURED, PresetFlatWorldScreen.SLOT_SPRITE, x, y, 18, 18);
          }
 
          @Override

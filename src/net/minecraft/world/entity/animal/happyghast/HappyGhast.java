@@ -164,7 +164,7 @@ public class HappyGhast extends Animal {
    }
 
    @Override
-   protected void checkFallDamage(final double ya, final boolean onGround, final BlockState onState, final BlockPos pos) {
+   protected void checkFallDamage(final boolean onGround, final BlockState onState, final BlockPos pos) {
    }
 
    @Override
