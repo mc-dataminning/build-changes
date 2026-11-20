@@ -13,7 +13,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 public class AlternativesEntry extends CompositeEntryBase {
    public static final MapCodec<AlternativesEntry> MAP_CODEC = createCodec(AlternativesEntry::new);
-   public static final ProblemReporter.Problem UNREACHABLE_PROBLEM = new ProblemReporter.Problem() {
+   public static final ProblemReporter.Problem UNREACHABLE_PROBLEM = new ProblemReporter.Warning() {
       @Override
       public String description() {
          return "Unreachable entry!";

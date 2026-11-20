@@ -7,16 +7,19 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.arguments.SerializableArgument;
 import net.minecraft.commands.functions.CommandFunction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 
-public class FunctionArgument implements ArgumentType<FunctionArgument.Result> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("foo", "foo:bar", "#foo");
+public class FunctionArgument implements SerializableArgument.ContextFree<FunctionArgument.Result> {
+   private static final FunctionArgument INSTANCE = new FunctionArgument();
+   public static final SerializableArgument.Type<FunctionArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
+   private static final Collection<String> EXAMPLES = List.of("foo", "foo:bar", "#foo");
    private static final DynamicCommandExceptionType ERROR_UNKNOWN_TAG = new DynamicCommandExceptionType(
       tag -> Component.translatableEscape("arguments.function.tag.unknown", tag)
    );
@@ -24,8 +27,16 @@ public class FunctionArgument implements ArgumentType<FunctionArgument.Result> {
       value -> Component.translatableEscape("arguments.function.unknown", value)
    );
 
-   public static FunctionArgument functions() {
-      return new FunctionArgument();
+   private FunctionArgument() {
+   }
+
+   @Override
+   public SerializableArgument.Type<FunctionArgument> type() {
+      return TYPE;
+   }
+
+   public static ArgumentType<FunctionArgument.Result> functions() {
+      return INSTANCE.toBrigadier();
    }
 
    public FunctionArgument.Result parse(final StringReader reader) throws CommandSyntaxException {
@@ -102,6 +113,7 @@ public class FunctionArgument implements ArgumentType<FunctionArgument.Result> {
       return ((FunctionArgument.Result)context.getArgument(name, FunctionArgument.Result.class)).unwrapToCollection(context);
    }
 
+   @Override
    public Collection<String> getExamples() {
       return EXAMPLES;
    }

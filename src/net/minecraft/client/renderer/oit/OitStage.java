@@ -10,9 +10,9 @@ public enum OitStage {
 
    public RenderPassLayout.Subpass subpass() {
       return switch (this) {
-         case DEPTH_BOUNDS -> RenderPassLayouts.OIT_DEPTH_BOUNDS.subpass(0);
-         case TRANSMITTANCE -> RenderPassLayouts.OIT_TRANSMITTANCE.subpass(0);
-         case ACCUMULATE -> RenderPassLayouts.OIT_ACCUMULATE.subpass(0);
+         case DEPTH_BOUNDS -> RenderPassLayouts.OIT_DEPTH_BOUNDS_SUBPASS;
+         case TRANSMITTANCE -> RenderPassLayouts.OIT_TRANSMITTANCE_SUBPASS;
+         case ACCUMULATE -> RenderPassLayouts.OIT_ACCUMULATE_SUBPASS;
       };
    }
 }

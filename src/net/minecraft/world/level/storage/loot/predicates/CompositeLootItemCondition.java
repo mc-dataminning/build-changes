@@ -42,7 +42,6 @@ public abstract class CompositeLootItemCondition implements LootItemCondition {
 
    @Override
    public void validate(final ValidationContext output) {
-      LootItemCondition.super.validate(output);
       Validatable.validateHolderSet(output, "terms", this.terms);
    }
 

@@ -46,9 +46,9 @@ public class HolderSetCodec<E> implements Codec<HolderSet<E>> {
                   .map(
                      tagKey -> {
                         if (ops instanceof RegistryOps<T> registryOps) {
-                           Optional<HolderGetter<E>> maybeRegistry = registryOps.getter(this.registryKey);
+                           Optional<? extends HolderGetter<E>> maybeRegistry = registryOps.getter(this.registryKey);
                            return maybeRegistry.isPresent()
-                              ? lookupTag(maybeRegistry.get(), tagKey)
+                              ? lookupTag((HolderGetter<E>)maybeRegistry.get(), tagKey)
                               : DataResult.error(() -> "Registry " + this.registryKey.identifier() + " is not available in this context");
                         } else {
                            return DataResult.error(() -> "Registries are not available in this context");

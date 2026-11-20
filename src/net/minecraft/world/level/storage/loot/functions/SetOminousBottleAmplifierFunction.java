@@ -26,8 +26,7 @@ public class SetOminousBottleAmplifierFunction extends LootItemConditionalFuncti
    }
 
    @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
+   public void validateCustom(final ValidationContext context) {
       Validatable.validateHolder(context, "amplifier", this.amplifier);
    }
 

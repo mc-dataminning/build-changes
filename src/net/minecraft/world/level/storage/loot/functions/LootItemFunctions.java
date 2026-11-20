@@ -6,6 +6,7 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
@@ -22,7 +23,7 @@ public class LootItemFunctions {
    public static final Codec<Holder<LootItemFunction>> CODEC = RegistryCodecs.holder(Registries.ITEM_MODIFIER, DIRECT_CODEC);
    public static final Codec<HolderSet<LootItemFunction>> LIST_CODEC = RegistryCodecs.holderSet(Registries.ITEM_MODIFIER, TYPED_CODEC);
 
-   public static MapCodec<? extends LootItemFunction> bootstrap(final Registry<MapCodec<? extends LootItemFunction>> registry) {
+   public static void bootstrap(final WritableRegistry<MapCodec<? extends LootItemFunction>> registry) {
       Registry.register(registry, "set_count", SetItemCountFunction.MAP_CODEC);
       Registry.register(registry, "set_item", SetItemFunction.MAP_CODEC);
       Registry.register(registry, "enchant_with_levels", EnchantWithLevelsFunction.MAP_CODEC);
@@ -64,6 +65,6 @@ public class LootItemFunctions {
       Registry.register(registry, "toggle_tooltips", ToggleTooltips.MAP_CODEC);
       Registry.register(registry, "set_ominous_bottle_amplifier", SetOminousBottleAmplifierFunction.MAP_CODEC);
       Registry.register(registry, "set_custom_model_data", SetCustomModelDataFunction.MAP_CODEC);
-      return Registry.register(registry, "discard", DiscardItem.MAP_CODEC);
+      Registry.register(registry, "discard", DiscardItem.MAP_CODEC);
    }
 }

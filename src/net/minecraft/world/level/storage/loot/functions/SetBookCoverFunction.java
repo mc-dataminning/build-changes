@@ -11,6 +11,7 @@ import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.WrittenBookContent;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 public class SetBookCoverFunction extends LootItemConditionalFunction {
@@ -60,5 +61,9 @@ public class SetBookCoverFunction extends LootItemConditionalFunction {
    @Override
    public MapCodec<SetBookCoverFunction> codec() {
       return MAP_CODEC;
+   }
+
+   @Override
+   protected void validateCustom(final ValidationContext context) {
    }
 }

@@ -20,7 +20,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootContextUser;
 import net.minecraft.world.level.storage.loot.Validatable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -55,8 +54,7 @@ public class SetAttributesFunction extends LootItemConditionalFunction {
    }
 
    @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
+   public void validateCustom(final ValidationContext context) {
       Validatable.validate(context, "modifiers", this.modifiers);
    }
 
@@ -123,7 +121,7 @@ public class SetAttributesFunction extends LootItemConditionalFunction {
 
    private record Modifier(
       Identifier id, Holder<Attribute> attribute, AttributeModifier.Operation operation, Holder<ContextFloatProvider> amount, List<EquipmentSlotGroup> slots
-   ) implements LootContextUser {
+   ) implements Validatable {
       private static final Codec<List<EquipmentSlotGroup>> SLOTS_CODEC = ExtraCodecs.nonEmptyList(ExtraCodecs.compactListCodec(EquipmentSlotGroup.CODEC));
       public static final Codec<SetAttributesFunction.Modifier> CODEC = RecordCodecBuilder.create(
          i -> i.group(
@@ -138,7 +136,6 @@ public class SetAttributesFunction extends LootItemConditionalFunction {
 
       @Override
       public void validate(final ValidationContext context) {
-         LootContextUser.super.validate(context);
          Validatable.validateHolder(context, "amount", this.amount);
       }
    }

@@ -21,6 +21,7 @@ import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.narration.NarrationTrigger;
 import net.minecraft.client.gui.screens.PauseScreen;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.debug.DebugEnvironmentAttributeOptionsScreen;
 import net.minecraft.client.gui.screens.debug.DebugOptionsScreen;
 import net.minecraft.client.gui.screens.debug.GameModeSwitcherScreen;
 import net.minecraft.client.gui.screens.options.controls.KeyBindsScreen;
@@ -269,6 +270,18 @@ public class KeyboardHandler {
          debugAction = true;
       }
 
+      if (this.minecraft.canUseRestrictedDebugFeatures() && !this.minecraft.showOnlyReducedInfo() && options.keyDebugEnvironmentAttributeOptions.matches(event)
+         )
+       {
+         if (this.minecraft.gui.screen() instanceof DebugEnvironmentAttributeOptionsScreen) {
+            this.minecraft.gui.screen().onClose();
+         } else if (this.minecraft.canInterruptScreen()) {
+            this.minecraft.gui.setScreen(new DebugEnvironmentAttributeOptionsScreen(this.minecraft.gui.screen()));
+         }
+
+         debugAction = true;
+      }
+
       if (options.keyDebugFocusPause.matches(event)) {
          options.pauseOnLostFocus = !options.pauseOnLostFocus;
          options.save();
@@ -279,7 +292,7 @@ public class KeyboardHandler {
       if (options.keyDebugDumpDynamicTextures.matches(event)) {
          Path gameDirectory = this.minecraft.gameDirectory.toPath().toAbsolutePath();
          Path debugTexturePath = TextureUtil.getDebugTexturePath(gameDirectory);
-         this.minecraft.getTextureManager().dumpAllSheets(debugTexturePath);
+         this.minecraft.getTextureManager().dumpTextures(debugTexturePath);
          this.minecraft.getAtlasManager().dumpAllSprites(debugTexturePath);
          Component pathComponent = Component.literal(gameDirectory.relativize(debugTexturePath).toString())
             .withStyle(ChatFormatting.UNDERLINE)
@@ -457,7 +470,7 @@ public class KeyboardHandler {
          if (screen != null) {
             if (event.isCycleFocus()) {
                this.minecraft.setLastInputType(InputType.KEYBOARD_TAB);
-            } else if (!screen.isInputCaptured()) {
+            } else if (!screen.isInputCaptured() && !event.repeat()) {
                if (event.isSelection()) {
                   this.minecraft.setLastInputType(InputType.KEYBOARD_SELECTION);
                } else if (event.isLeft() || event.isRight() || event.isUp() || event.isDown()) {

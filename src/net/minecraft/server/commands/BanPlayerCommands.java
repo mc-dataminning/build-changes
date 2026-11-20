@@ -6,6 +6,7 @@ import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.GameProfileArgument;
@@ -22,7 +23,7 @@ public class BanPlayerCommands {
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("ban").requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("ban").requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_ADMINS)))
             .then(
                ((RequiredArgumentBuilder)Commands.argument("targets", GameProfileArgument.gameProfile())
                      .executes(c -> banPlayers((CommandSourceStack)c.getSource(), GameProfileArgument.getGameProfiles(c, "targets"), null)))

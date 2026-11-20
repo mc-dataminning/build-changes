@@ -4,8 +4,10 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProvider;
 import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProviders;
+import org.jspecify.annotations.Nullable;
 
 public record LootItemRandomChanceCondition(Holder<ContextFloatProvider> chance) implements LootItemCondition {
    public static final MapCodec<LootItemRandomChanceCondition> MAP_CODEC = RecordCodecBuilder.mapCodec(
@@ -20,6 +22,15 @@ public record LootItemRandomChanceCondition(Holder<ContextFloatProvider> chance)
    public boolean test(final LootContext context) {
       float probability = this.chance.value().getFloat(context);
       return context.getRandom().nextFloat() < probability;
+   }
+
+   @Override
+   public @Nullable Boolean constantValue(final LootItemCondition.ConstantConditionEvaluationContext context) {
+      return null;
+   }
+
+   @Override
+   public void validate(final ValidationContext context) {
    }
 
    public static LootItemCondition.Builder randomChance(final float probability) {

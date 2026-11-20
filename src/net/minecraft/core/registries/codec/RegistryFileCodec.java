@@ -54,12 +54,12 @@ public final class RegistryFileCodec<E> implements Codec<Holder<E>> {
                : this.elementCodec.decode(ops, input).map(p -> p.mapFirst(Holder::direct));
          }
 
-         Optional<HolderGetter<E>> maybeLookup = registryOps.getter(this.registryKey);
+         Optional<? extends HolderGetter<E>> maybeLookup = registryOps.getter(this.registryKey);
          if (maybeLookup.isEmpty()) {
             return DataResult.error(() -> "Registry does not exist: " + this.registryKey.identifier());
          }
 
-         HolderGetter<E> lookup = maybeLookup.get();
+         HolderGetter<E> lookup = (HolderGetter<E>)maybeLookup.get();
          Pair<Identifier, T> pair = (Pair<Identifier, T>)decoded.result().get();
          ResourceKey<E> elementKey = ResourceKey.create(this.registryKey, (Identifier)pair.getFirst());
          return lookup.get(elementKey)

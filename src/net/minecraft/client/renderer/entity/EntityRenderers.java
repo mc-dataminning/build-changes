@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.entity.player.AvatarRenderer;
 import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Avatar;
@@ -28,7 +29,7 @@ import org.slf4j.Logger;
 public class EntityRenderers {
    private static final Logger LOGGER = LogUtils.getLogger();
 
-   public static EntityRendererProvider<?> bootstrap(final Registry<EntityRendererProvider<?>> registry) {
+   public static void bootstrap(final WritableRegistry<EntityRendererProvider<?>> registry) {
       register(registry, EntityTypes.ACACIA_BOAT, context -> new BoatRenderer(context, ModelLayers.ACACIA_BOAT));
       register(registry, EntityTypes.ACACIA_CHEST_BOAT, context -> new BoatRenderer(context, ModelLayers.ACACIA_CHEST_BOAT));
       register(registry, EntityTypes.ALLAY, AllayRenderer::new);
@@ -243,7 +244,7 @@ public class EntityRenderers {
       );
       register(registry, EntityTypes.ZOMBIE_NAUTILUS, ZombieNautilusRenderer::new);
       register(registry, EntityTypes.ZOMBIE_VILLAGER, ZombieVillagerRenderer::new);
-      return register(
+      register(
          registry,
          EntityTypes.ZOMBIFIED_PIGLIN,
          context -> new ZombifiedPiglinRenderer(

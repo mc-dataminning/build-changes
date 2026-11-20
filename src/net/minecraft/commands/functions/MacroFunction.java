@@ -1,6 +1,5 @@
 package net.minecraft.commands.functions;
 
-import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import it.unimi.dsi.fastutil.ints.IntList;
@@ -27,17 +26,24 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.util.Util;
 import org.jspecify.annotations.Nullable;
 
-public class MacroFunction<T extends ExecutionCommandSource<T>> implements CommandFunction<T> {
+public class MacroFunction<Runtime extends ExecutionCommandSource<Runtime>> implements CommandFunction<Runtime> {
    private static final DecimalFormat DECIMAL_FORMAT = Util.make(
       new DecimalFormat("#", DecimalFormatSymbols.getInstance(Locale.ROOT)), format -> format.setMaximumFractionDigits(15)
    );
    private static final int MAX_CACHE_ENTRIES = 8;
-   private final List<String> parameters;
-   private final Object2ObjectLinkedOpenHashMap<List<String>, InstantiatedFunction<T>> cache = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
+   private final CommandParser.Provider<Runtime> parserProvider;
    private final Identifier id;
-   private final List<MacroFunction.Entry<T>> entries;
+   private final List<MacroFunction.Entry<Runtime>> entries;
+   private final List<String> parameters;
+   private final Object2ObjectLinkedOpenHashMap<List<String>, InstantiatedFunction<Runtime>> cache = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
 
-   public MacroFunction(final Identifier id, final List<MacroFunction.Entry<T>> entries, final List<String> parameters) {
+   MacroFunction(
+      final CommandParser.Provider<Runtime> parserProvider,
+      final Identifier id,
+      final List<MacroFunction.Entry<Runtime>> entries,
+      final List<String> parameters
+   ) {
+      this.parserProvider = parserProvider;
       this.id = id;
       this.entries = entries;
       this.parameters = parameters;
@@ -49,7 +55,7 @@ public class MacroFunction<T extends ExecutionCommandSource<T>> implements Comma
    }
 
    @Override
-   public InstantiatedFunction<T> instantiate(final @Nullable CompoundTag arguments, final CommandDispatcher<T> dispatcher) throws FunctionInstantiationException {
+   public InstantiatedFunction<Runtime> instantiate(final @Nullable CompoundTag arguments) throws FunctionInstantiationException {
       if (arguments == null) {
          throw new FunctionInstantiationException(Component.translatable("commands.function.error.missing_arguments", Component.translationArg(this.id())));
       }
@@ -67,7 +73,7 @@ public class MacroFunction<T extends ExecutionCommandSource<T>> implements Comma
          parameterValues.add(stringify(argumentValue));
       }
 
-      InstantiatedFunction<T> cachedFunction = (InstantiatedFunction<T>)this.cache.getAndMoveToLast(parameterValues);
+      InstantiatedFunction<Runtime> cachedFunction = (InstantiatedFunction<Runtime>)this.cache.getAndMoveToLast(parameterValues);
       if (cachedFunction != null) {
          return cachedFunction;
       }
@@ -76,7 +82,7 @@ public class MacroFunction<T extends ExecutionCommandSource<T>> implements Comma
          this.cache.removeFirst();
       }
 
-      InstantiatedFunction<T> function = this.substituteAndParse(this.parameters, parameterValues, dispatcher);
+      InstantiatedFunction<Runtime> function = this.substituteAndParse(this.parameters, parameterValues);
       this.cache.put(parameterValues, function);
       return function;
    }
@@ -98,33 +104,39 @@ public class MacroFunction<T extends ExecutionCommandSource<T>> implements Comma
       indicesToSelect.forEach(index -> selectedValuesOutput.add(values.get(index)));
    }
 
-   private InstantiatedFunction<T> substituteAndParse(final List<String> keys, final List<String> values, final CommandDispatcher<T> dispatcher) throws FunctionInstantiationException {
-      List<UnboundEntryAction<T>> newEntries = new ArrayList<>(this.entries.size());
+   private InstantiatedFunction<Runtime> substituteAndParse(final List<String> keys, final List<String> values) throws FunctionInstantiationException {
+      List<UnboundEntryAction<Runtime>> newEntries = new ArrayList<>(this.entries.size());
       List<String> entryArguments = new ArrayList<>(values.size());
 
-      for (MacroFunction.Entry<T> entry : this.entries) {
-         lookupValues(values, entry.parameters(), entryArguments);
-         newEntries.add(entry.instantiate(entryArguments, dispatcher, this.id));
+      try (CommandParser<Runtime> parser = this.parserProvider.create(this.id)) {
+         for (MacroFunction.Entry<Runtime> entry : this.entries) {
+            lookupValues(values, entry.parameters(), entryArguments);
+            newEntries.add(entry.instantiate(entryArguments, parser, this.id));
+         }
+      } catch (FunctionInstantiationException e) {
+         throw e;
+      } catch (Exception e) {
+         throw new FunctionInstantiationException(
+            Component.translatable("commands.function.error.validation", Component.translationArg(this.id), e.getMessage())
+         );
       }
 
       return new PlainTextFunction<>(this.id().withPath(id -> id + "/" + keys.hashCode()), newEntries);
    }
 
-   interface Entry<T> {
+   interface Entry<Runtime> {
       IntList parameters();
 
-      UnboundEntryAction<T> instantiate(List<String> substitutions, CommandDispatcher<T> dispatcher, Identifier funtionId) throws FunctionInstantiationException;
+      UnboundEntryAction<Runtime> instantiate(List<String> substitutions, CommandParser<Runtime> parser, Identifier funtionId) throws FunctionInstantiationException;
    }
 
-   static class MacroEntry<T extends ExecutionCommandSource<T>> implements MacroFunction.Entry<T> {
+   static class MacroEntry<Runtime extends ExecutionCommandSource<Runtime>> implements MacroFunction.Entry<Runtime> {
       private final StringTemplate template;
       private final IntList parameters;
-      private final T compilationContext;
 
-      public MacroEntry(final StringTemplate template, final IntList parameters, final T compilationContext) {
+      public MacroEntry(final StringTemplate template, final IntList parameters) {
          this.template = template;
          this.parameters = parameters;
-         this.compilationContext = compilationContext;
       }
 
       @Override
@@ -133,11 +145,11 @@ public class MacroFunction<T extends ExecutionCommandSource<T>> implements Comma
       }
 
       @Override
-      public UnboundEntryAction<T> instantiate(final List<String> substitutions, final CommandDispatcher<T> dispatcher, final Identifier functionId) throws FunctionInstantiationException {
+      public UnboundEntryAction<Runtime> instantiate(final List<String> substitutions, final CommandParser<Runtime> parse, final Identifier functionId) throws FunctionInstantiationException {
          String command = this.template.substitute(substitutions);
 
          try {
-            return CommandFunction.parseCommand(dispatcher, this.compilationContext, new StringReader(command));
+            return CommandFunction.parseCommand(parse, new StringReader(command));
          } catch (CommandSyntaxException e) {
             throw new FunctionInstantiationException(
                Component.translatable("commands.function.error.parse", Component.translationArg(functionId), command, e.getMessage())
@@ -146,10 +158,10 @@ public class MacroFunction<T extends ExecutionCommandSource<T>> implements Comma
       }
    }
 
-   static class PlainTextEntry<T> implements MacroFunction.Entry<T> {
-      private final UnboundEntryAction<T> compiledAction;
+   static class PlainTextEntry<Runtime> implements MacroFunction.Entry<Runtime> {
+      private final UnboundEntryAction<Runtime> compiledAction;
 
-      public PlainTextEntry(final UnboundEntryAction<T> compiledAction) {
+      public PlainTextEntry(final UnboundEntryAction<Runtime> compiledAction) {
          this.compiledAction = compiledAction;
       }
 
@@ -159,7 +171,7 @@ public class MacroFunction<T extends ExecutionCommandSource<T>> implements Comma
       }
 
       @Override
-      public UnboundEntryAction<T> instantiate(final List<String> substitutions, final CommandDispatcher<T> dispatcher, final Identifier functionId) {
+      public UnboundEntryAction<Runtime> instantiate(final List<String> substitutions, final CommandParser<Runtime> parser, final Identifier functionId) {
          return this.compiledAction;
       }
    }

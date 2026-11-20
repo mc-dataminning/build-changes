@@ -12,12 +12,12 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.datafixers.util.Pair;
 import java.util.Collection;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandResultCallback;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.ExecutionCommandSource;
 import net.minecraft.commands.FunctionInstantiationException;
-import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.CompoundTagArgument;
 import net.minecraft.commands.arguments.NbtPathArgument;
 import net.minecraft.commands.arguments.item.FunctionArgument;
@@ -28,6 +28,8 @@ import net.minecraft.commands.execution.tasks.CallFunction;
 import net.minecraft.commands.execution.tasks.FallthroughTask;
 import net.minecraft.commands.functions.CommandFunction;
 import net.minecraft.commands.functions.InstantiatedFunction;
+import net.minecraft.commands.suggestions.SuggestionContext;
+import net.minecraft.commands.suggestions.SuggestionProviders;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
@@ -50,11 +52,11 @@ public class FunctionCommand {
    public static final Dynamic2CommandExceptionType ERROR_FUNCTION_INSTANTATION_FAILURE = new Dynamic2CommandExceptionType(
       (id, reason) -> Component.translatableEscape("commands.function.instantiationFailure", id, reason)
    );
-   public static final SuggestionProvider<CommandSourceStack> SUGGEST_FUNCTION = (c, p) -> {
-      ServerFunctionManager manager = ((CommandSourceStack)c.getSource()).getServer().getFunctions();
-      SharedSuggestionProvider.suggestResource(manager.getTagNames(), p, "#");
-      return SharedSuggestionProvider.suggestResource(manager.getFunctionNames(), p);
-   };
+   public static final SuggestionProvider<CommandSourceStack> SUGGEST_FUNCTION = SuggestionProviders.serverOnly((server, var1, builder) -> {
+      ServerFunctionManager manager = server.getFunctions();
+      SuggestionContext.suggestResource(manager.getTagNames(), builder, "#");
+      return SuggestionContext.suggestResource(manager.getFunctionNames(), builder);
+   });
    private static final FunctionCommand.Callbacks<CommandSourceStack> FULL_CONTEXT_CALLBACKS = new FunctionCommand.Callbacks<CommandSourceStack>() {
       public void signalResult(final CommandSourceStack originalSource, final Identifier id, final int newValue) {
          originalSource.sendSuccess(() -> Component.translatable("commands.function.result", Component.translationArg(id), newValue), true);
@@ -79,7 +81,8 @@ public class FunctionCommand {
       }
 
       dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("function").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("function")
+               .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
             .then(
                ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("name", FunctionArgument.functions())
                         .suggests(SUGGEST_FUNCTION)
@@ -132,7 +135,6 @@ public class FunctionCommand {
    private static <T extends ExecutionCommandSource<T>> void instantiateAndQueueFunctions(
       final @Nullable CompoundTag arguments,
       final ExecutionControl<T> output,
-      final CommandDispatcher<T> dispatcher,
       final T noCallbackSource,
       final CommandFunction<T> function,
       final Identifier id,
@@ -140,7 +142,7 @@ public class FunctionCommand {
       final boolean returnParentFrame
    ) throws CommandSyntaxException {
       try {
-         InstantiatedFunction<T> instantiatedFunction = function.instantiate(arguments, dispatcher);
+         InstantiatedFunction<T> instantiatedFunction = function.instantiate(arguments);
          output.queueNext(new CallFunction<>(instantiatedFunction, functionResultCollector, returnParentFrame).bind(noCallbackSource));
       } catch (FunctionInstantiationException exception) {
          throw ERROR_FUNCTION_INSTANTATION_FAILURE.create(id, exception.messageComponent());
@@ -164,14 +166,13 @@ public class FunctionCommand {
       final ExecutionControl<T> output,
       final FunctionCommand.Callbacks<T> callbacks
    ) throws CommandSyntaxException {
-      CommandDispatcher<T> dispatcher = originalSource.dispatcher();
       T noCallbackSource = functionSource.clearCallbacks();
       CommandResultCallback functionCommandOutputCallback = CommandResultCallback.chain(originalSource.callback(), output.currentFrame().returnValueConsumer());
 
       for (CommandFunction<T> function : functions) {
          Identifier id = function.id();
          CommandResultCallback functionResultCollector = decorateOutputIfNeeded(originalSource, callbacks, id, functionCommandOutputCallback);
-         instantiateAndQueueFunctions(arguments, output, dispatcher, noCallbackSource, function, id, functionResultCollector, true);
+         instantiateAndQueueFunctions(arguments, output, noCallbackSource, function, id, functionResultCollector, true);
       }
 
       output.queueNext(FallthroughTask.instance());
@@ -185,7 +186,6 @@ public class FunctionCommand {
       final ExecutionControl<T> output,
       final FunctionCommand.Callbacks<T> callbacks
    ) throws CommandSyntaxException {
-      CommandDispatcher<T> dispatcher = originalSource.dispatcher();
       T noCallbackSource = functionSource.clearCallbacks();
       CommandResultCallback originalCallback = originalSource.callback();
       if (!functions.isEmpty()) {
@@ -193,12 +193,12 @@ public class FunctionCommand {
             CommandFunction<T> function = functions.iterator().next();
             Identifier id = function.id();
             CommandResultCallback functionResultCollector = decorateOutputIfNeeded(originalSource, callbacks, id, originalCallback);
-            instantiateAndQueueFunctions(arguments, output, dispatcher, noCallbackSource, function, id, functionResultCollector, false);
+            instantiateAndQueueFunctions(arguments, output, noCallbackSource, function, id, functionResultCollector, false);
          } else if (originalCallback == CommandResultCallback.EMPTY) {
             for (CommandFunction<T> function : functions) {
                Identifier id = function.id();
                CommandResultCallback functionResultCollector = decorateOutputIfNeeded(originalSource, callbacks, id, originalCallback);
-               instantiateAndQueueFunctions(arguments, output, dispatcher, noCallbackSource, function, id, functionResultCollector, false);
+               instantiateAndQueueFunctions(arguments, output, noCallbackSource, function, id, functionResultCollector, false);
             }
          } else {
             class Accumulator {
@@ -217,7 +217,7 @@ public class FunctionCommand {
             for (CommandFunction<T> function : functions) {
                Identifier id = function.id();
                CommandResultCallback functionResultCollector = decorateOutputIfNeeded(originalSource, callbacks, id, partialResultCallback);
-               instantiateAndQueueFunctions(arguments, output, dispatcher, noCallbackSource, function, id, functionResultCollector, false);
+               instantiateAndQueueFunctions(arguments, output, noCallbackSource, function, id, functionResultCollector, false);
             }
 
             output.queueNext((context, frame) -> {

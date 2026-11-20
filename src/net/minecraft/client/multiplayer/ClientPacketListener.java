@@ -2,12 +2,6 @@ package net.minecraft.client.multiplayer;
 
 import com.google.common.hash.HashCode;
 import com.mojang.authlib.GameProfile;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
@@ -73,10 +67,9 @@ import net.minecraft.client.resources.sounds.GuardianAttackSoundInstance;
 import net.minecraft.client.resources.sounds.MinecartSoundInstance;
 import net.minecraft.client.resources.sounds.SnifferSoundInstance;
 import net.minecraft.client.waypoints.ClientWaypointManager;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.Commands;
+import net.minecraft.commands.SuggestionBox;
 import net.minecraft.commands.arguments.ArgumentSignatures;
-import net.minecraft.commands.synchronization.SuggestionProviders;
+import net.minecraft.commands.suggestions.SuggestionContext;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.PositionAndRotation;
@@ -107,6 +100,7 @@ import net.minecraft.network.protocol.common.ServerboundClientInformationPacket;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.protocol.configuration.ConfigurationProtocols;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundAddEntityMotionPacket;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.protocol.game.ClientboundAddTransientBlockPacket;
 import net.minecraft.network.protocol.game.ClientboundAnimatePacket;
@@ -124,7 +118,6 @@ import net.minecraft.network.protocol.game.ClientboundChunkBatchStartPacket;
 import net.minecraft.network.protocol.game.ClientboundChunksBiomesPacket;
 import net.minecraft.network.protocol.game.ClientboundClearTitlesPacket;
 import net.minecraft.network.protocol.game.ClientboundCommandSuggestionsPacket;
-import net.minecraft.network.protocol.game.ClientboundCommandsPacket;
 import net.minecraft.network.protocol.game.ClientboundContainerClosePacket;
 import net.minecraft.network.protocol.game.ClientboundContainerSetContentPacket;
 import net.minecraft.network.protocol.game.ClientboundContainerSetDataPacket;
@@ -254,8 +247,6 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ClientInformation;
-import net.minecraft.server.permissions.Permission;
-import net.minecraft.server.permissions.PermissionCheck;
 import net.minecraft.server.permissions.PermissionSet;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -356,42 +347,6 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
    private static final Component BUTTON_SUGGEST_COMMAND = Component.translatable("multiplayer.confirm_command.suggest_command");
    private static final int PENDING_OFFSET_THRESHOLD = 64;
    public static final int TELEPORT_INTERPOLATION_THRESHOLD = 64;
-   private static final Permission RESTRICTED_COMMAND = Permission.Atom.create("client/commands/restricted");
-   private static final PermissionCheck RESTRICTED_COMMAND_CHECK = new PermissionCheck.Require(RESTRICTED_COMMAND);
-   private static final PermissionSet ALLOW_RESTRICTED_COMMANDS = permission -> permission.equals(RESTRICTED_COMMAND);
-   private static final ClientboundCommandsPacket.NodeBuilder<ClientSuggestionProvider> COMMAND_NODE_BUILDER = new ClientboundCommandsPacket.NodeBuilder<ClientSuggestionProvider>() {
-      @Override
-      public ArgumentBuilder<ClientSuggestionProvider, ?> createLiteral(final String id) {
-         return LiteralArgumentBuilder.literal(id);
-      }
-
-      @Override
-      public ArgumentBuilder<ClientSuggestionProvider, ?> createArgument(
-         final String id, final ArgumentType<?> argumentType, final @Nullable Identifier suggestionId
-      ) {
-         RequiredArgumentBuilder<ClientSuggestionProvider, ?> builder = RequiredArgumentBuilder.argument(id, argumentType);
-         if (suggestionId != null) {
-            builder.suggests(SuggestionProviders.getProvider(suggestionId));
-         }
-
-         return builder;
-      }
-
-      @Override
-      public ArgumentBuilder<ClientSuggestionProvider, ?> configure(
-         final ArgumentBuilder<ClientSuggestionProvider, ?> builder, final boolean executable, final boolean restricted
-      ) {
-         if (executable) {
-            builder.executes(c -> 0);
-         }
-
-         if (restricted) {
-            builder.requires(Commands.hasPermission(ClientPacketListener.RESTRICTED_COMMAND_CHECK));
-         }
-
-         return builder;
-      }
-   };
    private static final EntitySpawnRequest ENTITY_SPAWN_REQUEST = new EntitySpawnRequest(EntitySpawnReason.LOAD, true);
    private final GameProfile localGameProfile;
    private ClientLevel level;
@@ -399,13 +354,12 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
    private final Map<UUID, PlayerInfo> playerInfoMap = new HashMap<>();
    private final Set<PlayerInfo> listedPlayers = new ReferenceOpenHashSet();
    private final ClientAdvancements advancements;
-   private final ClientSuggestionProvider suggestionsProvider;
-   private final ClientSuggestionProvider restrictedSuggestionsProvider;
+   private final ClientSuggestionContext suggestionsProvider;
+   private final ClientSuggestionContext restrictedSuggestionsProvider;
    private final DebugQueryHandler debugQueryHandler = new DebugQueryHandler(this);
    private int serverChunkRadius = 3;
    private int serverSimulationDistance = 3;
    private final RandomSource random = RandomSource.createThreadSafe();
-   private CommandDispatcher<ClientSuggestionProvider> commands = new CommandDispatcher();
    private ClientRecipeContainer recipes = new ClientRecipeContainer(Map.of(), SelectableRecipe.SingleInputSet.empty());
    private Set<ResourceKey<Level>> levels;
    private final RegistryAccess.Frozen registryAccess;
@@ -447,8 +401,8 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
          LocalPlayer player = minecraft.player;
          return player != null && player.permissions().hasPermission(permission);
       };
-      this.suggestionsProvider = new ClientSuggestionProvider(this, minecraft, playerPermissions.union(ALLOW_RESTRICTED_COMMANDS));
-      this.restrictedSuggestionsProvider = new ClientSuggestionProvider(this, minecraft, PermissionSet.NO_PERMISSIONS);
+      this.suggestionsProvider = new ClientSuggestionContext(this, minecraft, playerPermissions.union(SuggestionBox.ALLOW_RESTRICTED_COMMANDS));
+      this.restrictedSuggestionsProvider = new ClientSuggestionContext(this, minecraft, PermissionSet.NO_PERMISSIONS);
       this.pingDebugMonitor = new PingDebugMonitor(this, minecraft.getDebugOverlay().getPingLogger());
       this.debugSubscriber = new ClientDebugSubscriber(this, minecraft.getDebugOverlay());
       if (cookie.chatState() != null) {
@@ -459,7 +413,7 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       this.clockManager = new ClientClockManager();
    }
 
-   public ClientSuggestionProvider getSuggestionsProvider() {
+   public SuggestionContext getSuggestionsProvider() {
       return this.suggestionsProvider;
    }
 
@@ -621,6 +575,15 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
    }
 
    @Override
+   public void handleAddEntityMotion(final ClientboundAddEntityMotionPacket packet) {
+      PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
+      Entity entity = this.level.getEntity(packet.id());
+      if (entity != null) {
+         entity.lerpMotion(entity.getDeltaMovement().add(packet.impulse()));
+      }
+   }
+
+   @Override
    public void handleSetEntityData(final ClientboundSetEntityDataPacket packet) {
       PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
       Entity entity = this.level.getEntity(packet.id());
@@ -638,6 +601,7 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
          Vec3 pos = positionPath.endPosition();
          entity.getPositionCodec().setBase(pos);
          if (!entity.isLocalInstanceAuthoritative()) {
+            entity.lerpHeadTo(packet.yHeadRot());
             float yRot = packet.yRot();
             float xRot = packet.xRot();
             boolean tooBigToInterpolate = entity.position().distanceToSqr(pos) > 4096.0;
@@ -753,7 +717,7 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
       Entity entity = packet.getEntity(this.level);
       if (entity != null) {
-         entity.lerpHeadTo(packet.getYHeadRot(), 3);
+         entity.lerpHeadTo(packet.getYHeadRot());
       }
    }
 
@@ -945,7 +909,8 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
                   this.customReportDetails,
                   this.serverLinks(),
                   this.seenPlayers,
-                  this.seenInsecureChatWarning
+                  this.seenInsecureChatWarning,
+                  this.commandSuggestions
                )
             )
          );
@@ -1360,7 +1325,6 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       packet.explosionParticle()
          .ifPresent(explosionParticle -> this.minecraft.level.addParticle(explosionParticle, center.x(), center.y(), center.z(), 1.0, 0.0, 0.0));
       this.minecraft.level.trackExplosionEffects(center, packet.radius(), packet.blockCount(), packet.blockParticles());
-      packet.playerKnockback().ifPresent(this.minecraft.player::pushFromExplosion);
    }
 
    @Override
@@ -1669,12 +1633,6 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
          AdvancementHolder advancement = this.advancements.get(id);
          this.advancements.setSelectedTab(advancement, false);
       }
-   }
-
-   @Override
-   public void handleCommands(final ClientboundCommandsPacket packet) {
-      PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
-      this.commands = new CommandDispatcher(packet.getRoot(CommandBuildContext.simple(this.registryAccess, this.enabledFeatures), COMMAND_NODE_BUILDER));
    }
 
    @Override
@@ -2611,10 +2569,6 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       return this.advancements;
    }
 
-   public CommandDispatcher<ClientSuggestionProvider> getCommands() {
-      return this.commands;
-   }
-
    public ClientLevel getLevel() {
       return this.level;
    }
@@ -2653,7 +2607,7 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
    }
 
    public void sendCommand(final String command) {
-      SignableCommand<ClientSuggestionProvider> signableCommand = SignableCommand.of(this.commands.parse(command, this.suggestionsProvider));
+      SignableCommand<?> signableCommand = this.commandSuggestions.parse(command, this.suggestionsProvider).signables();
       if (signableCommand.arguments().isEmpty()) {
          this.send(new ServerboundChatCommandPacket(command));
       } else {
@@ -2669,7 +2623,7 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
    }
 
    public void sendUnattendedCommand(final String command, final @Nullable Screen screenAfterCommand) {
-      switch (this.verifyCommand(command)) {
+      switch (this.commandSuggestions.verifyCommand(command, this.suggestionsProvider, this.restrictedSuggestionsProvider)) {
          case NO_ISSUES:
             this.send(new ServerboundChatCommandPacket(command));
             this.minecraft.gui.setScreen(screenAfterCommand);
@@ -2677,32 +2631,12 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
          case PARSE_ERRORS:
             this.openCommandSendConfirmationWindow(command, "multiplayer.confirm_command.parse_errors", screenAfterCommand);
             break;
-         case SIGNATURE_REQUIRED:
-            this.openSignedCommandSendConfirmationWindow(command, "multiplayer.confirm_command.signature_required", screenAfterCommand);
-            break;
          case PERMISSIONS_REQUIRED:
             this.openCommandSendConfirmationWindow(command, "multiplayer.confirm_command.permissions_required", screenAfterCommand);
+            break;
+         case SIGNATURE_REQUIRED:
+            this.openSignedCommandSendConfirmationWindow(command, "multiplayer.confirm_command.signature_required", screenAfterCommand);
       }
-   }
-
-   private ClientPacketListener.CommandCheckResult verifyCommand(final String command) {
-      ParseResults<ClientSuggestionProvider> parseWithCurrentPermissions = this.commands.parse(command, this.suggestionsProvider);
-      if (!isValidCommand(parseWithCurrentPermissions)) {
-         return ClientPacketListener.CommandCheckResult.PARSE_ERRORS;
-      }
-
-      if (SignableCommand.hasSignableArguments(parseWithCurrentPermissions)) {
-         return ClientPacketListener.CommandCheckResult.SIGNATURE_REQUIRED;
-      }
-
-      ParseResults<ClientSuggestionProvider> parseWithoutPermissions = this.commands.parse(command, this.restrictedSuggestionsProvider);
-      return !isValidCommand(parseWithoutPermissions)
-         ? ClientPacketListener.CommandCheckResult.PERMISSIONS_REQUIRED
-         : ClientPacketListener.CommandCheckResult.NO_ISSUES;
-   }
-
-   private static boolean isValidCommand(final ParseResults<?> parseResults) {
-      return !parseResults.getReader().canRead() && parseResults.getExceptions().isEmpty() && parseResults.getContext().getLastChild().getCommand() != null;
    }
 
    private void openSendConfirmationWindow(final String command, final String messageKey, final Component acceptButton, final Runnable onAccept) {
@@ -2869,12 +2803,5 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
 
    public ClientClockManager clockManager() {
       return this.clockManager;
-   }
-
-   private enum CommandCheckResult {
-      NO_ISSUES,
-      PARSE_ERRORS,
-      SIGNATURE_REQUIRED,
-      PERMISSIONS_REQUIRED;
    }
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.blocks.BlockInput;
@@ -35,17 +35,16 @@ public class FillCommand {
    private static final BlockInput HOLLOW_CORE = new BlockInput(Blocks.AIR.defaultBlockState(), Collections.emptySet(), null);
    private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.fill.failed"));
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("fill").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("fill").requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
             .then(
                Commands.argument("from", BlockPosArgument.blockPos())
                   .then(
                      Commands.argument("to", BlockPosArgument.blockPos())
                         .then(
                            wrapWithMode(
-                                 context,
-                                 Commands.argument("block", BlockStateArgument.block(context)),
+                                 Commands.argument("block", BlockStateArgument.block()),
                                  c -> BlockPosArgument.getLoadedBlockPos(c, "from"),
                                  c -> BlockPosArgument.getLoadedBlockPos(c, "to"),
                                  c -> BlockStateArgument.getBlock(c, "block"),
@@ -65,8 +64,7 @@ public class FillCommand {
                                        ))
                                     .then(
                                        wrapWithMode(
-                                          context,
-                                          Commands.argument("filter", BlockPredicateArgument.blockPredicate(context)),
+                                          Commands.argument("filter", BlockPredicateArgument.blockPredicate()),
                                           c -> BlockPosArgument.getLoadedBlockPos(c, "from"),
                                           c -> BlockPosArgument.getLoadedBlockPos(c, "to"),
                                           c -> BlockStateArgument.getBlock(c, "block"),
@@ -94,7 +92,6 @@ public class FillCommand {
    }
 
    private static ArgumentBuilder<CommandSourceStack, ?> wrapWithMode(
-      final CommandBuildContext context,
       final ArgumentBuilder<CommandSourceStack, ?> builder,
       final InCommandFunction<CommandContext<CommandSourceStack>, BlockPos> from,
       final InCommandFunction<CommandContext<CommandSourceStack>, BlockPos> to,

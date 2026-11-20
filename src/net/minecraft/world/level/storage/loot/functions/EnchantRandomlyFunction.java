@@ -28,7 +28,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import org.slf4j.Logger;
 
-public class EnchantRandomlyFunction extends LootItemConditionalFunction {
+public class EnchantRandomlyFunction extends LootItemConditionalFunction.ContextUser {
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final MapCodec<EnchantRandomlyFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
@@ -63,7 +63,7 @@ public class EnchantRandomlyFunction extends LootItemConditionalFunction {
    }
 
    @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
+   public Set<ContextKey<?>> getRequiredParams() {
       return this.includeAdditionalCostComponent ? Set.of(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED) : Set.of();
    }
 

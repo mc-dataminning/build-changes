@@ -1,17 +1,17 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.commands.arguments.FloatArgument;
+import net.minecraft.commands.arguments.IntegerArgument;
 import net.minecraft.commands.arguments.ParticleArgument;
 import net.minecraft.commands.arguments.coordinates.Vec3Argument;
 import net.minecraft.core.particles.ParticleOptions;
@@ -23,11 +23,12 @@ import net.minecraft.world.phys.Vec3;
 public class ParticleCommand {
    private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.particle.failed"));
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("particle").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("particle")
+               .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
             .then(
-               ((RequiredArgumentBuilder)Commands.argument("name", ParticleArgument.particle(context))
+               ((RequiredArgumentBuilder)Commands.argument("name", ParticleArgument.particle())
                      .executes(
                         c -> sendParticles(
                            (CommandSourceStack)c.getSource(),
@@ -57,17 +58,17 @@ public class ParticleCommand {
                         .then(
                            Commands.argument("delta", Vec3Argument.vec3(false))
                               .then(
-                                 Commands.argument("speed", FloatArgumentType.floatArg(0.0F))
+                                 Commands.argument("speed", FloatArgument.floatArg(0.0F))
                                     .then(
-                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("count", IntegerArgumentType.integer(0))
+                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("count", IntegerArgument.integer(0))
                                                 .executes(
                                                    c -> sendParticles(
                                                       (CommandSourceStack)c.getSource(),
                                                       ParticleArgument.getParticle(c, "name"),
                                                       Vec3Argument.getVec3(c, "pos"),
                                                       Vec3Argument.getVec3(c, "delta"),
-                                                      FloatArgumentType.getFloat(c, "speed"),
-                                                      IntegerArgumentType.getInteger(c, "count"),
+                                                      FloatArgument.getFloat(c, "speed"),
+                                                      IntegerArgument.getInteger(c, "count"),
                                                       false,
                                                       ((CommandSourceStack)c.getSource()).getServer().getPlayerList().getPlayers()
                                                    )
@@ -80,8 +81,8 @@ public class ParticleCommand {
                                                             ParticleArgument.getParticle(c, "name"),
                                                             Vec3Argument.getVec3(c, "pos"),
                                                             Vec3Argument.getVec3(c, "delta"),
-                                                            FloatArgumentType.getFloat(c, "speed"),
-                                                            IntegerArgumentType.getInteger(c, "count"),
+                                                            FloatArgument.getFloat(c, "speed"),
+                                                            IntegerArgument.getInteger(c, "count"),
                                                             true,
                                                             ((CommandSourceStack)c.getSource()).getServer().getPlayerList().getPlayers()
                                                          )
@@ -94,8 +95,8 @@ public class ParticleCommand {
                                                                ParticleArgument.getParticle(c, "name"),
                                                                Vec3Argument.getVec3(c, "pos"),
                                                                Vec3Argument.getVec3(c, "delta"),
-                                                               FloatArgumentType.getFloat(c, "speed"),
-                                                               IntegerArgumentType.getInteger(c, "count"),
+                                                               FloatArgument.getFloat(c, "speed"),
+                                                               IntegerArgument.getInteger(c, "count"),
                                                                true,
                                                                EntityArgument.getPlayers(c, "viewers")
                                                             )
@@ -110,8 +111,8 @@ public class ParticleCommand {
                                                          ParticleArgument.getParticle(c, "name"),
                                                          Vec3Argument.getVec3(c, "pos"),
                                                          Vec3Argument.getVec3(c, "delta"),
-                                                         FloatArgumentType.getFloat(c, "speed"),
-                                                         IntegerArgumentType.getInteger(c, "count"),
+                                                         FloatArgument.getFloat(c, "speed"),
+                                                         IntegerArgument.getInteger(c, "count"),
                                                          false,
                                                          ((CommandSourceStack)c.getSource()).getServer().getPlayerList().getPlayers()
                                                       )
@@ -124,8 +125,8 @@ public class ParticleCommand {
                                                             ParticleArgument.getParticle(c, "name"),
                                                             Vec3Argument.getVec3(c, "pos"),
                                                             Vec3Argument.getVec3(c, "delta"),
-                                                            FloatArgumentType.getFloat(c, "speed"),
-                                                            IntegerArgumentType.getInteger(c, "count"),
+                                                            FloatArgument.getFloat(c, "speed"),
+                                                            IntegerArgument.getInteger(c, "count"),
                                                             false,
                                                             EntityArgument.getPlayers(c, "viewers")
                                                          )

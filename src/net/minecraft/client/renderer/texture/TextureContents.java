@@ -1,18 +1,17 @@
 package net.minecraft.client.renderer.texture;
 
 import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.renderpearl.util.UncheckedAutoCloseable;
 import java.io.IOException;
 import java.io.InputStream;
 import net.minecraft.client.resources.metadata.texture.TextureMetadataSection;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.server.packs.resources.ResourceProvider;
 import org.jspecify.annotations.Nullable;
 
-public record TextureContents(NativeImage image, @Nullable TextureMetadataSection metadata) implements UncheckedAutoCloseable {
-   public static TextureContents load(final ResourceManager resourceManager, final Identifier location) throws IOException {
-      Resource resource = resourceManager.getResourceOrThrow(location);
+public record TextureContents(NativeImage image, @Nullable TextureMetadataSection metadata) implements TextureProvider.IntermediaryResources {
+   public static TextureContents load(final ResourceProvider resourceProvider, final Identifier location) throws IOException {
+      Resource resource = resourceProvider.getResourceOrThrow(location);
 
       NativeImage image;
       try (InputStream is = resource.open()) {

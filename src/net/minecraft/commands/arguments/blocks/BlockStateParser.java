@@ -1,6 +1,7 @@
 package net.minecraft.commands.arguments.blocks;
 
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
@@ -15,10 +16,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.suggestions.SuggestionContext;
 import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -64,8 +64,7 @@ public class BlockStateParser {
    private static final char SYNTAX_EQUALS = '=';
    private static final char SYNTAX_PROPERTY_SEPARATOR = ',';
    private static final char SYNTAX_TAG = '#';
-   private static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> SUGGEST_NOTHING = SuggestionsBuilder::buildFuture;
-   private final HolderLookup<Block> blocks;
+   private final HolderGetter<Block> blocks;
    private final StringReader reader;
    private final boolean forTesting;
    private final boolean allowNbt;
@@ -76,20 +75,20 @@ public class BlockStateParser {
    private @Nullable BlockState state;
    private @Nullable CompoundTag nbt;
    private @Nullable HolderSet<Block> tag;
-   private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> suggestions = SUGGEST_NOTHING;
+   private SuggestionContext.Provider suggestions = SuggestionContext.Provider.suggestNothing();
 
-   private BlockStateParser(final HolderLookup<Block> blocks, final StringReader reader, final boolean forTesting, final boolean allowNbt) {
+   private BlockStateParser(final HolderGetter<Block> blocks, final StringReader reader, final boolean forTesting, final boolean allowNbt) {
       this.blocks = blocks;
       this.reader = reader;
       this.forTesting = forTesting;
       this.allowNbt = allowNbt;
    }
 
-   public static BlockStateParser.BlockResult parseForBlock(final HolderLookup<Block> blocks, final String value, final boolean allowNbt) throws CommandSyntaxException {
+   public static BlockStateParser.BlockResult parseForBlock(final HolderGetter<Block> blocks, final String value, final boolean allowNbt) throws CommandSyntaxException {
       return parseForBlock(blocks, new StringReader(value), allowNbt);
    }
 
-   public static BlockStateParser.BlockResult parseForBlock(final HolderLookup<Block> blocks, final StringReader reader, final boolean allowNbt) throws CommandSyntaxException {
+   public static BlockStateParser.BlockResult parseForBlock(final HolderGetter<Block> blocks, final StringReader reader, final boolean allowNbt) throws CommandSyntaxException {
       int cursor = reader.getCursor();
 
       try {
@@ -103,13 +102,13 @@ public class BlockStateParser {
    }
 
    public static Either<BlockStateParser.BlockResult, BlockStateParser.TagResult> parseForTesting(
-      final HolderLookup<Block> blocks, final String value, final boolean allowNbt
+      final HolderGetter<Block> blocks, final String value, final boolean allowNbt
    ) throws CommandSyntaxException {
       return parseForTesting(blocks, new StringReader(value), allowNbt);
    }
 
    public static Either<BlockStateParser.BlockResult, BlockStateParser.TagResult> parseForTesting(
-      final HolderLookup<Block> blocks, final StringReader reader, final boolean allowNbt
+      final HolderGetter<Block> blocks, final StringReader reader, final boolean allowNbt
    ) throws CommandSyntaxException {
       int cursor = reader.getCursor();
 
@@ -126,25 +125,27 @@ public class BlockStateParser {
    }
 
    public static CompletableFuture<Suggestions> fillSuggestions(
-      final HolderLookup<Block> blocks, final SuggestionsBuilder builder, final boolean forTesting, final boolean allowNbt
-   ) {
+      final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder, final boolean forTesting, final boolean allowNbt
+   ) throws CommandSyntaxException {
       StringReader reader = new StringReader(builder.getInput());
       reader.setCursor(builder.getStart());
-      BlockStateParser parser = new BlockStateParser(blocks, reader, forTesting, allowNbt);
+      BlockStateParser parser = new BlockStateParser(
+         ((SuggestionContext)context.getSource()).holderGetters().lookupOrThrow(Registries.BLOCK), reader, forTesting, allowNbt
+      );
 
       try {
          parser.parse();
       } catch (CommandSyntaxException var7) {
       }
 
-      return parser.suggestions.apply(builder.createOffset(reader.getCursor()));
+      return parser.suggestions.getSuggestions(context, builder.createOffset(reader.getCursor()));
    }
 
    private void parse() throws CommandSyntaxException {
       if (this.forTesting) {
-         this.suggestions = this::suggestBlockIdOrTag;
+         this.suggestions = BlockStateParser::suggestBlockIdOrTag;
       } else {
-         this.suggestions = this::suggestItem;
+         this.suggestions = BlockStateParser::suggestElement;
       }
 
       if (this.reader.canRead() && this.reader.peek() == '#') {
@@ -164,28 +165,30 @@ public class BlockStateParser {
       }
 
       if (this.allowNbt && this.reader.canRead() && this.reader.peek() == '{') {
-         this.suggestions = SUGGEST_NOTHING;
+         this.suggestions = SuggestionContext.Provider.suggestNothing();
          this.readNbt();
       }
    }
 
-   private CompletableFuture<Suggestions> suggestPropertyNameOrEnd(final SuggestionsBuilder builder) {
+   private CompletableFuture<Suggestions> suggestPropertyNameOrEnd(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
       if (builder.getRemaining().isEmpty()) {
          builder.suggest(String.valueOf(']'));
       }
 
-      return this.suggestPropertyName(builder);
+      return this.suggestPropertyName(context, builder);
    }
 
-   private CompletableFuture<Suggestions> suggestVaguePropertyNameOrEnd(final SuggestionsBuilder builder) {
+   private CompletableFuture<Suggestions> suggestVaguePropertyNameOrEnd(
+      final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder
+   ) {
       if (builder.getRemaining().isEmpty()) {
          builder.suggest(String.valueOf(']'));
       }
 
-      return this.suggestVaguePropertyName(builder);
+      return this.suggestVaguePropertyName(context, builder);
    }
 
-   private CompletableFuture<Suggestions> suggestPropertyName(final SuggestionsBuilder builder) {
+   private CompletableFuture<Suggestions> suggestPropertyName(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
       String prefix = builder.getRemaining().toLowerCase(Locale.ROOT);
 
       for (Property<?> property : this.state.getProperties()) {
@@ -197,7 +200,7 @@ public class BlockStateParser {
       return builder.buildFuture();
    }
 
-   private CompletableFuture<Suggestions> suggestVaguePropertyName(final SuggestionsBuilder builder) {
+   private CompletableFuture<Suggestions> suggestVaguePropertyName(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
       String prefix = builder.getRemaining().toLowerCase(Locale.ROOT);
       if (this.tag != null) {
          for (Holder<Block> block : this.tag) {
@@ -212,7 +215,7 @@ public class BlockStateParser {
       return builder.buildFuture();
    }
 
-   private CompletableFuture<Suggestions> suggestOpenNbt(final SuggestionsBuilder builder) {
+   private CompletableFuture<Suggestions> suggestOpenNbt(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
       if (builder.getRemaining().isEmpty() && this.hasBlockEntity()) {
          builder.suggest(String.valueOf('{'));
       }
@@ -236,7 +239,7 @@ public class BlockStateParser {
       return false;
    }
 
-   private CompletableFuture<Suggestions> suggestEquals(final SuggestionsBuilder builder) {
+   private static CompletableFuture<Suggestions> suggestEquals(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
       if (builder.getRemaining().isEmpty()) {
          builder.suggest(String.valueOf('='));
       }
@@ -244,7 +247,7 @@ public class BlockStateParser {
       return builder.buildFuture();
    }
 
-   private CompletableFuture<Suggestions> suggestNextPropertyOrEnd(final SuggestionsBuilder builder) {
+   private CompletableFuture<Suggestions> suggestNextPropertyOrEnd(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
       if (builder.getRemaining().isEmpty()) {
          builder.suggest(String.valueOf(']'));
       }
@@ -297,7 +300,9 @@ public class BlockStateParser {
       return builder.buildFuture();
    }
 
-   private CompletableFuture<Suggestions> suggestOpenVaguePropertiesOrNbt(final SuggestionsBuilder builder) {
+   private CompletableFuture<Suggestions> suggestOpenVaguePropertiesOrNbt(
+      final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder
+   ) {
       if (builder.getRemaining().isEmpty() && this.tag != null) {
          boolean hasProperties = false;
          boolean hasEntity = false;
@@ -323,7 +328,9 @@ public class BlockStateParser {
       return builder.buildFuture();
    }
 
-   private CompletableFuture<Suggestions> suggestOpenPropertiesOrNbt(final SuggestionsBuilder builder) {
+   private CompletableFuture<Suggestions> suggestOpenPropertiesOrNbt(
+      final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder
+   ) {
       if (builder.getRemaining().isEmpty()) {
          if (!this.definition.getProperties().isEmpty()) {
             builder.suggest(String.valueOf('['));
@@ -337,17 +344,21 @@ public class BlockStateParser {
       return builder.buildFuture();
    }
 
-   private CompletableFuture<Suggestions> suggestTag(final SuggestionsBuilder builder) {
-      return SharedSuggestionProvider.suggestResource(this.blocks.listTagIds().map(TagKey::location), builder, String.valueOf('#'));
+   private static CompletableFuture<Suggestions> suggestTag(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
+      return ((SuggestionContext)context.getSource())
+         .suggestRegistryElements(context, Registries.BLOCK, SuggestionContext.ElementSuggestionType.TAGS_WITH_PREFIX, builder);
    }
 
-   private CompletableFuture<Suggestions> suggestItem(final SuggestionsBuilder builder) {
-      return SharedSuggestionProvider.suggestResource(this.blocks.listElementIds().map(ResourceKey::identifier), builder);
+   private static CompletableFuture<Suggestions> suggestElement(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
+      return ((SuggestionContext)context.getSource())
+         .suggestRegistryElements(context, Registries.BLOCK, SuggestionContext.ElementSuggestionType.ELEMENTS, builder);
    }
 
-   private CompletableFuture<Suggestions> suggestBlockIdOrTag(final SuggestionsBuilder builder) {
-      this.suggestTag(builder);
-      this.suggestItem(builder);
+   private static CompletableFuture<Suggestions> suggestBlockIdOrTag(
+      final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder
+   ) {
+      suggestTag(context, builder);
+      suggestElement(context, builder);
       return builder.buildFuture();
    }
 
@@ -369,7 +380,7 @@ public class BlockStateParser {
 
       int start = this.reader.getCursor();
       this.reader.expect('#');
-      this.suggestions = this::suggestTag;
+      this.suggestions = BlockStateParser::suggestTag;
       Identifier id = Identifier.read(this.reader);
       this.tag = this.blocks.get(TagKey.create(Registries.BLOCK, id)).orElseThrow(() -> {
          this.reader.setCursor(start);
@@ -398,14 +409,14 @@ public class BlockStateParser {
          }
 
          this.reader.skipWhitespace();
-         this.suggestions = this::suggestEquals;
+         this.suggestions = BlockStateParser::suggestEquals;
          if (!this.reader.canRead() || this.reader.peek() != '=') {
             throw ERROR_EXPECTED_VALUE.createWithContext(this.reader, this.id.toString(), key);
          }
 
          this.reader.skip();
          this.reader.skipWhitespace();
-         this.suggestions = builder -> addSuggestions(builder, property).buildFuture();
+         this.suggestions = (var1x, builder) -> addSuggestions(builder, property).buildFuture();
          int start = this.reader.getCursor();
          this.setValue(property, this.reader.readString(), start);
          this.suggestions = this::suggestNextPropertyOrEnd;
@@ -453,7 +464,7 @@ public class BlockStateParser {
 
          this.reader.skip();
          this.reader.skipWhitespace();
-         this.suggestions = builder -> this.suggestVaguePropertyValue(builder, key);
+         this.suggestions = (var2x, builder) -> this.suggestVaguePropertyValue(builder, key);
          valueStart = this.reader.getCursor();
          String value = this.reader.readString();
          this.vagueProperties.put(key, value);

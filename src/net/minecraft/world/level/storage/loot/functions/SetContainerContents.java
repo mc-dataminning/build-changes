@@ -58,8 +58,7 @@ public class SetContainerContents extends LootItemConditionalFunction {
    }
 
    @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
+   public void validateCustom(final ValidationContext context) {
       Validatable.validate(context, "entries", this.entries);
    }
 

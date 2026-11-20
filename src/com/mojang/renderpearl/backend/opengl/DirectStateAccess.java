@@ -258,9 +258,9 @@ public abstract class DirectStateAccess {
          final int[] color,
          final int[] colorMipLevels,
          final int depth,
+         final int depthMipLevel,
          final int stencil,
          final int stencilMipLevel,
-         final int depthMipLevel,
          final int bindSlot
       ) {
          int tempBindSlot = bindSlot == 0 ? 36009 : bindSlot;

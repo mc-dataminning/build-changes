@@ -21,7 +21,7 @@ public class LevelTargetBundle implements PostChain.TargetBundle {
    public ResourceHandle<RenderTarget> depthBoundsCulled = ResourceHandle.invalid();
    public final List<ResourceHandle<RenderTarget>> transmittance = new ArrayList<>();
    public ResourceHandle<RenderTarget> accumulate = ResourceHandle.invalid();
-   public ResourceHandle<RenderTarget> oitTerrainWithWaterPatchDepth = ResourceHandle.invalid();
+   public ResourceHandle<RenderTarget> waterMask = ResourceHandle.invalid();
    public @Nullable ResourceHandle<RenderTarget> entityOutline;
 
    public LevelTargetBundle() {

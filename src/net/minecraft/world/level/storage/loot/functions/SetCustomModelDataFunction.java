@@ -56,8 +56,7 @@ public class SetCustomModelDataFunction extends LootItemConditionalFunction {
    }
 
    @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
+   public void validateCustom(final ValidationContext context) {
       this.floats.ifPresent(f -> Validatable.validateHolder(context, "floats", f.value()));
       this.colors.ifPresent(c -> Validatable.validateHolder(context, "colors", c.value()));
    }

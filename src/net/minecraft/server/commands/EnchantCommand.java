@@ -1,7 +1,6 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -9,10 +8,11 @@ import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.commands.arguments.IntegerArgument;
 import net.minecraft.commands.arguments.ResourceArgument;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -47,13 +47,14 @@ public class EnchantCommand {
       )
    );
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("enchant").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("enchant")
+               .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
             .then(
                Commands.argument("targets", EntityArgument.entities())
                   .then(
-                     ((RequiredArgumentBuilder)Commands.argument("enchantment", ResourceArgument.resource(context, Registries.ENCHANTMENT))
+                     ((RequiredArgumentBuilder)Commands.argument("enchantment", ResourceArgument.resource(Registries.ENCHANTMENT))
                            .executes(
                               c -> enchant(
                                  (CommandSourceStack)c.getSource(),
@@ -63,13 +64,13 @@ public class EnchantCommand {
                               )
                            ))
                         .then(
-                           Commands.argument("level", IntegerArgumentType.integer(0))
+                           Commands.argument("level", IntegerArgument.integer(0))
                               .executes(
                                  c -> enchant(
                                     (CommandSourceStack)c.getSource(),
                                     EntityArgument.getEntities(c, "targets"),
                                     ResourceArgument.getEnchantment(c, "enchantment"),
-                                    IntegerArgumentType.getInteger(c, "level")
+                                    IntegerArgument.getInteger(c, "level")
                                  )
                               )
                         )

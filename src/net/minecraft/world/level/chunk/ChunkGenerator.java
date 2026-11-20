@@ -29,11 +29,11 @@ import net.minecraft.ReportedException;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.QuartPos;
 import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.SectionPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -508,7 +508,7 @@ public abstract class ChunkGenerator {
    }
 
    public CompletableFuture<ChunkAccess> createStructures(
-      final RegistryAccess registryAccess,
+      final HolderGetter.Provider registryAccess,
       final ChunkGeneratorStructureState state,
       final StructureManager structureManager,
       final ChunkAccess centerChunk,
@@ -538,7 +538,7 @@ public abstract class ChunkGenerator {
 
    private ChunkAccess createStructuresForSets(
       final List<Holder<StructureSet>> structureSetsInChunk,
-      final RegistryAccess registryAccess,
+      final HolderGetter.Provider registryAccess,
       final ChunkGeneratorStructureState state,
       final StructureManager structureManager,
       final ChunkAccess centerChunk,

@@ -58,7 +58,7 @@ public class CreateBuffetWorldScreen extends Screen {
       LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(3));
       header.defaultCellSetting().alignHorizontallyCenter();
       header.addChild(new StringWidget(this.getTitle(), this.font));
-      EditBox search = header.addChild(new EditBox(this.font, 200, 15, Component.empty()));
+      EditBox search = header.addChild(new EditBox(this.font, 200, 15, SEARCH_HINT));
       CreateBuffetWorldScreen.BiomeList biomeList = new CreateBuffetWorldScreen.BiomeList();
       search.setHint(SEARCH_HINT);
       search.setResponder(biomeList::filterEntries);

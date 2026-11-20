@@ -77,10 +77,6 @@ public record GameEvent(int notificationRadius) {
    public static final int DEFAULT_NOTIFICATION_RADIUS = 16;
    public static final Codec<Holder<GameEvent>> CODEC = RegistryCodecs.holder(Registries.GAME_EVENT);
 
-   public static Holder<GameEvent> bootstrap(final Registry<GameEvent> registry) {
-      return BLOCK_ACTIVATE;
-   }
-
    private static Holder.Reference<GameEvent> register(final String name) {
       return register(name, 16);
    }

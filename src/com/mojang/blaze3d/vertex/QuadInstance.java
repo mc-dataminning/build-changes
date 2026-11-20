@@ -1,26 +1,30 @@
 package com.mojang.blaze3d.vertex;
 
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.ARGB;
 import net.minecraft.util.LightCoordsUtil;
 
 public class QuadInstance {
-   private int color0 = -1;
-   private int color1 = -1;
-   private int color2 = -1;
-   private int color3 = -1;
+   private short brightness0 = 255;
+   private short brightness1 = 255;
+   private short brightness2 = 255;
+   private short brightness3 = 255;
    private int lightCoords0 = 15728880;
    private int lightCoords1 = 15728880;
    private int lightCoords2 = 15728880;
    private int lightCoords3 = 15728880;
    private int overlayCoords = OverlayTexture.NO_OVERLAY;
+   private int color = -1;
 
-   public int getColor(final int vertex) {
+   public int getColor() {
+      return this.color;
+   }
+
+   public short getBrightness(final int vertex) {
       return switch (vertex) {
-         case 0 -> this.color0;
-         case 1 -> this.color1;
-         case 2 -> this.color2;
-         case 3 -> this.color3;
+         case 0 -> this.brightness0;
+         case 1 -> this.brightness1;
+         case 2 -> this.brightness2;
+         case 3 -> this.brightness3;
          default -> throw new IndexOutOfBoundsException();
       };
    }
@@ -43,19 +47,19 @@ public class QuadInstance {
       return this.overlayCoords;
    }
 
-   public void setColor(final int vertex, final int color) {
+   public void setBrightness(final int vertex, final short brightness) {
       switch (vertex) {
          case 0:
-            this.color0 = color;
+            this.brightness0 = brightness;
             break;
          case 1:
-            this.color1 = color;
+            this.brightness1 = brightness;
             break;
          case 2:
-            this.color2 = color;
+            this.brightness2 = brightness;
             break;
          case 3:
-            this.color3 = color;
+            this.brightness3 = brightness;
             break;
          default:
             throw new IndexOutOfBoundsException();
@@ -82,10 +86,14 @@ public class QuadInstance {
    }
 
    public void setColor(final int color) {
-      this.color0 = color;
-      this.color1 = color;
-      this.color2 = color;
-      this.color3 = color;
+      this.color = color;
+   }
+
+   public void setBrightness(final short brightness) {
+      this.brightness0 = brightness;
+      this.brightness1 = brightness;
+      this.brightness2 = brightness;
+      this.brightness3 = brightness;
    }
 
    public void setLightCoords(final int lightCoords) {
@@ -99,17 +107,10 @@ public class QuadInstance {
       this.overlayCoords = overlayCoords;
    }
 
-   public void multiplyColor(final int color) {
-      this.color0 = ARGB.multiply(this.color0, color);
-      this.color1 = ARGB.multiply(this.color1, color);
-      this.color2 = ARGB.multiply(this.color2, color);
-      this.color3 = ARGB.multiply(this.color3, color);
-   }
-
-   public void scaleColor(final float scale) {
-      this.color0 = ARGB.scaleRGB(this.color0, scale);
-      this.color1 = ARGB.scaleRGB(this.color1, scale);
-      this.color2 = ARGB.scaleRGB(this.color2, scale);
-      this.color3 = ARGB.scaleRGB(this.color3, scale);
+   public void scaleBrightness(final float scale) {
+      this.brightness0 = (short)Math.clamp((int)(this.brightness0 * scale), 0, 255);
+      this.brightness1 = (short)Math.clamp((int)(this.brightness1 * scale), 0, 255);
+      this.brightness2 = (short)Math.clamp((int)(this.brightness2 * scale), 0, 255);
+      this.brightness3 = (short)Math.clamp((int)(this.brightness3 * scale), 0, 255);
    }
 }

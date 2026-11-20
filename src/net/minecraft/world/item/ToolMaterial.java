@@ -1,10 +1,9 @@
 package net.minecraft.world.item;
 
 import java.util.List;
-import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.references.BlockItemIds;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -15,7 +14,6 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 
 public record ToolMaterial(
    TagKey<Block> incorrectBlocksForDrops, int durability, float speed, float attackDamageBonus, int enchantmentValue, TagKey<Item> repairItems
@@ -41,14 +39,13 @@ public record ToolMaterial(
       final float attackSpeedBaseline,
       final float disableBlockingSeconds
    ) {
-      HolderGetter<Block> registrationLookup = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.BLOCK);
       return this.applyCommonProperties(properties)
-         .component(
+         .delayedComponent(
             DataComponents.TOOL,
-            new Tool(
+            context -> new Tool(
                List.of(
-                  Tool.Rule.deniesDrops(registrationLookup.getOrThrow(this.incorrectBlocksForDrops)),
-                  Tool.Rule.minesAndDrops(registrationLookup.getOrThrow(minesEfficiently), this.speed)
+                  Tool.Rule.deniesDrops(context.getOrThrow(this.incorrectBlocksForDrops)),
+                  Tool.Rule.minesAndDrops(context.getOrThrow(minesEfficiently), this.speed)
                ),
                1.0F,
                1,
@@ -75,15 +72,14 @@ public record ToolMaterial(
    }
 
    public Item.Properties applySwordProperties(final Item.Properties properties, final float attackDamageBaseline, final float attackSpeedBaseline) {
-      HolderGetter<Block> registrationLookup = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.BLOCK);
       return this.applyCommonProperties(properties)
-         .component(
+         .delayedComponent(
             DataComponents.TOOL,
-            new Tool(
+            context -> new Tool(
                List.of(
-                  Tool.Rule.minesAndDrops(HolderSet.direct(Blocks.COBWEB.builtInRegistryHolder()), 15.0F),
-                  Tool.Rule.overrideSpeed(registrationLookup.getOrThrow(BlockTags.SWORD_INSTANTLY_MINES), Float.MAX_VALUE),
-                  Tool.Rule.overrideSpeed(registrationLookup.getOrThrow(BlockTags.SWORD_EFFICIENT), 1.5F)
+                  Tool.Rule.minesAndDrops(HolderSet.direct(context.getOrThrow(BlockItemIds.COBWEB.block())), 15.0F),
+                  Tool.Rule.overrideSpeed(context.getOrThrow(BlockTags.SWORD_INSTANTLY_MINES), Float.MAX_VALUE),
+                  Tool.Rule.overrideSpeed(context.getOrThrow(BlockTags.SWORD_EFFICIENT), 1.5F)
                ),
                1.0F,
                2,

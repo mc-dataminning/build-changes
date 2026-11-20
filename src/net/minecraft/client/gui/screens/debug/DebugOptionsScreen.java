@@ -295,7 +295,7 @@ public class DebugOptionsScreen extends Screen {
          DebugEntryCategory currentCategory = null;
 
          for (Holder.Reference<DebugScreenEntry> holder : all) {
-            if (holder.key().identifier().getPath().contains(value)) {
+            if (holder.value().isAllowed(false) && holder.key().identifier().getPath().contains(value)) {
                DebugEntryCategory newCategory = holder.value().category();
                if (!newCategory.equals(currentCategory)) {
                   this.addEntry(DebugOptionsScreen.this.new CategoryEntry(newCategory.label()));

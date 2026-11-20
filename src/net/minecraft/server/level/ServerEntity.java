@@ -190,6 +190,10 @@ public class ServerEntity {
                   this.lastSentYRot = yRotn;
                   this.lastSentXRot = xRotn;
                }
+
+               if (packet instanceof ClientboundEntityPositionSyncPacket positionSyncPacket) {
+                  this.lastSentYHeadRot = Mth.packDegrees(positionSyncPacket.yHeadRot());
+               }
             } else {
                this.sendDirtyEntityData();
             }

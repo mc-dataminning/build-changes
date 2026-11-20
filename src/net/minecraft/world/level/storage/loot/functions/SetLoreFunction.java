@@ -19,7 +19,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import org.jspecify.annotations.Nullable;
 
-public class SetLoreFunction extends LootItemConditionalFunction {
+public class SetLoreFunction extends LootItemConditionalFunction.ContextUser {
    public static final MapCodec<SetLoreFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
          .and(
@@ -53,7 +53,7 @@ public class SetLoreFunction extends LootItemConditionalFunction {
    }
 
    @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
+   public Set<ContextKey<?>> getRequiredParams() {
       return (Set<ContextKey<?>>)DataFixUtils.orElse(this.resolutionContext.map(target -> Set.of(target.contextParam())), Set.of());
    }
 

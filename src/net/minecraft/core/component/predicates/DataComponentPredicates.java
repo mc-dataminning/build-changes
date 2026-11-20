@@ -32,8 +32,4 @@ public class DataComponentPredicates {
    private static <T extends DataComponentPredicate> DataComponentPredicate.Type<T> register(final String id, final Codec<T> codec) {
       return Registry.register(BuiltInRegistries.DATA_COMPONENT_PREDICATE_TYPE, id, new DataComponentPredicate.ConcreteType<>(codec));
    }
-
-   public static DataComponentPredicate.Type<?> bootstrap(final Registry<DataComponentPredicate.Type<?>> registry) {
-      return DAMAGE;
-   }
 }

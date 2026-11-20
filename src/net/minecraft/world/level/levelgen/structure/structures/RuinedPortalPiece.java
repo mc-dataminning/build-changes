@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -56,7 +56,7 @@ public class RuinedPortalPiece extends TemplateStructurePiece {
    private final RuinedPortalPiece.Properties properties;
 
    public RuinedPortalPiece(
-      final HolderLookup.Provider registries,
+      final HolderGetter.Provider registries,
       final StructureTemplateManager structureTemplateManager,
       final BlockPos templatePosition,
       final RuinedPortalPiece.VerticalPlacement verticalPlacement,
@@ -101,7 +101,7 @@ public class RuinedPortalPiece extends TemplateStructurePiece {
    }
 
    private static StructurePlaceSettings makeSettings(
-      final HolderLookup.Provider registries, final StructureTemplateManager structureTemplateManager, final CompoundTag tag, final Identifier location
+      final HolderGetter.Provider registries, final StructureTemplateManager structureTemplateManager, final CompoundTag tag, final Identifier location
    ) {
       StructureTemplate template = structureTemplateManager.getOrEmpty(location);
       BlockPos pivot = new BlockPos(template.getSize().getX() / 2, 0, template.getSize().getZ() / 2);
@@ -116,14 +116,14 @@ public class RuinedPortalPiece extends TemplateStructurePiece {
    }
 
    private static StructurePlaceSettings makeSettings(
-      final HolderLookup.Provider registries,
+      final HolderGetter.Provider registries,
       final Mirror mirror,
       final Rotation rotation,
       final RuinedPortalPiece.VerticalPlacement verticalPlacement,
       final BlockPos pivot,
       final RuinedPortalPiece.Properties properties
    ) {
-      HolderLookup.RegistryLookup<Block> blocks = registries.lookupOrThrow(Registries.BLOCK);
+      HolderGetter<Block> blocks = registries.lookupOrThrow(Registries.BLOCK);
       BlockIgnoreProcessor ignoreProcessor = properties.airPocket ? BlockIgnoreProcessor.STRUCTURE_BLOCK : BlockIgnoreProcessor.STRUCTURE_AND_AIR;
       List<ProcessorRule> rules = new ArrayList<>();
       rules.add(getBlockReplaceRule(Blocks.GOLD_BLOCK, 0.3F, Blocks.AIR));

@@ -26,7 +26,7 @@ public class PresenceHandler {
    private final Minecraft minecraft;
    private final FriendsService friendsService;
    private PresenceResponse latestPresence = new PresenceResponse(new ArrayList());
-   private Instant lastPresencePost = Instant.now();
+   private Instant lastPresencePost = Instant.EPOCH;
    private boolean updatePresence;
 
    public PresenceHandler(final Minecraft minecraft, final FriendsService friendsService) {

@@ -1,17 +1,18 @@
 package net.minecraft.commands.arguments;
 
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 import net.minecraft.commands.CommandSigningContext;
 import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.ParseContext;
 import net.minecraft.commands.arguments.selector.EntitySelector;
 import net.minecraft.commands.arguments.selector.EntitySelectorParser;
 import net.minecraft.network.chat.ChatDecorator;
@@ -22,16 +23,25 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.FilteredText;
 import net.minecraft.server.permissions.Permissions;
-import org.jspecify.annotations.Nullable;
 
 public class MessageArgument implements SignedArgument<MessageArgument.Message> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("Hello world!", "foo", "@e", "Hello @p :)");
+   private static final MessageArgument INSTANCE = new MessageArgument();
+   public static final SerializableArgument.Type<MessageArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
+   private static final Collection<String> EXAMPLES = List.of("Hello world!", "foo", "@e", "Hello @p :)");
    private static final Dynamic2CommandExceptionType TOO_LONG = new Dynamic2CommandExceptionType(
       (length, maxLength) -> Component.translatableEscape("argument.message.too_long", length, maxLength)
    );
 
-   public static MessageArgument message() {
-      return new MessageArgument();
+   private MessageArgument() {
+   }
+
+   @Override
+   public SerializableArgument.Type<MessageArgument> type() {
+      return TYPE;
+   }
+
+   public static ArgumentType<MessageArgument.Message> message() {
+      return INSTANCE.toBrigadier();
    }
 
    public static Component getMessage(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
@@ -75,14 +85,11 @@ public class MessageArgument implements SignedArgument<MessageArgument.Message> 
          : CompletableFuture.completedFuture(FilteredText.passThrough(message.signedContent()));
    }
 
-   public MessageArgument.Message parse(final StringReader reader) throws CommandSyntaxException {
-      return MessageArgument.Message.parseText(reader, true);
+   public MessageArgument.Message parse(final StringReader reader, final ParseContext context) throws CommandSyntaxException {
+      return MessageArgument.Message.parseText(reader, context.allowsSelectors());
    }
 
-   public <S> MessageArgument.Message parse(final StringReader reader, final @Nullable S source) throws CommandSyntaxException {
-      return MessageArgument.Message.parseText(reader, EntitySelectorParser.allowSelectors(source));
-   }
-
+   @Override
    public Collection<String> getExamples() {
       return EXAMPLES;
    }

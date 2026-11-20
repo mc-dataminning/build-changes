@@ -7,6 +7,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import java.util.Objects;
 import java.util.function.ToIntFunction;
+import net.minecraft.commands.arguments.SerializableArgument;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Util;
@@ -16,7 +17,7 @@ import net.minecraft.world.flag.FeatureFlagSet;
 public final class GameRule<T> implements FeatureElement {
    private final GameRuleCategory category;
    private final GameRuleType gameRuleType;
-   private final ArgumentType<T> argument;
+   private final SerializableArgument.ContextFree<T> argument;
    private final GameRules.VisitorCaller<T> visitorCaller;
    private final Codec<T> valueCodec;
    private final ToIntFunction<T> commandResultFunction;
@@ -26,7 +27,7 @@ public final class GameRule<T> implements FeatureElement {
    public GameRule(
       final GameRuleCategory category,
       final GameRuleType gameRuleType,
-      final ArgumentType<T> argument,
+      final SerializableArgument.ContextFree<T> argument,
       final GameRules.VisitorCaller<T> visitorCaller,
       final Codec<T> valueCodec,
       final ToIntFunction<T> commandResultFunction,
@@ -71,7 +72,7 @@ public final class GameRule<T> implements FeatureElement {
    public DataResult<T> deserialize(final String value) {
       try {
          StringReader reader = new StringReader(value);
-         T result = (T)this.argument.parse(reader);
+         T result = this.argument.parse(reader);
          return reader.canRead() ? DataResult.error(() -> "Failed to deserialize; trailing characters", result) : DataResult.success(result);
       } catch (CommandSyntaxException ignored) {
          return DataResult.error(() -> "Failed to deserialize");
@@ -99,7 +100,7 @@ public final class GameRule<T> implements FeatureElement {
    }
 
    public ArgumentType<T> argument() {
-      return this.argument;
+      return this.argument.toBrigadier();
    }
 
    public Codec<T> valueCodec() {

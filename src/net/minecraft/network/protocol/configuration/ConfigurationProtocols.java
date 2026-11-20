@@ -29,6 +29,7 @@ import net.minecraft.network.protocol.common.ServerboundResourcePackPacket;
 import net.minecraft.network.protocol.cookie.ClientboundCookieRequestPacket;
 import net.minecraft.network.protocol.cookie.CookiePacketTypes;
 import net.minecraft.network.protocol.cookie.ServerboundCookieResponsePacket;
+import net.minecraft.network.protocol.game.ClientboundCommandsPacket;
 
 public class ConfigurationProtocols {
    public static final SimpleUnboundProtocol<ServerConfigurationPacketListener, FriendlyByteBuf> SERVERBOUND_TEMPLATE = ProtocolInfoBuilder.serverboundProtocol(
@@ -68,6 +69,7 @@ public class ConfigurationProtocols {
          .addPacket(CommonPacketTypes.CLIENTBOUND_CLEAR_DIALOG, ClientboundClearDialogPacket.STREAM_CODEC)
          .addPacket(CommonPacketTypes.CLIENTBOUND_SHOW_DIALOG, ClientboundShowDialogPacket.CONTEXT_FREE_STREAM_CODEC)
          .addPacket(ConfigurationPacketTypes.CLIENTBOUND_CODE_OF_CONDUCT, ClientboundCodeOfConductPacket.STREAM_CODEC)
+         .addPacket(CommonPacketTypes.CLIENTBOUND_COMMANDS, ClientboundCommandsPacket.STREAM_CODEC)
    );
    public static final ProtocolInfo<ClientConfigurationPacketListener> CLIENTBOUND = CLIENTBOUND_TEMPLATE.bind(FriendlyByteBuf::new);
 }

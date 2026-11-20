@@ -23,7 +23,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
-public class ApplyBonusCount extends LootItemConditionalFunction {
+public class ApplyBonusCount extends LootItemConditionalFunction.ContextUser {
    private static final Map<Identifier, ApplyBonusCount.FormulaType> FORMULAS = Stream.of(
          ApplyBonusCount.BinomialWithBonusCount.TYPE, ApplyBonusCount.OreDrops.TYPE, ApplyBonusCount.UniformBonusCount.TYPE
       )
@@ -55,7 +55,7 @@ public class ApplyBonusCount extends LootItemConditionalFunction {
    }
 
    @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
+   public Set<ContextKey<?>> getRequiredParams() {
       return Set.of(LootContextParams.TOOL);
    }
 

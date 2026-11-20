@@ -1133,6 +1133,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
          this.palettedTextureManager.close();
          this.mapTextureManager.close();
          this.textureManager.close();
+         this.skinManager.close();
          this.resourceManager.close();
          if (this.tracyFrameCapture != null) {
             this.tracyFrameCapture.close();
@@ -2387,6 +2388,10 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
 
    public final boolean canSwitchGameMode() {
       return this.player != null && this.gameMode != null;
+   }
+
+   public boolean canUseRestrictedDebugFeatures() {
+      return SharedConstants.DEBUG_ENABLED || DevUtil.IS_RUNNING_IN_IDE;
    }
 
    public @Nullable ClientPacketListener getConnection() {

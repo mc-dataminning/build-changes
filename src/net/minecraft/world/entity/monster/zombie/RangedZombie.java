@@ -71,7 +71,7 @@ public abstract class RangedZombie extends Zombie implements RangedAttackMob {
          );
       }
 
-      this.playSound(this.getRangedAttackSound(), 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
+      this.playSound(this.getRangedAttackSound(), 1.0F, 0.4F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
    }
 
    protected boolean shouldDoRangedAttack() {

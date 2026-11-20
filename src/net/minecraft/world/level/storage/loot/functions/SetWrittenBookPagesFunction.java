@@ -12,6 +12,7 @@ import net.minecraft.server.network.Filterable;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.WrittenBookContent;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 public class SetWrittenBookPagesFunction extends LootItemConditionalFunction {
@@ -46,5 +47,9 @@ public class SetWrittenBookPagesFunction extends LootItemConditionalFunction {
    @Override
    public MapCodec<SetWrittenBookPagesFunction> codec() {
       return MAP_CODEC;
+   }
+
+   @Override
+   protected void validateCustom(final ValidationContext context) {
    }
 }

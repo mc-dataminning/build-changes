@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.RegistrationInfo;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistrySynchronization;
@@ -38,14 +39,14 @@ public class NetworkRegistryLoadTask<T> extends RegistryLoadTask<T> {
    }
 
    @Override
-   public CompletableFuture<?> load(final RegistryOps.RegistryInfoLookup context, final Executor executor) {
+   public CompletableFuture<?> load(final HolderGetter.Provider context, final Executor executor) {
       RegistryDataLoader.NetworkedRegistryData registryEntries = this.entries.get(this.registryKey());
       if (registryEntries == null) {
          return CompletableFuture.completedFuture(null);
       }
 
-      RegistryOps<Tag> nbtOps = RegistryOps.create(NbtOps.INSTANCE, context);
-      RegistryOps<JsonElement> jsonOps = RegistryOps.create(JsonOps.INSTANCE, context);
+      RegistryOps<Tag> nbtOps = context.createSerializationContext(NbtOps.INSTANCE);
+      RegistryOps<JsonElement> jsonOps = context.createSerializationContext(JsonOps.INSTANCE);
       FileToIdConverter knownDataPathConverter = FileToIdConverter.registry(this.registryKey());
       List<CompletableFuture<RegistryLoadTask.PendingRegistration<T>>> elements = new ArrayList<>(registryEntries.elements().size());
 

@@ -7,6 +7,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 public class SetItemFunction extends LootItemConditionalFunction {
@@ -23,6 +24,10 @@ public class SetItemFunction extends LootItemConditionalFunction {
    @Override
    public MapCodec<SetItemFunction> codec() {
       return MAP_CODEC;
+   }
+
+   @Override
+   protected void validateCustom(final ValidationContext context) {
    }
 
    @Override

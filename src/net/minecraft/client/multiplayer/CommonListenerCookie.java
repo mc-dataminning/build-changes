@@ -6,6 +6,7 @@ import java.util.UUID;
 import net.minecraft.client.gui.components.ChatComponent;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.telemetry.WorldSessionTelemetryManager;
+import net.minecraft.commands.SuggestionBox;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.ServerLinks;
@@ -26,6 +27,7 @@ public record CommonListenerCookie(
    Map<String, String> customReportDetails,
    ServerLinks serverLinks,
    Map<UUID, PlayerInfo> seenPlayers,
-   boolean seenInsecureChatWarning
+   boolean seenInsecureChatWarning,
+   SuggestionBox commandSuggestions
 ) {
 }

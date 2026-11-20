@@ -1,13 +1,16 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.ContextChain;
 import java.util.List;
+import net.minecraft.commands.CommandPermissionLevels;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.ExecutionCommandSource;
+import net.minecraft.commands.arguments.IntegerArgument;
 import net.minecraft.commands.execution.ChainModifiers;
 import net.minecraft.commands.execution.CustomCommandExecutor;
 import net.minecraft.commands.execution.CustomModifierExecutor;
@@ -17,14 +20,20 @@ import net.minecraft.commands.execution.tasks.BuildContexts;
 import net.minecraft.commands.execution.tasks.FallthroughTask;
 
 public class ReturnCommand {
-   public static <T extends ExecutionCommandSource<T>> void register(final CommandDispatcher<T> dispatcher) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new ReturnCommand.ReturnValueCustomExecutor())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new ReturnCommand.ReturnFailCustomExecutor())))
-            .then(LiteralArgumentBuilder.literal("run").forward(dispatcher.getRoot(), new ReturnCommand.ReturnFromCommandCustomModifier(), false))
+         (LiteralArgumentBuilder)createCommandNode(dispatcher, IntegerArgument.integer())
+            .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS))
       );
+   }
+
+   public static <T extends ExecutionCommandSource<T>> LiteralArgumentBuilder<T> createCommandNode(
+      final CommandDispatcher<T> dispatcher, final ArgumentType<Integer> resultArgumentType
+   ) {
+      return (LiteralArgumentBuilder<T>)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
+               .then(RequiredArgumentBuilder.argument("value", resultArgumentType).executes(new ReturnCommand.ReturnValueCustomExecutor())))
+            .then(LiteralArgumentBuilder.literal("fail").executes(new ReturnCommand.ReturnFailCustomExecutor())))
+         .then(LiteralArgumentBuilder.literal("run").forward(dispatcher.getRoot(), new ReturnCommand.ReturnFromCommandCustomModifier(), false));
    }
 
    private static class ReturnFailCustomExecutor<T extends ExecutionCommandSource<T>> implements CustomCommandExecutor.CommandAdapter<T> {
@@ -59,7 +68,7 @@ public class ReturnCommand {
 
    private static class ReturnValueCustomExecutor<T extends ExecutionCommandSource<T>> implements CustomCommandExecutor.CommandAdapter<T> {
       public void run(final T sender, final ContextChain<T> currentStep, final ChainModifiers modifiers, final ExecutionControl<T> output) {
-         int returnValue = IntegerArgumentType.getInteger(currentStep.getTopContext(), "value");
+         int returnValue = IntegerArgument.getInteger(currentStep.getTopContext(), "value");
          sender.callback().onSuccess(returnValue);
          Frame frame = output.currentFrame();
          frame.returnSuccess(returnValue);

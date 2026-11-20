@@ -40,6 +40,6 @@ public record TargetedConditionalEffect<T>(EnchantmentTarget enchanted, Enchantm
 
    @Override
    public void validate(final ValidationContext context) {
-      Validatable.validateHolder(context, "requirements", this.requirements);
+      Validatable.validateConditionHolder(context, "requirements", this.requirements);
    }
 }

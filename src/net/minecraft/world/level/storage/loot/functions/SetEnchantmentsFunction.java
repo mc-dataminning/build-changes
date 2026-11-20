@@ -45,8 +45,7 @@ public class SetEnchantmentsFunction extends LootItemConditionalFunction {
    }
 
    @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
+   public void validateCustom(final ValidationContext context) {
       this.enchantments.forEach((enchantment, holder) -> holder.value().validate(context.forMapField("enchantments", enchantment.getRegisteredName())));
    }
 

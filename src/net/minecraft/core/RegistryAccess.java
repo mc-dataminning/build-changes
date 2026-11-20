@@ -8,10 +8,11 @@ import java.util.Optional;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import net.minecraft.core.registries.IdMapProvider;
 import net.minecraft.resources.ResourceKey;
 import org.slf4j.Logger;
 
-public interface RegistryAccess extends HolderLookup.Provider {
+public interface RegistryAccess extends HolderLookup.Provider, IdMapProvider {
    Logger LOGGER = LogUtils.getLogger();
    RegistryAccess.Frozen EMPTY = new RegistryAccess.ImmutableRegistryAccess(Map.of()).freeze();
 
@@ -27,6 +28,16 @@ public interface RegistryAccess extends HolderLookup.Provider {
    @Override
    default Stream<ResourceKey<? extends Registry<?>>> listRegistryKeys() {
       return this.registries().map(e -> e.key);
+   }
+
+   @Override
+   default <T> IdMap<Holder<T>> idHolderMapOrThrow(final ResourceKey<? extends Registry<T>> registryKey) {
+      return this.lookupOrThrow(registryKey).asHolderIdMap();
+   }
+
+   @Override
+   default <T> IdMap<T> idMapOrThrow(final ResourceKey<? extends Registry<T>> registryKey) {
+      return this.lookupOrThrow(registryKey);
    }
 
    static RegistryAccess.Frozen fromRegistryOfRegistries(final Registry<? extends Registry<?>> registries) {

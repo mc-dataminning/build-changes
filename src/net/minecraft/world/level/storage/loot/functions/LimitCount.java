@@ -28,8 +28,7 @@ public class LimitCount extends LootItemConditionalFunction {
    }
 
    @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
+   public void validateCustom(final ValidationContext context) {
       Validatable.validate(context, "limit", this.limit);
    }
 

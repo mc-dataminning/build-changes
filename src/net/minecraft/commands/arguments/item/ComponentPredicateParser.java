@@ -2,13 +2,10 @@ package net.minecraft.commands.arguments.item;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Dynamic;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Unit;
@@ -17,7 +14,9 @@ import net.minecraft.util.parsing.packrat.Atom;
 import net.minecraft.util.parsing.packrat.Dictionary;
 import net.minecraft.util.parsing.packrat.NamedRule;
 import net.minecraft.util.parsing.packrat.Scope;
+import net.minecraft.util.parsing.packrat.Suggestion;
 import net.minecraft.util.parsing.packrat.Term;
+import net.minecraft.util.parsing.packrat.commands.CommandParserState;
 import net.minecraft.util.parsing.packrat.commands.Grammar;
 import net.minecraft.util.parsing.packrat.commands.IdentifierParseRule;
 import net.minecraft.util.parsing.packrat.commands.ResourceLookupRule;
@@ -25,7 +24,7 @@ import net.minecraft.util.parsing.packrat.commands.StringReaderTerms;
 import net.minecraft.util.parsing.packrat.commands.TagParseRule;
 
 public class ComponentPredicateParser {
-   public static <T, C, P> Grammar<List<T>> createGrammar(final ComponentPredicateParser.Context<T, C, P> context) {
+   public static <T, C, P, S extends ComponentPredicateParser.Context<T, C, P>> Grammar<S, List<T>> createGrammar() {
       Atom<List<T>> top = Atom.of("top");
       Atom<Optional<T>> type = Atom.of("type");
       Atom<Unit> anyType = Atom.of("any_type");
@@ -40,9 +39,9 @@ public class ComponentPredicateParser {
       Atom<P> predicateType = Atom.of("predicate_type");
       Atom<Identifier> id = Atom.of("id");
       Atom<Dynamic<?>> tag = Atom.of("tag");
-      Dictionary<StringReader> rules = new Dictionary<>();
-      NamedRule<StringReader, Identifier> idRule = rules.put(id, IdentifierParseRule.INSTANCE);
-      NamedRule<StringReader, List<T>> topRule = rules.put(
+      Dictionary<S> rules = new Dictionary<>();
+      NamedRule<S, Identifier> idRule = rules.put(id, IdentifierParseRule.instance());
+      NamedRule<S, List<T>> topRule = rules.put(
          top,
          Term.alternative(
             Term.sequence(
@@ -66,13 +65,13 @@ public class ComponentPredicateParser {
          Term.alternative(rules.named(elementType), Term.sequence(StringReaderTerms.character('#'), Term.cut(), rules.named(tagType)), rules.named(anyType)),
          scope -> Optional.ofNullable(scope.getAny(elementType, tagType))
       );
-      rules.put(anyType, StringReaderTerms.character('*'), s -> Unit.INSTANCE);
-      rules.put(elementType, new ComponentPredicateParser.ElementLookupRule<>(idRule, context));
-      rules.put(tagType, new ComponentPredicateParser.TagLookupRule<>(idRule, context));
-      rules.put(
+      rules.put(anyType, StringReaderTerms.character('*'), var0x -> Unit.INSTANCE);
+      rules.put(elementType, new ComponentPredicateParser.ElementLookupRule<>(idRule));
+      rules.put(tagType, new ComponentPredicateParser.TagLookupRule<>(idRule));
+      rules.putStateful(
          conditions,
          Term.sequence(rules.named(alternatives), Term.optional(Term.sequence(StringReaderTerms.character(','), rules.named(conditions)))),
-         scope -> {
+         (scope, context) -> {
             T parsedCondition = context.anyOf(scope.getOrThrow(alternatives));
             return Optional.ofNullable(scope.get(conditions)).map(rest -> Util.copyAndAdd(parsedCondition, (List<T>)rest)).orElse(List.of(parsedCondition));
          }
@@ -88,7 +87,7 @@ public class ComponentPredicateParser {
          Term.alternative(rules.named(test), Term.sequence(StringReaderTerms.character('!'), rules.named(negation))),
          scope -> scope.getAnyOrThrow(test, negation)
       );
-      rules.put(negation, rules.named(test), scope -> context.negate(scope.getOrThrow(test)));
+      rules.putStateful(negation, rules.named(test), (scope, context) -> context.negate(scope.getOrThrow(test)));
       rules.putComplex(
          test,
          Term.alternative(
@@ -103,13 +102,11 @@ public class ComponentPredicateParser {
             try {
                if (predicate != null) {
                   Dynamic<?> value = scope.getOrThrow(tag);
-                  return context.createPredicateTest((ImmutableStringReader)state.input(), predicate, value);
+                  return state.input().createPredicateTest(predicate, value);
                } else {
                   C component = scope.getOrThrow(componentType);
                   Dynamic<?> value = scope.get(tag);
-                  return value != null
-                     ? context.createComponentTest((ImmutableStringReader)state.input(), component, value)
-                     : context.createComponentTest((ImmutableStringReader)state.input(), component);
+                  return value != null ? state.input().createComponentTest(component, value) : state.input().createComponentTest(component);
                }
             } catch (CommandSyntaxException e) {
                state.errorCollector().store(state.mark(), e);
@@ -117,101 +114,93 @@ public class ComponentPredicateParser {
             }
          }
       );
-      rules.put(componentType, new ComponentPredicateParser.ComponentLookupRule<>(idRule, context));
-      rules.put(predicateType, new ComponentPredicateParser.PredicateLookupRule<>(idRule, context));
-      rules.put(tag, new TagParseRule(NbtOps.INSTANCE));
+      rules.put(componentType, new ComponentPredicateParser.ComponentLookupRule<>(idRule));
+      rules.put(predicateType, new ComponentPredicateParser.PredicateLookupRule<>(idRule));
+      rules.put(tag, new TagParseRule<>(NbtOps.INSTANCE));
       return new Grammar<>(rules, topRule);
    }
 
-   private static class ComponentLookupRule<T, C, P> extends ResourceLookupRule<ComponentPredicateParser.Context<T, C, P>, C> {
-      private ComponentLookupRule(final NamedRule<StringReader, Identifier> idParser, final ComponentPredicateParser.Context<T, C, P> context) {
-         super(idParser, context);
+   private static class ComponentLookupRule<C, S extends ComponentPredicateParser.Context<?, C, ?>> extends ResourceLookupRule<S, C> {
+      private ComponentLookupRule(final NamedRule<S, Identifier> idParser) {
+         super(idParser);
       }
 
-      @Override
-      protected C validateElement(final ImmutableStringReader reader, final Identifier id) throws Exception {
-         return this.context.lookupComponentType(reader, id);
+      protected C validateElement(final S context, final Identifier id) throws Exception {
+         return context.lookupComponentType(id);
       }
 
-      @Override
-      public Stream<Identifier> possibleResources() {
-         return this.context.listComponentTypes();
+      protected Suggestion suggestion(final S context) {
+         return context.componentTypeSuggestion();
       }
    }
 
-   public interface Context<T, C, P> {
-      T forElementType(ImmutableStringReader reader, Identifier id) throws CommandSyntaxException;
+   public interface Context<T, C, P> extends CommandParserState {
+      T forElementType(Identifier id) throws CommandSyntaxException;
 
-      Stream<Identifier> listElementTypes();
+      Suggestion elementTypeSuggestion();
 
-      T forTagType(ImmutableStringReader reader, Identifier id) throws CommandSyntaxException;
+      T forTagType(Identifier id) throws CommandSyntaxException;
 
-      Stream<Identifier> listTagTypes();
+      Suggestion tagTypeSuggestion();
 
-      C lookupComponentType(ImmutableStringReader reader, Identifier id) throws CommandSyntaxException;
+      C lookupComponentType(Identifier id) throws CommandSyntaxException;
 
-      Stream<Identifier> listComponentTypes();
+      Suggestion componentTypeSuggestion();
 
-      T createComponentTest(ImmutableStringReader reader, C componentType, Dynamic<?> value) throws CommandSyntaxException;
+      T createComponentTest(C componentType, Dynamic<?> value) throws CommandSyntaxException;
 
-      T createComponentTest(ImmutableStringReader reader, C componentType);
+      T createComponentTest(C componentType);
 
-      P lookupPredicateType(ImmutableStringReader reader, Identifier id) throws CommandSyntaxException;
+      P lookupPredicateType(Identifier id) throws CommandSyntaxException;
 
-      Stream<Identifier> listPredicateTypes();
+      Suggestion predicateTypeSuggestion();
 
-      T createPredicateTest(ImmutableStringReader reader, P predicateType, Dynamic<?> value) throws CommandSyntaxException;
+      T createPredicateTest(P predicateType, Dynamic<?> value) throws CommandSyntaxException;
 
       T negate(T value);
 
       T anyOf(List<T> alternatives);
    }
 
-   private static class ElementLookupRule<T, C, P> extends ResourceLookupRule<ComponentPredicateParser.Context<T, C, P>, T> {
-      private ElementLookupRule(final NamedRule<StringReader, Identifier> idParser, final ComponentPredicateParser.Context<T, C, P> context) {
-         super(idParser, context);
+   private static class ElementLookupRule<T, S extends ComponentPredicateParser.Context<T, ?, ?>> extends ResourceLookupRule<S, T> {
+      private ElementLookupRule(final NamedRule<S, Identifier> idParser) {
+         super(idParser);
       }
 
-      @Override
-      protected T validateElement(final ImmutableStringReader reader, final Identifier id) throws Exception {
-         return this.context.forElementType(reader, id);
+      protected T validateElement(final S context, final Identifier id) throws Exception {
+         return context.forElementType(id);
       }
 
-      @Override
-      public Stream<Identifier> possibleResources() {
-         return this.context.listElementTypes();
+      protected Suggestion suggestion(final S context) {
+         return context.elementTypeSuggestion();
       }
    }
 
-   private static class PredicateLookupRule<T, C, P> extends ResourceLookupRule<ComponentPredicateParser.Context<T, C, P>, P> {
-      private PredicateLookupRule(final NamedRule<StringReader, Identifier> idParser, final ComponentPredicateParser.Context<T, C, P> context) {
-         super(idParser, context);
+   private static class PredicateLookupRule<P, S extends ComponentPredicateParser.Context<?, ?, P>> extends ResourceLookupRule<S, P> {
+      private PredicateLookupRule(final NamedRule<S, Identifier> idParser) {
+         super(idParser);
       }
 
-      @Override
-      protected P validateElement(final ImmutableStringReader reader, final Identifier id) throws Exception {
-         return this.context.lookupPredicateType(reader, id);
+      protected P validateElement(final S context, final Identifier id) throws Exception {
+         return context.lookupPredicateType(id);
       }
 
-      @Override
-      public Stream<Identifier> possibleResources() {
-         return this.context.listPredicateTypes();
+      protected Suggestion suggestion(final S context) {
+         return context.predicateTypeSuggestion();
       }
    }
 
-   private static class TagLookupRule<T, C, P> extends ResourceLookupRule<ComponentPredicateParser.Context<T, C, P>, T> {
-      private TagLookupRule(final NamedRule<StringReader, Identifier> idParser, final ComponentPredicateParser.Context<T, C, P> context) {
-         super(idParser, context);
+   private static class TagLookupRule<T, S extends ComponentPredicateParser.Context<T, ?, ?>> extends ResourceLookupRule<S, T> {
+      private TagLookupRule(final NamedRule<S, Identifier> idParser) {
+         super(idParser);
       }
 
-      @Override
-      protected T validateElement(final ImmutableStringReader reader, final Identifier id) throws Exception {
-         return this.context.forTagType(reader, id);
+      protected T validateElement(final S context, final Identifier id) throws Exception {
+         return context.forTagType(id);
       }
 
-      @Override
-      public Stream<Identifier> possibleResources() {
-         return this.context.listTagTypes();
+      protected Suggestion suggestion(final S context) {
+         return context.tagTypeSuggestion();
       }
    }
 }

@@ -12,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 public class SetRandomPotionFunction extends LootItemConditionalFunction {
@@ -30,6 +31,10 @@ public class SetRandomPotionFunction extends LootItemConditionalFunction {
    @Override
    public MapCodec<SetRandomPotionFunction> codec() {
       return MAP_CODEC;
+   }
+
+   @Override
+   protected void validateCustom(final ValidationContext context) {
    }
 
    @Override

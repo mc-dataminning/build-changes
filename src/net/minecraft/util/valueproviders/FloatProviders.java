@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 public class FloatProviders {
@@ -38,10 +39,10 @@ public class FloatProviders {
       );
    }
 
-   public static MapCodec<? extends FloatProvider> bootstrap(final Registry<MapCodec<? extends FloatProvider>> registry) {
+   public static void bootstrap(final WritableRegistry<MapCodec<? extends FloatProvider>> registry) {
       Registry.register(registry, "constant", ConstantFloat.MAP_CODEC);
       Registry.register(registry, "uniform", UniformFloat.MAP_CODEC);
       Registry.register(registry, "clamped_normal", ClampedNormalFloat.MAP_CODEC);
-      return Registry.register(registry, "trapezoid", TrapezoidFloat.MAP_CODEC);
+      Registry.register(registry, "trapezoid", TrapezoidFloat.MAP_CODEC);
    }
 }

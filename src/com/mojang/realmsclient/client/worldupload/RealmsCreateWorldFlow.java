@@ -20,7 +20,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.AlertScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtIo;
 import net.minecraft.network.chat.CommonComponents;
@@ -113,7 +113,7 @@ public class RealmsCreateWorldFlow {
    }
 
    private static Path createTemporaryWorldFolder(
-      final RegistryAccess registryAccess,
+      final HolderGetter.Provider registryAccess,
       final LevelDataAndDimensions.WorldDataAndGenSettings worldDataAndGenSettings,
       final Optional<GameRules> gameRulesOpt,
       final @Nullable Path tempDataPackDir

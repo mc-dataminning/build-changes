@@ -13,6 +13,7 @@ public class DefaultVertexFormat {
    public static final String LINE_WIDTH_SEMANTIC_NAME = "LineWidth";
    public static final String CHUNK_POSITION_SEMANTIC_NAME = "ChunkPosition";
    public static final String CHUNK_VISIBILITY_SEMANTIC_NAME = "ChunkVisibility";
+   public static final String CHUNK_BUFFER_OFFSETS_SEMANTIC_NAME = "BufferStartOffsets";
    private static final GpuFormat POSITION_FORMAT = GpuFormat.RGB32_FLOAT;
    private static final GpuFormat COLOR_FORMAT = GpuFormat.RGBA8_UNORM;
    private static final GpuFormat UV0_FORMAT = GpuFormat.RG32_FLOAT;
@@ -23,6 +24,7 @@ public class DefaultVertexFormat {
    private static final GpuFormat LINE_WIDTH_FORMAT = GpuFormat.R32_FLOAT;
    private static final GpuFormat CHUNK_POSITION_FORMAT = GpuFormat.RGB32_SINT;
    private static final GpuFormat CHUNK_VISIBILITY_FORMAT = GpuFormat.R32_FLOAT;
+   private static final GpuFormat CHUNK_BUFFER_OFFSETS_FORMAT = GpuFormat.RG32_SINT;
    public static final VertexFormat BLOCK = VertexFormat.builder(0)
       .addAttribute("Position", POSITION_FORMAT)
       .addAttribute("Color", COLOR_FORMAT)
@@ -32,6 +34,7 @@ public class DefaultVertexFormat {
    public static final VertexFormat CHUNK_DATA_INSTANCED = VertexFormat.builder(1)
       .addAttribute("ChunkPosition", CHUNK_POSITION_FORMAT)
       .addAttribute("ChunkVisibility", CHUNK_VISIBILITY_FORMAT)
+      .addAttribute("BufferStartOffsets", CHUNK_BUFFER_OFFSETS_FORMAT)
       .build();
    public static final VertexFormat ENTITY = VertexFormat.builder(0)
       .addAttribute("Position", POSITION_FORMAT)

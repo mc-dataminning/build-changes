@@ -25,6 +25,7 @@ import net.minecraft.DefaultUncaughtExceptionHandler;
 import net.minecraft.SharedConstants;
 import net.minecraft.SuppressForbidden;
 import net.minecraft.commands.Commands;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
@@ -307,7 +308,7 @@ public class Main {
       final DataFixer fixerUpper,
       final boolean eraseCache,
       final BooleanSupplier isRunning,
-      final RegistryAccess registryAccess,
+      final HolderLookup.Provider registryAccess,
       final boolean recreateRegionFiles
    ) {
       LOGGER.info("Forcing world upgrade!");

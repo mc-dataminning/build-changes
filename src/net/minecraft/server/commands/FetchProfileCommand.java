@@ -2,7 +2,6 @@ package net.minecraft.server.commands;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
@@ -10,9 +9,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import net.minecraft.ChatFormatting;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.commands.arguments.StringArgument;
 import net.minecraft.commands.arguments.UuidArgument;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.chat.ClickEvent;
@@ -37,12 +38,12 @@ public class FetchProfileCommand {
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("fetchprofile")
-                     .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                     .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                   .then(
                      Commands.literal("name")
                         .then(
-                           Commands.argument("name", StringArgumentType.greedyString())
-                              .executes(c -> resolveName((CommandSourceStack)c.getSource(), StringArgumentType.getString(c, "name")))
+                           Commands.argument("name", StringArgument.greedyString())
+                              .executes(c -> resolveName((CommandSourceStack)c.getSource(), StringArgument.getString(c, "name")))
                         )
                   ))
                .then(

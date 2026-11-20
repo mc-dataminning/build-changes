@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import net.minecraft.IdentifierException;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -142,7 +142,7 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
    }
 
    @Override
-   public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
+   public CompoundTag getUpdateTag(final HolderGetter.Provider registries) {
       return this.saveCustomOnly(registries);
    }
 

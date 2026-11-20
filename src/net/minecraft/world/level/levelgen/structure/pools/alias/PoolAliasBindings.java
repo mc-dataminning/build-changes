@@ -5,16 +5,17 @@ import com.mojang.serialization.MapCodec;
 import java.util.List;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.Pools;
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 
 public class PoolAliasBindings {
-   public static MapCodec<? extends PoolAliasBinding> bootstrap(final Registry<MapCodec<? extends PoolAliasBinding>> registry) {
+   public static void bootstrap(final WritableRegistry<MapCodec<? extends PoolAliasBinding>> registry) {
       Registry.register(registry, "random", RandomPoolAlias.CODEC);
       Registry.register(registry, "random_group", RandomGroupPoolAlias.CODEC);
-      return Registry.register(registry, "direct", DirectPoolAlias.CODEC);
+      Registry.register(registry, "direct", DirectPoolAlias.CODEC);
    }
 
    public static void registerTargetsAsPools(

@@ -34,8 +34,7 @@ public class SetItemCountFunction extends LootItemConditionalFunction {
    }
 
    @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
+   public void validateCustom(final ValidationContext context) {
       Validatable.validateHolder(context, "count", this.count);
    }
 

@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Locale;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandResultCallback;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
@@ -54,11 +55,11 @@ public class DebugCommand {
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("debug")
-                     .requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
+                     .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_ADMINS)))
                   .then(Commands.literal("start").executes(c -> start((CommandSourceStack)c.getSource()))))
                .then(Commands.literal("stop").executes(c -> stop((CommandSourceStack)c.getSource()))))
             .then(
-               ((LiteralArgumentBuilder)Commands.literal("function").requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
+               ((LiteralArgumentBuilder)Commands.literal("function").requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_ADMINS)))
                   .then(
                      Commands.argument("name", FunctionArgument.functions())
                         .suggests(FunctionCommand.SUGGEST_FUNCTION)
@@ -125,7 +126,6 @@ public class DebugCommand {
          Collection<CommandFunction<CommandSourceStack>> functions = FunctionArgument.getFunctions(currentContext, "name");
          MinecraftServer server = source.getServer();
          String outputName = "debug-trace-" + Util.getFilenameFormattedDateTime() + ".txt";
-         CommandDispatcher<CommandSourceStack> dispatcher = source.getServer().getFunctions().getDispatcher();
          CommandResponseTracker<CommandFunction<CommandSourceStack>> tracker = CommandResponseTracker.create();
 
          try {
@@ -138,7 +138,7 @@ public class DebugCommand {
             for (final CommandFunction<CommandSourceStack> function : functions) {
                try {
                   CommandSourceStack functionSource = source.withSource(tracer).withMaximumPermission(LevelBasedPermissionSet.GAMEMASTER);
-                  InstantiatedFunction<CommandSourceStack> instantiatedFunction = function.instantiate(null, dispatcher);
+                  InstantiatedFunction<CommandSourceStack> instantiatedFunction = function.instantiate(null);
                   context.queueNext((new CallFunction<CommandSourceStack>(instantiatedFunction, CommandResultCallback.EMPTY, false) {
                      public void execute(final CommandSourceStack sender, final ExecutionContext<CommandSourceStack> contextx, final Frame frame) {
                         output.println(function.id());

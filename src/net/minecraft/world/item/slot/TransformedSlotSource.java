@@ -32,7 +32,6 @@ public abstract class TransformedSlotSource implements SlotSource {
 
    @Override
    public void validate(final ValidationContext context) {
-      SlotSource.super.validate(context);
       Validatable.validateHolder(context, "slot_source", this.slotSource);
    }
 }

@@ -1,8 +1,6 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -12,13 +10,16 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.Collection;
 import java.util.Collections;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.arguments.BooleanArgument;
 import net.minecraft.commands.arguments.ComponentArgument;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.IdentifierArgument;
+import net.minecraft.commands.arguments.IntegerArgument;
+import net.minecraft.commands.suggestions.SuggestionContext;
+import net.minecraft.commands.suggestions.SuggestionProviders;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.ResolutionContext;
@@ -60,22 +61,22 @@ public class BossBarCommands {
    private static final SimpleCommandExceptionType ERROR_ALREADY_VISIBLE = new SimpleCommandExceptionType(
       Component.translatable("commands.bossbar.set.visibility.unchanged.visible")
    );
-   public static final SuggestionProvider<CommandSourceStack> SUGGEST_BOSS_BAR = (c, b) -> SharedSuggestionProvider.suggestResource(
-      ((CommandSourceStack)c.getSource()).getServer().getCustomBossEvents().getIds(), b
+   public static final SuggestionProvider<CommandSourceStack> SUGGEST_BOSS_BAR = SuggestionProviders.serverOnly(
+      (server, var1, builder) -> SuggestionContext.suggestResource(server.getCustomBossEvents().getIds(), builder)
    );
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal(
                               "bossbar"
                            )
-                           .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                           .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                         .then(
                            Commands.literal("add")
                               .then(
                                  Commands.argument("id", IdentifierArgument.id())
                                     .then(
-                                       Commands.argument("name", ComponentArgument.textComponent(context))
+                                       Commands.argument("name", ComponentArgument.textComponent())
                                           .executes(
                                              c -> createBar(
                                                 (CommandSourceStack)c.getSource(),
@@ -105,7 +106,7 @@ public class BossBarCommands {
                                              .then(
                                                 Commands.literal("name")
                                                    .then(
-                                                      Commands.argument("name", ComponentArgument.textComponent(context))
+                                                      Commands.argument("name", ComponentArgument.textComponent())
                                                          .executes(
                                                             c -> setName(
                                                                (CommandSourceStack)c.getSource(),
@@ -206,24 +207,24 @@ public class BossBarCommands {
                                     .then(
                                        Commands.literal("value")
                                           .then(
-                                             Commands.argument("value", IntegerArgumentType.integer(0))
+                                             Commands.argument("value", IntegerArgument.integer(0))
                                                 .executes(
-                                                   c -> setValue((CommandSourceStack)c.getSource(), getBossBar(c), IntegerArgumentType.getInteger(c, "value"))
+                                                   c -> setValue((CommandSourceStack)c.getSource(), getBossBar(c), IntegerArgument.getInteger(c, "value"))
                                                 )
                                           )
                                     ))
                                  .then(
                                     Commands.literal("max")
                                        .then(
-                                          Commands.argument("max", IntegerArgumentType.integer(1))
-                                             .executes(c -> setMax((CommandSourceStack)c.getSource(), getBossBar(c), IntegerArgumentType.getInteger(c, "max")))
+                                          Commands.argument("max", IntegerArgument.integer(1))
+                                             .executes(c -> setMax((CommandSourceStack)c.getSource(), getBossBar(c), IntegerArgument.getInteger(c, "max")))
                                        )
                                  ))
                               .then(
                                  Commands.literal("visible")
                                     .then(
-                                       Commands.argument("visible", BoolArgumentType.bool())
-                                          .executes(c -> setVisible((CommandSourceStack)c.getSource(), getBossBar(c), BoolArgumentType.getBool(c, "visible")))
+                                       Commands.argument("visible", BooleanArgument.bool())
+                                          .executes(c -> setVisible((CommandSourceStack)c.getSource(), getBossBar(c), BooleanArgument.getBool(c, "visible")))
                                     )
                               ))
                            .then(

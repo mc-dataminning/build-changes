@@ -175,7 +175,8 @@ public class ClientConfigurationPacketListenerImpl extends ClientCommonPacketLis
                   this.customReportDetails,
                   this.serverLinks(),
                   this.seenPlayers,
-                  this.seenInsecureChatWarning
+                  this.seenInsecureChatWarning,
+                  this.commandSuggestions
                )
             )
          );

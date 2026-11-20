@@ -23,8 +23,6 @@ import net.minecraft.commands.arguments.selector.options.InvertableSetOptionStat
 import net.minecraft.commands.arguments.selector.options.SetOnceOptionState;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.permissions.PermissionSetSupplier;
-import net.minecraft.server.permissions.Permissions;
 import net.minecraft.util.Mth;
 import net.minecraft.util.ToFloatFunction;
 import net.minecraft.world.entity.Entity;
@@ -108,15 +106,6 @@ public class EntitySelectorParser {
    public EntitySelectorParser(final StringReader reader, final boolean allowSelectors) {
       this.reader = reader;
       this.allowSelectors = allowSelectors;
-   }
-
-   public static <S> boolean allowSelectors(final S source) {
-      return source instanceof PermissionSetSupplier sender && sender.permissions().hasPermission(Permissions.COMMANDS_ENTITY_SELECTORS);
-   }
-
-   @Deprecated
-   public static boolean allowSelectors(final PermissionSetSupplier source) {
-      return source.permissions().hasPermission(Permissions.COMMANDS_ENTITY_SELECTORS);
    }
 
    public EntitySelector getSelector() {

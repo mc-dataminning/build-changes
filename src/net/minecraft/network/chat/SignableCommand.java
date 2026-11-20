@@ -11,8 +11,12 @@ import net.minecraft.commands.arguments.SignedArgument;
 import org.jspecify.annotations.Nullable;
 
 public record SignableCommand<S>(List<SignableCommand.Argument<S>> arguments) {
-   public static <S> boolean hasSignableArguments(final ParseResults<S> command) {
-      return !of(command).arguments().isEmpty();
+   public static <S> boolean requiresSignature(final ParseResults<S> command) {
+      return of(command).requiresSignature();
+   }
+
+   public boolean requiresSignature() {
+      return !this.arguments.isEmpty();
    }
 
    public static <S> SignableCommand<S> of(final ParseResults<S> command) {

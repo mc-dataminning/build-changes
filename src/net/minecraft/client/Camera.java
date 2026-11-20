@@ -1,6 +1,5 @@
 package net.minecraft.client;
 
-import java.util.Arrays;
 import net.minecraft.client.entity.ClientAvatarState;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.AbstractClientPlayer;
@@ -96,13 +95,13 @@ public class Camera implements TrackedWaypoint.Camera {
          }
 
          float partialTicks = this.getCameraEntityPartialTicks(deltaTracker);
-         this.alignWithEntity(partialTicks);
          this.fov = this.calculateFov(partialTicks);
-         this.hudFov = this.calculateHudFov(partialTicks);
-         this.prepareCullFrustum();
          float windowWidth = this.minecraft.getWindow().getWidth();
          float windowHeight = this.minecraft.getWindow().getHeight();
          this.setupPerspective(0.05F, this.depthFar, this.fov, windowWidth, windowHeight);
+         this.alignWithEntity(partialTicks);
+         this.hudFov = this.calculateHudFov(partialTicks);
+         this.prepareCullFrustum();
          this.fogType = this.calculateFogType();
          this.initialized = true;
       }
@@ -236,14 +235,15 @@ public class Camera implements TrackedWaypoint.Camera {
    }
 
    private float modifyFovBasedOnDeathOrFluid(final float partialTicks, float fov) {
+      float effectScale = this.minecraft.options.fovEffectScale().get().floatValue();
       if (this.entity instanceof LivingEntity cameraEntity && cameraEntity.isDeadOrDying()) {
          float duration = Math.min(cameraEntity.deathTime + partialTicks, 20.0F);
-         fov /= (1.0F - 500.0F / (duration + 500.0F)) * 2.0F + 1.0F;
+         float deathZoom = (1.0F - 500.0F / (duration + 500.0F)) * 2.0F + 1.0F;
+         fov /= Mth.lerp(effectScale, 1.0F, deathZoom);
       }
 
       FogType state = this.getFogType();
       if (state == FogType.LAVA || state == FogType.WATER) {
-         float effectScale = this.minecraft.options.fovEffectScale().get().floatValue();
          fov *= Mth.lerp(effectScale, 1.0F, 0.85714287F);
       }
 
@@ -299,17 +299,18 @@ public class Camera implements TrackedWaypoint.Camera {
    }
 
    private float getMaxZoom(float cameraDist) {
-      float jitterScale = 0.1F;
+      float collisionFov = Math.max(this.fov, this.minecraft.options.fov().get().intValue());
+      float jitterScale = Math.max(0.1F, (float)this.getNearPlane(collisionFov).getTopLeft().length());
 
       for (int i = 0; i < 8; i++) {
          float offsetX = (i & 1) * 2 - 1;
          float offsetY = (i >> 1 & 1) * 2 - 1;
          float offsetZ = (i >> 2 & 1) * 2 - 1;
-         Vec3 from = this.position.add(offsetX * 0.1F, offsetY * 0.1F, offsetZ * 0.1F);
+         Vec3 from = this.position.add(offsetX * jitterScale, offsetY * jitterScale, offsetZ * jitterScale);
          Vec3 to = from.add(new Vec3(this.forwards).scale(-cameraDist));
          HitResult hitResult = this.level.clip(new ClipContext(from, to, ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, this.entity));
          if (hitResult.getType() != HitResult.Type.MISS) {
-            float distSq = (float)hitResult.getLocation().distanceToSqr(this.position);
+            float distSq = (float)hitResult.getLocation().distanceToSqr(from);
             if (distSq < Mth.square(cameraDist)) {
                cameraDist = Mth.sqrt(distSq);
             }
@@ -444,20 +445,17 @@ public class Camera implements TrackedWaypoint.Camera {
 
    private FogType calculateFogType() {
       Camera.NearPlane plane = this.getNearPlane(this.minecraft.options.fov().get().intValue());
-
-      for (Vec3 point : Arrays.asList(plane.forward, plane.getTopLeft(), plane.getTopRight(), plane.getBottomLeft(), plane.getBottomRight())) {
-         Vec3 offsetPos = this.position.add(point);
-         BlockPos checkPos = BlockPos.containing(offsetPos);
-         FluidState fluidState = this.level.getFluidState(checkPos);
-         if (!fluidState.isEmpty()) {
-            if (offsetPos.y <= fluidState.getHeightForCamera(this.level, checkPos) + checkPos.getY()) {
-               return fluidState.getType().getFogType();
-            }
-         } else {
-            BlockState state = this.level.getBlockState(checkPos);
-            if (state.is(Blocks.POWDER_SNOW)) {
-               return FogType.POWDER_SNOW;
-            }
+      Vec3 offsetPos = this.position.add(plane.forward);
+      BlockPos checkPos = BlockPos.containing(offsetPos);
+      FluidState fluidState = this.level.getFluidState(checkPos);
+      if (!fluidState.isEmpty()) {
+         if (offsetPos.y <= fluidState.getHeightForCamera(this.level, checkPos) + checkPos.getY()) {
+            return fluidState.getType().getFogType();
+         }
+      } else {
+         BlockState state = this.level.getBlockState(checkPos);
+         if (state.is(Blocks.POWDER_SNOW)) {
+            return FogType.POWDER_SNOW;
          }
       }
 

@@ -63,6 +63,7 @@ import net.minecraft.server.packs.repository.PackRepository;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.ARGB;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.LenientJsonParser;
 import net.minecraft.util.Mth;
@@ -743,29 +744,35 @@ public class Options {
    public final KeyMapping keyDebugSwitchTranslucencyMode = new KeyMapping(
       "key.debug.improvedTransparency", InputConstants.Type.KEYBOARD, 27, KeyMapping.Category.DEBUG
    );
-   public final KeyMapping[] debugKeys = new KeyMapping[]{
-      this.keyDebugReloadChunk,
-      this.keyDebugShowHitboxes,
-      this.keyDebugClearChat,
-      this.keyDebugCrash,
-      this.keyDebugShowChunkBorders,
-      this.keyDebugShowAdvancedTooltips,
-      this.keyDebugCopyRecreateCommand,
-      this.keyDebugSpectate,
-      this.keyDebugSwitchGameMode,
-      this.keyDebugDebugOptions,
-      this.keyDebugFocusPause,
-      this.keyDebugDumpDynamicTextures,
-      this.keyDebugReloadResourcePacks,
-      this.keyDebugProfiling,
-      this.keyDebugCopyLocation,
-      this.keyDebugDumpVersion,
-      this.keyDebugPofilingChart,
-      this.keyDebugFpsCharts,
-      this.keyDebugNetworkCharts,
-      this.keyDebugLightmapTexture,
-      this.keyDebugSwitchTranslucencyMode
-   };
+   public final KeyMapping keyDebugEnvironmentAttributeOptions = new KeyMapping(
+      "key.debug.environmentAttributeOptions", InputConstants.Type.KEYBOARD, 34, KeyMapping.Category.DEBUG, 5
+   );
+   public final KeyMapping[] debugKeys = Stream.of(
+         this.keyDebugReloadChunk,
+         this.keyDebugShowHitboxes,
+         this.keyDebugClearChat,
+         this.keyDebugCrash,
+         this.keyDebugShowChunkBorders,
+         this.keyDebugShowAdvancedTooltips,
+         this.keyDebugCopyRecreateCommand,
+         this.keyDebugSpectate,
+         this.keyDebugSwitchGameMode,
+         this.keyDebugDebugOptions,
+         this.keyDebugFocusPause,
+         this.keyDebugDumpDynamicTextures,
+         this.keyDebugReloadResourcePacks,
+         this.keyDebugProfiling,
+         this.keyDebugCopyLocation,
+         this.keyDebugDumpVersion,
+         this.keyDebugPofilingChart,
+         this.keyDebugFpsCharts,
+         this.keyDebugNetworkCharts,
+         this.keyDebugLightmapTexture,
+         this.keyDebugSwitchTranslucencyMode,
+         this.keyDebugEnvironmentAttributeOptions
+      )
+      .filter(key -> key != this.keyDebugEnvironmentAttributeOptions || SharedConstants.DEBUG_ENABLED || DevUtil.IS_RUNNING_IN_IDE)
+      .toArray(KeyMapping[]::new);
    public final KeyMapping[] keyMappings = Stream.of(
          new KeyMapping[]{
             this.keyAttack,

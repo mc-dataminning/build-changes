@@ -1595,7 +1595,7 @@ public abstract class Entity
       }
    }
 
-   private void updateFallDistanceAndCheckFallDamage(final double movementY, final boolean onGround, final BlockState state, final BlockPos pos) {
+   protected void updateFallDistanceAndCheckFallDamage(final double movementY, final boolean onGround, final BlockState state, final BlockPos pos) {
       if (movementY < 0.0) {
          this.fallDistance -= movementY;
       }
@@ -1957,10 +1957,6 @@ public abstract class Entity
       if (impulse.isFinite()) {
          this.push(impulse.x, impulse.y, impulse.z);
       }
-   }
-
-   public void pushFromExplosion(final Vec3 impulse) {
-      this.push(impulse);
    }
 
    public void push(final double xa, final double ya, final double za) {
@@ -2659,7 +2655,7 @@ public abstract class Entity
       return this.interpolationHandler;
    }
 
-   public void lerpHeadTo(final float yRot, final int steps) {
+   public void lerpHeadTo(final float yRot) {
       this.setYHeadRot(yRot);
    }
 
@@ -3410,6 +3406,10 @@ public abstract class Entity
       return true;
    }
 
+   public boolean isPushedByExplosions() {
+      return !this.isPassenger();
+   }
+
    public static double getViewScale() {
       return viewScale;
    }
@@ -3745,6 +3745,11 @@ public abstract class Entity
    public boolean isClientAuthoritative() {
       LivingEntity passenger = this.getControllingPassenger();
       return passenger != null && passenger.isClientAuthoritative();
+   }
+
+   public Entity getControllingPassengerOrSelf() {
+      LivingEntity passenger = this.getControllingPassenger();
+      return passenger != null ? passenger : this;
    }
 
    public MoveSimulationType getMoveSimulationType() {

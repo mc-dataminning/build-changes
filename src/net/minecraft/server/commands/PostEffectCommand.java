@@ -7,11 +7,12 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.commands.synchronization.SuggestionProviders;
+import net.minecraft.commands.suggestions.SuggestPostEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
@@ -51,14 +52,14 @@ public class PostEffectCommand {
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal(
                            "posteffect"
                         )
-                        .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                        .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                      .then(
                         Commands.literal("add")
                            .then(
                               Commands.argument("targets", EntityArgument.players())
                                  .then(
                                     Commands.argument("posteffect", IdentifierArgument.id())
-                                       .suggests(SuggestionProviders.cast(SuggestionProviders.POST_EFFECTS))
+                                       .suggests(SuggestPostEffects.suggestPostEffects())
                                        .executes(
                                           c -> addPostEffect(
                                              (CommandSourceStack)c.getSource(),
@@ -89,7 +90,7 @@ public class PostEffectCommand {
                      Commands.argument("targets", EntityArgument.players())
                         .then(
                            Commands.argument("posteffect", IdentifierArgument.id())
-                              .suggests(SuggestionProviders.cast(SuggestionProviders.POST_EFFECTS))
+                              .suggests(SuggestPostEffects.suggestPostEffects())
                               .executes(
                                  c -> removePostEffect(
                                     (CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), IdentifierArgument.getId(c, "posteffect")

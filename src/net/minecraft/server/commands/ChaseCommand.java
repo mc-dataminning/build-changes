@@ -3,14 +3,14 @@ package net.minecraft.server.commands;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableBiMap;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.commands.arguments.IntegerArgument;
+import net.minecraft.commands.arguments.StringArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.chase.ChaseClient;
@@ -35,15 +35,13 @@ public class ChaseCommand {
                   .then(
                      ((LiteralArgumentBuilder)Commands.literal("follow")
                            .then(
-                              ((RequiredArgumentBuilder)Commands.argument("host", StringArgumentType.string())
-                                    .executes(c -> follow((CommandSourceStack)c.getSource(), StringArgumentType.getString(c, "host"), 10000)))
+                              ((RequiredArgumentBuilder)Commands.argument("host", StringArgument.string())
+                                    .executes(c -> follow((CommandSourceStack)c.getSource(), StringArgument.getString(c, "host"), 10000)))
                                  .then(
-                                    Commands.argument("port", IntegerArgumentType.integer(1, 65535))
+                                    Commands.argument("port", IntegerArgument.integer(1, 65535))
                                        .executes(
                                           c -> follow(
-                                             (CommandSourceStack)c.getSource(),
-                                             StringArgumentType.getString(c, "host"),
-                                             IntegerArgumentType.getInteger(c, "port")
+                                             (CommandSourceStack)c.getSource(), StringArgument.getString(c, "host"), IntegerArgument.getInteger(c, "port")
                                           )
                                        )
                                  )
@@ -53,15 +51,13 @@ public class ChaseCommand {
                .then(
                   ((LiteralArgumentBuilder)Commands.literal("lead")
                         .then(
-                           ((RequiredArgumentBuilder)Commands.argument("bind_address", StringArgumentType.string())
-                                 .executes(c -> lead((CommandSourceStack)c.getSource(), StringArgumentType.getString(c, "bind_address"), 10000)))
+                           ((RequiredArgumentBuilder)Commands.argument("bind_address", StringArgument.string())
+                                 .executes(c -> lead((CommandSourceStack)c.getSource(), StringArgument.getString(c, "bind_address"), 10000)))
                               .then(
-                                 Commands.argument("port", IntegerArgumentType.integer(1024, 65535))
+                                 Commands.argument("port", IntegerArgument.integer(1024, 65535))
                                     .executes(
                                        c -> lead(
-                                          (CommandSourceStack)c.getSource(),
-                                          StringArgumentType.getString(c, "bind_address"),
-                                          IntegerArgumentType.getInteger(c, "port")
+                                          (CommandSourceStack)c.getSource(), StringArgument.getString(c, "bind_address"), IntegerArgument.getInteger(c, "port")
                                        )
                                     )
                               )

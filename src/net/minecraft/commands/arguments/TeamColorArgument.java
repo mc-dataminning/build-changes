@@ -7,16 +7,17 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.suggestions.SuggestionContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.scores.TeamColor;
 
-public class TeamColorArgument implements ArgumentType<TeamColor> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("red", "green");
+public class TeamColorArgument implements SerializableArgument.ContextFree<TeamColor> {
+   private static final TeamColorArgument INSTANCE = new TeamColorArgument();
+   public static final SerializableArgument.Type<TeamColorArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
+   private static final Collection<String> EXAMPLES = List.of("red", "green");
    public static final DynamicCommandExceptionType ERROR_INVALID_VALUE = new DynamicCommandExceptionType(
       value -> Component.translatableEscape("argument.color.invalid", value)
    );
@@ -24,11 +25,16 @@ public class TeamColorArgument implements ArgumentType<TeamColor> {
    private TeamColorArgument() {
    }
 
-   public static TeamColorArgument teamColor() {
-      return new TeamColorArgument();
+   @Override
+   public SerializableArgument.Type<TeamColorArgument> type() {
+      return TYPE;
    }
 
-   public static TeamColor getTeamColor(final CommandContext<CommandSourceStack> context, final String name) {
+   public static ArgumentType<TeamColor> teamColor() {
+      return INSTANCE.toBrigadier();
+   }
+
+   public static TeamColor getTeamColor(final CommandContext<?> context, final String name) {
       return (TeamColor)context.getArgument(name, TeamColor.class);
    }
 
@@ -42,10 +48,12 @@ public class TeamColorArgument implements ArgumentType<TeamColor> {
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> contextBuilder, final SuggestionsBuilder builder) {
-      return SharedSuggestionProvider.suggest(TeamColor.VALUES.stream().map(TeamColor::getSerializedName), builder);
+   @Override
+   public CompletableFuture<Suggestions> listSuggestions(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
+      return SuggestionContext.suggest(TeamColor.VALUES.stream().map(TeamColor::getSerializedName), builder);
    }
 
+   @Override
    public Collection<String> getExamples() {
       return EXAMPLES;
    }

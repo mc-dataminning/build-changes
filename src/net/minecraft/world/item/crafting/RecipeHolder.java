@@ -1,5 +1,6 @@
 package net.minecraft.world.item.crafting;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -9,6 +10,11 @@ public record RecipeHolder<T extends Recipe<?>>(ResourceKey<Recipe<?>> id, T val
    public static final StreamCodec<RegistryFriendlyByteBuf, RecipeHolder<?>> STREAM_CODEC = StreamCodec.composite(
       ResourceKey.streamCodec(Registries.RECIPE), RecipeHolder::id, Recipe.STREAM_CODEC, RecipeHolder::value, RecipeHolder::new
    );
+
+   public static <T extends Recipe<?>> RecipeHolder<T> wrap(final Holder.Reference<T> holder) {
+      ResourceKey<Recipe<?>> key = holder.key();
+      return new RecipeHolder<>(key, holder.value());
+   }
 
    @Override
    public boolean equals(final Object obj) {

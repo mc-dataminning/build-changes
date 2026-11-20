@@ -8,6 +8,9 @@ import java.util.function.Consumer;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.context.ContextKey;
@@ -15,6 +18,7 @@ import net.minecraft.util.context.ContextKeySet;
 
 public class LootContextParamSets {
    public static final Codec<ContextKeySet> CODEC = BuiltInRegistries.CONTEXT_KEY_SET.byNameCodec();
+   public static final StreamCodec<RegistryFriendlyByteBuf, ContextKeySet> STREAM_CODEC = ByteBufCodecs.registry(Registries.CONTEXT_KEY_SET);
    public static final ContextKeySet EMPTY = register("empty", var0 -> {});
    public static final ContextKeySet ALL_PARAMS = register(
       "generic",
@@ -36,8 +40,11 @@ public class LootContextParamSets {
          .required(LootContextParams.ENCHANTMENT_LEVEL)
    );
    public static final ContextKeySet CHEST = register("chest", builder -> builder.required(LootContextParams.ORIGIN).optional(LootContextParams.THIS_ENTITY));
-   public static final ContextKeySet COMMAND = register(
-      "command", builder -> builder.required(LootContextParams.ORIGIN).optional(LootContextParams.THIS_ENTITY)
+   public static final ContextKeySet COMMAND_PREDICATE = register(
+      "command_predicate", builder -> builder.required(LootContextParams.ORIGIN).optional(LootContextParams.THIS_ENTITY)
+   );
+   public static final ContextKeySet COMMAND_MODIFIER = register(
+      "command_modifier", builder -> builder.required(LootContextParams.ORIGIN).optional(LootContextParams.THIS_ENTITY)
    );
    public static final ContextKeySet COMMAND_SLOT_SOURCE = register(
       "command_slot_source",
@@ -177,10 +184,6 @@ public class LootContextParamSets {
       ContextKeySet.Builder builder = new ContextKeySet.Builder();
       consumer.accept(builder);
       return Registry.register(BuiltInRegistries.CONTEXT_KEY_SET, key, builder.build());
-   }
-
-   public static ContextKeySet bootstrap(final Registry<ContextKeySet> registry) {
-      return ALL_PARAMS;
    }
 
    public static void validate() {

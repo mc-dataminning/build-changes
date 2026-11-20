@@ -25,7 +25,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootContextArg;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
-public class CopyComponentsFunction extends LootItemConditionalFunction {
+public class CopyComponentsFunction extends LootItemConditionalFunction.ContextUser {
    private static final Codec<LootContextArg<DataComponentGetter>> GETTER_CODEC = LootContextArg.createArgCodec(
       builder -> builder.anyEntity(CopyComponentsFunction.DirectSource::new)
          .anyBlockEntity(CopyComponentsFunction.BlockEntitySource::new)
@@ -69,7 +69,7 @@ public class CopyComponentsFunction extends LootItemConditionalFunction {
    }
 
    @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
+   public Set<ContextKey<?>> getRequiredParams() {
       return Set.of(this.source.contextParam());
    }
 

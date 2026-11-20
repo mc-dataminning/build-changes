@@ -9,7 +9,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
@@ -230,7 +230,7 @@ public class SignBlockEntity extends BlockEntity {
    }
 
    @Override
-   public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
+   public CompoundTag getUpdateTag(final HolderGetter.Provider registries) {
       return this.saveCustomOnly(registries);
    }
 

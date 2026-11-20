@@ -11,9 +11,10 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootContextArg;
+import net.minecraft.world.level.storage.loot.LootContextUser;
 import org.jspecify.annotations.Nullable;
 
-public class ContextNbtProvider implements NbtProvider {
+public class ContextNbtProvider implements NbtProvider, LootContextUser {
    private static final Codec<LootContextArg<Tag>> GETTER_CODEC = LootContextArg.createArgCodec(
       builder -> builder.anyBlockEntity(ContextNbtProvider.BlockEntitySource::new).anyEntity(ContextNbtProvider.EntitySource::new)
    );
@@ -38,7 +39,7 @@ public class ContextNbtProvider implements NbtProvider {
    }
 
    @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
+   public Set<ContextKey<?>> getRequiredParams() {
       return Set.of(this.source.contextParam());
    }
 

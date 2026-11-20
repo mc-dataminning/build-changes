@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.Lifecycle;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
 import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import net.minecraft.CrashReport;
 import net.minecraft.CrashReportCategory;
 import net.minecraft.ReportedException;
@@ -28,6 +30,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.RegistrySynchronization;
 import net.minecraft.core.component.BlockTransformer;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.GameTestInstance;
 import net.minecraft.gametest.framework.TestEnvironmentDefinition;
@@ -199,6 +202,14 @@ public class RegistryDataLoader {
       new RegistryDataLoader.RegistryData<>(Registries.BLOCK_SOUND_SET, BlockSoundSet.DIRECT_CODEC)
    );
 
+   public static Stream<ResourceKey<? extends Registry<?>>> allLoadableRegistries() {
+      return Stream.of(WORLD_REGISTRIES, DIMENSION_REGISTRIES, RELOADABLE_REGISTRIES).flatMap(Collection::stream).map(RegistryDataLoader.RegistryData::key);
+   }
+
+   public static Stream<ResourceKey<? extends Registry<?>>> allKnownRegistries() {
+      return Stream.concat(BuiltInRegistries.REGISTRY.listElementIds(), allLoadableRegistries());
+   }
+
    public static CompletableFuture<RegistryAccess.Frozen> load(
       final ResourceManager resourceManager,
       final List<HolderLookup.RegistryLookup<?>> contextRegistries,
@@ -242,7 +253,7 @@ public class RegistryDataLoader {
                List<RegistryLoadTask<?>> loadTasks = registriesToLoad.stream()
                   .map(r -> loaderFactory.create((RegistryDataLoader.RegistryData<?>)r, loadingErrors))
                   .collect(Collectors.toUnmodifiableList());
-               RegistryOps.RegistryInfoLookup contextAndNewRegistries = createContext(contextRegistries, loadTasks);
+               HolderGetter.Provider contextAndNewRegistries = createContext(contextRegistries, loadTasks);
                int taskCount = loadTasks.size();
                CompletableFuture<?>[] loadCompletions = new CompletableFuture[taskCount];
 
@@ -269,13 +280,13 @@ public class RegistryDataLoader {
          .thenCompose(c -> (CompletionStage<RegistryAccess.Frozen>)c);
    }
 
-   private static RegistryOps.RegistryInfoLookup createContext(
+   private static HolderGetter.Provider createContext(
       final List<HolderLookup.RegistryLookup<?>> contextRegistries, final List<RegistryLoadTask<?>> newRegistriesAndLoaders
    ) {
       final Map<ResourceKey<? extends Registry<?>>, HolderGetter<?>> result = new HashMap<>();
       contextRegistries.forEach(e -> result.put(e.key(), e));
       newRegistriesAndLoaders.forEach(e -> result.put(e.registryKey(), e.concurrentRegistrationGetter));
-      return new RegistryOps.RegistryInfoLookup() {
+      return new HolderGetter.Provider() {
          @Override
          public <T> Optional<HolderGetter<T>> lookup(final ResourceKey<? extends Registry<? extends T>> key) {
             return Optional.ofNullable((HolderGetter<T>)result.get(key));

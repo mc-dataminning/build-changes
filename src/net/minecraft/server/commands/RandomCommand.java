@@ -1,26 +1,29 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.advancements.predicates.MinMaxBounds;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.arguments.BooleanArgument;
 import net.minecraft.commands.arguments.IdentifierArgument;
+import net.minecraft.commands.arguments.IntegerArgument;
 import net.minecraft.commands.arguments.RangeArgument;
+import net.minecraft.commands.suggestions.SuggestionContext;
+import net.minecraft.commands.suggestions.SuggestionProviders;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -34,40 +37,44 @@ public class RandomCommand {
    private static final SimpleCommandExceptionType ERROR_RANGE_TOO_SMALL = new SimpleCommandExceptionType(
       Component.translatable("commands.random.error.range_too_small")
    );
+   private static final SuggestionProvider<CommandSourceStack> SUGGEST_RANDOM_SEQUENCE = SuggestionProviders.serverOnly(
+      (server, var1, builder) -> suggestRandomSequence(server, builder)
+   );
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("random").then(drawRandomValueTree("value", false)))
                .then(drawRandomValueTree("roll", true)))
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("reset").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("reset")
+                        .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                      .then(
                         ((LiteralArgumentBuilder)Commands.literal("*").executes(c -> resetAllSequences((CommandSourceStack)c.getSource())))
                            .then(
-                              ((RequiredArgumentBuilder)Commands.argument("seed", IntegerArgumentType.integer())
+                              ((RequiredArgumentBuilder)Commands.argument("seed", IntegerArgument.integer())
                                     .executes(
                                        c -> resetAllSequencesAndSetNewDefaults(
-                                          (CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "seed"), true, true
+                                          (CommandSourceStack)c.getSource(), IntegerArgument.getInteger(c, "seed"), true, true
                                        )
                                     ))
                                  .then(
-                                    ((RequiredArgumentBuilder)Commands.argument("includeWorldSeed", BoolArgumentType.bool())
+                                    ((RequiredArgumentBuilder)Commands.argument("includeWorldSeed", BooleanArgument.bool())
                                           .executes(
                                              c -> resetAllSequencesAndSetNewDefaults(
                                                 (CommandSourceStack)c.getSource(),
-                                                IntegerArgumentType.getInteger(c, "seed"),
-                                                BoolArgumentType.getBool(c, "includeWorldSeed"),
+                                                IntegerArgument.getInteger(c, "seed"),
+                                                BooleanArgument.getBool(c, "includeWorldSeed"),
                                                 true
                                              )
                                           ))
                                        .then(
-                                          Commands.argument("includeSequenceId", BoolArgumentType.bool())
+                                          Commands.argument("includeSequenceId", BooleanArgument.bool())
                                              .executes(
                                                 c -> resetAllSequencesAndSetNewDefaults(
                                                    (CommandSourceStack)c.getSource(),
-                                                   IntegerArgumentType.getInteger(c, "seed"),
-                                                   BoolArgumentType.getBool(c, "includeWorldSeed"),
-                                                   BoolArgumentType.getBool(c, "includeSequenceId")
+                                                   IntegerArgument.getInteger(c, "seed"),
+                                                   BooleanArgument.getBool(c, "includeWorldSeed"),
+                                                   BooleanArgument.getBool(c, "includeSequenceId")
                                                 )
                                              )
                                        )
@@ -76,39 +83,39 @@ public class RandomCommand {
                      ))
                   .then(
                      ((RequiredArgumentBuilder)Commands.argument("sequence", IdentifierArgument.id())
-                           .suggests(RandomCommand::suggestRandomSequence)
+                           .suggests(SUGGEST_RANDOM_SEQUENCE)
                            .executes(c -> resetSequence((CommandSourceStack)c.getSource(), IdentifierArgument.getId(c, "sequence"))))
                         .then(
-                           ((RequiredArgumentBuilder)Commands.argument("seed", IntegerArgumentType.integer())
+                           ((RequiredArgumentBuilder)Commands.argument("seed", IntegerArgument.integer())
                                  .executes(
                                     c -> resetSequence(
                                        (CommandSourceStack)c.getSource(),
                                        IdentifierArgument.getId(c, "sequence"),
-                                       IntegerArgumentType.getInteger(c, "seed"),
+                                       IntegerArgument.getInteger(c, "seed"),
                                        true,
                                        true
                                     )
                                  ))
                               .then(
-                                 ((RequiredArgumentBuilder)Commands.argument("includeWorldSeed", BoolArgumentType.bool())
+                                 ((RequiredArgumentBuilder)Commands.argument("includeWorldSeed", BooleanArgument.bool())
                                        .executes(
                                           c -> resetSequence(
                                              (CommandSourceStack)c.getSource(),
                                              IdentifierArgument.getId(c, "sequence"),
-                                             IntegerArgumentType.getInteger(c, "seed"),
-                                             BoolArgumentType.getBool(c, "includeWorldSeed"),
+                                             IntegerArgument.getInteger(c, "seed"),
+                                             BooleanArgument.getBool(c, "includeWorldSeed"),
                                              true
                                           )
                                        ))
                                     .then(
-                                       Commands.argument("includeSequenceId", BoolArgumentType.bool())
+                                       Commands.argument("includeSequenceId", BooleanArgument.bool())
                                           .executes(
                                              c -> resetSequence(
                                                 (CommandSourceStack)c.getSource(),
                                                 IdentifierArgument.getId(c, "sequence"),
-                                                IntegerArgumentType.getInteger(c, "seed"),
-                                                BoolArgumentType.getBool(c, "includeWorldSeed"),
-                                                BoolArgumentType.getBool(c, "includeSequenceId")
+                                                IntegerArgument.getInteger(c, "seed"),
+                                                BooleanArgument.getBool(c, "includeWorldSeed"),
+                                                BooleanArgument.getBool(c, "includeSequenceId")
                                              )
                                           )
                                     )
@@ -126,8 +133,8 @@ public class RandomCommand {
                   .executes(c -> randomSample((CommandSourceStack)c.getSource(), RangeArgument.Ints.getRange(c, "range"), null, announce)))
                .then(
                   ((RequiredArgumentBuilder)Commands.argument("sequence", IdentifierArgument.id())
-                        .suggests(RandomCommand::suggestRandomSequence)
-                        .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                        .suggests(SUGGEST_RANDOM_SEQUENCE)
+                        .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                      .executes(
                         c -> randomSample(
                            (CommandSourceStack)c.getSource(), RangeArgument.Ints.getRange(c, "range"), IdentifierArgument.getId(c, "sequence"), announce
@@ -137,10 +144,10 @@ public class RandomCommand {
          );
    }
 
-   private static CompletableFuture<Suggestions> suggestRandomSequence(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) {
+   private static CompletableFuture<Suggestions> suggestRandomSequence(final MinecraftServer server, final SuggestionsBuilder builder) {
       List<String> result = new ArrayList<>();
-      ((CommandSourceStack)context.getSource()).getServer().getRandomSequences().forAllSequences((key, sequence) -> result.add(key.toString()));
-      return SharedSuggestionProvider.suggest(result, builder);
+      server.getRandomSequences().forAllSequences((key, var2x) -> result.add(key.toString()));
+      return SuggestionContext.suggest(result, builder);
    }
 
    private static int randomSample(final CommandSourceStack source, final MinMaxBounds.Ints range, final @Nullable Identifier sequence, final boolean announce) throws CommandSyntaxException {

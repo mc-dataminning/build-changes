@@ -2,9 +2,10 @@ package net.minecraft.world.level.storage.loot.predicates;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 
 public class LootItemConditionTypes {
-   public static MapCodec<? extends LootItemCondition> bootstrap(final Registry<MapCodec<? extends LootItemCondition>> registry) {
+   public static void bootstrap(final WritableRegistry<MapCodec<? extends LootItemCondition>> registry) {
       Registry.register(registry, "inverted", InvertedLootItemCondition.MAP_CODEC);
       Registry.register(registry, "any_of", AnyOfCondition.MAP_CODEC);
       Registry.register(registry, "all_of", AllOfCondition.MAP_CODEC);
@@ -24,6 +25,6 @@ public class LootItemConditionTypes {
       Registry.register(registry, "int_value_check", IntValueCheck.MAP_CODEC);
       Registry.register(registry, "float_value_check", FloatValueCheck.MAP_CODEC);
       Registry.register(registry, "enchantment_active_check", EnchantmentActiveCheck.MAP_CODEC);
-      return Registry.register(registry, "environment_attribute_check", EnvironmentAttributeCheck.MAP_CODEC);
+      Registry.register(registry, "environment_attribute_check", EnvironmentAttributeCheck.MAP_CODEC);
    }
 }

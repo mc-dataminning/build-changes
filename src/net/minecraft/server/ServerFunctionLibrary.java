@@ -2,7 +2,9 @@ package net.minecraft.server;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
 import java.io.BufferedReader;
@@ -16,8 +18,12 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 import java.util.concurrent.Executor;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
+import net.minecraft.commands.ParseBox;
+import net.minecraft.commands.ParseContext;
+import net.minecraft.commands.arguments.ValidationWrapper;
 import net.minecraft.commands.functions.CommandFunction;
+import net.minecraft.commands.functions.CommandParser;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.FileToIdConverter;
@@ -28,6 +34,8 @@ import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.permissions.PermissionSet;
 import net.minecraft.tags.TagLoader;
+import net.minecraft.util.ProblemReporter;
+import net.minecraft.world.flag.FeatureFlagSet;
 import org.slf4j.Logger;
 
 public class ServerFunctionLibrary implements PreparableReloadListener {
@@ -38,11 +46,10 @@ public class ServerFunctionLibrary implements PreparableReloadListener {
    private static final FileToIdConverter LISTER = new FileToIdConverter(Registries.elementsDirPath(TYPE_KEY), ".mcfunction");
    private volatile Map<Identifier, CommandFunction<CommandSourceStack>> functions = ImmutableMap.of();
    private final TagLoader<CommandFunction<CommandSourceStack>> tagsLoader = new TagLoader<>(
-      (id, required) -> this.getFunction(id), Registries.tagsDirPath(TYPE_KEY)
+      (id, var2) -> this.getFunction(id), Registries.tagsDirPath(TYPE_KEY)
    );
    private volatile Map<Identifier, List<CommandFunction<CommandSourceStack>>> tags = Map.of();
-   private final PermissionSet functionCompilationPermissions;
-   private final CommandDispatcher<CommandSourceStack> dispatcher;
+   private final CommandParser.Provider<CommandSourceStack> parserProvider;
 
    public Optional<CommandFunction<CommandSourceStack>> getFunction(final Identifier id) {
       return Optional.ofNullable(this.functions.get(id));
@@ -60,9 +67,37 @@ public class ServerFunctionLibrary implements PreparableReloadListener {
       return this.tags.keySet();
    }
 
-   public ServerFunctionLibrary(final PermissionSet functionCompilationPermissions, final CommandDispatcher<CommandSourceStack> dispatcher) {
-      this.functionCompilationPermissions = functionCompilationPermissions;
-      this.dispatcher = dispatcher;
+   public ServerFunctionLibrary(
+      final PermissionSet functionCompilationPermissions,
+      final HolderLookup.Provider registries,
+      final FeatureFlagSet enabledFeatures,
+      final ParseBox commandParseBox
+   ) {
+      HolderLookup.Provider filteredRegistries = registries.filterFeatures(enabledFeatures);
+      this.parserProvider = id -> {
+         final ValidationWrapper.Provider.Collecting collectingProvider = new ValidationWrapper.Provider.Collecting();
+         final ParseContext compilationContext = new ParseContext.Simple(
+            functionCompilationPermissions, filteredRegistries, enabledFeatures, collectingProvider
+         );
+         return new CommandParser<CommandSourceStack>() {
+            @Override
+            public ContextChain<CommandSourceStack> parse(final StringReader input) throws CommandSyntaxException {
+               return commandParseBox.parse(input, compilationContext).unpack();
+            }
+
+            @Override
+            public void close() {
+               ProblemReporter.Collector problems = new ProblemReporter.Collector();
+               collectingProvider.validateAll(problems);
+               if (problems.hasAnyProblems()) {
+                  ServerFunctionLibrary.LOGGER.warn("Found validation issues in '{}': {}", id, problems.getTreeReport());
+                  if (problems.hasErrors()) {
+                     throw new IllegalStateException("Failed to validate function '" + id + "': " + problems.getReport());
+                  }
+               }
+            }
+         };
+      };
    }
 
    @Override
@@ -80,20 +115,19 @@ public class ServerFunctionLibrary implements PreparableReloadListener {
             () -> LISTER.listMatchingResources(manager), taskExecutor
          )
          .thenCompose(functionsToLoad -> {
-            Map<Identifier, CompletableFuture<CommandFunction<CommandSourceStack>>> result = new HashMap<>();
-            CommandSourceStack compilationContext = Commands.createCompilationContext(this.functionCompilationPermissions);
+            Map<Identifier, CompletableFuture<CommandFunction<CommandSourceStack>>> result = new HashMap<>(functionsToLoad.size());
 
             for (Entry<Identifier, Resource> entry : functionsToLoad.entrySet()) {
                Identifier resourceId = entry.getKey();
                Identifier id = LISTER.fileToId(resourceId);
                result.put(id, CompletableFuture.supplyAsync(() -> {
                   List<String> lines = readLines(entry.getValue());
-                  return CommandFunction.fromLines(id, this.dispatcher, compilationContext, lines);
+                  return CommandFunction.fromLines(id, this.parserProvider, lines);
                }, taskExecutor));
             }
 
             CompletableFuture<?>[] futuresToCollect = result.values().toArray(new CompletableFuture[0]);
-            return CompletableFuture.allOf(futuresToCollect).handle((ignore, throwable) -> result);
+            return CompletableFuture.allOf(futuresToCollect).handle((ignore, var2x) -> result);
          });
       return tags.thenCombine(functions, Pair::of)
          .thenCompose(preparationBarrier::wait)

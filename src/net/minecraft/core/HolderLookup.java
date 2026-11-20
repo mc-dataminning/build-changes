@@ -40,8 +40,8 @@ public interface HolderLookup<T> extends HolderGetter<T> {
          return this.lookup(key).orElseThrow(() -> new IllegalStateException("Registry " + key.identifier() + " not found"));
       }
 
-      default <V> RegistryOps<V> createSerializationContext(final DynamicOps<V> parent) {
-         return RegistryOps.create((DynamicOps<T>)parent, this);
+      default HolderLookup.Provider filterFeatures(final FeatureFlagSet enabledFeatures) {
+         return create(this.listRegistries().map(r -> r.filterFeatures(enabledFeatures)));
       }
 
       static HolderLookup.Provider create(final Stream<HolderLookup.RegistryLookup<?>> lookups) {
@@ -59,6 +59,11 @@ public interface HolderLookup<T> extends HolderGetter<T> {
                return Optional.ofNullable((HolderLookup.RegistryLookup<T>)map.get(key));
             }
          };
+      }
+
+      @Override
+      default <V> RegistryOps<V> createSerializationContext(final DynamicOps<V> parent) {
+         return HolderGetter.Provider.super.createSerializationContext(parent);
       }
 
       default Lifecycle allRegistriesLifecycle() {

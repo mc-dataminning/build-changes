@@ -4,6 +4,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.commands.arguments.ValidationWrapper;
 import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -38,17 +39,19 @@ public record BlockItemAccessor(BlockPos pos) implements ItemAccessor<BlockPos> 
    );
 
    @Override
-   public SlotCollection getSlots(final CommandSourceStack source, final SlotSource slotSource) throws CommandSyntaxException {
+   public SlotCollection getSlots(final CommandSourceStack source, final ValidationWrapper<SlotSource> slotSource) throws CommandSyntaxException {
       return this.getBlockSlots(source, slotSource, ItemCommands.ERROR_SOURCE_NOT_A_CONTAINER);
    }
 
-   private SlotCollection getBlockSlots(final CommandSourceStack source, final SlotSource slotSource, final Dynamic3CommandExceptionType exceptionType) throws CommandSyntaxException {
+   private SlotCollection getBlockSlots(
+      final CommandSourceStack source, final ValidationWrapper<SlotSource> slotSource, final Dynamic3CommandExceptionType exceptionType
+   ) throws CommandSyntaxException {
       Container container = getContainer(source, this.pos, exceptionType);
       return ItemCommands.getSlotsFromProvider(source, container, slotSource);
    }
 
    @Override
-   public void setItems(final CommandSourceStack source, final SlotSource slotSource, final ItemAccessor.SetterFunction<BlockPos> function) throws CommandSyntaxException {
+   public void setItems(final CommandSourceStack source, final ValidationWrapper<SlotSource> slotSource, final ItemAccessor.SetterFunction<BlockPos> function) throws CommandSyntaxException {
       SlotCollection targetSlots = this.getBlockSlots(source, slotSource, ItemCommands.ERROR_TARGET_NOT_A_CONTAINER);
       function.apply(this.pos, targetSlots);
    }

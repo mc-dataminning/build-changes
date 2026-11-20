@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.suggestions.SuggestionContext;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -20,7 +20,9 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 
-public class DimensionArgument implements ArgumentType<Identifier> {
+public class DimensionArgument implements SerializableArgument.ContextFree<ResourceKey<Level>> {
+   private static final DimensionArgument INSTANCE = new DimensionArgument();
+   public static final SerializableArgument.Type<DimensionArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
    private static final Collection<String> EXAMPLES = Stream.of(Level.OVERWORLD, Level.NETHER)
       .map(key -> key.identifier().toString())
       .collect(Collectors.toList());
@@ -28,30 +30,37 @@ public class DimensionArgument implements ArgumentType<Identifier> {
       value -> Component.translatableEscape("argument.dimension.invalid", value)
    );
 
-   public Identifier parse(final StringReader reader) throws CommandSyntaxException {
-      return Identifier.read(reader);
+   private DimensionArgument() {
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-      return context.getSource() instanceof SharedSuggestionProvider
-         ? SharedSuggestionProvider.suggestResource(((SharedSuggestionProvider)context.getSource()).levels().stream().map(ResourceKey::identifier), builder)
-         : Suggestions.empty();
+   @Override
+   public SerializableArgument.Type<DimensionArgument> type() {
+      return TYPE;
    }
 
+   public ResourceKey<Level> parse(final StringReader reader) throws CommandSyntaxException {
+      return ResourceKey.create(Registries.DIMENSION, Identifier.read(reader));
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> listSuggestions(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
+      return SuggestionContext.suggestResource(((SuggestionContext)context.getSource()).levels().stream().map(ResourceKey::identifier), builder);
+   }
+
+   @Override
    public Collection<String> getExamples() {
       return EXAMPLES;
    }
 
-   public static DimensionArgument dimension() {
-      return new DimensionArgument();
+   public static ArgumentType<ResourceKey<Level>> dimension() {
+      return INSTANCE.toBrigadier();
    }
 
    public static ServerLevel getDimension(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      Identifier location = (Identifier)context.getArgument(name, Identifier.class);
-      ResourceKey<Level> key = ResourceKey.create(Registries.DIMENSION, location);
+      ResourceKey<Level> key = (ResourceKey<Level>)context.getArgument(name, ResourceKey.class);
       ServerLevel level = ((CommandSourceStack)context.getSource()).getServer().getLevel(key);
       if (level == null) {
-         throw ERROR_INVALID_VALUE.create(location);
+         throw ERROR_INVALID_VALUE.create(key.identifier());
       } else {
          return level;
       }

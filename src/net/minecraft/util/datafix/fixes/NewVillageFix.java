@@ -65,10 +65,7 @@ public class NewVillageFix extends DataFix {
             structureType,
             input -> input.update(
                DSL.remainderFinder(),
-               tag -> tag.update(
-                  "id",
-                  id -> Objects.equals(NamespacedSchema.ensureNamespaced(id.asString("")), "minecraft:new_village") ? id.createString("minecraft:village") : id
-               )
+               tag -> tag.update("id", id -> NamespacedSchema.namespacedIdMatches(id, "minecraft:new_village") ? id.createString("minecraft:village") : id)
             )
          )
       );

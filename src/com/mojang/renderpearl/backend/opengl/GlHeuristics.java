@@ -86,6 +86,8 @@ public class GlHeuristics {
       int drawIndirectCount = enabledExtensions.contains("GL_ARB_multi_draw_indirect")
          ? Integer.MAX_VALUE
          : (enabledExtensions.contains("GL_ARB_draw_indirect") ? 1 : 0);
+      int glMaxTexelSize = GL33C.glGetInteger(35883);
+      int maxTexelBufferElements = Integer.compareUnsigned(glMaxTexelSize, Integer.MAX_VALUE) > 0 ? Integer.MAX_VALUE : glMaxTexelSize;
       return new DeviceInfo(
          renderer,
          vendor,
@@ -93,7 +95,9 @@ public class GlHeuristics {
          capabilities.GL_ARB_clip_control,
          "OpenGL",
          1.0F,
-         new DeviceLimits(maxSupportedAnisotropy, GL33C.glGetInteger(35380), getMaxSupportedTextureSize(), Long.MAX_VALUE, 0, drawIndirectCount),
+         new DeviceLimits(
+            maxSupportedAnisotropy, GL33C.glGetInteger(35380), getMaxSupportedTextureSize(), Long.MAX_VALUE, 0, drawIndirectCount, maxTexelBufferElements
+         ),
          new DeviceFeatures(
             false,
             true,
@@ -107,7 +111,10 @@ public class GlHeuristics {
          ),
          Collections.unmodifiableSet(enabledExtensions),
          new HintsAndWorkarounds(
-            this.isGlOnDx12(), this.isAmd(), PlatformUtil.isAppleSiliconMac(renderer), vendorLowerCase.contains("intel") && !rendererLowerCase.contains("arc")
+            this.isGlOnDx12(),
+            this.isAmd(),
+            PlatformUtil.isAppleSiliconMac(renderer),
+            vendorLowerCase.contains("intel") && !rendererLowerCase.contains("arc") || this.isGlOnDx12()
          ),
          this.guessDeviceType(rendererLowerCase, vendorLowerCase)
       );

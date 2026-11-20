@@ -5,20 +5,30 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.arguments.coordinates.WorldCoordinate;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 
-public class AngleArgument implements ArgumentType<AngleArgument.SingleAngle> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("0", "~", "~-5");
+public class AngleArgument implements SerializableArgument.ContextFree<AngleArgument.SingleAngle> {
+   private static final AngleArgument INSTANCE = new AngleArgument();
+   public static final SerializableArgument.Type<AngleArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
+   private static final Collection<String> EXAMPLES = List.of("0", "~", "~-5");
    public static final SimpleCommandExceptionType ERROR_NOT_COMPLETE = new SimpleCommandExceptionType(Component.translatable("argument.angle.incomplete"));
    public static final SimpleCommandExceptionType ERROR_INVALID_ANGLE = new SimpleCommandExceptionType(Component.translatable("argument.angle.invalid"));
 
-   public static AngleArgument angle() {
-      return new AngleArgument();
+   private AngleArgument() {
+   }
+
+   @Override
+   public SerializableArgument.Type<AngleArgument> type() {
+      return TYPE;
+   }
+
+   public static ArgumentType<AngleArgument.SingleAngle> angle() {
+      return INSTANCE.toBrigadier();
    }
 
    public static float getAngle(final CommandContext<CommandSourceStack> context, final String name) {
@@ -39,6 +49,7 @@ public class AngleArgument implements ArgumentType<AngleArgument.SingleAngle> {
       }
    }
 
+   @Override
    public Collection<String> getExamples() {
       return EXAMPLES;
    }

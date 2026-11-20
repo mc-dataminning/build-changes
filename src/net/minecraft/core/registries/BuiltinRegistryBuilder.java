@@ -1,11 +1,9 @@
 package net.minecraft.core.registries;
 
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Lifecycle;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.function.Supplier;
 import net.minecraft.core.DefaultedMappedRegistry;
 import net.minecraft.core.DefaultedRegistry;
 import net.minecraft.core.MappedRegistry;
@@ -16,11 +14,9 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.Bootstrap;
 import net.minecraft.util.DevUtil;
-import org.slf4j.Logger;
 
 public class BuiltinRegistryBuilder {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Map<Identifier, Supplier<?>> loaders = new LinkedHashMap<>();
+   private final List<Runnable> loaders = new ArrayList<>();
    private final WritableRegistry<WritableRegistry<?>> registry;
 
    public BuiltinRegistryBuilder(final Identifier root) {
@@ -53,8 +49,7 @@ public class BuiltinRegistryBuilder {
       final ResourceKey<? extends Registry<T>> name, final R registry, final BuiltinRegistryBuilder.RegistryBootstrap<T> loader
    ) {
       Bootstrap.checkBootstrapCalled(() -> "registry " + name.identifier());
-      Identifier key = name.identifier();
-      this.loaders.put(key, () -> loader.run(registry));
+      this.loaders.add(() -> loader.run(registry));
       this.registry.register((ResourceKey<WritableRegistry<?>>)name, registry, RegistrationInfo.BUILT_IN);
       return registry;
    }
@@ -66,11 +61,7 @@ public class BuiltinRegistryBuilder {
    }
 
    private void createContents() {
-      this.loaders.forEach((key, value) -> {
-         if (value.get() == null) {
-            LOGGER.error("Unable to bootstrap registry '{}'", key);
-         }
-      });
+      this.loaders.forEach(Runnable::run);
    }
 
    private void freeze() {
@@ -95,6 +86,10 @@ public class BuiltinRegistryBuilder {
       });
    }
 
+   public static <T> BuiltinRegistryBuilder.RegistryBootstrap<T> staticFieldBootstrap(final BuiltinRegistryBuilder.StaticFieldRegistryBootstrap<T> bootstrap) {
+      return var1 -> Objects.requireNonNull(bootstrap.run());
+   }
+
    private static void bindBootstrappedTagsToEmpty(final Registry<?> registry) {
       ((MappedRegistry)registry).bindAllTagsToEmpty();
    }
@@ -105,6 +100,11 @@ public class BuiltinRegistryBuilder {
 
    @FunctionalInterface
    public interface RegistryBootstrap<T> {
-      Object run(Registry<T> registry);
+      void run(WritableRegistry<T> registry);
+   }
+
+   @FunctionalInterface
+   public interface StaticFieldRegistryBootstrap<T> {
+      Object run();
    }
 }

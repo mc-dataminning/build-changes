@@ -118,8 +118,4 @@ public class Attributes {
    private static Holder<Attribute> register(final String name, final Attribute attribute) {
       return Registry.registerForHolder(BuiltInRegistries.ATTRIBUTE, Identifier.withDefaultNamespace(name), attribute);
    }
-
-   public static Holder<Attribute> bootstrap(final Registry<Attribute> registry) {
-      return MAX_HEALTH;
-   }
 }

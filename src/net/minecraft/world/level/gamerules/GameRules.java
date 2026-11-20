@@ -1,8 +1,5 @@
 package net.minecraft.world.level.gamerules;
 
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import java.util.List;
@@ -10,10 +7,15 @@ import java.util.Objects;
 import java.util.function.ToIntFunction;
 import java.util.stream.Stream;
 import net.minecraft.SharedConstants;
+import net.minecraft.advancements.predicates.MinMaxBounds;
+import net.minecraft.commands.arguments.BooleanArgument;
+import net.minecraft.commands.arguments.IntegerArgument;
+import net.minecraft.commands.arguments.SerializableArgument;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import org.jspecify.annotations.Nullable;
@@ -169,7 +171,7 @@ public class GameRules {
          id,
          category,
          GameRuleType.BOOL,
-         BoolArgumentType.bool(),
+         BooleanArgument.INSTANCE,
          Codec.BOOL,
          defaultValue,
          FeatureFlagSet.of(),
@@ -179,22 +181,32 @@ public class GameRules {
    }
 
    private static GameRule<Integer> registerInteger(final String id, final GameRuleCategory category, final int defaultValue, final int min) {
-      return registerInteger(id, category, defaultValue, min, Integer.MAX_VALUE, FeatureFlagSet.of());
+      return registerInteger(id, category, defaultValue, MinMaxBounds.Bounds.atLeast(min), FeatureFlagSet.of());
    }
 
    private static GameRule<Integer> registerInteger(final String id, final GameRuleCategory category, final int defaultValue, final int min, final int max) {
-      return registerInteger(id, category, defaultValue, min, max, FeatureFlagSet.of());
+      return registerInteger(id, category, defaultValue, MinMaxBounds.Bounds.between(min, max), FeatureFlagSet.of());
    }
 
    private static GameRule<Integer> registerInteger(
       final String id, final GameRuleCategory category, final int defaultValue, final int min, final int max, final FeatureFlagSet requiredFeatures
    ) {
+      return registerInteger(id, category, defaultValue, MinMaxBounds.Bounds.between(min, max), requiredFeatures);
+   }
+
+   private static GameRule<Integer> registerInteger(
+      final String id,
+      final GameRuleCategory category,
+      final int defaultValue,
+      final MinMaxBounds.Bounds<Integer> bounds,
+      final FeatureFlagSet requiredFeatures
+   ) {
       return register(
          id,
          category,
          GameRuleType.INT,
-         IntegerArgumentType.integer(min, max),
-         Codec.intRange(min, max),
+         new IntegerArgument(bounds),
+         ExtraCodecs.inRange(Codec.INT, bounds.asRange()),
          defaultValue,
          requiredFeatures,
          GameRuleTypeVisitor::visitInteger,
@@ -206,7 +218,7 @@ public class GameRules {
       final String id,
       final GameRuleCategory category,
       final GameRuleType typeHint,
-      final ArgumentType<T> argumentType,
+      final SerializableArgument.ContextFree<T> argumentType,
       final Codec<T> codec,
       final T defaultValue,
       final FeatureFlagSet requiredFeatures,
@@ -218,10 +230,6 @@ public class GameRules {
          id,
          new GameRule<>(category, typeHint, argumentType, visitorCaller, codec, commandResultFunction, defaultValue, requiredFeatures)
       );
-   }
-
-   public static GameRule<?> bootstrap(final Registry<GameRule<?>> registry) {
-      return ADVANCE_TIME;
    }
 
    public <T> String getAsString(final GameRule<T> gameRule) {

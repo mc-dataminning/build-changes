@@ -18,7 +18,6 @@ public record ClientboundExplodePacket(
    Vec3 center,
    float radius,
    int blockCount,
-   Optional<Vec3> playerKnockback,
    Optional<ParticleOptions> explosionParticle,
    Optional<Holder<SoundEvent>> explosionSound,
    WeightedList<ExplosionParticleInfo> blockParticles
@@ -30,8 +29,6 @@ public record ClientboundExplodePacket(
       ClientboundExplodePacket::radius,
       ByteBufCodecs.INT,
       ClientboundExplodePacket::blockCount,
-      Vec3.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      ClientboundExplodePacket::playerKnockback,
       ParticleTypes.STREAM_CODEC.apply(ByteBufCodecs::optional),
       ClientboundExplodePacket::explosionParticle,
       SoundEvent.STREAM_CODEC.apply(ByteBufCodecs::optional),

@@ -8,6 +8,7 @@ import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 public class SetComponentsFunction extends LootItemConditionalFunction {
@@ -24,6 +25,10 @@ public class SetComponentsFunction extends LootItemConditionalFunction {
    @Override
    public MapCodec<SetComponentsFunction> codec() {
       return MAP_CODEC;
+   }
+
+   @Override
+   protected void validateCustom(final ValidationContext context) {
    }
 
    @Override

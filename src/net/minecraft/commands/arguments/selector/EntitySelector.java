@@ -9,18 +9,23 @@ import java.util.UUID;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 import net.minecraft.advancements.predicates.MinMaxBounds;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.commands.suggestions.SuggestionContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.permissions.PermissionSetSupplier;
 import net.minecraft.server.permissions.Permissions;
 import net.minecraft.util.CompilableString;
 import net.minecraft.util.Util;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.AABB;
@@ -116,9 +121,61 @@ public class EntitySelector {
       return this.usesSelector;
    }
 
-   private void checkPermissions(final CommandSourceStack sender) throws CommandSyntaxException {
+   private void checkPermissions(final PermissionSetSupplier sender) throws CommandSyntaxException {
       if (this.usesSelector && !sender.permissions().hasPermission(Permissions.COMMANDS_ENTITY_SELECTORS)) {
          throw EntityArgument.ERROR_SELECTORS_NOT_ALLOWED.create();
+      }
+   }
+
+   public Stream<? extends Entity> findSuggestions(final MinecraftServer server, final SuggestionContext sender) throws CommandSyntaxException {
+      Stream<? extends Entity> entities = this.findEntitySuggestions(server, sender);
+      return this.includesEntities ? entities : entities.filter(e -> e instanceof Player);
+   }
+
+   private Stream<? extends Entity> findEntitySuggestions(final MinecraftServer server, final SuggestionContext sender) throws CommandSyntaxException {
+      this.checkPermissions(sender);
+      if (this.playerName != null) {
+         ServerPlayer result = server.getPlayerList().getPlayerByName(this.playerName);
+         return result == null ? Stream.of() : Stream.of(result);
+      }
+
+      if (this.entityUUID != null) {
+         for (ServerLevel level : server.getAllLevels()) {
+            Entity entity = level.getEntity(this.entityUUID);
+            if (entity != null) {
+               if (entity.getType().isEnabled(sender.enabledFeatures())) {
+                  return Stream.of(entity);
+               }
+               break;
+            }
+         }
+
+         return Stream.of();
+      } else {
+         Vec3 pos = this.position.apply(sender.position());
+         AABB absoluteAabb = this.getAbsoluteAabb(pos);
+         if (this.currentEntity) {
+            Predicate<Entity> predicate = this.getPredicate(pos, absoluteAabb, null);
+            Entity currentEntity = sender.entity();
+            return currentEntity != null && predicate.test(currentEntity) ? Stream.of(currentEntity) : Stream.of();
+         }
+
+         Predicate<Entity> predicate = this.getPredicate(pos, absoluteAabb, sender.enabledFeatures());
+         List<Entity> result = new ObjectArrayList();
+         if (this.isWorldLimited()) {
+            if (!(sender.level() instanceof ServerLevel serverLevel)) {
+               return Stream.of();
+            }
+
+            this.addEntities(result, serverLevel, absoluteAabb, predicate);
+         } else {
+            for (ServerLevel level : server.getAllLevels()) {
+               this.addEntities(result, level, absoluteAabb, predicate);
+            }
+         }
+
+         List<Entity> entities = this.sortAndLimit(pos, result);
+         return entities.stream();
       }
    }
 
@@ -130,7 +187,7 @@ public class EntitySelector {
       } else if (entities.size() > 1) {
          throw EntityArgument.ERROR_NOT_SINGLE_ENTITY.create();
       } else {
-         return entities.get(0);
+         return entities.getFirst();
       }
    }
 
@@ -140,13 +197,14 @@ public class EntitySelector {
          return this.findPlayers(sender);
       }
 
+      MinecraftServer server = sender.getServer();
       if (this.playerName != null) {
-         ServerPlayer result = sender.getServer().getPlayerList().getPlayerByName(this.playerName);
+         ServerPlayer result = server.getPlayerList().getPlayerByName(this.playerName);
          return result == null ? List.of() : List.of(result);
       }
 
       if (this.entityUUID != null) {
-         for (ServerLevel level : sender.getServer().getAllLevels()) {
+         for (ServerLevel level : server.getAllLevels()) {
             Entity entity = level.getEntity(this.entityUUID);
             if (entity != null) {
                if (entity.getType().isEnabled(sender.enabledFeatures())) {
@@ -170,7 +228,7 @@ public class EntitySelector {
          if (this.isWorldLimited()) {
             this.addEntities(result, sender.getLevel(), absoluteAabb, predicate);
          } else {
-            for (ServerLevel level : sender.getServer().getAllLevels()) {
+            for (ServerLevel level : server.getAllLevels()) {
                this.addEntities(result, level, absoluteAabb, predicate);
             }
          }
@@ -200,19 +258,20 @@ public class EntitySelector {
       if (players.size() != 1) {
          throw EntityArgument.NO_PLAYERS_FOUND.create();
       } else {
-         return players.get(0);
+         return players.getFirst();
       }
    }
 
    public List<ServerPlayer> findPlayers(final CommandSourceStack sender) throws CommandSyntaxException {
       this.checkPermissions(sender);
+      MinecraftServer server = sender.getServer();
       if (this.playerName != null) {
-         ServerPlayer result = sender.getServer().getPlayerList().getPlayerByName(this.playerName);
+         ServerPlayer result = server.getPlayerList().getPlayerByName(this.playerName);
          return result == null ? List.of() : List.of(result);
       }
 
       if (this.entityUUID != null) {
-         ServerPlayer result = sender.getServer().getPlayerList().getPlayer(this.entityUUID);
+         ServerPlayer result = server.getPlayerList().getPlayer(this.entityUUID);
          return result == null ? List.of() : List.of(result);
       }
 
@@ -230,7 +289,7 @@ public class EntitySelector {
       } else {
          result = new ObjectArrayList();
 
-         for (ServerPlayer player : sender.getServer().getPlayerList().getPlayers()) {
+         for (ServerPlayer player : server.getPlayerList().getPlayers()) {
             if (predicate.test(player)) {
                result.add(player);
                if (result.size() >= limit) {

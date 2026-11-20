@@ -1,7 +1,6 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
@@ -9,13 +8,17 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.ResourceOrIdArgument;
+import net.minecraft.commands.arguments.ContextFloatProviderArgument;
+import net.minecraft.commands.arguments.ContextIntProviderArgument;
+import net.minecraft.commands.arguments.FloatArgument;
+import net.minecraft.commands.arguments.ValidationWrapper;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
+import net.minecraft.util.context.ContextKeySet;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
@@ -28,21 +31,27 @@ public class ComputeCommand {
       value -> Component.translatableEscape("commands.compute.result.unnamed.invalid", value)
    );
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          LootContextSources.addContextSources(
-            (LiteralArgumentBuilder & ArgumentBuilder)Commands.literal("compute").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)),
-            (contextDecorator, output) -> {
+            (LiteralArgumentBuilder & ArgumentBuilder)Commands.literal("compute").requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)),
+            (contextDecorator, contextKeySet, output) -> {
                output.accept(
                   Commands.literal("float")
                      .then(
-                        ((RequiredArgumentBuilder)Commands.argument("provider", ResourceOrIdArgument.floatProvider(context))
-                              .executes(c -> computeAsFloat(c, contextDecorator, ResourceOrIdArgument.getFloatProvider(c, "provider"), 1.0F)))
+                        ((RequiredArgumentBuilder)Commands.argument("provider", ContextFloatProviderArgument.floatProvider(contextKeySet))
+                              .executes(
+                                 c -> computeAsFloat(c, contextKeySet, contextDecorator, ContextFloatProviderArgument.getFloatProvider(c, "provider"), 1.0F)
+                              ))
                            .then(
-                              Commands.argument("scale", FloatArgumentType.floatArg())
+                              Commands.argument("scale", FloatArgument.floatArg())
                                  .executes(
                                     c -> computeAsFloat(
-                                       c, contextDecorator, ResourceOrIdArgument.getFloatProvider(c, "provider"), FloatArgumentType.getFloat(c, "scale")
+                                       c,
+                                       contextKeySet,
+                                       contextDecorator,
+                                       ContextFloatProviderArgument.getFloatProvider(c, "provider"),
+                                       FloatArgument.getFloat(c, "scale")
                                     )
                                  )
                            )
@@ -51,8 +60,8 @@ public class ComputeCommand {
                output.accept(
                   Commands.literal("integer")
                      .then(
-                        Commands.argument("provider", ResourceOrIdArgument.intProvider(context))
-                           .executes(c -> computeAsInt(c, contextDecorator, ResourceOrIdArgument.getIntProvider(c, "provider")))
+                        Commands.argument("provider", ContextIntProviderArgument.intProvider(contextKeySet))
+                           .executes(c -> computeAsInt(c, contextKeySet, contextDecorator, ContextIntProviderArgument.getIntProvider(c, "provider")))
                      )
                );
             }
@@ -79,9 +88,13 @@ public class ComputeCommand {
    }
 
    private static int computeAsInt(
-      final CommandContext<CommandSourceStack> context, final LootContextSources.ContextDecorator decorator, final Holder<ContextIntProvider> provider
+      final CommandContext<CommandSourceStack> context,
+      final ContextKeySet contextKeySet,
+      final LootContextSources.ContextDecorator decorator,
+      final ValidationWrapper<ContextIntProvider> providerWrapper
    ) throws CommandSyntaxException {
       LootContext lootContext = decorator.createContext(context);
+      Holder<ContextIntProvider> provider = providerWrapper.validateAndGet(contextKeySet);
 
       try {
          int result = provider.value().getIntUnsafe(lootContext);
@@ -95,10 +108,12 @@ public class ComputeCommand {
 
    private static int computeAsFloat(
       final CommandContext<CommandSourceStack> context,
+      final ContextKeySet contextKeySet,
       final LootContextSources.ContextDecorator decorator,
-      final Holder<ContextFloatProvider> provider,
+      final ValidationWrapper<ContextFloatProvider> providerWrapper,
       final float scale
    ) throws CommandSyntaxException {
+      Holder<ContextFloatProvider> provider = providerWrapper.validateAndGet(contextKeySet);
       LootContext lootContext = decorator.createContext(context);
 
       float original;

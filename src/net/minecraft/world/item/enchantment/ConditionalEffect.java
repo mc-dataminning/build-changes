@@ -26,6 +26,6 @@ public record ConditionalEffect<T>(T effect, Optional<Holder<LootItemCondition>>
 
    @Override
    public void validate(final ValidationContext context) {
-      Validatable.validateHolder(context, "requirements", this.requirements);
+      Validatable.validateConditionHolder(context, "requirements", this.requirements);
    }
 }

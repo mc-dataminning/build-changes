@@ -46,7 +46,7 @@ public final class RegistryFixedCodec<E> implements Codec<Holder<E>> {
 
    public <T> DataResult<Pair<Holder<E>, T>> decode(final DynamicOps<T> ops, final T input) {
       if (ops instanceof RegistryOps<?> registryOps) {
-         Optional<HolderGetter<E>> lookup = registryOps.getter(this.registryKey);
+         Optional<? extends HolderGetter<E>> lookup = registryOps.getter(this.registryKey);
          if (lookup.isPresent()) {
             return Identifier.CODEC
                .decode(ops, input)

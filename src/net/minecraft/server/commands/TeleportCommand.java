@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.EnumSet;
 import java.util.Locale;
 import java.util.Set;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
@@ -51,7 +52,7 @@ public class TeleportCommand {
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       LiteralCommandNode<CommandSourceStack> teleport = dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("teleport")
-                     .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                     .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                   .then(
                      Commands.argument("location", Vec3Argument.vec3())
                         .executes(
@@ -161,7 +162,7 @@ public class TeleportCommand {
             )
       );
       dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("tp").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("tp").requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
             .redirect(teleport)
       );
    }

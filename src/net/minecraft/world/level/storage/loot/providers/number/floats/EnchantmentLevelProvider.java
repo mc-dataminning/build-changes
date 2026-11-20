@@ -20,7 +20,7 @@ public record EnchantmentLevelProvider(LevelBasedValue amount) implements Contex
    }
 
    @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
+   public Set<ContextKey<?>> getRequiredParams() {
       return Set.of(LootContextParams.ENCHANTMENT_LEVEL);
    }
 

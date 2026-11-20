@@ -25,7 +25,7 @@ public class FixWolfHealth extends NamedEntityFix {
                attributes -> attributes.createList(
                   attributes.asStream()
                      .map(
-                        attribute -> "minecraft:generic.max_health".equals(NamespacedSchema.ensureNamespaced(attribute.get("Name").asString("")))
+                        attribute -> NamespacedSchema.namespacedIdMatches(attribute.get("Name"), "minecraft:generic.max_health")
                            ? attribute.update("Base", base -> {
                               if (base.asDouble(0.0) == 20.0) {
                                  healthAdjusted.setTrue();

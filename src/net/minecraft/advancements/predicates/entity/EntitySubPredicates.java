@@ -2,9 +2,10 @@ package net.minecraft.advancements.predicates.entity;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 
 public class EntitySubPredicates {
-   public static Codec<? extends EntitySubPredicate> bootstrap(final Registry<Codec<? extends EntitySubPredicate>> registry) {
+   public static void bootstrap(final WritableRegistry<Codec<? extends EntitySubPredicate>> registry) {
       Registry.register(registry, "entity_type", EntityTypePredicate.CODEC);
       Registry.register(registry, "location", EntityLocationPredicate.CODEC);
       Registry.register(registry, "stepping_on", SteppingOnPredicate.CODEC);
@@ -29,6 +30,6 @@ public class EntitySubPredicates {
       Registry.register(registry, "type_specific/player", PlayerPredicate.CODEC);
       Registry.register(registry, "type_specific/cube_mob", CubeMobPredicate.CODEC);
       Registry.register(registry, "type_specific/raider", RaiderPredicate.CODEC);
-      return Registry.register(registry, "type_specific/sheep", SheepPredicate.CODEC);
+      Registry.register(registry, "type_specific/sheep", SheepPredicate.CODEC);
    }
 }

@@ -25,8 +25,8 @@ public class ServerAdvancementManager {
       HolderLookup.RegistryLookup<Advancement> advancements = registries.lookupOrThrow(Registries.ADVANCEMENT);
       Builder<Identifier, AdvancementHolder> builder = ImmutableMap.builder();
       advancements.listElements().forEach(advancement -> {
-         validate(registries, (Holder.Reference<Advancement>)advancement);
-         builder.put(advancement.key().identifier(), new AdvancementHolder(advancement.key().identifier(), advancement.value()));
+         validate((Holder.Reference<Advancement>)advancement);
+         builder.put(advancement.key().identifier(), AdvancementHolder.wrap((Holder.Reference<Advancement>)advancement));
       });
       this.advancements = builder.buildOrThrow();
       AdvancementTree tree = new AdvancementTree();
@@ -35,10 +35,10 @@ public class ServerAdvancementManager {
       this.tree = tree;
    }
 
-   private static void validate(final HolderLookup.Provider registries, final Holder.Reference<Advancement> advancement) {
+   private static void validate(final Holder.Reference<Advancement> advancement) {
       ProblemReporter.Collector problemCollector = new ProblemReporter.Collector();
-      advancement.value().validate(problemCollector, registries);
-      if (!problemCollector.isEmpty()) {
+      advancement.value().validate(problemCollector);
+      if (problemCollector.hasAnyProblems()) {
          LOGGER.warn("Found validation problems in advancement {}: \n{}", advancement.key().identifier(), problemCollector.getReport());
       }
    }

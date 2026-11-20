@@ -3,7 +3,6 @@ package net.minecraft.nbt;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMap.Builder;
 import com.google.common.primitives.UnsignedBytes;
-import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
@@ -31,6 +30,7 @@ import net.minecraft.util.parsing.packrat.NamedRule;
 import net.minecraft.util.parsing.packrat.ParseState;
 import net.minecraft.util.parsing.packrat.Scope;
 import net.minecraft.util.parsing.packrat.Term;
+import net.minecraft.util.parsing.packrat.commands.CommandParserState;
 import net.minecraft.util.parsing.packrat.commands.Grammar;
 import net.minecraft.util.parsing.packrat.commands.GreedyPatternParseRule;
 import net.minecraft.util.parsing.packrat.commands.GreedyPredicateParseRule;
@@ -97,7 +97,9 @@ public class SnbtGrammar {
    private static final DelayedException<CommandSyntaxException> ERROR_INFINITY_NOT_ALLOWED = DelayedException.create(
       new SimpleCommandExceptionType(Component.translatable("snbt.parser.infinity_not_allowed"))
    );
-   private static final NumberRunParseRule BINARY_NUMERAL = new NumberRunParseRule(ERROR_EXPECTED_BINARY_NUMERAL, ERROR_UNDESCORE_NOT_ALLOWED) {
+   private static final NumberRunParseRule<CommandParserState> BINARY_NUMERAL = new NumberRunParseRule<CommandParserState>(
+      ERROR_EXPECTED_BINARY_NUMERAL, ERROR_UNDESCORE_NOT_ALLOWED
+   ) {
       @Override
       protected boolean isAccepted(final char c) {
          return switch (c) {
@@ -106,7 +108,9 @@ public class SnbtGrammar {
          };
       }
    };
-   private static final NumberRunParseRule DECIMAL_NUMERAL = new NumberRunParseRule(ERROR_EXPECTED_DECIMAL_NUMERAL, ERROR_UNDESCORE_NOT_ALLOWED) {
+   private static final NumberRunParseRule<CommandParserState> DECIMAL_NUMERAL = new NumberRunParseRule<CommandParserState>(
+      ERROR_EXPECTED_DECIMAL_NUMERAL, ERROR_UNDESCORE_NOT_ALLOWED
+   ) {
       @Override
       protected boolean isAccepted(final char c) {
          return switch (c) {
@@ -115,7 +119,9 @@ public class SnbtGrammar {
          };
       }
    };
-   private static final NumberRunParseRule HEX_NUMERAL = new NumberRunParseRule(ERROR_EXPECTED_HEX_NUMERAL, ERROR_UNDESCORE_NOT_ALLOWED) {
+   private static final NumberRunParseRule<CommandParserState> HEX_NUMERAL = new NumberRunParseRule<CommandParserState>(
+      ERROR_EXPECTED_HEX_NUMERAL, ERROR_UNDESCORE_NOT_ALLOWED
+   ) {
       @Override
       protected boolean isAccepted(final char c) {
          return switch (c) {
@@ -124,7 +130,9 @@ public class SnbtGrammar {
          };
       }
    };
-   private static final GreedyPredicateParseRule PLAIN_STRING_CHUNK = new GreedyPredicateParseRule(1, ERROR_INVALID_STRING_CONTENTS) {
+   private static final GreedyPredicateParseRule<CommandParserState> PLAIN_STRING_CHUNK = new GreedyPredicateParseRule<CommandParserState>(
+      1, ERROR_INVALID_STRING_CONTENTS
+   ) {
       @Override
       protected boolean isAccepted(final char c) {
          return switch (c) {
@@ -133,7 +141,9 @@ public class SnbtGrammar {
          };
       }
    };
-   private static final StringReaderTerms.TerminalCharacters NUMBER_LOOKEAHEAD = new StringReaderTerms.TerminalCharacters(CharList.of()) {
+   private static final StringReaderTerms.TerminalCharacters<CommandParserState> NUMBER_LOOKEAHEAD = new StringReaderTerms.TerminalCharacters<CommandParserState>(
+      CharList.of()
+   ) {
       @Override
       protected boolean isAccepted(final char c) {
          return SnbtGrammar.canStartNumber(c);
@@ -257,12 +267,12 @@ public class SnbtGrammar {
       };
    }
 
-   public static <T> Grammar<T> createParser(final DynamicOps<T> ops) {
+   public static <S extends CommandParserState, T> Grammar<CommandParserState, T> createParser(final DynamicOps<T> ops) {
       T trueValue = (T)ops.createBoolean(true);
       T falseValue = (T)ops.createBoolean(false);
       T emptyMapValue = (T)ops.emptyMap();
       T emptyList = (T)ops.emptyList();
-      Dictionary<StringReader> rules = new Dictionary<>();
+      Dictionary<CommandParserState> rules = new Dictionary<>();
       Atom<SnbtGrammar.Sign> sign = Atom.of("sign");
       rules.put(
          sign,
@@ -332,7 +342,7 @@ public class SnbtGrammar {
       Atom<String> hexNumeral = Atom.of("hex_numeral");
       rules.put(hexNumeral, HEX_NUMERAL);
       Atom<SnbtGrammar.IntegerLiteral> integerLiteral = Atom.of("integer_literal");
-      NamedRule<StringReader, SnbtGrammar.IntegerLiteral> integerLiteralRule = rules.put(
+      NamedRule<CommandParserState, SnbtGrammar.IntegerLiteral> integerLiteralRule = rules.put(
          integerLiteral,
          Term.sequence(
             Term.optional(rules.named(sign)),
@@ -429,7 +439,7 @@ public class SnbtGrammar {
       Atom<String> stringHex8 = Atom.of("string_hex_8");
       rules.put(stringHex8, new SnbtGrammar.SimpleHexLiteralParseRule(8));
       Atom<String> stringUnicodeName = Atom.of("string_unicode_name");
-      rules.put(stringUnicodeName, new GreedyPatternParseRule(UNICODE_NAME, ERROR_INVALID_CHARACTER_NAME));
+      rules.put(stringUnicodeName, new GreedyPatternParseRule<>(UNICODE_NAME, ERROR_INVALID_CHARACTER_NAME));
       Atom<String> stringEscapeSequence = Atom.of("string_escape_sequence");
       rules.putComplex(
          stringEscapeSequence,
@@ -484,7 +494,7 @@ public class SnbtGrammar {
       Atom<List<String>> stringChunks = Atom.of("string_chunks");
       Atom<String> stringContents = Atom.of("string_contents");
       Atom<String> singleQuotedStringChunk = Atom.of("single_quoted_string_chunk");
-      NamedRule<StringReader, String> singleQuotedStringChunkRule = rules.put(
+      NamedRule<CommandParserState, String> singleQuotedStringChunkRule = rules.put(
          singleQuotedStringChunk,
          Term.alternative(
             rules.namedWithAlias(stringPlainContents, stringContents),
@@ -496,7 +506,7 @@ public class SnbtGrammar {
       Atom<String> singleQuotedStringContents = Atom.of("single_quoted_string_contents");
       rules.put(singleQuotedStringContents, Term.repeated(singleQuotedStringChunkRule, stringChunks), scope -> joinList(scope.getOrThrow(stringChunks)));
       Atom<String> doubleQuotedStringChunk = Atom.of("double_quoted_string_chunk");
-      NamedRule<StringReader, String> doubleQuotedStringChunkRule = rules.put(
+      NamedRule<CommandParserState, String> doubleQuotedStringChunkRule = rules.put(
          doubleQuotedStringChunk,
          Term.alternative(
             rules.namedWithAlias(stringPlainContents, stringContents),
@@ -526,7 +536,7 @@ public class SnbtGrammar {
          scope -> scope.getOrThrow(stringContents)
       );
       Atom<String> unquotedString = Atom.of("unquoted_string");
-      rules.put(unquotedString, new UnquotedStringParseRule(1, ERROR_EXPECTED_UNQUOTED_STRING));
+      rules.put(unquotedString, new UnquotedStringParseRule<>(1, ERROR_EXPECTED_UNQUOTED_STRING));
       Atom<T> literal = Atom.of("literal");
       Atom<List<T>> argumentList = Atom.of("arguments");
       rules.put(
@@ -573,7 +583,7 @@ public class SnbtGrammar {
          scope -> scope.getAnyOrThrow(quotedStringLiteral, unquotedString)
       );
       Atom<Entry<String, T>> mapEntry = Atom.of("map_entry");
-      NamedRule<StringReader, Entry<String, T>> mapEntryRule = rules.putComplex(
+      NamedRule<CommandParserState, Entry<String, T>> mapEntryRule = rules.putComplex(
          mapEntry, Term.sequence(rules.named(mapKey), StringReaderTerms.character(':'), rules.named(literal)), state -> {
             Scope scope = state.scope();
             String key = scope.getOrThrow(mapKey);
@@ -647,7 +657,7 @@ public class SnbtGrammar {
             }
          }
       );
-      NamedRule<StringReader, T> literalRule = rules.putComplex(
+      NamedRule<CommandParserState, T> literalRule = rules.putComplex(
          literal,
          Term.alternative(
             Term.sequence(Term.positiveLookahead(NUMBER_LOOKEAHEAD), Term.alternative(rules.namedWithAlias(floatLiteral, literal), rules.named(integerLiteral))),
@@ -879,7 +889,7 @@ public class SnbtGrammar {
       UNSIGNED;
    }
 
-   private static class SimpleHexLiteralParseRule extends GreedyPredicateParseRule {
+   private static class SimpleHexLiteralParseRule extends GreedyPredicateParseRule<CommandParserState> {
       public SimpleHexLiteralParseRule(final int size) {
          super(size, size, DelayedException.create(SnbtGrammar.ERROR_EXPECTED_HEX_ESCAPE, String.valueOf(size)));
       }

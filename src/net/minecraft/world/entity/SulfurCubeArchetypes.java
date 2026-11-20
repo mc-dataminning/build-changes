@@ -191,7 +191,7 @@ public class SulfurCubeArchetypes {
          COLD,
          ItemTags.SULFUR_CUBE_ARCHETYPE_COLD,
          archetype(-0.5F, 0.1F, 0.05F, 0.01F),
-         true,
+         false,
          Optional.empty(),
          Optional.empty(),
          knockBackHitScale(0.6625F, 0.09F),
@@ -206,7 +206,7 @@ public class SulfurCubeArchetypes {
                      BlockPredicate.allOf(
                         BlockPredicate.matchesTag(Direction.UP, BlockTags.AIR),
                         BlockPredicate.matchesBlocks(Blocks.WATER),
-                        BlockPredicate.matchesFluids(Fluids.WATER),
+                        BlockPredicate.matchesSourceFluids(Fluids.WATER),
                         BlockPredicate.unobstructed()
                      )
                   ),

@@ -1,19 +1,20 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 import java.util.List;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.commands.arguments.FloatArgument;
 import net.minecraft.commands.arguments.IdentifierArgument;
 import net.minecraft.commands.arguments.coordinates.Vec3Argument;
-import net.minecraft.commands.synchronization.SuggestionProviders;
+import net.minecraft.commands.suggestions.SuggestAvailableSounds;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSoundPacket;
@@ -33,12 +34,15 @@ public class PlaySoundCommand {
       (player, var1, sound) -> Component.translatable("commands.playsound.success.single", Component.translationArg(sound), player.getDisplayName()),
       (playerCount, var1, sound) -> Component.translatable("commands.playsound.success.multiple", Component.translationArg(sound), playerCount)
    );
+   private static final float DEFAULT_VOLUME = 1.0F;
+   private static final float DEFAULT_PITCH = 1.0F;
+   private static final float DEFAULT_MIN_VOLUME = 0.0F;
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       RequiredArgumentBuilder<CommandSourceStack, Identifier> name = (RequiredArgumentBuilder<CommandSourceStack, Identifier>)Commands.argument(
             "sound", IdentifierArgument.id()
          )
-         .suggests(SuggestionProviders.cast(SuggestionProviders.AVAILABLE_SOUNDS))
+         .suggests(SuggestAvailableSounds.suggestAvailableSounds())
          .executes(
             c -> playSound(
                (CommandSourceStack)c.getSource(),
@@ -57,7 +61,8 @@ public class PlaySoundCommand {
       }
 
       dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("playsound").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("playsound")
+               .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
             .then(name)
       );
    }
@@ -105,7 +110,7 @@ public class PlaySoundCommand {
                            )
                         ))
                      .then(
-                        ((RequiredArgumentBuilder)Commands.argument("volume", FloatArgumentType.floatArg(0.0F))
+                        ((RequiredArgumentBuilder)Commands.argument("volume", FloatArgument.floatArg(0.0F))
                               .executes(
                                  c -> playSound(
                                     (CommandSourceStack)c.getSource(),
@@ -113,13 +118,13 @@ public class PlaySoundCommand {
                                     IdentifierArgument.getId(c, "sound"),
                                     source,
                                     Vec3Argument.getVec3(c, "pos"),
-                                    (Float)c.getArgument("volume", Float.class),
+                                    FloatArgument.getFloat(c, "volume"),
                                     1.0F,
                                     0.0F
                                  )
                               ))
                            .then(
-                              ((RequiredArgumentBuilder)Commands.argument("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
+                              ((RequiredArgumentBuilder)Commands.argument("pitch", FloatArgument.floatArg(0.0F, 2.0F))
                                     .executes(
                                        c -> playSound(
                                           (CommandSourceStack)c.getSource(),
@@ -127,13 +132,13 @@ public class PlaySoundCommand {
                                           IdentifierArgument.getId(c, "sound"),
                                           source,
                                           Vec3Argument.getVec3(c, "pos"),
-                                          (Float)c.getArgument("volume", Float.class),
-                                          (Float)c.getArgument("pitch", Float.class),
+                                          FloatArgument.getFloat(c, "volume"),
+                                          FloatArgument.getFloat(c, "pitch"),
                                           0.0F
                                        )
                                     ))
                                  .then(
-                                    Commands.argument("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
+                                    Commands.argument("minVolume", FloatArgument.floatArg(0.0F, 1.0F))
                                        .executes(
                                           c -> playSound(
                                              (CommandSourceStack)c.getSource(),
@@ -141,9 +146,9 @@ public class PlaySoundCommand {
                                              IdentifierArgument.getId(c, "sound"),
                                              source,
                                              Vec3Argument.getVec3(c, "pos"),
-                                             (Float)c.getArgument("volume", Float.class),
-                                             (Float)c.getArgument("pitch", Float.class),
-                                             (Float)c.getArgument("minVolume", Float.class)
+                                             FloatArgument.getFloat(c, "volume"),
+                                             FloatArgument.getFloat(c, "pitch"),
+                                             FloatArgument.getFloat(c, "minVolume")
                                           )
                                        )
                                  )

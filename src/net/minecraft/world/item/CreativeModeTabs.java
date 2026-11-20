@@ -13,14 +13,12 @@ import java.util.stream.Stream;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.InstrumentTags;
 import net.minecraft.tags.PaintingVariantTags;
@@ -70,7 +68,7 @@ public class CreativeModeTabs {
       return ResourceKey.create(Registries.CREATIVE_MODE_TAB, Identifier.withDefaultNamespace(id));
    }
 
-   public static CreativeModeTab bootstrap(final Registry<CreativeModeTab> registry) {
+   public static void bootstrap(final WritableRegistry<CreativeModeTab> registry) {
       Registry.register(
          registry,
          BUILDING_BLOCKS,
@@ -395,6 +393,8 @@ public class CreativeModeTabs {
                buildingBlocks.accept(Items.PACKED_ICE_BRICK_SLAB);
                buildingBlocks.accept(Items.PACKED_ICE_BRICK_WALL);
                buildingBlocks.accept(Items.CHISELED_PACKED_ICE);
+               buildingBlocks.accept(Items.SNOW);
+               buildingBlocks.accept(Items.SNOW_BLOCK);
                buildingBlocks.accept(Items.SNOW_BRICKS);
                buildingBlocks.accept(Items.SNOW_BRICK_STAIRS);
                buildingBlocks.accept(Items.SNOW_BRICK_SLAB);
@@ -884,7 +884,6 @@ public class CreativeModeTabs {
                      .ifPresent(
                         paintings -> generatePresetPaintings(
                            functionalBlocks,
-                           parameters.holders(),
                            (HolderLookup.RegistryLookup<PaintingVariant>)paintings,
                            variant -> variant.is(PaintingVariantTags.PLACEABLE),
                            CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
@@ -1670,7 +1669,6 @@ public class CreativeModeTabs {
                         .ifPresent(
                            paintings -> generatePresetPaintings(
                               opBlocks,
-                              parameters.holders(),
                               (HolderLookup.RegistryLookup<PaintingVariant>)paintings,
                               variant -> !variant.is(PaintingVariantTags.PLACEABLE),
                               CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
@@ -1681,7 +1679,7 @@ public class CreativeModeTabs {
             )
             .build()
       );
-      return Registry.register(
+      Registry.register(
          registry,
          INVENTORY,
          CreativeModeTab.builder(CreativeModeTab.Row.BOTTOM, 6)
@@ -1797,12 +1795,10 @@ public class CreativeModeTabs {
 
    private static void generatePresetPaintings(
       final CreativeModeTab.Output output,
-      final HolderLookup.Provider context,
       final HolderLookup.RegistryLookup<PaintingVariant> paintings,
       final Predicate<Holder<PaintingVariant>> filter,
       final CreativeModeTab.TabVisibility tabVisibility
    ) {
-      RegistryOps<Tag> ops = context.createSerializationContext(NbtOps.INSTANCE);
       paintings.listElements().filter(filter).sorted(PAINTING_COMPARATOR).forEach(painting -> {
          ItemStack stack = new ItemStack(Items.PAINTING);
          stack.set(DataComponents.PAINTING_VARIANT, painting);

@@ -38,6 +38,7 @@ import net.minecraft.client.gui.screens.AlertScreen;
 import net.minecraft.client.gui.screens.ConfirmScreen;
 import net.minecraft.client.gui.screens.NoticeWithLinkScreen;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.renderer.texture.ExternalTextureProvider;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.texture.TextureResources;
 import net.minecraft.network.chat.CommonComponents;
@@ -66,7 +67,9 @@ public class PackSelectionScreen extends Screen {
    private static final Component DRAG_AND_DROP = Component.translatable("pack.dropInfo").withStyle(ChatFormatting.GRAY);
    private static final Component DIRECTORY_BUTTON_TOOLTIP = Component.translatable("pack.folderInfo");
    private static final int RELOAD_COOLDOWN = 20;
-   private static final Identifier DEFAULT_ICON = Identifier.withDefaultNamespace("textures/misc/unknown_pack.png");
+   private static final PackSelectionScreen.PackIcon DEFAULT_ICON = new PackSelectionScreen.PackIcon(
+      null, Identifier.withDefaultNamespace("textures/misc/unknown_pack.png")
+   );
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
    private final PackSelectionModel model;
    private PackSelectionScreen.@Nullable Watcher watcher;
@@ -76,7 +79,7 @@ public class PackSelectionScreen extends Screen {
    private @Nullable EditBox search;
    private final Path packDir;
    private @Nullable Button doneButton;
-   private final Map<String, Identifier> packIcons = new HashMap<>();
+   private final Map<String, PackSelectionScreen.PackIcon> packIcons = new HashMap<>();
 
    public PackSelectionScreen(final PackRepository repository, final Consumer<PackRepository> output, final Path packDir, final Component title) {
       super(title);
@@ -87,6 +90,7 @@ public class PackSelectionScreen extends Screen {
 
    @Override
    public void onClose() {
+      this.closePackIcons();
       this.model.commit();
       this.closeWatcher();
    }
@@ -108,7 +112,7 @@ public class PackSelectionScreen extends Screen {
       header.defaultCellSetting().alignHorizontallyCenter();
       header.addChild(new StringWidget(this.getTitle(), this.font));
       header.addChild(new StringWidget(DRAG_AND_DROP, this.font));
-      this.search = header.addChild(new EditBox(this.font, 0, 0, 200, 15, Component.empty()));
+      this.search = header.addChild(new EditBox(this.font, 0, 0, 200, 15, SEARCH));
       this.search.setHint(SEARCH);
       this.search.setResponder(this::updateFilteredEntries);
       this.availablePackList = this.layout.addToContents(new TransferableSelectionList(this.minecraft, this, 200, this.height - 66, AVAILABLE_TITLE));
@@ -211,6 +215,11 @@ public class PackSelectionScreen extends Screen {
       this.model.findNewPacks();
       this.populateLists(null);
       this.ticksToReload = 0L;
+      this.closePackIcons();
+   }
+
+   private void closePackIcons() {
+      this.packIcons.values().forEach(icon -> icon.close(this.minecraft.getTextureManager()));
       this.packIcons.clear();
    }
 
@@ -306,7 +315,7 @@ public class PackSelectionScreen extends Screen {
       return files.stream().map(Path::getFileName).map(Path::toString);
    }
 
-   private Identifier loadPackIcon(final TextureManager textureManager, final Pack pack) {
+   private PackSelectionScreen.PackIcon loadPackIcon(final TextureManager textureManager, final Pack pack) {
       try (PackMetadataResources packResources = pack.openMetadata()) {
          IoSupplier<InputStream> resource = packResources.getRootResource("pack.png");
          if (resource == null) {
@@ -322,8 +331,9 @@ public class PackSelectionScreen extends Screen {
             InputStream stream = resource.get();
             NativeImage iconImage = NativeImage.read(stream);
          ) {
-            textureManager.register(location, TextureResources.from2dImage(location::toString, iconImage));
-            return location;
+            TextureResources texture = TextureResources.from2dImage(location::toString, iconImage);
+            textureManager.registerProvider(location, new ExternalTextureProvider(texture));
+            return new PackSelectionScreen.PackIcon(texture, location);
          }
       } catch (Exception e) {
          LOGGER.warn("Failed to load icon from pack {}", pack.getId(), e);
@@ -332,7 +342,16 @@ public class PackSelectionScreen extends Screen {
    }
 
    private Identifier getPackIcon(final Pack pack) {
-      return this.packIcons.computeIfAbsent(pack.getId(), s -> this.loadPackIcon(this.minecraft.getTextureManager(), pack));
+      return this.packIcons.computeIfAbsent(pack.getId(), s -> this.loadPackIcon(this.minecraft.getTextureManager(), pack)).location;
+   }
+
+   private record PackIcon(@Nullable TextureResources texture, Identifier location) {
+      private void close(final TextureManager textureManager) {
+         if (this.texture != null) {
+            textureManager.release(this.location);
+            this.texture.close();
+         }
+      }
    }
 
    private static class Watcher implements AutoCloseable {

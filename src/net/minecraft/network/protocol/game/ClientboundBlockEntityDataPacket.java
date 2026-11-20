@@ -2,7 +2,7 @@ package net.minecraft.network.protocol.game;
 
 import java.util.function.BiFunction;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -28,9 +28,9 @@ public class ClientboundBlockEntityDataPacket implements Packet<ClientGamePacket
    private final CompoundTag tag;
 
    public static ClientboundBlockEntityDataPacket create(
-      final BlockEntity blockEntity, final BiFunction<BlockEntity, RegistryAccess, CompoundTag> updateTagSaver
+      final BlockEntity blockEntity, final BiFunction<BlockEntity, HolderGetter.Provider, CompoundTag> updateTagSaver
    ) {
-      RegistryAccess registryAccess = blockEntity.getLevel().registryAccess();
+      HolderGetter.Provider registryAccess = blockEntity.getLevel().registryAccess();
       return new ClientboundBlockEntityDataPacket(blockEntity.getBlockPos(), blockEntity.getType(), updateTagSaver.apply(blockEntity, registryAccess));
    }
 

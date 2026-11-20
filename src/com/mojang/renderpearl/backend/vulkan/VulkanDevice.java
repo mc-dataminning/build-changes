@@ -87,6 +87,9 @@ public class VulkanDevice implements GpuDeviceBackend {
       VkPhysicalDeviceLimits limits = physicalDevice.vkPhysicalDeviceProperties().limits();
       VkPhysicalDeviceVulkan11Properties vk11Properties = physicalDevice.vkPhysicalDeviceVulkan11Properties();
       int indirectDrawCount = Integer.compareUnsigned(limits.maxDrawIndirectCount(), Integer.MAX_VALUE) > 0 ? Integer.MAX_VALUE : limits.maxDrawIndirectCount();
+      int maxTexelBufferElements = Integer.compareUnsigned(limits.maxTexelBufferElements(), Integer.MAX_VALUE) > 0
+         ? Integer.MAX_VALUE
+         : limits.maxTexelBufferElements();
       this.deviceInfo = new DeviceInfo(
          physicalDevice.deviceName(),
          physicalDevice.vendorName(),
@@ -102,7 +105,8 @@ public class VulkanDevice implements GpuDeviceBackend {
             physicalDevice.vkPhysicalDeviceMultiDrawPropertiesEXT().maxMultiDrawCount() < 0
                ? Integer.MAX_VALUE
                : physicalDevice.vkPhysicalDeviceMultiDrawPropertiesEXT().maxMultiDrawCount(),
-            indirectDrawCount
+            indirectDrawCount,
+            maxTexelBufferElements
          ),
          new DeviceFeatures(
             D3D12GpuSurface.available(vkDevice.getPhysicalDevice(), enabledFeatureSet),

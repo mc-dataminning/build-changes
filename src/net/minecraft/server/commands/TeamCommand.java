@@ -1,8 +1,6 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -11,11 +9,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.commands.arguments.BooleanArgument;
 import net.minecraft.commands.arguments.ComponentArgument;
 import net.minecraft.commands.arguments.ScoreHolderArgument;
+import net.minecraft.commands.arguments.StringArgument;
 import net.minecraft.commands.arguments.TeamArgument;
 import net.minecraft.commands.arguments.TeamColorArgument;
 import net.minecraft.network.chat.Component;
@@ -69,12 +69,12 @@ public class TeamCommand {
       (holderCount, var1, team) -> Component.translatable("commands.team.join.success.multiple", holderCount, team.getFormattedDisplayName())
    );
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal(
                                     "team"
                                  )
-                                 .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                                 .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                               .then(
                                  ((LiteralArgumentBuilder)Commands.literal("list").executes(c -> listTeams((CommandSourceStack)c.getSource())))
                                     .then(
@@ -85,14 +85,14 @@ public class TeamCommand {
                            .then(
                               Commands.literal("add")
                                  .then(
-                                    ((RequiredArgumentBuilder)Commands.argument("team", StringArgumentType.word())
-                                          .executes(c -> createTeam((CommandSourceStack)c.getSource(), StringArgumentType.getString(c, "team"))))
+                                    ((RequiredArgumentBuilder)Commands.argument("team", StringArgument.word())
+                                          .executes(c -> createTeam((CommandSourceStack)c.getSource(), StringArgument.getString(c, "team"))))
                                        .then(
-                                          Commands.argument("displayName", ComponentArgument.textComponent(context))
+                                          Commands.argument("displayName", ComponentArgument.textComponent())
                                              .executes(
                                                 c -> createTeam(
                                                    (CommandSourceStack)c.getSource(),
-                                                   StringArgumentType.getString(c, "team"),
+                                                   StringArgument.getString(c, "team"),
                                                    ComponentArgument.getResolvedComponent(c, "displayName")
                                                 )
                                              )
@@ -131,7 +131,7 @@ public class TeamCommand {
                                        c -> joinTeam(
                                           (CommandSourceStack)c.getSource(),
                                           TeamArgument.getTeam(c, "team"),
-                                          ScoreHolderArgument.getNamesWithDefaultWildcard(c, "members")
+                                          ScoreHolderArgument.getNames(c, "members", ScoreHolderArgument.TRACKED_PLAYERS_WILDCARD)
                                        )
                                     )
                               )
@@ -142,7 +142,11 @@ public class TeamCommand {
                      .then(
                         Commands.argument("members", ScoreHolderArgument.scoreHolders())
                            .suggests(ScoreHolderArgument.SUGGEST_SCORE_HOLDERS)
-                           .executes(c -> leaveTeam((CommandSourceStack)c.getSource(), ScoreHolderArgument.getNamesWithDefaultWildcard(c, "members")))
+                           .executes(
+                              c -> leaveTeam(
+                                 (CommandSourceStack)c.getSource(), ScoreHolderArgument.getNames(c, "members", ScoreHolderArgument.TRACKED_PLAYERS_WILDCARD)
+                              )
+                           )
                      )
                ))
             .then(
@@ -154,7 +158,7 @@ public class TeamCommand {
                                                 .then(
                                                    Commands.literal("displayName")
                                                       .then(
-                                                         Commands.argument("displayName", ComponentArgument.textComponent(context))
+                                                         Commands.argument("displayName", ComponentArgument.textComponent())
                                                             .executes(
                                                                c -> setDisplayName(
                                                                   (CommandSourceStack)c.getSource(),
@@ -184,12 +188,12 @@ public class TeamCommand {
                                           .then(
                                              Commands.literal("friendlyFire")
                                                 .then(
-                                                   Commands.argument("allowed", BoolArgumentType.bool())
+                                                   Commands.argument("allowed", BooleanArgument.bool())
                                                       .executes(
                                                          c -> setFriendlyFire(
                                                             (CommandSourceStack)c.getSource(),
                                                             TeamArgument.getTeam(c, "team"),
-                                                            BoolArgumentType.getBool(c, "allowed")
+                                                            BooleanArgument.getBool(c, "allowed")
                                                          )
                                                       )
                                                 )
@@ -197,12 +201,12 @@ public class TeamCommand {
                                        .then(
                                           Commands.literal("seeFriendlyInvisibles")
                                              .then(
-                                                Commands.argument("allowed", BoolArgumentType.bool())
+                                                Commands.argument("allowed", BooleanArgument.bool())
                                                    .executes(
                                                       c -> setFriendlySight(
                                                          (CommandSourceStack)c.getSource(),
                                                          TeamArgument.getTeam(c, "team"),
-                                                         BoolArgumentType.getBool(c, "allowed")
+                                                         BooleanArgument.getBool(c, "allowed")
                                                       )
                                                    )
                                              )
@@ -317,7 +321,7 @@ public class TeamCommand {
                            .then(
                               Commands.literal("prefix")
                                  .then(
-                                    Commands.argument("prefix", ComponentArgument.textComponent(context))
+                                    Commands.argument("prefix", ComponentArgument.textComponent())
                                        .executes(
                                           c -> setPrefix(
                                              (CommandSourceStack)c.getSource(),
@@ -330,7 +334,7 @@ public class TeamCommand {
                         .then(
                            Commands.literal("suffix")
                               .then(
-                                 Commands.argument("suffix", ComponentArgument.textComponent(context))
+                                 Commands.argument("suffix", ComponentArgument.textComponent())
                                     .executes(
                                        c -> setSuffix(
                                           (CommandSourceStack)c.getSource(),
@@ -345,7 +349,7 @@ public class TeamCommand {
       );
    }
 
-   private static int leaveTeam(final CommandSourceStack source, final Collection<ScoreHolder> members) throws CommandSyntaxException {
+   private static int leaveTeam(final CommandSourceStack source, final Collection<? extends ScoreHolder> members) throws CommandSyntaxException {
       CommandResponseTracker<ScoreHolder> tracker = CommandResponseTracker.create();
       Scoreboard scoreboard = source.getServer().getScoreboard();
 
@@ -356,7 +360,7 @@ public class TeamCommand {
       return tracker.sendFeedback(source, true, RESPONSE_LEAVE);
    }
 
-   private static int joinTeam(final CommandSourceStack source, final PlayerTeam team, final Collection<ScoreHolder> members) throws CommandSyntaxException {
+   private static int joinTeam(final CommandSourceStack source, final PlayerTeam team, final Collection<? extends ScoreHolder> members) throws CommandSyntaxException {
       CommandResponseTracker<ScoreHolder> tracker = CommandResponseTracker.create();
       Scoreboard scoreboard = source.getServer().getScoreboard();
 

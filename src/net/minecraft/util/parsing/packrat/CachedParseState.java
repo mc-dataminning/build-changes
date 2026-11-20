@@ -5,13 +5,13 @@ import org.jspecify.annotations.Nullable;
 
 public abstract class CachedParseState<S> implements ParseState<S> {
    private CachedParseState.@Nullable PositionCache[] positionCache = new CachedParseState.PositionCache[256];
-   private final ErrorCollector<S> errorCollector;
+   private final ErrorCollector errorCollector;
    private final Scope scope = new Scope();
    private CachedParseState.@Nullable SimpleControl[] controlCache = new CachedParseState.SimpleControl[16];
    private int nextControlToReturn;
    private final CachedParseState<S>.Silent silent = new CachedParseState.Silent();
 
-   protected CachedParseState(final ErrorCollector<S> errorCollector) {
+   protected CachedParseState(final ErrorCollector errorCollector) {
       this.errorCollector = errorCollector;
    }
 
@@ -21,7 +21,7 @@ public abstract class CachedParseState<S> implements ParseState<S> {
    }
 
    @Override
-   public ErrorCollector<S> errorCollector() {
+   public ErrorCollector errorCollector() {
       return this.errorCollector;
    }
 
@@ -157,10 +157,10 @@ public abstract class CachedParseState<S> implements ParseState<S> {
    }
 
    private class Silent implements ParseState<S> {
-      private final ErrorCollector<S> silentCollector = new ErrorCollector.Nop<>();
+      private final ErrorCollector silentCollector = ErrorCollector.NOP;
 
       @Override
-      public ErrorCollector<S> errorCollector() {
+      public ErrorCollector errorCollector() {
          return this.silentCollector;
       }
 

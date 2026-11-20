@@ -1,6 +1,6 @@
 package net.minecraft.server.jsonrpc;
 
-import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.server.jsonrpc.api.Schema;
 import net.minecraft.server.jsonrpc.methods.AllowlistService;
 import net.minecraft.server.jsonrpc.methods.BanlistService;
@@ -13,7 +13,7 @@ import net.minecraft.server.jsonrpc.methods.ServerSettingsService;
 import net.minecraft.server.jsonrpc.methods.ServerStateService;
 
 public class IncomingRpcMethods {
-   public static IncomingRpcMethod<?, ?> bootstrap(final Registry<IncomingRpcMethod<?, ?>> methodRegistry) {
+   public static void bootstrap(final WritableRegistry<IncomingRpcMethod<?, ?>> methodRegistry) {
       registerAllowListService(methodRegistry);
       registerBanlistService(methodRegistry);
       registerIpBanlistService(methodRegistry);
@@ -22,7 +22,7 @@ public class IncomingRpcMethods {
       registerServerStateService(methodRegistry);
       registerServerSettingsService(methodRegistry);
       registerGameRuleService(methodRegistry);
-      return IncomingRpcMethod.<DiscoveryService.DiscoverResponse>method(apiService -> DiscoveryService.discover(Schema.getSchemaRegistry()))
+      IncomingRpcMethod.<DiscoveryService.DiscoverResponse>method(apiService -> DiscoveryService.discover(Schema.getSchemaRegistry()))
          .undiscoverable()
          .allowPreServerInit()
          .notOnMainThread()
@@ -30,7 +30,7 @@ public class IncomingRpcMethods {
          .register(methodRegistry, "rpc.discover");
    }
 
-   private static void registerAllowListService(final Registry<IncomingRpcMethod<?, ?>> methodRegistry) {
+   private static void registerAllowListService(final WritableRegistry<IncomingRpcMethod<?, ?>> methodRegistry) {
       IncomingRpcMethod.method(AllowlistService::get)
          .description("Get the allowlist")
          .response("allowlist", Schema.PLAYER_SCHEMA.asArray())
@@ -56,7 +56,7 @@ public class IncomingRpcMethods {
          .register(methodRegistry, "allowlist/clear");
    }
 
-   private static void registerBanlistService(final Registry<IncomingRpcMethod<?, ?>> methodRegistry) {
+   private static void registerBanlistService(final WritableRegistry<IncomingRpcMethod<?, ?>> methodRegistry) {
       IncomingRpcMethod.method(BanlistService::get)
          .description("Get the ban list")
          .response("banlist", Schema.PLAYER_BAN_SCHEMA.asArray())
@@ -82,7 +82,7 @@ public class IncomingRpcMethods {
          .register(methodRegistry, "bans/clear");
    }
 
-   private static void registerIpBanlistService(final Registry<IncomingRpcMethod<?, ?>> methodRegistry) {
+   private static void registerIpBanlistService(final WritableRegistry<IncomingRpcMethod<?, ?>> methodRegistry) {
       IncomingRpcMethod.method(IpBanlistService::get)
          .description("Get the ip ban list")
          .response("banlist", Schema.IP_BAN_SCHEMA.asArray())
@@ -108,7 +108,7 @@ public class IncomingRpcMethods {
          .register(methodRegistry, "ip_bans/clear");
    }
 
-   private static void registerPlayerService(final Registry<IncomingRpcMethod<?, ?>> methodRegistry) {
+   private static void registerPlayerService(final WritableRegistry<IncomingRpcMethod<?, ?>> methodRegistry) {
       IncomingRpcMethod.method(PlayerService::get)
          .description("Get all connected players")
          .response("players", Schema.PLAYER_SCHEMA.asArray())
@@ -120,7 +120,7 @@ public class IncomingRpcMethods {
          .register(methodRegistry, "players/kick");
    }
 
-   private static void registerOperatorService(final Registry<IncomingRpcMethod<?, ?>> methodRegistry) {
+   private static void registerOperatorService(final WritableRegistry<IncomingRpcMethod<?, ?>> methodRegistry) {
       IncomingRpcMethod.method(OperatorService::get)
          .description("Get all oped players")
          .response("operators", Schema.OPERATOR_SCHEMA.asArray())
@@ -146,7 +146,7 @@ public class IncomingRpcMethods {
          .register(methodRegistry, "operators/clear");
    }
 
-   private static void registerServerStateService(final Registry<IncomingRpcMethod<?, ?>> methodRegistry) {
+   private static void registerServerStateService(final WritableRegistry<IncomingRpcMethod<?, ?>> methodRegistry) {
       IncomingRpcMethod.method(ServerStateService::status)
          .description("Get server status")
          .response("status", Schema.SERVER_STATE_SCHEMA.asRef())
@@ -167,7 +167,7 @@ public class IncomingRpcMethods {
          .register(methodRegistry, "server/system_message");
    }
 
-   private static void registerServerSettingsService(final Registry<IncomingRpcMethod<?, ?>> methodRegistry) {
+   private static void registerServerSettingsService(final WritableRegistry<IncomingRpcMethod<?, ?>> methodRegistry) {
       IncomingRpcMethod.method(ServerSettingsService::autosave)
          .description("Get whether automatic world saving is enabled on the server")
          .response("enabled", Schema.BOOL_SCHEMA)
@@ -350,7 +350,7 @@ public class IncomingRpcMethods {
          .register(methodRegistry, "serversettings/entity_broadcast_range/set");
    }
 
-   private static void registerGameRuleService(final Registry<IncomingRpcMethod<?, ?>> methodRegistry) {
+   private static void registerGameRuleService(final WritableRegistry<IncomingRpcMethod<?, ?>> methodRegistry) {
       IncomingRpcMethod.method(GameRulesService::get)
          .description("Get the available game rule keys and their current values")
          .response("gamerules", Schema.TYPED_GAME_RULE_SCHEMA.asRef().asArray())

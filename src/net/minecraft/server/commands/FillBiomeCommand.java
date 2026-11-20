@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.ResourceArgument;
@@ -41,15 +41,16 @@ public class FillBiomeCommand {
    );
    public static final SimpleCommandExceptionType ERROR_NO_BIOMES_SET = new SimpleCommandExceptionType(Component.translatable("commands.fillbiome.no_changes"));
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("fillbiome").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("fillbiome")
+               .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
             .then(
                Commands.argument("from", BlockPosArgument.blockPos())
                   .then(
                      Commands.argument("to", BlockPosArgument.blockPos())
                         .then(
-                           ((RequiredArgumentBuilder)Commands.argument("biome", ResourceArgument.resource(context, Registries.BIOME))
+                           ((RequiredArgumentBuilder)Commands.argument("biome", ResourceArgument.resource(Registries.BIOME))
                                  .executes(
                                     c -> fill(
                                        (CommandSourceStack)c.getSource(),
@@ -62,7 +63,7 @@ public class FillBiomeCommand {
                               .then(
                                  Commands.literal("replace")
                                     .then(
-                                       Commands.argument("filter", ResourceOrTagArgument.resourceOrTag(context, Registries.BIOME))
+                                       Commands.argument("filter", ResourceOrTagArgument.resourceOrTag(Registries.BIOME))
                                           .executes(
                                              c -> fill(
                                                 (CommandSourceStack)c.getSource(),

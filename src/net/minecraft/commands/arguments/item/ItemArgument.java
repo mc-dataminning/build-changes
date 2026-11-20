@@ -6,35 +6,48 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.ParseContext;
+import net.minecraft.commands.arguments.SerializableArgument;
+import net.minecraft.commands.suggestions.SuggestionContext;
 
-public class ItemArgument implements ArgumentType<ItemInput> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("stick", "minecraft:stick", "stick{foo=bar}");
-   private final ItemParser parser;
+public class ItemArgument implements SerializableArgument<ItemInput> {
+   private static final ItemArgument INSTANCE = new ItemArgument();
+   public static final SerializableArgument.Type<ItemArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
+   private static final Collection<String> EXAMPLES = List.of("stick", "minecraft:stick", "stick{foo=bar}");
 
-   public ItemArgument(final CommandBuildContext context) {
-      this.parser = new ItemParser(context);
+   private ItemArgument() {
    }
 
-   public static ItemArgument item(final CommandBuildContext context) {
-      return new ItemArgument(context);
+   @Override
+   public SerializableArgument.Type<ItemArgument> type() {
+      return TYPE;
    }
 
-   public ItemInput parse(final StringReader reader) throws CommandSyntaxException {
-      return this.parser.parse(reader);
+   public static ArgumentType<ItemInput> item() {
+      return INSTANCE.toBrigadier();
    }
 
-   public static <S> ItemInput getItem(final CommandContext<S> context, final String name) {
+   public static ItemInput getItem(final CommandContext<?> context, final String name) {
       return (ItemInput)context.getArgument(name, ItemInput.class);
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-      return this.parser.fillSuggestions(builder);
+   private static ItemParser getParser(final ParseContext context) {
+      return new ItemParser(context.holderGetters());
    }
 
+   public ItemInput parse(final StringReader reader, final ParseContext context) throws CommandSyntaxException {
+      return getParser(context).parse(reader);
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> listSuggestions(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
+      return getParser((ParseContext)context.getSource()).fillSuggestions(context, builder);
+   }
+
+   @Override
    public Collection<String> getExamples() {
       return EXAMPLES;
    }

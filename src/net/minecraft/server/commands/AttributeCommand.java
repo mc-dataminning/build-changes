@@ -1,21 +1,23 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.stream.Stream;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.arguments.DoubleArgument;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.IdentifierArgument;
 import net.minecraft.commands.arguments.ResourceArgument;
+import net.minecraft.commands.suggestions.SuggestionContext;
+import net.minecraft.commands.suggestions.SuggestionProviders;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -41,15 +43,23 @@ public class AttributeCommand {
       (target, attribute, modifier) -> Component.translatableEscape("commands.attribute.failed.modifier_already_present", modifier, attribute, target)
    );
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   private static SuggestionProvider<CommandSourceStack> suggestEntityAttributeModifiers() {
+      return SuggestionProviders.serverOnly(
+         (server, context, builder) -> SuggestionContext.suggestResource(
+            getAttributeModifierSuggestions(EntityArgument.getSuggestedEntities(server, context, "target"), ResourceArgument.getAttribute(context, "attribute")),
+            builder
+         )
+      );
+   }
+
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("attribute").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("attribute")
+               .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
             .then(
                Commands.argument("target", EntityArgument.entity())
                   .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument(
-                                 "attribute", ResourceArgument.resource(context, Registries.ATTRIBUTE)
-                              )
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("attribute", ResourceArgument.resource(Registries.ATTRIBUTE))
                               .then(
                                  ((LiteralArgumentBuilder)Commands.literal("get")
                                        .executes(
@@ -61,13 +71,13 @@ public class AttributeCommand {
                                           )
                                        ))
                                     .then(
-                                       Commands.argument("scale", DoubleArgumentType.doubleArg())
+                                       Commands.argument("scale", DoubleArgument.doubleArg())
                                           .executes(
                                              c -> getAttributeValue(
                                                 (CommandSourceStack)c.getSource(),
                                                 EntityArgument.getEntity(c, "target"),
                                                 ResourceArgument.getAttribute(c, "attribute"),
-                                                DoubleArgumentType.getDouble(c, "scale")
+                                                DoubleArgument.getDouble(c, "scale")
                                              )
                                           )
                                     )
@@ -77,13 +87,13 @@ public class AttributeCommand {
                                        .then(
                                           Commands.literal("set")
                                              .then(
-                                                Commands.argument("value", DoubleArgumentType.doubleArg())
+                                                Commands.argument("value", DoubleArgument.doubleArg())
                                                    .executes(
                                                       c -> setAttributeBase(
                                                          (CommandSourceStack)c.getSource(),
                                                          EntityArgument.getEntity(c, "target"),
                                                          ResourceArgument.getAttribute(c, "attribute"),
-                                                         DoubleArgumentType.getDouble(c, "value")
+                                                         DoubleArgument.getDouble(c, "value")
                                                       )
                                                    )
                                              )
@@ -99,13 +109,13 @@ public class AttributeCommand {
                                                 )
                                              ))
                                           .then(
-                                             Commands.argument("scale", DoubleArgumentType.doubleArg())
+                                             Commands.argument("scale", DoubleArgument.doubleArg())
                                                 .executes(
                                                    c -> getAttributeBase(
                                                       (CommandSourceStack)c.getSource(),
                                                       EntityArgument.getEntity(c, "target"),
                                                       ResourceArgument.getAttribute(c, "attribute"),
-                                                      DoubleArgumentType.getDouble(c, "scale")
+                                                      DoubleArgument.getDouble(c, "scale")
                                                    )
                                                 )
                                           )
@@ -128,9 +138,7 @@ public class AttributeCommand {
                                           .then(
                                              Commands.argument("id", IdentifierArgument.id())
                                                 .then(
-                                                   ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument(
-                                                               "value", DoubleArgumentType.doubleArg()
-                                                            )
+                                                   ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("value", DoubleArgument.doubleArg())
                                                             .then(
                                                                Commands.literal("add_value")
                                                                   .executes(
@@ -139,7 +147,7 @@ public class AttributeCommand {
                                                                         EntityArgument.getEntity(c, "target"),
                                                                         ResourceArgument.getAttribute(c, "attribute"),
                                                                         IdentifierArgument.getId(c, "id"),
-                                                                        DoubleArgumentType.getDouble(c, "value"),
+                                                                        DoubleArgument.getDouble(c, "value"),
                                                                         AttributeModifier.Operation.ADD_VALUE
                                                                      )
                                                                   )
@@ -152,7 +160,7 @@ public class AttributeCommand {
                                                                      EntityArgument.getEntity(c, "target"),
                                                                      ResourceArgument.getAttribute(c, "attribute"),
                                                                      IdentifierArgument.getId(c, "id"),
-                                                                     DoubleArgumentType.getDouble(c, "value"),
+                                                                     DoubleArgument.getDouble(c, "value"),
                                                                      AttributeModifier.Operation.ADD_MULTIPLIED_BASE
                                                                   )
                                                                )
@@ -165,7 +173,7 @@ public class AttributeCommand {
                                                                   EntityArgument.getEntity(c, "target"),
                                                                   ResourceArgument.getAttribute(c, "attribute"),
                                                                   IdentifierArgument.getId(c, "id"),
-                                                                  DoubleArgumentType.getDouble(c, "value"),
+                                                                  DoubleArgument.getDouble(c, "value"),
                                                                   AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
                                                                )
                                                             )
@@ -177,12 +185,7 @@ public class AttributeCommand {
                                     Commands.literal("remove")
                                        .then(
                                           Commands.argument("id", IdentifierArgument.id())
-                                             .suggests(
-                                                (c, p) -> SharedSuggestionProvider.suggestResource(
-                                                   getAttributeModifiers(EntityArgument.getEntity(c, "target"), ResourceArgument.getAttribute(c, "attribute")),
-                                                   p
-                                                )
-                                             )
+                                             .suggests(suggestEntityAttributeModifiers())
                                              .executes(
                                                 c -> removeModifier(
                                                    (CommandSourceStack)c.getSource(),
@@ -199,14 +202,7 @@ public class AttributeCommand {
                                        Commands.literal("get")
                                           .then(
                                              ((RequiredArgumentBuilder)Commands.argument("id", IdentifierArgument.id())
-                                                   .suggests(
-                                                      (c, p) -> SharedSuggestionProvider.suggestResource(
-                                                         getAttributeModifiers(
-                                                            EntityArgument.getEntity(c, "target"), ResourceArgument.getAttribute(c, "attribute")
-                                                         ),
-                                                         p
-                                                      )
-                                                   )
+                                                   .suggests(suggestEntityAttributeModifiers())
                                                    .executes(
                                                       c -> getAttributeModifier(
                                                          (CommandSourceStack)c.getSource(),
@@ -217,14 +213,14 @@ public class AttributeCommand {
                                                       )
                                                    ))
                                                 .then(
-                                                   Commands.argument("scale", DoubleArgumentType.doubleArg())
+                                                   Commands.argument("scale", DoubleArgument.doubleArg())
                                                       .executes(
                                                          c -> getAttributeModifier(
                                                             (CommandSourceStack)c.getSource(),
                                                             EntityArgument.getEntity(c, "target"),
                                                             ResourceArgument.getAttribute(c, "attribute"),
                                                             IdentifierArgument.getId(c, "id"),
-                                                            DoubleArgumentType.getDouble(c, "scale")
+                                                            DoubleArgument.getDouble(c, "scale")
                                                          )
                                                       )
                                                 )
@@ -300,9 +296,13 @@ public class AttributeCommand {
       return (int)(result * scale);
    }
 
-   private static Stream<Identifier> getAttributeModifiers(final Entity target, final Holder<Attribute> attribute) throws CommandSyntaxException {
-      AttributeInstance attributeInstance = getAttributeInstance(target, attribute);
-      return attributeInstance.getModifiers().stream().map(AttributeModifier::id);
+   private static Stream<Identifier> getAttributeModifierSuggestions(final Stream<? extends Entity> targets, final Holder<Attribute> attribute) {
+      return targets.<AttributeInstance>flatMap(
+            target -> target instanceof LivingEntity livingEntity ? Stream.ofNullable(livingEntity.getAttributes().getInstance(attribute)) : Stream.empty()
+         )
+         .flatMap(attributeInstance -> attributeInstance.getModifiers().stream())
+         .map(AttributeModifier::id)
+         .distinct();
    }
 
    private static int setAttributeBase(final CommandSourceStack source, final Entity target, final Holder<Attribute> attribute, final double value) throws CommandSyntaxException {

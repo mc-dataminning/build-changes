@@ -59,7 +59,7 @@ public abstract class AbstractGameRulesScreen extends Screen {
    }
 
    protected void createAndConfigureSearchBox(final LinearLayout headerLayout) {
-      this.searchBox = headerLayout.addChild(new EditBox(this.font, 200, 15, Component.empty()));
+      this.searchBox = headerLayout.addChild(new EditBox(this.font, 200, 15, SEARCH_HINT));
       this.searchBox.setHint(SEARCH_HINT);
       this.searchBox.setResponder(this::filterGameRules);
    }

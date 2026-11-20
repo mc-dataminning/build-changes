@@ -142,6 +142,7 @@ public class GameProtocols {
       ConnectionProtocol.PLAY,
       builder -> builder.withBundlePacket(GamePacketTypes.CLIENTBOUND_BUNDLE, ClientboundBundlePacket::new, new ClientboundBundleDelimiterPacket())
          .addPacket(GamePacketTypes.CLIENTBOUND_ADD_ENTITY, ClientboundAddEntityPacket.STREAM_CODEC)
+         .addPacket(GamePacketTypes.CLIENTBOUND_ADD_ENTITY_MOTION, ClientboundAddEntityMotionPacket.STREAM_CODEC)
          .addPacket(GamePacketTypes.CLIENTBOUND_ANIMATE, ClientboundAnimatePacket.STREAM_CODEC)
          .addPacket(GamePacketTypes.CLIENTBOUND_AWARD_STATS, ClientboundAwardStatsPacket.STREAM_CODEC)
          .addPacket(GamePacketTypes.CLIENTBOUND_BLOCK_CHANGED_ACK, ClientboundBlockChangedAckPacket.STREAM_CODEC)
@@ -156,7 +157,7 @@ public class GameProtocols {
          .addPacket(GamePacketTypes.CLIENTBOUND_CHUNKS_BIOMES, ClientboundChunksBiomesPacket.STREAM_CODEC)
          .addPacket(GamePacketTypes.CLIENTBOUND_CLEAR_TITLES, ClientboundClearTitlesPacket.STREAM_CODEC)
          .addPacket(GamePacketTypes.CLIENTBOUND_COMMAND_SUGGESTIONS, ClientboundCommandSuggestionsPacket.STREAM_CODEC)
-         .addPacket(GamePacketTypes.CLIENTBOUND_COMMANDS, ClientboundCommandsPacket.STREAM_CODEC)
+         .addPacket(CommonPacketTypes.CLIENTBOUND_COMMANDS, ClientboundCommandsPacket.STREAM_CODEC)
          .addPacket(GamePacketTypes.CLIENTBOUND_CONTAINER_CLOSE, ClientboundContainerClosePacket.STREAM_CODEC)
          .addPacket(GamePacketTypes.CLIENTBOUND_CONTAINER_SET_CONTENT, ClientboundContainerSetContentPacket.STREAM_CODEC)
          .addPacket(GamePacketTypes.CLIENTBOUND_CONTAINER_SET_DATA, ClientboundContainerSetDataPacket.STREAM_CODEC)

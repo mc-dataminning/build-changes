@@ -13,7 +13,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntMaps;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.HashMap;
 import java.util.Map;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
@@ -36,7 +36,7 @@ public class StructureCheck {
    private static final int NO_STRUCTURE = -1;
    private static final int MAX_CHUNKS_WITHOUT_STORED_STARTS = 131072;
    private final ChunkStructureScanner storageScanner;
-   private final RegistryAccess registryAccess;
+   private final HolderGetter.Provider registryAccess;
    private final StructureTemplateManager structureTemplateManager;
    private final ChunkGenerator chunkGenerator;
    private final RandomState randomState;
@@ -50,7 +50,7 @@ public class StructureCheck {
 
    public StructureCheck(
       final ChunkScanAccess storageAccess,
-      final RegistryAccess registryAccess,
+      final HolderGetter.Provider registryAccess,
       final StructureTemplateManager structureTemplateManager,
       final ResourceKey<Level> dimension,
       final ChunkGenerator chunkGenerator,

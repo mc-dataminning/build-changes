@@ -6,6 +6,7 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
@@ -22,12 +23,12 @@ public interface SlotSources {
    Codec<Holder<SlotSource>> CODEC = RegistryCodecs.holder(Registries.SLOT_SOURCE, DIRECT_CODEC);
    Codec<HolderSet<SlotSource>> LIST_CODEC = RegistryCodecs.holderSet(Registries.SLOT_SOURCE, TYPED_CODEC);
 
-   static MapCodec<? extends SlotSource> bootstrap(final Registry<MapCodec<? extends SlotSource>> registry) {
+   static void bootstrap(final WritableRegistry<MapCodec<? extends SlotSource>> registry) {
       Registry.register(registry, "group", GroupSlotSource.MAP_CODEC);
       Registry.register(registry, "filtered", FilteredSlotSource.MAP_CODEC);
       Registry.register(registry, "limit_slots", LimitSlotSource.MAP_CODEC);
       Registry.register(registry, "slot_range", RangeSlotSource.MAP_CODEC);
       Registry.register(registry, "contents", ContentsSlotSource.MAP_CODEC);
-      return Registry.register(registry, "empty", EmptySlotSource.MAP_CODEC);
+      Registry.register(registry, "empty", EmptySlotSource.MAP_CODEC);
    }
 }

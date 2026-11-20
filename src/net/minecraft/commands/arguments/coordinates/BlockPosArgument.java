@@ -7,26 +7,37 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.arguments.SerializableArgument;
+import net.minecraft.commands.suggestions.SuggestionContext;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 
-public class BlockPosArgument implements ArgumentType<Coordinates> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "~0.5 ~1 ~-5");
+public class BlockPosArgument implements SerializableArgument.ContextFree<Coordinates> {
+   public static final BlockPosArgument INSTANCE = new BlockPosArgument();
+   public static final SerializableArgument.Type<BlockPosArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
+   private static final Collection<String> EXAMPLES = List.of("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "~0.5 ~1 ~-5");
    public static final SimpleCommandExceptionType ERROR_NOT_LOADED = new SimpleCommandExceptionType(Component.translatable("argument.pos.unloaded"));
    public static final SimpleCommandExceptionType ERROR_OUT_OF_WORLD = new SimpleCommandExceptionType(Component.translatable("argument.pos.outofworld"));
    public static final SimpleCommandExceptionType ERROR_OUT_OF_BOUNDS = new SimpleCommandExceptionType(Component.translatable("argument.pos.outofbounds"));
 
-   public static BlockPosArgument blockPos() {
-      return new BlockPosArgument();
+   private BlockPosArgument() {
+   }
+
+   @Override
+   public SerializableArgument.Type<BlockPosArgument> type() {
+      return TYPE;
+   }
+
+   public static ArgumentType<Coordinates> blockPos() {
+      return INSTANCE.toBrigadier();
    }
 
    public static BlockPos getLoadedBlockPos(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
@@ -62,22 +73,20 @@ public class BlockPosArgument implements ArgumentType<Coordinates> {
       return reader.canRead() && reader.peek() == '^' ? LocalCoordinates.parse(reader) : WorldCoordinates.parseInt(reader);
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-      if (!(context.getSource() instanceof SharedSuggestionProvider)) {
-         return Suggestions.empty();
-      }
-
+   @Override
+   public CompletableFuture<Suggestions> listSuggestions(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
       String remainder = builder.getRemaining();
-      Collection<SharedSuggestionProvider.TextCoordinates> suggestedCoordinates;
+      Collection<SuggestionContext.TextCoordinates> suggestedCoordinates;
       if (!remainder.isEmpty() && remainder.charAt(0) == '^') {
-         suggestedCoordinates = Collections.singleton(SharedSuggestionProvider.TextCoordinates.DEFAULT_LOCAL);
+         suggestedCoordinates = Collections.singleton(SuggestionContext.TextCoordinates.DEFAULT_LOCAL);
       } else {
-         suggestedCoordinates = ((SharedSuggestionProvider)context.getSource()).getRelevantCoordinates();
+         suggestedCoordinates = ((SuggestionContext)context.getSource()).relevantCoordinates();
       }
 
-      return SharedSuggestionProvider.suggestCoordinates(remainder, suggestedCoordinates, builder, Commands.createValidator(this::parse));
+      return SuggestionContext.suggestCoordinates(remainder, suggestedCoordinates, builder, Commands.createValidator(this::parse));
    }
 
+   @Override
    public Collection<String> getExamples() {
       return EXAMPLES;
    }

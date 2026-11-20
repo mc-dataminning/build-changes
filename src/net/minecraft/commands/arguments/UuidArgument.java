@@ -5,25 +5,34 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
 
-public class UuidArgument implements ArgumentType<UUID> {
+public class UuidArgument implements SerializableArgument.ContextFree<UUID> {
+   private static final UuidArgument INSTANCE = new UuidArgument();
+   public static final SerializableArgument.Type<UuidArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
    public static final SimpleCommandExceptionType ERROR_INVALID_UUID = new SimpleCommandExceptionType(Component.translatable("argument.uuid.invalid"));
-   private static final Collection<String> EXAMPLES = Arrays.asList("dd12be42-52a9-4a91-a8a1-11c01849e498");
+   private static final Collection<String> EXAMPLES = List.of("dd12be42-52a9-4a91-a8a1-11c01849e498");
    private static final Pattern ALLOWED_CHARACTERS = Pattern.compile("^([-A-Fa-f0-9]+)");
 
-   public static UUID getUuid(final CommandContext<CommandSourceStack> source, final String name) {
+   private UuidArgument() {
+   }
+
+   @Override
+   public SerializableArgument.Type<UuidArgument> type() {
+      return TYPE;
+   }
+
+   public static UUID getUuid(final CommandContext<?> source, final String name) {
       return (UUID)source.getArgument(name, UUID.class);
    }
 
-   public static UuidArgument uuid() {
-      return new UuidArgument();
+   public static ArgumentType<UUID> uuid() {
+      return INSTANCE.toBrigadier();
    }
 
    public UUID parse(final StringReader reader) throws CommandSyntaxException {
@@ -43,6 +52,7 @@ public class UuidArgument implements ArgumentType<UUID> {
       throw ERROR_INVALID_UUID.createWithContext(reader);
    }
 
+   @Override
    public Collection<String> getExamples() {
       return EXAMPLES;
    }

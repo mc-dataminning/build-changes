@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
@@ -32,10 +32,10 @@ import net.minecraft.world.waypoints.WaypointStyleAssets;
 import net.minecraft.world.waypoints.WaypointTransmitter;
 
 public class WaypointCommand {
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("waypoint")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                  .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                .then(Commands.literal("list").executes(c -> listWaypoints((CommandSourceStack)c.getSource()))))
             .then(
                Commands.literal("modify")

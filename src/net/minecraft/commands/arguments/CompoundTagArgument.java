@@ -4,22 +4,29 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.TagParser;
 
-public class CompoundTagArgument implements ArgumentType<CompoundTag> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("{}", "{foo=bar}");
+public class CompoundTagArgument implements SerializableArgument.ContextFree<CompoundTag> {
+   private static final CompoundTagArgument INSTANCE = new CompoundTagArgument();
+   public static final SerializableArgument.Type<CompoundTagArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
+   private static final Collection<String> EXAMPLES = List.of("{}", "{foo=bar}");
 
    private CompoundTagArgument() {
    }
 
-   public static CompoundTagArgument compoundTag() {
-      return new CompoundTagArgument();
+   @Override
+   public SerializableArgument.Type<CompoundTagArgument> type() {
+      return TYPE;
    }
 
-   public static <S> CompoundTag getCompoundTag(final CommandContext<S> context, final String name) {
+   public static ArgumentType<CompoundTag> compoundTag() {
+      return INSTANCE.toBrigadier();
+   }
+
+   public static CompoundTag getCompoundTag(final CommandContext<?> context, final String name) {
       return (CompoundTag)context.getArgument(name, CompoundTag.class);
    }
 
@@ -27,6 +34,7 @@ public class CompoundTagArgument implements ArgumentType<CompoundTag> {
       return TagParser.parseCompoundAsArgument(reader);
    }
 
+   @Override
    public Collection<String> getExamples() {
       return EXAMPLES;
    }

@@ -3,7 +3,13 @@ package net.minecraft.server.permissions;
 import java.util.function.Predicate;
 
 public record PermissionProviderCheck<T extends PermissionSetSupplier>(PermissionCheck test) implements Predicate<T> {
-   public boolean test(final T t) {
+   public static final PermissionProviderCheck<?> ALWAYS_PASS = new PermissionProviderCheck(PermissionCheck.AlwaysPass.INSTANCE);
+
+   public boolean test(final PermissionSetSupplier t) {
       return this.test.check(t.permissions());
+   }
+
+   public <S extends PermissionSetSupplier> PermissionProviderCheck<S> cast() {
+      return this;
    }
 }

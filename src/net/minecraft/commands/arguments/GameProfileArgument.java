@@ -8,39 +8,45 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.ParseContext;
 import net.minecraft.commands.arguments.selector.EntitySelector;
 import net.minecraft.commands.arguments.selector.EntitySelectorParser;
+import net.minecraft.commands.suggestions.SuggestionContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.permissions.Permissions;
 import net.minecraft.server.players.NameAndId;
 
-public class GameProfileArgument implements ArgumentType<GameProfileArgument.Result> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
+public class GameProfileArgument implements SerializableArgument<GameProfileArgument.Result> {
+   private static final GameProfileArgument INSTANCE = new GameProfileArgument();
+   public static final SerializableArgument.Type<GameProfileArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
+   private static final Collection<String> EXAMPLES = List.of("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
    public static final SimpleCommandExceptionType ERROR_UNKNOWN_PLAYER = new SimpleCommandExceptionType(Component.translatable("argument.player.unknown"));
+
+   private GameProfileArgument() {
+   }
+
+   @Override
+   public SerializableArgument.Type<GameProfileArgument> type() {
+      return TYPE;
+   }
 
    public static Collection<NameAndId> getGameProfiles(final CommandContext<CommandSourceStack> source, final String name) throws CommandSyntaxException {
       return ((GameProfileArgument.Result)source.getArgument(name, GameProfileArgument.Result.class)).getNames((CommandSourceStack)source.getSource());
    }
 
-   public static GameProfileArgument gameProfile() {
-      return new GameProfileArgument();
+   public static ArgumentType<GameProfileArgument.Result> gameProfile() {
+      return INSTANCE.toBrigadier();
    }
 
-   public <S> GameProfileArgument.Result parse(final StringReader reader, final S source) throws CommandSyntaxException {
-      return parse(reader, EntitySelectorParser.allowSelectors(source));
-   }
-
-   public GameProfileArgument.Result parse(final StringReader reader) throws CommandSyntaxException {
-      return parse(reader, true);
+   public GameProfileArgument.Result parse(final StringReader reader, final ParseContext context) throws CommandSyntaxException {
+      return parse(reader, context.allowsSelectors());
    }
 
    private static GameProfileArgument.Result parse(final StringReader reader, final boolean allowSelectors) throws CommandSyntaxException {
@@ -67,23 +73,22 @@ public class GameProfileArgument implements ArgumentType<GameProfileArgument.Res
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> contextBuilder, final SuggestionsBuilder builder) {
-      if (contextBuilder.getSource() instanceof SharedSuggestionProvider source) {
-         StringReader reader = new StringReader(builder.getInput());
-         reader.setCursor(builder.getStart());
-         EntitySelectorParser parser = new EntitySelectorParser(reader, source.permissions().hasPermission(Permissions.COMMANDS_ENTITY_SELECTORS));
+   @Override
+   public CompletableFuture<Suggestions> listSuggestions(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
+      SuggestionContext source = (SuggestionContext)context.getSource();
+      StringReader reader = new StringReader(builder.getInput());
+      reader.setCursor(builder.getStart());
+      EntitySelectorParser parser = new EntitySelectorParser(reader, source.permissions().hasPermission(Permissions.COMMANDS_ENTITY_SELECTORS));
 
-         try {
-            parser.parse();
-         } catch (CommandSyntaxException var7) {
-         }
-
-         return parser.fillSuggestions(builder, suggestions -> SharedSuggestionProvider.suggest(source.getOnlinePlayerNames(), suggestions));
-      } else {
-         return Suggestions.empty();
+      try {
+         parser.parse();
+      } catch (CommandSyntaxException var7) {
       }
+
+      return parser.fillSuggestions(builder, suggestions -> SuggestionContext.suggest(source.onlinePlayerNames(), suggestions));
    }
 
+   @Override
    public Collection<String> getExamples() {
       return EXAMPLES;
    }

@@ -8,6 +8,7 @@ import net.minecraft.client.core.registries.BuiltInClientRegistries;
 import net.minecraft.client.core.registries.ClientRegistries;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -15,7 +16,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.BlockEntityTypes;
 
 public class BlockEntityRenderers {
-   public static BlockEntityRendererProvider<?, ?> bootstrap(final Registry<BlockEntityRendererProvider<?, ?>> registry) {
+   public static void bootstrap(final WritableRegistry<BlockEntityRendererProvider<?, ?>> registry) {
       register(registry, BlockEntityTypes.SIGN, StandingSignRenderer::new);
       register(registry, BlockEntityTypes.HANGING_SIGN, HangingSignRenderer::new);
       register(registry, BlockEntityTypes.MOB_SPAWNER, SpawnerRenderer::new);
@@ -41,13 +42,15 @@ public class BlockEntityRenderers {
       register(registry, BlockEntityTypes.TRIAL_SPAWNER, TrialSpawnerRenderer::new);
       register(registry, BlockEntityTypes.VAULT, VaultRenderer::new);
       register(registry, BlockEntityTypes.COPPER_GOLEM_STATUE, CopperGolemStatueBlockRenderer::new);
-      return register(registry, BlockEntityTypes.SHELF, ShelfRenderer::new);
+      register(registry, BlockEntityTypes.SHELF, ShelfRenderer::new);
    }
 
-   private static <T extends BlockEntity, S extends BlockEntityRenderState> BlockEntityRendererProvider<?, ?> register(
-      final Registry<BlockEntityRendererProvider<?, ?>> registry, final BlockEntityType<? extends T> type, final BlockEntityRendererProvider<T, S> renderer
+   private static <T extends BlockEntity, S extends BlockEntityRenderState> void register(
+      final WritableRegistry<BlockEntityRendererProvider<?, ?>> registry,
+      final BlockEntityType<? extends T> type,
+      final BlockEntityRendererProvider<T, S> renderer
    ) {
-      return Registry.register(registry, blockEntityKey(type), renderer);
+      Registry.register(registry, blockEntityKey(type), renderer);
    }
 
    private static ResourceKey<BlockEntityRendererProvider<?, ?>> blockEntityKey(final BlockEntityType<?> type) {

@@ -25,6 +25,7 @@ import net.minecraft.client.ClientBrandRetriever;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.DisconnectedScreen;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.commands.SuggestionBox;
 import net.minecraft.network.Connection;
 import net.minecraft.network.DisconnectionDetails;
 import net.minecraft.network.chat.CommonComponents;
@@ -197,7 +198,8 @@ public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListe
                   Map.of(),
                   ServerLinks.EMPTY,
                   this.seenPlayers,
-                  false
+                  false,
+                  SuggestionBox.EMPTY
                )
             )
          );

@@ -7,7 +7,7 @@ import net.minecraft.network.protocol.PacketType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.PositionPath;
 
-public record ClientboundEntityPositionSyncPacket(int id, PositionPath position, float yRot, float xRot, boolean onGround)
+public record ClientboundEntityPositionSyncPacket(int id, PositionPath position, float yRot, float xRot, float yHeadRot, boolean onGround)
    implements MovementPacket<ClientGamePacketListener> {
    public static final StreamCodec<FriendlyByteBuf, ClientboundEntityPositionSyncPacket> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.VAR_INT,
@@ -18,13 +18,15 @@ public record ClientboundEntityPositionSyncPacket(int id, PositionPath position,
       ClientboundEntityPositionSyncPacket::yRot,
       ByteBufCodecs.FLOAT,
       ClientboundEntityPositionSyncPacket::xRot,
+      ByteBufCodecs.FLOAT,
+      ClientboundEntityPositionSyncPacket::yHeadRot,
       ByteBufCodecs.BOOL,
       ClientboundEntityPositionSyncPacket::onGround,
       ClientboundEntityPositionSyncPacket::new
    );
 
    public static ClientboundEntityPositionSyncPacket of(final Entity entity, final PositionPath position) {
-      return new ClientboundEntityPositionSyncPacket(entity.getId(), position, entity.getYRot(), entity.getXRot(), entity.onGround());
+      return new ClientboundEntityPositionSyncPacket(entity.getId(), position, entity.getYRot(), entity.getXRot(), entity.getYHeadRot(), entity.onGround());
    }
 
    public static ClientboundEntityPositionSyncPacket of(final Entity entity) {

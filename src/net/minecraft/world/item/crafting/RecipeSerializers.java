@@ -1,9 +1,10 @@
 package net.minecraft.world.item.crafting;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 
 public class RecipeSerializers {
-   public static Object bootstrap(final Registry<RecipeSerializer<?>> registry) {
+   public static void bootstrap(final WritableRegistry<RecipeSerializer<?>> registry) {
       Registry.register(registry, "crafting_shaped", ShapedRecipe.SERIALIZER);
       Registry.register(registry, "crafting_shapeless", ShapelessRecipe.SERIALIZER);
       Registry.register(registry, "crafting_dye", DyeRecipe.SERIALIZER);
@@ -25,6 +26,6 @@ public class RecipeSerializers {
       Registry.register(registry, "stonecutting", StonecutterRecipe.SERIALIZER);
       Registry.register(registry, "smithing_transform", SmithingTransformRecipe.SERIALIZER);
       Registry.register(registry, "brewing", BrewingRecipe.SERIALIZER);
-      return Registry.register(registry, "smithing_trim", SmithingTrimRecipe.SERIALIZER);
+      Registry.register(registry, "smithing_trim", SmithingTrimRecipe.SERIALIZER);
    }
 }

@@ -5,6 +5,7 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import java.util.function.Consumer;
 import net.minecraft.SharedConstants;
 import net.minecraft.WorldVersion;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
@@ -18,7 +19,7 @@ public class VersionCommand {
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final boolean checkPermissions) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("version")
-               .requires(Commands.hasPermission(checkPermissions ? Commands.LEVEL_GAMEMASTERS : Commands.LEVEL_ALL)))
+               .requires(Commands.hasPermission(checkPermissions ? CommandPermissionLevels.LEVEL_GAMEMASTERS : CommandPermissionLevels.LEVEL_ALL)))
             .executes(c -> {
                CommandSourceStack source = (CommandSourceStack)c.getSource();
                source.sendSystemMessage(HEADER);

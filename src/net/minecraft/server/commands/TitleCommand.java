@@ -1,17 +1,17 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import java.util.Collection;
 import java.util.function.Function;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.ComponentArgument;
 import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.commands.arguments.IntegerArgument;
 import net.minecraft.commands.arguments.TimeArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
@@ -50,9 +50,9 @@ public class TitleCommand {
       (playerCount, var1) -> Component.translatable("commands.title.times.multiple", playerCount)
    );
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("title").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("title").requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
             .then(
                ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument(
                                     "targets", EntityArgument.players()
@@ -68,7 +68,7 @@ public class TitleCommand {
                            .then(
                               Commands.literal("title")
                                  .then(
-                                    Commands.argument("title", ComponentArgument.textComponent(context))
+                                    Commands.argument("title", ComponentArgument.textComponent())
                                        .executes(
                                           c -> showTitle(
                                              (CommandSourceStack)c.getSource(),
@@ -83,7 +83,7 @@ public class TitleCommand {
                         .then(
                            Commands.literal("subtitle")
                               .then(
-                                 Commands.argument("title", ComponentArgument.textComponent(context))
+                                 Commands.argument("title", ComponentArgument.textComponent())
                                     .executes(
                                        c -> showTitle(
                                           (CommandSourceStack)c.getSource(),
@@ -98,7 +98,7 @@ public class TitleCommand {
                      .then(
                         Commands.literal("actionbar")
                            .then(
-                              Commands.argument("title", ComponentArgument.textComponent(context))
+                              Commands.argument("title", ComponentArgument.textComponent())
                                  .executes(
                                     c -> showTitle(
                                        (CommandSourceStack)c.getSource(),
@@ -122,9 +122,9 @@ public class TitleCommand {
                                              c -> setTimes(
                                                 (CommandSourceStack)c.getSource(),
                                                 EntityArgument.getPlayers(c, "targets"),
-                                                IntegerArgumentType.getInteger(c, "fadeIn"),
-                                                IntegerArgumentType.getInteger(c, "stay"),
-                                                IntegerArgumentType.getInteger(c, "fadeOut")
+                                                IntegerArgument.getInteger(c, "fadeIn"),
+                                                IntegerArgument.getInteger(c, "stay"),
+                                                IntegerArgument.getInteger(c, "fadeOut")
                                              )
                                           )
                                     )

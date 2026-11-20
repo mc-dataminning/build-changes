@@ -2,7 +2,6 @@ package net.minecraft.commands.arguments;
 
 import com.google.gson.JsonPrimitive;
 import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
@@ -15,11 +14,11 @@ import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.suggestions.SuggestionContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.StringRepresentable;
 
-public class StringRepresentableArgument<T extends Enum<T> & StringRepresentable> implements ArgumentType<T> {
+public abstract class StringRepresentableArgument<T extends Enum<T> & StringRepresentable> implements SerializableArgument.ContextFree<T> {
    private static final DynamicCommandExceptionType ERROR_INVALID_VALUE = new DynamicCommandExceptionType(
       value -> Component.translatableEscape("argument.enum.invalid", value)
    );
@@ -31,13 +30,17 @@ public class StringRepresentableArgument<T extends Enum<T> & StringRepresentable
       this.values = values;
    }
 
+   @Override
+   public abstract SerializableArgument.Type<? extends StringRepresentableArgument<T>> type();
+
    public T parse(final StringReader reader) throws CommandSyntaxException {
       String id = reader.readUnquotedString();
       return (T)this.codec.parse(JsonOps.INSTANCE, new JsonPrimitive(id)).result().orElseThrow(() -> ERROR_INVALID_VALUE.createWithContext(reader, id));
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-      return SharedSuggestionProvider.suggest(
+   @Override
+   public CompletableFuture<Suggestions> listSuggestions(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
+      return SuggestionContext.suggest(
          Arrays.<Enum>stream((Enum[])this.values.get())
             .map(rec$ -> ((StringRepresentable)rec$).getSerializedName())
             .map(this::convertId)
@@ -46,6 +49,7 @@ public class StringRepresentableArgument<T extends Enum<T> & StringRepresentable
       );
    }
 
+   @Override
    public Collection<String> getExamples() {
       return Arrays.<Enum>stream((Enum[])this.values.get())
          .map(rec$ -> ((StringRepresentable)rec$).getSerializedName())

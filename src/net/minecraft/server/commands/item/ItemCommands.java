@@ -1,7 +1,6 @@
 package net.minecraft.server.commands.item;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
@@ -13,16 +12,18 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.UnaryOperator;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.ResourceOrIdArgument;
+import net.minecraft.commands.arguments.IntegerArgument;
+import net.minecraft.commands.arguments.LootModifierArgument;
 import net.minecraft.commands.arguments.SlotSourceArgument;
+import net.minecraft.commands.arguments.ValidationWrapper;
 import net.minecraft.commands.arguments.item.ItemArgument;
-import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.commands.ArgProvider;
 import net.minecraft.server.commands.CommandResponseTracker;
+import net.minecraft.util.context.ContextKeySet;
 import net.minecraft.world.entity.SlotProvider;
 import net.minecraft.world.item.ItemProvider;
 import net.minecraft.world.item.ItemStack;
@@ -66,30 +67,31 @@ public class ItemCommands {
    public static final List<ArgProvider.Factory<ItemAccessor<?>>> ALL_PROVIDERS = List.of(EntityItemAccessor.PROVIDER, BlockItemAccessor.PROVIDER);
    public static final List<ArgProvider<ItemAccessor<?>>> TARGET_PROVIDERS = ArgProvider.buildList("target", ALL_PROVIDERS);
    public static final List<ArgProvider<ItemAccessor<?>>> SOURCE_PROVIDERS = ArgProvider.buildList("source", ALL_PROVIDERS);
+   public static final ContextKeySet SLOT_SOURCE_CONTEXT = LootContextParamSets.COMMAND_SLOT_SOURCE;
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       LiteralArgumentBuilder<CommandSourceStack> root = (LiteralArgumentBuilder<CommandSourceStack>)Commands.literal("item")
-         .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS));
+         .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS));
 
       for (ArgProvider<ItemAccessor<?>> targetProvider : TARGET_PROVIDERS) {
          ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)root.then(
-                     wrapSetItems(context, Commands.literal("replace"), targetProvider, ItemCommands::replaceItemProvider)
+                     wrapSetItems(Commands.literal("replace"), targetProvider, ItemCommands::replaceItemProvider)
                   ))
-                  .then(wrapSetItems(context, Commands.literal("fill"), targetProvider, ItemCommands::fillItemProvider)))
-               .then(wrapSetItems(context, Commands.literal("override"), targetProvider, ItemCommands::overrideItemProvider)))
+                  .then(wrapSetItems(Commands.literal("fill"), targetProvider, ItemCommands::fillItemProvider)))
+               .then(wrapSetItems(Commands.literal("override"), targetProvider, ItemCommands::overrideItemProvider)))
             .then(
                targetProvider.wrap(
                   Commands.literal("modify"),
                   p -> p.then(
-                     Commands.argument("slots", SlotSourceArgument.slotSource(context))
+                     Commands.argument("slots", SlotSourceArgument.slotSource(SLOT_SOURCE_CONTEXT))
                         .then(
-                           Commands.argument("modifier", ResourceOrIdArgument.lootModifier(context))
+                           Commands.argument("modifier", LootModifierArgument.lootModifier(LootContextParamSets.COMMAND_MODIFIER))
                               .executes(
                                  c -> modifyItems(
                                     (CommandSourceStack)c.getSource(),
                                     targetProvider.access(c),
                                     SlotSourceArgument.getSlotSource(c, "slots"),
-                                    ResourceOrIdArgument.getLootModifier(c, "modifier")
+                                    LootModifierArgument.getLootModifier(c, "modifier")
                                  )
                               )
                         )
@@ -102,22 +104,19 @@ public class ItemCommands {
    }
 
    private static ArgumentBuilder<CommandSourceStack, ?> wrapSetItems(
-      final CommandBuildContext context,
-      final ArgumentBuilder<CommandSourceStack, ?> builder,
-      final ArgProvider<ItemAccessor<?>> targetProvider,
-      final ItemCommands.ItemDistributor distributor
+      final ArgumentBuilder<CommandSourceStack, ?> builder, final ArgProvider<ItemAccessor<?>> targetProvider, final ItemCommands.ItemDistributor distributor
    ) {
       return targetProvider.wrap(
          builder,
          t -> {
-            ArgumentBuilder<CommandSourceStack, ?> slotsNode = Commands.argument("slots", SlotSourceArgument.slotSource(context));
+            ArgumentBuilder<CommandSourceStack, ?> slotsNode = Commands.argument("slots", SlotSourceArgument.slotSource(SLOT_SOURCE_CONTEXT));
 
             for (ArgProvider<ItemAccessor<?>> sourceProvider : SOURCE_PROVIDERS) {
                slotsNode.then(
                   sourceProvider.wrap(
                      Commands.literal("from"),
                      p -> p.then(
-                        ((RequiredArgumentBuilder)Commands.argument("sourceSlots", SlotSourceArgument.slotSource(context))
+                        ((RequiredArgumentBuilder)Commands.argument("sourceSlots", SlotSourceArgument.slotSource(SLOT_SOURCE_CONTEXT))
                               .executes(
                                  c -> setItems(
                                     (CommandSourceStack)c.getSource(),
@@ -130,7 +129,7 @@ public class ItemCommands {
                                  )
                               ))
                            .then(
-                              Commands.argument("modifier", ResourceOrIdArgument.lootModifier(context))
+                              Commands.argument("modifier", LootModifierArgument.lootModifier(LootContextParamSets.COMMAND_MODIFIER))
                                  .executes(
                                     c -> setItems(
                                        (CommandSourceStack)c.getSource(),
@@ -141,7 +140,7 @@ public class ItemCommands {
                                           (CommandSourceStack)c.getSource(),
                                           sourceProvider.access(c),
                                           SlotSourceArgument.getSlotSource(c, "sourceSlots"),
-                                          ResourceOrIdArgument.getLootModifier(c, "modifier")
+                                          LootModifierArgument.getLootModifier(c, "modifier")
                                        )
                                     )
                                  )
@@ -154,7 +153,7 @@ public class ItemCommands {
             slotsNode.then(
                Commands.literal("with")
                   .then(
-                     ((RequiredArgumentBuilder)Commands.argument("item", ItemArgument.item(context))
+                     ((RequiredArgumentBuilder)Commands.argument("item", ItemArgument.item())
                            .executes(
                               c -> setItem(
                                  (CommandSourceStack)c.getSource(),
@@ -165,14 +164,14 @@ public class ItemCommands {
                               )
                            ))
                         .then(
-                           Commands.argument("count", IntegerArgumentType.integer(1, 99))
+                           Commands.argument("count", IntegerArgument.integer(1, 99))
                               .executes(
                                  c -> setItem(
                                     (CommandSourceStack)c.getSource(),
                                     targetProvider.access(c),
                                     SlotSourceArgument.getSlotSource(c, "slots"),
                                     distributor,
-                                    ItemArgument.getItem(c, "item").createItemStack(IntegerArgumentType.getInteger(c, "count"))
+                                    ItemArgument.getItem(c, "item").createItemStack(IntegerArgument.getInteger(c, "count"))
                                  )
                               )
                         )
@@ -198,7 +197,7 @@ public class ItemCommands {
    private static <Target> int setItems(
       final CommandSourceStack source,
       final ItemAccessor<Target> accessor,
-      final SlotSourceArgument.Result slotSource,
+      final SlotSourceArgument.SlotResult slotSource,
       final ItemProvider items,
       final @Nullable ItemStack knownItem
    ) throws CommandSyntaxException {
@@ -221,7 +220,7 @@ public class ItemCommands {
    private static int setItems(
       final CommandSourceStack source,
       final ItemAccessor<?> accessor,
-      final SlotSourceArgument.Result slotSource,
+      final SlotSourceArgument.SlotResult slotSource,
       final ItemCommands.ItemDistributor distributor,
       final Collection<ItemStack> items
    ) throws CommandSyntaxException {
@@ -231,7 +230,7 @@ public class ItemCommands {
    private static int setItem(
       final CommandSourceStack source,
       final ItemAccessor<?> accessor,
-      final SlotSourceArgument.Result slotSource,
+      final SlotSourceArgument.SlotResult slotSource,
       final ItemCommands.ItemDistributor distributor,
       final ItemStack item
    ) throws CommandSyntaxException {
@@ -239,11 +238,14 @@ public class ItemCommands {
    }
 
    private static <Target> int modifyItems(
-      final CommandSourceStack source, final ItemAccessor<Target> accessor, final SlotSourceArgument.Result slotSource, final Holder<LootItemFunction> modifier
+      final CommandSourceStack source,
+      final ItemAccessor<Target> accessor,
+      final SlotSourceArgument.SlotResult slotSource,
+      final ValidationWrapper<LootItemFunction> modifier
    ) throws CommandSyntaxException {
       MutableInt selectedCount = new MutableInt();
       SlotSelector slotSelector = SlotSelector.tracking(SlotSelector.NON_EMPTY_SLOTS, selectedCount);
-      CountingModifier countingModifier = new CountingModifier(applyModifier(source, modifier.value()));
+      CountingModifier countingModifier = new CountingModifier(applyModifier(source, modifier));
       CommandResponseTracker<Target> tracker = CommandResponseTracker.create();
       accessor.setItems(source, slotSource.value(), (target, slots) -> {
          int lastUpdated = countingModifier.updatedCount();
@@ -262,11 +264,11 @@ public class ItemCommands {
    private static Collection<ItemStack> getItems(
       final CommandSourceStack source,
       final ItemAccessor<?> accessor,
-      final SlotSourceArgument.Result slotSource,
-      final @Nullable Holder<LootItemFunction> modifier
+      final SlotSourceArgument.SlotResult slotSource,
+      final @Nullable ValidationWrapper<LootItemFunction> modifier
    ) throws CommandSyntaxException {
       SlotCollection slots = accessor.getSlots(source, slotSource.value());
-      Collection<ItemStack> items = modifier != null ? slots.itemCopies().map(applyModifier(source, modifier.value())).toList() : slots.itemCopies().toList();
+      Collection<ItemStack> items = modifier != null ? slots.itemCopies().map(applyModifier(source, modifier)).toList() : slots.itemCopies().toList();
       if (items.isEmpty()) {
          throw (CommandSyntaxException)slotSource.name().map(ERROR_SOURCE_INAPPLICABLE_SLOT::create).orElseGet(ERROR_SOURCE_INAPPLICABLE_UNNAMED_SLOT::create);
       } else {
@@ -274,11 +276,12 @@ public class ItemCommands {
       }
    }
 
-   private static UnaryOperator<ItemStack> applyModifier(final CommandSourceStack source, final LootItemFunction modifier) {
+   private static UnaryOperator<ItemStack> applyModifier(final CommandSourceStack source, final ValidationWrapper<LootItemFunction> modifierWrapper) throws CommandSyntaxException {
+      LootItemFunction modifier = modifierWrapper.validateAndGet(LootContextParamSets.COMMAND_MODIFIER).value();
       LootParams lootParams = new LootParams.Builder(source.getLevel())
          .withParameter(LootContextParams.ORIGIN, source.getPosition())
          .withOptionalParameter(LootContextParams.THIS_ENTITY, source.getEntity())
-         .create(LootContextParamSets.COMMAND);
+         .create(LootContextParamSets.COMMAND_MODIFIER);
       LootContext context = new LootContext.Builder(lootParams).create(Optional.empty());
       context.pushVisitedElement(LootContext.createVisitedEntry(modifier));
       return item -> {
@@ -288,12 +291,15 @@ public class ItemCommands {
       };
    }
 
-   static SlotCollection getSlotsFromProvider(final CommandSourceStack source, final SlotProvider container, final SlotSource slotSource) {
+   static SlotCollection getSlotsFromProvider(
+      final CommandSourceStack source, final SlotProvider container, final ValidationWrapper<SlotSource> wrappedSlotSource
+   ) throws CommandSyntaxException {
+      SlotSource slotSource = wrappedSlotSource.validateAndGet(SLOT_SOURCE_CONTEXT).value();
       LootParams lootParams = new LootParams.Builder(source.getLevel())
          .withParameter(LootContextParams.ORIGIN, source.getPosition())
          .withParameter(LootContextParams.CONTAINER, container)
          .withOptionalParameter(LootContextParams.THIS_ENTITY, source.getEntity())
-         .create(LootContextParamSets.COMMAND_SLOT_SOURCE);
+         .create(SLOT_SOURCE_CONTEXT);
       LootContext context = new LootContext.Builder(lootParams).create(Optional.empty());
       context.pushVisitedElement(LootContext.createVisitedEntry(slotSource));
       return slotSource.provide(context);

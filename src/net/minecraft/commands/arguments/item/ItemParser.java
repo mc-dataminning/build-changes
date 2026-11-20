@@ -1,6 +1,7 @@
 package net.minecraft.commands.arguments.item;
 
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
@@ -13,10 +14,9 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.suggestions.SuggestionContext;
 import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -52,15 +52,13 @@ public class ItemParser {
    public static final char SYNTAX_COMPONENT_SEPARATOR = ',';
    public static final char SYNTAX_COMPONENT_ASSIGNMENT = '=';
    public static final char SYNTAX_REMOVED_COMPONENT = '!';
-   private static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> SUGGEST_NOTHING = SuggestionsBuilder::buildFuture;
-   private final HolderLookup.RegistryLookup<Item> items;
+   private static final TagParser<Tag> TAG_PARSER = TagParser.create(NbtOps.INSTANCE);
+   private final HolderGetter<Item> items;
    private final RegistryOps<Tag> registryOps;
-   private final TagParser<Tag> tagParser;
 
-   public ItemParser(final HolderLookup.Provider registries) {
+   public ItemParser(final HolderGetter.Provider registries) {
       this.items = registries.lookupOrThrow(Registries.ITEM);
       this.registryOps = registries.createSerializationContext(NbtOps.INSTANCE);
-      this.tagParser = TagParser.create(this.registryOps);
    }
 
    public ItemInput parse(final StringReader reader) throws CommandSyntaxException {
@@ -98,7 +96,7 @@ public class ItemParser {
       }
    }
 
-   public CompletableFuture<Suggestions> fillSuggestions(final SuggestionsBuilder builder) {
+   public CompletableFuture<Suggestions> fillSuggestions(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
       StringReader reader = new StringReader(builder.getInput());
       reader.setCursor(builder.getStart());
       ItemParser.SuggestionsVisitor handler = new ItemParser.SuggestionsVisitor();
@@ -106,10 +104,10 @@ public class ItemParser {
 
       try {
          state.parse();
-      } catch (CommandSyntaxException var6) {
+      } catch (CommandSyntaxException var7) {
       }
 
-      return handler.resolveSuggestions(builder, reader);
+      return handler.resolveSuggestions(context, builder, reader);
    }
 
    private class State {
@@ -122,11 +120,11 @@ public class ItemParser {
       }
 
       public void parse() throws CommandSyntaxException {
-         this.visitor.visitSuggestions(this::suggestItem);
+         this.visitor.visitSuggestions(ItemParser.State::suggestItem);
          this.readItem();
-         this.visitor.visitSuggestions(this::suggestStartComponents);
+         this.visitor.visitSuggestions(ItemParser.State::suggestStartComponents);
          if (this.reader.canRead() && this.reader.peek() == '[') {
-            this.visitor.visitSuggestions(ItemParser.SUGGEST_NOTHING);
+            this.visitor.visitSuggestions(SuggestionContext.Provider.suggestNothing());
             this.readComponents();
          }
       }
@@ -142,21 +140,21 @@ public class ItemParser {
 
       private void readComponents() throws CommandSyntaxException {
          this.reader.expect('[');
-         this.visitor.visitSuggestions(this::suggestComponentAssignmentOrRemoval);
+         this.visitor.visitSuggestions(ItemParser.State::suggestComponentAssignmentOrRemoval);
          Set<DataComponentType<?>> visitedComponents = new ReferenceArraySet();
 
          while (this.reader.canRead() && this.reader.peek() != ']') {
             this.reader.skipWhitespace();
             if (this.reader.canRead() && this.reader.peek() == '!') {
                this.reader.skip();
-               this.visitor.visitSuggestions(this::suggestComponent);
+               this.visitor.visitSuggestions(ItemParser.State::suggestComponent);
                DataComponentType<?> componentType = readComponentType(this.reader);
                if (!visitedComponents.add(componentType)) {
                   throw ItemParser.ERROR_REPEATED_COMPONENT.create(componentType);
                }
 
                this.visitor.visitRemovedComponent(componentType);
-               this.visitor.visitSuggestions(ItemParser.SUGGEST_NOTHING);
+               this.visitor.visitSuggestions(SuggestionContext.Provider.suggestNothing());
                this.reader.skipWhitespace();
             } else {
                DataComponentType<?> componentType = readComponentType(this.reader);
@@ -164,30 +162,30 @@ public class ItemParser {
                   throw ItemParser.ERROR_REPEATED_COMPONENT.create(componentType);
                }
 
-               this.visitor.visitSuggestions(this::suggestAssignment);
+               this.visitor.visitSuggestions(ItemParser.State::suggestAssignment);
                this.reader.skipWhitespace();
                this.reader.expect('=');
-               this.visitor.visitSuggestions(ItemParser.SUGGEST_NOTHING);
+               this.visitor.visitSuggestions(SuggestionContext.Provider.suggestNothing());
                this.reader.skipWhitespace();
-               this.readComponent(ItemParser.this.tagParser, ItemParser.this.registryOps, componentType);
+               this.readComponent(ItemParser.TAG_PARSER, ItemParser.this.registryOps, componentType);
                this.reader.skipWhitespace();
             }
 
-            this.visitor.visitSuggestions(this::suggestNextOrEndComponents);
+            this.visitor.visitSuggestions(ItemParser.State::suggestNextOrEndComponents);
             if (!this.reader.canRead() || this.reader.peek() != ',') {
                break;
             }
 
             this.reader.skip();
             this.reader.skipWhitespace();
-            this.visitor.visitSuggestions(this::suggestComponentAssignmentOrRemoval);
+            this.visitor.visitSuggestions(ItemParser.State::suggestComponentAssignmentOrRemoval);
             if (!this.reader.canRead()) {
                throw ItemParser.ERROR_EXPECTED_COMPONENT.createWithContext(this.reader);
             }
          }
 
          this.reader.expect(']');
-         this.visitor.visitSuggestions(ItemParser.SUGGEST_NOTHING);
+         this.visitor.visitSuggestions(SuggestionContext.Provider.suggestNothing());
       }
 
       public static DataComponentType<?> readComponentType(final StringReader reader) throws CommandSyntaxException {
@@ -216,7 +214,9 @@ public class ItemParser {
          }));
       }
 
-      private CompletableFuture<Suggestions> suggestStartComponents(final SuggestionsBuilder builder) {
+      private static CompletableFuture<Suggestions> suggestStartComponents(
+         final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder
+      ) {
          if (builder.getRemaining().isEmpty()) {
             builder.suggest(String.valueOf('['));
          }
@@ -224,7 +224,9 @@ public class ItemParser {
          return builder.buildFuture();
       }
 
-      private CompletableFuture<Suggestions> suggestNextOrEndComponents(final SuggestionsBuilder builder) {
+      private static CompletableFuture<Suggestions> suggestNextOrEndComponents(
+         final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder
+      ) {
          if (builder.getRemaining().isEmpty()) {
             builder.suggest(String.valueOf(','));
             builder.suggest(String.valueOf(']'));
@@ -233,7 +235,9 @@ public class ItemParser {
          return builder.buildFuture();
       }
 
-      private CompletableFuture<Suggestions> suggestAssignment(final SuggestionsBuilder builder) {
+      private static CompletableFuture<Suggestions> suggestAssignment(
+         final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder
+      ) {
          if (builder.getRemaining().isEmpty()) {
             builder.suggest(String.valueOf('='));
          }
@@ -241,22 +245,27 @@ public class ItemParser {
          return builder.buildFuture();
       }
 
-      private CompletableFuture<Suggestions> suggestItem(final SuggestionsBuilder builder) {
-         return SharedSuggestionProvider.suggestResource(ItemParser.this.items.listElementIds().map(ResourceKey::identifier), builder);
+      private static CompletableFuture<Suggestions> suggestItem(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
+         return ((SuggestionContext)context.getSource())
+            .suggestRegistryElements(context, Registries.ITEM, SuggestionContext.ElementSuggestionType.ELEMENTS, builder);
       }
 
-      private CompletableFuture<Suggestions> suggestComponentAssignmentOrRemoval(final SuggestionsBuilder builder) {
+      private static CompletableFuture<Suggestions> suggestComponentAssignmentOrRemoval(
+         final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder
+      ) {
          builder.suggest(String.valueOf('!'));
-         return this.suggestComponent(builder, String.valueOf('='));
+         return suggestComponent(builder, String.valueOf('='));
       }
 
-      private CompletableFuture<Suggestions> suggestComponent(final SuggestionsBuilder builder) {
-         return this.suggestComponent(builder, "");
+      private static CompletableFuture<Suggestions> suggestComponent(
+         final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder
+      ) {
+         return suggestComponent(builder, "");
       }
 
-      private CompletableFuture<Suggestions> suggestComponent(final SuggestionsBuilder builder, final String suffix) {
+      private static CompletableFuture<Suggestions> suggestComponent(final SuggestionsBuilder builder, final String suffix) {
          String contents = builder.getRemaining().toLowerCase(Locale.ROOT);
-         SharedSuggestionProvider.filterResources(BuiltInRegistries.DATA_COMPONENT_TYPE.entrySet(), contents, entry -> entry.getKey().identifier(), entry -> {
+         SuggestionContext.filterResources(BuiltInRegistries.DATA_COMPONENT_TYPE.entrySet(), contents, entry -> entry.getKey().identifier(), entry -> {
             DataComponentType<?> type = entry.getValue();
             if (type.codec() != null) {
                Identifier id = entry.getKey().identifier();
@@ -268,15 +277,17 @@ public class ItemParser {
    }
 
    private static class SuggestionsVisitor implements ItemParser.Visitor {
-      private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> suggestions = ItemParser.SUGGEST_NOTHING;
+      private SuggestionContext.Provider suggestions = SuggestionContext.Provider.suggestNothing();
 
       @Override
-      public void visitSuggestions(final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> suggestions) {
+      public void visitSuggestions(final SuggestionContext.Provider suggestions) {
          this.suggestions = suggestions;
       }
 
-      public CompletableFuture<Suggestions> resolveSuggestions(final SuggestionsBuilder builder, final StringReader reader) {
-         return this.suggestions.apply(builder.createOffset(reader.getCursor()));
+      public CompletableFuture<Suggestions> resolveSuggestions(
+         final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder, final StringReader reader
+      ) throws CommandSyntaxException {
+         return this.suggestions.getSuggestions(context, builder.createOffset(reader.getCursor()));
       }
    }
 
@@ -290,7 +301,7 @@ public class ItemParser {
       default <T> void visitRemovedComponent(final DataComponentType<T> type) {
       }
 
-      default void visitSuggestions(final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> suggestions) {
+      default void visitSuggestions(final SuggestionContext.Provider suggestions) {
       }
    }
 }

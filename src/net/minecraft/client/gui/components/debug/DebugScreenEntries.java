@@ -1,8 +1,10 @@
 package net.minecraft.client.gui.components.debug;
 
 import java.util.Map;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.core.registries.ClientRegistries;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 
@@ -55,13 +57,15 @@ public class DebugScreenEntries {
    public static final ResourceKey<DebugScreenEntry> VISUALIZE_CHUNKS_ON_SERVER = key("visualize_chunks_on_server");
    public static final ResourceKey<DebugScreenEntry> VISUALIZE_SKY_LIGHT_SECTIONS = key("visualize_sky_light_sections");
    public static final ResourceKey<DebugScreenEntry> CHUNK_SECTION_VISIBILITY = key("chunk_section_visibility");
+   public static final ResourceKey<DebugScreenEntry> ENVIRONMENT_ATTRIBUTE = key("environment_attribute");
+   public static final ResourceKey<DebugScreenEntry> VISUALIZE_ENVIRONMENT_ATTRIBUTE = key("visualize_environment_attribute");
    public static final Map<DebugScreenProfile, Map<ResourceKey<DebugScreenEntry>, DebugScreenEntryStatus>> PROFILES;
 
    private static ResourceKey<DebugScreenEntry> key(final String name) {
       return ResourceKey.create(ClientRegistries.DEBUG_SCREEN_ENTRY, Identifier.withDefaultNamespace(name));
    }
 
-   public static Object bootstrap(final Registry<DebugScreenEntry> registry) {
+   public static void bootstrap(final WritableRegistry<DebugScreenEntry> registry) {
       Registry.register(registry, GAME_VERSION, new DebugEntryVersion());
       Registry.register(registry, FPS, new DebugEntryFps());
       Registry.register(registry, TPS, new DebugEntryTps());
@@ -109,7 +113,14 @@ public class DebugScreenEntries {
       Registry.register(registry, VISUALIZE_SOLID_FACES, new DebugEntryNoop());
       Registry.register(registry, VISUALIZE_CHUNKS_ON_SERVER, new DebugEntryNoop());
       Registry.register(registry, VISUALIZE_SKY_LIGHT_SECTIONS, new DebugEntryNoop());
-      return Registry.register(registry, CHUNK_SECTION_VISIBILITY, new DebugEntryNoop());
+      Registry.register(registry, CHUNK_SECTION_VISIBILITY, new DebugEntryNoop());
+      Registry.register(registry, ENVIRONMENT_ATTRIBUTE, new DebugEntryEnvironmentAttribute());
+      Registry.register(registry, VISUALIZE_ENVIRONMENT_ATTRIBUTE, new DebugEntryNoop() {
+         @Override
+         public boolean isAllowed(final boolean reducedDebugInfo) {
+            return !reducedDebugInfo && Minecraft.getInstance().canUseRestrictedDebugFeatures();
+         }
+      });
    }
 
    static {

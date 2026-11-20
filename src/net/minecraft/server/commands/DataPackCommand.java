@@ -27,11 +27,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import net.minecraft.SharedConstants;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.ComponentArgument;
+import net.minecraft.commands.arguments.StringArgument;
+import net.minecraft.commands.suggestions.SuggestionContext;
+import net.minecraft.commands.suggestions.SuggestionProviders;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.server.packs.PackType;
@@ -78,35 +80,39 @@ public class DataPackCommand {
    private static final DynamicCommandExceptionType ERROR_PACK_IO_FAILURE = new DynamicCommandExceptionType(
       id -> Component.translatableEscape("commands.datapack.create.io_failure", id)
    );
-   private static final SuggestionProvider<CommandSourceStack> SELECTED_PACKS = (c, p) -> SharedSuggestionProvider.suggest(
-      ((CommandSourceStack)c.getSource()).getServer().getPackRepository().getSelectedIds().stream().map(StringArgumentType::escapeIfRequired), p
+   private static final SuggestionProvider<CommandSourceStack> SELECTED_PACKS = SuggestionProviders.serverOnly(
+      (server, var1, builder) -> SuggestionContext.suggest(
+         server.getPackRepository().getSelectedIds().stream().map(StringArgumentType::escapeIfRequired), builder
+      )
    );
-   private static final SuggestionProvider<CommandSourceStack> UNSELECTED_PACKS = (c, p) -> {
-      PackRepository packRepository = ((CommandSourceStack)c.getSource()).getServer().getPackRepository();
-      Collection<String> selectedIds = packRepository.getSelectedIds();
-      FeatureFlagSet enabledFeatures = ((CommandSourceStack)c.getSource()).enabledFeatures();
-      return SharedSuggestionProvider.suggest(
-         packRepository.getAvailablePacks()
-            .stream()
-            .filter(pack -> pack.getRequestedFeatures().isSubsetOf(enabledFeatures))
-            .map(Pack::getId)
-            .filter(id -> !selectedIds.contains(id))
-            .map(StringArgumentType::escapeIfRequired),
-         p
-      );
-   };
+   private static final SuggestionProvider<CommandSourceStack> UNSELECTED_PACKS = SuggestionProviders.serverOnly(
+      (server, context, builder) -> {
+         PackRepository packRepository = server.getPackRepository();
+         Collection<String> selectedIds = packRepository.getSelectedIds();
+         FeatureFlagSet enabledFeatures = ((SuggestionContext)context.getSource()).enabledFeatures();
+         return SuggestionContext.suggest(
+            packRepository.getAvailablePacks()
+               .stream()
+               .filter(pack -> pack.getRequestedFeatures().isSubsetOf(enabledFeatures))
+               .map(Pack::getId)
+               .filter(id -> !selectedIds.contains(id))
+               .map(StringArgumentType::escapeIfRequired),
+            builder
+         );
+      }
+   );
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal(
                            "datapack"
                         )
-                        .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                        .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                      .then(
                         Commands.literal("enable")
                            .then(
                               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument(
-                                                "name", StringArgumentType.string()
+                                                "name", StringArgument.string()
                                              )
                                              .suggests(UNSELECTED_PACKS)
                                              .executes(
@@ -119,7 +125,7 @@ public class DataPackCommand {
                                           .then(
                                              Commands.literal("after")
                                                 .then(
-                                                   Commands.argument("existing", StringArgumentType.string())
+                                                   Commands.argument("existing", StringArgument.string())
                                                       .suggests(SELECTED_PACKS)
                                                       .executes(
                                                          c -> enablePack(
@@ -133,7 +139,7 @@ public class DataPackCommand {
                                        .then(
                                           Commands.literal("before")
                                              .then(
-                                                Commands.argument("existing", StringArgumentType.string())
+                                                Commands.argument("existing", StringArgument.string())
                                                    .suggests(SELECTED_PACKS)
                                                    .executes(
                                                       c -> enablePack(
@@ -157,7 +163,7 @@ public class DataPackCommand {
                   .then(
                      Commands.literal("disable")
                         .then(
-                           Commands.argument("name", StringArgumentType.string())
+                           Commands.argument("name", StringArgument.string())
                               .suggests(SELECTED_PACKS)
                               .executes(c -> disablePack((CommandSourceStack)c.getSource(), getPack(c, "name", false)))
                         )
@@ -168,15 +174,15 @@ public class DataPackCommand {
                      .then(Commands.literal("enabled").executes(c -> listEnabledPacks((CommandSourceStack)c.getSource())))
                ))
             .then(
-               ((LiteralArgumentBuilder)Commands.literal("create").requires(Commands.hasPermission(Commands.LEVEL_OWNERS)))
+               ((LiteralArgumentBuilder)Commands.literal("create").requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_OWNERS)))
                   .then(
-                     Commands.argument("id", StringArgumentType.string())
+                     Commands.argument("id", StringArgument.string())
                         .then(
-                           Commands.argument("description", ComponentArgument.textComponent(context))
+                           Commands.argument("description", ComponentArgument.textComponent())
                               .executes(
                                  c -> createPack(
                                     (CommandSourceStack)c.getSource(),
-                                    StringArgumentType.getString(c, "id"),
+                                    StringArgument.getString(c, "id"),
                                     ComponentArgument.getResolvedComponent(c, "description")
                                  )
                               )
@@ -309,7 +315,7 @@ public class DataPackCommand {
    }
 
    private static Pack getPack(final CommandContext<CommandSourceStack> context, final String name, final boolean enabling) throws CommandSyntaxException {
-      String id = StringArgumentType.getString(context, name);
+      String id = StringArgument.getString(context, name);
       PackRepository repository = ((CommandSourceStack)context.getSource()).getServer().getPackRepository();
       Pack pack = repository.getPack(id);
       if (pack == null) {

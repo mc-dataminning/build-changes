@@ -10,9 +10,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
-public record MatchBlock(BlockPredicate predicate) implements LootItemCondition {
+public record MatchBlock(BlockPredicate predicate) implements LootItemCondition.ContextUser {
    public static final MapCodec<MatchBlock> MAP_CODEC = BlockPredicate.MAP_CODEC.xmap(MatchBlock::new, MatchBlock::predicate);
 
    @Override
@@ -21,10 +22,14 @@ public record MatchBlock(BlockPredicate predicate) implements LootItemCondition 
    }
 
    @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
+   public Set<ContextKey<?>> requiredContextParams() {
       return this.predicate.willMatchBlockEntity()
          ? Set.of(LootContextParams.BLOCK_STATE, LootContextParams.BLOCK_ENTITY)
          : Set.of(LootContextParams.BLOCK_STATE);
+   }
+
+   @Override
+   public void validate(final ValidationContext context) {
    }
 
    public boolean test(final LootContext context) {

@@ -261,7 +261,7 @@ public class RenderPipeline {
          return this;
       }
 
-      public RenderPipeline.Builder withVertexBinding(final int bindingIndex, final VertexFormat vertexFormat) {
+      public RenderPipeline.Builder withVertexBinding(final int bindingIndex, final @Nullable VertexFormat vertexFormat) {
          this.vertexFormatPerBuffer[bindingIndex] = vertexFormat;
          return this;
       }

@@ -28,7 +28,7 @@ import java.util.function.BiFunction;
 import java.util.function.BooleanSupplier;
 import java.util.function.Function;
 import net.minecraft.SharedConstants;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.SectionPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -51,7 +51,7 @@ public class SectionStorage<R, P> implements AutoCloseable {
    private final Function<R, P> packer;
    private final BiFunction<P, Runnable, R> unpacker;
    private final Function<Runnable, R> factory;
-   private final RegistryAccess registryAccess;
+   private final HolderGetter.Provider registryAccess;
    private final ChunkIOErrorReporter errorReporter;
    protected final LevelHeightAccessor levelHeightAccessor;
    private final LongSet loadedChunks = new LongOpenHashSet();
@@ -64,7 +64,7 @@ public class SectionStorage<R, P> implements AutoCloseable {
       final Function<R, P> packer,
       final BiFunction<P, Runnable, R> unpacker,
       final Function<Runnable, R> factory,
-      final RegistryAccess registryAccess,
+      final HolderGetter.Provider registryAccess,
       final ChunkIOErrorReporter errorReporter,
       final LevelHeightAccessor levelHeightAccessor
    ) {

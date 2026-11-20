@@ -21,7 +21,7 @@ public interface EnvironmentAttributeProvider extends LootContextUser {
    EnvironmentAttribute<?> attribute();
 
    @Override
-   default Set<ContextKey<?>> getReferencedContextParams() {
+   default Set<ContextKey<?>> getRequiredParams() {
       return this.attribute().isPositional() ? Set.of(LootContextParams.ORIGIN) : Set.of();
    }
 

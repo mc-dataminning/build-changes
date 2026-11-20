@@ -1,8 +1,8 @@
 package net.minecraft.client.renderer.chunk;
 
-import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.ByteBufferBuilder;
 import com.mojang.blaze3d.vertex.MeshData;
+import com.mojang.blaze3d.vertex.SectionBufferBuilder;
 import com.mojang.blaze3d.vertex.VertexSorting;
 import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
 import java.util.ArrayList;
@@ -61,16 +61,20 @@ public class SectionCompiler {
       BlockModelLighter.enableCaching();
       ModelBlockRenderer blockRenderer = new ModelBlockRenderer(this.ambientOcclusion, true, this.blockColors);
       FluidRenderer fluidRenderer = new FluidRenderer(this.fluidModelSet);
-      Map<ChunkSectionLayer, BufferBuilder> startedLayers = new EnumMap<>(ChunkSectionLayer.class);
+      Map<ChunkSectionLayer, SectionBufferBuilder> startedLayers = new EnumMap<>(ChunkSectionLayer.class);
       BlockQuadOutput quadOutput = (x, y, z, quad, instance) -> {
-         BufferBuilder builder = this.getOrBeginLayer(startedLayers, builders, quad.materialInfo().layer());
-         builder.putBlockBakedQuad(x, y, z, quad, instance);
+         ChunkSectionLayer layerx = quad.materialInfo().layer();
+         SectionBufferBuilder builderx = this.getOrBeginLayer(startedLayers, builders, layerx);
+         builderx.addQuad(x, y, z, quad, instance);
       };
       BlockQuadOutput opaqueQuadOutput = (x, y, z, quad, instance) -> {
-         BufferBuilder builder = this.getOrBeginLayer(startedLayers, builders, ChunkSectionLayer.SOLID);
-         builder.putBlockBakedQuad(x, y, z, quad, instance);
+         SectionBufferBuilder builderx = this.getOrBeginLayer(startedLayers, builders, ChunkSectionLayer.SOLID);
+         builderx.addQuad(x, y, z, quad, instance);
       };
-      FluidRenderer.Output fluidOutput = layerx -> this.getOrBeginLayer(startedLayers, builders, layerx);
+      FluidRenderer.Output fluidOutput = (layerx, x, y, z, quad, color, brightness, lightCoords) -> {
+         SectionBufferBuilder builderx = this.getOrBeginLayer(startedLayers, builders, layerx);
+         builderx.addFluidQuad(x, y, z, quad, color, brightness, lightCoords);
+      };
 
       for (BlockPos pos : BlockPos.betweenClosed(minPos, maxPos)) {
          BlockState blockState = region.getBlockState(pos);
@@ -114,12 +118,13 @@ public class SectionCompiler {
          }
       }
 
-      for (Entry<ChunkSectionLayer, BufferBuilder> entry : startedLayers.entrySet()) {
+      for (Entry<ChunkSectionLayer, SectionBufferBuilder> entry : startedLayers.entrySet()) {
          ChunkSectionLayer layer = entry.getKey();
-         MeshData mesh = entry.getValue().build();
+         SectionBufferBuilder builder = entry.getValue();
+         MeshData mesh = builder.build();
          if (mesh != null) {
             if (layer == ChunkSectionLayer.TRANSLUCENT) {
-               results.transparencyState = mesh.sortQuads(builders.buffer(layer), vertexSorting);
+               results.transparencyState = mesh.sortQuads(builders.buffer(layer), vertexSorting, layer);
             }
 
             results.renderedLayers.put(layer, mesh);
@@ -131,13 +136,13 @@ public class SectionCompiler {
       return results;
    }
 
-   private BufferBuilder getOrBeginLayer(
-      final Map<ChunkSectionLayer, BufferBuilder> startedLayers, final SectionBufferBuilderPack buffers, final ChunkSectionLayer layer
+   private SectionBufferBuilder getOrBeginLayer(
+      final Map<ChunkSectionLayer, SectionBufferBuilder> startedLayers, final SectionBufferBuilderPack buffers, final ChunkSectionLayer layer
    ) {
-      BufferBuilder builder = startedLayers.get(layer);
+      SectionBufferBuilder builder = startedLayers.get(layer);
       if (builder == null) {
          ByteBufferBuilder buffer = buffers.buffer(layer);
-         builder = new BufferBuilder(buffer, PrimitiveTopology.QUADS, layer.vertexFormat());
+         builder = new SectionBufferBuilder(buffer, PrimitiveTopology.QUADS, layer);
          startedLayers.put(layer, builder);
       }
 

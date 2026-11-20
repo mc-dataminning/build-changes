@@ -10,6 +10,8 @@ import java.net.Proxy;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import net.minecraft.core.ClientAsset;
@@ -19,7 +21,7 @@ import net.minecraft.util.FileUtil;
 import net.minecraft.util.Util;
 import org.slf4j.Logger;
 
-public class SkinTextureDownloader {
+public class SkinTextureDownloader implements AutoCloseable {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final int SKIN_WIDTH = 64;
    private static final int SKIN_HEIGHT = 64;
@@ -27,11 +29,20 @@ public class SkinTextureDownloader {
    private final Proxy proxy;
    private final TextureManager textureManager;
    private final Executor mainThreadExecutor;
+   private final Map<Identifier, TextureResources> textures = new HashMap<>();
 
    public SkinTextureDownloader(final Proxy proxy, final TextureManager textureManager, final Executor mainThreadExecutor) {
       this.proxy = proxy;
       this.textureManager = textureManager;
       this.mainThreadExecutor = mainThreadExecutor;
+   }
+
+   @Override
+   public void close() {
+      this.textures.forEach((location, resources) -> {
+         this.textureManager.release(location);
+         resources.close();
+      });
    }
 
    public CompletableFuture<ClientAsset.Texture> downloadAndRegisterSkin(
@@ -93,7 +104,12 @@ public class SkinTextureDownloader {
    private CompletableFuture<ClientAsset.Texture> registerTextureInManager(final ClientAsset.Texture textureId, final NativeImage contents) {
       return CompletableFuture.supplyAsync(() -> {
          try (contents) {
-            this.textureManager.register(textureId.texturePath(), TextureResources.from2dImage(textureId.texturePath()::toString, contents));
+            TextureResources texture = TextureResources.from2dImage(textureId.texturePath()::toString, contents);
+            this.textureManager.registerProvider(textureId.texturePath(), new ExternalTextureProvider(texture));
+            TextureResources old = this.textures.put(textureId.texturePath(), texture);
+            if (old != null) {
+               old.close();
+            }
          }
 
          return textureId;

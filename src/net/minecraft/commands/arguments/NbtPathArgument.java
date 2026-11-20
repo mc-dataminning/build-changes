@@ -12,7 +12,6 @@ import com.mojang.serialization.DataResult;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -20,7 +19,6 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.nbt.CollectionTag;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -30,8 +28,10 @@ import net.minecraft.nbt.TagParser;
 import net.minecraft.network.chat.Component;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("foo", "foo.bar", "foo[0]", "[0]", "[]", "{foo=bar}");
+public class NbtPathArgument implements SerializableArgument.ContextFree<NbtPathArgument.NbtPath> {
+   public static final NbtPathArgument INSTANCE = new NbtPathArgument();
+   public static final SerializableArgument.Type<NbtPathArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
+   private static final Collection<String> EXAMPLES = List.of("foo", "foo.bar", "foo[0]", "[0]", "[]", "{foo=bar}");
    public static final SimpleCommandExceptionType ERROR_INVALID_NODE = new SimpleCommandExceptionType(Component.translatable("arguments.nbtpath.node.invalid"));
    public static final SimpleCommandExceptionType ERROR_DATA_TOO_DEEP = new SimpleCommandExceptionType(Component.translatable("arguments.nbtpath.too_deep"));
    public static final DynamicCommandExceptionType ERROR_NOTHING_FOUND = new DynamicCommandExceptionType(
@@ -50,11 +50,19 @@ public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
    private static final char QUOTED_KEY_START = '"';
    private static final char SINGLE_QUOTED_KEY_START = '\'';
 
-   public static NbtPathArgument nbtPath() {
-      return new NbtPathArgument();
+   private NbtPathArgument() {
    }
 
-   public static NbtPathArgument.NbtPath getPath(final CommandContext<CommandSourceStack> context, final String name) {
+   @Override
+   public SerializableArgument.Type<NbtPathArgument> type() {
+      return TYPE;
+   }
+
+   public static ArgumentType<NbtPathArgument.NbtPath> nbtPath() {
+      return INSTANCE.toBrigadier();
+   }
+
+   public static NbtPathArgument.NbtPath getPath(final CommandContext<?> context, final String name) {
       return (NbtPathArgument.NbtPath)context.getArgument(name, NbtPathArgument.NbtPath.class);
    }
 
@@ -138,6 +146,7 @@ public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
       }
    }
 
+   @Override
    public Collection<String> getExamples() {
       return EXAMPLES;
    }
@@ -532,7 +541,7 @@ public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
       private final NbtPathArgument.Node[] nodes;
       public static final Codec<NbtPathArgument.NbtPath> CODEC = Codec.STRING.comapFlatMap(string -> {
          try {
-            NbtPathArgument.NbtPath parsed = new NbtPathArgument().parse(new StringReader(string));
+            NbtPathArgument.NbtPath parsed = NbtPathArgument.INSTANCE.parse(new StringReader(string));
             return DataResult.success(parsed);
          } catch (CommandSyntaxException e) {
             return DataResult.error(() -> "Failed to parse path " + string + ": " + e.getMessage());
@@ -540,7 +549,7 @@ public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
       }, NbtPathArgument.NbtPath::asString);
 
       public static NbtPathArgument.NbtPath of(final String string) throws CommandSyntaxException {
-         return new NbtPathArgument().parse(new StringReader(string));
+         return NbtPathArgument.INSTANCE.parse(new StringReader(string));
       }
 
       public NbtPath(final String original, final NbtPathArgument.Node[] nodes, final Object2IntMap<NbtPathArgument.Node> nodeToOriginalPosition) {

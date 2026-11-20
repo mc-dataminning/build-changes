@@ -31,7 +31,7 @@ import net.minecraft.world.entity.player.PlayerSkin;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
-public class SkinManager {
+public class SkinManager implements AutoCloseable {
    private static final Logger LOGGER = LogUtils.getLogger();
    private final Services services;
    private final SkinTextureDownloader skinTextureDownloader;
@@ -126,6 +126,11 @@ public class SkinManager {
          .thenApply(
             unused -> new PlayerSkin(skinTexture.join(), capeTexture.join(), elytraTexture.join(), model, textures.signatureState() == SignatureState.SIGNED)
          );
+   }
+
+   @Override
+   public void close() {
+      this.skinTextureDownloader.close();
    }
 
    private record CacheKey(UUID profileId, @Nullable Property packedTextures) {

@@ -142,8 +142,10 @@ public class Beardifier implements DensitySampler {
 
    private float sampleValueUnchecked(final int blockX, final int blockY, final int blockZ) {
       float noiseValue = 0.0F;
+      int piecesSize = this.pieces.size();
 
-      for (Beardifier.Rigid rigid : this.pieces) {
+      for (int i = 0; i < piecesSize; i++) {
+         Beardifier.Rigid rigid = this.pieces.get(i);
          BoundingBox box = rigid.box();
          int groundLevelDelta = rigid.groundLevelDelta();
          int dx = Math.max(0, Math.max(box.minX() - blockX, blockX - box.maxX()));
@@ -166,7 +168,10 @@ public class Beardifier implements DensitySampler {
          };
       }
 
-      for (JigsawJunction junction : this.junctions) {
+      int junctionsSize = this.junctions.size();
+
+      for (int i = 0; i < junctionsSize; i++) {
+         JigsawJunction junction = this.junctions.get(i);
          int dx = blockX - junction.getSourceX();
          int dy = blockY - junction.getSourceGroundY();
          int dz = blockZ - junction.getSourceZ();

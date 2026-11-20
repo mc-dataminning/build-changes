@@ -3,7 +3,7 @@ package net.minecraft.world.level.block.entity;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.features.EndFeatures;
 import net.minecraft.nbt.CompoundTag;
@@ -104,7 +104,7 @@ public class TheEndGatewayBlockEntity extends TheEndPortalBlockEntity {
    }
 
    @Override
-   public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
+   public CompoundTag getUpdateTag(final HolderGetter.Provider registries) {
       return this.saveCustomOnly(registries);
    }
 

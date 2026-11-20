@@ -6,7 +6,6 @@ import com.mojang.renderpearl.api.textures.AddressMode;
 import com.mojang.renderpearl.api.textures.FilterMode;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.AbstractEndPortalRenderer;
 import net.minecraft.client.renderer.feature.ItemFeatureRenderer;
 import net.minecraft.client.renderer.pipeline.RenderPipelines;
@@ -435,12 +434,7 @@ public class RenderTypes {
       )
    );
    private static final RenderType LEASH = RenderType.create("leash", RenderSetup.nonOitBuilder(RenderPipelines.LEASH).useLightmap().createRenderSetup());
-   private static final RenderType WATER_MASK = RenderType.create(
-      "water_mask", RenderSetup.nonOitBuilder(RenderPipelines.waterMask(new RenderPipelines.WaterMaskParameters(false))).createRenderSetup()
-   );
-   private static final RenderType OIT_WATER_MASK = RenderType.create(
-      "oit_water_mask", RenderSetup.nonOitBuilder(RenderPipelines.waterMask(new RenderPipelines.WaterMaskParameters(true))).createRenderSetup()
-   );
+   private static final RenderType WATER_MASK = RenderType.create("water_mask", RenderSetup.nonOitBuilder(RenderPipelines.WATER_MASK).createRenderSetup());
    private static final RenderType PATTERNED_SHIELD_GLINT = RenderType.create(
       "patterned_shield_glint",
       RenderSetup.nonOitBuilder(RenderPipelines.GLINT)
@@ -771,7 +765,7 @@ public class RenderTypes {
    }
 
    public static RenderType waterMask() {
-      return Minecraft.getInstance().gameRenderer.useImprovedTransparency() ? OIT_WATER_MASK : WATER_MASK;
+      return WATER_MASK;
    }
 
    public static RenderType outline(final Identifier texture) {

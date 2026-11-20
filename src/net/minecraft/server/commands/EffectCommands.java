@@ -1,9 +1,8 @@
 package net.minecraft.server.commands;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -13,10 +12,12 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 import java.util.List;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.commands.arguments.BooleanArgument;
 import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.commands.arguments.IntegerArgument;
 import net.minecraft.commands.arguments.ResourceOrTagArgument;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -43,6 +44,7 @@ public class EffectCommands {
    private static final DynamicCommandExceptionType ERROR_CLEAR_SPECIFIC_FAILED_MULTIPLE = new DynamicCommandExceptionType(
       entityCount -> Component.translatableEscape("commands.effect.clear.specific.failed.multiple", entityCount)
    );
+   private static final SimpleCommandExceptionType ERROR_NO_EFFECTS = new SimpleCommandExceptionType(Component.translatable("commands.effect.no_effects"));
    private static final CommandResponseTracker.Messages<LivingEntity> RESPONSE_GIVE = CommandResponseTracker.messages(
       (entity, effectCount) -> Component.translatable("commands.effect.give.success.single", effectCount, entity.getDisplayName()),
       (entityCount, effectCount) -> Component.translatable("commands.effect.give.success.multiple", effectCount, entityCount)
@@ -56,19 +58,19 @@ public class EffectCommands {
       (entity, effectCount) -> Component.translatable("commands.effect.clear.specific.success.single", effectCount, entity.getDisplayName()),
       (entityCount, effectCount) -> Component.translatable("commands.effect.clear.specific.success.multiple", effectCount, entityCount)
    );
-   private static final CommandResponseTracker.Dispatch<CommandSyntaxException, LivingEntity> ERROR_DISPATCH_GIVE = new CommandResponseTracker.Dispatch<>(
-      (entity, effectCount) -> ERROR_GIVE_FAILED.create(effectCount, entity.getDisplayName()),
-      (entityCount, effectCount) -> ERROR_GIVE_FAILED_MULTIPLE.create(effectCount, entityCount)
+   private static final CommandResponseTracker.DispatchWithArg<CommandSyntaxException, LivingEntity, Integer> ERROR_DISPATCH_GIVE = new CommandResponseTracker.DispatchWithArg<>(
+      (entity, var1, effectCount) -> ERROR_GIVE_FAILED.create(effectCount, entity.getDisplayName()),
+      (entityCount, var1, effectCount) -> ERROR_GIVE_FAILED_MULTIPLE.create(effectCount, entityCount)
    );
    private static final CommandResponseTracker.Dispatch<CommandSyntaxException, Entity> ERROR_DISPATCH_CLEAR = new CommandResponseTracker.Dispatch<>(
       (entity, var1) -> ERROR_CLEAR_SPECIFIC_FAILED.create(entity.getDisplayName()),
       (entityCount, var1) -> ERROR_CLEAR_SPECIFIC_FAILED_MULTIPLE.create(entityCount)
    );
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("effect")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                  .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                .then(
                   ((LiteralArgumentBuilder)Commands.literal("clear")
                         .executes(
@@ -78,7 +80,7 @@ public class EffectCommands {
                         ((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.entities())
                               .executes(c -> clearEffects((CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"))))
                            .then(
-                              Commands.argument("effect", ResourceOrTagArgument.resourceOrTag(context, Registries.MOB_EFFECT))
+                              Commands.argument("effect", ResourceOrTagArgument.resourceOrTag(Registries.MOB_EFFECT))
                                  .executes(
                                     c -> clearEffect((CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), getMobEffect(c, "effect"))
                                  )
@@ -91,7 +93,7 @@ public class EffectCommands {
                      Commands.argument("targets", EntityArgument.entities())
                         .then(
                            ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument(
-                                       "effect", ResourceOrTagArgument.resourceOrTag(context, Registries.MOB_EFFECT)
+                                       "effect", ResourceOrTagArgument.resourceOrTag(Registries.MOB_EFFECT)
                                     )
                                     .executes(
                                        c -> giveEffect(
@@ -99,39 +101,39 @@ public class EffectCommands {
                                        )
                                     ))
                                  .then(
-                                    ((RequiredArgumentBuilder)Commands.argument("seconds", IntegerArgumentType.integer(1, 1000000))
+                                    ((RequiredArgumentBuilder)Commands.argument("seconds", IntegerArgument.integer(1, 1000000))
                                           .executes(
                                              c -> giveEffect(
                                                 (CommandSourceStack)c.getSource(),
                                                 EntityArgument.getEntities(c, "targets"),
                                                 getMobEffect(c, "effect"),
-                                                IntegerArgumentType.getInteger(c, "seconds"),
+                                                IntegerArgument.getInteger(c, "seconds"),
                                                 0,
                                                 true
                                              )
                                           ))
                                        .then(
-                                          ((RequiredArgumentBuilder)Commands.argument("amplifier", IntegerArgumentType.integer(0, 255))
+                                          ((RequiredArgumentBuilder)Commands.argument("amplifier", IntegerArgument.integer(0, 255))
                                                 .executes(
                                                    c -> giveEffect(
                                                       (CommandSourceStack)c.getSource(),
                                                       EntityArgument.getEntities(c, "targets"),
                                                       getMobEffect(c, "effect"),
-                                                      IntegerArgumentType.getInteger(c, "seconds"),
-                                                      IntegerArgumentType.getInteger(c, "amplifier"),
+                                                      IntegerArgument.getInteger(c, "seconds"),
+                                                      IntegerArgument.getInteger(c, "amplifier"),
                                                       true
                                                    )
                                                 ))
                                              .then(
-                                                Commands.argument("hideParticles", BoolArgumentType.bool())
+                                                Commands.argument("hideParticles", BooleanArgument.bool())
                                                    .executes(
                                                       c -> giveEffect(
                                                          (CommandSourceStack)c.getSource(),
                                                          EntityArgument.getEntities(c, "targets"),
                                                          getMobEffect(c, "effect"),
-                                                         IntegerArgumentType.getInteger(c, "seconds"),
-                                                         IntegerArgumentType.getInteger(c, "amplifier"),
-                                                         !BoolArgumentType.getBool(c, "hideParticles")
+                                                         IntegerArgument.getInteger(c, "seconds"),
+                                                         IntegerArgument.getInteger(c, "amplifier"),
+                                                         !BooleanArgument.getBool(c, "hideParticles")
                                                       )
                                                    )
                                              )
@@ -150,27 +152,27 @@ public class EffectCommands {
                                           )
                                        ))
                                     .then(
-                                       ((RequiredArgumentBuilder)Commands.argument("amplifier", IntegerArgumentType.integer(0, 255))
+                                       ((RequiredArgumentBuilder)Commands.argument("amplifier", IntegerArgument.integer(0, 255))
                                              .executes(
                                                 c -> giveEffect(
                                                    (CommandSourceStack)c.getSource(),
                                                    EntityArgument.getEntities(c, "targets"),
                                                    getMobEffect(c, "effect"),
                                                    -1,
-                                                   IntegerArgumentType.getInteger(c, "amplifier"),
+                                                   IntegerArgument.getInteger(c, "amplifier"),
                                                    true
                                                 )
                                              ))
                                           .then(
-                                             Commands.argument("hideParticles", BoolArgumentType.bool())
+                                             Commands.argument("hideParticles", BooleanArgument.bool())
                                                 .executes(
                                                    c -> giveEffect(
                                                       (CommandSourceStack)c.getSource(),
                                                       EntityArgument.getEntities(c, "targets"),
                                                       getMobEffect(c, "effect"),
                                                       -1,
-                                                      IntegerArgumentType.getInteger(c, "amplifier"),
-                                                      !BoolArgumentType.getBool(c, "hideParticles")
+                                                      IntegerArgument.getInteger(c, "amplifier"),
+                                                      !BooleanArgument.getBool(c, "hideParticles")
                                                    )
                                                 )
                                           )
@@ -191,6 +193,11 @@ public class EffectCommands {
       final boolean particles
    ) throws CommandSyntaxException {
       Iterable<Holder<MobEffect>> effects = iterableResult(elementOrTag);
+      int effectCount = Iterables.size(effects);
+      if (effectCount == 0) {
+         throw ERROR_NO_EFFECTS.create();
+      }
+
       CommandResponseTracker<LivingEntity> tracker = CommandResponseTracker.create();
 
       for (Entity entity : entities) {
@@ -200,7 +207,7 @@ public class EffectCommands {
       }
 
       if (tracker.totalValue() == 0) {
-         throw (CommandSyntaxException)tracker.dispatch(CommandResponseTracker.ElementType.ANY, ERROR_DISPATCH_GIVE);
+         throw (CommandSyntaxException)tracker.dispatch(CommandResponseTracker.ElementType.ANY, ERROR_DISPATCH_GIVE, effectCount);
       } else {
          return tracker.sendFeedback(source, true, RESPONSE_GIVE);
       }
@@ -255,6 +262,11 @@ public class EffectCommands {
       final CommandSourceStack source, final Collection<? extends Entity> entities, final ResourceOrTagArgument.Result<MobEffect> elementOrTag
    ) throws CommandSyntaxException {
       Iterable<Holder<MobEffect>> effects = iterableResult(elementOrTag);
+      int effectCount = Iterables.size(effects);
+      if (effectCount == 0) {
+         throw ERROR_NO_EFFECTS.create();
+      }
+
       CommandResponseTracker<LivingEntity> tracker = CommandResponseTracker.create();
 
       for (Entity entity : entities) {

@@ -11,6 +11,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.codec.StreamCodec;
 
 public class ResourceKey<T> {
+   public static final Codec<ResourceKey<? extends Registry<?>>> REGISTRY_CODEC = Identifier.CODEC
+      .xmap(ResourceKey::createRegistryKey, ResourceKey::identifier);
    public static final StreamCodec<ByteBuf, ResourceKey<? extends Registry<?>>> REGISTRY_STREAM_CODEC = Identifier.STREAM_CODEC
       .map(ResourceKey::createRegistryKey, ResourceKey::identifier);
    private static final ConcurrentMap<ResourceKey.InternKey, ResourceKey<?>> VALUES = new MapMaker().weakValues().makeMap();
@@ -25,7 +27,7 @@ public class ResourceKey<T> {
       return Identifier.STREAM_CODEC.map(name -> create(registryName, name), ResourceKey::identifier);
    }
 
-   public static <T> ResourceKey<T> create(final ResourceKey<? extends Registry<T>> registryName, final Identifier location) {
+   public static <T> ResourceKey<T> create(final ResourceKey<? extends Registry<? extends T>> registryName, final Identifier location) {
       return create(registryName.identifier, location);
    }
 

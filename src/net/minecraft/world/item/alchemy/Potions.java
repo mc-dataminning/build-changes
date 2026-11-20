@@ -119,8 +119,4 @@ public class Potions {
    private static Holder<Potion> register(final ResourceKey<Potion> key, final Potion potion) {
       return Registry.registerForHolder(BuiltInRegistries.POTION, key, potion);
    }
-
-   public static Holder<Potion> bootstrap(final Registry<Potion> registry) {
-      return WATER;
-   }
 }

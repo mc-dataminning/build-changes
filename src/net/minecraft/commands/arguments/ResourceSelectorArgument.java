@@ -1,6 +1,5 @@
 package net.minecraft.commands.arguments;
 
-import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -8,43 +7,49 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
+import net.minecraft.commands.suggestions.SuggestionContext;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import org.apache.commons.io.FilenameUtils;
 
-public class ResourceSelectorArgument<T> implements ArgumentType<Collection<Holder.Reference<T>>> {
+public class ResourceSelectorArgument implements SerializableArgument.ContextFree<ResourceSelectorArgument.Result<?>> {
+   private static final MapCodec<ResourceSelectorArgument> MAP_CODEC = RecordCodecBuilder.mapCodec(
+      i -> i.group(ResourceKey.REGISTRY_CODEC.fieldOf("registry").forGetter(o -> o.registryKey)).apply(i, ResourceSelectorArgument::new)
+   );
+   private static final StreamCodec<ByteBuf, ResourceSelectorArgument> STREAM_CODEC = StreamCodec.composite(
+      ResourceKey.REGISTRY_STREAM_CODEC, o -> o.registryKey, ResourceSelectorArgument::new
+   );
+   public static final SerializableArgument.Type<ResourceSelectorArgument> TYPE = new SerializableArgument.Type<>(MAP_CODEC, STREAM_CODEC);
    private static final Collection<String> EXAMPLES = List.of("minecraft:*", "*:asset", "*");
    public static final Dynamic2CommandExceptionType ERROR_NO_MATCHES = new Dynamic2CommandExceptionType(
       (selector, registry) -> Component.translatableEscape("argument.resource_selector.not_found", selector, registry)
    );
-   private final ResourceKey<? extends Registry<T>> registryKey;
-   private final HolderLookup<T> registryLookup;
+   private final ResourceKey<? extends Registry<?>> registryKey;
 
-   private ResourceSelectorArgument(final CommandBuildContext context, final ResourceKey<? extends Registry<T>> registryKey) {
+   private ResourceSelectorArgument(final ResourceKey<? extends Registry<?>> registryKey) {
       this.registryKey = registryKey;
-      this.registryLookup = context.lookupOrThrow(registryKey);
    }
 
-   public Collection<Holder.Reference<T>> parse(final StringReader reader) throws CommandSyntaxException {
+   @Override
+   public SerializableArgument.Type<ResourceSelectorArgument> type() {
+      return TYPE;
+   }
+
+   public ResourceSelectorArgument.Result<?> parse(final StringReader reader) throws CommandSyntaxException {
       String pattern = ensureNamespaced(readPattern(reader));
-      List<Holder.Reference<T>> results = this.registryLookup.listElements().filter(element -> matches(pattern, element.key().identifier())).toList();
-      if (results.isEmpty()) {
-         throw ERROR_NO_MATCHES.createWithContext(reader, pattern, this.registryKey.identifier());
-      } else {
-         return results;
-      }
+      return new ResourceSelectorArgument.Result<>(this.registryKey, pattern);
    }
 
    public static <T> Collection<Holder.Reference<T>> parse(final StringReader reader, final HolderLookup<T> registry) {
@@ -74,53 +79,48 @@ public class ResourceSelectorArgument<T> implements ArgumentType<Collection<Hold
       return FilenameUtils.wildcardMatch(key.toString(), pattern);
    }
 
-   public static <T> ResourceSelectorArgument<T> resourceSelector(final CommandBuildContext context, final ResourceKey<? extends Registry<T>> registry) {
-      return new ResourceSelectorArgument<>(context, registry);
+   public static ArgumentType<ResourceSelectorArgument.Result<?>> resourceSelector(final ResourceKey<? extends Registry<?>> registry) {
+      return new ResourceSelectorArgument(registry).toBrigadier();
    }
 
-   public static <T> Collection<Holder.Reference<T>> getSelectedResources(final CommandContext<CommandSourceStack> context, final String name) {
-      return (Collection<Holder.Reference<T>>)context.getArgument(name, Collection.class);
+   public static <T> ResourceSelectorArgument.Result<T> getSelectedResources(final CommandContext<?> context, final String name) {
+      return (ResourceSelectorArgument.Result<T>)context.getArgument(name, ResourceSelectorArgument.Result.class);
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-      return SharedSuggestionProvider.listSuggestions(context, builder, this.registryKey, SharedSuggestionProvider.ElementSuggestionType.ELEMENTS);
+   public static <T> Collection<Holder.Reference<T>> getAndLookupSelectedResources(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
+      ResourceSelectorArgument.Result<T> selectedResources = getSelectedResources(context, name);
+      return selectedResources.selectFromRegistry(((CommandSourceStack)context.getSource()).holderLookups());
    }
 
+   @Override
+   public CompletableFuture<Suggestions> listSuggestions(final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder) {
+      return ((SuggestionContext)context.getSource())
+         .suggestRegistryElements(context, this.registryKey, SuggestionContext.ElementSuggestionType.ELEMENTS, builder);
+   }
+
+   @Override
    public Collection<String> getExamples() {
       return EXAMPLES;
    }
 
-   public static class Info<T> implements ArgumentTypeInfo<ResourceSelectorArgument<T>, ResourceSelectorArgument.Info<T>.Template> {
-      public void serializeToNetwork(final ResourceSelectorArgument.Info<T>.Template template, final FriendlyByteBuf out) {
-         out.writeResourceKey(template.registryKey);
+   public static class Result<T> {
+      private final ResourceKey<? extends Registry<? extends T>> registryKey;
+      private final String pattern;
+
+      public Result(final ResourceKey<? extends Registry<? extends T>> registryKey, final String pattern) {
+         this.registryKey = registryKey;
+         this.pattern = pattern;
       }
 
-      public ResourceSelectorArgument.Info<T>.Template deserializeFromNetwork(final FriendlyByteBuf in) {
-         return new ResourceSelectorArgument.Info.Template(in.readRegistryKey());
-      }
-
-      public void serializeToJson(final ResourceSelectorArgument.Info<T>.Template template, final JsonObject out) {
-         out.addProperty("registry", template.registryKey.identifier().toString());
-      }
-
-      public ResourceSelectorArgument.Info<T>.Template unpack(final ResourceSelectorArgument<T> argument) {
-         return new ResourceSelectorArgument.Info.Template(argument.registryKey);
-      }
-
-      public final class Template implements ArgumentTypeInfo.Template<ResourceSelectorArgument<T>> {
-         private final ResourceKey<? extends Registry<T>> registryKey;
-
-         private Template(final ResourceKey<? extends Registry<T>> registryKey) {
-            this.registryKey = registryKey;
-         }
-
-         public ResourceSelectorArgument<T> instantiate(final CommandBuildContext context) {
-            return new ResourceSelectorArgument<>(context, this.registryKey);
-         }
-
-         @Override
-         public ArgumentTypeInfo<ResourceSelectorArgument<T>, ?> type() {
-            return Info.this;
+      public Collection<Holder.Reference<T>> selectFromRegistry(final HolderLookup.Provider registries) throws CommandSyntaxException {
+         HolderLookup.RegistryLookup<T> registryLookup = registries.lookupOrThrow(this.registryKey);
+         List<Holder.Reference<T>> results = registryLookup.listElements()
+            .filter(element -> ResourceSelectorArgument.matches(this.pattern, element.key().identifier()))
+            .toList();
+         if (results.isEmpty()) {
+            throw ResourceSelectorArgument.ERROR_NO_MATCHES.create(this.pattern, this.registryKey.identifier());
+         } else {
+            return results;
          }
       }
    }

@@ -1,17 +1,18 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Arrays;
 import java.util.Locale;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.arguments.FloatArgument;
+import net.minecraft.commands.arguments.IntegerArgument;
 import net.minecraft.commands.arguments.TimeArgument;
+import net.minecraft.commands.suggestions.SuggestLiteralString;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.ServerTickRateManager;
 import net.minecraft.util.TimeUtil;
@@ -34,14 +35,14 @@ public class TickCommand {
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal(
                                  "tick"
                               )
-                              .requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
+                              .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_ADMINS)))
                            .then(Commands.literal("query").executes(c -> tickQuery((CommandSourceStack)c.getSource()))))
                         .then(
                            Commands.literal("rate")
                               .then(
-                                 Commands.argument("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
-                                    .suggests((c, b) -> SharedSuggestionProvider.suggest(new String[]{DEFAULT_TICKRATE}, b))
-                                    .executes(c -> setTickingRate((CommandSourceStack)c.getSource(), FloatArgumentType.getFloat(c, "rate")))
+                                 Commands.argument("rate", FloatArgument.floatArg(1.0F, 10000.0F))
+                                    .suggests(SuggestLiteralString.suggestLiteral(DEFAULT_TICKRATE))
+                                    .executes(c -> setTickingRate((CommandSourceStack)c.getSource(), FloatArgument.getFloat(c, "rate")))
                               )
                         ))
                      .then(
@@ -49,8 +50,8 @@ public class TickCommand {
                               .then(Commands.literal("stop").executes(c -> stopStepping((CommandSourceStack)c.getSource()))))
                            .then(
                               Commands.argument("time", TimeArgument.time(1))
-                                 .suggests((c, b) -> SharedSuggestionProvider.suggest(new String[]{"1t", "1s"}, b))
-                                 .executes(c -> step((CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "time")))
+                                 .suggests(SuggestLiteralString.suggestLiteral("1t", "1s"))
+                                 .executes(c -> step((CommandSourceStack)c.getSource(), IntegerArgument.getInteger(c, "time")))
                            )
                      ))
                   .then(
@@ -58,8 +59,8 @@ public class TickCommand {
                            .then(Commands.literal("stop").executes(c -> stopSprinting((CommandSourceStack)c.getSource()))))
                         .then(
                            Commands.argument("time", TimeArgument.time(1))
-                              .suggests((c, b) -> SharedSuggestionProvider.suggest(new String[]{"60s", "1d", "3d"}, b))
-                              .executes(c -> sprint((CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "time")))
+                              .suggests(SuggestLiteralString.suggestLiteral("60s", "1d", "3d"))
+                              .executes(c -> sprint((CommandSourceStack)c.getSource(), IntegerArgument.getInteger(c, "time")))
                         )
                   ))
                .then(Commands.literal("unfreeze").executes(c -> setFreeze((CommandSourceStack)c.getSource(), false))))

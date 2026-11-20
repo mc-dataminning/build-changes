@@ -1488,9 +1488,14 @@ public class Items {
    public static final Item DETECTOR_RAIL = registerBlock(BlockItemIds.DETECTOR_RAIL, Blocks.DETECTOR_RAIL);
    public static final Item RAIL = registerBlock(BlockItemIds.RAIL, Blocks.RAIL);
    public static final Item ACTIVATOR_RAIL = registerBlock(BlockItemIds.ACTIVATOR_RAIL, Blocks.ACTIVATOR_RAIL);
-   public static final Item SADDLE = registerItem(ItemIds.SADDLE, new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.saddle()));
+   public static final Item SADDLE = registerItem(
+      ItemIds.SADDLE, new Item.Properties().stacksTo(1).delayedComponent(DataComponents.EQUIPPABLE, Equippable::saddle)
+   );
    public static final ColorCollection<Item> HARNESS = ColorCollection.registerItems(
-      ItemIds.HARNESS, (name, color) -> registerItem(name, new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.harness(color)))
+      ItemIds.HARNESS,
+      (name, color) -> registerItem(
+         name, new Item.Properties().stacksTo(1).delayedComponent(DataComponents.EQUIPPABLE, context -> Equippable.harness(context, color))
+      )
    );
    public static final Item MINECART = registerItem(ItemIds.MINECART, p -> new MinecartItem(EntityTypes.MINECART, p), new Item.Properties().stacksTo(1));
    public static final Item CHEST_MINECART = registerItem(
@@ -2106,7 +2111,7 @@ public class Items {
    public static final Item ABANDONED_CAMP_MAP = registerItem(ItemIds.ABANDONED_CAMP_MAP, MapItem::new, mapProperties());
    public static final Item WARM_OCEAN_RUINS_MAP = registerItem(ItemIds.WARM_OCEAN_RUINS_MAP, MapItem::new, mapProperties());
    public static final Item SHEARS = registerItem(
-      ItemIds.SHEARS, ShearsItem::new, new Item.Properties().durability(238).component(DataComponents.TOOL, ShearsItem.createToolProperties())
+      ItemIds.SHEARS, ShearsItem::new, new Item.Properties().durability(238).delayedComponent(DataComponents.TOOL, ShearsItem::createToolProperties)
    );
    public static final Item MELON_SLICE = registerItem(
       ItemIds.MELON_SLICE, new Item.Properties().food(Foods.MELON_SLICE).compostable(ContextIntProviders.COMPOSTABLE_LOW_MEDIUM)

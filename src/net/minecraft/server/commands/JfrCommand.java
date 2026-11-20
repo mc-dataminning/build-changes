@@ -8,6 +8,7 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import net.minecraft.ChatFormatting;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.ClickEvent;
@@ -29,7 +30,7 @@ public class JfrCommand {
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("jfr")
-                  .requires(Commands.hasPermission(Commands.LEVEL_OWNERS)))
+                  .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_OWNERS)))
                .then(Commands.literal("start").executes(c -> startJfr((CommandSourceStack)c.getSource()))))
             .then(Commands.literal("stop").executes(c -> stopJfr((CommandSourceStack)c.getSource())))
       );

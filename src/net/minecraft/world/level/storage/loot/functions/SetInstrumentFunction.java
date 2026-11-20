@@ -12,6 +12,7 @@ import net.minecraft.world.item.Instrument;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.InstrumentComponent;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 public class SetInstrumentFunction extends LootItemConditionalFunction {
@@ -30,6 +31,10 @@ public class SetInstrumentFunction extends LootItemConditionalFunction {
    @Override
    public MapCodec<SetInstrumentFunction> codec() {
       return MAP_CODEC;
+   }
+
+   @Override
+   protected void validateCustom(final ValidationContext context) {
    }
 
    @Override

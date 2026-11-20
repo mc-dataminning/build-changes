@@ -15,7 +15,7 @@ import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 public abstract class CompositeEntryBase extends LootPoolEntryContainer {
-   public static final ProblemReporter.Problem NO_CHILDREN_PROBLEM = new ProblemReporter.Problem() {
+   public static final ProblemReporter.Problem NO_CHILDREN_PROBLEM = new ProblemReporter.Warning() {
       @Override
       public String description() {
          return "Empty children list";

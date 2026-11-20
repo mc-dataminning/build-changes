@@ -1,5 +1,6 @@
 package net.minecraft.advancements;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -11,6 +12,10 @@ public record AdvancementHolder(Identifier id, Advancement value) {
    public static final StreamCodec<RegistryFriendlyByteBuf, AdvancementHolder> STREAM_CODEC = StreamCodec.composite(
       Identifier.STREAM_CODEC, AdvancementHolder::id, Advancement.STREAM_CODEC, AdvancementHolder::value, AdvancementHolder::new
    );
+
+   public static AdvancementHolder wrap(final Holder.Reference<Advancement> holder) {
+      return new AdvancementHolder(holder.key().identifier(), holder.value());
+   }
 
    public void register(final BootstrapContext<Advancement> output) {
       output.register(ResourceKey.create(Registries.ADVANCEMENT, this.id), this.value);

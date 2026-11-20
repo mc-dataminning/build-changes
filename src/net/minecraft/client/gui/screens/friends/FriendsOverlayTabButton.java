@@ -16,7 +16,7 @@ public class FriendsOverlayTabButton extends TabButton {
    private static final WidgetSprites SPRITES = new WidgetSprites(
       Identifier.withDefaultNamespace("friends/tab_selected"),
       Identifier.withDefaultNamespace("friends/tab"),
-      Identifier.withDefaultNamespace("friends/tab_selected"),
+      Identifier.withDefaultNamespace("friends/tab_focused"),
       Identifier.withDefaultNamespace("friends/tab_highlighted")
    );
    private static final int SELECTED_OFFSET = 1;

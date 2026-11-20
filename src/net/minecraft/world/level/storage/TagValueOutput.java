@@ -5,7 +5,7 @@ import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.DataResult.Error;
 import com.mojang.serialization.DataResult.Success;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtOps;
@@ -24,7 +24,7 @@ public class TagValueOutput implements ValueOutput {
       this.output = output;
    }
 
-   public static TagValueOutput createWithContext(final ProblemReporter problemReporter, final HolderLookup.Provider provider) {
+   public static TagValueOutput createWithContext(final ProblemReporter problemReporter, final HolderGetter.Provider provider) {
       return new TagValueOutput(problemReporter, provider.createSerializationContext(NbtOps.INSTANCE), new CompoundTag());
    }
 
@@ -153,21 +153,21 @@ public class TagValueOutput implements ValueOutput {
       return this.output;
    }
 
-   public record EncodeToFieldFailedProblem(String name, Object value, Error<?> error) implements ProblemReporter.Problem {
+   public record EncodeToFieldFailedProblem(String name, Object value, Error<?> error) implements ProblemReporter.Warning {
       @Override
       public String description() {
          return "Failed to encode value '" + this.value + "' to field '" + this.name + "': " + this.error.message();
       }
    }
 
-   public record EncodeToListFailedProblem(String name, Object value, Error<?> error) implements ProblemReporter.Problem {
+   public record EncodeToListFailedProblem(String name, Object value, Error<?> error) implements ProblemReporter.Warning {
       @Override
       public String description() {
          return "Failed to append value '" + this.value + "' to list '" + this.name + "': " + this.error.message();
       }
    }
 
-   public record EncodeToMapFailedProblem(Object value, Error<?> error) implements ProblemReporter.Problem {
+   public record EncodeToMapFailedProblem(Object value, Error<?> error) implements ProblemReporter.Warning {
       @Override
       public String description() {
          return "Failed to merge value '" + this.value + "' to an object: " + this.error.message();

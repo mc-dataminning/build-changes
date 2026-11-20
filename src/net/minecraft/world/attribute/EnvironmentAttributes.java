@@ -185,10 +185,6 @@ public interface EnvironmentAttributes {
    );
    Codec<EnvironmentAttribute<?>> CODEC = BuiltInRegistries.ENVIRONMENT_ATTRIBUTE.byNameCodec();
 
-   static EnvironmentAttribute<?> bootstrap(final Registry<EnvironmentAttribute<?>> registry) {
-      return RESPAWN_ANCHOR_WORKS;
-   }
-
    private static <Value> EnvironmentAttribute<Value> register(final String id, final EnvironmentAttribute.Builder<Value> attributeBuilder) {
       EnvironmentAttribute<Value> attribute = attributeBuilder.build();
       Registry.register(BuiltInRegistries.ENVIRONMENT_ATTRIBUTE, Identifier.withDefaultNamespace(id), attribute);

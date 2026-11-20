@@ -30,7 +30,7 @@ public class FreezingParticle extends SingleQuadParticle {
       int baseLifetime = (int)(32.0 / (this.random.nextFloat() * 0.8 + 0.2));
       this.lifetime = (int)Math.max(baseLifetime * 0.9F, 10.0F);
       this.rotSpeed = (this.random.nextFloat() - 0.5F) * 0.1F;
-      this.roll = this.random.nextFloat() * (float) (Math.PI * 2);
+      this.roll = this.rotSpeed * 5.0F;
    }
 
    @Override

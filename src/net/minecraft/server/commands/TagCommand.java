@@ -1,18 +1,22 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Stream;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.commands.arguments.StringArgument;
+import net.minecraft.commands.suggestions.SuggestionContext;
+import net.minecraft.commands.suggestions.SuggestionProviders;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.world.entity.Entity;
@@ -39,18 +43,24 @@ public class TagCommand {
       (entityCount, var1, tags) -> Component.translatable("commands.tag.list.multiple.success", entityCount, tags.size(), ComponentUtils.formatList(tags))
    );
 
+   private static SuggestionProvider<CommandSourceStack> suggestEntityTags() {
+      return SuggestionProviders.serverOnly(
+         (server, context, builder) -> SuggestionContext.suggest(getTags(EntityArgument.getSuggestedEntities(server, context, "targets")), builder)
+      );
+   }
+
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("tag").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("tag").requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
             .then(
                ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.entities())
                         .then(
                            Commands.literal("add")
                               .then(
-                                 Commands.argument("name", StringArgumentType.word())
+                                 Commands.argument("name", StringArgument.word())
                                     .executes(
                                        c -> addTag(
-                                          (CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), StringArgumentType.getString(c, "name")
+                                          (CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), StringArgument.getString(c, "name")
                                        )
                                     )
                               )
@@ -58,11 +68,11 @@ public class TagCommand {
                      .then(
                         Commands.literal("remove")
                            .then(
-                              Commands.argument("name", StringArgumentType.word())
-                                 .suggests((c, p) -> SharedSuggestionProvider.suggest(getTags(EntityArgument.getEntities(c, "targets")), p))
+                              Commands.argument("name", StringArgument.word())
+                                 .suggests(suggestEntityTags())
                                  .executes(
                                     c -> removeTag(
-                                       (CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), StringArgumentType.getString(c, "name")
+                                       (CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), StringArgument.getString(c, "name")
                                     )
                                  )
                            )
@@ -72,14 +82,8 @@ public class TagCommand {
       );
    }
 
-   private static Collection<String> getTags(final Collection<? extends Entity> entities) {
-      Set<String> result = new HashSet<>();
-
-      for (Entity entity : entities) {
-         result.addAll(entity.entityTags());
-      }
-
-      return result;
+   private static Stream<String> getTags(final Stream<? extends Entity> entities) {
+      return entities.<String>flatMap(e -> e.entityTags().stream()).distinct();
    }
 
    private static int addTag(final CommandSourceStack source, final Collection<? extends Entity> targets, final String name) throws CommandSyntaxException {

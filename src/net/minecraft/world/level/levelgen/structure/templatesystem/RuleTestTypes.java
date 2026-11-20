@@ -2,9 +2,10 @@ package net.minecraft.world.level.levelgen.structure.templatesystem;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 
 public class RuleTestTypes {
-   public static MapCodec<? extends RuleTest> bootstrap(final Registry<MapCodec<? extends RuleTest>> registry) {
+   public static void bootstrap(final WritableRegistry<MapCodec<? extends RuleTest>> registry) {
       Registry.register(registry, "all_of", AllOfRuleTest.CODEC);
       Registry.register(registry, "always_true", AlwaysTrueTest.CODEC);
       Registry.register(registry, "any_of", AnyOfRuleTest.CODEC);
@@ -14,6 +15,6 @@ public class RuleTestTypes {
       Registry.register(registry, "not", NotRuleTest.CODEC);
       Registry.register(registry, "random_block_match", RandomBlockMatchTest.CODEC);
       Registry.register(registry, "random_blockstate_match", RandomBlockStateMatchTest.CODEC);
-      return Registry.register(registry, "tag_match", TagMatchTest.CODEC);
+      Registry.register(registry, "tag_match", TagMatchTest.CODEC);
    }
 }

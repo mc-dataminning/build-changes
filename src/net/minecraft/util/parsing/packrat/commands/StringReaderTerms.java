@@ -3,22 +3,22 @@ package net.minecraft.util.parsing.packrat.commands;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import it.unimi.dsi.fastutil.chars.CharList;
+import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import net.minecraft.util.parsing.packrat.Control;
 import net.minecraft.util.parsing.packrat.DelayedException;
 import net.minecraft.util.parsing.packrat.ParseState;
 import net.minecraft.util.parsing.packrat.Scope;
-import net.minecraft.util.parsing.packrat.SuggestionSupplier;
+import net.minecraft.util.parsing.packrat.Suggestion;
 import net.minecraft.util.parsing.packrat.Term;
 
 public interface StringReaderTerms {
-   static Term<StringReader> word(final String value) {
-      return new StringReaderTerms.TerminalWord(value);
+   static <S extends CommandParserState> Term<S> word(final String value) {
+      return new StringReaderTerms.TerminalWord<>(value);
    }
 
-   static Term<StringReader> character(final char value) {
-      return new StringReaderTerms.TerminalCharacters(CharList.of(value)) {
+   static <S extends CommandParserState> Term<S> character(final char value) {
+      return new StringReaderTerms.TerminalCharacters<S>(CharList.of(value)) {
          @Override
          protected boolean isAccepted(final char v) {
             return value == v;
@@ -26,8 +26,8 @@ public interface StringReaderTerms {
       };
    }
 
-   static Term<StringReader> characters(final char v1, final char v2) {
-      return new StringReaderTerms.TerminalCharacters(CharList.of(v1, v2)) {
+   static <S extends CommandParserState> Term<S> characters(final char v1, final char v2) {
+      return new StringReaderTerms.TerminalCharacters<S>(CharList.of(v1, v2)) {
          @Override
          protected boolean isAccepted(final char v) {
             return v == v1 || v == v2;
@@ -41,49 +41,51 @@ public interface StringReaderTerms {
       return reader;
    }
 
-   abstract class TerminalCharacters implements Term<StringReader> {
+   abstract class TerminalCharacters<S extends CommandParserState> implements Term<S> {
       private final DelayedException<CommandSyntaxException> error;
-      private final SuggestionSupplier<StringReader> suggestions;
+      private final Suggestion suggestion;
 
       public TerminalCharacters(final CharList values) {
          String joinedValues = values.intStream().mapToObj(Character::toString).collect(Collectors.joining("|"));
          this.error = DelayedException.create(CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect(), joinedValues);
-         this.suggestions = s -> values.intStream().mapToObj(Character::toString);
+         this.suggestion = new Suggestion.Literals(values.intStream().mapToObj(Character::toString).collect(Collectors.toSet()));
       }
 
       @Override
-      public boolean parse(final ParseState<StringReader> state, final Scope scope, final Control control) {
-         state.input().skipWhitespace();
+      public boolean parse(final ParseState<S> state, final Scope scope, final Control control) {
+         StringReader reader = state.input().reader();
+         reader.skipWhitespace();
          int cursor = state.mark();
-         if (state.input().canRead() && this.isAccepted(state.input().read())) {
+         if (reader.canRead() && this.isAccepted(reader.read())) {
             return true;
          }
 
-         state.errorCollector().store(cursor, this.suggestions, this.error);
+         state.errorCollector().store(cursor, this.suggestion, this.error);
          return false;
       }
 
       protected abstract boolean isAccepted(char value);
    }
 
-   final class TerminalWord implements Term<StringReader> {
+   final class TerminalWord<S extends CommandParserState> implements Term<S> {
       private final String value;
       private final DelayedException<CommandSyntaxException> error;
-      private final SuggestionSupplier<StringReader> suggestions;
+      private final Suggestion suggestion;
 
       public TerminalWord(final String value) {
          this.value = value;
          this.error = DelayedException.create(CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect(), value);
-         this.suggestions = s -> Stream.of(value);
+         this.suggestion = new Suggestion.Literals(Set.of(value));
       }
 
       @Override
-      public boolean parse(final ParseState<StringReader> state, final Scope scope, final Control control) {
-         state.input().skipWhitespace();
+      public boolean parse(final ParseState<S> state, final Scope scope, final Control control) {
+         StringReader reader = state.input().reader();
+         reader.skipWhitespace();
          int cursor = state.mark();
-         String value = state.input().readUnquotedString();
+         String value = reader.readUnquotedString();
          if (!value.equals(this.value)) {
-            state.errorCollector().store(cursor, this.suggestions, this.error);
+            state.errorCollector().store(cursor, this.suggestion, this.error);
             return false;
          } else {
             return true;

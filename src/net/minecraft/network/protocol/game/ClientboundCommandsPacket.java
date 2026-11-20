@@ -2,10 +2,12 @@ package net.minecraft.network.protocol.game;
 
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.brigadier.tree.ArgumentCommandNode;
 import com.mojang.brigadier.tree.CommandNode;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import com.mojang.brigadier.tree.RootCommandNode;
+import io.netty.buffer.ByteBuf;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.ints.IntSets;
@@ -18,24 +20,31 @@ import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Queue;
 import java.util.function.BiPredicate;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.commands.synchronization.ArgumentTypeInfos;
+import net.minecraft.commands.arguments.SerializableArgument;
+import net.minecraft.commands.arguments.SerializableArgumentTypes;
+import net.minecraft.commands.suggestions.CustomSuggestion;
+import net.minecraft.commands.suggestions.SerializableCustomSuggestion;
+import net.minecraft.commands.suggestions.SerializableSuggestionTypes;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
+import net.minecraft.network.protocol.common.ClientCommonPacketListener;
+import net.minecraft.network.protocol.common.CommonPacketTypes;
 import org.jspecify.annotations.Nullable;
 
-public class ClientboundCommandsPacket implements Packet<ClientGamePacketListener> {
-   private static final StreamCodec<FriendlyByteBuf, ClientboundCommandsPacket.Entry> ENTRY_STREAM_CODEC = StreamCodec.of(
+public class ClientboundCommandsPacket implements Packet<ClientCommonPacketListener> {
+   private static final StreamCodec<RegistryFriendlyByteBuf, ClientboundCommandsPacket.Entry> ENTRY_STREAM_CODEC = StreamCodec.of(
       (output, entry) -> entry.write(output), ClientboundCommandsPacket::readNode
    );
-   public static final StreamCodec<FriendlyByteBuf, ClientboundCommandsPacket> STREAM_CODEC = StreamCodec.composite(
+   private static final StreamCodec<RegistryFriendlyByteBuf, ClientboundCommandsPacket> RAW_STREAM_CODEC = StreamCodec.composite(
       ENTRY_STREAM_CODEC.apply(ByteBufCodecs.list()), p -> p.entries, ByteBufCodecs.VAR_INT, p -> p.rootIndex, ClientboundCommandsPacket::new
+   );
+   public static final StreamCodec<ByteBuf, ClientboundCommandsPacket> STREAM_CODEC = RAW_STREAM_CODEC.mapStream(
+      s -> new RegistryFriendlyByteBuf(s.unwrap(), RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY))
    );
    private static final byte MASK_TYPE = 3;
    private static final byte FLAG_EXECUTABLE = 4;
@@ -48,8 +57,8 @@ public class ClientboundCommandsPacket implements Packet<ClientGamePacketListene
    private final int rootIndex;
    private final List<ClientboundCommandsPacket.Entry> entries;
 
-   public <S> ClientboundCommandsPacket(final RootCommandNode<S> root, final ClientboundCommandsPacket.NodeInspector<S> inspector) {
-      Object2IntMap<CommandNode<S>> nodeToId = enumerateNodes(root);
+   public <S, T extends S> ClientboundCommandsPacket(final RootCommandNode<T> root, final ClientboundCommandsPacket.NodeInspector<S> inspector) {
+      Object2IntMap<CommandNode<T>> nodeToId = enumerateNodes(root);
       this.entries = createEntries(nodeToId, inspector);
       this.rootIndex = nodeToId.getInt(root);
    }
@@ -99,21 +108,21 @@ public class ClientboundCommandsPacket implements Packet<ClientGamePacketListene
    }
 
    private static <S> List<ClientboundCommandsPacket.Entry> createEntries(
-      final Object2IntMap<CommandNode<S>> nodeToId, final ClientboundCommandsPacket.NodeInspector<S> inspector
+      final Object2IntMap<? extends CommandNode<? extends S>> nodeToId, final ClientboundCommandsPacket.NodeInspector<S> inspector
    ) {
       ObjectArrayList<ClientboundCommandsPacket.Entry> result = new ObjectArrayList(nodeToId.size());
       result.size(nodeToId.size());
       ObjectIterator var3 = Object2IntMaps.fastIterable(nodeToId).iterator();
 
       while (var3.hasNext()) {
-         it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<CommandNode<S>> entry = (it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<CommandNode<S>>)var3.next();
-         result.set(entry.getIntValue(), createEntry((CommandNode<S>)entry.getKey(), inspector, nodeToId));
+         it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<? extends CommandNode<? extends S>> entry = (it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<? extends CommandNode<? extends S>>)var3.next();
+         result.set(entry.getIntValue(), createEntry((CommandNode<? extends S>)entry.getKey(), inspector, nodeToId));
       }
 
       return result;
    }
 
-   private static ClientboundCommandsPacket.Entry readNode(final FriendlyByteBuf input) {
+   private static ClientboundCommandsPacket.Entry readNode(final RegistryFriendlyByteBuf input) {
       byte flags = input.readByte();
       int[] children = input.readVarIntArray();
       int redirect = (flags & 8) != 0 ? input.readVarInt() : 0;
@@ -121,29 +130,22 @@ public class ClientboundCommandsPacket implements Packet<ClientGamePacketListene
       return new ClientboundCommandsPacket.Entry(stub, flags, redirect, children);
    }
 
-   private static ClientboundCommandsPacket.@Nullable NodeStub read(final FriendlyByteBuf input, final byte flags) {
+   private static ClientboundCommandsPacket.@Nullable NodeStub read(final RegistryFriendlyByteBuf input, final byte flags) {
       int type = flags & 3;
       if (type == 2) {
-         String name = input.readUtf();
-         int id = input.readVarInt();
-         ArgumentTypeInfo<?, ?> argumentType = BuiltInRegistries.COMMAND_ARGUMENT_TYPE.byId(id);
-         if (argumentType == null) {
-            return null;
-         }
-
-         ArgumentTypeInfo.Template<?> argument = argumentType.deserializeFromNetwork(input);
-         Identifier suggestionId = (flags & 16) != 0 ? input.readIdentifier() : null;
-         return new ClientboundCommandsPacket.ArgumentNodeStub(name, argument, suggestionId);
-      } else if (type == 1) {
-         String id = input.readUtf();
-         return new ClientboundCommandsPacket.LiteralNodeStub(id);
+         StreamCodec<RegistryFriendlyByteBuf, ? extends ClientboundCommandsPacket.NodeStub> argumentCodec = (flags & 16) != 0
+            ? ClientboundCommandsPacket.ArgumentNodeStubWithSuggestion.STREAM_CODEC
+            : ClientboundCommandsPacket.ArgumentNodeStubWithoutSuggestion.STREAM_CODEC;
+         return argumentCodec.decode(input);
       } else {
-         return null;
+         return type == 1 ? ClientboundCommandsPacket.LiteralNodeStub.STREAM_CODEC.decode(input) : null;
       }
    }
 
    private static <S> ClientboundCommandsPacket.Entry createEntry(
-      final CommandNode<S> node, final ClientboundCommandsPacket.NodeInspector<S> inspector, final Object2IntMap<CommandNode<S>> ids
+      final CommandNode<? extends S> node,
+      final ClientboundCommandsPacket.NodeInspector<S> inspector,
+      final Object2IntMap<? extends CommandNode<? extends S>> ids
    ) {
       int flags = 0;
       int redirect;
@@ -164,19 +166,25 @@ public class ClientboundCommandsPacket implements Packet<ClientGamePacketListene
 
       ClientboundCommandsPacket.NodeStub nodeStub;
       switch (node) {
-         case RootCommandNode<S> ignored:
+         case RootCommandNode<? extends S> ignored:
             flags |= 0;
             nodeStub = null;
             break;
-         case ArgumentCommandNode<S, ?> arg:
-            Identifier suggestionId = inspector.suggestionId(arg);
-            nodeStub = new ClientboundCommandsPacket.ArgumentNodeStub(arg.getName(), ArgumentTypeInfos.unpack(arg.getType()), suggestionId);
+         case ArgumentCommandNode<? extends S, ?> arg:
+            String id = arg.getName();
+            SerializableArgument.BrigadierWrapper<?> type = SerializableArgument.unwrapOrThrow(arg.getType());
             flags |= 2;
-            if (suggestionId != null) {
+            SuggestionProvider<? extends S> customSuggestions = arg.getCustomSuggestions();
+            if (customSuggestions != null) {
+               nodeStub = new ClientboundCommandsPacket.ArgumentNodeStubWithSuggestion(
+                  id, type.argument(), CustomSuggestion.unwrapOrThrow(customSuggestions).suggestion().serializable()
+               );
                flags |= 16;
+            } else {
+               nodeStub = new ClientboundCommandsPacket.ArgumentNodeStubWithoutSuggestion(id, type.argument());
             }
             break;
-         case LiteralCommandNode<S> literal:
+         case LiteralCommandNode<? extends S> literal:
             nodeStub = new ClientboundCommandsPacket.LiteralNodeStub(literal.getLiteral());
             flags |= 1;
             break;
@@ -190,48 +198,62 @@ public class ClientboundCommandsPacket implements Packet<ClientGamePacketListene
 
    @Override
    public PacketType<ClientboundCommandsPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_COMMANDS;
+      return CommonPacketTypes.CLIENTBOUND_COMMANDS;
    }
 
-   public void handle(final ClientGamePacketListener listener) {
+   public void handle(final ClientCommonPacketListener listener) {
       listener.handleCommands(this);
    }
 
-   public <S> RootCommandNode<S> getRoot(final CommandBuildContext context, final ClientboundCommandsPacket.NodeBuilder<S> builder) {
-      return (RootCommandNode<S>)new ClientboundCommandsPacket.NodeResolver<>(context, builder, this.entries).resolve(this.rootIndex);
+   public <S> RootCommandNode<S> getRoot(final ClientboundCommandsPacket.NodeBuilder<S> builder) {
+      return (RootCommandNode<S>)new ClientboundCommandsPacket.NodeResolver<>(builder, this.entries).resolve(this.rootIndex);
    }
 
-   private record ArgumentNodeStub(String id, ArgumentTypeInfo.Template<?> argumentType, @Nullable Identifier suggestionId)
+   private record ArgumentNodeStubWithSuggestion(String id, SerializableArgument<?> argument, SerializableCustomSuggestion customSuggestion)
       implements ClientboundCommandsPacket.NodeStub {
-      @Override
-      public <S> ArgumentBuilder<S, ?> build(final CommandBuildContext context, final ClientboundCommandsPacket.NodeBuilder<S> builder) {
-         ArgumentType<?> type = this.argumentType.instantiate(context);
-         return builder.createArgument(this.id, type, this.suggestionId);
-      }
+      public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundCommandsPacket.ArgumentNodeStubWithSuggestion> STREAM_CODEC = StreamCodec.composite(
+         ByteBufCodecs.STRING_UTF8,
+         ClientboundCommandsPacket.ArgumentNodeStubWithSuggestion::id,
+         SerializableArgumentTypes.STREAM_CODEC,
+         ClientboundCommandsPacket.ArgumentNodeStubWithSuggestion::argument,
+         SerializableSuggestionTypes.STREAM_CODEC,
+         ClientboundCommandsPacket.ArgumentNodeStubWithSuggestion::customSuggestion,
+         ClientboundCommandsPacket.ArgumentNodeStubWithSuggestion::new
+      );
 
       @Override
-      public void write(final FriendlyByteBuf output) {
-         output.writeUtf(this.id);
-         serializeCap(output, this.argumentType);
-         if (this.suggestionId != null) {
-            output.writeIdentifier(this.suggestionId);
-         }
+      public <S> ArgumentBuilder<S, ?> build(final ClientboundCommandsPacket.NodeBuilder<S> builder) {
+         return builder.createArgument(this.id, this.argument.toBrigadier(), this.customSuggestion);
       }
 
-      private static <A extends ArgumentType<?>> void serializeCap(final FriendlyByteBuf output, final ArgumentTypeInfo.Template<A> argumentType) {
-         serializeCap(output, argumentType.type(), argumentType);
+      @Override
+      public void write(final RegistryFriendlyByteBuf output) {
+         STREAM_CODEC.encode(output, this);
+      }
+   }
+
+   private record ArgumentNodeStubWithoutSuggestion(String id, SerializableArgument<?> argument) implements ClientboundCommandsPacket.NodeStub {
+      public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundCommandsPacket.ArgumentNodeStubWithoutSuggestion> STREAM_CODEC = StreamCodec.composite(
+         ByteBufCodecs.STRING_UTF8,
+         ClientboundCommandsPacket.ArgumentNodeStubWithoutSuggestion::id,
+         SerializableArgumentTypes.STREAM_CODEC,
+         ClientboundCommandsPacket.ArgumentNodeStubWithoutSuggestion::argument,
+         ClientboundCommandsPacket.ArgumentNodeStubWithoutSuggestion::new
+      );
+
+      @Override
+      public <S> ArgumentBuilder<S, ?> build(final ClientboundCommandsPacket.NodeBuilder<S> builder) {
+         return builder.createArgument(this.id, this.argument.toBrigadier(), null);
       }
 
-      private static <A extends ArgumentType<?>, T extends ArgumentTypeInfo.Template<A>> void serializeCap(
-         final FriendlyByteBuf output, final ArgumentTypeInfo<A, T> info, final ArgumentTypeInfo.Template<A> argumentType
-      ) {
-         output.writeVarInt(BuiltInRegistries.COMMAND_ARGUMENT_TYPE.getId(info));
-         info.serializeToNetwork((T)argumentType, output);
+      @Override
+      public void write(final RegistryFriendlyByteBuf output) {
+         STREAM_CODEC.encode(output, this);
       }
    }
 
    private record Entry(ClientboundCommandsPacket.@Nullable NodeStub stub, int flags, int redirect, int[] children) {
-      public void write(final FriendlyByteBuf output) {
+      public void write(final RegistryFriendlyByteBuf output) {
          output.writeByte(this.flags);
          output.writeVarIntArray(this.children);
          if ((this.flags & 8) != 0) {
@@ -259,43 +281,41 @@ public class ClientboundCommandsPacket implements Packet<ClientGamePacketListene
    }
 
    private record LiteralNodeStub(String id) implements ClientboundCommandsPacket.NodeStub {
+      public static final StreamCodec<ByteBuf, ClientboundCommandsPacket.LiteralNodeStub> STREAM_CODEC = StreamCodec.composite(
+         ByteBufCodecs.STRING_UTF8, ClientboundCommandsPacket.LiteralNodeStub::id, ClientboundCommandsPacket.LiteralNodeStub::new
+      );
+
       @Override
-      public <S> ArgumentBuilder<S, ?> build(final CommandBuildContext context, final ClientboundCommandsPacket.NodeBuilder<S> builder) {
+      public <S> ArgumentBuilder<S, ?> build(final ClientboundCommandsPacket.NodeBuilder<S> builder) {
          return builder.createLiteral(this.id);
       }
 
       @Override
-      public void write(final FriendlyByteBuf output) {
-         output.writeUtf(this.id);
+      public void write(final RegistryFriendlyByteBuf output) {
+         STREAM_CODEC.encode(output, this);
       }
    }
 
    public interface NodeBuilder<S> {
       ArgumentBuilder<S, ?> createLiteral(String id);
 
-      ArgumentBuilder<S, ?> createArgument(String id, ArgumentType<?> argumentType, @Nullable Identifier suggestionId);
+      ArgumentBuilder<S, ?> createArgument(String id, ArgumentType<?> argumentType, @Nullable CustomSuggestion customSuggestion);
 
       ArgumentBuilder<S, ?> configure(ArgumentBuilder<S, ?> input, boolean executable, boolean restricted);
    }
 
    public interface NodeInspector<S> {
-      @Nullable Identifier suggestionId(ArgumentCommandNode<S, ?> node);
+      boolean isExecutable(CommandNode<? extends S> node);
 
-      boolean isExecutable(CommandNode<S> node);
-
-      boolean isRestricted(CommandNode<S> node);
+      boolean isRestricted(CommandNode<? extends S> node);
    }
 
    private static class NodeResolver<S> {
-      private final CommandBuildContext context;
       private final ClientboundCommandsPacket.NodeBuilder<S> builder;
       private final List<ClientboundCommandsPacket.Entry> entries;
       private final List<CommandNode<S>> nodes;
 
-      private NodeResolver(
-         final CommandBuildContext context, final ClientboundCommandsPacket.NodeBuilder<S> builder, final List<ClientboundCommandsPacket.Entry> entries
-      ) {
-         this.context = context;
+      private NodeResolver(final ClientboundCommandsPacket.NodeBuilder<S> builder, final List<ClientboundCommandsPacket.Entry> entries) {
          this.builder = builder;
          this.entries = entries;
          ObjectArrayList<CommandNode<S>> nodes = new ObjectArrayList();
@@ -314,7 +334,7 @@ public class ClientboundCommandsPacket implements Packet<ClientGamePacketListene
          if (entry.stub == null) {
             result = new RootCommandNode();
          } else {
-            ArgumentBuilder<S, ?> resultBuilder = entry.stub.build(this.context, this.builder);
+            ArgumentBuilder<S, ?> resultBuilder = entry.stub.build(this.builder);
             if ((entry.flags & 8) != 0) {
                resultBuilder.redirect(this.resolve(entry.redirect));
             }
@@ -338,8 +358,8 @@ public class ClientboundCommandsPacket implements Packet<ClientGamePacketListene
    }
 
    private interface NodeStub {
-      <S> ArgumentBuilder<S, ?> build(CommandBuildContext context, ClientboundCommandsPacket.NodeBuilder<S> builder);
+      <S> ArgumentBuilder<S, ?> build(ClientboundCommandsPacket.NodeBuilder<S> builder);
 
-      void write(FriendlyByteBuf output);
+      void write(RegistryFriendlyByteBuf output);
    }
 }

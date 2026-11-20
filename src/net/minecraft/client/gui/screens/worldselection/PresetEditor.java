@@ -8,7 +8,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
@@ -29,7 +28,7 @@ public interface PresetEditor {
       Optional.of(WorldPresets.FLAT),
       (parent, settings) -> {
          ChunkGenerator overworld = settings.selectedDimensions().overworld();
-         RegistryAccess registryAccess = settings.worldgenLoadContext();
+         HolderGetter.Provider registryAccess = settings.worldgenLoadContext();
          HolderGetter<Biome> biomes = registryAccess.lookupOrThrow(Registries.BIOME);
          HolderGetter<StructureSet> structureSets = registryAccess.lookupOrThrow(Registries.STRUCTURE_SET);
          HolderGetter<PlacedFeature> placedFeatures = registryAccess.lookupOrThrow(Registries.PLACED_FEATURE);

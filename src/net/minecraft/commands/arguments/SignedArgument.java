@@ -1,6 +1,6 @@
 package net.minecraft.commands.arguments;
 
-import com.mojang.brigadier.arguments.ArgumentType;
-
-public interface SignedArgument<T> extends ArgumentType<T> {
+public interface SignedArgument<T> extends SerializableArgument<T> {
+   @Override
+   SerializableArgument.Type<? extends SignedArgument<T>> type();
 }

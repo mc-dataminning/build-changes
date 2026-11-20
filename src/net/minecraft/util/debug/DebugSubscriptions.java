@@ -37,10 +37,6 @@ public class DebugSubscriptions<T> {
    public static final DebugSubscription<BlockPos> NEIGHBOR_UPDATES = registerTemporaryValue("neighbor_updates", BlockPos.STREAM_CODEC, 200);
    public static final DebugSubscription<DebugGameEventInfo> GAME_EVENTS = registerTemporaryValue("game_events", DebugGameEventInfo.STREAM_CODEC, 60);
 
-   public static DebugSubscription<?> bootstrap(final Registry<DebugSubscription<?>> registry) {
-      return DEDICATED_SERVER_TICK_TIME;
-   }
-
    private static DebugSubscription<?> registerSimple(final String id) {
       return Registry.register(BuiltInRegistries.DEBUG_SUBSCRIPTION, Identifier.withDefaultNamespace(id), new DebugSubscription(null));
    }

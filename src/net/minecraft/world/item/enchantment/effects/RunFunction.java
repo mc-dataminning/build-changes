@@ -35,7 +35,7 @@ public record RunFunction(Identifier function) implements EnchantmentEntityEffec
             .withLevel(serverLevel)
             .withPosition(position)
             .withRotation(entity.getRotationVector());
-         functions.execute(function.get(), source);
+         ServerFunctionManager.execute(function.get(), source);
       } else {
          LOGGER.error("Enchantment run_function effect failed for non-existent function {}", this.function);
       }

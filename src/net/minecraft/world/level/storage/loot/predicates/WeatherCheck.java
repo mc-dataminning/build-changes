@@ -6,6 +6,8 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.ValidationContext;
+import org.jspecify.annotations.Nullable;
 
 public record WeatherCheck(Optional<Boolean> isRaining, Optional<Boolean> isThundering) implements LootItemCondition {
    public static final MapCodec<WeatherCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
@@ -17,6 +19,11 @@ public record WeatherCheck(Optional<Boolean> isRaining, Optional<Boolean> isThun
    );
 
    @Override
+   public @Nullable Boolean constantValue(final LootItemCondition.ConstantConditionEvaluationContext context) {
+      return null;
+   }
+
+   @Override
    public MapCodec<WeatherCheck> codec() {
       return MAP_CODEC;
    }
@@ -26,6 +33,10 @@ public record WeatherCheck(Optional<Boolean> isRaining, Optional<Boolean> isThun
       return this.isRaining.isPresent() && this.isRaining.get() != level.isRaining()
          ? false
          : !this.isThundering.isPresent() || this.isThundering.get() == level.isThundering();
+   }
+
+   @Override
+   public void validate(final ValidationContext context) {
    }
 
    public static WeatherCheck.Builder weather() {

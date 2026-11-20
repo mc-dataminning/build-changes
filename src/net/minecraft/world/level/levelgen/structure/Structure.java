@@ -12,9 +12,9 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.QuartPos;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
@@ -85,7 +85,7 @@ public abstract class Structure {
    public @Nullable StructureStart generate(
       final Holder<Structure> selected,
       final ResourceKey<Level> dimension,
-      final RegistryAccess registryAccess,
+      final HolderGetter.Provider registryAccess,
       final ChunkGenerator chunkGenerator,
       final BiomeSource biomeSource,
       final Climate.Sampler climateSampler,
@@ -202,7 +202,7 @@ public abstract class Structure {
    public abstract StructureType<?> type();
 
    public record GenerationContext(
-      RegistryAccess registryAccess,
+      HolderGetter.Provider registryAccess,
       ChunkGenerator chunkGenerator,
       BiomeSource biomeSource,
       Climate.Sampler climateSampler,
@@ -216,7 +216,7 @@ public abstract class Structure {
       Predicate<Holder<Biome>> validBiome
    ) {
       public GenerationContext(
-         final RegistryAccess registryAccess,
+         final HolderGetter.Provider registryAccess,
          final ChunkGenerator chunkGenerator,
          final BiomeSource biomeSource,
          final Climate.Sampler climateSampler,

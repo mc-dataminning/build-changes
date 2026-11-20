@@ -1,13 +1,11 @@
 package net.minecraft.core;
 
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Keyable;
 import com.mojang.serialization.Lifecycle;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.Map.Entry;
@@ -16,7 +14,6 @@ import java.util.stream.StreamSupport;
 import net.minecraft.core.component.DataComponentLookup;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
 import net.minecraft.tags.TagLoader;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.RandomSource;
@@ -106,15 +103,27 @@ public interface Registry<T> extends IdMap<T>, Keyable, HolderLookup.RegistryLoo
    boolean containsKey(ResourceKey<T> key);
 
    static <T> T register(final Registry<? super T> registry, final String name, final T value) {
+      return register((WritableRegistry<? super T>)registry, name, value);
+   }
+
+   static <T> T register(final WritableRegistry<? super T> registry, final String name, final T value) {
       return register(registry, Identifier.parse(name), value);
    }
 
    static <V, T extends V> T register(final Registry<V> registry, final Identifier location, final T value) {
+      return register((WritableRegistry<V>)registry, location, value);
+   }
+
+   static <V, T extends V> T register(final WritableRegistry<V> registry, final Identifier location, final T value) {
       return register(registry, ResourceKey.create(registry.key(), location), value);
    }
 
    static <V, T extends V> T register(final Registry<V> registry, final ResourceKey<V> key, final T value) {
-      ((WritableRegistry)registry).register(key, (V)value, RegistrationInfo.BUILT_IN);
+      return register((WritableRegistry<V>)registry, key, value);
+   }
+
+   static <V, T extends V> T register(final WritableRegistry<V> registry, final ResourceKey<V> key, final T value) {
+      registry.register(key, (V)value, RegistrationInfo.BUILT_IN);
       return value;
    }
 
@@ -135,10 +144,6 @@ public interface Registry<T> extends IdMap<T>, Keyable, HolderLookup.RegistryLoo
    Optional<Holder.Reference<T>> get(Identifier id);
 
    Holder<T> wrapAsHolder(T value);
-
-   default Iterable<Holder<T>> getTagOrEmpty(final TagKey<T> id) {
-      return (Iterable<Holder<T>>)DataFixUtils.orElse(this.get(id), List.of());
-   }
 
    Stream<HolderSet.Named<T>> getTags();
 

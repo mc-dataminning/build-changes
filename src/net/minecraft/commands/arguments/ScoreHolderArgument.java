@@ -1,27 +1,29 @@
 package net.minecraft.commands.arguments;
 
-import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
-import java.util.function.Supplier;
-import net.minecraft.commands.CommandBuildContext;
+import java.util.stream.Stream;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.ParseContext;
 import net.minecraft.commands.arguments.selector.EntitySelector;
 import net.minecraft.commands.arguments.selector.EntitySelectorParser;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.commands.suggestions.SuggestionContext;
+import net.minecraft.commands.suggestions.SuggestionProviders;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -29,48 +31,68 @@ import net.minecraft.server.permissions.Permissions;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.scores.ScoreHolder;
 
-public class ScoreHolderArgument implements ArgumentType<ScoreHolderArgument.Result> {
-   public static final SuggestionProvider<CommandSourceStack> SUGGEST_SCORE_HOLDERS = (context, builder) -> {
-      StringReader reader = new StringReader(builder.getInput());
-      reader.setCursor(builder.getStart());
-      EntitySelectorParser parser = new EntitySelectorParser(
-         reader, ((CommandSourceStack)context.getSource()).permissions().hasPermission(Permissions.COMMANDS_ENTITY_SELECTORS)
-      );
+public class ScoreHolderArgument implements SerializableArgument<ScoreHolderArgument.Result> {
+   public static final ScoreHolderArgument.WildcardSupplier EMPTY_WILDCARD = var0 -> List.of();
+   public static final ScoreHolderArgument.WildcardSupplier TRACKED_PLAYERS_WILDCARD = server -> server.getScoreboard().getTrackedPlayers();
+   private static final MapCodec<ScoreHolderArgument> MAP_CODEC = RecordCodecBuilder.mapCodec(
+      i -> i.group(Codec.BOOL.fieldOf("multiple").forGetter(o -> o.multiple)).apply(i, ScoreHolderArgument::new)
+   );
+   private static final StreamCodec<ByteBuf, ScoreHolderArgument> STREAM_CODEC = StreamCodec.composite(
+      ByteBufCodecs.BOOL, o -> o.multiple, ScoreHolderArgument::new
+   );
+   public static final SerializableArgument.Type<ScoreHolderArgument> TYPE = new SerializableArgument.Type<>(MAP_CODEC, STREAM_CODEC);
+   public static final SuggestionProvider<CommandSourceStack> SUGGEST_SCORE_HOLDERS = SuggestionProviders.serverOnly(
+      (var0, context, builder) -> {
+         StringReader reader = new StringReader(builder.getInput());
+         reader.setCursor(builder.getStart());
+         EntitySelectorParser parser = new EntitySelectorParser(
+            reader, ((SuggestionContext)context.getSource()).permissions().hasPermission(Permissions.COMMANDS_ENTITY_SELECTORS)
+         );
 
-      try {
-         parser.parse();
-      } catch (CommandSyntaxException var5) {
+         try {
+            parser.parse();
+         } catch (CommandSyntaxException var6) {
+         }
+
+         return parser.fillSuggestions(
+            builder, suggestions -> SuggestionContext.suggest(((SuggestionContext)context.getSource()).onlinePlayerNames(), suggestions)
+         );
       }
-
-      return parser.fillSuggestions(
-         builder, suggestions -> SharedSuggestionProvider.suggest(((CommandSourceStack)context.getSource()).getOnlinePlayerNames(), suggestions)
-      );
-   };
-   private static final Collection<String> EXAMPLES = Arrays.asList("Player", "0123", "*", "@e");
+   );
+   private static final Collection<String> EXAMPLES = List.of("Player", "0123", "*", "@e");
    private static final SimpleCommandExceptionType ERROR_NO_RESULTS = new SimpleCommandExceptionType(Component.translatable("argument.scoreHolder.empty"));
    private final boolean multiple;
 
-   public ScoreHolderArgument(final boolean multiple) {
+   private ScoreHolderArgument(final boolean multiple) {
       this.multiple = multiple;
    }
 
-   public static ScoreHolder getName(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      return getNames(context, name).iterator().next();
+   @Override
+   public SerializableArgument.Type<ScoreHolderArgument> type() {
+      return TYPE;
    }
 
-   public static Collection<ScoreHolder> getNames(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      return getNames(context, name, Collections::emptyList);
+   public static ScoreHolder getName(final CommandContext<CommandSourceStack> context, final String name, final ScoreHolderArgument.WildcardSupplier wildcard) throws CommandSyntaxException {
+      return getName(((CommandSourceStack)context.getSource()).getServer(), context, name, wildcard);
    }
 
-   public static Collection<ScoreHolder> getNamesWithDefaultWildcard(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      return getNames(context, name, ((CommandSourceStack)context.getSource()).getServer().getScoreboard()::getTrackedPlayers);
-   }
-
-   public static Collection<ScoreHolder> getNames(
-      final CommandContext<CommandSourceStack> context, final String name, final Supplier<Collection<ScoreHolder>> wildcard
+   public static ScoreHolder getName(
+      final MinecraftServer server, final CommandContext<CommandSourceStack> context, final String name, final ScoreHolderArgument.WildcardSupplier wildcard
    ) throws CommandSyntaxException {
-      Collection<ScoreHolder> result = ((ScoreHolderArgument.Result)context.getArgument(name, ScoreHolderArgument.Result.class))
-         .getNames((CommandSourceStack)context.getSource(), wildcard);
+      return getNames(server, context, name, wildcard).iterator().next();
+   }
+
+   public static Collection<? extends ScoreHolder> getNames(
+      final CommandContext<CommandSourceStack> context, final String name, final ScoreHolderArgument.WildcardSupplier wildcard
+   ) throws CommandSyntaxException {
+      return getNames(((CommandSourceStack)context.getSource()).getServer(), context, name, wildcard);
+   }
+
+   public static Collection<? extends ScoreHolder> getNames(
+      final MinecraftServer server, final CommandContext<CommandSourceStack> context, final String name, final ScoreHolderArgument.WildcardSupplier wildcard
+   ) throws CommandSyntaxException {
+      Collection<? extends ScoreHolder> result = ((ScoreHolderArgument.Result)context.getArgument(name, ScoreHolderArgument.Result.class))
+         .getNames(server, (CommandSourceStack)context.getSource(), wildcard);
       if (result.isEmpty()) {
          throw EntityArgument.NO_ENTITIES_FOUND.create();
       } else {
@@ -78,20 +100,26 @@ public class ScoreHolderArgument implements ArgumentType<ScoreHolderArgument.Res
       }
    }
 
-   public static ScoreHolderArgument scoreHolder() {
-      return new ScoreHolderArgument(false);
+   public static Stream<? extends ScoreHolder> getSuggestedNames(
+      final MinecraftServer server,
+      final CommandContext<? extends SuggestionContext> context,
+      final String name,
+      final ScoreHolderArgument.WildcardSupplier wildcard
+   ) throws CommandSyntaxException {
+      return ((ScoreHolderArgument.Result)context.getArgument(name, ScoreHolderArgument.Result.class))
+         .getSuggestedNames(server, (SuggestionContext)context.getSource(), wildcard);
    }
 
-   public static ScoreHolderArgument scoreHolders() {
-      return new ScoreHolderArgument(true);
+   public static ArgumentType<ScoreHolderArgument.Result> scoreHolder() {
+      return new ScoreHolderArgument(false).toBrigadier();
    }
 
-   public ScoreHolderArgument.Result parse(final StringReader reader) throws CommandSyntaxException {
-      return this.parse(reader, true);
+   public static ArgumentType<ScoreHolderArgument.Result> scoreHolders() {
+      return new ScoreHolderArgument(true).toBrigadier();
    }
 
-   public <S> ScoreHolderArgument.Result parse(final StringReader reader, final S source) throws CommandSyntaxException {
-      return this.parse(reader, EntitySelectorParser.allowSelectors(source));
+   public ScoreHolderArgument.Result parse(final StringReader reader, final ParseContext context) throws CommandSyntaxException {
+      return this.parse(reader, context.allowsSelectors());
    }
 
    private ScoreHolderArgument.Result parse(final StringReader reader, final boolean allowSelectors) throws CommandSyntaxException {
@@ -112,8 +140,8 @@ public class ScoreHolderArgument implements ArgumentType<ScoreHolderArgument.Res
 
          String text = reader.getString().substring(start, reader.getCursor());
          if (text.equals("*")) {
-            return (sender, wildcard) -> {
-               Collection<ScoreHolder> results = wildcard.get();
+            return (ScoreHolderArgument.ContextFreeResult)(server, wildcard) -> {
+               Collection<ScoreHolder> results = wildcard.get(server);
                if (results.isEmpty()) {
                   throw ERROR_NO_RESULTS.create();
                } else {
@@ -124,13 +152,12 @@ public class ScoreHolderArgument implements ArgumentType<ScoreHolderArgument.Res
 
          List<ScoreHolder> nameOnlyHolder = List.of(ScoreHolder.forNameOnly(text));
          if (text.startsWith("#")) {
-            return (sender, wildcard) -> nameOnlyHolder;
+            return (ScoreHolderArgument.ContextFreeResult)(var1, var2) -> nameOnlyHolder;
          }
 
          try {
             UUID uuid = UUID.fromString(text);
-            return (sender, wildcard) -> {
-               MinecraftServer server = sender.getServer();
+            return (ScoreHolderArgument.ContextFreeResult)(server, var3x) -> {
                ScoreHolder firstResult = null;
                List<ScoreHolder> moreResults = null;
 
@@ -157,8 +184,7 @@ public class ScoreHolderArgument implements ArgumentType<ScoreHolderArgument.Res
                }
             };
          } catch (IllegalArgumentException var7) {
-            return (sender, wildcard) -> {
-               MinecraftServer server = sender.getServer();
+            return (ScoreHolderArgument.ContextFreeResult)(server, var3x) -> {
                ServerPlayer player = server.getPlayerList().getPlayerByName(text);
                return player != null ? List.of(player) : nameOnlyHolder;
             };
@@ -166,57 +192,34 @@ public class ScoreHolderArgument implements ArgumentType<ScoreHolderArgument.Res
       }
    }
 
+   @Override
    public Collection<String> getExamples() {
       return EXAMPLES;
    }
 
-   public static class Info implements ArgumentTypeInfo<ScoreHolderArgument, ScoreHolderArgument.Info.Template> {
-      private static final byte FLAG_MULTIPLE = 1;
+   @FunctionalInterface
+   public interface ContextFreeResult extends ScoreHolderArgument.Result {
+      Collection<? extends ScoreHolder> getNames(MinecraftServer server, ScoreHolderArgument.WildcardSupplier wildcard) throws CommandSyntaxException;
 
-      public void serializeToNetwork(final ScoreHolderArgument.Info.Template template, final FriendlyByteBuf out) {
-         int flags = 0;
-         if (template.multiple) {
-            flags |= 1;
-         }
-
-         out.writeByte(flags);
+      @Override
+      default Collection<? extends ScoreHolder> getNames(
+         final MinecraftServer server, final CommandSourceStack sender, final ScoreHolderArgument.WildcardSupplier wildcard
+      ) throws CommandSyntaxException {
+         return this.getNames(server, wildcard);
       }
 
-      public ScoreHolderArgument.Info.Template deserializeFromNetwork(final FriendlyByteBuf in) {
-         byte flags = in.readByte();
-         boolean multiple = (flags & 1) != 0;
-         return new ScoreHolderArgument.Info.Template(multiple);
-      }
-
-      public void serializeToJson(final ScoreHolderArgument.Info.Template template, final JsonObject out) {
-         out.addProperty("amount", template.multiple ? "multiple" : "single");
-      }
-
-      public ScoreHolderArgument.Info.Template unpack(final ScoreHolderArgument argument) {
-         return new ScoreHolderArgument.Info.Template(argument.multiple);
-      }
-
-      public final class Template implements ArgumentTypeInfo.Template<ScoreHolderArgument> {
-         private final boolean multiple;
-
-         private Template(final boolean multiple) {
-            this.multiple = multiple;
-         }
-
-         public ScoreHolderArgument instantiate(final CommandBuildContext context) {
-            return new ScoreHolderArgument(this.multiple);
-         }
-
-         @Override
-         public ArgumentTypeInfo<ScoreHolderArgument, ?> type() {
-            return Info.this;
-         }
+      @Override
+      default Stream<? extends ScoreHolder> getSuggestedNames(
+         final MinecraftServer server, final SuggestionContext sender, final ScoreHolderArgument.WildcardSupplier wildcard
+      ) throws CommandSyntaxException {
+         return this.getNames(server, wildcard).stream();
       }
    }
 
-   @FunctionalInterface
    public interface Result {
-      Collection<ScoreHolder> getNames(final CommandSourceStack sender, Supplier<Collection<ScoreHolder>> wildcard) throws CommandSyntaxException;
+      Collection<? extends ScoreHolder> getNames(MinecraftServer server, CommandSourceStack sender, ScoreHolderArgument.WildcardSupplier wildcard) throws CommandSyntaxException;
+
+      Stream<? extends ScoreHolder> getSuggestedNames(MinecraftServer server, SuggestionContext sender, ScoreHolderArgument.WildcardSupplier wildcard) throws CommandSyntaxException;
    }
 
    public static class SelectorResult implements ScoreHolderArgument.Result {
@@ -227,13 +230,27 @@ public class ScoreHolderArgument implements ArgumentType<ScoreHolderArgument.Res
       }
 
       @Override
-      public Collection<ScoreHolder> getNames(final CommandSourceStack sender, final Supplier<Collection<ScoreHolder>> wildcard) throws CommandSyntaxException {
+      public Collection<? extends ScoreHolder> getNames(
+         final MinecraftServer server, final CommandSourceStack sender, final ScoreHolderArgument.WildcardSupplier wildcard
+      ) throws CommandSyntaxException {
          List<? extends Entity> entities = this.selector.findEntities(sender);
          if (entities.isEmpty()) {
             throw EntityArgument.NO_ENTITIES_FOUND.create();
          } else {
-            return List.copyOf(entities);
+            return entities;
          }
       }
+
+      @Override
+      public Stream<? extends ScoreHolder> getSuggestedNames(
+         final MinecraftServer server, final SuggestionContext sender, final ScoreHolderArgument.WildcardSupplier wildcard
+      ) throws CommandSyntaxException {
+         return this.selector.findSuggestions(server, sender);
+      }
+   }
+
+   @FunctionalInterface
+   public interface WildcardSupplier {
+      Collection<ScoreHolder> get(MinecraftServer server);
    }
 }

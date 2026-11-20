@@ -10,8 +10,10 @@ public class GlUtil {
          return 34963;
       } else if ((usage & 128) != 0) {
          return 35345;
+      } else if ((usage & 512) != 0) {
+         return 36671;
       } else {
-         return (usage & 512) != 0 ? 36671 : 36663;
+         return (usage & 256) != 0 ? 35882 : 36663;
       }
    }
 }

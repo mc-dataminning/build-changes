@@ -10,6 +10,7 @@ import net.minecraft.nbt.TagParser;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 public class SetCustomDataFunction extends LootItemConditionalFunction {
@@ -26,6 +27,10 @@ public class SetCustomDataFunction extends LootItemConditionalFunction {
    @Override
    public MapCodec<SetCustomDataFunction> codec() {
       return MAP_CODEC;
+   }
+
+   @Override
+   protected void validateCustom(final ValidationContext context) {
    }
 
    @Override

@@ -34,7 +34,7 @@ public record NbtContents(
    public static final Codec<CompilableString<NbtPathArgument.NbtPath>> NBT_PATH_CODEC = CompilableString.codec(
       new CompilableString.CommandParserHelper<NbtPathArgument.NbtPath>() {
          protected NbtPathArgument.NbtPath parse(final StringReader reader) throws CommandSyntaxException {
-            return new NbtPathArgument().parse(reader);
+            return NbtPathArgument.INSTANCE.parse(reader);
          }
 
          @Override
@@ -75,7 +75,7 @@ public record NbtContents(
             ComponentUtils.resolve(context, this.separator, recursionDepth), ComponentUtils.DEFAULT_NO_STYLE_SEPARATOR
          );
          if (this.interpreting) {
-            RegistryOps<Tag> registryOps = source.registryAccess().createSerializationContext(NbtOps.INSTANCE);
+            RegistryOps<Tag> registryOps = source.holderGetters().createSerializationContext(NbtOps.INSTANCE);
             return elements.flatMap(tag -> {
                try {
                   Component component = (Component)ComponentSerialization.CODEC.parse(registryOps, tag).getOrThrow();

@@ -5,8 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -69,11 +68,11 @@ public record ChatType(ChatTypeDecoration chat, ChatTypeDecoration narration) {
    }
 
    public static ChatType.Bound bind(final ResourceKey<ChatType> chatType, final CommandSourceStack source) {
-      return bind(chatType, source.registryAccess(), source.getDisplayName());
+      return bind(chatType, source.holderGetters(), source.getDisplayName());
    }
 
-   public static ChatType.Bound bind(final ResourceKey<ChatType> chatType, final RegistryAccess registryAccess, final Component name) {
-      Registry<ChatType> registry = registryAccess.lookupOrThrow(Registries.CHAT_TYPE);
+   public static ChatType.Bound bind(final ResourceKey<ChatType> chatType, final HolderGetter.Provider registryAccess, final Component name) {
+      HolderGetter<ChatType> registry = registryAccess.lookupOrThrow(Registries.CHAT_TYPE);
       return new ChatType.Bound(registry.getOrThrow(chatType), name);
    }
 

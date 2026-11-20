@@ -1,7 +1,7 @@
 package net.minecraft.world.level.block.entity;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
@@ -64,7 +64,7 @@ public class SpawnerBlockEntity extends BlockEntity implements Spawner {
    }
 
    @Override
-   public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
+   public CompoundTag getUpdateTag(final HolderGetter.Provider registries) {
       CompoundTag tag = this.saveCustomOnly(registries);
       tag.remove("SpawnPotentials");
       return tag;

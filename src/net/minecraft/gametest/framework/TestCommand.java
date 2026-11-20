@@ -1,9 +1,6 @@
 package net.minecraft.gametest.framework;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
@@ -12,6 +9,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import it.unimi.dsi.fastutil.objects.ReferenceArraySet;
@@ -28,13 +26,17 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import net.minecraft.ChatFormatting;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.arguments.BooleanArgument;
 import net.minecraft.commands.arguments.IdentifierArgument;
+import net.minecraft.commands.arguments.IntegerArgument;
 import net.minecraft.commands.arguments.ResourceArgument;
 import net.minecraft.commands.arguments.ResourceSelectorArgument;
+import net.minecraft.commands.arguments.StringArgument;
+import net.minecraft.commands.suggestions.SuggestionContext;
+import net.minecraft.commands.suggestions.SuggestionProviders;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.GlobalPos;
@@ -93,6 +95,9 @@ public class TestCommand {
    );
    private static final DynamicCommandExceptionType TOO_LARGE = new DynamicCommandExceptionType(
       size -> Component.translatableEscape("commands.test.error.too_large", size)
+   );
+   public static final SuggestionProvider<CommandSourceStack> SUGGEST_TEST_INSTANCE_IDS = SuggestionProviders.serverOnly(
+      (var0, context, builder) -> suggestTestInstanceIds(context, builder)
    );
 
    private static int reset(final TestFinder finder) throws CommandSyntaxException {
@@ -305,15 +310,15 @@ public class TestCommand {
    ) {
       return runArgument.executes(c -> run(finder.apply(c), RetryOptions.noRetries(), 0, 8))
          .then(
-            ((RequiredArgumentBuilder)Commands.argument("numberOfTimes", IntegerArgumentType.integer(0))
-                  .executes(c -> run(finder.apply(c), new RetryOptions(IntegerArgumentType.getInteger(c, "numberOfTimes"), false), 0, 8)))
+            ((RequiredArgumentBuilder)Commands.argument("numberOfTimes", IntegerArgument.integer(0))
+                  .executes(c -> run(finder.apply(c), new RetryOptions(IntegerArgument.getInteger(c, "numberOfTimes"), false), 0, 8)))
                .then(
                   then.apply(
-                     Commands.argument("untilFailed", BoolArgumentType.bool())
+                     Commands.argument("untilFailed", BooleanArgument.bool())
                         .executes(
                            c -> run(
                               finder.apply(c),
-                              new RetryOptions(IntegerArgumentType.getInteger(c, "numberOfTimes"), BoolArgumentType.getBool(c, "untilFailed")),
+                              new RetryOptions(IntegerArgument.getInteger(c, "numberOfTimes"), BooleanArgument.getBool(c, "untilFailed")),
                               0,
                               8
                            )
@@ -336,23 +341,23 @@ public class TestCommand {
          runArgument,
          finder,
          then -> then.then(
-            ((RequiredArgumentBuilder)Commands.argument("rotationSteps", IntegerArgumentType.integer(0, 3))
+            ((RequiredArgumentBuilder)Commands.argument("rotationSteps", IntegerArgument.integer(0, 3))
                   .executes(
                      c -> run(
                         finder.apply(c),
-                        new RetryOptions(IntegerArgumentType.getInteger(c, "numberOfTimes"), BoolArgumentType.getBool(c, "untilFailed")),
-                        IntegerArgumentType.getInteger(c, "rotationSteps"),
+                        new RetryOptions(IntegerArgument.getInteger(c, "numberOfTimes"), BooleanArgument.getBool(c, "untilFailed")),
+                        IntegerArgument.getInteger(c, "rotationSteps"),
                         8
                      )
                   ))
                .then(
-                  Commands.argument("testsPerRow", IntegerArgumentType.integer())
+                  Commands.argument("testsPerRow", IntegerArgument.integer())
                      .executes(
                         c -> run(
                            finder.apply(c),
-                           new RetryOptions(IntegerArgumentType.getInteger(c, "numberOfTimes"), BoolArgumentType.getBool(c, "untilFailed")),
-                           IntegerArgumentType.getInteger(c, "rotationSteps"),
-                           IntegerArgumentType.getInteger(c, "testsPerRow")
+                           new RetryOptions(IntegerArgument.getInteger(c, "numberOfTimes"), BooleanArgument.getBool(c, "untilFailed")),
+                           IntegerArgument.getInteger(c, "rotationSteps"),
+                           IntegerArgument.getInteger(c, "testsPerRow")
                         )
                      )
                )
@@ -360,26 +365,27 @@ public class TestCommand {
       );
    }
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       ArgumentBuilder<CommandSourceStack, ?> runFailedWithRequiredTestsFlag = runWithRetryOptionsAndBuildInfo(
-         Commands.argument("onlyRequiredTests", BoolArgumentType.bool()),
-         c -> TestFinder.builder().failedTests(c, BoolArgumentType.getBool(c, "onlyRequiredTests"))
+         Commands.argument("onlyRequiredTests", BooleanArgument.bool()),
+         c -> TestFinder.builder().failedTests(c, BooleanArgument.getBool(c, "onlyRequiredTests"))
       );
       LiteralArgumentBuilder<CommandSourceStack> testCommand = (LiteralArgumentBuilder<CommandSourceStack>)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal(
                                                                "test"
                                                             )
-                                                            .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                                                            .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                                                          .then(
                                                             Commands.literal("run")
                                                                .then(
                                                                   runWithRetryOptionsAndBuildInfo(
                                                                      Commands.argument(
-                                                                           "tests",
-                                                                           ResourceSelectorArgument.resourceSelector(context, Registries.TEST_INSTANCE)
+                                                                           "tests", ResourceSelectorArgument.resourceSelector(Registries.TEST_INSTANCE)
                                                                         )
-                                                                        .suggests(TestCommand::suggestTestInstanceIds),
+                                                                        .suggests(SUGGEST_TEST_INSTANCE_IDS),
                                                                      c -> TestFinder.builder()
-                                                                        .byResourceSelection(c, ResourceSelectorArgument.getSelectedResources(c, "tests"))
+                                                                        .byResourceSelection(
+                                                                           c, ResourceSelectorArgument.getAndLookupSelectedResources(c, "tests")
+                                                                        )
                                                                   )
                                                                )
                                                          ))
@@ -387,26 +393,28 @@ public class TestCommand {
                                                          Commands.literal("runmultiple")
                                                             .then(
                                                                ((RequiredArgumentBuilder)Commands.argument(
-                                                                        "tests", ResourceSelectorArgument.resourceSelector(context, Registries.TEST_INSTANCE)
+                                                                        "tests", ResourceSelectorArgument.resourceSelector(Registries.TEST_INSTANCE)
                                                                      )
-                                                                     .suggests(TestCommand::suggestTestInstanceIds)
+                                                                     .suggests(SUGGEST_TEST_INSTANCE_IDS)
                                                                      .executes(
                                                                         c -> run(
                                                                            TestFinder.builder()
-                                                                              .byResourceSelection(c, ResourceSelectorArgument.getSelectedResources(c, "tests")),
+                                                                              .byResourceSelection(
+                                                                                 c, ResourceSelectorArgument.getAndLookupSelectedResources(c, "tests")
+                                                                              ),
                                                                            RetryOptions.noRetries(),
                                                                            0,
                                                                            8
                                                                         )
                                                                      ))
                                                                   .then(
-                                                                     Commands.argument("amount", IntegerArgumentType.integer())
+                                                                     Commands.argument("amount", IntegerArgument.integer())
                                                                         .executes(
                                                                            c -> run(
                                                                               TestFinder.builder()
-                                                                                 .createMultipleCopies(IntegerArgumentType.getInteger(c, "amount"))
+                                                                                 .createMultipleCopies(IntegerArgument.getInteger(c, "amount"))
                                                                                  .byResourceSelection(
-                                                                                    c, ResourceSelectorArgument.getSelectedResources(c, "tests")
+                                                                                    c, ResourceSelectorArgument.getAndLookupSelectedResources(c, "tests")
                                                                                  ),
                                                                               RetryOptions.noRetries(),
                                                                               0,
@@ -427,11 +435,12 @@ public class TestCommand {
                                        .then(
                                           Commands.literal("verify")
                                              .then(
-                                                Commands.argument("tests", ResourceSelectorArgument.resourceSelector(context, Registries.TEST_INSTANCE))
-                                                   .suggests(TestCommand::suggestTestInstanceIds)
+                                                Commands.argument("tests", ResourceSelectorArgument.resourceSelector(Registries.TEST_INSTANCE))
+                                                   .suggests(SUGGEST_TEST_INSTANCE_IDS)
                                                    .executes(
                                                       c -> verify(
-                                                         TestFinder.builder().byResourceSelection(c, ResourceSelectorArgument.getSelectedResources(c, "tests"))
+                                                         TestFinder.builder()
+                                                            .byResourceSelection(c, ResourceSelectorArgument.getAndLookupSelectedResources(c, "tests"))
                                                       )
                                                    )
                                              )
@@ -439,11 +448,12 @@ public class TestCommand {
                                     .then(
                                        Commands.literal("locate")
                                           .then(
-                                             Commands.argument("tests", ResourceSelectorArgument.resourceSelector(context, Registries.TEST_INSTANCE))
-                                                .suggests(TestCommand::suggestTestInstanceIds)
+                                             Commands.argument("tests", ResourceSelectorArgument.resourceSelector(Registries.TEST_INSTANCE))
+                                                .suggests(SUGGEST_TEST_INSTANCE_IDS)
                                                 .executes(
                                                    c -> locate(
-                                                      TestFinder.builder().byResourceSelection(c, ResourceSelectorArgument.getSelectedResources(c, "tests"))
+                                                      TestFinder.builder()
+                                                         .byResourceSelection(c, ResourceSelectorArgument.getAndLookupSelectedResources(c, "tests"))
                                                    )
                                                 )
                                           )
@@ -456,16 +466,16 @@ public class TestCommand {
                   .then(
                      ((LiteralArgumentBuilder)Commands.literal("clearall").executes(c -> clear(TestFinder.builder().radius(c, 250))))
                         .then(
-                           Commands.argument("radius", IntegerArgumentType.integer())
-                              .executes(c -> clear(TestFinder.builder().radius(c, Math.clamp(IntegerArgumentType.getInteger(c, "radius"), 0, 1024))))
+                           Commands.argument("radius", IntegerArgument.integer())
+                              .executes(c -> clear(TestFinder.builder().radius(c, Math.clamp(IntegerArgument.getInteger(c, "radius"), 0, 1024))))
                         )
                   ))
-               .then(Commands.literal("stop").executes(c -> stopTests())))
+               .then(Commands.literal("stop").executes(var0 -> stopTests())))
             .then(
                ((LiteralArgumentBuilder)Commands.literal("pos").executes(c -> showPos((CommandSourceStack)c.getSource(), "pos")))
                   .then(
-                     Commands.argument("var", StringArgumentType.word())
-                        .executes(c -> showPos((CommandSourceStack)c.getSource(), StringArgumentType.getString(c, "var")))
+                     Commands.argument("var", StringArgument.word())
+                        .executes(c -> showPos((CommandSourceStack)c.getSource(), StringArgument.getString(c, "var")))
                   )
             ))
          .then(
@@ -474,27 +484,27 @@ public class TestCommand {
                   ((RequiredArgumentBuilder)Commands.argument("id", IdentifierArgument.id())
                         .executes(c -> createNewStructure((CommandSourceStack)c.getSource(), IdentifierArgument.getId(c, "id"), 5, 5, 5)))
                      .then(
-                        ((RequiredArgumentBuilder)Commands.argument("width", IntegerArgumentType.integer())
+                        ((RequiredArgumentBuilder)Commands.argument("width", IntegerArgument.integer())
                               .executes(
                                  c -> createNewStructure(
                                     (CommandSourceStack)c.getSource(),
                                     IdentifierArgument.getId(c, "id"),
-                                    IntegerArgumentType.getInteger(c, "width"),
-                                    IntegerArgumentType.getInteger(c, "width"),
-                                    IntegerArgumentType.getInteger(c, "width")
+                                    IntegerArgument.getInteger(c, "width"),
+                                    IntegerArgument.getInteger(c, "width"),
+                                    IntegerArgument.getInteger(c, "width")
                                  )
                               ))
                            .then(
-                              Commands.argument("height", IntegerArgumentType.integer())
+                              Commands.argument("height", IntegerArgument.integer())
                                  .then(
-                                    Commands.argument("depth", IntegerArgumentType.integer())
+                                    Commands.argument("depth", IntegerArgument.integer())
                                        .executes(
                                           c -> createNewStructure(
                                              (CommandSourceStack)c.getSource(),
                                              IdentifierArgument.getId(c, "id"),
-                                             IntegerArgumentType.getInteger(c, "width"),
-                                             IntegerArgumentType.getInteger(c, "height"),
-                                             IntegerArgumentType.getInteger(c, "depth")
+                                             IntegerArgument.getInteger(c, "width"),
+                                             IntegerArgument.getInteger(c, "height"),
+                                             IntegerArgument.getInteger(c, "depth")
                                           )
                                        )
                                  )
@@ -506,8 +516,8 @@ public class TestCommand {
          testCommand = (LiteralArgumentBuilder<CommandSourceStack>)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)testCommand.then(
                      Commands.literal("export")
                         .then(
-                           Commands.argument("test", ResourceArgument.resource(context, Registries.TEST_INSTANCE))
-                              .suggests(TestCommand::suggestTestInstanceIds)
+                           Commands.argument("test", ResourceArgument.resource(Registries.TEST_INSTANCE))
+                              .suggests(SUGGEST_TEST_INSTANCE_IDS)
                               .executes(
                                  c -> exportTestStructure((CommandSourceStack)c.getSource(), ResourceArgument.getResource(c, "test", Registries.TEST_INSTANCE))
                               )
@@ -521,27 +531,20 @@ public class TestCommand {
       dispatcher.register(testCommand);
    }
 
-   public static CompletableFuture<Suggestions> suggestTestFunction(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) {
-      Stream<String> testNamesStream = ((CommandSourceStack)context.getSource())
-         .registryAccess()
-         .lookupOrThrow(Registries.TEST_FUNCTION)
-         .listElements()
-         .map(Holder::getRegisteredName);
-      return SharedSuggestionProvider.suggest(testNamesStream, builder);
-   }
-
    private static String displayTestId(final Identifier id) {
       return "minecraft".equals(id.getNamespace()) ? id.getPath() : id.toString();
    }
 
-   private static CompletableFuture<Suggestions> suggestTestInstanceIds(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) {
-      List<Identifier> testIds = ((CommandSourceStack)context.getSource())
-         .registryAccess()
+   private static CompletableFuture<Suggestions> suggestTestInstanceIds(
+      final CommandContext<? extends SuggestionContext> context, final SuggestionsBuilder builder
+   ) {
+      List<Identifier> testIds = ((SuggestionContext)context.getSource())
+         .holderLookups()
          .lookupOrThrow(Registries.TEST_INSTANCE)
          .listElementIds()
          .map(ResourceKey::identifier)
          .toList();
-      SharedSuggestionProvider.filterResources(testIds, builder.getRemaining().toLowerCase(Locale.ROOT), id -> id, id -> builder.suggest(displayTestId(id)));
+      SuggestionContext.filterResources(testIds, builder.getRemaining().toLowerCase(Locale.ROOT), id -> id, id -> builder.suggest(displayTestId(id)));
       return builder.buildFuture();
    }
 
@@ -580,7 +583,7 @@ public class TestCommand {
       ServerLevel level = source.getServer().getLevel(testBlockPos.dimension());
       if (level.getBlockEntity(testBlockPos.pos()) instanceof TestInstanceBlockEntity blockEntity) {
          Optional<Holder.Reference<GameTestInstance>> maybeTest = blockEntity.test()
-            .flatMap(source.registryAccess().lookupOrThrow(Registries.TEST_INSTANCE)::get);
+            .flatMap(source.holderGetters().lookupOrThrow(Registries.TEST_INSTANCE)::get);
          if (maybeTest.isEmpty()) {
             source.sendFailure(Component.translatable("commands.test.error.non_existant_test", blockEntity.getTestName()));
             return Optional.empty();

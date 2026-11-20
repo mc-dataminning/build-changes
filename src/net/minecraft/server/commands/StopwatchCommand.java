@@ -1,16 +1,18 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.arguments.DoubleArgument;
 import net.minecraft.commands.arguments.IdentifierArgument;
+import net.minecraft.commands.suggestions.SuggestionContext;
+import net.minecraft.commands.suggestions.SuggestionProviders;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
@@ -24,8 +26,8 @@ public class StopwatchCommand {
    public static final DynamicCommandExceptionType ERROR_DOES_NOT_EXIST = new DynamicCommandExceptionType(
       id -> Component.translatableEscape("commands.stopwatch.does_not_exist", id)
    );
-   public static final SuggestionProvider<CommandSourceStack> SUGGEST_STOPWATCHES = (c, p) -> SharedSuggestionProvider.suggestResource(
-      ((CommandSourceStack)c.getSource()).getServer().getStopwatches().ids(), p
+   public static final SuggestionProvider<CommandSourceStack> SUGGEST_STOPWATCHES = SuggestionProviders.serverOnly(
+      (server, var1, builder) -> SuggestionContext.suggestResource(server.getStopwatches().ids(), builder)
    );
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
@@ -33,7 +35,7 @@ public class StopwatchCommand {
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal(
                            "stopwatch"
                         )
-                        .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                        .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                      .then(
                         Commands.literal("create")
                            .then(
@@ -47,10 +49,10 @@ public class StopwatchCommand {
                            ((RequiredArgumentBuilder)Commands.argument("id", IdentifierArgument.id())
                                  .suggests(SUGGEST_STOPWATCHES)
                                  .then(
-                                    Commands.argument("scale", DoubleArgumentType.doubleArg())
+                                    Commands.argument("scale", DoubleArgument.doubleArg())
                                        .executes(
                                           c -> queryStopwatch(
-                                             (CommandSourceStack)c.getSource(), IdentifierArgument.getId(c, "id"), DoubleArgumentType.getDouble(c, "scale")
+                                             (CommandSourceStack)c.getSource(), IdentifierArgument.getId(c, "id"), DoubleArgument.getDouble(c, "scale")
                                           )
                                        )
                                  ))

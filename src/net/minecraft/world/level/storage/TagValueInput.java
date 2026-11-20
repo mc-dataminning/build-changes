@@ -13,6 +13,7 @@ import java.util.ListIterator;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Stream;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.IntArrayTag;
@@ -36,7 +37,7 @@ public class TagValueInput implements ValueInput {
       this.input = input;
    }
 
-   public static ValueInput create(final ProblemReporter problemReporter, final HolderLookup.Provider holders, final CompoundTag tag) {
+   public static ValueInput create(final ProblemReporter problemReporter, final HolderGetter.Provider holders, final CompoundTag tag) {
       return new TagValueInput(problemReporter, new ValueInputContextHelper(holders, NbtOps.INSTANCE), tag);
    }
 
@@ -211,7 +212,7 @@ public class TagValueInput implements ValueInput {
    }
 
    @Override
-   public HolderLookup.Provider lookup() {
+   public HolderGetter.Provider lookup() {
       return this.context.lookup();
    }
 
@@ -275,21 +276,21 @@ public class TagValueInput implements ValueInput {
       }
    }
 
-   public record DecodeFromFieldFailedProblem(String name, Tag tag, Error<?> error) implements ProblemReporter.Problem {
+   public record DecodeFromFieldFailedProblem(String name, Tag tag, Error<?> error) implements ProblemReporter.Warning {
       @Override
       public String description() {
          return "Failed to decode value '" + this.tag + "' from field '" + this.name + "': " + this.error.message();
       }
    }
 
-   public record DecodeFromListFailedProblem(String name, int index, Tag tag, Error<?> error) implements ProblemReporter.Problem {
+   public record DecodeFromListFailedProblem(String name, int index, Tag tag, Error<?> error) implements ProblemReporter.Warning {
       @Override
       public String description() {
          return "Failed to decode value '" + this.tag + "' from field '" + this.name + "' at index " + this.index + "': " + this.error.message();
       }
    }
 
-   public record DecodeFromMapFailedProblem(Error<?> error) implements ProblemReporter.Problem {
+   public record DecodeFromMapFailedProblem(Error<?> error) implements ProblemReporter.Warning {
       @Override
       public String description() {
          return "Failed to decode from map: " + this.error.message();
@@ -426,7 +427,7 @@ public class TagValueInput implements ValueInput {
       }
    }
 
-   public record UnexpectedListElementTypeProblem(String name, int index, TagType<?> expected, TagType<?> actual) implements ProblemReporter.Problem {
+   public record UnexpectedListElementTypeProblem(String name, int index, TagType<?> expected, TagType<?> actual) implements ProblemReporter.Warning {
       @Override
       public String description() {
          return "Expected list '"
@@ -440,14 +441,14 @@ public class TagValueInput implements ValueInput {
       }
    }
 
-   public record UnexpectedNonNumberProblem(String name, TagType<?> actual) implements ProblemReporter.Problem {
+   public record UnexpectedNonNumberProblem(String name, TagType<?> actual) implements ProblemReporter.Warning {
       @Override
       public String description() {
          return "Expected field '" + this.name + "' to contain number, but got " + this.actual.getName();
       }
    }
 
-   public record UnexpectedTypeProblem(String name, TagType<?> expected, TagType<?> actual) implements ProblemReporter.Problem {
+   public record UnexpectedTypeProblem(String name, TagType<?> expected, TagType<?> actual) implements ProblemReporter.Warning {
       @Override
       public String description() {
          return "Expected field '" + this.name + "' to contain value of type " + this.expected.getName() + ", but got " + this.actual.getName();

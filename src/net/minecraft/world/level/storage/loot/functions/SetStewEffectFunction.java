@@ -17,7 +17,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.SuspiciousStewEffects;
 import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootContextUser;
 import net.minecraft.world.level.storage.loot.Validatable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -52,8 +51,7 @@ public class SetStewEffectFunction extends LootItemConditionalFunction {
    }
 
    @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
+   public void validateCustom(final ValidationContext context) {
       Validatable.validate(context, "effects", this.effects);
    }
 
@@ -101,7 +99,7 @@ public class SetStewEffectFunction extends LootItemConditionalFunction {
       }
    }
 
-   private record EffectEntry(Holder<MobEffect> effect, Holder<ContextIntProvider> duration) implements LootContextUser {
+   private record EffectEntry(Holder<MobEffect> effect, Holder<ContextIntProvider> duration) implements Validatable {
       public static final Codec<SetStewEffectFunction.EffectEntry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
                MobEffect.CODEC.fieldOf("type").forGetter(SetStewEffectFunction.EffectEntry::effect),
@@ -112,7 +110,6 @@ public class SetStewEffectFunction extends LootItemConditionalFunction {
 
       @Override
       public void validate(final ValidationContext context) {
-         LootContextUser.super.validate(context);
          Validatable.validateHolder(context, "duration", this.duration);
       }
    }

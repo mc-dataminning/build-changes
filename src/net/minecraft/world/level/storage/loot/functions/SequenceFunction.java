@@ -79,8 +79,7 @@ public class SequenceFunction extends LootItemConditionalFunction {
    }
 
    @Override
-   public void validate(final ValidationContext output) {
-      super.validate(output);
+   public void validateCustom(final ValidationContext output) {
       Validatable.validateHolderSet(output, "functions", this.functions);
    }
 

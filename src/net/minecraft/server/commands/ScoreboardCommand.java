@@ -1,9 +1,6 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
@@ -11,6 +8,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
@@ -19,17 +17,22 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
+import java.util.stream.Stream;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.arguments.BooleanArgument;
 import net.minecraft.commands.arguments.ComponentArgument;
+import net.minecraft.commands.arguments.IntegerArgument;
 import net.minecraft.commands.arguments.ObjectiveArgument;
 import net.minecraft.commands.arguments.ObjectiveCriteriaArgument;
 import net.minecraft.commands.arguments.OperationArgument;
 import net.minecraft.commands.arguments.ScoreHolderArgument;
 import net.minecraft.commands.arguments.ScoreboardSlotArgument;
+import net.minecraft.commands.arguments.StringArgument;
 import net.minecraft.commands.arguments.StyleArgument;
+import net.minecraft.commands.suggestions.SuggestionContext;
+import net.minecraft.commands.suggestions.SuggestionProviders;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.Style;
@@ -37,6 +40,7 @@ import net.minecraft.network.chat.numbers.BlankFormat;
 import net.minecraft.network.chat.numbers.FixedFormat;
 import net.minecraft.network.chat.numbers.NumberFormat;
 import net.minecraft.network.chat.numbers.StyledFormat;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.scores.DisplaySlot;
 import net.minecraft.world.scores.Objective;
 import net.minecraft.world.scores.ReadOnlyScoreInfo;
@@ -151,33 +155,41 @@ public class ScoreboardCommand {
       )
    );
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   private static SuggestionProvider<CommandSourceStack> suggestTargetTriggers() {
+      return SuggestionProviders.serverOnly(
+         (server, context, builder) -> suggestTriggers(
+            server, ScoreHolderArgument.getSuggestedNames(server, context, "targets", ScoreHolderArgument.TRACKED_PLAYERS_WILDCARD), builder
+         )
+      );
+   }
+
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("scoreboard")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                  .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                .then(
                   ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("objectives")
                                  .then(Commands.literal("list").executes(c -> listObjectives((CommandSourceStack)c.getSource()))))
                               .then(
                                  Commands.literal("add")
                                     .then(
-                                       Commands.argument("objective", StringArgumentType.word())
+                                       Commands.argument("objective", StringArgument.word())
                                           .then(
                                              ((RequiredArgumentBuilder)Commands.argument("criteria", ObjectiveCriteriaArgument.criteria())
                                                    .executes(
                                                       c -> addObjective(
                                                          (CommandSourceStack)c.getSource(),
-                                                         StringArgumentType.getString(c, "objective"),
+                                                         StringArgument.getString(c, "objective"),
                                                          ObjectiveCriteriaArgument.getCriteria(c, "criteria"),
-                                                         Component.literal(StringArgumentType.getString(c, "objective"))
+                                                         Component.literal(StringArgument.getString(c, "objective"))
                                                       )
                                                    ))
                                                 .then(
-                                                   Commands.argument("displayName", ComponentArgument.textComponent(context))
+                                                   Commands.argument("displayName", ComponentArgument.textComponent())
                                                       .executes(
                                                          c -> addObjective(
                                                             (CommandSourceStack)c.getSource(),
-                                                            StringArgumentType.getString(c, "objective"),
+                                                            StringArgument.getString(c, "objective"),
                                                             ObjectiveCriteriaArgument.getCriteria(c, "criteria"),
                                                             ComponentArgument.getResolvedComponent(c, "displayName")
                                                          )
@@ -195,7 +207,7 @@ public class ScoreboardCommand {
                                                 .then(
                                                    Commands.literal("displayname")
                                                       .then(
-                                                         Commands.argument("displayName", ComponentArgument.textComponent(context))
+                                                         Commands.argument("displayName", ComponentArgument.textComponent())
                                                             .executes(
                                                                c -> setDisplayName(
                                                                   (CommandSourceStack)c.getSource(),
@@ -209,19 +221,18 @@ public class ScoreboardCommand {
                                           .then(
                                              Commands.literal("displayautoupdate")
                                                 .then(
-                                                   Commands.argument("value", BoolArgumentType.bool())
+                                                   Commands.argument("value", BooleanArgument.bool())
                                                       .executes(
                                                          c -> setDisplayAutoUpdate(
                                                             (CommandSourceStack)c.getSource(),
                                                             ObjectiveArgument.getObjective(c, "objective"),
-                                                            BoolArgumentType.getBool(c, "value")
+                                                            BooleanArgument.getBool(c, "value")
                                                          )
                                                       )
                                                 )
                                           ))
                                        .then(
                                           addNumberFormats(
-                                             context,
                                              Commands.literal("numberformat"),
                                              (c, numberFormat) -> setObjectiveFormat(
                                                 (CommandSourceStack)c.getSource(), ObjectiveArgument.getObjective(c, "objective"), numberFormat
@@ -267,7 +278,8 @@ public class ScoreboardCommand {
                                                       .suggests(ScoreHolderArgument.SUGGEST_SCORE_HOLDERS)
                                                       .executes(
                                                          c -> listTrackedPlayerScores(
-                                                            (CommandSourceStack)c.getSource(), ScoreHolderArgument.getName(c, "target")
+                                                            (CommandSourceStack)c.getSource(),
+                                                            ScoreHolderArgument.getName(c, "target", ScoreHolderArgument.EMPTY_WILDCARD)
                                                          )
                                                       )
                                                 )
@@ -280,13 +292,13 @@ public class ScoreboardCommand {
                                                    .then(
                                                       Commands.argument("objective", ObjectiveArgument.objective())
                                                          .then(
-                                                            Commands.argument("score", IntegerArgumentType.integer())
+                                                            Commands.argument("score", IntegerArgument.integer())
                                                                .executes(
                                                                   c -> setScore(
                                                                      (CommandSourceStack)c.getSource(),
-                                                                     ScoreHolderArgument.getNamesWithDefaultWildcard(c, "targets"),
+                                                                     ScoreHolderArgument.getNames(c, "targets", ScoreHolderArgument.TRACKED_PLAYERS_WILDCARD),
                                                                      ObjectiveArgument.getWritableObjective(c, "objective"),
-                                                                     IntegerArgumentType.getInteger(c, "score")
+                                                                     IntegerArgument.getInteger(c, "score")
                                                                   )
                                                                )
                                                          )
@@ -303,7 +315,7 @@ public class ScoreboardCommand {
                                                       .executes(
                                                          c -> getScore(
                                                             (CommandSourceStack)c.getSource(),
-                                                            ScoreHolderArgument.getName(c, "target"),
+                                                            ScoreHolderArgument.getName(c, "target", ScoreHolderArgument.EMPTY_WILDCARD),
                                                             ObjectiveArgument.getObjective(c, "objective")
                                                          )
                                                       )
@@ -318,13 +330,13 @@ public class ScoreboardCommand {
                                              .then(
                                                 Commands.argument("objective", ObjectiveArgument.objective())
                                                    .then(
-                                                      Commands.argument("score", IntegerArgumentType.integer(0))
+                                                      Commands.argument("score", IntegerArgument.integer(0))
                                                          .executes(
                                                             c -> addScore(
                                                                (CommandSourceStack)c.getSource(),
-                                                               ScoreHolderArgument.getNamesWithDefaultWildcard(c, "targets"),
+                                                               ScoreHolderArgument.getNames(c, "targets", ScoreHolderArgument.TRACKED_PLAYERS_WILDCARD),
                                                                ObjectiveArgument.getWritableObjective(c, "objective"),
-                                                               IntegerArgumentType.getInteger(c, "score")
+                                                               IntegerArgument.getInteger(c, "score")
                                                             )
                                                          )
                                                    )
@@ -339,13 +351,13 @@ public class ScoreboardCommand {
                                           .then(
                                              Commands.argument("objective", ObjectiveArgument.objective())
                                                 .then(
-                                                   Commands.argument("score", IntegerArgumentType.integer(0))
+                                                   Commands.argument("score", IntegerArgument.integer(0))
                                                       .executes(
                                                          c -> removeScore(
                                                             (CommandSourceStack)c.getSource(),
-                                                            ScoreHolderArgument.getNamesWithDefaultWildcard(c, "targets"),
+                                                            ScoreHolderArgument.getNames(c, "targets", ScoreHolderArgument.TRACKED_PLAYERS_WILDCARD),
                                                             ObjectiveArgument.getWritableObjective(c, "objective"),
-                                                            IntegerArgumentType.getInteger(c, "score")
+                                                            IntegerArgument.getInteger(c, "score")
                                                          )
                                                       )
                                                 )
@@ -358,14 +370,17 @@ public class ScoreboardCommand {
                                     ((RequiredArgumentBuilder)Commands.argument("targets", ScoreHolderArgument.scoreHolders())
                                           .suggests(ScoreHolderArgument.SUGGEST_SCORE_HOLDERS)
                                           .executes(
-                                             c -> resetScores((CommandSourceStack)c.getSource(), ScoreHolderArgument.getNamesWithDefaultWildcard(c, "targets"))
+                                             c -> resetScores(
+                                                (CommandSourceStack)c.getSource(),
+                                                ScoreHolderArgument.getNames(c, "targets", ScoreHolderArgument.TRACKED_PLAYERS_WILDCARD)
+                                             )
                                           ))
                                        .then(
                                           Commands.argument("objective", ObjectiveArgument.objective())
                                              .executes(
                                                 c -> resetScore(
                                                    (CommandSourceStack)c.getSource(),
-                                                   ScoreHolderArgument.getNamesWithDefaultWildcard(c, "targets"),
+                                                   ScoreHolderArgument.getNames(c, "targets", ScoreHolderArgument.TRACKED_PLAYERS_WILDCARD),
                                                    ObjectiveArgument.getObjective(c, "objective")
                                                 )
                                              )
@@ -379,15 +394,11 @@ public class ScoreboardCommand {
                                     .suggests(ScoreHolderArgument.SUGGEST_SCORE_HOLDERS)
                                     .then(
                                        Commands.argument("objective", ObjectiveArgument.objective())
-                                          .suggests(
-                                             (c, p) -> suggestTriggers(
-                                                (CommandSourceStack)c.getSource(), ScoreHolderArgument.getNamesWithDefaultWildcard(c, "targets"), p
-                                             )
-                                          )
+                                          .suggests(suggestTargetTriggers())
                                           .executes(
                                              c -> enableTrigger(
                                                 (CommandSourceStack)c.getSource(),
-                                                ScoreHolderArgument.getNamesWithDefaultWildcard(c, "targets"),
+                                                ScoreHolderArgument.getNames(c, "targets", ScoreHolderArgument.TRACKED_PLAYERS_WILDCARD),
                                                 ObjectiveArgument.getObjective(c, "objective")
                                              )
                                           )
@@ -404,11 +415,11 @@ public class ScoreboardCommand {
                                           .then(
                                              ((RequiredArgumentBuilder)Commands.argument("objective", ObjectiveArgument.objective())
                                                    .then(
-                                                      Commands.argument("name", ComponentArgument.textComponent(context))
+                                                      Commands.argument("name", ComponentArgument.textComponent())
                                                          .executes(
                                                             c -> setScoreDisplay(
                                                                (CommandSourceStack)c.getSource(),
-                                                               ScoreHolderArgument.getNamesWithDefaultWildcard(c, "targets"),
+                                                               ScoreHolderArgument.getNames(c, "targets", ScoreHolderArgument.TRACKED_PLAYERS_WILDCARD),
                                                                ObjectiveArgument.getObjective(c, "objective"),
                                                                ComponentArgument.getResolvedComponent(c, "name")
                                                             )
@@ -417,7 +428,7 @@ public class ScoreboardCommand {
                                                 .executes(
                                                    c -> setScoreDisplay(
                                                       (CommandSourceStack)c.getSource(),
-                                                      ScoreHolderArgument.getNamesWithDefaultWildcard(c, "targets"),
+                                                      ScoreHolderArgument.getNames(c, "targets", ScoreHolderArgument.TRACKED_PLAYERS_WILDCARD),
                                                       ObjectiveArgument.getObjective(c, "objective"),
                                                       null
                                                    )
@@ -432,11 +443,10 @@ public class ScoreboardCommand {
                                        .suggests(ScoreHolderArgument.SUGGEST_SCORE_HOLDERS)
                                        .then(
                                           addNumberFormats(
-                                             context,
                                              Commands.argument("objective", ObjectiveArgument.objective()),
                                              (c, format) -> setScoreNumberFormat(
                                                 (CommandSourceStack)c.getSource(),
-                                                ScoreHolderArgument.getNamesWithDefaultWildcard(c, "targets"),
+                                                ScoreHolderArgument.getNames(c, "targets", ScoreHolderArgument.TRACKED_PLAYERS_WILDCARD),
                                                 ObjectiveArgument.getObjective(c, "objective"),
                                                 format
                                              )
@@ -462,10 +472,10 @@ public class ScoreboardCommand {
                                                       .executes(
                                                          c -> performOperation(
                                                             (CommandSourceStack)c.getSource(),
-                                                            ScoreHolderArgument.getNamesWithDefaultWildcard(c, "targets"),
+                                                            ScoreHolderArgument.getNames(c, "targets", ScoreHolderArgument.TRACKED_PLAYERS_WILDCARD),
                                                             ObjectiveArgument.getWritableObjective(c, "targetObjective"),
                                                             OperationArgument.getOperation(c, "operation"),
-                                                            ScoreHolderArgument.getNamesWithDefaultWildcard(c, "source"),
+                                                            ScoreHolderArgument.getNames(c, "source", ScoreHolderArgument.TRACKED_PLAYERS_WILDCARD),
                                                             ObjectiveArgument.getObjective(c, "sourceObjective")
                                                          )
                                                       )
@@ -480,14 +490,14 @@ public class ScoreboardCommand {
    }
 
    private static ArgumentBuilder<CommandSourceStack, ?> addNumberFormats(
-      final CommandBuildContext context, final ArgumentBuilder<CommandSourceStack, ?> top, final ScoreboardCommand.NumberFormatCommandExecutor callback
+      final ArgumentBuilder<CommandSourceStack, ?> top, final ScoreboardCommand.NumberFormatCommandExecutor callback
    ) {
       return top.then(Commands.literal("blank").executes(c -> callback.run(c, BlankFormat.INSTANCE)))
-         .then(Commands.literal("fixed").then(Commands.argument("contents", ComponentArgument.textComponent(context)).executes(c -> {
+         .then(Commands.literal("fixed").then(Commands.argument("contents", ComponentArgument.textComponent()).executes(c -> {
             Component contents = ComponentArgument.getResolvedComponent(c, "contents");
             return callback.run(c, new FixedFormat(contents));
          })))
-         .then(Commands.literal("styled").then(Commands.argument("style", StyleArgument.style(context)).executes(c -> {
+         .then(Commands.literal("styled").then(Commands.argument("style", StyleArgument.style()).executes(c -> {
             Style style = StyleArgument.getStyle(c, "style");
             return callback.run(c, new StyledFormat(style));
          })))
@@ -508,10 +518,11 @@ public class ScoreboardCommand {
    }
 
    private static CompletableFuture<Suggestions> suggestTriggers(
-      final CommandSourceStack source, final Collection<ScoreHolder> targets, final SuggestionsBuilder builder
+      final MinecraftServer server, final Stream<? extends ScoreHolder> targetsStream, final SuggestionsBuilder builder
    ) {
       List<String> result = new ArrayList<>();
-      Scoreboard scoreboard = source.getServer().getScoreboard();
+      Scoreboard scoreboard = server.getScoreboard();
+      List<? extends ScoreHolder> targets = targetsStream.toList();
 
       for (Objective objective : scoreboard.getObjectives()) {
          if (objective.getCriteria() == ObjectiveCriteria.TRIGGER) {
@@ -531,7 +542,7 @@ public class ScoreboardCommand {
          }
       }
 
-      return SharedSuggestionProvider.suggest(result, builder);
+      return SuggestionContext.suggest(result, builder);
    }
 
    private static int getScore(final CommandSourceStack source, final ScoreHolder target, final Objective objective) throws CommandSyntaxException {
@@ -552,10 +563,10 @@ public class ScoreboardCommand {
 
    private static int performOperation(
       final CommandSourceStack source,
-      final Collection<ScoreHolder> targets,
+      final Collection<? extends ScoreHolder> targets,
       final Objective targetObjective,
       final OperationArgument.Operation operation,
-      final Collection<ScoreHolder> sources,
+      final Collection<? extends ScoreHolder> sources,
       final Objective sourceObjective
    ) throws CommandSyntaxException {
       Scoreboard scoreboard = source.getServer().getScoreboard();
@@ -575,7 +586,7 @@ public class ScoreboardCommand {
       return tracker.sendFeedback(source, true, CommandResponseTracker.ElementType.ANY, RESPONSE_SCORE_OPERATION, targetObjective);
    }
 
-   private static int enableTrigger(final CommandSourceStack source, final Collection<ScoreHolder> targets, final Objective objective) throws CommandSyntaxException {
+   private static int enableTrigger(final CommandSourceStack source, final Collection<? extends ScoreHolder> targets, final Objective objective) throws CommandSyntaxException {
       if (objective.getCriteria() != ObjectiveCriteria.TRIGGER) {
          throw ERROR_NOT_TRIGGER.create();
       }
@@ -594,7 +605,7 @@ public class ScoreboardCommand {
       return tracker.sendFeedback(source, true, RESPONSE_ENABLE, objective);
    }
 
-   private static int resetScores(final CommandSourceStack source, final Collection<ScoreHolder> targets) throws CommandSyntaxException {
+   private static int resetScores(final CommandSourceStack source, final Collection<? extends ScoreHolder> targets) throws CommandSyntaxException {
       CommandResponseTracker<ScoreHolder> tracker = CommandResponseTracker.create();
       Scoreboard scoreboard = source.getServer().getScoreboard();
 
@@ -606,7 +617,7 @@ public class ScoreboardCommand {
       return tracker.sendFeedback(source, true, RESPONSE_SCORE_RESET_ALL);
    }
 
-   private static int resetScore(final CommandSourceStack source, final Collection<ScoreHolder> targets, final Objective objective) throws CommandSyntaxException {
+   private static int resetScore(final CommandSourceStack source, final Collection<? extends ScoreHolder> targets, final Objective objective) throws CommandSyntaxException {
       CommandResponseTracker<ScoreHolder> tracker = CommandResponseTracker.create();
       Scoreboard scoreboard = source.getServer().getScoreboard();
 
@@ -618,7 +629,7 @@ public class ScoreboardCommand {
       return tracker.sendFeedback(source, true, RESPONSE_SCORE_RESET, objective);
    }
 
-   private static int setScore(final CommandSourceStack source, final Collection<ScoreHolder> targets, final Objective objective, final int value) throws CommandSyntaxException {
+   private static int setScore(final CommandSourceStack source, final Collection<? extends ScoreHolder> targets, final Objective objective, final int value) throws CommandSyntaxException {
       CommandResponseTracker<ScoreHolder> tracker = CommandResponseTracker.create();
       Scoreboard scoreboard = source.getServer().getScoreboard();
 
@@ -631,7 +642,7 @@ public class ScoreboardCommand {
    }
 
    private static int setScoreDisplay(
-      final CommandSourceStack source, final Collection<ScoreHolder> targets, final Objective objective, final @Nullable Component display
+      final CommandSourceStack source, final Collection<? extends ScoreHolder> targets, final Objective objective, final @Nullable Component display
    ) throws CommandSyntaxException {
       CommandResponseTracker<ScoreHolder> tracker = CommandResponseTracker.create();
       Scoreboard scoreboard = source.getServer().getScoreboard();
@@ -647,7 +658,7 @@ public class ScoreboardCommand {
    }
 
    private static int setScoreNumberFormat(
-      final CommandSourceStack source, final Collection<ScoreHolder> targets, final Objective objective, final @Nullable NumberFormat numberFormat
+      final CommandSourceStack source, final Collection<? extends ScoreHolder> targets, final Objective objective, final @Nullable NumberFormat numberFormat
    ) throws CommandSyntaxException {
       CommandResponseTracker<ScoreHolder> tracker = CommandResponseTracker.create();
       Scoreboard scoreboard = source.getServer().getScoreboard();
@@ -662,7 +673,7 @@ public class ScoreboardCommand {
          : tracker.sendFeedback(source, true, RESPONSE_NUMBER_FORMAT_SET, objective);
    }
 
-   private static int addScore(final CommandSourceStack source, final Collection<ScoreHolder> targets, final Objective objective, final int value) throws CommandSyntaxException {
+   private static int addScore(final CommandSourceStack source, final Collection<? extends ScoreHolder> targets, final Objective objective, final int value) throws CommandSyntaxException {
       CommandResponseTracker<ScoreHolder> tracker = CommandResponseTracker.create();
       Scoreboard scoreboard = source.getServer().getScoreboard();
 
@@ -675,7 +686,7 @@ public class ScoreboardCommand {
       return tracker.sendFeedback(source, true, CommandResponseTracker.ElementType.ANY, RESPONSE_SCORE_ADD, objective, value);
    }
 
-   private static int removeScore(final CommandSourceStack source, final Collection<ScoreHolder> targets, final Objective objective, final int value) throws CommandSyntaxException {
+   private static int removeScore(final CommandSourceStack source, final Collection<? extends ScoreHolder> targets, final Objective objective, final int value) throws CommandSyntaxException {
       CommandResponseTracker<ScoreHolder> tracker = CommandResponseTracker.create();
       Scoreboard scoreboard = source.getServer().getScoreboard();
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -67,7 +67,7 @@ public class ConduitBlockEntity extends BlockEntity {
    }
 
    @Override
-   public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
+   public CompoundTag getUpdateTag(final HolderGetter.Provider registries) {
       return this.saveCustomOnly(registries);
    }
 

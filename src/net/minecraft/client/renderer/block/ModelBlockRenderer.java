@@ -210,10 +210,7 @@ public class ModelBlockRenderer {
       final BakedQuad quad
    ) {
       int tintIndex = quad.materialInfo().tintIndex();
-      if (tintIndex != -1) {
-         this.quadInstance.multiplyColor(this.getTintColor(level, state, pos, tintIndex));
-      }
-
+      this.quadInstance.setColor(tintIndex == -1 ? -1 : this.getTintColor(level, state, pos, tintIndex));
       output.put(x, y, z, quad, this.quadInstance);
    }
 

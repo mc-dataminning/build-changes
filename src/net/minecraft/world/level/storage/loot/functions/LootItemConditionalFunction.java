@@ -10,6 +10,7 @@ import java.util.function.Function;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootContextUser;
 import net.minecraft.world.level.storage.loot.Validatable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.predicates.ConditionUserBuilder;
@@ -36,10 +37,13 @@ public abstract class LootItemConditionalFunction implements LootItemFunction {
    protected abstract ItemStack run(final ItemStack itemStack, final LootContext context);
 
    @Override
-   public void validate(final ValidationContext context) {
-      LootItemFunction.super.validate(context);
-      Validatable.validateHolder(context, "condition", this.condition);
+   public final void validate(final ValidationContext context) {
+      if (Validatable.validateIfConditionCanPass(context, "condition", this.condition)) {
+         this.validateCustom(context);
+      }
    }
+
+   protected abstract void validateCustom(final ValidationContext context);
 
    protected static LootItemConditionalFunction.Builder<?> simpleBuilder(final Function<Optional<Holder<LootItemCondition>>, LootItemFunction> constructor) {
       return new LootItemConditionalFunction.DummyBuilder(constructor);
@@ -61,6 +65,20 @@ public abstract class LootItemConditionalFunction implements LootItemFunction {
 
       protected Optional<Holder<LootItemCondition>> getCondition() {
          return ConditionUserBuilder.buildCondition(this.conditions.build());
+      }
+   }
+
+   public abstract static class ContextUser extends LootItemConditionalFunction implements LootContextUser {
+      protected ContextUser(final Optional<Holder<LootItemCondition>> condition) {
+         super(condition);
+      }
+
+      @Override
+      public abstract MapCodec<? extends LootItemConditionalFunction.ContextUser> codec();
+
+      @Override
+      protected void validateCustom(final ValidationContext context) {
+         this.validateContextUsage(context);
       }
    }
 

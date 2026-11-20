@@ -1,13 +1,12 @@
 package net.minecraft.server.network;
 
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.logging.LogUtils;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicReference;
-import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.ServerPlayerSuggestionContext;
+import net.minecraft.commands.SuggestionBox;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import org.jspecify.annotations.Nullable;
@@ -45,13 +44,13 @@ public class ServerCommandSuggestionsProvider {
                }
 
                MinecraftServer server = this.player.level().getServer();
-               CommandDispatcher<CommandSourceStack> dispatcher = server.getCommands().getDispatcher();
-               ParseResults<CommandSourceStack> parse = dispatcher.parse(reader, this.player.createCommandSourceStack());
+               SuggestionBox suggestionBox = server.getCommands().suggestionBox();
+               SuggestionBox.Result result = suggestionBox.parse(reader, new ServerPlayerSuggestionContext(this.player));
                if (this.lastRequest.get() != null) {
                   return;
                }
 
-               dispatcher.getCompletionSuggestions(parse).thenAccept(suggestions -> request.future.complete(limitSuggestionCount(suggestions)));
+               result.computeSuggestions().thenAccept(suggestions -> request.future.complete(limitSuggestionCount(suggestions)));
             } catch (Exception e) {
                LOGGER.error("Failed to resolve command suggestions for {}", this.player.getGameProfile().name(), e);
             }

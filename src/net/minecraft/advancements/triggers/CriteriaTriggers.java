@@ -68,8 +68,4 @@ public class CriteriaTriggers {
    private static <T extends CriterionTrigger<?>> T register(final String name, final T criterion) {
       return Registry.register(BuiltInRegistries.TRIGGER_TYPES, name, criterion);
    }
-
-   public static CriterionTrigger<?> bootstrap(final Registry<CriterionTrigger<?>> registry) {
-      return IMPOSSIBLE;
-   }
 }

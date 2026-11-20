@@ -1,16 +1,17 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Locale;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.commands.arguments.DoubleArgument;
+import net.minecraft.commands.arguments.FloatArgument;
+import net.minecraft.commands.arguments.IntegerArgument;
 import net.minecraft.commands.arguments.TimeArgument;
 import net.minecraft.commands.arguments.coordinates.Vec2Argument;
 import net.minecraft.network.chat.Component;
@@ -53,16 +54,16 @@ public class WorldBorderCommand {
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal(
                                  "worldborder"
                               )
-                              .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                              .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                            .then(
                               Commands.literal("add")
                                  .then(
-                                    ((RequiredArgumentBuilder)Commands.argument("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                    ((RequiredArgumentBuilder)Commands.argument("distance", DoubleArgument.doubleArg(-5.999997E7F, 5.999997E7F))
                                           .executes(
                                              c -> setSize(
                                                 (CommandSourceStack)c.getSource(),
                                                 ((CommandSourceStack)c.getSource()).getLevel().getWorldBorder().getSize()
-                                                   + DoubleArgumentType.getDouble(c, "distance"),
+                                                   + DoubleArgument.getDouble(c, "distance"),
                                                 0L
                                              )
                                           ))
@@ -72,9 +73,9 @@ public class WorldBorderCommand {
                                                 c -> setSize(
                                                    (CommandSourceStack)c.getSource(),
                                                    ((CommandSourceStack)c.getSource()).getLevel().getWorldBorder().getSize()
-                                                      + DoubleArgumentType.getDouble(c, "distance"),
+                                                      + DoubleArgument.getDouble(c, "distance"),
                                                    ((CommandSourceStack)c.getSource()).getLevel().getWorldBorder().getLerpTime()
-                                                      + IntegerArgumentType.getInteger(c, "time")
+                                                      + IntegerArgument.getInteger(c, "time")
                                                 )
                                              )
                                        )
@@ -83,15 +84,15 @@ public class WorldBorderCommand {
                         .then(
                            Commands.literal("set")
                               .then(
-                                 ((RequiredArgumentBuilder)Commands.argument("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
-                                       .executes(c -> setSize((CommandSourceStack)c.getSource(), DoubleArgumentType.getDouble(c, "distance"), 0L)))
+                                 ((RequiredArgumentBuilder)Commands.argument("distance", DoubleArgument.doubleArg(-5.999997E7F, 5.999997E7F))
+                                       .executes(c -> setSize((CommandSourceStack)c.getSource(), DoubleArgument.getDouble(c, "distance"), 0L)))
                                     .then(
                                        Commands.argument("time", TimeArgument.time(0))
                                           .executes(
                                              c -> setSize(
                                                 (CommandSourceStack)c.getSource(),
-                                                DoubleArgumentType.getDouble(c, "distance"),
-                                                IntegerArgumentType.getInteger(c, "time")
+                                                DoubleArgument.getDouble(c, "distance"),
+                                                IntegerArgument.getInteger(c, "time")
                                              )
                                           )
                                     )
@@ -109,15 +110,15 @@ public class WorldBorderCommand {
                            .then(
                               Commands.literal("amount")
                                  .then(
-                                    Commands.argument("damagePerBlock", FloatArgumentType.floatArg(0.0F))
-                                       .executes(c -> setDamageAmount((CommandSourceStack)c.getSource(), FloatArgumentType.getFloat(c, "damagePerBlock")))
+                                    Commands.argument("damagePerBlock", FloatArgument.floatArg(0.0F))
+                                       .executes(c -> setDamageAmount((CommandSourceStack)c.getSource(), FloatArgument.getFloat(c, "damagePerBlock")))
                                  )
                            ))
                         .then(
                            Commands.literal("buffer")
                               .then(
-                                 Commands.argument("distance", FloatArgumentType.floatArg(0.0F))
-                                    .executes(c -> setDamageBuffer((CommandSourceStack)c.getSource(), FloatArgumentType.getFloat(c, "distance")))
+                                 Commands.argument("distance", FloatArgument.floatArg(0.0F))
+                                    .executes(c -> setDamageBuffer((CommandSourceStack)c.getSource(), FloatArgument.getFloat(c, "distance")))
                               )
                         )
                   ))
@@ -127,15 +128,15 @@ public class WorldBorderCommand {
                      .then(
                         Commands.literal("distance")
                            .then(
-                              Commands.argument("distance", IntegerArgumentType.integer(0))
-                                 .executes(c -> setWarningDistance((CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "distance")))
+                              Commands.argument("distance", IntegerArgument.integer(0))
+                                 .executes(c -> setWarningDistance((CommandSourceStack)c.getSource(), IntegerArgument.getInteger(c, "distance")))
                            )
                      ))
                   .then(
                      Commands.literal("time")
                         .then(
                            Commands.argument("time", TimeArgument.time(0))
-                              .executes(c -> setWarningTime((CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "time")))
+                              .executes(c -> setWarningTime((CommandSourceStack)c.getSource(), IntegerArgument.getInteger(c, "time")))
                         )
                   )
             )

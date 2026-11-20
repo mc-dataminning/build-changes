@@ -106,7 +106,7 @@ public class Frostbite extends RangedZombie {
 
    @Override
    protected SoundEvent getRangedAttackSound() {
-      return SoundEvents.ICE_BALL_THROW;
+      return SoundEvents.FROSTBITE_THROW;
    }
 
    @Override

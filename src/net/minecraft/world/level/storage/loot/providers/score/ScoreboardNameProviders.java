@@ -4,6 +4,7 @@ import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 public class ScoreboardNameProviders {
@@ -15,8 +16,8 @@ public class ScoreboardNameProviders {
          .xmap(Either::unwrap, provider -> provider instanceof ContextScoreboardNameProvider context ? Either.left(context) : Either.right(provider))
    );
 
-   public static MapCodec<? extends ScoreboardNameProvider> bootstrap(final Registry<MapCodec<? extends ScoreboardNameProvider>> registry) {
+   public static void bootstrap(final WritableRegistry<MapCodec<? extends ScoreboardNameProvider>> registry) {
       Registry.register(registry, "fixed", FixedScoreboardNameProvider.MAP_CODEC);
-      return Registry.register(registry, "context", ContextScoreboardNameProvider.MAP_CODEC);
+      Registry.register(registry, "context", ContextScoreboardNameProvider.MAP_CODEC);
    }
 }

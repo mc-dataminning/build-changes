@@ -7,8 +7,8 @@ import java.util.Optional;
 import java.util.Set;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
@@ -26,7 +26,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
-public class EnchantWithLevelsFunction extends LootItemConditionalFunction {
+public class EnchantWithLevelsFunction extends LootItemConditionalFunction.ContextUser {
    public static final MapCodec<EnchantWithLevelsFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
          .and(
@@ -60,20 +60,20 @@ public class EnchantWithLevelsFunction extends LootItemConditionalFunction {
    }
 
    @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
+   public Set<ContextKey<?>> getRequiredParams() {
       return this.includeAdditionalCostComponent ? Set.of(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED) : Set.of();
    }
 
    @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
+   public void validateCustom(final ValidationContext context) {
+      super.validateCustom(context);
       Validatable.validateHolder(context, "levels", this.levels);
    }
 
    @Override
    public ItemStack run(final ItemStack itemStack, final LootContext context) {
       RandomSource random = context.getRandom();
-      RegistryAccess registryAccess = context.getLevel().registryAccess();
+      HolderLookup.Provider registryAccess = context.getLevel().registryAccess();
       int enchantmentCost = this.levels.value().getInt(context);
       ItemStack result = EnchantmentHelper.enchantItem(random, itemStack, enchantmentCost, registryAccess, this.options);
       if (this.includeAdditionalCostComponent

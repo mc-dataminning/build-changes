@@ -6,6 +6,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
 import java.util.function.Predicate;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -53,39 +54,39 @@ public record VillagerProfession(
       return ResourceKey.create(Registries.VILLAGER_PROFESSION, Identifier.withDefaultNamespace(name));
    }
 
-   private static VillagerProfession register(
-      final Registry<VillagerProfession> registry,
+   private static void register(
+      final WritableRegistry<VillagerProfession> registry,
       final ResourceKey<VillagerProfession> name,
       final ResourceKey<PoiType> jobSite,
       final @Nullable SoundEvent workSound,
       final Int2ObjectMap<ResourceKey<TradeSet>> trades
    ) {
-      return register(registry, name, poiType -> poiType.is(jobSite), poiType -> poiType.is(jobSite), workSound, trades);
+      register(registry, name, poiType -> poiType.is(jobSite), poiType -> poiType.is(jobSite), workSound, trades);
    }
 
-   private static VillagerProfession register(
-      final Registry<VillagerProfession> registry,
+   private static void register(
+      final WritableRegistry<VillagerProfession> registry,
       final ResourceKey<VillagerProfession> name,
       final Predicate<Holder<PoiType>> heldJobSite,
       final Predicate<Holder<PoiType>> acquirableJobSite,
       final @Nullable SoundEvent workSound
    ) {
-      return register(registry, name, heldJobSite, acquirableJobSite, ImmutableSet.of(), ImmutableSet.of(), workSound, Int2ObjectMap.ofEntries(new Entry[0]));
+      register(registry, name, heldJobSite, acquirableJobSite, ImmutableSet.of(), ImmutableSet.of(), workSound, Int2ObjectMap.ofEntries(new Entry[0]));
    }
 
-   private static VillagerProfession register(
-      final Registry<VillagerProfession> registry,
+   private static void register(
+      final WritableRegistry<VillagerProfession> registry,
       final ResourceKey<VillagerProfession> name,
       final Predicate<Holder<PoiType>> heldJobSite,
       final Predicate<Holder<PoiType>> acquirableJobSite,
       final @Nullable SoundEvent workSound,
       final Int2ObjectMap<ResourceKey<TradeSet>> trades
    ) {
-      return register(registry, name, heldJobSite, acquirableJobSite, ImmutableSet.of(), ImmutableSet.of(), workSound, trades);
+      register(registry, name, heldJobSite, acquirableJobSite, ImmutableSet.of(), ImmutableSet.of(), workSound, trades);
    }
 
-   private static VillagerProfession register(
-      final Registry<VillagerProfession> registry,
+   private static void register(
+      final WritableRegistry<VillagerProfession> registry,
       final ResourceKey<VillagerProfession> name,
       final ResourceKey<PoiType> jobSite,
       final ImmutableSet<Item> requestedItems,
@@ -93,11 +94,11 @@ public record VillagerProfession(
       final @Nullable SoundEvent workSound,
       final Int2ObjectMap<ResourceKey<TradeSet>> trades
    ) {
-      return register(registry, name, poiType -> poiType.is(jobSite), poiType -> poiType.is(jobSite), requestedItems, secondaryPoi, workSound, trades);
+      register(registry, name, poiType -> poiType.is(jobSite), poiType -> poiType.is(jobSite), requestedItems, secondaryPoi, workSound, trades);
    }
 
-   private static VillagerProfession register(
-      final Registry<VillagerProfession> registry,
+   private static void register(
+      final WritableRegistry<VillagerProfession> registry,
       final ResourceKey<VillagerProfession> name,
       final Predicate<Holder<PoiType>> heldJobSite,
       final Predicate<Holder<PoiType>> acquirableJobSite,
@@ -106,7 +107,7 @@ public record VillagerProfession(
       final @Nullable SoundEvent workSound,
       final Int2ObjectMap<ResourceKey<TradeSet>> trades
    ) {
-      return Registry.register(
+      Registry.register(
          registry,
          name,
          new VillagerProfession(
@@ -121,7 +122,7 @@ public record VillagerProfession(
       );
    }
 
-   public static VillagerProfession bootstrap(final Registry<VillagerProfession> registry) {
+   public static void bootstrap(final WritableRegistry<VillagerProfession> registry) {
       register(registry, NONE, PoiType.NONE, ALL_ACQUIRABLE_JOBS, null);
       register(
          registry,
@@ -306,7 +307,7 @@ public record VillagerProfession(
             }
          )
       );
-      return register(
+      register(
          registry,
          WEAPONSMITH,
          PoiTypeIds.WEAPONSMITH,

@@ -1,7 +1,7 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
@@ -11,12 +11,14 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.ResourceOrIdArgument;
+import net.minecraft.commands.arguments.IntegerArgument;
+import net.minecraft.commands.arguments.LootTableArgument;
 import net.minecraft.commands.arguments.SlotArgument;
+import net.minecraft.commands.arguments.ValidationWrapper;
 import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
 import net.minecraft.commands.arguments.coordinates.Vec3Argument;
 import net.minecraft.commands.arguments.item.ItemArgument;
@@ -66,14 +68,14 @@ public class LootCommand {
       (dropCount, var1, key) -> Component.translatable("commands.drop.success.multiple_with_table", dropCount, Component.translationArg(key.identifier()))
    );
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          addTargets(
-            (LiteralArgumentBuilder & ArgumentBuilder)Commands.literal("loot").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)),
+            (LiteralArgumentBuilder & ArgumentBuilder)Commands.literal("loot").requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)),
             (target, output) -> target.then(
                   Commands.literal("fish")
                      .then(
-                        Commands.argument("loot_table", ResourceOrIdArgument.lootTable(context))
+                        Commands.argument("loot_table", LootTableArgument.lootTable(LootContextParamSets.FISHING))
                            .then(
                               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument(
                                              "pos", BlockPosArgument.blockPos()
@@ -81,18 +83,18 @@ public class LootCommand {
                                           .executes(
                                              c -> dropFishingLoot(
                                                 c,
-                                                ResourceOrIdArgument.getLootTable(c, "loot_table"),
+                                                LootTableArgument.getLootTable(c, "loot_table"),
                                                 BlockPosArgument.getLoadedBlockPos(c, "pos"),
                                                 ItemStack.EMPTY,
                                                 output
                                              )
                                           ))
                                        .then(
-                                          Commands.argument("tool", ItemArgument.item(context))
+                                          Commands.argument("tool", ItemArgument.item())
                                              .executes(
                                                 c -> dropFishingLoot(
                                                    c,
-                                                   ResourceOrIdArgument.getLootTable(c, "loot_table"),
+                                                   LootTableArgument.getLootTable(c, "loot_table"),
                                                    BlockPosArgument.getLoadedBlockPos(c, "pos"),
                                                    ItemArgument.getItem(c, "tool").createItemStack(1),
                                                    output
@@ -104,7 +106,7 @@ public class LootCommand {
                                           .executes(
                                              c -> dropFishingLoot(
                                                 c,
-                                                ResourceOrIdArgument.getLootTable(c, "loot_table"),
+                                                LootTableArgument.getLootTable(c, "loot_table"),
                                                 BlockPosArgument.getLoadedBlockPos(c, "pos"),
                                                 getSourceHandItem((CommandSourceStack)c.getSource(), EquipmentSlot.MAINHAND),
                                                 output
@@ -116,7 +118,7 @@ public class LootCommand {
                                        .executes(
                                           c -> dropFishingLoot(
                                              c,
-                                             ResourceOrIdArgument.getLootTable(c, "loot_table"),
+                                             LootTableArgument.getLootTable(c, "loot_table"),
                                              BlockPosArgument.getLoadedBlockPos(c, "pos"),
                                              getSourceHandItem((CommandSourceStack)c.getSource(), EquipmentSlot.OFFHAND),
                                              output
@@ -129,8 +131,8 @@ public class LootCommand {
                .then(
                   Commands.literal("loot")
                      .then(
-                        Commands.argument("loot_table", ResourceOrIdArgument.lootTable(context))
-                           .executes(c -> dropChestLoot(c, ResourceOrIdArgument.getLootTable(c, "loot_table"), output))
+                        Commands.argument("loot_table", LootTableArgument.lootTable(LootContextParamSets.CHEST))
+                           .executes(c -> dropChestLoot(c, LootTableArgument.getLootTable(c, "loot_table"), output))
                      )
                )
                .then(
@@ -143,7 +145,7 @@ public class LootCommand {
                         ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("pos", BlockPosArgument.blockPos())
                                     .executes(c -> dropBlockLoot(c, BlockPosArgument.getLoadedBlockPos(c, "pos"), ItemStack.EMPTY, output)))
                                  .then(
-                                    Commands.argument("tool", ItemArgument.item(context))
+                                    Commands.argument("tool", ItemArgument.item())
                                        .executes(
                                           c -> dropBlockLoot(
                                              c, BlockPosArgument.getLoadedBlockPos(c, "pos"), ItemArgument.getItem(c, "tool").createItemStack(1), output
@@ -184,21 +186,21 @@ public class LootCommand {
                   .then(
                      Commands.literal("entity")
                         .then(
-                           Commands.argument("entities", EntityArgument.entities())
+                           Commands.argument("entities", (ArgumentType<T>)EntityArgument.entities())
                               .then(
                                  tail.construct(
-                                       Commands.argument("slot", SlotArgument.slot()),
+                                       Commands.argument("slot", (ArgumentType<T>)SlotArgument.slot()),
                                        (c, drops, usedItems) -> entityReplace(
                                           EntityArgument.getEntities(c, "entities"), SlotArgument.getSlot(c, "slot"), drops.size(), drops, usedItems
                                        )
                                     )
                                     .then(
                                        tail.construct(
-                                          Commands.argument("count", IntegerArgumentType.integer(0)),
+                                          Commands.argument("count", (ArgumentType<T>)IntegerArgument.integer(0)),
                                           (c, drops, usedItems) -> entityReplace(
                                              EntityArgument.getEntities(c, "entities"),
                                              SlotArgument.getSlot(c, "slot"),
-                                             IntegerArgumentType.getInteger(c, "count"),
+                                             IntegerArgument.getInteger(c, "count"),
                                              drops,
                                              usedItems
                                           )
@@ -210,10 +212,10 @@ public class LootCommand {
                .then(
                   Commands.literal("block")
                      .then(
-                        Commands.argument("targetPos", BlockPosArgument.blockPos())
+                        Commands.argument("targetPos", (ArgumentType<T>)BlockPosArgument.blockPos())
                            .then(
                               tail.construct(
-                                    Commands.argument("slot", SlotArgument.slot()),
+                                    Commands.argument("slot", (ArgumentType<T>)SlotArgument.slot()),
                                     (c, drops, usedItems) -> blockReplace(
                                        (CommandSourceStack)c.getSource(),
                                        BlockPosArgument.getLoadedBlockPos(c, "targetPos"),
@@ -225,12 +227,12 @@ public class LootCommand {
                                  )
                                  .then(
                                     tail.construct(
-                                       Commands.argument("count", IntegerArgumentType.integer(0)),
+                                       Commands.argument("count", (ArgumentType<T>)IntegerArgument.integer(0)),
                                        (c, drops, usedItems) -> blockReplace(
                                           (CommandSourceStack)c.getSource(),
                                           BlockPosArgument.getLoadedBlockPos(c, "targetPos"),
-                                          IntegerArgumentType.getInteger(c, "slot"),
-                                          IntegerArgumentType.getInteger(c, "count"),
+                                          IntegerArgument.getInteger(c, "slot"),
+                                          IntegerArgument.getInteger(c, "count"),
                                           drops,
                                           usedItems
                                        )
@@ -244,7 +246,7 @@ public class LootCommand {
             Commands.literal("insert")
                .then(
                   tail.construct(
-                     Commands.argument("targetPos", BlockPosArgument.blockPos()),
+                     Commands.argument("targetPos", (ArgumentType<T>)BlockPosArgument.blockPos()),
                      (c, drops, usedItems) -> blockDistribute(
                         (CommandSourceStack)c.getSource(), BlockPosArgument.getLoadedBlockPos(c, "targetPos"), drops, usedItems
                      )
@@ -255,7 +257,7 @@ public class LootCommand {
             Commands.literal("give")
                .then(
                   tail.construct(
-                     Commands.argument("players", EntityArgument.players()),
+                     Commands.argument("players", (ArgumentType<T>)EntityArgument.players()),
                      (c, drops, usedItems) -> playerGive(EntityArgument.getPlayers(c, "players"), drops, usedItems)
                   )
                )
@@ -264,7 +266,7 @@ public class LootCommand {
             Commands.literal("spawn")
                .then(
                   tail.construct(
-                     Commands.argument("targetPos", Vec3Argument.vec3()),
+                     Commands.argument("targetPos", (ArgumentType<T>)Vec3Argument.vec3()),
                      (c, drops, usedItems) -> dropInWorld((CommandSourceStack)c.getSource(), Vec3Argument.getVec3(c, "targetPos"), drops, usedItems)
                   )
                )
@@ -447,18 +449,20 @@ public class LootCommand {
       return usedItems.sendFeedback(source, false, RESPONSE_WITH_LOOT_TABLE, lootTableId.get());
    }
 
-   private static int dropChestLoot(final CommandContext<CommandSourceStack> context, final Holder<LootTable> lootTable, final LootCommand.DropConsumer output) throws CommandSyntaxException {
+   private static int dropChestLoot(
+      final CommandContext<CommandSourceStack> context, final ValidationWrapper<LootTable> lootTable, final LootCommand.DropConsumer output
+   ) throws CommandSyntaxException {
       CommandSourceStack source = (CommandSourceStack)context.getSource();
       LootParams lootParams = new LootParams.Builder(source.getLevel())
          .withOptionalParameter(LootContextParams.THIS_ENTITY, source.getEntity())
          .withParameter(LootContextParams.ORIGIN, source.getPosition())
          .create(LootContextParamSets.CHEST);
-      return drop(context, lootTable, lootParams, output);
+      return drop(context, lootTable.validateAndGet(LootContextParamSets.CHEST), lootParams, output);
    }
 
    private static int dropFishingLoot(
       final CommandContext<CommandSourceStack> context,
-      final Holder<LootTable> lootTable,
+      final ValidationWrapper<LootTable> lootTable,
       final BlockPos pos,
       final ItemInstance tool,
       final LootCommand.DropConsumer output
@@ -469,7 +473,7 @@ public class LootCommand {
          .withParameter(LootContextParams.TOOL, tool)
          .withOptionalParameter(LootContextParams.THIS_ENTITY, source.getEntity())
          .create(LootContextParamSets.FISHING);
-      return drop(context, lootTable, lootParams, output);
+      return drop(context, lootTable.validateAndGet(LootContextParamSets.FISHING), lootParams, output);
    }
 
    private static int drop(

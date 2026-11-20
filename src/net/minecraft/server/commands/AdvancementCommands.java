@@ -2,13 +2,13 @@ package net.minecraft.server.commands;
 
 import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -17,11 +17,15 @@ import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementNode;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.AdvancementTree;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.ResourceKeyArgument;
+import net.minecraft.commands.arguments.ResourceArgument;
+import net.minecraft.commands.arguments.StringArgument;
+import net.minecraft.commands.suggestions.SuggestionContext;
+import net.minecraft.commands.suggestions.SuggestionProviders;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -31,10 +35,16 @@ public class AdvancementCommands {
       (name, criterion) -> Component.translatableEscape("commands.advancement.criterionNotFound", name, criterion)
    );
 
+   private static SuggestionProvider<CommandSourceStack> suggestAdvancementCriteria() {
+      return SuggestionProviders.serverOnly(
+         (var0, context, builder) -> SuggestionContext.suggest(ResourceArgument.getAdvancement(context, "advancement").value().criteria().keySet(), builder)
+      );
+   }
+
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("advancement")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                  .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                .then(
                   Commands.literal("grant")
                      .then(
@@ -44,31 +54,25 @@ public class AdvancementCommands {
                                        .then(
                                           Commands.literal("only")
                                              .then(
-                                                ((RequiredArgumentBuilder)Commands.argument("advancement", ResourceKeyArgument.key(Registries.ADVANCEMENT))
+                                                ((RequiredArgumentBuilder)Commands.argument("advancement", ResourceArgument.resource(Registries.ADVANCEMENT))
                                                       .executes(
                                                          c -> perform(
                                                             (CommandSourceStack)c.getSource(),
                                                             EntityArgument.getPlayers(c, "targets"),
                                                             AdvancementCommands.Action.GRANT,
-                                                            getAdvancements(
-                                                               c, ResourceKeyArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.ONLY
-                                                            )
+                                                            getAdvancements(c, ResourceArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.ONLY)
                                                          )
                                                       ))
                                                    .then(
-                                                      Commands.argument("criterion", StringArgumentType.greedyString())
-                                                         .suggests(
-                                                            (c, p) -> SharedSuggestionProvider.suggest(
-                                                               ResourceKeyArgument.getAdvancement(c, "advancement").value().criteria().keySet(), p
-                                                            )
-                                                         )
+                                                      Commands.argument("criterion", StringArgument.greedyString())
+                                                         .suggests(suggestAdvancementCriteria())
                                                          .executes(
                                                             c -> performCriterion(
                                                                (CommandSourceStack)c.getSource(),
                                                                EntityArgument.getPlayers(c, "targets"),
                                                                AdvancementCommands.Action.GRANT,
-                                                               ResourceKeyArgument.getAdvancement(c, "advancement"),
-                                                               StringArgumentType.getString(c, "criterion")
+                                                               ResourceArgument.getAdvancement(c, "advancement"),
+                                                               StringArgument.getString(c, "criterion")
                                                             )
                                                          )
                                                    )
@@ -77,13 +81,13 @@ public class AdvancementCommands {
                                     .then(
                                        Commands.literal("from")
                                           .then(
-                                             Commands.argument("advancement", ResourceKeyArgument.key(Registries.ADVANCEMENT))
+                                             Commands.argument("advancement", ResourceArgument.resource(Registries.ADVANCEMENT))
                                                 .executes(
                                                    c -> perform(
                                                       (CommandSourceStack)c.getSource(),
                                                       EntityArgument.getPlayers(c, "targets"),
                                                       AdvancementCommands.Action.GRANT,
-                                                      getAdvancements(c, ResourceKeyArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.FROM)
+                                                      getAdvancements(c, ResourceArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.FROM)
                                                    )
                                                 )
                                           )
@@ -91,13 +95,13 @@ public class AdvancementCommands {
                                  .then(
                                     Commands.literal("until")
                                        .then(
-                                          Commands.argument("advancement", ResourceKeyArgument.key(Registries.ADVANCEMENT))
+                                          Commands.argument("advancement", ResourceArgument.resource(Registries.ADVANCEMENT))
                                              .executes(
                                                 c -> perform(
                                                    (CommandSourceStack)c.getSource(),
                                                    EntityArgument.getPlayers(c, "targets"),
                                                    AdvancementCommands.Action.GRANT,
-                                                   getAdvancements(c, ResourceKeyArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.UNTIL)
+                                                   getAdvancements(c, ResourceArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.UNTIL)
                                                 )
                                              )
                                        )
@@ -105,13 +109,13 @@ public class AdvancementCommands {
                               .then(
                                  Commands.literal("through")
                                     .then(
-                                       Commands.argument("advancement", ResourceKeyArgument.key(Registries.ADVANCEMENT))
+                                       Commands.argument("advancement", ResourceArgument.resource(Registries.ADVANCEMENT))
                                           .executes(
                                              c -> perform(
                                                 (CommandSourceStack)c.getSource(),
                                                 EntityArgument.getPlayers(c, "targets"),
                                                 AdvancementCommands.Action.GRANT,
-                                                getAdvancements(c, ResourceKeyArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.THROUGH)
+                                                getAdvancements(c, ResourceArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.THROUGH)
                                              )
                                           )
                                     )
@@ -139,29 +143,25 @@ public class AdvancementCommands {
                                     .then(
                                        Commands.literal("only")
                                           .then(
-                                             ((RequiredArgumentBuilder)Commands.argument("advancement", ResourceKeyArgument.key(Registries.ADVANCEMENT))
+                                             ((RequiredArgumentBuilder)Commands.argument("advancement", ResourceArgument.resource(Registries.ADVANCEMENT))
                                                    .executes(
                                                       c -> perform(
                                                          (CommandSourceStack)c.getSource(),
                                                          EntityArgument.getPlayers(c, "targets"),
                                                          AdvancementCommands.Action.REVOKE,
-                                                         getAdvancements(c, ResourceKeyArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.ONLY)
+                                                         getAdvancements(c, ResourceArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.ONLY)
                                                       )
                                                    ))
                                                 .then(
-                                                   Commands.argument("criterion", StringArgumentType.greedyString())
-                                                      .suggests(
-                                                         (c, p) -> SharedSuggestionProvider.suggest(
-                                                            ResourceKeyArgument.getAdvancement(c, "advancement").value().criteria().keySet(), p
-                                                         )
-                                                      )
+                                                   Commands.argument("criterion", StringArgument.greedyString())
+                                                      .suggests(suggestAdvancementCriteria())
                                                       .executes(
                                                          c -> performCriterion(
                                                             (CommandSourceStack)c.getSource(),
                                                             EntityArgument.getPlayers(c, "targets"),
                                                             AdvancementCommands.Action.REVOKE,
-                                                            ResourceKeyArgument.getAdvancement(c, "advancement"),
-                                                            StringArgumentType.getString(c, "criterion")
+                                                            ResourceArgument.getAdvancement(c, "advancement"),
+                                                            StringArgument.getString(c, "criterion")
                                                          )
                                                       )
                                                 )
@@ -170,13 +170,13 @@ public class AdvancementCommands {
                                  .then(
                                     Commands.literal("from")
                                        .then(
-                                          Commands.argument("advancement", ResourceKeyArgument.key(Registries.ADVANCEMENT))
+                                          Commands.argument("advancement", ResourceArgument.resource(Registries.ADVANCEMENT))
                                              .executes(
                                                 c -> perform(
                                                    (CommandSourceStack)c.getSource(),
                                                    EntityArgument.getPlayers(c, "targets"),
                                                    AdvancementCommands.Action.REVOKE,
-                                                   getAdvancements(c, ResourceKeyArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.FROM)
+                                                   getAdvancements(c, ResourceArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.FROM)
                                                 )
                                              )
                                        )
@@ -184,13 +184,13 @@ public class AdvancementCommands {
                               .then(
                                  Commands.literal("until")
                                     .then(
-                                       Commands.argument("advancement", ResourceKeyArgument.key(Registries.ADVANCEMENT))
+                                       Commands.argument("advancement", ResourceArgument.resource(Registries.ADVANCEMENT))
                                           .executes(
                                              c -> perform(
                                                 (CommandSourceStack)c.getSource(),
                                                 EntityArgument.getPlayers(c, "targets"),
                                                 AdvancementCommands.Action.REVOKE,
-                                                getAdvancements(c, ResourceKeyArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.UNTIL)
+                                                getAdvancements(c, ResourceArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.UNTIL)
                                              )
                                           )
                                     )
@@ -198,13 +198,13 @@ public class AdvancementCommands {
                            .then(
                               Commands.literal("through")
                                  .then(
-                                    Commands.argument("advancement", ResourceKeyArgument.key(Registries.ADVANCEMENT))
+                                    Commands.argument("advancement", ResourceArgument.resource(Registries.ADVANCEMENT))
                                        .executes(
                                           c -> perform(
                                              (CommandSourceStack)c.getSource(),
                                              EntityArgument.getPlayers(c, "targets"),
                                              AdvancementCommands.Action.REVOKE,
-                                             getAdvancements(c, ResourceKeyArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.THROUGH)
+                                             getAdvancements(c, ResourceArgument.getAdvancement(c, "advancement"), AdvancementCommands.Mode.THROUGH)
                                           )
                                        )
                                  )
@@ -266,10 +266,11 @@ public class AdvancementCommands {
       final CommandSourceStack source,
       final Collection<ServerPlayer> players,
       final AdvancementCommands.Action action,
-      final AdvancementHolder holder,
+      final Holder.Reference<Advancement> advancementHolder,
       final String criterion
    ) throws CommandSyntaxException {
-      Advancement advancement = holder.value();
+      AdvancementHolder holder = AdvancementHolder.wrap(advancementHolder);
+      Advancement advancement = advancementHolder.value();
       if (!advancement.criteria().containsKey(criterion)) {
          throw ERROR_CRITERION_NOT_FOUND.create(Advancement.name(holder), criterion);
       }
@@ -288,8 +289,9 @@ public class AdvancementCommands {
    }
 
    private static List<AdvancementHolder> getAdvancements(
-      final CommandContext<CommandSourceStack> context, final AdvancementHolder target, final AdvancementCommands.Mode mode
+      final CommandContext<CommandSourceStack> context, final Holder.Reference<Advancement> advancementHolder, final AdvancementCommands.Mode mode
    ) {
+      AdvancementHolder target = AdvancementHolder.wrap(advancementHolder);
       AdvancementTree advancementTree = ((CommandSourceStack)context.getSource()).getServer().getAdvancements().tree();
       AdvancementNode targetNode = advancementTree.get(target);
       if (targetNode == null) {

@@ -57,10 +57,6 @@ public interface AttributeTypes {
    );
    Codec<AttributeType<?>> CODEC = BuiltInRegistries.ATTRIBUTE_TYPE.byNameCodec();
 
-   static AttributeType<?> bootstrap(final Registry<AttributeType<?>> registry) {
-      return BOOLEAN;
-   }
-
    static <Value> AttributeType<Value> register(final String name, final AttributeType<Value> type) {
       Registry.register(BuiltInRegistries.ATTRIBUTE_TYPE, Identifier.withDefaultNamespace(name), type);
       return type;

@@ -1,7 +1,6 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -9,10 +8,11 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.function.Predicate;
-import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.commands.arguments.IntegerArgument;
 import net.minecraft.commands.arguments.item.ItemPredicateArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -37,10 +37,10 @@ public class ClearInventoryCommands {
       (player, var1) -> ERROR_SINGLE.create(player.getDisplayName()), (playerCount, var1) -> ERROR_MULTIPLE.create(playerCount)
    );
 
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
+   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("clear")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                  .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                .executes(
                   c -> clearUnlimited(
                      (CommandSourceStack)c.getSource(), Collections.singleton(((CommandSourceStack)c.getSource()).getPlayerOrException()), var0x -> true
@@ -50,20 +50,20 @@ public class ClearInventoryCommands {
                ((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.players())
                      .executes(c -> clearUnlimited((CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), var0x -> true)))
                   .then(
-                     ((RequiredArgumentBuilder)Commands.argument("item", ItemPredicateArgument.itemPredicate(context))
+                     ((RequiredArgumentBuilder)Commands.argument("item", ItemPredicateArgument.itemPredicate())
                            .executes(
                               c -> clearUnlimited(
                                  (CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), ItemPredicateArgument.getItemPredicate(c, "item")
                               )
                            ))
                         .then(
-                           Commands.argument("maxCount", IntegerArgumentType.integer(0))
+                           Commands.argument("maxCount", IntegerArgument.integer(0))
                               .executes(
                                  c -> clearInventory(
                                     (CommandSourceStack)c.getSource(),
                                     EntityArgument.getPlayers(c, "targets"),
                                     ItemPredicateArgument.getItemPredicate(c, "item"),
-                                    IntegerArgumentType.getInteger(c, "maxCount")
+                                    IntegerArgument.getInteger(c, "maxCount")
                                  )
                               )
                         )

@@ -88,8 +88,4 @@ public class PoiTypes {
    public static boolean hasPoi(final BlockState state) {
       return TYPE_BY_STATE.containsKey(state);
    }
-
-   public static Holder<PoiType> bootstrap(final Registry<PoiType> registry) {
-      return LIGHTNING_ROD;
-   }
 }

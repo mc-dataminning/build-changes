@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 public record BlockDataSource(CompilableString<Coordinates> coordinates) implements DataSource {
    public static final Codec<CompilableString<Coordinates>> BLOCK_POS_CODEC = CompilableString.codec(new CompilableString.CommandParserHelper<Coordinates>() {
       protected Coordinates parse(final StringReader reader) throws CommandSyntaxException {
-         return BlockPosArgument.blockPos().parse(reader);
+         return BlockPosArgument.INSTANCE.parse(reader);
       }
 
       @Override
@@ -37,7 +37,7 @@ public record BlockDataSource(CompilableString<Coordinates> coordinates) impleme
       if (level.isLoaded(pos)) {
          BlockEntity entity = level.getBlockEntity(pos);
          if (entity != null) {
-            return Stream.of(entity.saveWithFullMetadata(sender.registryAccess()));
+            return Stream.of(entity.saveWithFullMetadata(sender.holderGetters()));
          }
       }
 

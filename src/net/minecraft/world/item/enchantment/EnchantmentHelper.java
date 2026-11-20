@@ -11,8 +11,9 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
@@ -520,7 +521,7 @@ public class EnchantmentHelper {
       final RandomSource random,
       final ItemStack itemStack,
       final int enchantmentCost,
-      final RegistryAccess registryAccess,
+      final HolderLookup.Provider registryAccess,
       final Optional<? extends HolderSet<Enchantment>> set
    ) {
       return enchantItem(
@@ -609,15 +610,17 @@ public class EnchantmentHelper {
 
    public static void enchantItemFromProvider(
       final ItemStack itemStack,
-      final RegistryAccess registryAccess,
+      final HolderGetter.Provider registryAccess,
       final ResourceKey<EnchantmentProvider> providerKey,
       final DifficultyInstance difficulty,
       final RandomSource random
    ) {
-      EnchantmentProvider provider = registryAccess.lookupOrThrow(Registries.ENCHANTMENT_PROVIDER).getValue(providerKey);
-      if (provider != null) {
-         updateEnchantments(itemStack, enchantments -> provider.enchant(itemStack, enchantments, random, difficulty));
-      }
+      Optional<? extends Holder<EnchantmentProvider>> provider = registryAccess.lookupOrThrow(Registries.ENCHANTMENT_PROVIDER).get(providerKey);
+      provider.ifPresent(
+         enchantmentProviderHolder -> updateEnchantments(
+            itemStack, enchantments -> ((EnchantmentProvider)enchantmentProviderHolder.value()).enchant(itemStack, enchantments, random, difficulty)
+         )
+      );
    }
 
    @FunctionalInterface

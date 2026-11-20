@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.util.GsonHelper;
@@ -60,7 +60,7 @@ public interface DataProvider {
    }
 
    static <T> CompletableFuture<?> saveStable(
-      final CachedOutput cache, final HolderLookup.Provider registries, final Codec<T> codec, final T value, final Path path
+      final CachedOutput cache, final HolderGetter.Provider registries, final Codec<T> codec, final T value, final Path path
    ) {
       RegistryOps<JsonElement> ops = registries.createSerializationContext(JsonOps.INSTANCE);
       return saveStable(cache, ops, codec, value, path);

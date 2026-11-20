@@ -14,6 +14,7 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.ServerFunctionManager;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.permissions.LevelBasedPermissionSet;
@@ -88,11 +89,10 @@ public record AdvancementRewards(int experience, HolderSet<LootTable> loot, List
       this.function
          .flatMap(function -> function.get(server.getFunctions()))
          .ifPresent(
-            function -> server.getFunctions()
-               .execute(
-                  (CommandFunction<CommandSourceStack>)function,
-                  player.createCommandSourceStack().withSuppressedOutput().withPermission(LevelBasedPermissionSet.GAMEMASTER)
-               )
+            function -> ServerFunctionManager.execute(
+               (CommandFunction<CommandSourceStack>)function,
+               player.createCommandSourceStack().withSuppressedOutput().withPermission(LevelBasedPermissionSet.GAMEMASTER)
+            )
          );
    }
 

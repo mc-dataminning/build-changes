@@ -40,7 +40,7 @@ public class LanguageSelectScreen extends OptionsSubScreen {
       LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(4));
       header.defaultCellSetting().alignHorizontallyCenter();
       header.addChild(new StringWidget(this.title, this.font));
-      this.search = header.addChild(new EditBox(this.font, 0, 0, 200, 15, Component.empty()));
+      this.search = header.addChild(new EditBox(this.font, 0, 0, 200, 15, SEARCH_HINT));
       this.search.setHint(SEARCH_HINT);
       this.search.setResponder(string -> {
          if (this.languageSelectionList != null) {
@@ -128,7 +128,16 @@ public class LanguageSelectScreen extends OptionsSubScreen {
             )
             .map(entry -> new LanguageSelectScreen.LanguageSelectionList.Entry(entry.getKey(), entry.getValue()))
             .toList();
+         LanguageSelectScreen.LanguageSelectionList.Entry selected = this.getSelected();
          this.replaceEntries(filteredEntries);
+         if (selected != null) {
+            filteredEntries.forEach(entry -> {
+               if (entry.code.equals(selected.code)) {
+                  this.setSelected(entry);
+               }
+            });
+         }
+
          this.refreshScrollAmount();
       }
 

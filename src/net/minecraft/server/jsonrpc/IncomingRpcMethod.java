@@ -6,6 +6,7 @@ import com.mojang.serialization.JsonOps;
 import java.util.Locale;
 import java.util.function.Function;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.jsonrpc.api.MethodInfo;
 import net.minecraft.server.jsonrpc.api.ParamInfo;
@@ -113,11 +114,11 @@ public interface IncomingRpcMethod<Params, Result> {
          }
       }
 
-      public IncomingRpcMethod<?, ?> register(final Registry<IncomingRpcMethod<?, ?>> methodRegistry, final String key) {
+      public IncomingRpcMethod<?, ?> register(final WritableRegistry<IncomingRpcMethod<?, ?>> methodRegistry, final String key) {
          return this.register(methodRegistry, Identifier.withDefaultNamespace(key));
       }
 
-      private IncomingRpcMethod<?, ?> register(final Registry<IncomingRpcMethod<?, ?>> methodRegistry, final Identifier id) {
+      private IncomingRpcMethod<?, ?> register(final WritableRegistry<IncomingRpcMethod<?, ?>> methodRegistry, final Identifier id) {
          return Registry.register(methodRegistry, id, this.build());
       }
    }

@@ -1,14 +1,15 @@
 package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import java.util.UUID;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.commands.arguments.StringArgument;
 import net.minecraft.commands.arguments.UuidArgument;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.common.ClientboundResourcePackPopPacket;
@@ -18,36 +19,34 @@ public class ServerPackCommand {
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("serverpack")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+                  .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
                .then(
                   Commands.literal("push")
                      .then(
-                        ((RequiredArgumentBuilder)Commands.argument("url", StringArgumentType.string())
+                        ((RequiredArgumentBuilder)Commands.argument("url", StringArgument.string())
                               .then(
                                  ((RequiredArgumentBuilder)Commands.argument("uuid", UuidArgument.uuid())
                                        .then(
-                                          Commands.argument("hash", StringArgumentType.word())
+                                          Commands.argument("hash", StringArgument.word())
                                              .executes(
                                                 c -> pushPack(
                                                    (CommandSourceStack)c.getSource(),
-                                                   StringArgumentType.getString(c, "url"),
+                                                   StringArgument.getString(c, "url"),
                                                    Optional.of(UuidArgument.getUuid(c, "uuid")),
-                                                   Optional.of(StringArgumentType.getString(c, "hash"))
+                                                   Optional.of(StringArgument.getString(c, "hash"))
                                                 )
                                              )
                                        ))
                                     .executes(
                                        c -> pushPack(
                                           (CommandSourceStack)c.getSource(),
-                                          StringArgumentType.getString(c, "url"),
+                                          StringArgument.getString(c, "url"),
                                           Optional.of(UuidArgument.getUuid(c, "uuid")),
                                           Optional.empty()
                                        )
                                     )
                               ))
-                           .executes(
-                              c -> pushPack((CommandSourceStack)c.getSource(), StringArgumentType.getString(c, "url"), Optional.empty(), Optional.empty())
-                           )
+                           .executes(c -> pushPack((CommandSourceStack)c.getSource(), StringArgument.getString(c, "url"), Optional.empty(), Optional.empty()))
                      )
                ))
             .then(

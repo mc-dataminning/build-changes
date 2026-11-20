@@ -5,7 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.core.Holder;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
 import net.minecraft.resources.ResourceKey;
@@ -47,7 +47,7 @@ public record StructureSet(List<StructureSet.StructureSelectionEntry> structures
 
    public @Nullable StructureStart tryGenerateStartInChunk(
       final ChunkGenerator generator,
-      final RegistryAccess registryAccess,
+      final HolderGetter.Provider registryAccess,
       final ChunkGeneratorStructureState state,
       final ChunkPos chunkPos,
       final LevelHeightAccessor heightAccessor,
@@ -120,7 +120,7 @@ public record StructureSet(List<StructureSet.StructureSelectionEntry> structures
    private static @Nullable StructureStart tryGenerateStructure(
       final Holder<Structure> structure,
       final ChunkGenerator generator,
-      final RegistryAccess registryAccess,
+      final HolderGetter.Provider registryAccess,
       final RandomState randomState,
       final StructureTemplateManager structureTemplateManager,
       final long seed,

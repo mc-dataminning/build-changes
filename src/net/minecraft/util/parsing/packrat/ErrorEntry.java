@@ -1,4 +1,4 @@
 package net.minecraft.util.parsing.packrat;
 
-public record ErrorEntry<S>(int cursor, SuggestionSupplier<S> suggestions, Object reason) {
+public record ErrorEntry(int cursor, Suggestion suggestion, Object reason) {
 }

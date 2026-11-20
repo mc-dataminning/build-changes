@@ -468,10 +468,6 @@ public class DataComponents {
       .set(INTERACT_ANIMATION, SwingAnimation.DEFAULT)
       .build();
 
-   public static DataComponentType<?> bootstrap(final Registry<DataComponentType<?>> registry) {
-      return CUSTOM_DATA;
-   }
-
    private static <T> DataComponentType<T> register(final String id, final UnaryOperator<DataComponentType.Builder<T>> builder) {
       return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, id, builder.apply(DataComponentType.builder()).build());
    }

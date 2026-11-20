@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import java.util.Optional;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -19,9 +20,9 @@ public class NumberFormatTypes {
       .dispatch(NumberFormat::type, NumberFormatType::streamCodec);
    public static final StreamCodec<RegistryFriendlyByteBuf, Optional<NumberFormat>> OPTIONAL_STREAM_CODEC = STREAM_CODEC.apply(ByteBufCodecs::optional);
 
-   public static NumberFormatType<?> bootstrap(final Registry<NumberFormatType<?>> registry) {
+   public static void bootstrap(final WritableRegistry<NumberFormatType<?>> registry) {
       Registry.register(registry, "blank", BlankFormat.TYPE);
       Registry.register(registry, "styled", StyledFormat.TYPE);
-      return Registry.register(registry, "fixed", FixedFormat.TYPE);
+      Registry.register(registry, "fixed", FixedFormat.TYPE);
    }
 }

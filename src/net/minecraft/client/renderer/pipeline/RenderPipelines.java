@@ -12,7 +12,6 @@ import com.mojang.renderpearl.api.pipeline.PolygonMode;
 import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
 import com.mojang.renderpearl.api.pipeline.RenderPassLayout;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -22,6 +21,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Stream;
 import net.minecraft.client.CloudStatus;
 import net.minecraft.client.renderer.BindGroupLayouts;
 import net.minecraft.client.renderer.RenderPassLayouts;
@@ -223,12 +223,12 @@ public class RenderPipelines {
       RenderPipeline.builder(GLOBALS_SNIPPET)
          .withLocation("pipeline/blit_depth_bounds")
          .withVertexShader("core/screentriangle")
-         .withFragmentShader("core/blit_screen")
-         .withBindGroupLayout(BindGroupLayouts.IN_SAMPLER)
+         .withFragmentShader("core/blit_depth_bounds")
+         .withBindGroupLayout(BindGroupLayouts.DEPTH_BOUNDS_SAMPLER)
          .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
          .withColorTargetState(new ColorTargetState(Optional.empty(), 15))
          .build(),
-      RenderPassLayouts.OIT_DEPTH_BOUNDS
+      RenderPassLayouts.OIT_DEPTH_BOUNDS_CULL_SUBPASS
    );
    public static final RenderPipeline OIT_DEPTH_BOUNDS_CULL = precompiled(
       RenderPipeline.builder(OIT_SNIPPET)
@@ -241,7 +241,7 @@ public class RenderPipelines {
          .withColorTargetState(new ColorTargetState(Optional.empty(), 15))
          .withDepthStencilState(DepthStencilState.DEFAULT)
          .build(),
-      RenderPassLayouts.OIT_DEPTH_BOUNDS
+      RenderPassLayouts.OIT_DEPTH_BOUNDS_CULL_SUBPASS
    );
    public static final RenderPipeline BLIT_SKY = precompiled(
       RenderPipeline.builder(GLOBALS_SNIPPET)
@@ -255,17 +255,6 @@ public class RenderPipelines {
          .build(),
       RenderPassLayouts.COLOR_DEPTH
    );
-   public static final RenderPipeline BLIT_DEPTH = precompiled(
-      RenderPipeline.builder(GLOBALS_SNIPPET)
-         .withLocation("pipeline/blit_depth")
-         .withVertexShader("core/screentriangle")
-         .withFragmentShader("core/blit_depth")
-         .withBindGroupLayout(BindGroupLayouts.IN_SAMPLER)
-         .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
-         .withDepthStencilState(new DepthStencilState(CompareOp.ALWAYS_PASS, true))
-         .build(),
-      RenderPassLayouts.DEPTH_ONLY
-   );
    public static final RenderPipeline OIT_COMPOSITE = precompiled(
       RenderPipeline.builder(OIT_SNIPPET)
          .withBindGroupLayout(BindGroupLayouts.PROJECTION)
@@ -273,11 +262,11 @@ public class RenderPipelines {
          .withFragmentShader("core/oit_composite")
          .withLocation("pipeline/oit_composite")
          .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
-         .withBindGroupLayout(BindGroupLayouts.SAMPLER0_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER)
+         .withBindGroupLayout(BindGroupLayouts.ACCUMULATE_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER)
          .withColorTargetState(new ColorTargetState(Optional.of(BlendFunction.TRANSLUCENT_PREMULTIPLIED_ALPHA), 15))
          .withDepthStencilState(new DepthStencilState(CompareOp.ALWAYS_PASS, true))
          .build(),
-      RenderPassLayouts.COLOR_DEPTH
+      RenderPassLayouts.OIT_COMPOSITE_SUBPASS
    );
    public static final RenderPipeline INTEGRATE_DEPTH = precompiled(
       RenderPipeline.builder()
@@ -290,6 +279,20 @@ public class RenderPipelines {
          .build(),
       RenderPassLayouts.DEPTH_ONLY
    );
+   public static final RenderPipeline WATER_MASK = precompiled(
+      RenderPipeline.builder(GLOBALS_SNIPPET)
+         .withBindGroupLayout(BindGroupLayouts.PROJECTION)
+         .withBindGroupLayout(BindGroupLayouts.DYNAMIC_TRANSFORMS)
+         .withVertexShader("core/rendertype_water_mask")
+         .withFragmentShader("core/rendertype_water_mask")
+         .withVertexBinding(0, DefaultVertexFormat.POSITION)
+         .withPrimitiveTopology(PrimitiveTopology.QUADS)
+         .withDepthStencilState(DepthStencilState.DEFAULT)
+         .withLocation("pipeline/water_mask")
+         .withColorTargetState(new ColorTargetState(BlendFunction.MAX))
+         .build(),
+      RenderPassLayouts.WATER_MASK
+   );
 
    private static RenderPipeline precompiled(final RenderPipeline pipeline, final RenderPassLayout firstLayout, final RenderPassLayout... renderPassLayouts) {
       if (STATIC_PIPELINES_TO_PRECOMPILE_INIT == null) {
@@ -300,6 +303,22 @@ public class RenderPipelines {
 
       for (RenderPassLayout renderPassLayout : renderPassLayouts) {
          STATIC_PIPELINES_TO_PRECOMPILE_INIT.add(new PipelineCache.Key(pipeline, renderPassLayout.subpass(0)));
+      }
+
+      return pipeline;
+   }
+
+   private static RenderPipeline precompiled(
+      final RenderPipeline pipeline, final RenderPassLayout.Subpass firstSubpass, final RenderPassLayout.Subpass... renderPassLayouts
+   ) {
+      if (STATIC_PIPELINES_TO_PRECOMPILE_INIT == null) {
+         throw new IllegalStateException("Too late to register a static pipeline `" + pipeline.getLocation() + "` for precompilation.");
+      }
+
+      STATIC_PIPELINES_TO_PRECOMPILE_INIT.add(new PipelineCache.Key(pipeline, firstSubpass));
+
+      for (RenderPassLayout.Subpass subpass : renderPassLayouts) {
+         STATIC_PIPELINES_TO_PRECOMPILE_INIT.add(new PipelineCache.Key(pipeline, subpass));
       }
 
       return pipeline;
@@ -331,7 +350,7 @@ public class RenderPipelines {
       }
    }
 
-   public static List<PipelineCache.Key> dynamicPipelinesToPrecompile(final ShaderManager.PipelineCompilationContext context) {
+   public static Stream<PipelineCache.Key> dynamicPipelinesToPrecompile(final ShaderManager.PipelineCompilationContext context) {
       List<PipelineCache.Key> dynamicPipelines = new ArrayList<>();
       boolean improvedTransparency = context.options().improvedTransparency;
 
@@ -389,9 +408,6 @@ public class RenderPipelines {
       precompiledOitPipelines(dynamicPipelines, RenderPipelines::worldBorder, improvedTransparency);
       if (improvedTransparency) {
          precompiledOitPipelines(dynamicPipelines, RenderPipelines::blitClouds, improvedTransparency);
-         precompiledDynamic(dynamicPipelines, waterMask(new RenderPipelines.WaterMaskParameters(true)), RenderPassLayouts.DEPTH_ONLY);
-      } else {
-         precompiledDynamic(dynamicPipelines, waterMask(new RenderPipelines.WaterMaskParameters(false)), RenderPassLayouts.COLOR_DEPTH);
       }
 
       precompiledOitPipelines(
@@ -414,7 +430,7 @@ public class RenderPipelines {
       precompiledDynamic(dynamicPipelines, endPortal(new RenderPipelines.EndPortalParameters(true, false)), RenderPassLayouts.COLOR_DEPTH);
       precompiledDynamic(dynamicPipelines, endPortal(new RenderPipelines.EndPortalParameters(false, false)), RenderPassLayouts.COLOR_DEPTH);
       precompiledDynamic(dynamicPipelines, endPortal(new RenderPipelines.EndPortalParameters(false, true)), RenderPassLayouts.COLOR_ONLY);
-      return Collections.unmodifiableList(dynamicPipelines);
+      return dynamicPipelines.stream();
    }
 
    private static void precompiledOitPipelines(
@@ -429,8 +445,8 @@ public class RenderPipelines {
       precompiledDynamic(dynamicPipelines, pipelineSupplier.apply(null), RenderPassLayouts.COLOR_DEPTH);
    }
 
-   public static List<PipelineCache.Key> staticPipelinesToPrecompile() {
-      return STATIC_PIPELINES_TO_PRECOMPILE.stream().toList();
+   public static Stream<PipelineCache.Key> staticPipelinesToPrecompile() {
+      return STATIC_PIPELINES_TO_PRECOMPILE.stream();
    }
 
    public static <P> RenderPipeline dynamicPipeline(final @Nullable P parameters, final String id, final Function<@Nullable P, RenderPipeline> pipelineSupplier) {
@@ -488,7 +504,7 @@ public class RenderPipelines {
          "pipeline/"
             + (oitStage != null ? "oit_" + oitStage.name().toLowerCase(Locale.ROOT) + "_" : "")
             + baseName
-            + (locationPostfix != null ? locationPostfix : "")
+            + (locationPostfix != null ? "_" + locationPostfix : "")
       );
       return builder.build();
    }
@@ -535,21 +551,28 @@ public class RenderPipelines {
             RenderPipeline.Builder builder = RenderPipeline.builder(GLOBALS_SNIPPET)
                .withBindGroupLayout(BindGroupLayouts.FOG)
                .withBindGroupLayout(BindGroupLayouts.SAMPLER0)
-               .withVertexBinding(0, DefaultVertexFormat.BLOCK)
                .withPrimitiveTopology(PrimitiveTopology.QUADS)
                .withDepthStencilState(DepthStencilState.DEFAULT)
                .withBindGroupLayout(BindGroupLayouts.PROJECTION)
                .withBindGroupLayout(BindGroupLayouts.TERRAIN_INFO)
                .withVertexShader("core/terrain")
                .withFragmentShader("core/terrain");
+            int vertexBuferTexelFormatSize = BindGroupLayouts.TERRAIN_VERTEX_TEXEL_FORMAT.blockSize();
+            builder.withShaderDefine("PER_FACE_INCREMENT", params.variant.vertexFaceSize() / vertexBuferTexelFormatSize);
+            builder.withShaderDefine("PER_BAKED_FACE_INCREMENT", params.variant.vertexBakedFaceSize() / vertexBuferTexelFormatSize);
+            builder.withShaderDefine("PER_BAKED_FACE_VERTEX_INCREMENT", params.variant.vertexBakedFaceSize() / 4 / vertexBuferTexelFormatSize);
             if (parameters.multiDraw) {
-               builder.withVertexBinding(1, DefaultVertexFormat.CHUNK_DATA_INSTANCED).withShaderDefine("MULTIDRAW_TERRAIN");
+               builder.withVertexBinding(0, DefaultVertexFormat.CHUNK_DATA_INSTANCED).withShaderDefine("MULTIDRAW_TERRAIN");
             } else {
                builder.withBindGroupLayout(BindGroupLayouts.CHUNK_SECTION);
             }
 
             if (parameters.variant.hasAlphaCutout()) {
                builder.withShaderDefine("ALPHA_CUTOUT", parameters.variant.alphaCutoutThreshold());
+            }
+
+            if (parameters.variant.supportsOit()) {
+               builder.withShaderDefine("CHECK_WATER_MASK").withBindGroupLayout(BindGroupLayouts.WATER_MASK_SAMPLER);
             }
 
             String locationPostfix = parameters.variant.name()
@@ -779,30 +802,6 @@ public class RenderPipelines {
                },
                parameters.translucent ? "_translucent" : "_opaque"
             );
-         }
-      );
-   }
-
-   public static RenderPipeline waterMask(final RenderPipelines.WaterMaskParameters params) {
-      return dynamicPipeline(
-         params,
-         "water_mask",
-         parameters -> {
-            RenderPipeline.Builder builder = RenderPipeline.builder(GLOBALS_SNIPPET)
-               .withBindGroupLayout(BindGroupLayouts.PROJECTION)
-               .withBindGroupLayout(BindGroupLayouts.DYNAMIC_TRANSFORMS)
-               .withVertexShader("core/rendertype_water_mask")
-               .withFragmentShader("core/rendertype_water_mask")
-               .withVertexBinding(0, DefaultVertexFormat.POSITION)
-               .withPrimitiveTopology(PrimitiveTopology.QUADS)
-               .withDepthStencilState(DepthStencilState.DEFAULT);
-            if (!parameters.improvedTransparency) {
-               builder.withLocation("pipeline/water_mask").withColorTargetState(new ColorTargetState(Optional.of(BlendFunction.TRANSLUCENT), 0));
-            } else {
-               builder.withLocation("pipeline/oit_water_mask");
-            }
-
-            return builder.build();
          }
       );
    }
@@ -1219,8 +1218,5 @@ public class RenderPipelines {
    }
 
    public record TextParameters(TextRenderPipelineVariant variant, @Nullable OitStage oitStage) {
-   }
-
-   public record WaterMaskParameters(boolean improvedTransparency) {
    }
 }

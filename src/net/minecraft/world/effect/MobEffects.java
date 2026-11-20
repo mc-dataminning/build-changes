@@ -137,8 +137,4 @@ public class MobEffects {
    private static Holder<MobEffect> register(final ResourceKey<MobEffect> key, final MobEffect mobEffect) {
       return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, key, mobEffect);
    }
-
-   public static Holder<MobEffect> bootstrap(final Registry<MobEffect> registry) {
-      return SPEED;
-   }
 }

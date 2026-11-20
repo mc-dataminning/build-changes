@@ -5,8 +5,10 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.types.templates.Const.PrimitiveType;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicLike;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.PrimitiveCodec;
+import java.util.function.Predicate;
 
 public class NamespacedSchema extends Schema {
    private static final String DEFAULT_NAMESPACE = "minecraft";
@@ -41,6 +43,14 @@ public class NamespacedSchema extends Schema {
             return separatorIndex > 0 ? input : "minecraft:" + input;
          }
       }
+   }
+
+   public static boolean namespacedIdMatches(final DynamicLike<?> id, final String expectedId) {
+      return namespacedIdMatches(id, expectedId::equals);
+   }
+
+   public static boolean namespacedIdMatches(final DynamicLike<?> id, final Predicate<String> predicate) {
+      return predicate.test(ensureNamespaced(id.asString("")));
    }
 
    public static String packNamespacedWithDot(final String location) {

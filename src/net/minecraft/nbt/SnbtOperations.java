@@ -1,13 +1,11 @@
 package net.minecraft.nbt;
 
-import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.serialization.DynamicOps;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -16,7 +14,8 @@ import net.minecraft.core.UUIDUtil;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.parsing.packrat.DelayedException;
 import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.SuggestionSupplier;
+import net.minecraft.util.parsing.packrat.Suggestion;
+import net.minecraft.util.parsing.packrat.commands.CommandParserState;
 import org.jspecify.annotations.Nullable;
 
 public class SnbtOperations {
@@ -31,7 +30,7 @@ public class SnbtOperations {
    public static final Map<SnbtOperations.BuiltinKey, SnbtOperations.BuiltinOperation> BUILTIN_OPERATIONS = Map.of(
       new SnbtOperations.BuiltinKey("bool", 1), new SnbtOperations.BuiltinOperation() {
          @Override
-         public <T> T run(final DynamicOps<T> ops, final List<T> arguments, final ParseState<StringReader> state) {
+         public <T> @Nullable T run(final DynamicOps<T> ops, final List<T> arguments, final ParseState<CommandParserState> state) {
             Boolean result = convert(ops, arguments.getFirst());
             if (result == null) {
                state.errorCollector().store(state.mark(), SnbtOperations.ERROR_EXPECTED_NUMBER_OR_BOOLEAN);
@@ -52,7 +51,7 @@ public class SnbtOperations {
          }
       }, new SnbtOperations.BuiltinKey("uuid", 1), new SnbtOperations.BuiltinOperation() {
          @Override
-         public <T> T run(final DynamicOps<T> ops, final List<T> arguments, final ParseState<StringReader> state) {
+         public <T> @Nullable T run(final DynamicOps<T> ops, final List<T> arguments, final ParseState<CommandParserState> state) {
             Optional<String> arg = ops.getStringValue(arguments.getFirst()).result();
             if (arg.isEmpty()) {
                state.errorCollector().store(state.mark(), SnbtOperations.ERROR_EXPECTED_STRING_UUID);
@@ -71,17 +70,9 @@ public class SnbtOperations {
          }
       }
    );
-   public static final SuggestionSupplier<StringReader> BUILTIN_IDS = new SuggestionSupplier<StringReader>() {
-      private final Set<String> keys = Stream.concat(
-            Stream.of("false", "true"), SnbtOperations.BUILTIN_OPERATIONS.keySet().stream().map(SnbtOperations.BuiltinKey::id)
-         )
-         .collect(Collectors.toSet());
-
-      @Override
-      public Stream<String> possibleValues(final ParseState<StringReader> state) {
-         return this.keys.stream();
-      }
-   };
+   public static final Suggestion BUILTIN_IDS = new Suggestion.Literals(
+      Stream.concat(Stream.of("false", "true"), BUILTIN_OPERATIONS.keySet().stream().map(SnbtOperations.BuiltinKey::id)).collect(Collectors.toSet())
+   );
 
    public record BuiltinKey(String id, int argCount) {
       @Override
@@ -91,6 +82,6 @@ public class SnbtOperations {
    }
 
    public interface BuiltinOperation {
-      <T> @Nullable T run(DynamicOps<T> ops, List<T> arguments, ParseState<StringReader> state);
+      <T> @Nullable T run(DynamicOps<T> ops, List<T> arguments, ParseState<CommandParserState> state);
    }
 }

@@ -102,6 +102,10 @@ public interface RealmsError {
          return new RealmsError.CustomError(statusCode, null);
       }
 
+      public static RealmsError.CustomError downloadFailed() {
+         return new RealmsError.CustomError(500, Component.translatable("mco.download.failed"));
+      }
+
       @Override
       public int errorCode() {
          return this.httpCode;

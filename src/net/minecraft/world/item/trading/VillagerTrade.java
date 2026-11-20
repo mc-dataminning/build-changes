@@ -88,8 +88,9 @@ public class VillagerTrade implements Validatable {
       Validatable.validateHolder(context, "max_uses", this.maxUses);
       Validatable.validateHolder(context, "reputation_discount", this.reputationDiscount);
       Validatable.validateHolder(context, "xp", this.xp);
-      Validatable.validateHolder(context, "merchant_predicate", this.merchantPredicate);
-      Validatable.validateHolder(context, "given_item_modifier", this.givenItemModifier);
+      if (Validatable.validateIfConditionCanPass(context, "merchant_predicate", this.merchantPredicate)) {
+         Validatable.validateHolder(context, "given_item_modifier", this.givenItemModifier);
+      }
    }
 
    public @Nullable MerchantOffer getOffer(final LootContext lootContext) {

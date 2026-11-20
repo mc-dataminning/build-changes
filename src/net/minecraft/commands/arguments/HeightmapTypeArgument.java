@@ -1,14 +1,16 @@
 package net.minecraft.commands.arguments;
 
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.serialization.Codec;
 import java.util.Arrays;
 import java.util.Locale;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.levelgen.Heightmap;
 
 public class HeightmapTypeArgument extends StringRepresentableArgument<Heightmap.Types> {
+   private static final HeightmapTypeArgument INSTANCE = new HeightmapTypeArgument();
+   public static final SerializableArgument.Type<HeightmapTypeArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
    private static final Codec<Heightmap.Types> LOWER_CASE_CODEC = StringRepresentable.fromEnumWithMapping(
       HeightmapTypeArgument::keptTypes, s -> s.toLowerCase(Locale.ROOT)
    );
@@ -21,11 +23,16 @@ public class HeightmapTypeArgument extends StringRepresentableArgument<Heightmap
       super(LOWER_CASE_CODEC, HeightmapTypeArgument::keptTypes);
    }
 
-   public static HeightmapTypeArgument heightmap() {
-      return new HeightmapTypeArgument();
+   @Override
+   public SerializableArgument.Type<HeightmapTypeArgument> type() {
+      return TYPE;
    }
 
-   public static Heightmap.Types getHeightmap(final CommandContext<CommandSourceStack> context, final String name) {
+   public static ArgumentType<Heightmap.Types> heightmap() {
+      return INSTANCE.toBrigadier();
+   }
+
+   public static Heightmap.Types getHeightmap(final CommandContext<?> context, final String name) {
       return (Heightmap.Types)context.getArgument(name, Heightmap.Types.class);
    }
 

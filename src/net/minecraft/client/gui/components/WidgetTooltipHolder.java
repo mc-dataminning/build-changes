@@ -7,6 +7,7 @@ import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.client.gui.screens.inventory.tooltip.BelowOrAboveWidgetTooltipPositioner;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner;
+import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
 import net.minecraft.client.gui.screens.inventory.tooltip.MenuTooltipPositioner;
 import net.minecraft.util.Util;
 import org.jspecify.annotations.Nullable;
@@ -55,7 +56,7 @@ public class WidgetTooltipHolder {
                minecraft.font,
                this.tooltip.toCharSequence(minecraft),
                this.tooltip.component(),
-               this.createTooltipPositioner(screenRectangle, isHovered, isFocused),
+               this.createTooltipPositioner(screenRectangle, isHovered, isFocused, this.tooltip.besideCursor()),
                mouseX,
                mouseY,
                isFocused,
@@ -66,10 +67,14 @@ public class WidgetTooltipHolder {
       }
    }
 
-   private ClientTooltipPositioner createTooltipPositioner(final ScreenRectangle screenRectangle, final boolean isHovered, final boolean isFocused) {
-      return !isHovered && isFocused && Minecraft.getInstance().getLastInputType().isKeyboard()
-         ? new BelowOrAboveWidgetTooltipPositioner(screenRectangle)
-         : new MenuTooltipPositioner(screenRectangle);
+   private ClientTooltipPositioner createTooltipPositioner(
+      final ScreenRectangle screenRectangle, final boolean isHovered, final boolean isFocused, final boolean besideCursor
+   ) {
+      if (!isHovered && isFocused && Minecraft.getInstance().getLastInputType().isKeyboard()) {
+         return new BelowOrAboveWidgetTooltipPositioner(screenRectangle);
+      } else {
+         return besideCursor ? DefaultTooltipPositioner.INSTANCE : new MenuTooltipPositioner(screenRectangle);
+      }
    }
 
    public void updateNarration(final NarrationElementOutput output) {

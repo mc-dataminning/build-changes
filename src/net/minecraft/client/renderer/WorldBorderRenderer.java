@@ -207,11 +207,13 @@ public class WorldBorderRenderer implements AutoCloseable {
       for (WorldBorderRenderState.DistancePerDirection distancePerDirection : distancesPerDirection) {
          if (distancePerDirection.distance() < renderDistance) {
             int sideIndex = distancePerDirection.direction().get2DDataValue();
-            draws.add(new RenderPass.Draw<>(0, this.worldBorderBuffer, indexBuffer, this.indices.type(), 6 * sideIndex, 6, 0));
+            draws.add(new RenderPass.Draw<>(6 * sideIndex, 6, 0));
          }
       }
 
-      renderPass.drawMultipleIndexed(draws, null, null, Collections.emptyList(), this);
+      renderPass.setVertexBuffer(0, this.worldBorderBuffer.slice());
+      renderPass.setIndexBuffer(indexBuffer, this.indices.type());
+      renderPass.drawMultipleIndexed(draws, Collections.emptyList(), this);
       renderPass.popDebugGroup();
    }
 

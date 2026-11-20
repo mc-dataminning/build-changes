@@ -11,6 +11,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.functions.CommandFunction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
@@ -37,14 +38,14 @@ public interface TestEnvironmentDefinition<SavedDataType> {
       .dispatch(TestEnvironmentDefinition::codec, c -> c);
    Codec<Holder<TestEnvironmentDefinition<?>>> CODEC = RegistryCodecs.holder(Registries.TEST_ENVIRONMENT, DIRECT_CODEC);
 
-   static MapCodec<? extends TestEnvironmentDefinition<?>> bootstrap(final Registry<MapCodec<? extends TestEnvironmentDefinition<?>>> registry) {
+   static void bootstrap(final WritableRegistry<MapCodec<? extends TestEnvironmentDefinition<?>>> registry) {
       Registry.register(registry, "all_of", TestEnvironmentDefinition.AllOf.CODEC);
       Registry.register(registry, "clock_time", TestEnvironmentDefinition.ClockTime.CODEC);
       Registry.register(registry, "difficulty", TestEnvironmentDefinition.SetDifficulty.CODEC);
       Registry.register(registry, "function", TestEnvironmentDefinition.Functions.CODEC);
       Registry.register(registry, "game_rules", TestEnvironmentDefinition.SetGameRules.CODEC);
       Registry.register(registry, "timeline_attributes", TestEnvironmentDefinition.Timelines.CODEC);
-      return Registry.register(registry, "weather", TestEnvironmentDefinition.Weather.CODEC);
+      Registry.register(registry, "weather", TestEnvironmentDefinition.Weather.CODEC);
    }
 
    SavedDataType setup(ServerLevel level);
@@ -157,7 +158,7 @@ public interface TestEnvironmentDefinition<SavedDataType> {
                .withPermission(LevelBasedPermissionSet.GAMEMASTER)
                .withSuppressedOutput()
                .withLevel(level);
-            functions.execute(function.get(), source);
+            ServerFunctionManager.execute(function.get(), source);
          } else {
             LOGGER.error("Test Batch failed for non-existent function {}", functionId);
          }

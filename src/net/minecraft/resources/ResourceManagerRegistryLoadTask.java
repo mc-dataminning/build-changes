@@ -11,6 +11,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.function.Function;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.RegistrationInfo;
 import net.minecraft.server.packs.repository.KnownPack;
 import net.minecraft.server.packs.resources.Resource;
@@ -22,7 +23,7 @@ import net.minecraft.util.thread.ParallelMapTransform;
 
 public class ResourceManagerRegistryLoadTask<T> extends RegistryLoadTask<T> {
    private static final Function<Optional<KnownPack>, RegistrationInfo> REGISTRATION_INFO_CACHE = Util.memoize(knownPack -> {
-      Lifecycle lifecycle = knownPack.map(KnownPack::isVanilla).map(info -> Lifecycle.stable()).orElse(Lifecycle.experimental());
+      Lifecycle lifecycle = knownPack.map(KnownPack::isVanilla).map(var0x -> Lifecycle.stable()).orElse(Lifecycle.experimental());
       return new RegistrationInfo(knownPack, lifecycle);
    });
    private final ResourceManager resourceManager;
@@ -38,12 +39,12 @@ public class ResourceManagerRegistryLoadTask<T> extends RegistryLoadTask<T> {
    }
 
    @Override
-   public CompletableFuture<?> load(final RegistryOps.RegistryInfoLookup context, final Executor executor) {
+   public CompletableFuture<?> load(final HolderGetter.Provider context, final Executor executor) {
       FileToIdConverter lister = FileToIdConverter.registry(this.registryKey());
       return CompletableFuture.<Map<Identifier, Resource>>supplyAsync(() -> lister.listMatchingResources(this.resourceManager), executor)
          .thenCompose(
             registryResources -> {
-               RegistryOps<JsonElement> ops = RegistryOps.create(JsonOps.INSTANCE, context);
+               RegistryOps<JsonElement> ops = context.createSerializationContext(JsonOps.INSTANCE);
                return ParallelMapTransform.schedule(
                   (Map<Identifier, Resource>)registryResources,
                   (resourceId, thunk) -> {

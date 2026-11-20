@@ -34,8 +34,9 @@ public record TagKey<T>(ResourceKey<? extends Registry<T>> registry, Identifier 
       return Identifier.STREAM_CODEC.map(location -> create(registryName, location), TagKey::location);
    }
 
-   public static <T> TagKey<T> create(final ResourceKey<? extends Registry<T>> registry, final Identifier location) {
-      return (TagKey<T>)VALUES.intern(new TagKey<>(registry, location));
+   public static <T> TagKey<T> create(final ResourceKey<? extends Registry<? extends T>> registry, final Identifier location) {
+      ResourceKey<? extends Registry<T>> castAway = (ResourceKey<? extends Registry<T>>)registry;
+      return (TagKey<T>)VALUES.intern(new TagKey<>(castAway, location));
    }
 
    public boolean isFor(final ResourceKey<? extends Registry<?>> registry) {

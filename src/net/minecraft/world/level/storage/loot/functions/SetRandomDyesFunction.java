@@ -12,6 +12,8 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.DyedItemColor;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.Validatable;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
@@ -30,6 +32,11 @@ public class SetRandomDyesFunction extends LootItemConditionalFunction {
    @Override
    public MapCodec<SetRandomDyesFunction> codec() {
       return MAP_CODEC;
+   }
+
+   @Override
+   public void validateCustom(final ValidationContext context) {
+      Validatable.validateHolder(context, "number_of_dyes", this.numberOfDyes);
    }
 
    @Override

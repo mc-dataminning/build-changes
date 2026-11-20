@@ -186,10 +186,16 @@ public class DebugScreenOverlay implements Renderable {
                            this.renderNetworkCharts
                         )
                         + "; "
-                        + formatChart(keyDebugModifier, options.keyDebugLightmapTexture, "Lightmap", this.showLightmapTexture()),
-                     "To edit: press " + formatKeybind(keyDebugModifier, options.keyDebugDebugOptions)
+                        + formatChart(keyDebugModifier, options.keyDebugLightmapTexture, "Lightmap", this.showLightmapTexture())
                   )
                );
+               if (this.minecraft.canUseRestrictedDebugFeatures() && !this.minecraft.showOnlyReducedInfo()) {
+                  displayer.addToGroup(
+                     DebugGroups.HELP, formatKeybind(keyDebugModifier, options.keyDebugEnvironmentAttributeOptions) + " Environment attributes"
+                  );
+               }
+
+               displayer.addToGroup(DebugGroups.HELP, "To edit: press " + formatKeybind(keyDebugModifier, options.keyDebugDebugOptions));
             }
 
             Window window = this.minecraft.getWindow();

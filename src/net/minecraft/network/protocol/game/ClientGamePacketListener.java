@@ -116,6 +116,8 @@ public interface ClientGamePacketListener extends ClientCommonPacketListener, Cl
 
    void handleSetEntityMotion(ClientboundSetEntityMotionPacket packet);
 
+   void handleAddEntityMotion(ClientboundAddEntityMotionPacket packet);
+
    void handleSetEquipment(ClientboundSetEquipmentPacket packet);
 
    void handleSetExperience(ClientboundSetExperiencePacket packet);
@@ -185,8 +187,6 @@ public interface ClientGamePacketListener extends ClientCommonPacketListener, Cl
    void handleSelectAdvancementsTab(ClientboundSelectAdvancementsTabPacket packet);
 
    void handlePlaceRecipe(ClientboundPlaceGhostRecipePacket packet);
-
-   void handleCommands(ClientboundCommandsPacket packet);
 
    void handleStopSoundEvent(ClientboundStopSoundPacket packet);
 

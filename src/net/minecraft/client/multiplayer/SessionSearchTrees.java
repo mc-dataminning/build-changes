@@ -12,9 +12,6 @@ import net.minecraft.client.searchtree.FullTextSearchTree;
 import net.minecraft.client.searchtree.IdSearchTree;
 import net.minecraft.client.searchtree.SearchTree;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
@@ -57,8 +54,7 @@ public class SessionSearchTrees {
          RECIPE_COLLECTIONS,
          () -> {
             List<RecipeCollection> recipes = recipeBook.getCollections();
-            RegistryAccess registryAccess = level.registryAccess();
-            Registry<Item> itemRegistries = registryAccess.lookupOrThrow(Registries.ITEM);
+            HolderLookup.Provider registryAccess = level.registryAccess();
             Item.TooltipContext tooltipContext = Item.TooltipContext.of(registryAccess);
             ContextMap recipeContext = SlotDisplayContext.fromLevel(level);
             TooltipFlag tooltipFlag = TooltipFlag.Default.NORMAL;
@@ -71,7 +67,8 @@ public class SessionSearchTrees {
                   collection -> collection.getRecipes()
                      .stream()
                      .flatMap(e -> e.resultItems(recipeContext).stream())
-                     .map(stack -> itemRegistries.getKey(stack.getItem())),
+                     .flatMap(stack -> stack.typeHolder().unwrapKey().stream())
+                     .map(ResourceKey::identifier),
                   recipes
                ),
                Util.backgroundExecutor()

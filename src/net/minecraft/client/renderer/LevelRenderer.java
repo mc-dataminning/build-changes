@@ -9,11 +9,11 @@ import com.mojang.blaze3d.resource.GraphicsResourceAllocator;
 import com.mojang.blaze3d.resource.RenderTargetDescriptor;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.renderpearl.api.GpuFormat;
 import com.mojang.renderpearl.api.buffers.GpuBuffer;
 import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.commands.RenderPass;
+import com.mojang.renderpearl.api.commands.RenderPassDescriptor;
 import com.mojang.renderpearl.api.pipeline.IndexType;
 import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
 import com.mojang.renderpearl.api.textures.AddressMode;
@@ -62,7 +62,6 @@ import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.feature.FeatureRenderDispatcher;
 import net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives;
-import net.minecraft.client.renderer.oit.OitRenderPassProvider;
 import net.minecraft.client.renderer.oit.OitStage;
 import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.renderer.rendertype.RenderType;
@@ -194,8 +193,9 @@ public class LevelRenderer implements AutoCloseable {
       this.targets.main = frame.importExternal("main", this.gameRenderer.mainRenderTarget());
       int screenWidth = this.gameRenderer.mainRenderTarget().width;
       int screenHeight = this.gameRenderer.mainRenderTarget().height;
-      RenderTargetDescriptor extraDepthTargetDescriptor = new RenderTargetDescriptor(
-         screenWidth, screenHeight, null, new RenderTargetDescriptor.TextureProperties(null, GpuFormat.D32_FLOAT)
+      this.targets.waterMask = frame.createInternal(
+         "water_mask",
+         new RenderTargetDescriptor(screenWidth, screenHeight, new RenderTargetDescriptor.TextureProperties(new Vector4f(-1.0F), GpuFormat.R32_FLOAT), null)
       );
       RenderTargetDescriptor extraDepthTargetDescriptorCleared = new RenderTargetDescriptor(
          screenWidth, screenHeight, null, RenderTargetDescriptor.TextureProperties.DEFAULT_DEPTH
@@ -218,7 +218,6 @@ public class LevelRenderer implements AutoCloseable {
             screenWidth, screenHeight, new RenderTargetDescriptor.TextureProperties(null, GpuFormat.RGBA16_FLOAT), null
          );
          this.targets.accumulate = frame.createInternal("accumulate", accumulateTargetDescriptor);
-         this.targets.oitTerrainWithWaterPatchDepth = frame.createInternal("terrain_depth", extraDepthTargetDescriptor);
          this.targets.sky = frame.createInternal(
             "sky", new RenderTargetDescriptor(screenWidth, screenHeight, new RenderTargetDescriptor.TextureProperties(null, GpuFormat.RGBA8_UNORM), null)
          );
@@ -456,11 +455,9 @@ public class LevelRenderer implements AutoCloseable {
          }
 
          this.targets.accumulate = pass.readsAndWrites(this.targets.accumulate);
-         if (featureFrame.hasAnyWaterMask()) {
-            this.targets.oitTerrainWithWaterPatchDepth = pass.readsAndWrites(this.targets.oitTerrainWithWaterPatchDepth);
-         }
       }
 
+      this.targets.waterMask = pass.readsAndWrites(this.targets.waterMask);
       boolean hasAlwaysOnTopGizmos = this.frameHasAlwaysOnTopGizmos();
       if (hasAlwaysOnTopGizmos && consistentDepthRequired) {
          this.targets.alwaysOnTopDepth = pass.readsAndWrites(this.targets.alwaysOnTopDepth);
@@ -498,6 +495,7 @@ public class LevelRenderer implements AutoCloseable {
             GpuSampler nearestSampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST);
             RenderTarget mainTarget = this.targets.main.get();
             Vector4f fogColor = this.levelRenderState.cameraRenderState.fogData.color;
+            this.executeWaterMask(featureFrame);
 
             try (RenderPass renderPass = RenderSystem.getDevice()
                   .createCommandEncoder()
@@ -510,6 +508,7 @@ public class LevelRenderer implements AutoCloseable {
                      OptionalDouble.of(0.0)
                   )) {
                RenderSystem.bindDefaultUniforms(renderPass);
+               renderPass.setUniform("WaterMaskSampler", this.targets.waterMask.get().getColorTextureView(), nearestSampler);
                if (shouldRenderSkyInMainPass) {
                   this.skyRenderer.render(this.levelRenderState.skyRenderState, renderPass, fogColor);
                }
@@ -647,147 +646,93 @@ public class LevelRenderer implements AutoCloseable {
    }
 
    private void executeOit(final ChunkSectionsToRender chunkSectionsToRender, final FeatureRenderDispatcher.PreparedFrame featureFrame) {
-      boolean frameHasWaterMask = featureFrame.hasAnyWaterMask();
       boolean shouldRenderClouds = this.shouldRenderClouds();
       int renderDistance = this.optionsRenderState.renderDistance * 16;
       CameraRenderState cameraState = this.levelRenderState.cameraRenderState;
-      GpuTextureView mainDepthTextureView = this.gameRenderer.mainRenderTarget().getDepthTextureView();
-      RenderTarget mainTarget = this.targets.main.get();
-      if (frameHasWaterMask) {
-         this.executeOitWaterMask(featureFrame, mainTarget);
-      }
-
-      GpuTextureView depthBoundsTargetView = this.targets.depthBounds.get().getColorTextureView();
-      GpuTextureView depthBoundsCulledTargetView = this.targets.depthBoundsCulled.get().getColorTextureView();
-      GpuTextureView accumulateTargetView = this.targets.accumulate.get().getColorTextureView();
+      RenderPassDescriptor.Builder oitRenderPassBuilder = RenderPassDescriptor.builder(RenderPassLayouts.OIT);
+      oitRenderPassBuilder.withAttachment(this.gameRenderer.mainRenderTarget().getColorTextureView());
+      oitRenderPassBuilder.withAttachment(this.gameRenderer.mainRenderTarget().getDepthTextureView());
+      GpuTextureView depthBoundsTargetView = oitRenderPassBuilder.withAttachmentDontStore(
+         this.targets.depthBounds.get().getColorTextureView(), DEPTH_BOUNDS_CLEAR_COLOR
+      );
+      GpuTextureView depthBoundsCulledTargetView = oitRenderPassBuilder.withAttachmentDontLoadDontStore(
+         this.targets.depthBoundsCulled.get().getColorTextureView()
+      );
       GpuTextureView[] transmittanceTargetViews = new GpuTextureView[2];
 
       for (int i = 0; i < 2; i++) {
-         transmittanceTargetViews[i] = this.targets.transmittance.get(i).get().getColorTextureView();
+         transmittanceTargetViews[i] = oitRenderPassBuilder.withAttachmentDontStore(
+            this.targets.transmittance.get(i).get().getColorTextureView(), ZERO_CLEAR_COLOR
+         );
       }
 
-      OitRenderPassProvider.Parameters params = new OitRenderPassProvider.Parameters(
-         depthBoundsTargetView, transmittanceTargetViews, accumulateTargetView, mainDepthTextureView
-      );
-      OitRenderPassProvider.Parameters terrainParams;
-      if (frameHasWaterMask) {
-         GpuTextureView terrainDepthTextureView = this.targets.oitTerrainWithWaterPatchDepth.get().getDepthTextureView();
-         terrainParams = new OitRenderPassProvider.Parameters(depthBoundsTargetView, transmittanceTargetViews, accumulateTargetView, terrainDepthTextureView);
-      } else {
-         terrainParams = params;
-      }
-
+      GpuTextureView accumulateTargetView = oitRenderPassBuilder.withAttachmentDontStore(this.targets.accumulate.get().getColorTextureView(), ZERO_CLEAR_COLOR);
+      GpuSampler nearestSampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST);
       GpuTextureView blockAtlas = this.textureManager.getTexture(TextureAtlas.LOCATION_BLOCKS).textureView();
+      GpuTextureView lightmap = this.gameRenderer.lightmap();
       ChunkSectionsToRender.ImprovedFogTextures improvedFogTextures = new ChunkSectionsToRender.ImprovedFogTextures(
          this.targets.sky.get().getColorTextureView(), this.targets.clouds.get().getColorTextureView(), this.targets.clouds.get().getDepthTextureView()
       );
 
-      for (OitStage stage : OitStage.values()) {
-         GpuTextureView lightmap = this.gameRenderer.lightmap();
-         if (frameHasWaterMask) {
-            try (RenderPass terrainRenderPass = OitRenderPassProvider.createRenderPass(stage, () -> "Terrain", terrainParams, true)) {
-               chunkSectionsToRender.renderLayers(
-                  ChunkSectionLayerGroup.TRANSLUCENT.layers(),
-                  this.chunkLayerSampler,
-                  terrainRenderPass,
-                  blockAtlas,
-                  lightmap,
-                  improvedFogTextures,
-                  this.levelRenderState.renderWireframeTerrain,
-                  stage
-               );
-            }
+      try (RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(oitRenderPassBuilder.build())) {
+         RenderSystem.bindDefaultUniforms(renderPass);
+         renderPass.setUniform("DepthBoundsSampler", depthBoundsTargetView);
+         renderPass.setUniform("WaterMaskSampler", this.targets.waterMask.get().getColorTextureView(), nearestSampler);
+
+         for (int i = 0; i < 2; i++) {
+            renderPass.setUniform("Bins" + i, transmittanceTargetViews[i]);
          }
 
-         try (RenderPass renderPass = OitRenderPassProvider.createRenderPass(
-               stage, () -> frameHasWaterMask ? "Features, World Border, Weather, Clouds" : "Everything", params, !frameHasWaterMask
-            )) {
-            if (!frameHasWaterMask) {
-               renderPass.pushDebugGroup(() -> "Terrain");
-               chunkSectionsToRender.renderLayers(
-                  ChunkSectionLayerGroup.TRANSLUCENT.layers(),
-                  this.chunkLayerSampler,
-                  renderPass,
-                  blockAtlas,
-                  lightmap,
-                  improvedFogTextures,
-                  this.levelRenderState.renderWireframeTerrain,
-                  stage
-               );
-               renderPass.popDebugGroup();
-            }
-
+         for (OitStage stage : OitStage.values()) {
+            renderPass.pushDebugGroup(() -> "Terrain");
+            chunkSectionsToRender.renderLayers(
+               ChunkSectionLayerGroup.TRANSLUCENT.layers(),
+               this.chunkLayerSampler,
+               renderPass,
+               blockAtlas,
+               lightmap,
+               improvedFogTextures,
+               this.levelRenderState.renderWireframeTerrain,
+               stage
+            );
+            renderPass.popDebugGroup();
             featureFrame.executeOit(stage, renderPass);
             this.worldBorderRenderer.render(this.levelRenderState.worldBorderRenderState, renderPass, cameraState.pos, renderDistance, stage);
             this.weatherEffectRenderer.render(this.levelRenderState.weatherRenderState, renderPass, stage);
             if (shouldRenderClouds) {
                this.blitClouds(stage, renderPass);
             }
-         }
 
-         if (stage == OitStage.DEPTH_BOUNDS) {
-            this.executeDepthBoundsCull();
-            params.setDepthBoundsTargetView(depthBoundsCulledTargetView);
-            terrainParams.setDepthBoundsTargetView(depthBoundsCulledTargetView);
-            if (frameHasWaterMask) {
-               this.executeOitWaterMask(featureFrame, mainTarget);
+            if (stage == OitStage.DEPTH_BOUNDS) {
+               renderPass.nextSubpass();
+               renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.BLIT_DEPTH_BOUNDS, renderPass.activeSubpass()));
+               renderPass.draw(3, 1, 0, 0);
+               renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.OIT_DEPTH_BOUNDS_CULL, renderPass.activeSubpass()));
+               renderPass.draw(3, 1, 0, 0);
+               renderPass.setUniform("DepthBoundsSampler", depthBoundsCulledTargetView);
             }
+
+            renderPass.nextSubpass();
          }
-      }
 
-      GpuSampler nearestSampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST);
-      RenderTarget renderTarget = this.gameRenderer.mainRenderTarget();
-
-      try (RenderPass renderPass = RenderSystem.getDevice()
-            .createCommandEncoder()
-            .createRenderPass(() -> "OIT Composite", RenderPassLayouts.COLOR_DEPTH, renderTarget.getColorTextureView(), renderTarget.getDepthTextureView())) {
-         RenderSystem.bindDefaultUniforms(renderPass);
-         renderPass.setUniform("Sampler0", accumulateTargetView, nearestSampler);
+         renderPass.setUniform("AccumulateSampler", accumulateTargetView);
 
          for (int i = 0; i < 2; i++) {
-            renderPass.setUniform("Bins" + i, this.targets.transmittance.get(i).get().getColorTextureView(), nearestSampler);
+            renderPass.setUniform("Bins" + i, this.targets.transmittance.get(i).get().getColorTextureView());
          }
 
-         renderPass.setUniform("DepthBoundsSampler", depthBoundsTargetView, nearestSampler);
          renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.OIT_COMPOSITE, renderPass.activeSubpass()));
          renderPass.draw(3, 1, 0, 0);
       }
    }
 
-   private void executeDepthBoundsCull() {
-      GpuSampler nearestSampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST);
-      RenderTarget depthBoundsTarget = this.targets.depthBounds.get();
-      RenderTarget depthBoundsCulledTarget = this.targets.depthBoundsCulled.get();
+   private void executeWaterMask(final FeatureRenderDispatcher.PreparedFrame featureFrame) {
+      RenderTarget waterMaskDepth = this.targets.waterMask.get();
 
       try (RenderPass renderPass = RenderSystem.getDevice()
             .createCommandEncoder()
-            .createRenderPass(
-               () -> "OIT cull Depth Bounds",
-               RenderPassLayouts.OIT_DEPTH_BOUNDS,
-               depthBoundsCulledTarget.getColorTextureView(),
-               this.gameRenderer.mainRenderTarget().getDepthTextureView()
-            )) {
+            .createRenderPass(() -> "Water mask", RenderPassLayouts.WATER_MASK, waterMaskDepth.getColorTextureView())) {
          RenderSystem.bindDefaultUniforms(renderPass);
-         renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.BLIT_DEPTH_BOUNDS, renderPass.activeSubpass()));
-         renderPass.setUniform("InSampler", depthBoundsTarget.getColorTextureView(), nearestSampler);
-         renderPass.draw(3, 1, 0, 0);
-         renderPass.setUniform("DepthBoundsSampler", depthBoundsTarget.getColorTextureView(), nearestSampler);
-         renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.OIT_DEPTH_BOUNDS_CULL, renderPass.activeSubpass()));
-         renderPass.draw(3, 1, 0, 0);
-      }
-   }
-
-   private void executeOitWaterMask(final FeatureRenderDispatcher.PreparedFrame featureFrame, final RenderTarget mainTarget) {
-      GpuSampler nearestSampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST);
-      RenderTarget terrainTarget = this.targets.oitTerrainWithWaterPatchDepth.get();
-
-      try (RenderPass renderPass = RenderSystem.getDevice()
-            .createCommandEncoder()
-            .createRenderPass(() -> "Water mask", RenderPassLayouts.DEPTH_ONLY, terrainTarget.getDepthTextureView())) {
-         RenderSystem.bindDefaultUniforms(renderPass);
-         renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.BLIT_DEPTH, renderPass.activeSubpass()));
-         renderPass.setUniform("InSampler", mainTarget.getDepthTextureView(), nearestSampler);
-         renderPass.draw(3, 1, 0, 0);
          featureFrame.executeWaterMask(renderPass);
       }
    }
@@ -840,31 +785,21 @@ public class LevelRenderer implements AutoCloseable {
          long fadeDuration = Util.toMillis(this.optionsRenderState.chunkSectionFadeInTime);
          long now = Util.getMillis();
          int lastTransparentGroupHash = 0;
+         int formatSizeBytes = BindGroupLayouts.TERRAIN_VERTEX_TEXEL_FORMAT.blockSize();
 
          try {
-            ObjectListIterator var11 = this.visibleSections.iterator();
+            ObjectListIterator var12 = this.visibleSections.iterator();
 
-            while (var11.hasNext()) {
-               SectionRenderDispatcher.RenderSection section = (SectionRenderDispatcher.RenderSection)var11.next();
+            while (var12.hasNext()) {
+               SectionRenderDispatcher.RenderSection section = (SectionRenderDispatcher.RenderSection)var12.next();
                SectionMesh sectionMesh = section.getSectionMesh();
                BlockPos renderOffset = section.getRenderOrigin();
-               int sectionInfoDataIndex = -1;
 
                for (ChunkSectionLayer layer : ChunkSectionLayer.values()) {
                   SectionMesh.SectionDraw draw = sectionMesh.getSectionDraw(layer);
                   SectionRenderDispatcher.RenderSectionBufferSlice slice = this.sectionRenderDispatcher.getRenderSectionSlice(sectionMesh, layer);
                   if (slice != null && draw != null && (!draw.hasCustomIndexBuffer() || slice.indexBuffer() != null)) {
-                     if (sectionInfoDataIndex == -1) {
-                        sectionInfoDataIndex = sectionInfos.size();
-                        sectionInfos.add(
-                           new DynamicGpuData.ChunkSectionInfo(
-                              renderOffset.getX(), renderOffset.getY(), renderOffset.getZ(), section.getVisibility(now, fadeDuration)
-                           )
-                        );
-                     }
-
                      int combinedHash = 173;
-                     VertexFormat vertexFormat = layer.vertexFormat();
                      GpuBuffer vertexBuffer = slice.vertexBuffer();
                      combinedHash = 31 * combinedHash + vertexBuffer.hashCode();
                      int firstIndex = 0;
@@ -885,7 +820,21 @@ public class LevelRenderer implements AutoCloseable {
                         firstIndex = (int)(slice.indexBufferOffset() / indexType.bytes);
                      }
 
-                     int baseVertex = (int)(slice.vertexBufferOffset() / vertexFormat.getVertexSize());
+                     long faceCount = Long.divideUnsigned(draw.indexCount(), 6L);
+                     long bakedFaceStartOffset = slice.vertexBufferOffset() + faceCount * layer.vertexBufferFaceSize();
+                     int vertexStartIndex = (int)Long.divideUnsigned(slice.vertexBufferOffset(), formatSizeBytes);
+                     int bakedFaceStartIndex = (int)Long.divideUnsigned(bakedFaceStartOffset, formatSizeBytes);
+                     int sectionInfoDataIndex = sectionInfos.size();
+                     sectionInfos.add(
+                        new DynamicGpuData.ChunkSectionInfo(
+                           renderOffset.getX(),
+                           renderOffset.getY(),
+                           renderOffset.getZ(),
+                           section.getVisibility(now, fadeDuration),
+                           vertexStartIndex,
+                           bakedFaceStartIndex
+                        )
+                     );
                      LevelRenderer.ChunkDrawGroup drawGroup = null;
                      if (layer.translucent() && respectTranslucentOrder) {
                         if (combinedHash == lastTransparentGroupHash) {
@@ -905,7 +854,7 @@ public class LevelRenderer implements AutoCloseable {
                         drawGroups.get(layer).add(drawGroup);
                      }
 
-                     drawGroup.draws.add(new DynamicGpuData.IndexedDraw(draw.indexCount(), 1, firstIndex, baseVertex, sectionInfoDataIndex));
+                     drawGroup.draws.add(new DynamicGpuData.IndexedDraw(draw.indexCount(), 1, firstIndex, 0, sectionInfoDataIndex));
                   }
                }
             }
@@ -924,7 +873,7 @@ public class LevelRenderer implements AutoCloseable {
       int textureAtlasWidth = blockAtlas.getWidth(0);
       int textureAtlasHeight = blockAtlas.getHeight(0);
       int largestIndexCount = this.extractSectionDrawGroups(respectTranslucentOrder, sectionInfos, drawGroups);
-      Map<ChunkSectionLayer, List<RenderPass.Draw<GpuBufferSlice[]>>> flattenDraws = Util.makeEnumMap(
+      Map<ChunkSectionLayer, List<ChunkSectionsToRender.DrawSeparateDrawGroup>> destDrawGroups = Util.makeEnumMap(
          ChunkSectionLayer.class, layerx -> new ReferenceArrayList()
       );
 
@@ -935,21 +884,17 @@ public class LevelRenderer implements AutoCloseable {
          }
 
          for (LevelRenderer.ChunkDrawGroup drawGroup : sortedDrawGroups) {
-            List<RenderPass.Draw<GpuBufferSlice[]>> dest = flattenDraws.get(layer);
             List<DynamicGpuData.IndexedDraw> sortedDraws = drawGroup.draws;
             if (layer.translucent() && respectTranslucentOrder) {
                sortedDraws = sortedDraws.reversed();
             }
 
+            List<RenderPass.Draw<GpuBufferSlice[]>> destDraws = new ArrayList<>(sortedDraws.size());
+
             for (DynamicGpuData.IndexedDraw draw : sortedDraws) {
                int sectionInfoDataIndex = draw.baseInstance();
-               GpuBuffer indexBuffer = drawGroup.indexBuffer == null ? null : drawGroup.indexBuffer().buffer();
-               dest.add(
+               destDraws.add(
                   new RenderPass.Draw<>(
-                     0,
-                     drawGroup.vertexBuffer.buffer(),
-                     indexBuffer,
-                     drawGroup.indexType,
                      draw.firstIndex(),
                      draw.indexCount(),
                      draw.baseVertex(),
@@ -957,6 +902,9 @@ public class LevelRenderer implements AutoCloseable {
                   )
                );
             }
+
+            destDrawGroups.get(layer)
+               .add(new ChunkSectionsToRender.DrawSeparateDrawGroup(drawGroup.vertexBuffer, drawGroup.indexBuffer, drawGroup.indexType, destDraws));
          }
       }
 
@@ -967,7 +915,7 @@ public class LevelRenderer implements AutoCloseable {
          autoIndices.requestIndexCount(largestIndexCount);
       }
 
-      return new ChunkSectionsToRender.DrawSeparate(terrainTransformUbo, flattenDraws, largestIndexCount, chunkSectionInfos);
+      return new ChunkSectionsToRender.DrawSeparate(terrainTransformUbo, destDrawGroups, largestIndexCount, chunkSectionInfos);
    }
 
    public void addTransientBlock(final long blockNode, final TransientBlockRenderState state) {

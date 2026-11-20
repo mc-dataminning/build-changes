@@ -4,6 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -32,6 +33,14 @@ public interface ProblemReporter {
 
    void report(ProblemReporter.Problem problem);
 
+   default void reportWarning(final ProblemReporter.Warning warning) {
+      this.report(warning);
+   }
+
+   default void reportError(final ProblemReporter.Error error) {
+      this.report(error);
+   }
+
    record CollectionReferencePathElement(TagKey<?> id) implements ProblemReporter.PathElement {
       @Override
       public String get() {
@@ -43,41 +52,58 @@ public interface ProblemReporter {
       public static final ProblemReporter.PathElement EMPTY_ROOT = () -> "";
       private final ProblemReporter.@Nullable Collector parent;
       private final ProblemReporter.PathElement element;
+      private final boolean onlyErrors;
       private final Set<ProblemReporter.Collector.Entry> problems;
 
       public Collector() {
-         this(EMPTY_ROOT);
+         this(EMPTY_ROOT, false);
+      }
+
+      public Collector(final boolean onlyErrors) {
+         this(EMPTY_ROOT, onlyErrors);
       }
 
       public Collector(final ProblemReporter.PathElement root) {
+         this(root, false);
+      }
+
+      public Collector(final ProblemReporter.PathElement root, final boolean onlyErrors) {
          this.parent = null;
          this.problems = new LinkedHashSet<>();
          this.element = root;
+         this.onlyErrors = onlyErrors;
       }
 
-      private Collector(final ProblemReporter.Collector parent, final ProblemReporter.PathElement path) {
+      private Collector(final ProblemReporter.Collector parent, final ProblemReporter.PathElement path, final boolean onlyErrors) {
          this.problems = parent.problems;
          this.parent = parent;
          this.element = path;
+         this.onlyErrors = onlyErrors;
       }
 
       @Override
       public ProblemReporter forChild(final ProblemReporter.PathElement path) {
-         return new ProblemReporter.Collector(this, path);
+         return new ProblemReporter.Collector(this, path, this.onlyErrors);
       }
 
       @Override
       public void report(final ProblemReporter.Problem problem) {
-         this.problems.add(new ProblemReporter.Collector.Entry(this, problem));
+         if (!this.onlyErrors || problem.isError()) {
+            this.problems.add(new ProblemReporter.Collector.Entry(this, problem));
+         }
       }
 
-      public boolean isEmpty() {
-         return this.problems.isEmpty();
+      public boolean hasAnyProblems() {
+         return !this.problems.isEmpty();
       }
 
-      public boolean hasFatalProblems() {
+      public boolean hasErrors() {
+         if (this.onlyErrors) {
+            return this.hasAnyProblems();
+         }
+
          for (ProblemReporter.Collector.Entry entry : this.problems) {
-            if (entry.problem.isFatal()) {
+            if (entry.problem.isError()) {
                return true;
             }
          }
@@ -114,7 +140,11 @@ public interface ProblemReporter {
                entry -> " at "
                   + (String)entry.getKey()
                   + ": "
-                  + ((Collection)entry.getValue()).stream().map(ProblemReporter.Problem::description).collect(Collectors.joining("; "))
+                  + ((Collection)entry.getValue())
+                     .stream()
+                     .sorted(ProblemReporter.Problem.ERROR_FIRST)
+                     .map(ProblemReporter.Problem::descriptionWithLevel)
+                     .collect(Collectors.joining("; "))
             )
             .collect(Collectors.joining("\n"));
       }
@@ -167,20 +197,28 @@ public interface ProblemReporter {
             if (problemCount == 0 && childrenCount == 1) {
                List<String> lines = new ArrayList<>();
                this.children.forEach((element, child) -> lines.addAll(child.getLines()));
-               lines.set(0, this.element.get() + lines.get(0));
+               lines.set(0, this.element.get() + lines.getFirst());
                return lines;
             }
 
             if (problemCount == 1 && childrenCount == 0) {
-               return List.of(this.element.get() + ": " + this.problems.getFirst().description());
+               return List.of(this.element.get() + ": " + this.problems.getFirst().descriptionWithLevel());
             }
 
             List<String> lines = new ArrayList<>();
-            this.children.forEach((element, child) -> lines.addAll(child.getLines()));
+            this.children.forEach((var1x, child) -> lines.addAll(child.getLines()));
             lines.replaceAll(s -> "  " + s);
 
             for (ProblemReporter.Problem problem : this.problems) {
-               lines.add("  " + problem.description());
+               if (problem.isError()) {
+                  lines.add("  " + problem.descriptionWithLevel());
+               }
+            }
+
+            for (ProblemReporter.Problem problem : this.problems) {
+               if (!problem.isError()) {
+                  lines.add("  " + problem.descriptionWithLevel());
+               }
             }
 
             lines.addFirst(this.element.get() + ":");
@@ -193,6 +231,13 @@ public interface ProblemReporter {
       @Override
       public String get() {
          return "->{" + this.id.identifier() + "@" + this.id.registry() + "}";
+      }
+   }
+
+   interface Error extends ProblemReporter.Problem {
+      @Override
+      default boolean isError() {
+         return true;
       }
    }
 
@@ -230,10 +275,14 @@ public interface ProblemReporter {
    }
 
    interface Problem {
+      Comparator<ProblemReporter.Problem> ERROR_FIRST = Comparator.comparingInt(p -> p.isError() ? 0 : 1);
+
       String description();
 
-      default boolean isFatal() {
-         return false;
+      boolean isError();
+
+      default String descriptionWithLevel() {
+         return (this.isError() ? "[Error] " : "[Warning] ") + this.description();
       }
    }
 
@@ -265,9 +314,16 @@ public interface ProblemReporter {
 
       @Override
       public void close() {
-         if (!this.isEmpty()) {
+         if (this.hasAnyProblems()) {
             this.logger.warn("[{}] Serialization errors:\n{}", this.logger.getName(), this.getTreeReport());
          }
+      }
+   }
+
+   interface Warning extends ProblemReporter.Problem {
+      @Override
+      default boolean isError() {
+         return false;
       }
    }
 }

@@ -1155,7 +1155,7 @@ public abstract class Player extends Avatar implements ContainerUser {
          this.setSprinting(false);
       }
 
-      if (entity instanceof ServerPlayer serverPlayer && entity.syncVelocity) {
+      if (entity.getControllingPassengerOrSelf() instanceof ServerPlayer serverPlayer && entity.syncVelocity) {
          serverPlayer.connection.send(new ClientboundSetEntityMotionPacket(entity));
          entity.syncVelocity = false;
          entity.setDeltaMovement(oldMovement);
@@ -1689,6 +1689,11 @@ public abstract class Player extends Avatar implements ContainerUser {
    @Override
    public boolean isPushedByFluid() {
       return !this.abilities.flying;
+   }
+
+   @Override
+   public boolean isPushedByExplosions() {
+      return !this.isSpectator() && (!this.isCreative() || !this.abilities.flying) && super.isPushedByExplosions();
    }
 
    @Override

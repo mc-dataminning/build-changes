@@ -36,6 +36,7 @@ import net.minecraft.client.gui.screens.multiplayer.JoinMultiplayerScreen;
 import net.minecraft.client.multiplayer.resolver.ServerAddress;
 import net.minecraft.client.resources.server.DownloadedPackSource;
 import net.minecraft.client.telemetry.WorldSessionTelemetryManager;
+import net.minecraft.commands.SuggestionBox;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.Connection;
@@ -69,6 +70,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.protocol.common.custom.DiscardedPayload;
 import net.minecraft.network.protocol.cookie.ClientboundCookieRequestPacket;
 import net.minecraft.network.protocol.cookie.ServerboundCookieResponsePacket;
+import net.minecraft.network.protocol.game.ClientboundCommandsPacket;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.ServerLinks;
 import net.minecraft.server.dialog.Dialog;
@@ -92,6 +94,7 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
    private ServerLinks serverLinks;
    protected final Map<UUID, PlayerInfo> seenPlayers;
    protected boolean seenInsecureChatWarning;
+   protected SuggestionBox commandSuggestions;
 
    protected ClientCommonPacketListenerImpl(final Minecraft minecraft, final Connection connection, final CommonListenerCookie cookie) {
       this.minecraft = minecraft;
@@ -105,10 +108,15 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
       this.serverLinks = cookie.serverLinks();
       this.seenPlayers = new HashMap<>(cookie.seenPlayers());
       this.seenInsecureChatWarning = cookie.seenInsecureChatWarning();
+      this.commandSuggestions = cookie.commandSuggestions();
    }
 
    public ServerLinks serverLinks() {
       return this.serverLinks;
+   }
+
+   public SuggestionBox commandSuggestions() {
+      return this.commandSuggestions;
    }
 
    @Override
@@ -330,6 +338,12 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
          false,
          new TransferState(this.serverCookies, this.seenPlayers, this.seenInsecureChatWarning)
       );
+   }
+
+   @Override
+   public void handleCommands(final ClientboundCommandsPacket packet) {
+      PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
+      this.commandSuggestions = SuggestionBox.fromPacket(packet);
    }
 
    @Override

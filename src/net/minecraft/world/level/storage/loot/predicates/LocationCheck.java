@@ -10,10 +10,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.util.context.ContextKey;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 
-public record LocationCheck(Optional<LocationPredicate> predicate, Vec3i offset) implements LootItemCondition {
+public record LocationCheck(Optional<LocationPredicate> predicate, Vec3i offset) implements LootItemCondition.ContextUser {
    private static final MapCodec<Vec3i> OFFSET_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
             Codec.INT.optionalFieldOf("offsetX", 0).forGetter(Vec3i::getX),
@@ -42,8 +43,12 @@ public record LocationCheck(Optional<LocationPredicate> predicate, Vec3i offset)
    }
 
    @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
+   public Set<ContextKey<?>> requiredContextParams() {
       return Set.of(LootContextParams.ORIGIN);
+   }
+
+   @Override
+   public void validate(final ValidationContext context) {
    }
 
    public static LootItemCondition.Builder checkLocation(final LocationPredicate.Builder predicate) {

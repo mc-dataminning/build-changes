@@ -26,8 +26,8 @@ import java.util.concurrent.CompletableFuture;
 import net.minecraft.Optionull;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.SectionPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -43,6 +43,7 @@ import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.visitors.CollectFields;
 import net.minecraft.nbt.visitors.FieldSelector;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ChunkMap;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.ProblemReporter;
@@ -587,27 +588,31 @@ public record SerializableChunkData(
       return starts.build();
    }
 
-   private static Map<Structure, LongSet> unpackStructureReferences(final RegistryAccess registryAccess, final ChunkPos pos, final CompoundTag tag) {
+   private static Map<Structure, LongSet> unpackStructureReferences(final HolderGetter.Provider registryAccess, final ChunkPos pos, final CompoundTag tag) {
       Map<Structure, LongSet> outmap = new HashMap<>();
-      Registry<Structure> structuresRegistry = registryAccess.lookupOrThrow(Registries.STRUCTURE);
+      HolderGetter<Structure> structuresRegistry = registryAccess.lookupOrThrow(Registries.STRUCTURE);
       CompoundTag referencesTag = tag.getCompoundOrEmpty("References");
       referencesTag.forEach((key, entry) -> {
          Identifier structureId = Identifier.tryParse(key);
-         Structure structureType = structuresRegistry.getValue(structureId);
-         if (structureType == null) {
-            LOGGER.warn("Found reference to unknown structure '{}' in chunk {}, discarding", structureId, pos);
+         if (structureId == null) {
+            LOGGER.warn("Found reference to a structure with invalid id '{}' in chunk {}, discarding", key, pos);
          } else {
-            Optional<long[]> longArray = entry.asLongArray();
-            if (!longArray.isEmpty()) {
-               outmap.put(structureType, new LongOpenHashSet(Arrays.stream(longArray.get()).filter(chunkLongPos -> {
-                  ChunkPos refPos = ChunkPos.unpack(chunkLongPos);
-                  if (refPos.getChessboardDistance(pos) > 8) {
-                     LOGGER.warn("Found invalid structure reference [ {} @ {} ] for chunk {}.", new Object[]{structureId, refPos, pos});
-                     return false;
-                  } else {
-                     return true;
-                  }
-               }).toArray()));
+            Optional<? extends Holder<Structure>> structureType = structuresRegistry.get(ResourceKey.create(Registries.STRUCTURE, structureId));
+            if (structureType.isEmpty()) {
+               LOGGER.warn("Found reference to an unknown structure '{}' in chunk {}, discarding", structureId, pos);
+            } else {
+               Optional<long[]> longArray = entry.asLongArray();
+               if (!longArray.isEmpty()) {
+                  outmap.put(structureType.get().value(), new LongOpenHashSet(Arrays.stream(longArray.get()).filter(chunkLongPos -> {
+                     ChunkPos refPos = ChunkPos.unpack(chunkLongPos);
+                     if (refPos.getChessboardDistance(pos) > 8) {
+                        LOGGER.warn("Found invalid structure reference [ {} @ {} ] for chunk {}.", new Object[]{structureId, refPos, pos});
+                        return false;
+                     } else {
+                        return true;
+                     }
+                  }).toArray()));
+               }
             }
          }
       });
@@ -670,7 +675,7 @@ public record SerializableChunkData(
    public record SectionData(int y, @Nullable LevelChunkSection chunkSection, @Nullable DataLayer blockLight, @Nullable DataLayer skyLight) {
    }
 
-   public record StructureData(RegistryAccess registryAccess, CompoundTag structuresTag) {
+   public record StructureData(HolderGetter.Provider registryAccess, CompoundTag structuresTag) {
       public @Nullable Object2IntMap<Structure> parseStructureStartsWithReferenceCount() {
          Optional<CompoundTag> maybeStartsTag = this.structuresTag.getCompound("starts");
          if (maybeStartsTag.isEmpty()) {
@@ -683,15 +688,15 @@ public record SerializableChunkData(
          }
 
          Object2IntMap<Structure> knownStarts = new Object2IntOpenHashMap();
-         Registry<Structure> structuresRegistry = this.registryAccess.lookupOrThrow(Registries.STRUCTURE);
+         HolderGetter<Structure> structuresRegistry = this.registryAccess.lookupOrThrow(Registries.STRUCTURE);
          startsTag.forEach((key, tag) -> {
             Identifier id = Identifier.tryParse(key);
             if (id != null) {
-               Structure foundFeature = structuresRegistry.getValue(id);
+               Holder<Structure> foundFeature = structuresRegistry.get(ResourceKey.create(Registries.STRUCTURE, id)).orElse(null);
                if (foundFeature != null) {
                   tag.asCompound().ifPresent(structureData -> {
                      int referenceCount = structureData.getIntOr("references", 0);
-                     knownStarts.put(foundFeature, referenceCount);
+                     knownStarts.put(foundFeature.value(), referenceCount);
                   });
                }
             }

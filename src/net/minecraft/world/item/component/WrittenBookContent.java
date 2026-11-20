@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -89,7 +89,7 @@ public record WrittenBookContent(Filterable<String> title, String author, int ge
       return new WrittenBookContent(this.title, this.author, this.generation + 1, this.pages, this.resolved);
    }
 
-   public static boolean resolveForItem(final ItemStack itemStack, final ResolutionContext context, final HolderLookup.Provider registries) {
+   public static boolean resolveForItem(final ItemStack itemStack, final ResolutionContext context, final HolderGetter.Provider registries) {
       WrittenBookContent content = itemStack.get(DataComponents.WRITTEN_BOOK_CONTENT);
       if (content != null && !content.resolved()) {
          WrittenBookContent resolvedContent = content.resolve(context, registries);
@@ -104,7 +104,7 @@ public record WrittenBookContent(Filterable<String> title, String author, int ge
       return false;
    }
 
-   public @Nullable WrittenBookContent resolve(final ResolutionContext context, final HolderLookup.Provider registries) {
+   public @Nullable WrittenBookContent resolve(final ResolutionContext context, final HolderGetter.Provider registries) {
       if (this.resolved) {
          return null;
       }
@@ -128,7 +128,7 @@ public record WrittenBookContent(Filterable<String> title, String author, int ge
    }
 
    private static Optional<Filterable<Component>> resolvePage(
-      final ResolutionContext context, final HolderLookup.Provider registries, final Filterable<Component> page
+      final ResolutionContext context, final HolderGetter.Provider registries, final Filterable<Component> page
    ) {
       return page.resolve(component -> {
          try {
@@ -140,7 +140,7 @@ public record WrittenBookContent(Filterable<String> title, String author, int ge
       });
    }
 
-   private static boolean isPageTooLarge(final Component page, final HolderLookup.Provider registries) {
+   private static boolean isPageTooLarge(final Component page, final HolderGetter.Provider registries) {
       DataResult<JsonElement> json = ComponentSerialization.CODEC.encodeStart(registries.createSerializationContext(JsonOps.INSTANCE), page);
       return json.isSuccess() && GsonHelper.encodesLongerThan((JsonElement)json.getOrThrow(), 32767);
    }

@@ -4,6 +4,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import java.util.Collection;
 import java.util.stream.Stream;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
@@ -14,7 +15,7 @@ public class BanListCommands {
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("banlist")
-                     .requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
+                     .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_ADMINS)))
                   .executes(
                      s -> {
                         PlayerList players = ((CommandSourceStack)s.getSource()).getServer().getPlayerList();

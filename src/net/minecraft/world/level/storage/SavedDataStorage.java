@@ -19,7 +19,7 @@ import java.util.Optional;
 import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.SharedConstants;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtAccounter;
 import net.minecraft.nbt.NbtIo;
@@ -42,12 +42,12 @@ public class SavedDataStorage implements AutoCloseable {
    private static final Logger LOGGER = LogUtils.getLogger();
    private final Map<SavedDataType<?>, Optional<SavedData>> cache = new HashMap<>();
    private final DataFixer fixerUpper;
-   private final HolderLookup.Provider registries;
+   private final HolderGetter.Provider registries;
    private final Path dataFolder;
    private CompletableFuture<?> pendingWriteFuture = CompletableFuture.completedFuture(null);
    private boolean closed;
 
-   public SavedDataStorage(final Path dataFolder, final DataFixer fixerUpper, final HolderLookup.Provider registries) {
+   public SavedDataStorage(final Path dataFolder, final DataFixer fixerUpper, final HolderGetter.Provider registries) {
       this.fixerUpper = fixerUpper;
       this.dataFolder = dataFolder;
       this.registries = registries;

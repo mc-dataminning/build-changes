@@ -1,5 +1,6 @@
 package net.minecraft.server.commands;
 
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -11,6 +12,7 @@ import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.context.ContextKeySet;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -21,20 +23,31 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 public class LootContextSources {
    private static ArgumentBuilder<CommandSourceStack, ?> decorate(
-      final ArgumentBuilder<CommandSourceStack, ?> node, final LootContextSources.NodeVisitor nodeVisitor, final LootContextSources.ContextDecorator decorator
+      final ArgumentBuilder<CommandSourceStack, ?> node,
+      final LootContextSources.NodeVisitor nodeVisitor,
+      final ContextKeySet contextKeySet,
+      final LootContextSources.ContextDecorator decorator
    ) {
-      nodeVisitor.visit(decorator, node::then);
+      nodeVisitor.visit(decorator, contextKeySet, node::then);
       return node;
    }
 
    public static <T extends ArgumentBuilder<CommandSourceStack, T>> T addContextSources(final T node, final LootContextSources.NodeVisitor factory) {
-      return (T)node.then(decorate(Commands.literal("default"), factory, (var0, params) -> params.create(LootContextParamSets.COMMAND_COMPUTE_DEFAULT)))
+      return (T)node.then(
+            decorate(
+               Commands.literal("default"),
+               factory,
+               LootContextParamSets.COMMAND_COMPUTE_DEFAULT,
+               (var0, params) -> params.create(LootContextParamSets.COMMAND_COMPUTE_DEFAULT)
+            )
+         )
          .then(
             Commands.literal("block")
                .then(
                   decorate(
-                     Commands.argument("computePos", BlockPosArgument.blockPos()),
+                     Commands.argument("computePos", (ArgumentType<T>)BlockPosArgument.blockPos()),
                      factory,
+                     LootContextParamSets.COMMAND_COMPUTE_POSITION,
                      (context, params) -> {
                         BlockPos pos = BlockPosArgument.getLoadedBlockPos(context, "computePos");
                         CommandSourceStack source = (CommandSourceStack)context.getSource();
@@ -48,10 +61,20 @@ public class LootContextSources {
                   )
                )
          )
-         .then(Commands.literal("entity").then(decorate(Commands.argument("computeTarget", EntityArgument.entity()), factory, (context, params) -> {
-            Entity target = EntityArgument.getEntity(context, "computeTarget");
-            return params.withParameter(LootContextParams.TARGET_ENTITY, target).create(LootContextParamSets.COMMAND_COMPUTE_ENTITY);
-         })));
+         .then(
+            Commands.literal("entity")
+               .then(
+                  decorate(
+                     Commands.argument("computeTarget", (ArgumentType<T>)EntityArgument.entity()),
+                     factory,
+                     LootContextParamSets.COMMAND_COMPUTE_ENTITY,
+                     (context, params) -> {
+                        Entity target = EntityArgument.getEntity(context, "computeTarget");
+                        return params.withParameter(LootContextParams.TARGET_ENTITY, target).create(LootContextParamSets.COMMAND_COMPUTE_ENTITY);
+                     }
+                  )
+               )
+         );
    }
 
    @FunctionalInterface
@@ -75,6 +98,6 @@ public class LootContextSources {
 
    @FunctionalInterface
    public interface NodeVisitor {
-      void visit(LootContextSources.ContextDecorator contextDecorator, Consumer<ArgumentBuilder<CommandSourceStack, ?>> output);
+      void visit(LootContextSources.ContextDecorator contextDecorator, ContextKeySet contextKeySet, Consumer<ArgumentBuilder<CommandSourceStack, ?>> output);
    }
 }

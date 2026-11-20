@@ -4,12 +4,13 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import java.util.Collection;
+import net.minecraft.commands.CommandPermissionLevels;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.IdentifierArgument;
 import net.minecraft.commands.arguments.selector.EntitySelector;
-import net.minecraft.commands.synchronization.SuggestionProviders;
+import net.minecraft.commands.suggestions.SuggestAvailableSounds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundStopSoundPacket;
 import net.minecraft.resources.Identifier;
@@ -27,7 +28,7 @@ public class StopSoundCommand {
             Commands.literal("*")
                .then(
                   Commands.argument("sound", IdentifierArgument.id())
-                     .suggests(SuggestionProviders.cast(SuggestionProviders.AVAILABLE_SOUNDS))
+                     .suggests(SuggestAvailableSounds.suggestAvailableSounds())
                      .executes(
                         c -> stopSound((CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), null, IdentifierArgument.getId(c, "sound"))
                      )
@@ -40,7 +41,7 @@ public class StopSoundCommand {
                   .executes(c -> stopSound((CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), source, null)))
                .then(
                   Commands.argument("sound", IdentifierArgument.id())
-                     .suggests(SuggestionProviders.cast(SuggestionProviders.AVAILABLE_SOUNDS))
+                     .suggests(SuggestAvailableSounds.suggestAvailableSounds())
                      .executes(
                         c -> stopSound((CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), source, IdentifierArgument.getId(c, "sound"))
                      )
@@ -49,7 +50,8 @@ public class StopSoundCommand {
       }
 
       dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("stopsound").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("stopsound")
+               .requires(Commands.hasPermission(CommandPermissionLevels.LEVEL_GAMEMASTERS)))
             .then(target)
       );
    }

@@ -5,6 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 
 public record StorageNbtProvider(Identifier id) implements NbtProvider {
    public static final MapCodec<StorageNbtProvider> MAP_CODEC = RecordCodecBuilder.mapCodec(
@@ -19,5 +20,9 @@ public record StorageNbtProvider(Identifier id) implements NbtProvider {
    @Override
    public Tag get(final LootContext context) {
       return context.getLevel().getServer().getCommandStorage().get(this.id);
+   }
+
+   @Override
+   public void validate(final ValidationContext context) {
    }
 }

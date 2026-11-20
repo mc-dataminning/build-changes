@@ -7,17 +7,22 @@ import net.minecraft.util.parsing.packrat.ParseState;
 import net.minecraft.util.parsing.packrat.Rule;
 import org.jspecify.annotations.Nullable;
 
-public class IdentifierParseRule implements Rule<StringReader, Identifier> {
-   public static final Rule<StringReader, Identifier> INSTANCE = new IdentifierParseRule();
+public class IdentifierParseRule implements Rule<CommandParserState, Identifier> {
+   public static final Rule<CommandParserState, Identifier> INSTANCE = new IdentifierParseRule();
+
+   public static <S extends CommandParserState> Rule<S, Identifier> instance() {
+      return (Rule<S, Identifier>)INSTANCE;
+   }
 
    private IdentifierParseRule() {
    }
 
-   public @Nullable Identifier parse(final ParseState<StringReader> state) {
-      state.input().skipWhitespace();
+   public @Nullable Identifier parse(final ParseState<CommandParserState> state) {
+      StringReader reader = state.input().reader();
+      reader.skipWhitespace();
 
       try {
-         return Identifier.readNonEmpty(state.input());
+         return Identifier.readNonEmpty(reader);
       } catch (CommandSyntaxException e) {
          return null;
       }

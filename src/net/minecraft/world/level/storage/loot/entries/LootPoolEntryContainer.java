@@ -38,8 +38,9 @@ public abstract class LootPoolEntryContainer implements ComposableEntryContainer
 
    @Override
    public void validate(final ValidationContext output) {
-      Validatable.validateHolder(output, "condition", this.condition);
-      Validatable.validateHolder(output, "modifier", this.modifier);
+      if (Validatable.validateIfConditionCanPass(output, "condition", this.condition)) {
+         Validatable.validateHolder(output, "modifier", this.modifier);
+      }
    }
 
    protected abstract boolean expandRaw(final LootContext context, final Consumer<LootPoolEntry> output);

@@ -186,7 +186,7 @@ public class FileDownload {
       } catch (Error e) {
          throw e;
       } catch (Throwable e) {
-         LOGGER.error("Failed to download {}", url, e);
+         LOGGER.error("Failed to download file", e);
          this.error = true;
          return;
       }

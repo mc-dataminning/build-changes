@@ -8,7 +8,11 @@ public class BindGroupLayouts {
    public static final BindGroupLayout DYNAMIC_TRANSFORMS = BindGroupLayout.builder().withUniform("DynamicTransforms", UniformType.UNIFORM_BUFFER).build();
    public static final BindGroupLayout PROJECTION = BindGroupLayout.builder().withUniform("Projection", UniformType.UNIFORM_BUFFER).build();
    public static final BindGroupLayout CHUNK_SECTION = BindGroupLayout.builder().withUniform("ChunkSection", UniformType.UNIFORM_BUFFER).build();
-   public static final BindGroupLayout TERRAIN_INFO = BindGroupLayout.builder().withUniform("TerrainUniform", UniformType.UNIFORM_BUFFER).build();
+   public static final GpuFormat TERRAIN_VERTEX_TEXEL_FORMAT = GpuFormat.RGBA32_UINT;
+   public static final BindGroupLayout TERRAIN_INFO = BindGroupLayout.builder()
+      .withUniform("TerrainUniform", UniformType.UNIFORM_BUFFER)
+      .withUniform("TerrainVertexBuffer", UniformType.TEXEL_BUFFER, TERRAIN_VERTEX_TEXEL_FORMAT)
+      .build();
    public static final BindGroupLayout FOG = BindGroupLayout.builder().withUniform("Fog", UniformType.UNIFORM_BUFFER).build();
    public static final BindGroupLayout GLOBALS = BindGroupLayout.builder().withUniform("Globals", UniformType.UNIFORM_BUFFER).build();
    public static final BindGroupLayout LIGHTING = BindGroupLayout.builder().withUniform("Lighting", UniformType.UNIFORM_BUFFER).build();
@@ -55,42 +59,32 @@ public class BindGroupLayouts {
       .withUniform("NextSprite", UniformType.COMBINED_IMAGE_SAMPLER)
       .build();
    public static final BindGroupLayout GLINT_SAMPLER = BindGroupLayout.builder().withUniform("GlintSampler", UniformType.COMBINED_IMAGE_SAMPLER).build();
-   public static final BindGroupLayout DEPTH_BOUNDS_SAMPLER = BindGroupLayout.builder()
-      .withUniform("DepthBoundsSampler", UniformType.COMBINED_IMAGE_SAMPLER)
+   public static final BindGroupLayout DEPTH_BOUNDS_SAMPLER = BindGroupLayout.builder().withUniform("DepthBoundsSampler", UniformType.INPUT_ATTACHMENT).build();
+   public static final BindGroupLayout WATER_MASK_SAMPLER = BindGroupLayout.builder()
+      .withUniform("WaterMaskSampler", UniformType.COMBINED_IMAGE_SAMPLER)
       .build();
    public static final BindGroupLayout OIT_COEFFS_DEPTH_BOUNDS_SAMPLER;
-   public static final BindGroupLayout SAMPLER0_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER;
-   public static final BindGroupLayout SAMPLER0_SAMPLER2_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER;
+   public static final BindGroupLayout ACCUMULATE_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER;
 
    private BindGroupLayouts() {
    }
 
    static {
-      BindGroupLayout.Builder builder = BindGroupLayout.builder().withUniform("DepthBoundsSampler", UniformType.COMBINED_IMAGE_SAMPLER);
+      BindGroupLayout.Builder builder = BindGroupLayout.builder().withUniform("DepthBoundsSampler", UniformType.INPUT_ATTACHMENT);
 
       for (int i = 0; i < 2; i++) {
-         builder.withUniform("Bins" + i, UniformType.COMBINED_IMAGE_SAMPLER);
+         builder.withUniform("Bins" + i, UniformType.INPUT_ATTACHMENT);
       }
 
       OIT_COEFFS_DEPTH_BOUNDS_SAMPLER = builder.build();
       builder = BindGroupLayout.builder()
-         .withUniform("Sampler0", UniformType.COMBINED_IMAGE_SAMPLER)
-         .withUniform("DepthBoundsSampler", UniformType.COMBINED_IMAGE_SAMPLER);
+         .withUniform("AccumulateSampler", UniformType.INPUT_ATTACHMENT)
+         .withUniform("DepthBoundsSampler", UniformType.INPUT_ATTACHMENT);
 
       for (int i = 0; i < 2; i++) {
-         builder.withUniform("Bins" + i, UniformType.COMBINED_IMAGE_SAMPLER);
+         builder.withUniform("Bins" + i, UniformType.INPUT_ATTACHMENT);
       }
 
-      SAMPLER0_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER = builder.build();
-      builder = BindGroupLayout.builder()
-         .withUniform("Sampler0", UniformType.COMBINED_IMAGE_SAMPLER)
-         .withUniform("Sampler2", UniformType.COMBINED_IMAGE_SAMPLER)
-         .withUniform("DepthBoundsSampler", UniformType.COMBINED_IMAGE_SAMPLER);
-
-      for (int i = 0; i < 2; i++) {
-         builder.withUniform("Bins" + i, UniformType.COMBINED_IMAGE_SAMPLER);
-      }
-
-      SAMPLER0_SAMPLER2_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER = builder.build();
+      ACCUMULATE_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER = builder.build();
    }
 }
