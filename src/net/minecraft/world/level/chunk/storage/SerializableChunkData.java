@@ -1,7 +1,6 @@
 package net.minecraft.world.level.chunk.storage;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
@@ -16,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -588,7 +588,7 @@ public record SerializableChunkData(
    }
 
    private static Map<Structure, LongSet> unpackStructureReferences(final RegistryAccess registryAccess, final ChunkPos pos, final CompoundTag tag) {
-      Map<Structure, LongSet> outmap = Maps.newHashMap();
+      Map<Structure, LongSet> outmap = new HashMap<>();
       Registry<Structure> structuresRegistry = registryAccess.lookupOrThrow(Registries.STRUCTURE);
       CompoundTag referencesTag = tag.getCompoundOrEmpty("References");
       referencesTag.forEach((key, entry) -> {

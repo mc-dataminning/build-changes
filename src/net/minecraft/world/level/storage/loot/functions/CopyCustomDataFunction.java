@@ -1,11 +1,11 @@
 package net.minecraft.world.level.storage.loot.functions;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -95,7 +95,7 @@ public class CopyCustomDataFunction extends LootItemConditionalFunction {
 
    public static class Builder extends LootItemConditionalFunction.Builder<CopyCustomDataFunction.Builder> {
       private final NbtProvider source;
-      private final List<CopyCustomDataFunction.CopyOperation> ops = Lists.newArrayList();
+      private final List<CopyCustomDataFunction.CopyOperation> ops = new ArrayList<>();
 
       private Builder(final NbtProvider source) {
          this.source = source;

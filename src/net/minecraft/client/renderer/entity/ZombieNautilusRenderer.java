@@ -1,7 +1,7 @@
 package net.minecraft.client.renderer.entity;
 
-import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
+import java.util.EnumMap;
 import java.util.Map;
 import net.minecraft.client.model.animal.nautilus.NautilusArmorModel;
 import net.minecraft.client.model.animal.nautilus.NautilusModel;
@@ -48,7 +48,7 @@ public class ZombieNautilusRenderer extends MobRenderer<ZombieNautilus, Nautilus
    }
 
    private static Map<ZombieNautilusVariant.ModelType, NautilusModel> bakeModels(final EntityRendererProvider.Context context) {
-      return Maps.newEnumMap(
+      return new EnumMap<>(
          Map.of(
             ZombieNautilusVariant.ModelType.NORMAL,
             new NautilusModel(context.bakeLayer(ModelLayers.ZOMBIE_NAUTILUS)),

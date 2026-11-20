@@ -290,7 +290,7 @@ public class Llama extends AbstractChestedHorse implements RangedAttackMob {
    }
 
    @Override
-   protected void playChestEquipsSound() {
+   public void playChestEquipsSound() {
       this.playSound(SoundEvents.LLAMA_CHEST, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
    }
 

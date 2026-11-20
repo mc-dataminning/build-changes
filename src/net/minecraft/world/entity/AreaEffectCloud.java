@@ -1,7 +1,7 @@
 package net.minecraft.world.entity;
 
-import com.google.common.collect.Maps;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import net.minecraft.core.component.DataComponentGetter;
@@ -48,7 +48,7 @@ public class AreaEffectCloud extends Entity implements TraceableEntity {
    private @Nullable ParticleOptions customParticle;
    private PotionContents potionContents = PotionContents.EMPTY;
    private float potionDurationScale = 1.0F;
-   private final Map<Entity, Integer> victims = Maps.newHashMap();
+   private final Map<Entity, Integer> victims = new HashMap<>();
    private int duration = -1;
    private int waitTime = 20;
    private int reapplicationDelay = 20;

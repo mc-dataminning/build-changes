@@ -123,6 +123,7 @@ public class BiomeTagsProvider extends TagsProvider<Biome> {
          .add(Biomes.ICE_SPIKES)
          .add(Biomes.DRIPSTONE_CAVES)
          .add(Biomes.LUSH_CAVES)
+         .add(Biomes.ICE_CAVES)
          .add(Biomes.SULFUR_CAVES)
          .add(Biomes.SAVANNA)
          .add(Biomes.SNOWY_PLAINS)
@@ -182,7 +183,8 @@ public class BiomeTagsProvider extends TagsProvider<Biome> {
          .add(Biomes.MUSHROOM_FIELDS)
          .add(Biomes.DRIPSTONE_CAVES)
          .add(Biomes.LUSH_CAVES)
-         .add(Biomes.SULFUR_CAVES);
+         .add(Biomes.SULFUR_CAVES)
+         .add(Biomes.ICE_CAVES);
       this.tag(BiomeTags.HAS_STRONGHOLD).addTag(BiomeTags.IS_OVERWORLD);
       this.tag(BiomeTags.HAS_TRIAL_CHAMBERS).addAll(overworldBiomes.stream().filter(biomeKey -> biomeKey != Biomes.DEEP_DARK));
       this.tag(BiomeTags.HAS_ABANDONED_CAMP_BAMBOO_JUNGLE).add(Biomes.BAMBOO_JUNGLE);
@@ -303,6 +305,6 @@ public class BiomeTagsProvider extends TagsProvider<Biome> {
          .add(Biomes.GROVE)
          .add(Biomes.ICE_CAVES);
       this.tag(BiomeTags.SPAWNS_CORAL_VARIANT_ZOMBIE_NAUTILUS).add(Biomes.WARM_OCEAN);
-      this.tag(BiomeTags.SPAWNS_STRAYS_WITHOUT_POWDER_SNOW).add(Biomes.ICE_CAVES);
+      this.tag(BiomeTags.SPAWNS_COLD_VARIANTS_UNDERGROUND).add(Biomes.ICE_CAVES);
    }
 }

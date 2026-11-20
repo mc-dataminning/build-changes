@@ -1,6 +1,7 @@
 package com.mojang.renderpearl.api.device;
 
 public record DeviceFeatures(
+   boolean dxgiSurface,
    boolean wireframeFillMode,
    boolean shaderDrawParameters,
    boolean multiDrawDirectInterleaved,

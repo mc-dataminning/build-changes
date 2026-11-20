@@ -1,6 +1,6 @@
 package net.minecraft.world.level.block;
 
-import com.google.common.collect.Maps;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import net.minecraft.core.BlockPos;
@@ -40,7 +40,7 @@ public class FenceGateBlock extends HorizontalDirectionalBlock {
    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
    public static final BooleanProperty IN_WALL = BlockStateProperties.IN_WALL;
    private static final Map<Direction.Axis, VoxelShape> SHAPES = Shapes.rotateHorizontalAxis(Block.cube(16.0, 16.0, 4.0));
-   private static final Map<Direction.Axis, VoxelShape> SHAPES_WALL = Maps.newEnumMap(
+   private static final Map<Direction.Axis, VoxelShape> SHAPES_WALL = new EnumMap<>(
       Util.mapValues(SHAPES, v -> Shapes.join(v, Block.column(16.0, 13.0, 16.0), BooleanOp.ONLY_FIRST))
    );
    private static final Map<Direction.Axis, VoxelShape> SHAPE_COLLISION = Shapes.rotateHorizontalAxis(Block.column(16.0, 4.0, 0.0, 24.0));
@@ -48,7 +48,7 @@ public class FenceGateBlock extends HorizontalDirectionalBlock {
    private static final Map<Direction.Axis, VoxelShape> SHAPE_OCCLUSION = Shapes.rotateHorizontalAxis(
       Shapes.or(Block.box(0.0, 5.0, 7.0, 2.0, 16.0, 9.0), Block.box(14.0, 5.0, 7.0, 16.0, 16.0, 9.0))
    );
-   private static final Map<Direction.Axis, VoxelShape> SHAPE_OCCLUSION_WALL = Maps.newEnumMap(
+   private static final Map<Direction.Axis, VoxelShape> SHAPE_OCCLUSION_WALL = new EnumMap<>(
       Util.mapValues(SHAPE_OCCLUSION, v -> v.move(0.0, -0.1875, 0.0).optimize())
    );
    private final WoodType type;

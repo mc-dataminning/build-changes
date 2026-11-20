@@ -48,19 +48,14 @@ public record HugeRedMushroomFeature(
                boolean zEdge = minZ || maxZ;
                if (dy >= treeHeight || xEdge != zEdge) {
                   blockPos.setWithOffset(origin, dx, dy, dz);
-                  BlockState state = this.capProvider.value().getState(level, random, origin);
-                  if (state.hasProperty(HugeMushroomBlock.WEST)
-                     && state.hasProperty(HugeMushroomBlock.EAST)
-                     && state.hasProperty(HugeMushroomBlock.NORTH)
-                     && state.hasProperty(HugeMushroomBlock.SOUTH)
-                     && state.hasProperty(HugeMushroomBlock.UP)) {
-                     state = state.setValue(HugeMushroomBlock.UP, dy >= treeHeight - 1)
-                        .setValue(HugeMushroomBlock.WEST, dx < -center)
-                        .setValue(HugeMushroomBlock.EAST, dx > center)
-                        .setValue(HugeMushroomBlock.NORTH, dz < -center)
-                        .setValue(HugeMushroomBlock.SOUTH, dz > center);
-                  }
-
+                  BlockState state = this.capProvider
+                     .value()
+                     .getState(level, random, origin)
+                     .trySetValue(HugeMushroomBlock.UP, dy >= treeHeight - 1)
+                     .trySetValue(HugeMushroomBlock.WEST, dx < -center)
+                     .trySetValue(HugeMushroomBlock.EAST, dx > center)
+                     .trySetValue(HugeMushroomBlock.NORTH, dz < -center)
+                     .trySetValue(HugeMushroomBlock.SOUTH, dz > center);
                   this.placeMushroomBlock(level, blockPos, state);
                }
             }

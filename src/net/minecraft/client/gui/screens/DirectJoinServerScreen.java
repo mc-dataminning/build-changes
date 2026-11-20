@@ -88,10 +88,10 @@ public class DirectJoinServerScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       graphics.centeredText(this.font, this.title, this.width / 2, 20, -1);
       graphics.text(this.font, ENTER_IP_LABEL, this.width / 2 - 100 + 1, 100, -6250336);
-      this.ipEdit.extractRenderState(graphics, mouseX, mouseY, a);
+      this.ipEdit.extractRenderState(graphics);
    }
 }

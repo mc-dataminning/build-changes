@@ -75,8 +75,8 @@ public class BackupConfirmScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       ActiveTextCollector textRenderer = graphics.textRenderer();
       graphics.centeredText(this.font, this.title, this.width / 2, 50, -1);
       this.message.visitLines(TextAlignment.CENTER, this.width / 2, 70, 9, textRenderer);

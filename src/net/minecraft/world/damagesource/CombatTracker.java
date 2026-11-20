@@ -1,6 +1,6 @@
 package net.minecraft.world.damagesource;
 
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import net.minecraft.core.component.DataComponents;
@@ -22,7 +22,7 @@ public class CombatTracker {
    private static final Style INTENTIONAL_GAME_DESIGN_STYLE = Style.EMPTY
       .withClickEvent(new ClickEvent.OpenUrl(CommonLinks.INTENTIONAL_GAME_DESIGN_BUG))
       .withHoverEvent(new HoverEvent.ShowText(Component.literal("MCPE-28723")));
-   private final List<CombatEntry> entries = Lists.newArrayList();
+   private final List<CombatEntry> entries = new ArrayList<>();
    private final LivingEntity mob;
    private int lastDamageTime;
    private int combatStartTime;

@@ -25,6 +25,7 @@ import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.item.ArmorStandItem;
 import net.minecraft.world.item.BoneMealItem;
+import net.minecraft.world.item.BottleItem;
 import net.minecraft.world.item.DispensibleContainerItem;
 import net.minecraft.world.item.HoneycombItem;
 import net.minecraft.world.item.Item;
@@ -105,6 +106,7 @@ public interface DispenseItemBehavior {
                   if (abstractChestedHorse.isTamed()) {
                      SlotAccess slot = abstractChestedHorse.getSlot(499);
                      if (slot != null && slot.set(dispensed)) {
+                        abstractChestedHorse.playChestEquipsSound();
                         dispensed.shrink(1);
                         this.setSuccess(true);
                         return dispensed;
@@ -275,34 +277,33 @@ public interface DispenseItemBehavior {
       ShulkerBoxDispenseBehavior shulkerBoxDispenseBehavior = new ShulkerBoxDispenseBehavior();
       DispenserBlock.registerBehavior(Items.SHULKER_BOX, shulkerBoxDispenseBehavior);
       Items.DYED_SHULKER_BOX.forEach(item -> DispenserBlock.registerBehavior(item, shulkerBoxDispenseBehavior));
-      DispenserBlock.registerBehavior(
-         Items.GLASS_BOTTLE,
-         new OptionalDispenseItemBehavior() {
-            private ItemStack takeLiquid(final BlockSource source, final ItemStack dispensed, final ItemStack filledItemStack) {
-               source.level().gameEvent(null, GameEvent.FLUID_PICKUP, source.pos());
-               return this.consumeWithRemainder(source, dispensed, filledItemStack);
-            }
+      DispenserBlock.registerBehavior(Items.GLASS_BOTTLE, new OptionalDispenseItemBehavior() {
+         private ItemStack takeLiquid(final BlockSource source, final ItemStack dispensed, final ItemStack filledItemStack) {
+            ServerLevel level = source.level();
+            BlockPos pos = source.pos();
+            BottleItem.playGlassBottleFillSound(level, null, pos.getX(), pos.getY(), pos.getZ());
+            level.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
+            return this.consumeWithRemainder(source, dispensed, filledItemStack);
+         }
 
-            @Override
-            public ItemStack execute(final BlockSource source, final ItemStack dispensed) {
-               this.setSuccess(false);
-               ServerLevel level = source.level();
-               BlockPos target = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
-               BlockState state = level.getBlockState(target);
-               if (state.is(BlockTags.BEEHIVES, s -> s.hasProperty(BeehiveBlock.HONEY_LEVEL) && s.getBlock() instanceof BeehiveBlock)
-                  && state.getValue(BeehiveBlock.HONEY_LEVEL) >= 5) {
-                  ((BeehiveBlock)state.getBlock()).releaseBeesAndResetHoneyLevel(level, state, target, null, BeehiveBlockEntity.BeeReleaseStatus.BEE_RELEASED);
-                  this.setSuccess(true);
-                  return this.takeLiquid(source, dispensed, new ItemStack(Items.HONEY_BOTTLE));
-               } else if (level.getFluidState(target).is(FluidTags.WATER)) {
-                  this.setSuccess(true);
-                  return this.takeLiquid(source, dispensed, PotionContents.createItemStack(Items.POTION, Potions.WATER));
-               } else {
-                  return super.execute(source, dispensed);
-               }
+         @Override
+         public ItemStack execute(final BlockSource source, final ItemStack dispensed) {
+            this.setSuccess(false);
+            ServerLevel level = source.level();
+            BlockPos target = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
+            BlockState state = level.getBlockState(target);
+            if (state.is(BlockTags.BEEHIVES, s -> s.getBlock() instanceof BeehiveBlock) && state.getValueOrElse(BeehiveBlock.HONEY_LEVEL, 0) >= 5) {
+               ((BeehiveBlock)state.getBlock()).releaseBeesAndResetHoneyLevel(level, state, target, null, BeehiveBlockEntity.BeeReleaseStatus.BEE_RELEASED);
+               this.setSuccess(true);
+               return this.takeLiquid(source, dispensed, new ItemStack(Items.HONEY_BOTTLE));
+            } else if (level.getFluidState(target).is(FluidTags.WATER)) {
+               this.setSuccess(true);
+               return this.takeLiquid(source, dispensed, PotionContents.createItemStack(Items.POTION, Potions.WATER));
+            } else {
+               return super.execute(source, dispensed);
             }
          }
-      );
+      });
       DispenserBlock.registerBehavior(Items.GLOWSTONE, new OptionalDispenseItemBehavior() {
          @Override
          public ItemStack execute(final BlockSource source, final ItemStack dispensed) {

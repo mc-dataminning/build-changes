@@ -62,7 +62,7 @@ public class HangingEntityItem extends Item {
       }
 
       EntityType.<HangingEntity>createDefaultStackConfig(level, itemInHand, player).apply(entity);
-      if (entity.survives()) {
+      if (entity.canBePlaced()) {
          if (!level.isClientSide()) {
             entity.playPlacementSound();
             level.gameEvent(player, GameEvent.ENTITY_PLACE, entity.position());

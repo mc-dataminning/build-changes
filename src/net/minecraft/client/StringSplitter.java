@@ -1,6 +1,6 @@
 package net.minecraft.client;
 
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Optional;
@@ -176,19 +176,19 @@ public class StringSplitter {
    }
 
    public List<FormattedText> splitLines(final String input, final int maxWidth, final Style initialStyle) {
-      List<FormattedText> result = Lists.newArrayList();
+      List<FormattedText> result = new ArrayList<>();
       this.splitLines(input, maxWidth, initialStyle, false, (style, start, end) -> result.add(FormattedText.of(input.substring(start, end), style)));
       return result;
    }
 
    public List<FormattedText> splitLines(final FormattedText input, final int maxWidth, final Style initialStyle) {
-      List<FormattedText> result = Lists.newArrayList();
+      List<FormattedText> result = new ArrayList<>();
       this.splitLines(input, maxWidth, initialStyle, (text, wrapped) -> result.add(text));
       return result;
    }
 
    public void splitLines(final FormattedText input, final int maxWidth, final Style initialStyle, final BiConsumer<FormattedText, Boolean> output) {
-      List<StringSplitter.LineComponent> partList = Lists.newArrayList();
+      List<StringSplitter.LineComponent> partList = new ArrayList<>();
       input.visit((style, contents) -> {
          if (!contents.isEmpty()) {
             partList.add(new StringSplitter.LineComponent(contents, style));

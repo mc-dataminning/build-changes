@@ -1,6 +1,6 @@
 package net.minecraft.world.level.block;
 
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -124,7 +124,7 @@ public class RedstoneTorchBlock extends BaseTorchBlock {
    }
 
    private static boolean isToggledTooFrequently(final Level level, final BlockPos pos, final boolean add) {
-      List<RedstoneTorchBlock.Toggle> toggles = RECENT_TOGGLES.computeIfAbsent(level, k -> Lists.newArrayList());
+      List<RedstoneTorchBlock.Toggle> toggles = RECENT_TOGGLES.computeIfAbsent(level, k -> new ArrayList<>());
       if (add) {
          toggles.add(new RedstoneTorchBlock.Toggle(pos.immutable(), level.getGameTime()));
       }

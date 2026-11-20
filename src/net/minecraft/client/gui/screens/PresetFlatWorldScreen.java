@@ -1,8 +1,8 @@
 package net.minecraft.client.gui.screens;
 
 import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -16,7 +16,7 @@ import net.minecraft.client.gui.components.ObjectSelectionList;
 import net.minecraft.client.gui.screens.worldselection.WorldCreationContext;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.RegistryAccess;
@@ -103,7 +103,7 @@ public class PresetFlatWorldScreen extends Screen {
    }
 
    private static List<FlatLayerInfo> getLayersInfoFromString(final HolderGetter<Block> blocks, final String input) {
-      List<FlatLayerInfo> result = Lists.newArrayList();
+      List<FlatLayerInfo> result = new ArrayList<>();
       String[] depths = input.split(",");
       int firstFree = 0;
 
@@ -218,12 +218,12 @@ public class PresetFlatWorldScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       graphics.centeredText(this.font, this.title, this.width / 2, 8, -1);
       graphics.text(this.font, this.shareText, 51, 30, -6250336);
       graphics.text(this.font, this.listText, 51, 68, -6250336);
-      this.export.extractRenderState(graphics, mouseX, mouseY, a);
+      this.export.extractRenderState(graphics);
    }
 
    public void updateButtonValidity(final boolean hasSelected) {
@@ -286,7 +286,7 @@ public class PresetFlatWorldScreen extends Screen {
          }
 
          @Override
-         public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+         public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
             this.blitSlot(graphics, this.getContentX(), this.getContentY(), this.preset.displayItem().value());
             graphics.text(PresetFlatWorldScreen.this.font, this.name, this.getContentX() + 18 + 5, this.getContentY() + 6, -1);
          }

@@ -7,6 +7,8 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface GpuSurface extends UncheckedAutoCloseable {
+   boolean isDXGI();
+
    void configure(GpuSurface.Configuration config) throws SurfaceException;
 
    Optional<GpuSurface.Configuration> currentConfiguration();

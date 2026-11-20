@@ -1,7 +1,7 @@
 package net.minecraft.world.entity.ai.behavior;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -32,12 +32,12 @@ public class LongJumpToRandomPos<E extends Mob> extends Behavior<E> {
    private static final int PREPARE_JUMP_DURATION = 40;
    protected static final int MIN_PATHFIND_DISTANCE_TO_VALID_JUMP = 8;
    private static final int TIME_OUT_DURATION = 200;
-   private static final List<Integer> ALLOWED_ANGLES = Lists.newArrayList(new Integer[]{65, 70, 75, 80});
+   private static final List<Integer> ALLOWED_ANGLES = List.of(65, 70, 75, 80);
    private final UniformInt timeBetweenLongJumps;
    protected final int maxLongJumpHeight;
    protected final int maxLongJumpWidth;
    protected final float maxJumpVelocityMultiplier;
-   protected List<LongJumpToRandomPos.PossibleJump> jumpCandidates = Lists.newArrayList();
+   protected List<LongJumpToRandomPos.PossibleJump> jumpCandidates = new ArrayList<>();
    protected Optional<Vec3> initialPosition = Optional.empty();
    protected @Nullable Vec3 chosenJump;
    protected int findJumpTries;
@@ -131,7 +131,7 @@ public class LongJumpToRandomPos<E extends Mob> extends Behavior<E> {
          )
          .filter(pos -> !pos.equals(mobPos))
          .map(pos -> new LongJumpToRandomPos.PossibleJump(pos.immutable(), Mth.ceil(mobPos.distSqr(pos))))
-         .collect(Collectors.toCollection(Lists::newArrayList));
+         .collect(Collectors.toCollection(ArrayList::new));
    }
 
    protected void tick(final ServerLevel level, final E body, final long timestamp) {
@@ -191,7 +191,7 @@ public class LongJumpToRandomPos<E extends Mob> extends Behavior<E> {
    }
 
    protected @Nullable Vec3 calculateOptimalJumpVector(final Mob body, final Vec3 targetPos) {
-      List<Integer> allowedAngles = Lists.newArrayList(ALLOWED_ANGLES);
+      List<Integer> allowedAngles = new ArrayList<>(ALLOWED_ANGLES);
       Collections.shuffle(allowedAngles);
       float maxJumpVelocity = (float)(body.getAttributeValue(Attributes.JUMP_STRENGTH) * this.maxJumpVelocityMultiplier);
 

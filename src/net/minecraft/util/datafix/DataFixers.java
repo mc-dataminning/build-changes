@@ -2,18 +2,11 @@ package net.minecraft.util.datafix;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixer;
 import com.mojang.datafixers.DataFixerBuilder;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.DataFixerBuilder.Result;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -83,6 +76,8 @@ import net.minecraft.util.datafix.fixes.ChunkStructuresTemplateRenameFix;
 import net.minecraft.util.datafix.fixes.ChunkTicketUnpackPosFix;
 import net.minecraft.util.datafix.fixes.ChunkToProtochunkFix;
 import net.minecraft.util.datafix.fixes.ColorlessShulkerEntityFix;
+import net.minecraft.util.datafix.fixes.CommandBlockBlockEntityCustomNameFix;
+import net.minecraft.util.datafix.fixes.CommandBlockMinecartCustomNameFix;
 import net.minecraft.util.datafix.fixes.ContainerBlockEntityLockPredicateFix;
 import net.minecraft.util.datafix.fixes.CopperGolemWeatherStateFix;
 import net.minecraft.util.datafix.fixes.CriteriaRenameFix;
@@ -204,7 +199,6 @@ import net.minecraft.util.datafix.fixes.MobEffectIdFix;
 import net.minecraft.util.datafix.fixes.MobSpawnerEntityIdentifiersFix;
 import net.minecraft.util.datafix.fixes.MoveNoiseBiomesFix;
 import net.minecraft.util.datafix.fixes.NamedEntityConvertUncheckedFix;
-import net.minecraft.util.datafix.fixes.NamedEntityWriteReadFix;
 import net.minecraft.util.datafix.fixes.NamespacedTypeRenameFix;
 import net.minecraft.util.datafix.fixes.NewVillageFix;
 import net.minecraft.util.datafix.fixes.ObjectiveRenderTypeFix;
@@ -669,37 +663,8 @@ public class DataFixers {
          )
       );
       fixerUpper.addFixer(ItemRenameFix.create(v1488, "Rename kelptop", createRenamer("minecraft:kelp_top", "minecraft:kelp")));
-      fixerUpper.addFixer(
-         new NamedEntityWriteReadFix(v1488, true, "Command block block entity custom name fix", References.BLOCK_ENTITY, "minecraft:command_block") {
-            @Override
-            protected <T> Dynamic<T> fix(final Dynamic<T> input) {
-               return BlockEntityCustomNameToComponentFix.fixTagCustomName(input);
-            }
-         }
-      );
-      fixerUpper.addFixer(
-         new DataFix(v1488, false) {
-            protected TypeRewriteRule makeRule() {
-               Type<?> entityType = this.getInputSchema().getType(References.ENTITY);
-               OpticFinder<String> idFinder = DSL.fieldFinder("id", NamespacedSchema.namespacedString());
-               OpticFinder<?> customNameFinder = entityType.findField("CustomName");
-               OpticFinder<Pair<String, String>> componentFinder = DSL.typeFinder(this.getInputSchema().getType(References.TEXT_COMPONENT));
-               return this.fixTypeEverywhereTyped(
-                  "Command block minecart custom name fix",
-                  entityType,
-                  input -> {
-                     String id = input.getOptional(idFinder).orElse("");
-                     return !"minecraft:commandblock_minecart".equals(id)
-                        ? input
-                        : input.updateTyped(
-                           customNameFinder,
-                           customName -> customName.update(componentFinder, pair -> pair.mapSecond(LegacyComponentDataFixUtils::createTextComponentJson))
-                        );
-                  }
-               );
-            }
-         }
-      );
+      fixerUpper.addFixer(new CommandBlockBlockEntityCustomNameFix(v1488));
+      fixerUpper.addFixer(new CommandBlockMinecartCustomNameFix(v1488, false));
       fixerUpper.addFixer(new IglooMetadataRemovalFix(v1488, false));
       Schema v1490 = fixerUpper.addSchema(1490, SAME_NAMESPACED);
       fixerUpper.addFixer(LegacyBlockRenameFix.create(v1490, "Rename melon_block", createRenamer("minecraft:melon_block", "minecraft:melon")));

@@ -12,16 +12,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Function;
 import java.util.function.Supplier;
-import net.minecraft.client.renderer.oit.OitPipelineSet;
+import net.minecraft.client.renderer.oit.OitStage;
 import net.minecraft.client.renderer.texture.TextureHandle;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.Nullable;
 
 public final class RenderSetup {
-   final RenderPipeline pipeline;
-   final @Nullable OitPipelineSet oitPipelineSet;
+   final Function<@Nullable OitStage, RenderPipeline> pipelineProvider;
    final Map<String, RenderSetup.TextureBinding> textures;
    final TextureTransform textureTransform;
    final RenderSetup.OutlineProperty outlineProperty;
@@ -34,8 +34,7 @@ public final class RenderSetup {
    final boolean forceSolidModelPhase;
 
    private RenderSetup(
-      final RenderPipeline pipeline,
-      final @Nullable OitPipelineSet oitPipelineSet,
+      final Function<@Nullable OitStage, @Nullable RenderPipeline> pipelineProvider,
       final Map<String, RenderSetup.TextureBinding> textures,
       final boolean useLightmap,
       final boolean useOverlay,
@@ -47,8 +46,7 @@ public final class RenderSetup {
       final boolean sortOnUpload,
       final boolean forceSolidModelPhase
    ) {
-      this.pipeline = pipeline;
-      this.oitPipelineSet = oitPipelineSet;
+      this.pipelineProvider = pipelineProvider;
       this.textures = textures;
       this.textureTransform = textureTransform;
       this.useLightmap = useLightmap;
@@ -78,8 +76,12 @@ public final class RenderSetup {
          + "]";
    }
 
-   public static RenderSetup.RenderSetupBuilder builder(final RenderPipeline pipeline) {
-      return new RenderSetup.RenderSetupBuilder(pipeline);
+   public static RenderSetup.RenderSetupBuilder builder(final Function<@Nullable OitStage, @Nullable RenderPipeline> pipelineProvider) {
+      return new RenderSetup.RenderSetupBuilder(pipelineProvider);
+   }
+
+   public static RenderSetup.RenderSetupBuilder nonOitBuilder(final RenderPipeline pipeline) {
+      return new RenderSetup.RenderSetupBuilder(stage -> stage == null ? pipeline : null);
    }
 
    public List<PreparedRenderType.Texture> prepareTextures(
@@ -125,8 +127,7 @@ public final class RenderSetup {
    }
 
    public static class RenderSetupBuilder {
-      private final RenderPipeline pipeline;
-      private @Nullable OitPipelineSet oitPipelineSet;
+      private Function<@Nullable OitStage, @Nullable RenderPipeline> pipelineProvider;
       private boolean useLightmap = false;
       private boolean useOverlay = false;
       private LayeringTransform layeringTransform = LayeringTransform.NO_LAYERING;
@@ -138,8 +139,8 @@ public final class RenderSetup {
       private final Map<String, RenderSetup.TextureBinding> textures = new HashMap<>();
       private boolean forceSolidModelPhase;
 
-      private RenderSetupBuilder(final RenderPipeline pipeline) {
-         this.pipeline = pipeline;
+      private RenderSetupBuilder(final Function<@Nullable OitStage, @Nullable RenderPipeline> pipelineProvider) {
+         this.pipelineProvider = pipelineProvider;
       }
 
       public RenderSetup.RenderSetupBuilder withTexture(final String name, final Identifier texture) {
@@ -194,11 +195,6 @@ public final class RenderSetup {
          return this;
       }
 
-      public RenderSetup.RenderSetupBuilder setOitPipelines(final OitPipelineSet oitPipelineSet) {
-         this.oitPipelineSet = oitPipelineSet;
-         return this;
-      }
-
       public RenderSetup.RenderSetupBuilder withForcedSolidModelPhase() {
          this.forceSolidModelPhase = true;
          return this;
@@ -206,8 +202,7 @@ public final class RenderSetup {
 
       public RenderSetup createRenderSetup() {
          return new RenderSetup(
-            this.pipeline,
-            this.oitPipelineSet,
+            this.pipelineProvider,
             this.textures,
             this.useLightmap,
             this.useOverlay,

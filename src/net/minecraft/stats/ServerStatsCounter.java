@@ -1,6 +1,5 @@
 package net.minecraft.stats;
 
-import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -22,6 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -50,7 +50,7 @@ public class ServerStatsCounter extends StatsCounter {
          return stats;
       }, map -> map.entrySet().stream().collect(Collectors.groupingBy(entry -> ((Stat)entry.getKey()).getType(), Util.toMap())));
    private final Path file;
-   private final Set<Stat<?>> dirty = Sets.newHashSet();
+   private final Set<Stat<?>> dirty = new HashSet<>();
 
    private static <T> Codec<Map<Stat<?>, Integer>> createTypedStatsCodec(final StatType<T> type) {
       Codec<T> valueCodec = type.getRegistry().byNameCodec();
@@ -93,12 +93,6 @@ public class ServerStatsCounter extends StatsCounter {
       this.dirty.add(stat);
    }
 
-   private Set<Stat<?>> getDirty() {
-      Set<Stat<?>> result = Sets.newHashSet(this.dirty);
-      this.dirty.clear();
-      return result;
-   }
-
    public void parse(final DataFixer fixerUpper, final JsonElement element) {
       Dynamic<JsonElement> data = new Dynamic(JsonOps.INSTANCE, element);
       data = DataFixTypes.STATS.updateToCurrentVersion(fixerUpper, data, NbtUtils.getDataVersion(data, 1343));
@@ -124,10 +118,11 @@ public class ServerStatsCounter extends StatsCounter {
    public void sendStats(final ServerPlayer player) {
       Object2IntMap<Stat<?>> statsToSend = new Object2IntOpenHashMap();
 
-      for (Stat<?> stat : this.getDirty()) {
+      for (Stat<?> stat : this.dirty) {
          statsToSend.put(stat, this.getValue(stat));
       }
 
+      this.dirty.clear();
       player.connection.send(new ClientboundAwardStatsPacket(statsToSend));
    }
 }

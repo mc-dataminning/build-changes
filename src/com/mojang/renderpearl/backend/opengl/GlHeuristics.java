@@ -97,6 +97,7 @@ public class GlHeuristics {
             maxSupportedAnisotropy, GL33C.glGetInteger(35380), getMaxSupportedTextureSize(), Long.MAX_VALUE, 0, GL33C.glGetInteger(34852), drawIndirectCount
          ),
          new DeviceFeatures(
+            false,
             true,
             enabledExtensions.contains("GL_ARB_shader_draw_parameters"),
             false,
@@ -108,11 +109,7 @@ public class GlHeuristics {
          ),
          Collections.unmodifiableSet(enabledExtensions),
          new HintsAndWorkarounds(
-            PlatformUtil.IS_WINDOWS,
-            this.isGlOnDx12(),
-            this.isAmd(),
-            PlatformUtil.isAppleSiliconMac(renderer),
-            vendorLowerCase.contains("intel") && !rendererLowerCase.contains("arc")
+            this.isGlOnDx12(), this.isAmd(), PlatformUtil.isAppleSiliconMac(renderer), vendorLowerCase.contains("intel") && !rendererLowerCase.contains("arc")
          ),
          this.guessDeviceType(rendererLowerCase, vendorLowerCase)
       );

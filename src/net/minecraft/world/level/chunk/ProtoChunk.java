@@ -1,8 +1,8 @@
 package net.minecraft.world.level.chunk;
 
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.shorts.ShortList;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
@@ -46,7 +46,7 @@ public class ProtoChunk extends ChunkAccess {
    private static final Logger LOGGER = LogUtils.getLogger();
    private volatile @Nullable LevelLightEngine lightEngine;
    private volatile ChunkStatus status = ChunkStatus.EMPTY;
-   private final List<CompoundTag> entities = Lists.newArrayList();
+   private final List<CompoundTag> entities = new ArrayList<>();
    private @Nullable RetroGen retroGen;
    private @Nullable NoiseBiomeChunk noiseBiomeChunk;
    private final ProtoChunkTicks<Block> blockTicks;

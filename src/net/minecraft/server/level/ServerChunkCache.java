@@ -22,6 +22,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.FileUtil;
 import net.minecraft.util.Util;
 import net.minecraft.util.VisibleForDebug;
@@ -164,7 +165,7 @@ public class ServerChunkCache extends ChunkSource {
       ChunkResult<ChunkAccess> chunkResult = serverFuture.join();
       ChunkAccess chunk = chunkResult.orElse(null);
       if (chunk == null && loadOrGenerate) {
-         throw (IllegalStateException)Util.pauseInIde(new IllegalStateException("Chunk not there when requested: " + chunkResult.getError()));
+         throw (IllegalStateException)DevUtil.pauseInIde(new IllegalStateException("Chunk not there when requested: " + chunkResult.getError()));
       }
 
       this.storeInCache(pos, chunk, targetStatus);
@@ -240,7 +241,7 @@ public class ServerChunkCache extends ChunkSource {
             chunkHolder = this.getVisibleChunkIfPresent(key);
             profiler.pop();
             if (this.chunkAbsent(chunkHolder, targetTicketLevel)) {
-               throw (IllegalStateException)Util.pauseInIde(new IllegalStateException("No chunk holder after ticket has been added"));
+               throw (IllegalStateException)DevUtil.pauseInIde(new IllegalStateException("No chunk holder after ticket has been added"));
             }
          }
       }

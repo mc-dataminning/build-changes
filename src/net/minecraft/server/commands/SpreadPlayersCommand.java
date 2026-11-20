@@ -1,7 +1,5 @@
 package net.minecraft.server.commands;
 
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.FloatArgumentType;
@@ -12,6 +10,8 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.Dynamic4CommandExceptionType;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -139,7 +139,7 @@ public class SpreadPlayersCommand {
    }
 
    private static int getNumberOfTeams(final Collection<? extends Entity> players) {
-      Set<Team> teams = Sets.newHashSet();
+      Set<Team> teams = new HashSet<>();
 
       for (Entity player : players) {
          if (player instanceof Player) {
@@ -242,7 +242,7 @@ public class SpreadPlayersCommand {
    ) {
       double avgDistance = 0.0;
       int positionIndex = 0;
-      Map<Team, SpreadPlayersCommand.Position> teamPositions = Maps.newHashMap();
+      Map<Team, SpreadPlayersCommand.Position> teamPositions = new HashMap<>();
 
       for (Entity entity : entities) {
          SpreadPlayersCommand.Position position;

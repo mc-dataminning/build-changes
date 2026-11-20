@@ -1,7 +1,7 @@
 package net.minecraft.client.renderer.entity;
 
-import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
+import java.util.EnumMap;
 import java.util.Map;
 import net.minecraft.client.model.AdultAndBabyModelPair;
 import net.minecraft.client.model.animal.pig.BabyPigModel;
@@ -38,7 +38,7 @@ public class PigRenderer extends MobRenderer<Pig, PigRenderState, PigModel> {
    }
 
    private static Map<PigVariant.ModelType, AdultAndBabyModelPair<PigModel>> bakeModels(final EntityRendererProvider.Context context) {
-      return Maps.newEnumMap(
+      return new EnumMap<>(
          Map.of(
             PigVariant.ModelType.NORMAL,
             new AdultAndBabyModelPair<>(new PigModel(context.bakeLayer(ModelLayers.PIG)), new BabyPigModel(context.bakeLayer(ModelLayers.PIG_BABY))),

@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import java.util.HashSet;
 import java.util.Set;
 import net.minecraft.CrashReportCategory;
+import net.minecraft.CrashReportUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -247,7 +248,7 @@ public abstract class BlockEntity implements DebugValueSource, TypedInstance<Blo
          category.setDetail("Block location", () -> this.worldPosition + " (world missing)");
       } else {
          category.setDetail("Actual block", this.level.getBlockState(this.worldPosition)::toString);
-         CrashReportCategory.populateBlockLocationDetails(category, this.level, this.worldPosition);
+         CrashReportUtil.populateBlockLocationDetails(category, this.level, this.worldPosition);
       }
    }
 

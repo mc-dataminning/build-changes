@@ -2,6 +2,7 @@ package net.minecraft.client.renderer;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
+import com.google.common.collect.Streams;
 import com.google.common.collect.ImmutableMap.Builder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
@@ -29,6 +30,9 @@ import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
+import net.minecraft.client.renderer.state.OptionsRenderState;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.resources.FileToIdConverter;
 import net.minecraft.resources.Identifier;
@@ -68,21 +72,18 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
       final Executor reloadExecutor
    ) {
       ResourceManager manager = currentReload.resourceManager();
+      ShaderManager.PipelineCompilationContext context = preparePipelineCompilationContext();
       PipelineBuilder pipelineBuilder = RenderSystem.getPipelineBuilder();
       return CompletableFuture.<ShaderManager.Configs>supplyAsync(() -> loadConfigs(manager), taskExecutor)
          .thenComposeAsync(
             configs -> {
-               List<RenderPipeline> requiredPipelines = RenderPipelines.requiredPipelines();
-               List<RenderPipeline> optionalPipelines = RenderPipelines.optionalPipelines();
+               List<RenderPipeline> staticPipelines = RenderPipelines.staticPipelinesToPrecompile();
+               List<RenderPipeline> dynamicPipelines = RenderPipelines.dynamicPipelinesToPrecompile(context);
+               List<RenderPipeline> requiredPipelines = Streams.concat(new Stream[]{staticPipelines.stream(), dynamicPipelines.stream()}).toList();
                return compilePipelines(pipelineBuilder, configs, requiredPipelines, taskExecutor, reloadExecutor)
-                  .thenCombine(
-                     compilePipelines(pipelineBuilder, configs, optionalPipelines, taskExecutor, reloadExecutor),
-                     (compiledRequiredPipelines, compiledOptionalPipelines) -> new ShaderManager.PendingResults(
-                        configs,
-                        requiredPipelines,
-                        optionalPipelines,
-                        (List<CompiledRenderPipeline>)compiledRequiredPipelines,
-                        (List<CompiledRenderPipeline>)compiledOptionalPipelines
+                  .thenApply(
+                     compiledRequiredPipelines -> new ShaderManager.PendingResults(
+                        configs, requiredPipelines, (List<CompiledRenderPipeline>)compiledRequiredPipelines
                      )
                   );
             },
@@ -90,6 +91,12 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
          )
          .thenCompose(preparationBarrier::wait)
          .thenAcceptAsync(compilations -> this.apply(pipelineBuilder, compilations), reloadExecutor);
+   }
+
+   private static ShaderManager.PipelineCompilationContext preparePipelineCompilationContext() {
+      OptionsRenderState optionsRenderState = new OptionsRenderState();
+      Minecraft.getInstance().options.extractRenderState(optionsRenderState);
+      return new ShaderManager.PipelineCompilationContext(optionsRenderState, RenderSystem.isMultidrawIndirectAvailable());
    }
 
    private static CompletableFuture<List<@Nullable CompiledRenderPipeline>> compilePipelines(
@@ -211,37 +218,17 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
       }
 
       if (!failedLoads.isEmpty()) {
-         for (CompiledRenderPipeline builtPipeline : compilations.compiledOptionalPipelines) {
-            if (builtPipeline != null) {
-               builtPipeline.close();
-            }
-         }
-
          pipelineCache.close();
          throw new RuntimeException(
             "Failed to load required shader programs:\n" + failedLoads.stream().map(entry -> " - " + entry).collect(Collectors.joining("\n"))
          );
-      } else {
-         for (int i = 0; i < compilations.optionalPipelines.size(); i++) {
-            RenderPipeline pipeline = compilations.optionalPipelines.get(i);
-            CompiledRenderPipeline compiled = compilations.compiledOptionalPipelines.get(i);
-            if (compiled != null) {
-               pipelineCache.insert(pipeline, compiled);
-            } else {
-               failedLoads.add(pipeline.getLocation());
-            }
-         }
+      }
 
-         if (!failedLoads.isEmpty()) {
-            LOGGER.warn("Failed to load optional shader programs:\n{}", failedLoads.stream().map(entry -> " - " + entry).collect(Collectors.joining("\n")));
-         }
-
-         this.postChains.close();
-         this.postChains = newPostChains;
-         PipelineCache oldPipelineCache = RenderSystem.setCurrentPipelineCache(pipelineCache);
-         if (oldPipelineCache != null) {
-            oldPipelineCache.close();
-         }
+      this.postChains.close();
+      this.postChains = newPostChains;
+      PipelineCache oldPipelineCache = RenderSystem.setCurrentPipelineCache(pipelineCache);
+      if (oldPipelineCache != null) {
+         oldPipelineCache.close();
       }
    }
 
@@ -326,12 +313,11 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
    }
 
    private record PendingResults(
-      ShaderManager.Configs configs,
-      List<RenderPipeline> requiredPipelines,
-      List<RenderPipeline> optionalPipelines,
-      List<@Nullable CompiledRenderPipeline> compiledRequiredPipelines,
-      List<@Nullable CompiledRenderPipeline> compiledOptionalPipelines
+      ShaderManager.Configs configs, List<RenderPipeline> requiredPipelines, List<@Nullable CompiledRenderPipeline> compiledRequiredPipelines
    ) {
+   }
+
+   public record PipelineCompilationContext(OptionsRenderState options, boolean multidraw) {
    }
 
    private class PostChainCache implements AutoCloseable {

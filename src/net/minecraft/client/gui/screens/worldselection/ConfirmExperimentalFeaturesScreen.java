@@ -142,7 +142,7 @@ public class ConfirmExperimentalFeaturesScreen extends Screen {
          }
 
          @Override
-         public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+         public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
             ActiveTextCollector textRenderer = graphics.textRenderer();
             graphics.text(DetailsScreen.this.minecraft.font, this.packId, this.getContentX(), this.getContentY(), -1);
             this.splitMessage.visitLines(TextAlignment.LEFT, this.getContentX(), this.getContentY() + 12, 9, textRenderer);

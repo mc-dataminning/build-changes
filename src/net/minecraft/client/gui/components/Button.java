@@ -131,7 +131,7 @@ public abstract class Button extends AbstractButton {
       }
 
       @Override
-      protected void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+      protected void extractContents(final GuiGraphicsExtractor graphics) {
          this.extractDefaultSprite(graphics);
          this.extractDefaultLabel(graphics.textRendererForWidget(this, GuiGraphicsExtractor.HoveredTextEffects.NONE));
       }

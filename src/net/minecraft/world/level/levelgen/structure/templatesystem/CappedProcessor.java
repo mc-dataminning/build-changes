@@ -7,6 +7,7 @@ import it.unimi.dsi.fastutil.ints.IntIterator;
 import java.util.List;
 import java.util.stream.IntStream;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
 import net.minecraft.util.valueproviders.IntProvider;
@@ -50,7 +51,7 @@ public class CappedProcessor implements StructureProcessor {
    ) {
       if (this.limit.maxInclusive() != 0 && !processedBlockInfoList.isEmpty()) {
          if (originalBlockInfoList.size() != processedBlockInfoList.size()) {
-            Util.logAndPauseIfInIde(
+            DevUtil.logAndPauseIfInIde(
                "Original block info list not in sync with processed list, skipping processing. Original size: "
                   + originalBlockInfoList.size()
                   + ", Processed size: "

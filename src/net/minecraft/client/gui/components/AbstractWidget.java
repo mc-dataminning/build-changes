@@ -53,16 +53,17 @@ public abstract class AbstractWidget implements LayoutElement, Renderable, GuiEv
    }
 
    @Override
-   public final void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public final void extractRenderState(final GuiGraphicsExtractor graphics) {
       if (this.isVisible()) {
-         this.isHovered = graphics.containsPointInScissor(mouseX, mouseY) && this.areCoordinatesInRectangle(mouseX, mouseY);
-         this.extractWidgetRenderState(graphics, mouseX, mouseY, a);
-         this.extractTooltipForNextRenderPass(graphics, mouseX, mouseY);
+         this.isHovered = graphics.containsPointInScissor(graphics.mouseX(), graphics.mouseY())
+            && this.areCoordinatesInRectangle(graphics.mouseX(), graphics.mouseY());
+         this.extractWidgetRenderState(graphics);
+         this.extractTooltipForNextRenderPass(graphics);
       }
    }
 
-   protected void extractTooltipForNextRenderPass(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY) {
-      this.tooltip.refreshTooltipForNextRenderPass(graphics, mouseX, mouseY, this.isHovered(), this.isFocused(), this.getRectangle());
+   protected void extractTooltipForNextRenderPass(final GuiGraphicsExtractor graphics) {
+      this.tooltip.refreshTooltipForNextRenderPass(graphics, graphics.mouseX(), graphics.mouseY(), this.isHovered(), this.isFocused(), this.getRectangle());
    }
 
    protected void handleCursor(final GuiGraphicsExtractor graphics) {
@@ -87,7 +88,7 @@ public abstract class AbstractWidget implements LayoutElement, Renderable, GuiEv
       return Component.translatable("gui.narrate.button", message);
    }
 
-   protected abstract void extractWidgetRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a);
+   protected abstract void extractWidgetRenderState(GuiGraphicsExtractor graphics);
 
    protected void extractScrollingStringOverContents(final ActiveTextCollector output, final Component message, final int margin) {
       int left = this.getX() + margin;

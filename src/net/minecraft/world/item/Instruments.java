@@ -29,14 +29,14 @@ public interface Instruments {
    }
 
    static void bootstrap(final BootstrapContext<Instrument> context) {
-      register(context, PONDER_GOAT_HORN, (Holder<SoundEvent>)SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(0), 7.0F, 256.0F, 0);
-      register(context, SING_GOAT_HORN, (Holder<SoundEvent>)SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(1), 7.0F, 256.0F, 0);
-      register(context, SEEK_GOAT_HORN, (Holder<SoundEvent>)SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(2), 7.0F, 256.0F, 0);
-      register(context, FEEL_GOAT_HORN, (Holder<SoundEvent>)SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(3), 7.0F, 256.0F, 0);
-      register(context, ADMIRE_GOAT_HORN, (Holder<SoundEvent>)SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(4), 7.0F, 256.0F, 0);
-      register(context, CALL_GOAT_HORN, (Holder<SoundEvent>)SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(5), 7.0F, 256.0F, 0);
-      register(context, YEARN_GOAT_HORN, (Holder<SoundEvent>)SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(6), 7.0F, 256.0F, 0);
-      register(context, DREAM_GOAT_HORN, (Holder<SoundEvent>)SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(7), 7.0F, 256.0F, 0);
+      register(context, PONDER_GOAT_HORN, SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(0), 7.0F, 256.0F, 0);
+      register(context, SING_GOAT_HORN, SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(1), 7.0F, 256.0F, 0);
+      register(context, SEEK_GOAT_HORN, SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(2), 7.0F, 256.0F, 0);
+      register(context, FEEL_GOAT_HORN, SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(3), 7.0F, 256.0F, 0);
+      register(context, ADMIRE_GOAT_HORN, SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(4), 7.0F, 256.0F, 0);
+      register(context, CALL_GOAT_HORN, SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(5), 7.0F, 256.0F, 0);
+      register(context, YEARN_GOAT_HORN, SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(6), 7.0F, 256.0F, 0);
+      register(context, DREAM_GOAT_HORN, SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(7), 7.0F, 256.0F, 0);
    }
 
    static void register(

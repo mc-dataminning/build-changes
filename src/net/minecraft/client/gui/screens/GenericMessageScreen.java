@@ -36,8 +36,8 @@ public class GenericMessageScreen extends Screen {
    }
 
    @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      this.extractPanorama(graphics, a);
+   public void extractBackground(final GuiGraphicsExtractor graphics) {
+      this.extractPanorama(graphics);
       this.extractBlurredBackground(graphics);
       this.extractMenuBackground(graphics);
    }

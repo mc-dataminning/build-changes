@@ -101,7 +101,7 @@ public abstract class HangingEntity extends BlockAttachedEntity {
 
    @Override
    public boolean survives() {
-      if (this.hasLevelCollision(this.getPopBox())) {
+      if (this.collidesWithBlocks(this.getPopBox())) {
          return false;
       }
 
@@ -126,9 +126,12 @@ public abstract class HangingEntity extends BlockAttachedEntity {
       return !this.level().hasEntities(EntityTypeTest.forClass(HangingEntity.class), this.getPopBox(), nonIntersectable);
    }
 
-   protected boolean hasLevelCollision(final AABB popBox) {
-      Level level = this.level();
-      return !level.noBlockCollision(this, popBox) || !level.noBorderCollision(this, popBox);
+   public boolean canBePlaced() {
+      return this.survives();
+   }
+
+   protected boolean collidesWithBlocks(final AABB popBox) {
+      return !this.level().noBlockCollision(this, popBox);
    }
 
    protected AABB getPopBox() {

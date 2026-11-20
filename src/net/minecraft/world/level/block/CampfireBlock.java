@@ -273,7 +273,7 @@ public class CampfireBlock extends BaseEntityBlock implements SimpleWaterloggedB
    }
 
    public static boolean isLitCampfire(final BlockState blockState) {
-      return blockState.hasProperty(LIT) && blockState.is(BlockTags.CAMPFIRES) && blockState.getValue(LIT);
+      return blockState.getValueOrElse(LIT, false) && blockState.is(BlockTags.CAMPFIRES);
    }
 
    @Override

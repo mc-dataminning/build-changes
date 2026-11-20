@@ -24,6 +24,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.SectionTracker;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.PoiTypeTags;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
 import net.minecraft.util.VisibleForDebug;
@@ -203,7 +204,7 @@ public class PoiManager extends SectionStorage<PoiSection, PoiSection.Packed> {
    public boolean release(final BlockPos pos) {
       return this.getOrLoad(SectionPos.asLong(pos))
          .map(section -> section.release(pos))
-         .orElseThrow(() -> Util.pauseInIde(new IllegalStateException("POI never registered at " + pos)));
+         .orElseThrow(() -> DevUtil.pauseInIde(new IllegalStateException("POI never registered at " + pos)));
    }
 
    public boolean exists(final BlockPos pos, final Predicate<Holder<PoiType>> predicate) {

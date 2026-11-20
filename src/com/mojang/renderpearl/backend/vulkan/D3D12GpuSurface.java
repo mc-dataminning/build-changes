@@ -376,6 +376,11 @@ public class D3D12GpuSurface implements GpuSurfaceBackend {
    }
 
    @Override
+   public boolean isDXGI() {
+      return true;
+   }
+
+   @Override
    public void configure(final GpuSurface.Configuration config) throws SurfaceException {
       this.mode = config.presentMode();
       if (this.swapchainWidth != config.width() || this.swapchainHeight != config.height()) {

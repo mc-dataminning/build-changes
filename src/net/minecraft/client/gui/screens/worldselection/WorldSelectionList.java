@@ -48,7 +48,7 @@ import net.minecraft.client.gui.screens.ProgressScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.nbt.NbtException;
 import net.minecraft.nbt.ReportedNbtException;
@@ -154,13 +154,13 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
    }
 
    @Override
-   public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public void extractWidgetRenderState(final GuiGraphicsExtractor graphics) {
       List<LevelSummary> newLevels = this.pollLevelsIgnoreErrors();
       if (newLevels != this.currentlyDisplayedLevels) {
          this.handleNewLevels(newLevels);
       }
 
-      super.extractWidgetRenderState(graphics, mouseX, mouseY, a);
+      super.extractWidgetRenderState(graphics);
    }
 
    private void handleNewLevels(final @Nullable List<LevelSummary> levels) {
@@ -359,7 +359,7 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
       }
 
       @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          int labelX = (this.minecraft.gui.screen().width - this.minecraft.font.width(LOADING_LABEL)) / 2;
          int labelY = this.getContentY() + (this.getContentHeight() - 9) / 2;
          graphics.text(this.minecraft.font, LOADING_LABEL, labelX, labelY, -1);
@@ -388,10 +388,10 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
       }
 
       @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          this.stringWidget
             .setPosition(this.getContentXMiddle() - this.stringWidget.getWidth() / 2, this.getContentYMiddle() - this.stringWidget.getHeight() / 2);
-         this.stringWidget.extractRenderState(graphics, mouseX, mouseY, a);
+         this.stringWidget.extractRenderState(graphics);
       }
    }
 
@@ -486,19 +486,19 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
       }
 
       @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          int textX = this.getTextX();
          this.worldNameText.setPosition(textX, this.getContentY() + 1);
-         this.worldNameText.extractRenderState(graphics, mouseX, mouseY, a);
+         this.worldNameText.extractRenderState(graphics);
          this.idAndLastPlayedText.setPosition(textX, this.getContentY() + 9 + 3);
-         this.idAndLastPlayedText.extractRenderState(graphics, mouseX, mouseY, a);
+         this.idAndLastPlayedText.extractRenderState(graphics);
          this.infoText.setPosition(textX, this.getContentY() + 9 + 9 + 3);
-         this.infoText.extractRenderState(graphics, mouseX, mouseY, a);
+         this.infoText.extractRenderState(graphics);
          graphics.blit(RenderPipelines.GUI_TEXTURED, this.icon.textureLocation(), this.getContentX(), this.getContentY(), 0.0F, 0.0F, 32, 32, 32, 32);
          if (this.list.entryType == WorldSelectionList.EntryType.SINGLEPLAYER && hovered) {
             graphics.fill(this.getContentX(), this.getContentY(), this.getContentX() + 32, this.getContentY() + 32, -1601138544);
-            int relX = mouseX - this.getContentX();
-            int relY = mouseY - this.getContentY();
+            int relX = graphics.mouseX() - this.getContentX();
+            int relY = graphics.mouseY() - this.getContentY();
             boolean isOverIcon = this.mouseOverIcon(relX, relY, 32);
             Identifier joinSprite = isOverIcon ? WorldSelectionList.JOIN_HIGHLIGHTED_SPRITE : WorldSelectionList.JOIN_SPRITE;
             Identifier warningSprite = isOverIcon ? WorldSelectionList.WARNING_HIGHLIGHTED_SPRITE : WorldSelectionList.WARNING_SPRITE;
@@ -513,17 +513,21 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
             if (this.summary.isLocked()) {
                graphics.blitSprite(RenderPipelines.GUI_TEXTURED, errorSprite, this.getContentX(), this.getContentY(), 32, 32);
                if (isOverIcon) {
-                  graphics.setTooltipForNextFrame(this.minecraft.font.split(WorldSelectionList.WORLD_LOCKED_TOOLTIP, 175), mouseX, mouseY);
+                  graphics.setTooltipForNextFrame(this.minecraft.font.split(WorldSelectionList.WORLD_LOCKED_TOOLTIP, 175), graphics.mouseX(), graphics.mouseY());
                }
             } else if (this.summary.requiresManualConversion()) {
                graphics.blitSprite(RenderPipelines.GUI_TEXTURED, errorSprite, this.getContentX(), this.getContentY(), 32, 32);
                if (isOverIcon) {
-                  graphics.setTooltipForNextFrame(this.minecraft.font.split(WorldSelectionList.WORLD_REQUIRES_CONVERSION, 175), mouseX, mouseY);
+                  graphics.setTooltipForNextFrame(
+                     this.minecraft.font.split(WorldSelectionList.WORLD_REQUIRES_CONVERSION, 175), graphics.mouseX(), graphics.mouseY()
+                  );
                }
             } else if (!this.summary.isCompatible()) {
                graphics.blitSprite(RenderPipelines.GUI_TEXTURED, errorSprite, this.getContentX(), this.getContentY(), 32, 32);
                if (isOverIcon) {
-                  graphics.setTooltipForNextFrame(this.minecraft.font.split(WorldSelectionList.INCOMPATIBLE_VERSION_TOOLTIP, 175), mouseX, mouseY);
+                  graphics.setTooltipForNextFrame(
+                     this.minecraft.font.split(WorldSelectionList.INCOMPATIBLE_VERSION_TOOLTIP, 175), graphics.mouseX(), graphics.mouseY()
+                  );
                }
             } else if (this.summary.shouldBackup()) {
                graphics.blitSprite(RenderPipelines.GUI_TEXTURED, joinWithErrorSprite, this.getContentX(), this.getContentY(), 32, 32);
@@ -534,8 +538,8 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
                         ImmutableList.of(
                            WorldSelectionList.FROM_NEWER_TOOLTIP_1.getVisualOrderText(), WorldSelectionList.FROM_NEWER_TOOLTIP_2.getVisualOrderText()
                         ),
-                        mouseX,
-                        mouseY
+                        graphics.mouseX(),
+                        graphics.mouseY()
                      );
                   }
                } else if (!SharedConstants.getCurrentVersion().stable()) {
@@ -543,8 +547,8 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
                   if (isOverIcon) {
                      graphics.setTooltipForNextFrame(
                         ImmutableList.of(WorldSelectionList.SNAPSHOT_TOOLTIP_1.getVisualOrderText(), WorldSelectionList.SNAPSHOT_TOOLTIP_2.getVisualOrderText()),
-                        mouseX,
-                        mouseY
+                        graphics.mouseX(),
+                        graphics.mouseY()
                      );
                   }
                }

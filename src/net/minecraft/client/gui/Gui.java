@@ -46,7 +46,7 @@ import net.minecraft.client.gui.screens.social.SocialInteractionsScreen;
 import net.minecraft.client.multiplayer.chat.ChatListener;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.quickplay.QuickPlay;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.renderer.state.gui.ColoredRectangleRenderState;
 import net.minecraft.client.renderer.state.gui.GuiRenderState;
 import net.minecraft.client.resources.SplashManager;
@@ -56,6 +56,7 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.server.packs.resources.ReloadableResourceManager;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.CommonLinks;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.profiling.Profiler;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.util.profiling.Zone;
@@ -149,7 +150,7 @@ public class Gui {
       GuiGraphicsExtractor graphics = new GuiGraphicsExtractor(this.minecraft, this.guiRenderState, xMouse, yMouse);
       if (shouldRenderLevel) {
          profiler.push("hud");
-         this.hud.extractRenderState(graphics, deltaTracker);
+         this.hud.extractRenderState(graphics);
          profiler.pop();
       }
 
@@ -157,7 +158,7 @@ public class Gui {
          profiler.push("overlay");
 
          try {
-            this.overlay.extractRenderState(graphics, xMouse, yMouse, deltaTracker.getGameTimeDeltaTicks());
+            this.overlay.extractRenderState(graphics);
          } catch (Throwable t) {
             CrashReport report = CrashReport.forThrowable(t, "Extracting overlay render state");
             CrashReportCategory category = report.addCategory("Overlay details");
@@ -170,7 +171,7 @@ public class Gui {
          profiler.push("screen");
 
          try {
-            this.screen.extractRenderStateWithTooltipAndSubtitles(graphics, xMouse, yMouse, deltaTracker.getGameTimeDeltaTicks());
+            this.screen.extractRenderStateWithTooltipAndSubtitles(graphics);
          } catch (Throwable t) {
             CrashReport report = CrashReport.forThrowable(t, "Rendering screen");
             CrashReportCategory category = report.addCategory("Screen render details");
@@ -217,7 +218,7 @@ public class Gui {
    public void setScreen(@Nullable Screen newScreen) {
       Screen oldScreen = this.screen;
       boolean hadScreenOpen = oldScreen != null;
-      if (SharedConstants.IS_RUNNING_IN_IDE && Thread.currentThread() != this.minecraft.getRunningThread()) {
+      if (DevUtil.IS_RUNNING_IN_IDE && Thread.currentThread() != this.minecraft.getRunningThread()) {
          LOGGER.error("setScreen called from non-game thread");
       }
 

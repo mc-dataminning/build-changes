@@ -1,11 +1,11 @@
 package net.minecraft.world.level;
 
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.core.BlockPos;
 
 public class PotentialCalculator {
-   private final List<PotentialCalculator.PointCharge> charges = Lists.newArrayList();
+   private final List<PotentialCalculator.PointCharge> charges = new ArrayList<>();
 
    public void addCharge(final BlockPos pos, final double charge) {
       if (charge != 0.0) {

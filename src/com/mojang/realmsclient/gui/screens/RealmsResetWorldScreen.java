@@ -24,7 +24,7 @@ import net.minecraft.client.gui.layouts.LayoutSettings;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.layouts.SpacerElement;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.realms.RealmsScreen;
@@ -279,7 +279,7 @@ public class RealmsResetWorldScreen extends RealmsScreen {
       }
 
       @Override
-      public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+      public void extractContents(final GuiGraphicsExtractor graphics) {
          boolean hoveredOrFocused = this.isHoveredOrFocused();
          int color = -1;
          if (hoveredOrFocused) {

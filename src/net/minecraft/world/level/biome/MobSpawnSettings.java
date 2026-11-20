@@ -1,12 +1,12 @@
 package net.minecraft.world.level.biome;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.EnumMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
@@ -86,7 +86,7 @@ public class MobSpawnSettings {
 
    public static class Builder {
       private final Map<MobCategory, WeightedList.Builder<MobSpawnSettings.SpawnerData>> spawnsByCategory = new EnumMap<>(MobCategory.class);
-      private final Map<EntityType<?>, MobSpawnSettings.MobSpawnCost> mobSpawnCosts = Maps.newLinkedHashMap();
+      private final Map<EntityType<?>, MobSpawnSettings.MobSpawnCost> mobSpawnCosts = new LinkedHashMap<>();
 
       public MobSpawnSettings.Builder addSpawn(final EntityType<?> type, final int weight, final int minCount, final int maxCount) {
          IntProvider count;

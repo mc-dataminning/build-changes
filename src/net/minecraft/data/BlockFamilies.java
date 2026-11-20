@@ -1,6 +1,6 @@
 package net.minecraft.data;
 
-import com.google.common.collect.Maps;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.WeatheringCopperCollection;
 import org.jspecify.annotations.Nullable;
 
 public class BlockFamilies {
-   private static final Map<Block, BlockFamily> MAP = Maps.newHashMap();
+   private static final Map<Block, BlockFamily> MAP = new HashMap<>();
    private static final String RECIPE_GROUP_PREFIX_WOODEN = "wooden";
    private static final String RECIPE_GROUP_PREFIX_WOOLEN = "woolen";
    private static final String RECIPE_UNLOCKED_BY_HAS_PLANKS = "has_planks";
@@ -575,6 +575,14 @@ public class BlockFamilies {
             .generateStonecutterRecipe()
             .getFamily()
       );
+   public static final BlockFamily PACKED_ICE = familyBuilder(Blocks.PACKED_ICE).bricks(Blocks.PACKED_ICE_BRICKS).generateStonecutterRecipe().getFamily();
+   public static final BlockFamily PACKED_ICE_BRICKS = familyBuilder(Blocks.PACKED_ICE_BRICKS)
+      .slab(Blocks.PACKED_ICE_BRICK_SLAB)
+      .stairs(Blocks.PACKED_ICE_BRICK_STAIRS)
+      .wall(Blocks.PACKED_ICE_BRICK_WALL)
+      .chiseled(Blocks.CHISELED_PACKED_ICE)
+      .generateStonecutterRecipe()
+      .getFamily();
 
    private static BlockFamily.Builder familyBuilder(final Block base) {
       BlockFamily.Builder builder = new BlockFamily.Builder(base);

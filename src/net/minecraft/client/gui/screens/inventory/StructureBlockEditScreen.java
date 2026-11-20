@@ -413,43 +413,43 @@ public class StructureBlockEditScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       StructureMode mode = this.structure.getMode();
       graphics.centeredText(this.font, this.title, this.width / 2, 10, -1);
       if (mode != StructureMode.DATA) {
          graphics.text(this.font, NAME_LABEL, this.width / 2 - 153, 30, -6250336);
-         this.nameEdit.extractRenderState(graphics, mouseX, mouseY, a);
+         this.nameEdit.extractRenderState(graphics);
       }
 
       if (mode == StructureMode.LOAD || mode == StructureMode.SAVE) {
          graphics.text(this.font, POSITION_LABEL, this.width / 2 - 153, 70, -6250336);
-         this.posXEdit.extractRenderState(graphics, mouseX, mouseY, a);
-         this.posYEdit.extractRenderState(graphics, mouseX, mouseY, a);
-         this.posZEdit.extractRenderState(graphics, mouseX, mouseY, a);
+         this.posXEdit.extractRenderState(graphics);
+         this.posYEdit.extractRenderState(graphics);
+         this.posZEdit.extractRenderState(graphics);
          graphics.text(this.font, INCLUDE_ENTITIES_LABEL, this.width / 2 + 154 - this.font.width(INCLUDE_ENTITIES_LABEL), 150, -6250336);
       }
 
       if (mode == StructureMode.SAVE) {
          graphics.text(this.font, SIZE_LABEL, this.width / 2 - 153, 110, -6250336);
-         this.sizeXEdit.extractRenderState(graphics, mouseX, mouseY, a);
-         this.sizeYEdit.extractRenderState(graphics, mouseX, mouseY, a);
-         this.sizeZEdit.extractRenderState(graphics, mouseX, mouseY, a);
+         this.sizeXEdit.extractRenderState(graphics);
+         this.sizeYEdit.extractRenderState(graphics);
+         this.sizeZEdit.extractRenderState(graphics);
          graphics.text(this.font, DETECT_SIZE_LABEL, this.width / 2 + 154 - this.font.width(DETECT_SIZE_LABEL), 110, -6250336);
          graphics.text(this.font, SHOW_AIR_LABEL, this.width / 2 + 154 - this.font.width(SHOW_AIR_LABEL), 70, -6250336);
       }
 
       if (mode == StructureMode.LOAD) {
          graphics.text(this.font, INTEGRITY_LABEL, this.width / 2 - 153, 110, -6250336);
-         this.integrityEdit.extractRenderState(graphics, mouseX, mouseY, a);
-         this.seedEdit.extractRenderState(graphics, mouseX, mouseY, a);
+         this.integrityEdit.extractRenderState(graphics);
+         this.seedEdit.extractRenderState(graphics);
          graphics.text(this.font, STRICT_LABEL, this.width / 2 + 154 - this.font.width(STRICT_LABEL), 110, -6250336);
          graphics.text(this.font, SHOW_BOUNDING_BOX_LABEL, this.width / 2 + 154 - this.font.width(SHOW_BOUNDING_BOX_LABEL), 70, -6250336);
       }
 
       if (mode == StructureMode.DATA) {
          graphics.text(this.font, CUSTOM_DATA_LABEL, this.width / 2 - 153, 110, -6250336);
-         this.dataEdit.extractRenderState(graphics, mouseX, mouseY, a);
+         this.dataEdit.extractRenderState(graphics);
       }
 
       graphics.text(this.font, mode.getDisplayName(), this.width / 2 - 153, 174, -6250336);

@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import net.minecraft.CrashReport;
 import net.minecraft.CrashReportCategory;
+import net.minecraft.CrashReportUtil;
 import net.minecraft.ReportedException;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.renderer.SectionBufferBuilderPack;
@@ -107,7 +108,7 @@ public class SectionCompiler {
             } catch (Throwable t) {
                CrashReport report = CrashReport.forThrowable(t, "Tesselating block in world");
                CrashReportCategory category = report.addCategory("Block being tesselated");
-               CrashReportCategory.populateBlockDetails(category, region, pos, blockState);
+               CrashReportUtil.populateBlockDetails(category, region, pos, blockState);
                throw new ReportedException(report);
             }
          }

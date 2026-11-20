@@ -1,6 +1,6 @@
 package net.minecraft.world.item.equipment;
 
-import com.google.common.collect.Maps;
+import java.util.EnumMap;
 import java.util.Map;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
@@ -35,8 +35,6 @@ public interface ArmorMaterials {
    );
 
    private static Map<ArmorType, Integer> makeDefense(final int boots, final int legs, final int chest, final int helm, final int body) {
-      return Maps.newEnumMap(
-         Map.of(ArmorType.BOOTS, boots, ArmorType.LEGGINGS, legs, ArmorType.CHESTPLATE, chest, ArmorType.HELMET, helm, ArmorType.BODY, body)
-      );
+      return new EnumMap<>(Map.of(ArmorType.BOOTS, boots, ArmorType.LEGGINGS, legs, ArmorType.CHESTPLATE, chest, ArmorType.HELMET, helm, ArmorType.BODY, body));
    }
 }

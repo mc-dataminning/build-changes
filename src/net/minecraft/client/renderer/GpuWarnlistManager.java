@@ -1,7 +1,6 @@
 package net.minecraft.client.renderer;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableMap.Builder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -12,6 +11,7 @@ import com.mojang.renderpearl.api.device.DeviceInfo;
 import com.mojang.renderpearl.api.device.GpuDevice;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -75,9 +75,9 @@ public class GpuWarnlistManager extends SimplePreparableReloadListener<GpuWarnli
    }
 
    protected GpuWarnlistManager.Preparations prepare(final ResourceManager manager, final ProfilerFiller profiler) {
-      List<Pattern> rendererPatterns = Lists.newArrayList();
-      List<Pattern> versionPatterns = Lists.newArrayList();
-      List<Pattern> vendorPatterns = Lists.newArrayList();
+      List<Pattern> rendererPatterns = new ArrayList<>();
+      List<Pattern> versionPatterns = new ArrayList<>();
+      List<Pattern> vendorPatterns = new ArrayList<>();
       JsonObject root = parseJson(manager, profiler);
       if (root != null) {
          try (Zone ignored = profiler.zone("compile_regex")) {
@@ -122,7 +122,7 @@ public class GpuWarnlistManager extends SimplePreparableReloadListener<GpuWarnli
       }
 
       private static String matchAny(final List<Pattern> patterns, final String input) {
-         List<String> allMatches = Lists.newArrayList();
+         List<String> allMatches = new ArrayList<>();
 
          for (Pattern pattern : patterns) {
             Matcher matcher = pattern.matcher(input);

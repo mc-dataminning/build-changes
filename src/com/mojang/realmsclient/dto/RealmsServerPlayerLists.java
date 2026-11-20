@@ -1,7 +1,6 @@
 package com.mojang.realmsclient.dto;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableMap.Builder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -36,10 +35,10 @@ public record RealmsServerPlayerLists(Map<Long, List<ResolvableProfile>> servers
                   if (element.isJsonArray()) {
                      players = parsePlayers(element.getAsJsonArray());
                   } else {
-                     players = Lists.newArrayList();
+                     players = new ArrayList<>();
                   }
                } else {
-                  players = Lists.newArrayList();
+                  players = new ArrayList<>();
                }
 
                elements.put(JsonUtils.getLongOr("serverId", node, -1L), players);

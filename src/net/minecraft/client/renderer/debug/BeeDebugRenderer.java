@@ -1,6 +1,6 @@
 package net.minecraft.client.renderer.debug;
 
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -216,7 +216,7 @@ public class BeeDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
       Map<BlockPos, List<String>> ghostHives = new HashMap<>();
       debugValues.forEachEntity(DebugSubscriptions.BEES, (entity, beeInfo) -> {
          if (beeInfo.hivePos().isPresent() && debugValues.getBlockValue(DebugSubscriptions.BEE_HIVES, beeInfo.hivePos().get()) == null) {
-            ghostHives.computeIfAbsent(beeInfo.hivePos().get(), k -> Lists.newArrayList()).add(DebugEntityNameGenerator.getEntityName(entity));
+            ghostHives.computeIfAbsent(beeInfo.hivePos().get(), k -> new ArrayList<>()).add(DebugEntityNameGenerator.getEntityName(entity));
          }
       });
       return ghostHives;

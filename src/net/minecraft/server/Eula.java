@@ -6,8 +6,8 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Properties;
-import net.minecraft.SharedConstants;
 import net.minecraft.util.CommonLinks;
+import net.minecraft.util.DevUtil;
 import org.slf4j.Logger;
 
 public class Eula {
@@ -17,7 +17,7 @@ public class Eula {
 
    public Eula(final Path file) {
       this.file = file;
-      this.agreed = SharedConstants.IS_RUNNING_IN_IDE || this.readFile();
+      this.agreed = DevUtil.IS_RUNNING_IN_IDE || this.readFile();
    }
 
    private boolean readFile() {
@@ -37,7 +37,7 @@ public class Eula {
    }
 
    private void saveDefaults() {
-      if (!SharedConstants.IS_RUNNING_IN_IDE) {
+      if (!DevUtil.IS_RUNNING_IN_IDE) {
          try (OutputStream output = Files.newOutputStream(this.file)) {
             Properties properties = new Properties();
             properties.setProperty("eula", "false");

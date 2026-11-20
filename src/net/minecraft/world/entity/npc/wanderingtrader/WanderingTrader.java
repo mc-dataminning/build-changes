@@ -1,7 +1,9 @@
 package net.minecraft.world.entity.npc.wanderingtrader;
 
 import java.util.EnumSet;
+import java.util.Optional;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -37,7 +39,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.item.trading.TradeSets;
@@ -47,7 +48,7 @@ import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
-public class WanderingTrader extends AbstractVillager implements Consumable.OverrideConsumeSound {
+public class WanderingTrader extends AbstractVillager {
    private static final int DEFAULT_DESPAWN_DELAY = 0;
    private @Nullable BlockPos wanderTarget;
    private int despawnDelay = 0;
@@ -178,8 +179,8 @@ public class WanderingTrader extends AbstractVillager implements Consumable.Over
    }
 
    @Override
-   public SoundEvent getConsumeSound(final ItemStack itemStack) {
-      return itemStack.is(Items.MILK_BUCKET) ? SoundEvents.WANDERING_TRADER_DRINK_MILK : SoundEvents.WANDERING_TRADER_DRINK_POTION;
+   public Optional<Holder<SoundEvent>> getConsumeSoundOverride(final ItemStack itemStack) {
+      return itemStack.is(Items.MILK_BUCKET) ? Optional.of(SoundEvents.WANDERING_TRADER_DRINK_MILK) : Optional.of(SoundEvents.WANDERING_TRADER_DRINK_POTION);
    }
 
    @Override

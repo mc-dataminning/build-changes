@@ -35,11 +35,11 @@ public class EntityPortraitWidget extends AbstractWidget {
    }
 
    @Override
-   protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics) {
       int x = this.getX();
       int y = this.getY();
       float size = this.height * 0.45F;
-      extractEntityInInventoryFollowsMouse(graphics, x, y, x + this.width, y + this.height, size, 0.0625F, this.rotationScale, mouseX, mouseY, this.renderState);
+      extractEntityInInventoryFollowsMouse(graphics, x, y, x + this.width, y + this.height, size, 0.0625F, this.rotationScale, this.renderState);
    }
 
    public static void extractEntityInInventoryFollowsMouse(
@@ -51,15 +51,13 @@ public class EntityPortraitWidget extends AbstractWidget {
       final float size,
       final float offsetY,
       final float rotationScale,
-      final float mouseX,
-      final float mouseY,
       final EntityRenderState renderState
    ) {
       float translateY = renderState.boundingBoxHeight / 2.0F + offsetY;
       float centerX = (x0 + x1) / 2.0F;
       float centerY = (y0 + y1) / 2.0F + (translateY - renderState.eyeHeight) * size;
-      float xAngle = (float)Math.atan((centerX - mouseX) * rotationScale);
-      float yAngle = (float)Math.atan((centerY - mouseY) * rotationScale);
+      float xAngle = (float)Math.atan((centerX - graphics.mouseX()) * rotationScale);
+      float yAngle = (float)Math.atan((centerY - graphics.mouseY()) * rotationScale);
       Quaternionf rotation = new Quaternionf().rotateZ((float) Math.PI);
       Quaternionf xRotation = new Quaternionf().rotateX(yAngle * 20.0F * (float) (Math.PI / 180.0));
       rotation.mul(xRotation);
@@ -78,19 +76,10 @@ public class EntityPortraitWidget extends AbstractWidget {
    }
 
    public static void extractEntityInInventoryFollowsMouse(
-      final GuiGraphicsExtractor graphics,
-      final int x0,
-      final int y0,
-      final int x1,
-      final int y1,
-      final float size,
-      final float offsetY,
-      final float mouseX,
-      final float mouseY,
-      final Entity entity
+      final GuiGraphicsExtractor graphics, final int x0, final int y0, final int x1, final int y1, final float size, final float offsetY, final Entity entity
    ) {
       EntityRenderState renderState = extractRenderState(entity);
-      extractEntityInInventoryFollowsMouse(graphics, x0, y0, x1, y1, size, offsetY, 0.025F, mouseX, mouseY, renderState);
+      extractEntityInInventoryFollowsMouse(graphics, x0, y0, x1, y1, size, offsetY, 0.025F, renderState);
    }
 
    private static EntityRenderState extractRenderState(final Entity entity) {

@@ -2,11 +2,12 @@ package net.minecraft.client.gui.components.spectator;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.spectator.SpectatorMenu;
 import net.minecraft.client.gui.spectator.SpectatorMenuItem;
 import net.minecraft.client.gui.spectator.SpectatorMenuListener;
 import net.minecraft.client.gui.spectator.categories.SpectatorPage;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
@@ -14,7 +15,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.Util;
 import org.jspecify.annotations.Nullable;
 
-public class SpectatorGui implements SpectatorMenuListener {
+public class SpectatorGui implements SpectatorMenuListener, Renderable {
    private static final Identifier HOTBAR_SPRITE = Identifier.withDefaultNamespace("hud/hotbar");
    private static final Identifier HOTBAR_SELECTION_SPRITE = Identifier.withDefaultNamespace("hud/hotbar_selection");
    private static final long FADE_OUT_DELAY = 5000L;
@@ -41,7 +42,13 @@ public class SpectatorGui implements SpectatorMenuListener {
       return Math.clamp((float)delta / 2000.0F, 0.0F, 1.0F);
    }
 
-   public void extractHotbar(final GuiGraphicsExtractor graphics) {
+   @Override
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      this.extractHotbar(graphics);
+      this.extractAction(graphics);
+   }
+
+   private void extractHotbar(final GuiGraphicsExtractor graphics) {
       if (this.menu != null) {
          float alpha = this.getHotbarAlpha();
          if (alpha <= 0.0F) {
@@ -81,7 +88,7 @@ public class SpectatorGui implements SpectatorMenuListener {
       }
    }
 
-   public void extractAction(final GuiGraphicsExtractor graphics) {
+   private void extractAction(final GuiGraphicsExtractor graphics) {
       float alpha = this.getHotbarAlpha();
       if (alpha > 0.0F && this.menu != null) {
          SpectatorMenuItem item = this.menu.getSelectedItem();

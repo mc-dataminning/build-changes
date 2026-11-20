@@ -1,6 +1,6 @@
 package net.minecraft.client.gui.components.debug;
 
-import com.google.common.collect.Maps;
+import java.util.EnumMap;
 import java.util.Map;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -11,7 +11,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import org.jspecify.annotations.Nullable;
 
 public class DebugEntryHeightmap implements DebugScreenEntry {
-   private static final Map<Heightmap.Types, String> HEIGHTMAP_NAMES = Maps.newEnumMap(
+   private static final Map<Heightmap.Types, String> HEIGHTMAP_NAMES = new EnumMap<>(
       Map.of(
          Heightmap.Types.WORLD_SURFACE_WG,
          "(WG) Surface",

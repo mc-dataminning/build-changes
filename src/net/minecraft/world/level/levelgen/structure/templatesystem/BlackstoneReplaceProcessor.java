@@ -1,7 +1,7 @@
 package net.minecraft.world.level.levelgen.structure.templatesystem;
 
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import java.util.HashMap;
 import java.util.Map;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Util;
@@ -16,7 +16,7 @@ import org.jspecify.annotations.Nullable;
 public class BlackstoneReplaceProcessor implements StructureProcessor {
    public static final MapCodec<BlackstoneReplaceProcessor> MAP_CODEC = MapCodec.unit(() -> BlackstoneReplaceProcessor.INSTANCE);
    public static final BlackstoneReplaceProcessor INSTANCE = new BlackstoneReplaceProcessor();
-   private final Map<Block, Block> replacements = Util.make(Maps.newHashMap(), map -> {
+   private final Map<Block, Block> replacements = Util.make(new HashMap<>(), map -> {
       map.put(Blocks.COBBLESTONE, Blocks.BLACKSTONE);
       map.put(Blocks.MOSSY_COBBLESTONE, Blocks.BLACKSTONE);
       map.put(Blocks.STONE, Blocks.POLISHED_BLACKSTONE);

@@ -1,6 +1,6 @@
 package net.minecraft.client.renderer.entity;
 
-import com.google.common.collect.Maps;
+import java.util.EnumMap;
 import java.util.Map;
 import net.minecraft.client.model.animal.equine.BabyHorseModel;
 import net.minecraft.client.model.animal.equine.EquineSaddleModel;
@@ -15,7 +15,7 @@ import net.minecraft.world.entity.animal.equine.Horse;
 import net.minecraft.world.entity.animal.equine.Variant;
 
 public final class HorseRenderer extends AbstractHorseRenderer<Horse, HorseRenderState, HorseModel> {
-   private static final Map<Variant, HorseRenderer.HorseTextures> LOCATION_BY_VARIANT = Maps.newEnumMap(
+   private static final Map<Variant, HorseRenderer.HorseTextures> LOCATION_BY_VARIANT = new EnumMap<>(
       Map.of(
          Variant.WHITE,
          new HorseRenderer.HorseTextures(

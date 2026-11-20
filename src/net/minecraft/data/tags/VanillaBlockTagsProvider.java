@@ -143,7 +143,16 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.FIRE_CORAL_BLOCK,
             BlockItemIds.HORN_CORAL_BLOCK
          );
-      this.tag(BlockTags.ICE).add(BlockItemIds.ICE, BlockItemIds.PACKED_ICE, BlockItemIds.BLUE_ICE, BlockItemIds.BRITTLE_ICE).add(BlockIds.FROSTED_ICE);
+      this.tag(BlockTags.ICE)
+         .add(
+            BlockItemIds.ICE,
+            BlockItemIds.PACKED_ICE,
+            BlockItemIds.PACKED_ICE_BRICKS,
+            BlockItemIds.CHISELED_PACKED_ICE,
+            BlockItemIds.BLUE_ICE,
+            BlockItemIds.BRITTLE_ICE
+         )
+         .add(BlockIds.FROSTED_ICE);
       this.tag(BlockTags.FACE_OCCLUDING_ICE_BLOCKS).add(BlockItemIds.ICE, BlockItemIds.BRITTLE_ICE).add(BlockIds.FROSTED_ICE);
       this.tag(BlockTags.VALID_SPAWN).add(BlockItemIds.GRASS_BLOCK, BlockItemIds.PODZOL);
       this.tag(BlockTags.IMPERMEABLE).addAll(toIds(BlockItemIds.STAINED_GLASS)).add(BlockItemIds.GLASS, BlockItemIds.TINTED_GLASS, BlockItemIds.BARRIER);
@@ -724,6 +733,11 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.RAW_GOLD_BLOCK,
             BlockItemIds.ICE,
             BlockItemIds.PACKED_ICE,
+            BlockItemIds.PACKED_ICE_BRICKS,
+            BlockItemIds.PACKED_ICE_BRICK_SLAB,
+            BlockItemIds.PACKED_ICE_BRICK_STAIRS,
+            BlockItemIds.PACKED_ICE_BRICK_WALL,
+            BlockItemIds.CHISELED_PACKED_ICE,
             BlockItemIds.BLUE_ICE,
             BlockItemIds.PISTON,
             BlockItemIds.STICKY_PISTON

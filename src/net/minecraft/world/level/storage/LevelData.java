@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.CrashReportCategory;
+import net.minecraft.CrashReportUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -27,7 +28,7 @@ public interface LevelData {
    boolean isDifficultyLocked();
 
    default void fillCrashReportCategory(final CrashReportCategory category, final LevelHeightAccessor levelHeightAccessor) {
-      category.setDetail("Level spawn location", () -> CrashReportCategory.formatLocation(levelHeightAccessor, this.getRespawnData().pos()));
+      category.setDetail("Level spawn location", () -> CrashReportUtil.formatLocation(levelHeightAccessor, this.getRespawnData().pos()));
    }
 
    record RespawnData(GlobalPos globalPos, float yaw, float pitch) {

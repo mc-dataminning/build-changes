@@ -1,6 +1,5 @@
 package net.minecraft.client.renderer;
 
-import com.google.common.collect.Queues;
 import com.mojang.logging.LogUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ public class SectionBufferBuilderPool implements AutoCloseable {
    private final ArrayBlockingQueue<SectionBufferBuilderPack> freeBuffers;
 
    private SectionBufferBuilderPool(final List<SectionBufferBuilderPack> buffers) {
-      this.freeBuffers = Queues.newArrayBlockingQueue(buffers.size());
+      this.freeBuffers = new ArrayBlockingQueue<>(buffers.size());
       this.freeBuffers.addAll(buffers);
    }
 

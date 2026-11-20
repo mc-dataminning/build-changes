@@ -1,6 +1,5 @@
 package net.minecraft.server.level;
 
-import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
 import java.util.ArrayList;
@@ -320,7 +319,7 @@ public class ServerEntity {
       }
 
       if (this.entity instanceof LivingEntity livingEntity) {
-         List<Pair<EquipmentSlot, ItemStack>> slots = Lists.newArrayList();
+         List<Pair<EquipmentSlot, ItemStack>> slots = new ArrayList<>();
 
          for (EquipmentSlot slot : EquipmentSlot.VALUES) {
             ItemStack itemStack = livingEntity.getItemBySlot(slot);

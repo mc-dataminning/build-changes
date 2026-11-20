@@ -8,7 +8,7 @@ import net.minecraft.client.gui.layouts.LayoutElement;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.ConfirmScreen;
 import net.minecraft.client.gui.screens.PrivacyConfirmLinkScreen;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -48,8 +48,8 @@ public class FriendsListConfirmScreen extends ConfirmScreen {
    }
 
    @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
+   public void extractBackground(final GuiGraphicsExtractor graphics) {
+      super.extractBackground(graphics);
       graphics.blitSprite(
          RenderPipelines.GUI_TEXTURED,
          BACKGROUND_SPRITE,

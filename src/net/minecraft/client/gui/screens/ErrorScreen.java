@@ -26,14 +26,14 @@ public class ErrorScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       graphics.centeredText(this.font, this.title, this.width / 2, 90, -1);
       this.message.visitLines(TextAlignment.CENTER, this.width / 2, 110, 9, graphics.textRenderer());
    }
 
    @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public void extractBackground(final GuiGraphicsExtractor graphics) {
       graphics.fillGradient(0, 0, this.width, this.height, -12574688, -11530224);
    }
 

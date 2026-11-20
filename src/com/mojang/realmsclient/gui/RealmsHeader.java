@@ -16,7 +16,7 @@ import net.minecraft.client.gui.layouts.LayoutSettings;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.ConfirmLinkScreen;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.Nullable;
@@ -119,8 +119,8 @@ public final class RealmsHeader {
       }
 
       @Override
-      public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-         super.extractContents(graphics, mouseX, mouseY, a);
+      public void extractContents(final GuiGraphicsExtractor graphics) {
+         super.extractContents(graphics);
          if (this.isActive() && this.notificationCount != 0) {
             this.extractNotificationCounter(graphics);
          }

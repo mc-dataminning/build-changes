@@ -41,7 +41,7 @@ public interface JukeboxSongs {
    private static void register(
       final BootstrapContext<JukeboxSong> context,
       final ResourceKey<JukeboxSong> registryKey,
-      final Holder.Reference<SoundEvent> soundEvent,
+      final Holder<SoundEvent> soundEvent,
       final int lengthInSeconds,
       final int comparatorOutput
    ) {

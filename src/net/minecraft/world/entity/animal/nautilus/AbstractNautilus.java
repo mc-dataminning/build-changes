@@ -463,11 +463,6 @@ public abstract class AbstractNautilus extends TamableAnimal implements PlayerRi
    }
 
    @Override
-   public boolean canBeAffected(final MobEffectInstance newEffect) {
-      return newEffect.getEffect() == MobEffects.POISON ? false : super.canBeAffected(newEffect);
-   }
-
-   @Override
    public SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {

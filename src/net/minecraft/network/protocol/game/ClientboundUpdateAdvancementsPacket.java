@@ -1,7 +1,7 @@
 package net.minecraft.network.protocol.game;
 
-import com.google.common.collect.Sets;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -27,7 +27,7 @@ public record ClientboundUpdateAdvancementsPacket(
       ClientboundUpdateAdvancementsPacket::shouldReset,
       ClientboundUpdateAdvancementsPacket.PositionedAdvancement.STREAM_CODEC.apply(ByteBufCodecs.list()),
       ClientboundUpdateAdvancementsPacket::added,
-      Identifier.STREAM_CODEC.apply(ByteBufCodecs.collection(Sets::newLinkedHashSetWithExpectedSize)),
+      Identifier.STREAM_CODEC.apply(ByteBufCodecs.collection(LinkedHashSet::new)),
       ClientboundUpdateAdvancementsPacket::removed,
       ByteBufCodecs.map(HashMap::new, Identifier.STREAM_CODEC, AdvancementProgress.STREAM_CODEC),
       ClientboundUpdateAdvancementsPacket::progress,

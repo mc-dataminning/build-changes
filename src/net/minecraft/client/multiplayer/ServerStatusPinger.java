@@ -1,6 +1,5 @@
 package net.minecraft.client.multiplayer;
 
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.logging.LogUtils;
 import io.netty.bootstrap.Bootstrap;
@@ -49,7 +48,7 @@ public class ServerStatusPinger {
       .setDepthLimit(16)
       .setDepthLimitBehavior(ResolutionContext.LimitBehavior.DISCARD_REMAINING)
       .build();
-   private final List<Connection> connections = Collections.synchronizedList(Lists.newArrayList());
+   private final List<Connection> connections = Collections.synchronizedList(new ArrayList<>());
 
    public void pingServer(
       final ServerData data, final Runnable onPersistentDataChange, final Runnable onPongResponse, final EventLoopGroupHolder eventLoopGroupHolder

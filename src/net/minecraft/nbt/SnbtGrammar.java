@@ -97,7 +97,6 @@ public class SnbtGrammar {
    private static final DelayedException<CommandSyntaxException> ERROR_INFINITY_NOT_ALLOWED = DelayedException.create(
       new SimpleCommandExceptionType(Component.translatable("snbt.parser.infinity_not_allowed"))
    );
-   private static final HexFormat HEX_ESCAPE = HexFormat.of().withUpperCase();
    private static final NumberRunParseRule BINARY_NUMERAL = new NumberRunParseRule(ERROR_EXPECTED_BINARY_NUMERAL, ERROR_UNDESCORE_NOT_ALLOWED) {
       @Override
       protected boolean isAccepted(final char c) {
@@ -144,17 +143,6 @@ public class SnbtGrammar {
 
    private static DelayedException<CommandSyntaxException> createNumberParseError(final NumberFormatException ex) {
       return DelayedException.create(ERROR_NUMBER_PARSE_FAILURE, ex.getMessage());
-   }
-
-   public static @Nullable String escapeControlCharacters(final char c) {
-      return switch (c) {
-         case '\b' -> "b";
-         case '\t' -> "t";
-         case '\n' -> "n";
-         default -> c < ' ' ? "x" + HEX_ESCAPE.toHexDigits((byte)c) : null;
-         case '\f' -> "f";
-         case '\r' -> "r";
-      };
    }
 
    private static boolean isAllowedToStartUnquotedString(final char c) {

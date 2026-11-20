@@ -1,7 +1,7 @@
 package net.minecraft.data.recipes;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import net.minecraft.advancements.triggers.Criterion;
@@ -21,8 +21,8 @@ public class ShapedRecipeBuilder implements RecipeBuilder {
    private final HolderGetter<Item> items;
    private final RecipeCategory category;
    private final ItemStackTemplate result;
-   private final List<String> rows = Lists.newArrayList();
-   private final Map<Character, Ingredient> key = Maps.newLinkedHashMap();
+   private final List<String> rows = new ArrayList<>();
+   private final Map<Character, Ingredient> key = new LinkedHashMap<>();
    private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
    private @Nullable String group;
    private boolean showNotification = true;

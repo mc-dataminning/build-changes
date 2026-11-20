@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -15,6 +16,8 @@ import net.minecraft.world.item.component.TypedEntityData;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -47,10 +50,29 @@ public class JukeboxBlock extends BaseEntityBlock {
    protected void neighborChanged(
       final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
-      boolean shouldBeInPlaylistMode = JukeboxBlockEntity.isInPlaylistMode(level, pos);
-      if (state.getValue(PLAYLIST_MODE) != shouldBeInPlaylistMode) {
-         level.setBlock(pos, state.setValue(PLAYLIST_MODE, shouldBeInPlaylistMode), 2);
+      BlockState updated = withUpdatedPlaylistMode(state, level, pos);
+      if (updated != state) {
+         level.setBlock(pos, updated, 2);
       }
+   }
+
+   @Override
+   protected BlockState updateShape(
+      final BlockState state,
+      final LevelReader level,
+      final ScheduledTickAccess ticks,
+      final BlockPos pos,
+      final Direction directionToNeighbour,
+      final BlockPos neighbourPos,
+      final BlockState neighbourState,
+      final RandomSource random
+   ) {
+      return withUpdatedPlaylistMode(state, level, pos);
+   }
+
+   private static BlockState withUpdatedPlaylistMode(final BlockState state, final LevelReader level, final BlockPos pos) {
+      boolean shouldBeInPlaylistMode = JukeboxBlockEntity.isInPlaylistMode(level, pos);
+      return state.getValue(PLAYLIST_MODE) == shouldBeInPlaylistMode ? state : state.setValue(PLAYLIST_MODE, shouldBeInPlaylistMode);
    }
 
    @Override

@@ -2,7 +2,7 @@ package net.minecraft.world.entity.vehicle.minecart;
 
 import com.mojang.datafixers.util.Pair;
 import io.netty.buffer.ByteBuf;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
@@ -34,8 +34,8 @@ public class NewMinecartBehavior extends MinecartBehavior {
    private int cachedLerpDelay;
    private float cachedPartialTick;
    private int lerpDelay = 0;
-   public final List<NewMinecartBehavior.MinecartStep> lerpSteps = new LinkedList<>();
-   public final List<NewMinecartBehavior.MinecartStep> currentLerpSteps = new LinkedList<>();
+   public final List<NewMinecartBehavior.MinecartStep> lerpSteps = new ArrayList<>();
+   public final List<NewMinecartBehavior.MinecartStep> currentLerpSteps = new ArrayList<>();
    public double currentLerpStepsTotalWeight = 0.0;
    public NewMinecartBehavior.MinecartStep oldLerp = NewMinecartBehavior.MinecartStep.ZERO;
 

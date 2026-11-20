@@ -22,8 +22,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.StrictJsonParser;
-import net.minecraft.util.Util;
 import net.minecraft.util.profiling.ProfilerFiller;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
@@ -78,7 +78,7 @@ public class PeriodicNotificationManager
       if (notifications.isEmpty()) {
          this.stopTimer();
       } else if (notifications.stream().anyMatch(n -> n.period == 0L)) {
-         Util.logAndPauseIfInIde("A periodic notification in " + this.notifications + " has a period of zero minutes");
+         DevUtil.logAndPauseIfInIde("A periodic notification in " + this.notifications + " has a period of zero minutes");
          this.stopTimer();
       } else {
          long delay = this.calculateInitialDelay(notifications);

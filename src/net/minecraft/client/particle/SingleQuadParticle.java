@@ -1,16 +1,19 @@
 package net.minecraft.client.particle;
 
 import com.mojang.blaze3d.pipeline.RenderPipeline;
+import java.util.function.Function;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.oit.OitPipelineSet;
+import net.minecraft.client.renderer.oit.OitStage;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.variant.ParticleRenderPipelineVariant;
 import net.minecraft.client.renderer.state.level.QuadParticleRenderState;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Quaternionf;
 import org.jspecify.annotations.Nullable;
@@ -24,6 +27,7 @@ public abstract class SingleQuadParticle extends Particle {
    protected float roll;
    protected float oRoll;
    protected TextureAtlasSprite sprite;
+   protected SingleQuadParticle.UvFlip uvFlip = SingleQuadParticle.UvFlip.NONE;
 
    protected SingleQuadParticle(final ClientLevel level, final double x, final double y, final double z, final TextureAtlasSprite sprite) {
       super(level, x, y, z);
@@ -123,19 +127,19 @@ public abstract class SingleQuadParticle extends Particle {
    }
 
    protected float getU0() {
-      return this.sprite.getU0();
+      return this.uvFlip.flipU() ? this.sprite.getU1() : this.sprite.getU0();
    }
 
    protected float getU1() {
-      return this.sprite.getU1();
+      return this.uvFlip.flipU() ? this.sprite.getU0() : this.sprite.getU1();
    }
 
    protected float getV0() {
-      return this.sprite.getV0();
+      return this.uvFlip.flipV() ? this.sprite.getV1() : this.sprite.getV0();
    }
 
    protected float getV1() {
-      return this.sprite.getV1();
+      return this.uvFlip.flipV() ? this.sprite.getV0() : this.sprite.getV1();
    }
 
    protected abstract SingleQuadParticle.Layer getLayer();
@@ -178,29 +182,37 @@ public abstract class SingleQuadParticle extends Particle {
       void setRotation(final Quaternionf target, final Camera camera, final float partialTickTime);
    }
 
-   public record Layer(boolean translucent, Identifier textureAtlasLocation, RenderPipeline pipeline, @Nullable OitPipelineSet oitPipelineSet) {
+   public record Layer(boolean translucent, Identifier textureAtlasLocation, Function<@Nullable OitStage, @Nullable RenderPipeline> pipelineProvider) {
       public static final SingleQuadParticle.Layer OPAQUE_TERRAIN = new SingleQuadParticle.Layer(
-         false, TextureAtlas.LOCATION_BLOCKS, RenderPipelines.OPAQUE_PARTICLE
+         false,
+         TextureAtlas.LOCATION_BLOCKS,
+         stage -> stage == null ? RenderPipelines.particle(new RenderPipelines.ParticleParameters(ParticleRenderPipelineVariant.OPAQUE, stage)) : null
       );
       public static final SingleQuadParticle.Layer TRANSLUCENT_TERRAIN = new SingleQuadParticle.Layer(
-         true, TextureAtlas.LOCATION_BLOCKS, RenderPipelines.TRANSLUCENT_PARTICLE, RenderPipelines.OIT_PARTICLE
+         true,
+         TextureAtlas.LOCATION_BLOCKS,
+         stage -> RenderPipelines.particle(new RenderPipelines.ParticleParameters(ParticleRenderPipelineVariant.TRANSLUCENT, stage))
       );
       public static final SingleQuadParticle.Layer OPAQUE_ITEMS = new SingleQuadParticle.Layer(
-         false, TextureAtlas.LOCATION_ITEMS, RenderPipelines.OPAQUE_PARTICLE
+         false,
+         TextureAtlas.LOCATION_ITEMS,
+         stage -> stage == null ? RenderPipelines.particle(new RenderPipelines.ParticleParameters(ParticleRenderPipelineVariant.OPAQUE, stage)) : null
       );
       public static final SingleQuadParticle.Layer TRANSLUCENT_ITEMS = new SingleQuadParticle.Layer(
-         true, TextureAtlas.LOCATION_ITEMS, RenderPipelines.TRANSLUCENT_PARTICLE, RenderPipelines.OIT_PARTICLE
+         true,
+         TextureAtlas.LOCATION_ITEMS,
+         stage -> RenderPipelines.particle(new RenderPipelines.ParticleParameters(ParticleRenderPipelineVariant.TRANSLUCENT, stage))
       );
       public static final SingleQuadParticle.Layer OPAQUE = new SingleQuadParticle.Layer(
-         false, TextureAtlas.LOCATION_PARTICLES, RenderPipelines.OPAQUE_PARTICLE
+         false,
+         TextureAtlas.LOCATION_PARTICLES,
+         stage -> stage == null ? RenderPipelines.particle(new RenderPipelines.ParticleParameters(ParticleRenderPipelineVariant.OPAQUE, stage)) : null
       );
       public static final SingleQuadParticle.Layer TRANSLUCENT = new SingleQuadParticle.Layer(
-         true, TextureAtlas.LOCATION_PARTICLES, RenderPipelines.TRANSLUCENT_PARTICLE, RenderPipelines.OIT_PARTICLE
+         true,
+         TextureAtlas.LOCATION_PARTICLES,
+         stage -> RenderPipelines.particle(new RenderPipelines.ParticleParameters(ParticleRenderPipelineVariant.TRANSLUCENT, stage))
       );
-
-      public Layer(final boolean translucent, final Identifier textureAtlasLocation, final RenderPipeline pipeline) {
-         this(translucent, textureAtlasLocation, pipeline, null);
-      }
 
       public static SingleQuadParticle.Layer bySprite(final TextureAtlasSprite sprite) {
          boolean translucent = sprite.transparency().hasTranslucent();
@@ -211,6 +223,31 @@ public abstract class SingleQuadParticle extends Particle {
          } else {
             return translucent ? TRANSLUCENT : OPAQUE;
          }
+      }
+   }
+
+   protected enum UvFlip {
+      NONE,
+      HORIZONTAL,
+      VERTICAL,
+      BOTH;
+
+      private static final SingleQuadParticle.UvFlip[] VALUES = values();
+
+      public static SingleQuadParticle.UvFlip random(final RandomSource random) {
+         return VALUES[random.nextInt(VALUES.length)];
+      }
+
+      public static SingleQuadParticle.UvFlip randomHorizontal(final RandomSource random) {
+         return random.nextBoolean() ? HORIZONTAL : NONE;
+      }
+
+      public boolean flipU() {
+         return this == HORIZONTAL || this == BOTH;
+      }
+
+      public boolean flipV() {
+         return this == VERTICAL || this == BOTH;
       }
    }
 }

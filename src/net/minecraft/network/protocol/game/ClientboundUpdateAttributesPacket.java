@@ -1,6 +1,5 @@
 package net.minecraft.network.protocol.game;
 
-import com.google.common.collect.Lists;
 import io.netty.buffer.ByteBuf;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,7 +28,7 @@ public class ClientboundUpdateAttributesPacket implements Packet<ClientGamePacke
 
    public ClientboundUpdateAttributesPacket(final int entityId, final Collection<AttributeInstance> values) {
       this.entityId = entityId;
-      this.attributes = Lists.newArrayList();
+      this.attributes = new ArrayList<>();
 
       for (AttributeInstance value : values) {
          this.attributes.add(new ClientboundUpdateAttributesPacket.AttributeSnapshot(value.getAttribute(), value.getBaseValue(), value.getModifiers()));

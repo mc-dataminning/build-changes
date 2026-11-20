@@ -84,8 +84,8 @@ public class RealmsPendingInvitesScreen extends RealmsScreen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int xm, final int ym, final float a) {
-      super.extractRenderState(graphics, xm, ym, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       if (this.pendingInvites.isDone() && this.pendingInvitationSelectionList.hasPendingInvites()) {
          graphics.centeredText(this.font, NO_PENDING_INVITES_TEXT, this.width / 2, this.height / 2 - 20, -1);
       }
@@ -161,22 +161,22 @@ public class RealmsPendingInvitesScreen extends RealmsScreen {
       }
 
       @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          int x = this.getContentX();
          int y = this.getContentY();
          int textX = x + 38;
          RealmsUtil.extractPlayerFace(graphics, x, y, 32, this.pendingInvite.realmOwnerUuid());
          this.realmName.setPosition(textX, y + 1);
-         this.realmName.extractWidgetRenderState(graphics, mouseX, mouseY, x);
+         this.realmName.extractWidgetRenderState(graphics);
          this.realmOwnerName.setPosition(textX, y + 12);
-         this.realmOwnerName.extractWidgetRenderState(graphics, mouseX, mouseY, x);
+         this.realmOwnerName.extractWidgetRenderState(graphics);
          this.inviteDate.setPosition(textX, y + 24);
-         this.inviteDate.extractWidgetRenderState(graphics, mouseX, mouseY, x);
+         this.inviteDate.extractWidgetRenderState(graphics);
          int buttonY = y + this.getContentHeight() / 2 - 10;
          this.acceptButton.setPosition(x + this.getContentWidth() - 16 - 42, buttonY);
-         this.acceptButton.extractRenderState(graphics, mouseX, mouseY, a);
+         this.acceptButton.extractRenderState(graphics);
          this.rejectButton.setPosition(x + this.getContentWidth() - 8 - 21, buttonY);
-         this.rejectButton.extractRenderState(graphics, mouseX, mouseY, a);
+         this.rejectButton.extractRenderState(graphics);
       }
 
       private void handleInvitation(final boolean accept) {

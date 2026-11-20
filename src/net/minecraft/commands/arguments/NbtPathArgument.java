@@ -1,7 +1,6 @@
 package net.minecraft.commands.arguments;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -60,7 +59,7 @@ public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
    }
 
    public NbtPathArgument.NbtPath parse(final StringReader reader) throws CommandSyntaxException {
-      List<NbtPathArgument.Node> nodes = Lists.newArrayList();
+      List<NbtPathArgument.Node> nodes = new ArrayList<>();
       int start = reader.getCursor();
       Object2IntMap<NbtPathArgument.Node> nodeToOriginalPosition = new Object2IntOpenHashMap();
       boolean firstNode = true;
@@ -737,7 +736,7 @@ public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
       }
 
       default List<Tag> collect(final List<Tag> tags, final BiConsumer<Tag, List<Tag>> collector) {
-         List<Tag> result = Lists.newArrayList();
+         List<Tag> result = new ArrayList<>();
 
          for (Tag tag : tags) {
             collector.accept(tag, result);

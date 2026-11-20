@@ -2,8 +2,6 @@ package net.minecraft.world.level.material;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Blocks;
@@ -13,9 +11,8 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class EmptyFluid extends Fluid {
-   @Override
-   public Item getBucket() {
-      return Items.AIR;
+   protected EmptyFluid(final Fluid.Properties properties) {
+      super(properties);
    }
 
    @Override
@@ -36,11 +33,6 @@ public class EmptyFluid extends Fluid {
    @Override
    protected boolean isEmpty() {
       return true;
-   }
-
-   @Override
-   protected float getExplosionResistance() {
-      return 0.0F;
    }
 
    @Override

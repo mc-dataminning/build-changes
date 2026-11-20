@@ -1,7 +1,7 @@
 package net.minecraft.world.entity.ai.behavior;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -30,7 +30,7 @@ public class HarvestFarmland extends Behavior<Villager> {
    private @Nullable BlockPos aboveFarmlandPos;
    private long nextOkStartTime;
    private int timeWorkedSoFar;
-   private final List<BlockPos> validFarmlandAroundVillager = Lists.newArrayList();
+   private final List<BlockPos> validFarmlandAroundVillager = new ArrayList<>();
 
    public HarvestFarmland() {
       super(

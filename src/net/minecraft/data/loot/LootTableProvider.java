@@ -13,7 +13,7 @@ import net.minecraft.core.registries.SingleRegistryBootstrap;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Util;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.context.ContextKeySet;
 import net.minecraft.world.RandomSequence;
 import net.minecraft.world.level.levelgen.RandomSupport;
@@ -39,7 +39,7 @@ public class LootTableProvider implements SingleRegistryBootstrap<LootTable> {
             Identifier sequenceId = LootTableProvider.sequenceIdForLootTable(key);
             Identifier previous = randomSequenceSeeds.put(RandomSequence.seedForKey(sequenceId), sequenceId);
             if (previous != null) {
-               Util.logAndPauseIfInIde("Loot table random sequence seed collision on " + previous + " and " + key.identifier());
+               DevUtil.logAndPauseIfInIde("Loot table random sequence seed collision on " + previous + " and " + key.identifier());
             }
 
             LootTable table = lootTable.setRandomSequence(sequenceId).setParamSet(subProvider.paramSet).build();

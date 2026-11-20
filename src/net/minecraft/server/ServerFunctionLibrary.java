@@ -1,13 +1,13 @@
 package net.minecraft.server;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -80,7 +80,7 @@ public class ServerFunctionLibrary implements PreparableReloadListener {
             () -> LISTER.listMatchingResources(manager), taskExecutor
          )
          .thenCompose(functionsToLoad -> {
-            Map<Identifier, CompletableFuture<CommandFunction<CommandSourceStack>>> result = Maps.newHashMap();
+            Map<Identifier, CompletableFuture<CommandFunction<CommandSourceStack>>> result = new HashMap<>();
             CommandSourceStack compilationContext = Commands.createCompilationContext(this.functionCompilationPermissions);
 
             for (Entry<Identifier, Resource> entry : functionsToLoad.entrySet()) {

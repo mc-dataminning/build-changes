@@ -64,8 +64,8 @@ public class ChatComponent {
    private final Minecraft minecraft;
    private final CommandHistory commandHistory;
    private final ArrayListDeque<String> recentChat = new ArrayListDeque<>(100);
-   private final List<GuiMessage> allMessages = Lists.newArrayList();
-   private final List<GuiMessage.Line> trimmedMessages = Lists.newArrayList();
+   private final List<GuiMessage> allMessages = new ArrayList<>();
+   private final List<GuiMessage.Line> trimmedMessages = new ArrayList<>();
    private int chatScrollbarPos;
    private boolean newMessageSinceScroll;
    private ChatComponent.@Nullable Draft latestDraft;
@@ -111,15 +111,13 @@ public class ChatComponent {
       final GuiGraphicsExtractor graphics,
       final Font font,
       final int ticks,
-      final int mouseX,
-      final int mouseY,
       final ChatComponent.DisplayMode displayMode,
       final boolean changeCursorOnInsertions
    ) {
       graphics.pose().pushMatrix();
       this.extractRenderState(
          displayMode.foreground
-            ? new ChatComponent.DrawingFocusedGraphicsAccess(graphics, font, mouseX, mouseY, changeCursorOnInsertions)
+            ? new ChatComponent.DrawingFocusedGraphicsAccess(graphics, font, graphics.mouseX(), graphics.mouseY(), changeCursorOnInsertions)
             : new ChatComponent.DrawingBackgroundGraphicsAccess(graphics),
          graphics.guiHeight(),
          ticks,

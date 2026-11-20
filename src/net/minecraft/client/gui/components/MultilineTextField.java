@@ -1,8 +1,8 @@
 package net.minecraft.client.gui.components;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import net.minecraft.client.Minecraft;
@@ -18,7 +18,7 @@ public class MultilineTextField {
    public static final int NO_LIMIT = Integer.MAX_VALUE;
    private static final int LINE_SEEK_PIXEL_BIAS = 2;
    private final Font font;
-   private final List<MultilineTextField.StringView> displayLines = Lists.newArrayList();
+   private final List<MultilineTextField.StringView> displayLines = new ArrayList<>();
    private String value;
    private int cursor;
    private int selectCursor;

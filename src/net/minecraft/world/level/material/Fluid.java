@@ -7,6 +7,8 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.IdMapper;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.references.BlockItemIds;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
@@ -26,14 +28,26 @@ import org.jspecify.annotations.Nullable;
 public abstract class Fluid {
    public static final IdMapper<FluidState> FLUID_STATE_REGISTRY = new IdMapper<>();
    protected final StateDefinition<Fluid, FluidState> stateDefinition;
+   private final ResourceKey<Item> bucketItem;
+   private final Optional<SoundEvent> pickupSound;
+   private final @Nullable ParticleOptions dripParticle;
+   private final float explosionResistance;
+   private final boolean randomTicking;
    private FluidState defaultFluidState;
    private final Holder.Reference<Fluid> builtInRegistryHolder = BuiltInRegistries.FLUID.createIntrusiveHolder(this);
+   private final float drag;
 
-   protected Fluid() {
+   protected Fluid(final Fluid.Properties properties) {
       StateDefinition.Builder<Fluid, FluidState> builder = new StateDefinition.Builder<>(this);
       this.createFluidStateDefinition(builder);
       this.stateDefinition = builder.create(Fluid::defaultFluidState, FluidState::new);
       this.registerDefaultState(this.makeDefaultState(this.stateDefinition.any()));
+      this.bucketItem = properties.bucketItem;
+      this.pickupSound = properties.pickupSound;
+      this.dripParticle = properties.dripParticle;
+      this.explosionResistance = properties.explosionResistance;
+      this.randomTicking = properties.randomTicking;
+      this.drag = properties.drag;
    }
 
    protected void createFluidStateDefinition(final StateDefinition.Builder<Fluid, FluidState> builder) {
@@ -55,7 +69,9 @@ public abstract class Fluid {
       return this.defaultFluidState;
    }
 
-   public abstract Item getBucket();
+   public ResourceKey<Item> getBucket() {
+      return this.bucketItem;
+   }
 
    protected void animateTick(final Level level, final BlockPos pos, final FluidState fluidState, final RandomSource random) {
    }
@@ -70,24 +86,30 @@ public abstract class Fluid {
    }
 
    protected @Nullable ParticleOptions getDripParticle() {
-      return null;
+      return this.dripParticle;
    }
 
    protected abstract boolean canBeReplacedWith(FluidState state, final BlockGetter level, final BlockPos pos, FluidState other, Direction direction);
 
    protected abstract Vec3 getFlow(BlockGetter level, BlockPos pos, FluidState fluidState);
 
+   public double getFlowScale(final Level level) {
+      return 0.0;
+   }
+
    public abstract int getTickDelay(LevelReader level);
 
    protected boolean isRandomlyTicking() {
-      return false;
+      return this.randomTicking;
    }
 
    protected boolean isEmpty() {
       return false;
    }
 
-   protected abstract float getExplosionResistance();
+   protected float getExplosionResistance() {
+      return this.explosionResistance;
+   }
 
    public abstract float getHeight(FluidState fluidState, final BlockGetter level, final BlockPos pos);
 
@@ -113,11 +135,61 @@ public abstract class Fluid {
    }
 
    public Optional<SoundEvent> getPickupSound() {
-      return Optional.empty();
+      return this.pickupSound;
    }
 
    @Deprecated
    public Holder.Reference<Fluid> builtInRegistryHolder() {
       return this.builtInRegistryHolder;
+   }
+
+   public float getDrag() {
+      return this.drag;
+   }
+
+   public static class Properties {
+      private ResourceKey<Item> bucketItem = BlockItemIds.AIR.item();
+      private Optional<SoundEvent> pickupSound = Optional.empty();
+      private @Nullable ParticleOptions dripParticle;
+      private float explosionResistance;
+      private boolean randomTicking;
+      private float drag = 1.0F;
+
+      private Properties() {
+      }
+
+      public static Fluid.Properties of() {
+         return new Fluid.Properties();
+      }
+
+      public Fluid.Properties bucketItem(final ResourceKey<Item> bucketItem) {
+         this.bucketItem = bucketItem;
+         return this;
+      }
+
+      public Fluid.Properties soundEvent(final SoundEvent pickupSound) {
+         this.pickupSound = Optional.of(pickupSound);
+         return this;
+      }
+
+      public Fluid.Properties dripParticle(final ParticleOptions dripParticle) {
+         this.dripParticle = dripParticle;
+         return this;
+      }
+
+      public Fluid.Properties explosionResistance(final float explosionResistance) {
+         this.explosionResistance = explosionResistance;
+         return this;
+      }
+
+      public Fluid.Properties randomTicking() {
+         this.randomTicking = true;
+         return this;
+      }
+
+      public Fluid.Properties drag(final float drag) {
+         this.drag = drag;
+         return this;
+      }
    }
 }

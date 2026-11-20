@@ -18,6 +18,7 @@ import net.minecraft.world.level.levelgen.densityfunction.DensityFunctionCompile
 import net.minecraft.world.level.levelgen.densityfunction.DensitySampler;
 import net.minecraft.world.level.levelgen.densityfunction.DensitySamplerSet;
 import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
+import net.minecraft.world.level.levelgen.densityfunction.op.upscale.Upscaler;
 import net.minecraft.world.level.levelgen.material.MaterialSystem;
 import net.minecraft.world.level.levelgen.synth.BlendedNoise;
 import net.minecraft.world.level.levelgen.synth.Noise;
@@ -58,6 +59,8 @@ public final class RandomState {
       this.materialSystem = new MaterialSystem(this, seaLevel, router.chunkSurfaceLevel(), this.random);
       this.densityFunctionCompiler = new DensityFunctionCompiler(
          new DensityFunction.CompileContext() {
+            private final Upscaler.Cache upscalerCache = new Upscaler.Cache();
+
             private RandomSource newLegacyInstance(final long seedOffset) {
                return new LegacyRandomSource(seed + seedOffset);
             }
@@ -81,6 +84,11 @@ public final class RandomState {
             @Override
             public RandomSource createEndIslandRandom() {
                return new LegacyRandomSource(seed);
+            }
+
+            @Override
+            public Upscaler.Cache upscalerCache() {
+               return this.upscalerCache;
             }
          }
       );

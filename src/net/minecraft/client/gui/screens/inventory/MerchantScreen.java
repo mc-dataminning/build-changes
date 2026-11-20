@@ -4,7 +4,7 @@ import com.mojang.blaze3d.platform.cursor.CursorTypes;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ServerboundSelectTradePacket;
@@ -83,7 +83,7 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
    }
 
    @Override
-   protected void extractLabels(final GuiGraphicsExtractor graphics, final int xm, final int ym) {
+   protected void extractLabels(final GuiGraphicsExtractor graphics) {
       int traderLevel = this.menu.getTraderLevel();
       if (traderLevel > 0 && traderLevel <= 5 && this.menu.showProgressBar()) {
          Component titleAndLevel = Component.translatable("merchant.title", this.title, Component.translatable("merchant.level." + traderLevel));
@@ -100,8 +100,8 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
    }
 
    @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
+   public void extractBackground(final GuiGraphicsExtractor graphics) {
+      super.extractBackground(graphics);
       int xo = (this.width - this.imageWidth) / 2;
       int yo = (this.height - this.imageHeight) / 2;
       graphics.blit(RenderPipelines.GUI_TEXTURED, VILLAGER_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 512, 256);
@@ -139,9 +139,7 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
       }
    }
 
-   private void extractScroller(
-      final GuiGraphicsExtractor graphics, final int xo, final int yo, final int mouseX, final int mouseY, final MerchantOffers offers
-   ) {
+   private void extractScroller(final GuiGraphicsExtractor graphics, final int xo, final int yo, final MerchantOffers offers) {
       int steps = offers.size() + 1 - 7;
       if (steps > 1) {
          int leftOver = 139 - (27 + (steps - 1) * 139 / steps);
@@ -155,7 +153,7 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
          int scrollerX = xo + 94;
          int scrollerY = yo + 18 + scrollerYOff;
          graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SCROLLER_SPRITE, scrollerX, scrollerY, 6, 27);
-         if (mouseX >= scrollerX && mouseX < xo + 94 + 6 && mouseY >= scrollerY && mouseY <= scrollerY + 27) {
+         if (graphics.mouseX() >= scrollerX && graphics.mouseX() < xo + 94 + 6 && graphics.mouseY() >= scrollerY && graphics.mouseY() <= scrollerY + 27) {
             graphics.requestCursor(this.isDragging ? CursorTypes.RESIZE_NS : CursorTypes.POINTING_HAND);
          }
       } else {
@@ -164,15 +162,15 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
    }
 
    @Override
-   public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractContents(graphics, mouseX, mouseY, a);
+   public void extractContents(final GuiGraphicsExtractor graphics) {
+      super.extractContents(graphics);
       MerchantOffers offers = this.menu.getOffers();
       if (!offers.isEmpty()) {
          int xo = (this.width - this.imageWidth) / 2;
          int yo = (this.height - this.imageHeight) / 2;
          int offerY = yo + 16 + 1;
          int sellItem1X = xo + 5 + 5;
-         this.extractScroller(graphics, xo, yo, mouseX, mouseY, offers);
+         this.extractScroller(graphics, xo, yo, offers);
          int currentOfferIndex = 0;
 
          for (MerchantOffer offer : offers) {
@@ -204,13 +202,13 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
             this.extractProgressBar(graphics, xo, yo, selectedOffer);
          }
 
-         if (selectedOffer.isOutOfStock() && this.isHovering(186, 35, 22, 21, mouseX, mouseY) && this.menu.canRestock()) {
-            graphics.setTooltipForNextFrame(this.font, DEPRECATED_TOOLTIP, mouseX, mouseY);
+         if (selectedOffer.isOutOfStock() && this.isHovering(186, 35, 22, 21, graphics.mouseX(), graphics.mouseY()) && this.menu.canRestock()) {
+            graphics.setTooltipForNextFrame(this.font, DEPRECATED_TOOLTIP, graphics.mouseX(), graphics.mouseY());
          }
 
          for (MerchantScreen.TradeOfferButton button : this.tradeOfferButtons) {
             if (button.isHoveredOrFocused()) {
-               button.extractToolTip(graphics, mouseX, mouseY);
+               button.extractToolTip(graphics);
             }
 
             button.setVisible(button.index < this.menu.getOffers().size());
@@ -308,19 +306,19 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
          return this.index;
       }
 
-      public void extractToolTip(final GuiGraphicsExtractor graphics, final int xm, final int ym) {
+      public void extractToolTip(final GuiGraphicsExtractor graphics) {
          if (this.isHovered && MerchantScreen.this.menu.getOffers().size() > this.index + MerchantScreen.this.scrollOff) {
-            if (xm < this.getX() + 20) {
+            if (graphics.mouseX() < this.getX() + 20) {
                ItemStack item = MerchantScreen.this.menu.getOffers().get(this.index + MerchantScreen.this.scrollOff).getCostA();
-               graphics.setTooltipForNextFrame(MerchantScreen.this.font, item, xm, ym);
-            } else if (xm < this.getX() + 50 && xm > this.getX() + 30) {
+               graphics.setTooltipForNextFrame(MerchantScreen.this.font, item, graphics.mouseX(), graphics.mouseY());
+            } else if (graphics.mouseX() < this.getX() + 50 && graphics.mouseX() > this.getX() + 30) {
                ItemStack item = MerchantScreen.this.menu.getOffers().get(this.index + MerchantScreen.this.scrollOff).getCostB();
                if (!item.isEmpty()) {
-                  graphics.setTooltipForNextFrame(MerchantScreen.this.font, item, xm, ym);
+                  graphics.setTooltipForNextFrame(MerchantScreen.this.font, item, graphics.mouseX(), graphics.mouseY());
                }
-            } else if (xm > this.getX() + 65) {
+            } else if (graphics.mouseX() > this.getX() + 65) {
                ItemStack item = MerchantScreen.this.menu.getOffers().get(this.index + MerchantScreen.this.scrollOff).getResult();
-               graphics.setTooltipForNextFrame(MerchantScreen.this.font, item, xm, ym);
+               graphics.setTooltipForNextFrame(MerchantScreen.this.font, item, graphics.mouseX(), graphics.mouseY());
             }
          }
       }

@@ -1,7 +1,7 @@
 package net.minecraft.client.gui.screens.inventory;
 
-import com.google.common.collect.Lists;
 import com.mojang.blaze3d.platform.cursor.CursorTypes;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import net.minecraft.ChatFormatting;
@@ -9,7 +9,7 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.object.book.BookModel;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.CommonComponents;
@@ -88,8 +88,8 @@ public class EnchantmentScreen extends AbstractContainerScreen<EnchantmentMenu> 
    }
 
    @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
+   public void extractBackground(final GuiGraphicsExtractor graphics) {
+      super.extractBackground(graphics);
       int xo = (this.width - this.imageWidth) / 2;
       int yo = (this.height - this.imageHeight) / 2;
       graphics.blit(RenderPipelines.GUI_TEXTURED, ENCHANTING_TABLE_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
@@ -114,8 +114,8 @@ public class EnchantmentScreen extends AbstractContainerScreen<EnchantmentMenu> 
                graphics.textWithWordWrap(this.font, message, leftPosText, yo + 16 + 19 * i, textWidth, ARGB.opaque((col & 16711422) >> 1), false);
                col = -12550384;
             } else {
-               int xx = mouseX - (xo + 60);
-               int yy = mouseY - (yo + 14 + 19 * i);
+               int xx = graphics.mouseX() - (xo + 60);
+               int yy = graphics.mouseY() - (yo + 14 + 19 * i);
                if (xx >= 0 && yy >= 0 && xx < 108 && yy < 19) {
                   graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ENCHANTMENT_SLOT_HIGHLIGHTED_SPRITE, leftPos, yo + 14 + 19 * i, 108, 19);
                   graphics.requestCursor(CursorTypes.POINTING_HAND);
@@ -146,9 +146,9 @@ public class EnchantmentScreen extends AbstractContainerScreen<EnchantmentMenu> 
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float ignored) {
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
       float a = this.minecraft.getDeltaTracker().getGameTimeDeltaPartialTick(false);
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+      super.extractRenderState(graphics);
       boolean infiniteMaterials = this.minecraft.player.hasInfiniteMaterials();
       int gold = this.menu.getGoldCount();
 
@@ -162,8 +162,8 @@ public class EnchantmentScreen extends AbstractContainerScreen<EnchantmentMenu> 
          if (!enchant.isEmpty()) {
             int enchantLevel = this.menu.levelClue[i];
             int cost = i + 1;
-            if (this.isHovering(60, 14 + 19 * i, 108, 17, mouseX, mouseY) && minLevel > 0 && enchantLevel >= 0) {
-               List<Component> texts = Lists.newArrayList();
+            if (this.isHovering(60, 14 + 19 * i, 108, 17, graphics.mouseX(), graphics.mouseY()) && minLevel > 0 && enchantLevel >= 0) {
+               List<Component> texts = new ArrayList<>();
                texts.add(Component.translatable("container.enchant.clue", Enchantment.getFullname(enchant.get(), enchantLevel)).withStyle(ChatFormatting.WHITE));
                if (!infiniteMaterials) {
                   texts.add(CommonComponents.EMPTY);
@@ -189,7 +189,7 @@ public class EnchantmentScreen extends AbstractContainerScreen<EnchantmentMenu> 
                   }
                }
 
-               graphics.setComponentTooltipForNextFrame(this.font, texts, mouseX, mouseY);
+               graphics.setComponentTooltipForNextFrame(this.font, texts, graphics.mouseX(), graphics.mouseY());
                break;
             }
          }

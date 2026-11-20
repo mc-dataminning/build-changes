@@ -99,7 +99,7 @@ public class CrafterBlock extends BaseEntityBlock {
    @Override
    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       CrafterBlockEntity crafterBlockEntity = new CrafterBlockEntity(worldPosition, blockState);
-      crafterBlockEntity.setTriggered(blockState.hasProperty(TRIGGERED) && blockState.getValue(TRIGGERED));
+      crafterBlockEntity.setTriggered(blockState.getValueOrElse(TRIGGERED, false));
       return crafterBlockEntity;
    }
 

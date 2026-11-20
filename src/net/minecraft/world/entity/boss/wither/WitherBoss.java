@@ -24,7 +24,6 @@ import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -552,11 +551,6 @@ public class WitherBoss extends Monster implements RangedAttackMob {
    @Override
    public boolean canUsePortal(final boolean ignorePassenger) {
       return false;
-   }
-
-   @Override
-   public boolean canBeAffected(final MobEffectInstance newEffect) {
-      return newEffect.is(MobEffects.WITHER) ? false : super.canBeAffected(newEffect);
    }
 
    private class WitherDoNothingGoal extends Goal {

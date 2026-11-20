@@ -1,9 +1,9 @@
 package net.minecraft.advancements;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +37,8 @@ public class AdvancementTree {
    }
 
    public void addAll(final Iterable<AdvancementHolder> advancements) {
-      List<AdvancementHolder> advancementsToAdd = Lists.newArrayList(advancements);
+      List<AdvancementHolder> advancementsToAdd = new ArrayList<>();
+      advancements.forEach(advancementsToAdd::add);
 
       while (!advancementsToAdd.isEmpty()) {
          if (!advancementsToAdd.removeIf(this::tryInsert)) {

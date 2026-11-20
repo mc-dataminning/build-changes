@@ -30,8 +30,8 @@ import net.minecraft.gametest.framework.GameTestInstances;
 import net.minecraft.network.chat.ChatType;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.dialog.Dialogs;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.Util;
 import net.minecraft.world.clock.WorldClocks;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.SulfurCubeArchetypes;
@@ -149,11 +149,11 @@ public class VanillaRegistries {
          biomeFeatures.stream().flatMap(HolderSet::stream).forEach(feature -> feature.unwrap().ifLeft(key -> {
             Holder.Reference<PlacedFeature> value = placedFeatures.getOrThrow(key);
             if (!validatePlacedFeature(value.value())) {
-               Util.logAndPauseIfInIde("Placed feature " + key.identifier() + " in biome " + biomeKey + " is missing BiomeFilter.biome()");
+               DevUtil.logAndPauseIfInIde("Placed feature " + key.identifier() + " in biome " + biomeKey + " is missing BiomeFilter.biome()");
             }
          }).ifRight(value -> {
             if (!validatePlacedFeature(value)) {
-               Util.logAndPauseIfInIde("Placed inline feature in biome " + biome + " is missing BiomeFilter.biome()");
+               DevUtil.logAndPauseIfInIde("Placed inline feature in biome " + biome + " is missing BiomeFilter.biome()");
             }
          }));
       });

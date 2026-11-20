@@ -1,7 +1,5 @@
 package net.minecraft.util.datafix.fixes;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
@@ -18,9 +16,13 @@ import it.unimi.dsi.fastutil.ints.IntList;
 import it.unimi.dsi.fastutil.ints.IntListIterator;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.BitSet;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +33,6 @@ import java.util.stream.Collectors;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
-import net.minecraft.util.CrudeIncrementalIntIdentityHashBiMap;
 import net.minecraft.util.datafix.PackedBitStorage;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
@@ -79,15 +80,6 @@ public class ChunkPalettedStorageFix extends DataFix {
 
    public static String getProperty(final Dynamic<?> state, final String property) {
       return state.get("Properties").get(property).asString("");
-   }
-
-   public static int idFor(final CrudeIncrementalIntIdentityHashBiMap<Dynamic<?>> states, final Dynamic<?> state) {
-      int id = states.getId(state);
-      if (id == -1) {
-         id = states.add(state);
-      }
-
-      return id;
    }
 
    private Dynamic<?> fix(final Dynamic<?> input) {
@@ -219,7 +211,7 @@ public class ChunkPalettedStorageFix extends DataFix {
       private static final Dynamic<?> UPPER_LARGE_FERN = ChunkPalettedStorageFix.legacyBlockState("minecraft:large_fern", Map.of("half", "upper"));
       private static final Dynamic<?> UPPER_ROSE_BUSH = ChunkPalettedStorageFix.legacyBlockState("minecraft:rose_bush", Map.of("half", "upper"));
       private static final Dynamic<?> UPPER_PEONY = ChunkPalettedStorageFix.legacyBlockState("minecraft:peony", Map.of("half", "upper"));
-      private static final Map<String, Dynamic<?>> FLOWER_POT_MAP = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), map -> {
+      private static final Map<String, Dynamic<?>> FLOWER_POT_MAP = (Map<String, Dynamic<?>>)DataFixUtils.make(new HashMap(), map -> {
          map.put("minecraft:air0", ChunkPalettedStorageFix.legacyBlockState("minecraft:flower_pot"));
          map.put("minecraft:red_flower0", ChunkPalettedStorageFix.legacyBlockState("minecraft:potted_poppy"));
          map.put("minecraft:red_flower1", ChunkPalettedStorageFix.legacyBlockState("minecraft:potted_blue_orchid"));
@@ -243,7 +235,7 @@ public class ChunkPalettedStorageFix extends DataFix {
          map.put("minecraft:tallgrass2", ChunkPalettedStorageFix.legacyBlockState("minecraft:potted_fern"));
          map.put("minecraft:cactus0", ChunkPalettedStorageFix.legacyBlockState("minecraft:potted_cactus"));
       });
-      private static final Map<String, Dynamic<?>> SKULL_MAP = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), map -> {
+      private static final Map<String, Dynamic<?>> SKULL_MAP = (Map<String, Dynamic<?>>)DataFixUtils.make(new HashMap(), map -> {
          mapSkull(map, 0, "skeleton", "skull");
          mapSkull(map, 1, "wither_skeleton", "skull");
          mapSkull(map, 2, "zombie", "head");
@@ -251,7 +243,7 @@ public class ChunkPalettedStorageFix extends DataFix {
          mapSkull(map, 4, "creeper", "head");
          mapSkull(map, 5, "dragon", "head");
       });
-      private static final Map<String, Dynamic<?>> DOOR_MAP = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), map -> {
+      private static final Map<String, Dynamic<?>> DOOR_MAP = (Map<String, Dynamic<?>>)DataFixUtils.make(new HashMap(), map -> {
          mapDoor(map, "oak_door");
          mapDoor(map, "iron_door");
          mapDoor(map, "spruce_door");
@@ -260,7 +252,7 @@ public class ChunkPalettedStorageFix extends DataFix {
          mapDoor(map, "acacia_door");
          mapDoor(map, "dark_oak_door");
       });
-      private static final Map<String, Dynamic<?>> NOTE_BLOCK_MAP = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), map -> {
+      private static final Map<String, Dynamic<?>> NOTE_BLOCK_MAP = (Map<String, Dynamic<?>>)DataFixUtils.make(new HashMap(), map -> {
          for (int i = 0; i < 26; i++) {
             map.put("true" + i, ChunkPalettedStorageFix.legacyBlockState("minecraft:note_block", Map.of("powered", "true", "note", String.valueOf(i))));
             map.put("false" + i, ChunkPalettedStorageFix.legacyBlockState("minecraft:note_block", Map.of("powered", "false", "note", String.valueOf(i))));
@@ -284,7 +276,7 @@ public class ChunkPalettedStorageFix extends DataFix {
          map.put(14, "red");
          map.put(15, "black");
       });
-      private static final Map<String, Dynamic<?>> BED_BLOCK_MAP = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), map -> {
+      private static final Map<String, Dynamic<?>> BED_BLOCK_MAP = (Map<String, Dynamic<?>>)DataFixUtils.make(new HashMap(), map -> {
          Iterator i$ = DYE_COLOR_MAP.int2ObjectEntrySet().iterator();
 
          while (i$.hasNext()) {
@@ -294,7 +286,7 @@ public class ChunkPalettedStorageFix extends DataFix {
             }
          }
       });
-      private static final Map<String, Dynamic<?>> BANNER_BLOCK_MAP = (Map<String, Dynamic<?>>)DataFixUtils.make(Maps.newHashMap(), map -> {
+      private static final Map<String, Dynamic<?>> BANNER_BLOCK_MAP = (Map<String, Dynamic<?>>)DataFixUtils.make(new HashMap(), map -> {
          Iterator i$ = DYE_COLOR_MAP.int2ObjectEntrySet().iterator();
 
          while (i$.hasNext()) {
@@ -703,8 +695,34 @@ public class ChunkPalettedStorageFix extends DataFix {
       }
    }
 
+   private static final class Palette {
+      private static final int NOT_FOUND = -1;
+      private final Reference2IntMap<Dynamic<?>> ids;
+      private final List<Dynamic<?>> byId = new ArrayList<>();
+
+      public Palette() {
+         this.ids = new Reference2IntOpenHashMap(32);
+         this.ids.defaultReturnValue(-1);
+      }
+
+      public int idFor(final Dynamic<?> state) {
+         int id = this.ids.getInt(state);
+         if (id == -1) {
+            id = this.byId.size();
+            this.byId.add(state);
+            this.ids.put(state, id);
+         }
+
+         return id;
+      }
+
+      public @Nullable Dynamic<?> byId(final int id) {
+         return id >= 0 && id < this.byId.size() ? this.byId.get(id) : null;
+      }
+   }
+
    private static class Section {
-      private final CrudeIncrementalIntIdentityHashBiMap<Dynamic<?>> palette = CrudeIncrementalIntIdentityHashBiMap.create(32);
+      private final ChunkPalettedStorageFix.Palette palette = new ChunkPalettedStorageFix.Palette();
       private final List<Dynamic<?>> listTag;
       private final Dynamic<?> section;
       private final boolean hasData;
@@ -715,7 +733,7 @@ public class ChunkPalettedStorageFix extends DataFix {
       private final int[] buffer = new int[4096];
 
       public Section(final Dynamic<?> section) {
-         this.listTag = Lists.newArrayList();
+         this.listTag = new ArrayList<>();
          this.section = section;
          this.y = section.get("Y").asInt(0);
          this.hasData = section.get("Blocks").result().isPresent();
@@ -735,7 +753,7 @@ public class ChunkPalettedStorageFix extends DataFix {
             this.listTag.add("%%FILTER_ME%%".equals(ChunkPalettedStorageFix.getName(blockState)) ? ChunkPalettedStorageFix.MappingConstants.AIR : blockState);
          }
 
-         this.buffer[idx] = ChunkPalettedStorageFix.idFor(this.palette, blockState);
+         this.buffer[idx] = this.palette.idFor(blockState);
       }
 
       public int upgrade(int sides) {
@@ -757,7 +775,7 @@ public class ChunkPalettedStorageFix extends DataFix {
             .result()
             .orElseGet(ChunkPalettedStorageFix.DataLayer::new);
          this.seen.add(ChunkPalettedStorageFix.MappingConstants.AIR);
-         ChunkPalettedStorageFix.idFor(this.palette, ChunkPalettedStorageFix.MappingConstants.AIR);
+         this.palette.idFor(ChunkPalettedStorageFix.MappingConstants.AIR);
          this.listTag.add(ChunkPalettedStorageFix.MappingConstants.AIR);
 
          for (int idx = 0; idx < 4096; idx++) {
@@ -1150,7 +1168,7 @@ public class ChunkPalettedStorageFix extends DataFix {
          }
 
          Dynamic<?> indices = level.emptyMap();
-         List<Dynamic<?>> sections = Lists.newArrayList();
+         List<Dynamic<?>> sections = new ArrayList<>();
 
          for (ChunkPalettedStorageFix.Section section : this.sections) {
             if (section != null) {

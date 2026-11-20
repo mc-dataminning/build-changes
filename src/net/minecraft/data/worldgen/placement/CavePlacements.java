@@ -353,11 +353,11 @@ public class CavePlacements {
          context,
          ICE_CREVASSE,
          iceCrevasse,
-         CountPlacement.of(ConstantInt.of(8)),
+         CountPlacement.of(ConstantInt.of(16)),
          InSquarePlacement.spread(),
          HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(24), VerticalAnchor.belowTop(64)),
          EnvironmentScanPlacement.scanningFor(
-            Direction.DOWN, BlockPredicate.matchesTag(BlockTags.ICE_CREVASSE_REPLACEABLES), BlockPredicate.ONLY_IN_AIR_PREDICATE, 32
+            Direction.DOWN, BlockPredicate.matchesTag(BlockTags.ICE_CREVASSE_REPLACEABLES), BlockPredicate.ONLY_IN_AIR_PREDICATE, 8
          ),
          BiomeFilter.biome()
       );

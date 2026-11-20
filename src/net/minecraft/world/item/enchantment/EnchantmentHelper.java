@@ -1,6 +1,5 @@
 package net.minecraft.world.item.enchantment;
 
-import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.ArrayList;
@@ -548,7 +547,7 @@ public class EnchantmentHelper {
    public static List<EnchantmentInstance> selectEnchantment(
       final RandomSource random, final ItemStack itemStack, int enchantmentCost, final Stream<Holder<Enchantment>> source
    ) {
-      List<EnchantmentInstance> results = Lists.newArrayList();
+      List<EnchantmentInstance> results = new ArrayList<>();
       Enchantable enchantable = itemStack.get(DataComponents.ENCHANTABLE);
       if (enchantable == null) {
          return results;
@@ -593,7 +592,7 @@ public class EnchantmentHelper {
    }
 
    public static List<EnchantmentInstance> getAvailableEnchantmentResults(final int value, final ItemStack itemStack, final Stream<Holder<Enchantment>> source) {
-      List<EnchantmentInstance> results = Lists.newArrayList();
+      List<EnchantmentInstance> results = new ArrayList<>();
       boolean isBook = itemStack.is(Items.BOOK);
       source.filter(enchantment -> enchantment.value().isPrimaryItem(itemStack) || isBook).forEach(holder -> {
          Enchantment enchantment = holder.value();

@@ -1,11 +1,11 @@
 package net.minecraft.world.level.storage;
 
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.Lifecycle;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -82,7 +82,7 @@ public class PrimaryLevelData implements ServerLevelData, WorldData {
          0L,
          19133,
          false,
-         Sets.newLinkedHashSet(),
+         new LinkedHashSet<>(),
          new HashSet<>(),
          levelSettings.copy(),
          specialWorldProperty,
@@ -106,7 +106,7 @@ public class PrimaryLevelData implements ServerLevelData, WorldData {
          gameTime,
          levelVersion.levelDataVersion(),
          input.get("initialized").asBoolean(true),
-         input.get("ServerBrands").asStream().flatMap(b -> b.asString().result().stream()).collect(Collectors.toCollection(Sets::newLinkedHashSet)),
+         input.get("ServerBrands").asStream().flatMap(b -> b.asString().result().stream()).collect(Collectors.toCollection(LinkedHashSet::new)),
          input.get("removed_features").asStream().flatMap(b -> b.asString().result().stream()).collect(Collectors.toSet()),
          settings,
          specialWorldProperty,

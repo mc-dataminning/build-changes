@@ -39,7 +39,6 @@ import java.util.Set;
 import net.minecraft.client.Camera;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
 import net.minecraft.client.Screenshot;
 import net.minecraft.client.TextureFilteringMethod;
 import net.minecraft.client.gui.render.GuiRenderer;
@@ -54,6 +53,7 @@ import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.feature.FeatureRenderDispatcher;
 import net.minecraft.client.renderer.fog.FogRenderer;
 import net.minecraft.client.renderer.item.ItemModelResolver;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.renderer.state.GameRenderState;
 import net.minecraft.client.renderer.state.OptionsRenderState;
 import net.minecraft.client.renderer.state.WindowRenderState;
@@ -439,7 +439,7 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       this.gameRenderState.shouldRenderLevel = resourcesLoaded && advanceGameTime && this.minecraft.level != null;
       float worldPartialTicks = deltaTracker.getGameTimeDeltaPartialTick(false);
       this.extractWindow();
-      this.extractOptions();
+      this.minecraft.options.extractRenderState(this.gameRenderState.optionsRenderState);
       if (this.gameRenderState.shouldRenderLevel) {
          this.lightmapRenderStateExtractor.extract(this.gameRenderState.lightmapRenderState, 1.0F);
          this.extractCamera(deltaTracker, worldPartialTicks);
@@ -738,32 +738,6 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       windowState.guiScale = window.getGuiScale();
       windowState.appropriateLineWidth = window.getAppropriateLineWidth();
       windowState.isMinimized = window.isIconified();
-   }
-
-   private void extractOptions() {
-      OptionsRenderState optionsState = this.gameRenderState.optionsRenderState;
-      Options options = this.minecraft.options;
-      optionsState.cloudRange = options.cloudRange().get();
-      optionsState.cutoutLeaves = options.cutoutLeaves().get();
-      optionsState.improvedTransparency = options.improvedTransparency().get();
-      optionsState.ambientOcclusion = options.ambientOcclusion().get();
-      optionsState.menuBackgroundBlurriness = options.getMenuBackgroundBlurriness();
-      optionsState.panoramaSpeed = options.panoramaSpeed().get();
-      optionsState.maxAnisotropyValue = options.maxAnisotropyValue();
-      optionsState.textureFiltering = options.textureFiltering().get();
-      optionsState.bobView = options.bobView().get();
-      optionsState.screenEffectScale = options.screenEffectScale().get().floatValue();
-      optionsState.glintSpeed = options.glintSpeed().get();
-      optionsState.glintStrength = options.glintStrength().get();
-      optionsState.damageTiltStrength = options.damageTiltStrength().get();
-      optionsState.backgroundForChatOnly = options.backgroundForChatOnly().get();
-      optionsState.textBackgroundOpacity = options.textBackgroundOpacity().get().floatValue();
-      optionsState.cloudStatus = options.getCloudStatus();
-      optionsState.cameraType = options.getCameraType();
-      optionsState.renderDistance = options.getEffectiveRenderDistance();
-      optionsState.chunkSectionFadeInTime = options.chunkSectionFadeInTime().get();
-      optionsState.prioritizeChunkUpdates = options.prioritizeChunkUpdates().get();
-      optionsState.fov = options.fov().get();
    }
 
    private void extractCamera(final DeltaTracker deltaTracker, final float worldPartialTicks) {

@@ -2,7 +2,6 @@ package net.minecraft.world.level.biome;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
@@ -371,15 +370,15 @@ public class Climate {
       }
 
       private static <T> List<Climate.RTree.SubTree<T>> bucketize(final List<? extends Climate.RTree.Node<T>> nodes, final int childrenPerNode) {
-         List<Climate.RTree.SubTree<T>> buckets = Lists.newArrayList();
-         List<Climate.RTree.Node<T>> children = Lists.newArrayList();
+         List<Climate.RTree.SubTree<T>> buckets = new ArrayList<>();
+         List<Climate.RTree.Node<T>> children = new ArrayList<>();
          int expectedChildrenCount = (int)Math.pow(childrenPerNode, Math.floor(Math.log(nodes.size() - 0.01) / Math.log(childrenPerNode)));
 
          for (Climate.RTree.Node<T> child : nodes) {
             children.add(child);
             if (children.size() >= expectedChildrenCount) {
                buckets.add(new Climate.RTree.SubTree<>(children));
-               children = Lists.newArrayList();
+               children = new ArrayList<>();
             }
          }
 
@@ -406,7 +405,7 @@ public class Climate {
          }
 
          int dimensions = 7;
-         List<Climate.Parameter> bounds = Lists.newArrayList();
+         List<Climate.Parameter> bounds = new ArrayList<>();
 
          for (int d = 0; d < 7; d++) {
             bounds.add(null);

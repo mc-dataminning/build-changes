@@ -3283,6 +3283,19 @@ public class Blocks {
          .strength(0.5F)
          .sound(BlockSoundSets.PACKED_ICE)
    );
+   public static final Block PACKED_ICE_BRICKS = register(
+      BlockItemIds.PACKED_ICE_BRICKS,
+      BlockBehaviour.Properties.of()
+         .mapColor(MapColor.ICE)
+         .instrument(NoteBlockInstrument.CHIME)
+         .friction(0.6F)
+         .strength(0.5F)
+         .sound(BlockSoundSets.PACKED_ICE)
+   );
+   public static final Block PACKED_ICE_BRICK_SLAB = registerSlab(BlockItemIds.PACKED_ICE_BRICK_SLAB, PACKED_ICE_BRICKS);
+   public static final Block PACKED_ICE_BRICK_STAIRS = registerStair(BlockItemIds.PACKED_ICE_BRICK_STAIRS, PACKED_ICE_BRICKS);
+   public static final Block PACKED_ICE_BRICK_WALL = registerWall(BlockItemIds.PACKED_ICE_BRICK_WALL, PACKED_ICE_BRICKS);
+   public static final Block CHISELED_PACKED_ICE = register(BlockItemIds.CHISELED_PACKED_ICE, BlockBehaviour.Properties.ofFullCopy(PACKED_ICE_BRICKS));
    public static final Block SUNFLOWER = register(
       BlockItemIds.SUNFLOWER,
       TallFlowerBlock::new,
@@ -5003,7 +5016,13 @@ public class Blocks {
    public static final Block HONEY_BLOCK = register(
       BlockItemIds.HONEY_BLOCK,
       HoneyBlock::new,
-      BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).speedFactor(0.4F).jumpFactor(0.5F).noOcclusion().sound(BlockSoundSets.HONEY_BLOCK)
+      BlockBehaviour.Properties.of()
+         .mapColor(MapColor.COLOR_ORANGE)
+         .speedFactor(0.4F)
+         .jumpFactor(0.5F)
+         .noOcclusion()
+         .sound(BlockSoundSets.HONEY_BLOCK)
+         .isValidSpawn(Blocks::never)
    );
    public static final Block HONEYCOMB_BLOCK = register(
       BlockItemIds.HONEYCOMB_BLOCK, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.6F).sound(BlockSoundSets.CORAL_BLOCK)

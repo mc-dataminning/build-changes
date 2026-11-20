@@ -1,7 +1,7 @@
 package net.minecraft.core;
 
-import com.google.common.collect.Lists;
 import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -12,11 +12,11 @@ public class NonNullList<E> extends AbstractList<E> {
    private final @Nullable E defaultValue;
 
    public static <E> NonNullList<E> create() {
-      return new NonNullList<>(Lists.newArrayList(), null);
+      return new NonNullList<>(new ArrayList<>(), null);
    }
 
    public static <E> NonNullList<E> createWithCapacity(final int capacity) {
-      return new NonNullList<>(Lists.newArrayListWithCapacity(capacity), null);
+      return new NonNullList<>(new ArrayList<>(capacity), null);
    }
 
    public static <E> NonNullList<E> withSize(final int size, final E defaultValue) {

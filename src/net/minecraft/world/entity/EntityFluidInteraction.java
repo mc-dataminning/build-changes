@@ -1,13 +1,9 @@
 package net.minecraft.world.entity;
 
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMaps;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.OptionalDouble;
+import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.SectionPos;
@@ -27,17 +23,9 @@ import org.jspecify.annotations.Nullable;
 
 public class EntityFluidInteraction {
    private final List<EntityFluidInteraction.Tracker> fluidTrackers = new ArrayList<>();
-   private final Reference2ObjectMap<TagKey<Fluid>, EntityFluidInteraction.CurrentAccumulator> currentAccumulators = new Reference2ObjectArrayMap();
-
-   public EntityFluidInteraction(final Set<TagKey<Fluid>> fluidsWithCurrent) {
-      for (TagKey<Fluid> fluid : fluidsWithCurrent) {
-         this.currentAccumulators.put(fluid, new EntityFluidInteraction.CurrentAccumulator());
-      }
-   }
 
    public boolean update(final Entity entity, final boolean ignoreCurrent) {
       this.fluidTrackers.removeIf(EntityFluidInteraction.Tracker::reset);
-      this.currentAccumulators.values().forEach(EntityFluidInteraction.CurrentAccumulator::reset);
       AABB box = entity.getFluidInteractionBox();
       if (box == null) {
          return false;
@@ -77,7 +65,7 @@ public class EntityFluidInteraction {
                         lastFluidType = fluidType;
                         tracker = this.getOrCreateTrackerFor(fluidType);
                         if (!ignoreCurrent) {
-                           current = this.getCurrentAccumulatorFor(fluidType);
+                           current = tracker.getOrCreateCurrentAccumulator();
                         }
                      }
 
@@ -149,23 +137,28 @@ public class EntityFluidInteraction {
       return tracker;
    }
 
-   private EntityFluidInteraction.@Nullable CurrentAccumulator getCurrentAccumulatorFor(final Holder<Fluid> fluid) {
-      ObjectIterator var2 = Reference2ObjectMaps.fastIterable(this.currentAccumulators).iterator();
+   public void applyCurrentsTo(final Entity entity) {
+      if (!this.fluidTrackers.isEmpty()) {
+         Vec3 impulse = Vec3.ZERO;
 
-      while (var2.hasNext()) {
-         Entry<TagKey<Fluid>, EntityFluidInteraction.CurrentAccumulator> entry = (Entry<TagKey<Fluid>, EntityFluidInteraction.CurrentAccumulator>)var2.next();
-         if (fluid.is((TagKey<Fluid>)entry.getKey())) {
-            return (EntityFluidInteraction.CurrentAccumulator)entry.getValue();
+         for (EntityFluidInteraction.Tracker fluidTracker : this.fluidTrackers) {
+            EntityFluidInteraction.CurrentAccumulator current = fluidTracker.getCurrentAccumulator();
+            if (current != null) {
+               double flowScale = fluidTracker.fluidType.value().getFlowScale(entity.level());
+               Vec3 impulseForFluid = current.getImpulse(entity, flowScale);
+               impulse = impulse.add(impulseForFluid);
+            }
          }
-      }
 
-      return null;
-   }
+         Vec3 oldMovement = entity.getDeltaMovement();
+         double min = 0.003;
+         if (Mth.lengthSquared(oldMovement.x + impulse.x, oldMovement.z + impulse.z) < 9.0E-6
+            && impulse.length() > 1.0E-5F
+            && impulse.length() < 0.0045000000000000005) {
+            impulse = impulse.normalize().scale(0.0045000000000000005);
+         }
 
-   public void applyCurrentTo(final TagKey<Fluid> fluid, final Entity entity, final double scale) {
-      EntityFluidInteraction.CurrentAccumulator current = (EntityFluidInteraction.CurrentAccumulator)this.currentAccumulators.get(fluid);
-      if (current != null) {
-         current.applyTo(entity, scale);
+         entity.addDeltaMovement(impulse);
       }
    }
 
@@ -195,6 +188,41 @@ public class EntityFluidInteraction {
       return false;
    }
 
+   public void forEnteredFluids(final Consumer<Holder<Fluid>> onEnterFluid) {
+      for (EntityFluidInteraction.Tracker fluidTracker : this.fluidTrackers) {
+         if (!fluidTracker.wasInFluid && fluidTracker.height > 0.0) {
+            onEnterFluid.accept(fluidTracker.fluidType);
+         }
+      }
+   }
+
+   public List<Holder<Fluid>> getFluidsToJumpIn(final double fluidJumpThreshold) {
+      List<Holder<Fluid>> fluidsToJumpIn = new ArrayList<>();
+
+      for (EntityFluidInteraction.Tracker fluidTracker : this.fluidTrackers) {
+         if (fluidTracker.height > fluidJumpThreshold) {
+            fluidsToJumpIn.add(fluidTracker.fluidType);
+         }
+      }
+
+      return fluidsToJumpIn;
+   }
+
+   public OptionalDouble getDrag() {
+      double maxDrag = Double.POSITIVE_INFINITY;
+
+      for (EntityFluidInteraction.Tracker fluidTracker : this.fluidTrackers) {
+         if (fluidTracker.height > 0.0) {
+            float drag = fluidTracker.fluidType.value().getDrag();
+            if (drag < maxDrag) {
+               maxDrag = drag;
+            }
+         }
+      }
+
+      return maxDrag == Double.POSITIVE_INFINITY ? OptionalDouble.empty() : OptionalDouble.of(maxDrag);
+   }
+
    private static class CurrentAccumulator {
       private double height;
       private Vec3 accumulatedCurrent = Vec3.ZERO;
@@ -211,7 +239,7 @@ public class EntityFluidInteraction {
          this.currentCount++;
       }
 
-      public void applyTo(final Entity entity, final double scale) {
+      public Vec3 getImpulse(final Entity entity, final double scale) {
          if (this.currentCount != 0 && !(this.accumulatedCurrent.lengthSqr() < 1.0E-5F)) {
             Vec3 impulse;
             if (!(entity instanceof Player)) {
@@ -220,22 +248,19 @@ public class EntityFluidInteraction {
                impulse = this.accumulatedCurrent.scale(1.0 / this.currentCount);
             }
 
-            Vec3 oldMovement = entity.getDeltaMovement();
-            impulse = impulse.scale(scale);
-            double min = 0.003;
-            if (Math.abs(oldMovement.x) < 0.003 && Math.abs(oldMovement.z) < 0.003 && impulse.length() < 0.0045000000000000005) {
-               impulse = impulse.normalize().scale(0.0045000000000000005);
-            }
-
-            entity.addDeltaMovement(impulse);
+            return impulse.scale(scale);
+         } else {
+            return Vec3.ZERO;
          }
       }
    }
 
    private static class Tracker {
       private final Holder<Fluid> fluidType;
+      private boolean wasInFluid;
       private double height;
       private boolean eyesInside;
+      private EntityFluidInteraction.@Nullable CurrentAccumulator currentAccumulator;
 
       public Tracker(final Holder<Fluid> fluidType) {
          this.fluidType = fluidType;
@@ -246,9 +271,26 @@ public class EntityFluidInteraction {
             return true;
          }
 
+         this.wasInFluid = true;
          this.height = 0.0;
          this.eyesInside = false;
+         if (this.currentAccumulator != null) {
+            this.currentAccumulator.reset();
+         }
+
          return false;
+      }
+
+      public EntityFluidInteraction.CurrentAccumulator getOrCreateCurrentAccumulator() {
+         if (this.currentAccumulator == null) {
+            this.currentAccumulator = new EntityFluidInteraction.CurrentAccumulator();
+         }
+
+         return this.currentAccumulator;
+      }
+
+      public EntityFluidInteraction.@Nullable CurrentAccumulator getCurrentAccumulator() {
+         return this.currentAccumulator;
       }
    }
 }

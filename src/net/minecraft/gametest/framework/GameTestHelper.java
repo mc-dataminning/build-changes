@@ -469,15 +469,7 @@ public class GameTestHelper {
    }
 
    public void setBlock(final BlockPos blockPos, final BlockState blockState, final Direction direction) {
-      BlockState state = blockState;
-      if (blockState.hasProperty(HorizontalDirectionalBlock.FACING)) {
-         state = blockState.setValue(HorizontalDirectionalBlock.FACING, direction);
-      }
-
-      if (blockState.hasProperty(BlockStateProperties.FACING)) {
-         state = blockState.setValue(BlockStateProperties.FACING, direction);
-      }
-
+      BlockState state = blockState.trySetValue(HorizontalDirectionalBlock.FACING, direction).trySetValue(BlockStateProperties.FACING, direction);
       this.getLevel().setBlockAndUpdate(this.absolutePos(blockPos), state);
    }
 
@@ -545,12 +537,12 @@ public class GameTestHelper {
 
    public <T extends Comparable<T>> void assertBlockProperty(final BlockPos pos, final Property<T> property, final T value) {
       BlockState blockState = this.getBlockState(pos);
-      boolean hasProperty = blockState.hasProperty(property);
-      if (!hasProperty) {
+      T propertyValue = blockState.getValueOrElse(property, null);
+      if (propertyValue == null) {
          throw this.assertionException(pos, "test.error.block_property_missing", property.getName(), value);
       }
 
-      if (!blockState.<T>getValue(property).equals(value)) {
+      if (!propertyValue.equals(value)) {
          throw this.assertionException(pos, "test.error.block_property_mismatch", property.getName(), value, blockState.getValue(property));
       }
    }
@@ -559,12 +551,8 @@ public class GameTestHelper {
       final BlockPos pos, final Property<T> property, final Predicate<T> predicate, final Component errorMessage
    ) {
       this.assertBlockState(pos, blockState -> {
-         if (!blockState.hasProperty(property)) {
-            return false;
-         }
-
-         T value = blockState.getValue(property);
-         return predicate.test(value);
+         T value = blockState.getValueOrElse(property, null);
+         return value != null && predicate.test(value);
       }, state -> errorMessage);
    }
 

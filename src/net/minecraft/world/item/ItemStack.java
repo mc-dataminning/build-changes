@@ -1,6 +1,5 @@
 package net.minecraft.world.item;
 
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
@@ -9,6 +8,7 @@ import com.mojang.serialization.DataResult.Error;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.handler.codec.DecoderException;
 import io.netty.handler.codec.EncoderException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -869,7 +869,7 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
          boolean shouldPrintOpWarning = this.getItem().shouldPrintOpWarning(this, player);
          return shouldPrintOpWarning ? OP_NBT_WARNING : List.of();
       } else {
-         List<Component> lines = Lists.newArrayList();
+         List<Component> lines = new ArrayList<>();
          lines.add(this.getStyledHoverName());
          this.addDetailsToTooltip(context, display, player, tooltipFlag, lines::add);
          return lines;

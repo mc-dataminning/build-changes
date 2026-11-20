@@ -26,6 +26,11 @@ public class GlSurface implements GpuSurfaceBackend {
    }
 
    @Override
+   public boolean isDXGI() {
+      return false;
+   }
+
+   @Override
    public void configure(final GpuSurface.Configuration config) throws SurfaceException {
       this.device.makeCurrent(this.windowHandle);
       SDLVideo.SDL_GL_SetSwapInterval(config.presentMode() == GpuSurface.PresentMode.FIFO ? 1 : 0);

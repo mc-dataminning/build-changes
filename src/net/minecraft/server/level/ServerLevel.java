@@ -1,7 +1,6 @@
 package net.minecraft.server.level;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
 import com.mojang.datafixers.DataFixer;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
@@ -68,9 +67,9 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Continuation;
 import net.minecraft.util.CsvOutput;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.Mth;
 import net.minecraft.util.ProgressListener;
-import net.minecraft.util.Util;
 import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.util.debug.DebugSubscriptions;
 import net.minecraft.util.debug.LevelDebugSynchronizers;
@@ -195,7 +194,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
    private static final int EMPTY_TIME_NO_TICK = 300;
    private static final int MAX_SCHEDULED_TICKS_PER_TICK = 65536;
    private static final AtomicInteger ENTITY_COUNTER = new AtomicInteger();
-   private final List<ServerPlayer> players = Lists.newArrayList();
+   private final List<ServerPlayer> players = new ArrayList<>();
    private final ServerChunkCache chunkSource;
    private final MinecraftServer server;
    private final ServerLevelData serverLevelData;
@@ -905,7 +904,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
    }
 
    public <T extends Entity> List<? extends T> getEntities(final EntityTypeTest<Entity, T> type, final Predicate<? super T> selector) {
-      List<T> result = Lists.newArrayList();
+      List<T> result = new ArrayList<>();
       this.getEntities(type, selector, result);
       return result;
    }
@@ -938,7 +937,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
    }
 
    public List<ServerPlayer> getPlayers(final Predicate<? super ServerPlayer> selector, final int maxResults) {
-      List<ServerPlayer> result = Lists.newArrayList();
+      List<ServerPlayer> result = new ArrayList<>();
 
       for (ServerPlayer player : this.players) {
          if (selector.test(player)) {
@@ -1135,7 +1134,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
    public void sendBlockUpdated(final BlockPos pos, final BlockState old, final BlockState current, final @Block.UpdateFlags int updateFlags) {
       if (this.isUpdatingNavigations) {
          String message = "recursive call to sendBlockUpdated";
-         Util.logAndPauseIfInIde("recursive call to sendBlockUpdated", new IllegalStateException("recursive call to sendBlockUpdated"));
+         DevUtil.logAndPauseIfInIde("recursive call to sendBlockUpdated", new IllegalStateException("recursive call to sendBlockUpdated"));
       }
 
       this.getChunkSource().blockChanged(pos);
@@ -2050,7 +2049,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
          if (entity instanceof Mob mob) {
             if (ServerLevel.this.isUpdatingNavigations) {
                String message = "onTrackingStart called during navigation iteration";
-               Util.logAndPauseIfInIde(
+               DevUtil.logAndPauseIfInIde(
                   "onTrackingStart called during navigation iteration", new IllegalStateException("onTrackingStart called during navigation iteration")
                );
             }
@@ -2078,7 +2077,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
          if (entity instanceof Mob mob) {
             if (ServerLevel.this.isUpdatingNavigations) {
                String message = "onTrackingStart called during navigation iteration";
-               Util.logAndPauseIfInIde(
+               DevUtil.logAndPauseIfInIde(
                   "onTrackingStart called during navigation iteration", new IllegalStateException("onTrackingStart called during navigation iteration")
                );
             }

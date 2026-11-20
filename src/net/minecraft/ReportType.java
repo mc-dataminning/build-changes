@@ -1,7 +1,6 @@
 package net.minecraft;
 
 import java.util.List;
-import net.minecraft.util.Util;
 
 public record ReportType(String header, List<String> nuggets) {
    public static final ReportType CRASH = new ReportType(
@@ -122,7 +121,7 @@ public record ReportType(String header, List<String> nuggets) {
 
    public String getErrorComment() {
       try {
-         return this.nuggets.get((int)(Util.getNanos() % this.nuggets.size()));
+         return this.nuggets.get((int)(System.nanoTime() % this.nuggets.size()));
       } catch (Throwable ignored) {
          return "Witty comment unavailable :(";
       }

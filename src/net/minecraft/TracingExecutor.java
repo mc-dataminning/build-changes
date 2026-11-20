@@ -5,17 +5,18 @@ import com.mojang.jtracy.Zone;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
+import net.minecraft.util.DevUtil;
 
 public record TracingExecutor(ExecutorService service) implements Executor {
    public Executor forName(final String name) {
-      if (SharedConstants.IS_RUNNING_IN_IDE) {
+      if (DevUtil.IS_RUNNING_IN_IDE) {
          return command -> this.service.execute(() -> {
             Thread thread = Thread.currentThread();
             String oldName = thread.getName();
             thread.setName(name);
 
             try {
-               Zone ignored = TracyClient.beginZone(name, SharedConstants.IS_RUNNING_IN_IDE);
+               Zone ignored = TracyClient.beginZone(name, DevUtil.IS_RUNNING_IN_IDE);
 
                try {
                   command.run();
@@ -40,7 +41,7 @@ public record TracingExecutor(ExecutorService service) implements Executor {
          });
       } else {
          return TracyClient.isAvailable() ? command -> this.service.execute(() -> {
-            Zone ignored = TracyClient.beginZone(name, SharedConstants.IS_RUNNING_IN_IDE);
+            Zone ignored = TracyClient.beginZone(name, DevUtil.IS_RUNNING_IN_IDE);
 
             try {
                command.run();
@@ -85,7 +86,7 @@ public record TracingExecutor(ExecutorService service) implements Executor {
 
    private static Runnable wrapUnnamed(final Runnable command) {
       return !TracyClient.isAvailable() ? command : () -> {
-         Zone ignored = TracyClient.beginZone("task", SharedConstants.IS_RUNNING_IN_IDE);
+         Zone ignored = TracyClient.beginZone("task", DevUtil.IS_RUNNING_IN_IDE);
 
          try {
             command.run();

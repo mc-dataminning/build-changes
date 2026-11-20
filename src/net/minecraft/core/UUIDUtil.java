@@ -1,7 +1,5 @@
 package net.minecraft.core;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
@@ -12,7 +10,10 @@ import io.netty.buffer.ByteBuf;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.UUID;
 import net.minecraft.network.FriendlyByteBuf;
@@ -22,8 +23,8 @@ import net.minecraft.util.Util;
 public final class UUIDUtil {
    public static final Codec<UUID> CODEC = Codec.INT_STREAM
       .comapFlatMap(list -> Util.fixedSize(list, 4).map(UUIDUtil::uuidFromIntArray), uuid -> Arrays.stream(uuidToIntArray(uuid)));
-   public static final Codec<Set<UUID>> CODEC_SET = Codec.list(CODEC).xmap(Sets::newHashSet, Lists::newArrayList);
-   public static final Codec<Set<UUID>> CODEC_LINKED_SET = Codec.list(CODEC).xmap(Sets::newLinkedHashSet, Lists::newArrayList);
+   public static final Codec<Set<UUID>> CODEC_SET = Codec.list(CODEC).xmap(HashSet::new, ArrayList::new);
+   public static final Codec<Set<UUID>> CODEC_LINKED_SET = Codec.list(CODEC).xmap(LinkedHashSet::new, ArrayList::new);
    public static final Codec<UUID> STRING_CODEC = Codec.STRING.comapFlatMap(s -> {
       try {
          return DataResult.success(UUID.fromString(s), Lifecycle.stable());

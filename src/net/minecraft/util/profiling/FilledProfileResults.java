@@ -1,8 +1,6 @@
 package net.minecraft.util.profiling;
 
 import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.objects.Object2LongMap;
 import it.unimi.dsi.fastutil.objects.Object2LongMaps;
@@ -10,12 +8,15 @@ import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.Map.Entry;
 import net.minecraft.ReportType;
 import net.minecraft.SharedConstants;
@@ -86,7 +87,7 @@ public class FilledProfileResults implements ProfileResults {
       ProfilerPathEntry currentEntry = this.getEntry(path);
       long selfTime = currentEntry.getDuration();
       long selfCount = currentEntry.getCount();
-      List<ResultField> result = Lists.newArrayList();
+      List<ResultField> result = new ArrayList<>();
       if (!path.isEmpty()) {
          path = path + "\u001e";
       }
@@ -135,7 +136,7 @@ public class FilledProfileResults implements ProfileResults {
    }
 
    private Map<String, FilledProfileResults.CounterCollector> getCounterValues() {
-      Map<String, FilledProfileResults.CounterCollector> result = Maps.newTreeMap();
+      Map<String, FilledProfileResults.CounterCollector> result = new TreeMap<>();
       this.entries
          .forEach(
             (path, entry) -> {
@@ -299,7 +300,7 @@ public class FilledProfileResults implements ProfileResults {
    private static class CounterCollector {
       private long selfValue;
       private long totalValue;
-      private final Map<String, FilledProfileResults.CounterCollector> children = Maps.newHashMap();
+      private final Map<String, FilledProfileResults.CounterCollector> children = new HashMap<>();
 
       public void addValue(final Iterator<String> path, final long value) {
          this.totalValue += value;

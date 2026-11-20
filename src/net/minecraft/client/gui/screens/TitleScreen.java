@@ -37,6 +37,7 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ARGB;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.Mth;
 import net.minecraft.util.Util;
 import net.minecraft.world.level.levelgen.WorldOptions;
@@ -191,7 +192,7 @@ public class TitleScreen extends Screen {
             .bounds(this.width / 2 - 100, topPos, 200, 20)
             .build()
       );
-      if (SharedConstants.IS_RUNNING_IN_IDE) {
+      if (DevUtil.IS_RUNNING_IN_IDE) {
          this.addRenderableWidget(
             Button.builder(Component.literal("TW"), var1 -> CreateWorldScreen.testWorld(this.minecraft, () -> this.minecraft.gui.setScreen(this)))
                .bounds(singleplayerButton.getX() + singleplayerButton.getWidth() + 2, topPos, 20, 20)
@@ -299,7 +300,7 @@ public class TitleScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
       if (this.fadeInStart == 0L && this.fading) {
          this.fadeInStart = Util.getMillis();
       }
@@ -317,8 +318,8 @@ public class TitleScreen extends Screen {
          this.fadeWidgets(widgetFade);
       }
 
-      this.extractPanorama(graphics, a);
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+      this.extractPanorama(graphics);
+      super.extractRenderState(graphics);
       this.logoRenderer.extractRenderState(graphics, this.width, this.logoRenderer.keepLogoThroughFade() ? 1.0F : widgetFade);
       if (this.splash != null && !this.minecraft.options.hideSplashTexts().get()) {
          this.splash.extractRenderState(graphics, this.width, this.font, widgetFade);
@@ -335,12 +336,12 @@ public class TitleScreen extends Screen {
 
       graphics.text(this.font, versionString, 2, this.height - 10, ARGB.white(widgetFade));
       if (this.realmsNotificationsEnabled() && widgetFade >= 1.0F) {
-         this.realmsNotificationsScreen.extractRenderState(graphics, mouseX, mouseY, a);
+         this.realmsNotificationsScreen.extractRenderState(graphics);
       }
    }
 
    @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public void extractBackground(final GuiGraphicsExtractor graphics) {
    }
 
    @Override

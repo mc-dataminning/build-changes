@@ -1,9 +1,9 @@
 package net.minecraft.world.level.levelgen.structure.structures;
 
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import net.minecraft.core.BlockPos;
@@ -177,7 +177,7 @@ public class OceanMonumentPieces {
       private static final int TOP_POSITION = 61;
       private OceanMonumentPieces.RoomDefinition sourceRoom;
       private OceanMonumentPieces.RoomDefinition coreRoom;
-      private final List<OceanMonumentPieces.OceanMonumentPiece> childPieces = Lists.newArrayList();
+      private final List<OceanMonumentPieces.OceanMonumentPiece> childPieces = new ArrayList<>();
 
       public MonumentBuilding(final RandomSource random, final int west, final int north, final Direction direction) {
          super(StructurePieceType.OCEAN_MONUMENT_BUILDING, direction, 0, makeBoundingBox(west, 39, north, direction, 58, 23, 58));
@@ -186,7 +186,7 @@ public class OceanMonumentPieces {
          this.sourceRoom.claimed = true;
          this.childPieces.add(new OceanMonumentPieces.OceanMonumentEntryRoom(direction, this.sourceRoom));
          this.childPieces.add(new OceanMonumentPieces.OceanMonumentCoreRoom(direction, this.coreRoom));
-         List<OceanMonumentPieces.MonumentRoomFitter> fitters = Lists.newArrayList();
+         List<OceanMonumentPieces.MonumentRoomFitter> fitters = new ArrayList<>();
          fitters.add(new OceanMonumentPieces.FitDoubleXYRoom());
          fitters.add(new OceanMonumentPieces.FitDoubleYZRoom());
          fitters.add(new OceanMonumentPieces.FitDoubleZRoom());

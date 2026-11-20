@@ -28,7 +28,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import net.minecraft.ChatFormatting;
-import net.minecraft.SharedConstants;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -55,6 +54,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.commands.InCommandFunction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -502,7 +502,7 @@ public class TestCommand {
                      )
                )
          );
-      if (SharedConstants.IS_RUNNING_IN_IDE) {
+      if (DevUtil.IS_RUNNING_IN_IDE) {
          testCommand = (LiteralArgumentBuilder<CommandSourceStack>)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)testCommand.then(
                      Commands.literal("export")
                         .then(

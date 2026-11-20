@@ -236,8 +236,8 @@ public class ConnectScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       long current = Util.getMillis();
       if (current - this.lastNarration > 2000L) {
          this.lastNarration = current;

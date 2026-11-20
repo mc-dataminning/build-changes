@@ -58,6 +58,8 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
+import net.minecraft.world.item.FireChargeItem;
+import net.minecraft.world.item.FlintAndSteelItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -478,8 +480,10 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
          } else {
             this.primeTime(false);
             if (heldItem.is(Items.FLINT_AND_STEEL)) {
+               FlintAndSteelItem.playSound(this.level(), this.blockPosition());
                heldItem.hurtAndBreak(1, player, hand.asEquipmentSlot());
             } else {
+               FireChargeItem.playSound(this.level(), this.blockPosition());
                heldItem.consume(1, player);
             }
 

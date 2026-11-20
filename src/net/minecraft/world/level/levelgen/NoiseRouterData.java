@@ -224,7 +224,7 @@ public class NoiseRouterData {
          context, names.slopedCheese(), DensityFunctions.cache(DensityFunctions.add(initialDensity, getFunction(functions, BASE_3D_NOISE_OVERWORLD)))
       );
       DensityFunction surfaceLevel = registerAndWrap(context, names.preliminarySurfaceLevel(), preliminarySurfaceLevel(offset, factor, amplified));
-      context.register(names.chunkSurfaceLevel(), DensityFunctions.interpolated(surfaceLevel, 16, 1));
+      context.register(names.chunkSurfaceLevel(), DensityFunctions.linearUpscale(surfaceLevel, 16, 1));
       DensityFunction surfaceWithEntrances = DensityFunctions.min(slopedCheese, getFunction(functions, ENTRANCES).mul(5.0F));
       DensityFunction caves = DensityFunctions.rangeChoice(
          slopedCheese, -1000000.0F, 1.5625F, surfaceWithEntrances, underground(functions, noises, slopedCheese)
@@ -364,7 +364,7 @@ public class NoiseRouterData {
 
    private static DensityFunction postProcess(final DensityFunction slide, final int cellSizeXz, final int cellSizeY) {
       DensityFunction blended = DensityFunctions.blendDensity(slide);
-      return DensityFunctions.interpolated(DensityFunctions.mul(blended, DensityFunctions.constant(0.64F)), cellSizeXz, cellSizeY).squeeze();
+      return DensityFunctions.linearUpscale(DensityFunctions.mul(blended, DensityFunctions.constant(0.64F)), cellSizeXz, cellSizeY).squeeze();
    }
 
    protected static NoiseRouter overworld(final HolderGetter<DensityFunction> functions, final OverworldFunctionSet<ResourceKey<DensityFunction>> functionNames) {
@@ -572,7 +572,7 @@ public class NoiseRouterData {
       final int cellSizeXz,
       final int cellSizeY
    ) {
-      return DensityFunctions.interpolated(
+      return DensityFunctions.linearUpscale(
          DensityFunctions.rangeChoice(y, minYInclusive, maxYInclusive + 1, whenInRange, DensityFunctions.constant(whenOutOfRange)), cellSizeXz, cellSizeY
       );
    }

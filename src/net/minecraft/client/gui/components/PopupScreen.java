@@ -8,7 +8,7 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.layouts.FrameLayout;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -99,15 +99,15 @@ public class PopupScreen extends Screen {
    }
 
    @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public void extractBackground(final GuiGraphicsExtractor graphics) {
       if (this.backgroundScreen != null) {
-         this.backgroundScreen.extractBackground(graphics, mouseX, mouseY, a);
+         this.backgroundScreen.extractBackground(graphics);
          graphics.nextStratum();
-         this.backgroundScreen.extractRenderState(graphics, -1, -1, a);
+         this.backgroundScreen.extractRenderState(graphics);
          graphics.nextStratum();
          this.extractTransparentBackground(graphics);
       } else {
-         super.extractBackground(graphics, mouseX, mouseY, a);
+         super.extractBackground(graphics);
       }
 
       graphics.blitSprite(

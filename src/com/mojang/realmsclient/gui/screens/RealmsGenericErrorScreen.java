@@ -57,8 +57,8 @@ public class RealmsGenericErrorScreen extends RealmsScreen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int xm, final int ym, final float a) {
-      super.extractRenderState(graphics, xm, ym, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       graphics.centeredText(this.font, this.title, this.width / 2, 80, -1);
       ActiveTextCollector textRenderer = graphics.textRenderer();
       this.splitDetail.visitLines(TextAlignment.CENTER, this.width / 2, 100, 9, textRenderer);

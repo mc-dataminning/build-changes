@@ -1,15 +1,15 @@
 package net.minecraft.world.level.chunk;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.ints.IntArrays;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ObjectSet;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumSet;
+import java.util.HashSet;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,11 +48,11 @@ public class UpgradeData {
    private static final Codec<List<SavedTick<Block>>> BLOCK_TICKS_CODEC = SavedTick.codec(BuiltInRegistries.BLOCK.byNameCodec().orElse(Blocks.AIR)).listOf();
    private static final Codec<List<SavedTick<Fluid>>> FLUID_TICKS_CODEC = SavedTick.codec(BuiltInRegistries.FLUID.byNameCodec().orElse(Fluids.EMPTY)).listOf();
    private final EnumSet<CompositeDirection.Direction8> sides = EnumSet.noneOf(CompositeDirection.Direction8.class);
-   private final List<SavedTick<Block>> neighborBlockTicks = Lists.newArrayList();
-   private final List<SavedTick<Fluid>> neighborFluidTicks = Lists.newArrayList();
+   private final List<SavedTick<Block>> neighborBlockTicks = new ArrayList<>();
+   private final List<SavedTick<Fluid>> neighborFluidTicks = new ArrayList<>();
    private final int[][] index;
    private static final Map<Block, UpgradeData.BlockFixer> MAP = new IdentityHashMap<>();
-   private static final Set<UpgradeData.BlockFixer> CHUNKY_FIXERS = Sets.newHashSet();
+   private static final Set<UpgradeData.BlockFixer> CHUNKY_FIXERS = new HashSet<>();
 
    private UpgradeData(final LevelHeightAccessor levelHeightAccessor) {
       this.index = new int[levelHeightAccessor.getSectionsCount()][];
@@ -389,7 +389,7 @@ public class UpgradeData {
          Blocks.OAK_LEAVES,
          Blocks.SPRUCE_LEAVES
       ) {
-         private final ThreadLocal<List<ObjectSet<BlockPos>>> queue = ThreadLocal.withInitial(() -> Lists.newArrayListWithCapacity(7));
+         private final ThreadLocal<List<ObjectSet<BlockPos>>> queue = ThreadLocal.withInitial(() -> new ArrayList<>(7));
 
          @Override
          public BlockState updateShape(

@@ -138,8 +138,8 @@ public abstract class AbstractSignEditScreen extends Screen {
    }
 
    @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
+   public void extractBackground(final GuiGraphicsExtractor graphics) {
+      super.extractBackground(graphics);
       graphics.pose().pushMatrix();
       graphics.pose().translate(this.width / 2.0F, this.height / 2.0F);
       this.extractSignBackground(graphics);

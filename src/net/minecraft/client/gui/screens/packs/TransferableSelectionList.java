@@ -12,7 +12,7 @@ import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.screens.ConfirmScreen;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.Style;
@@ -92,7 +92,7 @@ public class TransferableSelectionList extends ObjectSelectionList<TransferableS
       }
 
       @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          graphics.centeredText(this.font, this.text, this.getX() + this.getWidth() / 2, this.getContentYMiddle() - 9 / 2, -1);
       }
 
@@ -133,7 +133,7 @@ public class TransferableSelectionList extends ObjectSelectionList<TransferableS
       }
 
       @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          PackCompatibility compatibility = this.pack.getCompatibility();
          if (!compatibility.isCompatible()) {
             int x0 = this.getContentX() - 1;
@@ -154,8 +154,8 @@ public class TransferableSelectionList extends ObjectSelectionList<TransferableS
 
          if (this.showHoverOverlay() && (hovered || this.parent.getSelected() == this && this.parent.isFocused())) {
             graphics.fill(this.getContentX(), this.getContentY(), this.getContentX() + 32, this.getContentY() + 32, -1601138544);
-            int relX = mouseX - this.getContentX();
-            int relY = mouseY - this.getContentY();
+            int relX = graphics.mouseX() - this.getContentX();
+            int relY = graphics.mouseY() - this.getContentY();
             if (!this.pack.getCompatibility().isCompatible()) {
                this.nameWidget.setMessage(TransferableSelectionList.INCOMPATIBLE_TITLE);
                this.descriptionWidget.setMessage(this.pack.getCompatibility().getDescription());
@@ -212,10 +212,10 @@ public class TransferableSelectionList extends ObjectSelectionList<TransferableS
 
          this.nameWidget.setMaxWidth(157 - (TransferableSelectionList.this.scrollable() ? 6 : 0));
          this.nameWidget.setPosition(this.getContentX() + 32 + 2, this.getContentY() + 1);
-         this.nameWidget.extractRenderState(graphics, mouseX, mouseY, a);
+         this.nameWidget.extractRenderState(graphics);
          this.descriptionWidget.setMaxWidth(157 - (TransferableSelectionList.this.scrollable() ? 6 : 0));
          this.descriptionWidget.setPosition(this.getContentX() + 32 + 2, this.getContentY() + 12);
-         this.descriptionWidget.extractRenderState(graphics, mouseX, mouseY, a);
+         this.descriptionWidget.extractRenderState(graphics);
       }
 
       @Override

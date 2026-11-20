@@ -1,7 +1,7 @@
 package net.minecraft.client.gui.screens;
 
-import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.ActiveTextCollector;
@@ -26,7 +26,7 @@ public class DeathScreen extends Screen {
    private final boolean hardcore;
    private final LocalPlayer player;
    private final Component deathScore;
-   private final List<Button> exitButtons = Lists.newArrayList();
+   private final List<Button> exitButtons = new ArrayList<>();
    private @Nullable Button exitToTitleButton;
 
    public DeathScreen(final @Nullable Component causeOfDeath, final boolean hardcore, final LocalPlayer player) {
@@ -103,8 +103,8 @@ public class DeathScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       this.visitText(graphics.textRenderer(GuiGraphicsExtractor.HoveredTextEffects.TOOLTIP_AND_CURSOR));
    }
 
@@ -122,7 +122,7 @@ public class DeathScreen extends Screen {
    }
 
    @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public void extractBackground(final GuiGraphicsExtractor graphics) {
       extractDeathBackground(graphics, this.width, this.height);
    }
 
@@ -132,12 +132,16 @@ public class DeathScreen extends Screen {
 
    @Override
    public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-      ActiveTextCollector.ClickableStyleFinder finder = new ActiveTextCollector.ClickableStyleFinder(this.getFont(), (int)event.x(), (int)event.y());
-      this.visitText(finder);
-      Style clickedStyle = finder.result();
-      return clickedStyle != null && clickedStyle.getClickEvent() instanceof ClickEvent.OpenUrl openUrl
-         ? clickUrlAction(this.minecraft, this, openUrl.uri())
-         : super.mouseClicked(event, doubleClick);
+      if (event.isLeftMouse()) {
+         ActiveTextCollector.ClickableStyleFinder finder = new ActiveTextCollector.ClickableStyleFinder(this.getFont(), (int)event.x(), (int)event.y());
+         this.visitText(finder);
+         Style clickedStyle = finder.result();
+         if (clickedStyle != null && clickedStyle.getClickEvent() instanceof ClickEvent.OpenUrl openUrl) {
+            return clickUrlAction(this.minecraft, this, openUrl.uri());
+         }
+      }
+
+      return super.mouseClicked(event, doubleClick);
    }
 
    @Override
@@ -173,7 +177,7 @@ public class DeathScreen extends Screen {
       }
 
       @Override
-      public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+      public void extractBackground(final GuiGraphicsExtractor graphics) {
          DeathScreen.extractDeathBackground(graphics, this.width, this.height);
       }
    }

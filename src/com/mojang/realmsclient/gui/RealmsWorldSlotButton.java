@@ -10,7 +10,7 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -86,7 +86,7 @@ public class RealmsWorldSlotButton extends Button {
    }
 
    @Override
-   public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public void extractContents(final GuiGraphicsExtractor graphics) {
       int x = this.getX();
       int y = this.getY();
       boolean hoveredOrFocused = this.isHoveredOrFocused();
@@ -127,7 +127,7 @@ public class RealmsWorldSlotButton extends Button {
 
       this.slotNameWidget.setMaxWidth(this.getWidth() - (this.state.activeSlot ? 2 : 0), StringWidget.TextOverflow.SCROLLING);
       this.slotNameWidget.setPosition(this.getX() + this.getWidth() / 2 - this.slotNameWidget.getWidth() / 2, y + this.height - 14);
-      this.slotNameWidget.extractRenderState(graphics, mouseX, mouseY, a);
+      this.slotNameWidget.extractRenderState(graphics);
       if (this.state.activeSlot) {
          graphics.centeredText(
             Minecraft.getInstance().font,
@@ -140,9 +140,9 @@ public class RealmsWorldSlotButton extends Button {
    }
 
    @Override
-   protected void extractTooltipForNextRenderPass(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY) {
+   protected void extractTooltipForNextRenderPass(final GuiGraphicsExtractor graphics) {
       if (Minecraft.getInstance().gui.screen() == this.configureWorldScreen) {
-         super.extractTooltipForNextRenderPass(graphics, mouseX, mouseY);
+         super.extractTooltipForNextRenderPass(graphics);
       }
    }
 

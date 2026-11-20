@@ -1,7 +1,7 @@
 package net.minecraft.world.level.block.piston;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -265,9 +265,9 @@ public class PistonBaseBlock extends DirectionalBlock {
          return false;
       }
 
-      Map<BlockPos, BlockState> deleteAfterMove = Maps.newHashMap();
+      Map<BlockPos, BlockState> deleteAfterMove = new HashMap<>();
       List<BlockPos> toPush = resolver.getToPush();
-      List<BlockState> toPushShapes = Lists.newArrayList();
+      List<BlockState> toPushShapes = new ArrayList<>();
 
       for (BlockPos pos : toPush) {
          BlockState state = level.getBlockState(pos);

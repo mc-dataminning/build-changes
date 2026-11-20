@@ -49,7 +49,7 @@ public class SkullBlockEntity extends BlockEntity {
    }
 
    public static void animation(final Level level, final BlockPos pos, final BlockState state, final SkullBlockEntity entity) {
-      if (state.hasProperty(SkullBlock.POWERED) && state.getValue(SkullBlock.POWERED)) {
+      if (state.getValueOrElse(SkullBlock.POWERED, false)) {
          entity.isAnimating = true;
          entity.animationTickCount++;
       } else {

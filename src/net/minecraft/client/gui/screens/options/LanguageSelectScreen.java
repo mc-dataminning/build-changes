@@ -147,7 +147,7 @@ public class LanguageSelectScreen extends OptionsSubScreen {
          }
 
          @Override
-         public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+         public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
             graphics.centeredText(LanguageSelectScreen.this.font, this.language, LanguageSelectionList.this.width / 2, this.getContentYMiddle() - 9 / 2, -1);
          }
 

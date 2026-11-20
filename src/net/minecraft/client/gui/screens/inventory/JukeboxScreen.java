@@ -1,5 +1,6 @@
 package net.minecraft.client.gui.screens.inventory;
 
+import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
@@ -18,7 +19,7 @@ public class JukeboxScreen extends ContainerScreen {
 
    @Override
    protected List<Component> getTooltipFromContainerItem(final ItemStack itemStack) {
-      List<Component> tooltip = super.getTooltipFromContainerItem(itemStack);
+      List<Component> tooltip = new ArrayList<>(super.getTooltipFromContainerItem(itemStack));
       if (this.jukeboxMenu != null
          && this.jukeboxMenu.getPlayingNextPos().isPresent()
          && this.hoveredSlot.index == this.jukeboxMenu.getPlayingNextPos().getAsInt()) {

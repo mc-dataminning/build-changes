@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Supplier;
-import net.minecraft.SharedConstants;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.profiling.metrics.MetricCategory;
 import org.slf4j.Logger;
 
@@ -39,7 +39,7 @@ public class TracyZoneFiller implements ProfilerFiller {
       String function = "";
       String file = "";
       int line = 0;
-      if (SharedConstants.IS_RUNNING_IN_IDE) {
+      if (DevUtil.IS_RUNNING_IN_IDE) {
          Optional<StackFrame> result = STACK_WALKER.walk(
             s -> s.filter(
                   framex -> framex.getDeclaringClass() != TracyZoneFiller.class && framex.getDeclaringClass() != ProfilerFiller.CombinedProfileFiller.class

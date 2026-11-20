@@ -67,7 +67,7 @@ public class ChestRenderer<T extends BlockEntity & LidBlockEntity> implements Bl
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       boolean hasLevel = blockEntity.getLevel() != null;
       BlockState blockState = hasLevel ? blockEntity.getBlockState() : Blocks.CHEST.defaultBlockState().setValue(ChestBlock.FACING, Direction.SOUTH);
-      state.type = blockState.hasProperty(ChestBlock.TYPE) ? blockState.getValue(ChestBlock.TYPE) : ChestType.SINGLE;
+      state.type = blockState.getValueOrElse(ChestBlock.TYPE, ChestType.SINGLE);
       state.facing = blockState.getValue(ChestBlock.FACING);
       state.material = getChestMaterial(blockEntity, this.xmasTextures);
       DoubleBlockCombiner.NeighborCombineResult<? extends ChestBlockEntity> combineResult;

@@ -15,7 +15,7 @@ import net.minecraft.core.WritableRegistry;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.Bootstrap;
-import net.minecraft.util.Util;
+import net.minecraft.util.DevUtil;
 import org.slf4j.Logger;
 
 public class BuiltinRegistryBuilder {
@@ -85,7 +85,7 @@ public class BuiltinRegistryBuilder {
    private static <T extends Registry<?>> void validate(final Registry<T> registry) {
       registry.forEach(r -> {
          if (r.keySet().isEmpty()) {
-            Util.logAndPauseIfInIde("Registry '" + registry.getKey((T)r) + "' was empty after loading");
+            DevUtil.logAndPauseIfInIde("Registry '" + registry.getKey((T)r) + "' was empty after loading");
          }
 
          if (r instanceof DefaultedRegistry) {

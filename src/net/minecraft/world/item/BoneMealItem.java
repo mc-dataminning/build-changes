@@ -86,7 +86,7 @@ public class BoneMealItem extends Item {
          } else {
             RandomSource random = level.getRandom();
 
-            label81:
+            label79:
             for (int j = 0; j < 128; j++) {
                BlockPos testPos = pos;
                BlockState stateToGrow = Blocks.SEAGRASS.defaultBlockState();
@@ -94,7 +94,7 @@ public class BoneMealItem extends Item {
                for (int i = 0; i < j / 16; i++) {
                   testPos = testPos.offset(random.nextInt(3) - 1, (random.nextInt(3) - 1) * random.nextInt(3) / 2, random.nextInt(3) - 1);
                   if (level.getBlockState(testPos).isCollisionShapeFullBlock(level, testPos)) {
-                     continue label81;
+                     continue label79;
                   }
                }
 
@@ -105,9 +105,7 @@ public class BoneMealItem extends Item {
                         .getRandomElementOf(BlockTags.WALL_CORALS, level.getRandom())
                         .map(h -> h.value().defaultBlockState())
                         .orElse(stateToGrow);
-                     if (stateToGrow.hasProperty(BaseCoralWallFanBlock.FACING)) {
-                        stateToGrow = stateToGrow.setValue(BaseCoralWallFanBlock.FACING, clickedFace);
-                     }
+                     stateToGrow = stateToGrow.trySetValue(BaseCoralWallFanBlock.FACING, clickedFace);
                   } else if (random.nextInt(4) == 0) {
                      stateToGrow = BuiltInRegistries.BLOCK
                         .getRandomElementOf(BlockTags.UNDERWATER_BONEMEALS, level.getRandom())

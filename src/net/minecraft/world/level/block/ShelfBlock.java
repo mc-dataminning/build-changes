@@ -259,7 +259,7 @@ public class ShelfBlock extends BaseEntityBlock implements SelectableSlotContain
 
    @Override
    public boolean isConnectable(final BlockState state) {
-      return state.is(BlockTags.WOODEN_SHELVES) && state.hasProperty(POWERED) && state.getValue(POWERED);
+      return state.is(BlockTags.WOODEN_SHELVES) && state.getValueOrElse(POWERED, false);
    }
 
    @Override

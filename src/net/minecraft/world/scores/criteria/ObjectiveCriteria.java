@@ -1,10 +1,10 @@
 package net.minecraft.world.scores.criteria;
 
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -16,8 +16,8 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.scores.TeamColor;
 
 public class ObjectiveCriteria {
-   private static final Map<String, ObjectiveCriteria> CUSTOM_CRITERIA = Maps.newHashMap();
-   private static final Map<String, ObjectiveCriteria> CRITERIA_CACHE = Maps.newHashMap();
+   private static final Map<String, ObjectiveCriteria> CUSTOM_CRITERIA = new HashMap<>();
+   private static final Map<String, ObjectiveCriteria> CRITERIA_CACHE = new HashMap<>();
    public static final Codec<ObjectiveCriteria> CODEC = Codec.STRING
       .comapFlatMap(
          name -> byName(name).<DataResult>map(DataResult::success).orElse(DataResult.error(() -> "No scoreboard criteria with name: " + name)),

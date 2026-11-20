@@ -36,8 +36,10 @@ public class ScatteredOreFeature extends AbstractOreFeature {
          BlockState blockState = level.getBlockState(targetPos);
 
          for (BlockReplacement targetState : this.targetStates) {
-            if (this.canPlaceOre(blockState, level::getBlockState, random, targetState, targetPos)) {
-               level.setBlock(targetPos, targetState.state(), 2);
+            if (targetState.target().test(blockState, targetPos, random)) {
+               if (this.checkAirExposure(level::getBlockState, random, targetPos)) {
+                  level.setBlock(targetPos, targetState.state(), 2);
+               }
                break;
             }
          }

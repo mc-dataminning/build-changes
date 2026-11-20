@@ -87,8 +87,8 @@ public class RealmsTermsScreen extends RealmsScreen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int xm, final int ym, final float a) {
-      super.extractRenderState(graphics, xm, ym, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       graphics.centeredText(this.font, this.title, this.width / 2, 17, -1);
       graphics.text(this.font, TERMS_STATIC_TEXT, this.width / 2 - 120, row(5), -1);
       int firstPartWidth = this.font.width(TERMS_STATIC_TEXT);
@@ -96,7 +96,7 @@ public class RealmsTermsScreen extends RealmsScreen {
       int y1 = row(5);
       int x2 = x1 + this.font.width(TERMS_LINK_TEXT) + 1;
       int y2 = y1 + 1 + 9;
-      this.onLink = x1 <= xm && xm <= x2 && y1 <= ym && ym <= y2;
+      this.onLink = x1 <= graphics.mouseX() && graphics.mouseX() <= x2 && y1 <= graphics.mouseY() && graphics.mouseY() <= y2;
       graphics.text(this.font, TERMS_LINK_TEXT, this.width / 2 - 120 + firstPartWidth, row(5), this.onLink ? -9670204 : -13408581);
    }
 }

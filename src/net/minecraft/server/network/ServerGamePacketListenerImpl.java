@@ -1,6 +1,5 @@
 package net.minecraft.server.network;
 
-import com.google.common.collect.Lists;
 import com.google.common.primitives.Floats;
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
@@ -11,6 +10,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.net.SocketAddress;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -1002,7 +1002,7 @@ public class ServerGamePacketListenerImpl
    public void handleEditBook(final ServerboundEditBookPacket packet) {
       int slot = packet.slot();
       if (Inventory.isHotbarSlot(slot) || slot == 40) {
-         List<String> contents = Lists.newArrayList();
+         List<String> contents = new ArrayList<>();
          Optional<String> title = packet.title();
          title.ifPresent(contents::add);
          contents.addAll(packet.pages());

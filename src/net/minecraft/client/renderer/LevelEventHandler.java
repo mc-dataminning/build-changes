@@ -526,7 +526,7 @@ public class LevelEventHandler {
             }
 
             BlockState state = this.level.getBlockState(pos);
-            boolean isWaterlogged = state.hasProperty(BlockStateProperties.WATERLOGGED) && state.getValue(BlockStateProperties.WATERLOGGED);
+            boolean isWaterlogged = state.getValueOrElse(BlockStateProperties.WATERLOGGED, false);
             if (!isWaterlogged) {
                this.level
                   .playLocalSound(

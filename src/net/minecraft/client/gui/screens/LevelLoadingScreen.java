@@ -9,8 +9,8 @@ import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.render.TextureSetup;
 import net.minecraft.client.multiplayer.LevelLoadTracker;
-import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.blockentity.AbstractEndPortalRenderer;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureHandle;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -86,8 +86,8 @@ public class LevelLoadingScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       long current = Util.getMillis();
       if (current - this.lastNarration > 2000L) {
          this.lastNarration = current;
@@ -147,7 +147,7 @@ public class LevelLoadingScreen extends Screen {
    }
 
    @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public void extractBackground(final GuiGraphicsExtractor graphics) {
       switch (this.reason) {
          case NETHER_PORTAL:
             graphics.blitSprite(RenderPipelines.GUI_OPAQUE_TEXTURED_BACKGROUND, this.getNetherPortalSprite(), 0, 0, graphics.guiWidth(), graphics.guiHeight());
@@ -159,10 +159,10 @@ public class LevelLoadingScreen extends Screen {
             TextureSetup textureSetup = TextureSetup.doubleTexture(
                skyTexture.textureView(), skyTexture.sampler(), portalTexture.textureView(), portalTexture.sampler()
             );
-            graphics.fill(RenderPipelines.END_PORTAL_GUI, textureSetup, 0, 0, this.width, this.height);
+            graphics.fill(RenderPipelines.endPortal(new RenderPipelines.EndPortalParameters(false, true)), textureSetup, 0, 0, this.width, this.height);
             break;
          case OTHER:
-            this.extractPanorama(graphics, a);
+            this.extractPanorama(graphics);
             this.extractBlurredBackground(graphics);
             this.extractMenuBackground(graphics);
       }

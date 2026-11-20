@@ -55,7 +55,7 @@ public class PointedDripstoneBlock extends SpeleothemBlock {
          float randomValue = random.nextFloat();
          if (!(randomValue > 0.12F)) {
             getFluidAboveStalactite(level, pos, state)
-               .filter(fluidAbove -> randomValue < 0.02F || canFillCauldron(fluidAbove.fluid))
+               .filter(fluidAbove -> randomValue < 0.02F || fluidAbove.canFillCauldron())
                .ifPresent(fluidAbove -> this.spawnDripParticle(level, pos, state, fluidAbove.pos, fluidAbove.fluid));
          }
       }
@@ -71,37 +71,40 @@ public class PointedDripstoneBlock extends SpeleothemBlock {
    public static void maybeTransferFluid(final BlockState state, final ServerLevel level, final BlockPos pos, final float randomValue) {
       if (!(randomValue > 0.17578125F) || !(randomValue > 0.05859375F)) {
          if (isStalactiteStartPos(state, level, pos)) {
-            Optional<PointedDripstoneBlock.FluidInfo> fluidInfo = getFluidAboveStalactite(level, pos, state);
-            if (!fluidInfo.isEmpty()) {
-               Fluid fluid = fluidInfo.get().fluid;
-               float transferProbability;
-               if (fluid == Fluids.WATER) {
-                  transferProbability = 0.17578125F;
-               } else {
-                  if (fluid != Fluids.LAVA) {
-                     return;
+            Optional<PointedDripstoneBlock.FluidInfo> fluidInfoOpt = getFluidAboveStalactite(level, pos, state);
+            if (!fluidInfoOpt.isEmpty()) {
+               PointedDripstoneBlock.FluidInfo fluidInfo = fluidInfoOpt.get();
+               if (fluidInfo.canFillCauldron()) {
+                  Fluid fluid = fluidInfo.fluid;
+                  float transferProbability;
+                  if (fluid == Fluids.WATER) {
+                     transferProbability = 0.17578125F;
+                  } else {
+                     if (fluid != Fluids.LAVA) {
+                        return;
+                     }
+
+                     transferProbability = 0.05859375F;
                   }
 
-                  transferProbability = 0.05859375F;
-               }
-
-               if (!(randomValue >= transferProbability)) {
-                  BlockPos stalactiteTipPos = findTip(state, level, pos, 11, false);
-                  if (stalactiteTipPos != null) {
-                     if (fluidInfo.get().sourceState.is(Blocks.MUD) && fluid == Fluids.WATER) {
-                        BlockState newState = Blocks.CLAY.defaultBlockState();
-                        level.setBlockAndUpdate(fluidInfo.get().pos, newState);
-                        Block.pushEntitiesUp(fluidInfo.get().sourceState, newState, level, fluidInfo.get().pos);
-                        level.gameEvent(GameEvent.BLOCK_CHANGE, fluidInfo.get().pos, GameEvent.Context.of(newState));
-                        level.levelEvent(1504, stalactiteTipPos, 0);
-                     } else {
-                        BlockPos cauldronPos = findFillableCauldronBelowStalactiteTip(level, stalactiteTipPos, fluid);
-                        if (cauldronPos != null) {
+                  if (!(randomValue >= transferProbability)) {
+                     BlockPos stalactiteTipPos = findTip(state, level, pos, 11, false);
+                     if (stalactiteTipPos != null) {
+                        if (fluidInfo.sourceState.is(Blocks.MUD) && fluid == Fluids.WATER) {
+                           BlockState newState = Blocks.CLAY.defaultBlockState();
+                           level.setBlockAndUpdate(fluidInfo.pos, newState);
+                           Block.pushEntitiesUp(fluidInfo.sourceState, newState, level, fluidInfo.pos);
+                           level.gameEvent(GameEvent.BLOCK_CHANGE, fluidInfo.pos, GameEvent.Context.of(newState));
                            level.levelEvent(1504, stalactiteTipPos, 0);
-                           int fallDistance = stalactiteTipPos.getY() - cauldronPos.getY();
-                           int delay = 50 + fallDistance;
-                           BlockState cauldronState = level.getBlockState(cauldronPos);
-                           level.scheduleTick(cauldronPos, cauldronState.getBlock(), delay);
+                        } else {
+                           BlockPos cauldronPos = findFillableCauldronBelowStalactiteTip(level, stalactiteTipPos, fluid);
+                           if (cauldronPos != null) {
+                              level.levelEvent(1504, stalactiteTipPos, 0);
+                              int fallDistance = stalactiteTipPos.getY() - cauldronPos.getY();
+                              int delay = 50 + fallDistance;
+                              BlockState cauldronState = level.getBlockState(cauldronPos);
+                              level.scheduleTick(cauldronPos, cauldronState.getBlock(), delay);
+                           }
                         }
                      }
                   }
@@ -142,8 +145,8 @@ public class PointedDripstoneBlock extends SpeleothemBlock {
 
    public static Fluid getCauldronFillFluidType(final ServerLevel level, final BlockPos stalactitePos) {
       return getFluidAboveStalactite(level, stalactitePos, level.getBlockState(stalactitePos))
+         .filter(PointedDripstoneBlock.FluidInfo::canFillCauldron)
          .map(fluidSource -> fluidSource.fluid)
-         .filter(PointedDripstoneBlock::canFillCauldron)
          .orElse(Fluids.EMPTY);
    }
 
@@ -154,23 +157,18 @@ public class PointedDripstoneBlock extends SpeleothemBlock {
          BlockPos abovePos = rootPos.above();
          BlockState aboveState = level.getBlockState(abovePos);
          Fluid fluid;
+         boolean source;
          if (aboveState.is(Blocks.MUD) && !level.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, abovePos)) {
             fluid = Fluids.WATER;
+            source = true;
          } else {
             FluidState fluidState = level.getFluidState(abovePos);
-            if (fluidState.isSource()) {
-               fluid = fluidState.getType();
-            } else {
-               fluid = Fluids.EMPTY;
-            }
+            fluid = fluidState.getType();
+            source = fluidState.isSource();
          }
 
-         return new PointedDripstoneBlock.FluidInfo(abovePos, fluid, aboveState);
+         return new PointedDripstoneBlock.FluidInfo(abovePos, fluid, source, aboveState);
       });
-   }
-
-   private static boolean canFillCauldron(final Fluid fluidAbove) {
-      return fluidAbove == Fluids.LAVA || fluidAbove == Fluids.WATER;
    }
 
    @Override
@@ -210,6 +208,9 @@ public class PointedDripstoneBlock extends SpeleothemBlock {
       return !Shapes.joinIsNotEmpty(REQUIRED_SPACE_TO_DRIP_THROUGH_NON_SOLID_BLOCK, collisionShape, BooleanOp.AND);
    }
 
-   private record FluidInfo(BlockPos pos, Fluid fluid, BlockState sourceState) {
+   private record FluidInfo(BlockPos pos, Fluid fluid, boolean source, BlockState sourceState) {
+      public boolean canFillCauldron() {
+         return this.source && (this.fluid == Fluids.LAVA || this.fluid == Fluids.WATER);
+      }
    }
 }

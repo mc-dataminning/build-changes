@@ -98,7 +98,7 @@ public class Painting extends HangingEntity {
       candidate.setDirection(direction);
       potentialVariants.removeIf(variant -> {
          candidate.setVariant((Holder<PaintingVariant>)variant);
-         return !candidate.survives();
+         return !candidate.canBePlaced();
       });
       if (potentialVariants.isEmpty()) {
          return Optional.empty();
@@ -190,5 +190,10 @@ public class Painting extends HangingEntity {
    @Override
    public ItemStack getPickResult() {
       return new ItemStack(Items.PAINTING);
+   }
+
+   @Override
+   public boolean canBePlaced() {
+      return this.level().noBorderCollision(this, this.getPopBox()) && super.canBePlaced();
    }
 }

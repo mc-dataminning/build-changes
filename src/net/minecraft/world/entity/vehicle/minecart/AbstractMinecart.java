@@ -2,9 +2,9 @@ package net.minecraft.world.entity.vehicle.minecart;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.datafixers.util.Pair;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Optional;
 import net.minecraft.core.BlockPos;
@@ -62,8 +62,8 @@ public abstract class AbstractMinecart extends VehicleEntity {
    private boolean onRails;
    private boolean flipped = false;
    private final MinecartBehavior behavior;
-   private static final Map<RailShape, Pair<Vec3i, Vec3i>> EXITS = Maps.newEnumMap(
-      (Map)Util.make(
+   private static final Map<RailShape, Pair<Vec3i, Vec3i>> EXITS = new EnumMap<>(
+      Util.make(
          () -> {
             Vec3i xNeg = Direction.WEST.getUnitVec3i();
             Vec3i xPos = Direction.EAST.getUnitVec3i();
@@ -329,13 +329,6 @@ public abstract class AbstractMinecart extends VehicleEntity {
    }
 
    @Override
-   public void lerpPositionAndRotationStep(
-      final int stepsToTarget, final double targetX, final double targetY, final double targetZ, final double targetYRot, final double targetXRot
-   ) {
-      super.lerpPositionAndRotationStep(stepsToTarget, targetX, targetY, targetZ, targetYRot, targetXRot);
-   }
-
-   @Override
    public void applyGravity() {
       super.applyGravity();
    }
@@ -343,11 +336,6 @@ public abstract class AbstractMinecart extends VehicleEntity {
    @Override
    public void reapplyPosition() {
       super.reapplyPosition();
-   }
-
-   @Override
-   public boolean updateFluidInteraction() {
-      return super.updateFluidInteraction();
    }
 
    @Override

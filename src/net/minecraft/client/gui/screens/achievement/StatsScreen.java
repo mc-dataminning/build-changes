@@ -1,6 +1,5 @@
 package net.minecraft.client.gui.screens.achievement;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectListIterator;
@@ -30,7 +29,8 @@ import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
 import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.CommonComponents;
@@ -148,8 +148,8 @@ public class StatsScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int xm, final int ym, final float a) {
-      super.extractRenderState(graphics, xm, ym, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       graphics.blit(RenderPipelines.GUI_TEXTURED, Screen.FOOTER_SEPARATOR, 0, this.height - this.layout.getFooterHeight(), 0.0F, 0.0F, this.width, 2, 32, 2);
    }
 
@@ -208,7 +208,7 @@ public class StatsScreen extends Screen {
          }
 
          @Override
-         public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+         public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
             int y = this.getContentYMiddle() - 9 / 2;
             int index = GeneralStatisticsList.this.children().indexOf(this);
             int color = index % 2 == 0 ? -1 : -4539718;
@@ -223,6 +223,11 @@ public class StatsScreen extends Screen {
                "narrator.select", Component.empty().append(this.statDisplay).append(CommonComponents.SPACE).append(this.getValueText())
             );
          }
+
+         @Override
+         public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
+            return event.isLeftMouse();
+         }
       }
    }
 
@@ -233,23 +238,22 @@ public class StatsScreen extends Screen {
       private static final int SORT_NONE = 0;
       private static final int SORT_DOWN = -1;
       private static final int SORT_UP = 1;
-      protected final List<StatType<Block>> blockColumns;
-      protected final List<StatType<Item>> itemColumns;
+      private static final List<StatType<Block>> BLOCK_COLUMNS = List.of(Stats.BLOCK_MINED);
+      private static final List<StatType<Item>> ITEM_COLUMNS = List.of(
+         Stats.ITEM_BROKEN, Stats.ITEM_CRAFTED, Stats.ITEM_USED, Stats.ITEM_PICKED_UP, Stats.ITEM_DROPPED
+      );
       protected final Comparator<StatsScreen.ItemStatisticsList.ItemRow> itemStatSorter = new StatsScreen.ItemStatisticsList.ItemRowComparator();
       protected @Nullable StatType<?> sortColumn;
       protected int sortOrder;
 
       public ItemStatisticsList(final Minecraft minecraft) {
          super(minecraft, StatsScreen.this.width, StatsScreen.this.layout.getContentHeight(), 33, 22);
-         this.blockColumns = Lists.newArrayList();
-         this.blockColumns.add(Stats.BLOCK_MINED);
-         this.itemColumns = Lists.newArrayList(new StatType[]{Stats.ITEM_BROKEN, Stats.ITEM_CRAFTED, Stats.ITEM_USED, Stats.ITEM_PICKED_UP, Stats.ITEM_DROPPED});
          Set<Item> items = Sets.newIdentityHashSet();
 
          for (Item item : BuiltInRegistries.ITEM) {
             boolean addToList = false;
 
-            for (StatType<Item> type : this.itemColumns) {
+            for (StatType<Item> type : ITEM_COLUMNS) {
                if (type.contains(item) && StatsScreen.this.stats.getValue(type.get(item)) > 0) {
                   addToList = true;
                }
@@ -263,7 +267,7 @@ public class StatsScreen extends Screen {
          for (Block block : BuiltInRegistries.BLOCK) {
             boolean addToList = false;
 
-            for (StatType<Block> type : this.blockColumns) {
+            for (StatType<Block> type : BLOCK_COLUMNS) {
                if (type.contains(block) && StatsScreen.this.stats.getValue(type.get(block)) > 0) {
                   addToList = true;
                }
@@ -298,17 +302,17 @@ public class StatsScreen extends Screen {
       }
 
       private StatType<?> getColumn(final int i) {
-         return i < this.blockColumns.size() ? this.blockColumns.get(i) : this.itemColumns.get(i - this.blockColumns.size());
+         return i < BLOCK_COLUMNS.size() ? BLOCK_COLUMNS.get(i) : ITEM_COLUMNS.get(i - BLOCK_COLUMNS.size());
       }
 
       private int getColumnIndex(final StatType<?> column) {
-         int i = this.blockColumns.indexOf(column);
+         int i = BLOCK_COLUMNS.indexOf(column);
          if (i >= 0) {
             return i;
          }
 
-         int j = this.itemColumns.indexOf(column);
-         return j >= 0 ? j + this.blockColumns.size() : -1;
+         int j = ITEM_COLUMNS.indexOf(column);
+         return j >= 0 ? j + BLOCK_COLUMNS.size() : -1;
       }
 
       protected void sortByColumn(final StatType<?> column) {
@@ -378,19 +382,19 @@ public class StatsScreen extends Screen {
          }
 
          @Override
-         public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+         public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
             this.blockMined.setPosition(this.getContentX() + ItemStatisticsList.this.getColumnX(0) - 18, this.getContentY() + 1);
-            this.blockMined.extractRenderState(graphics, mouseX, mouseY, a);
+            this.blockMined.extractRenderState(graphics);
             this.itemBroken.setPosition(this.getContentX() + ItemStatisticsList.this.getColumnX(1) - 18, this.getContentY() + 1);
-            this.itemBroken.extractRenderState(graphics, mouseX, mouseY, a);
+            this.itemBroken.extractRenderState(graphics);
             this.itemCrafted.setPosition(this.getContentX() + ItemStatisticsList.this.getColumnX(2) - 18, this.getContentY() + 1);
-            this.itemCrafted.extractRenderState(graphics, mouseX, mouseY, a);
+            this.itemCrafted.extractRenderState(graphics);
             this.itemUsed.setPosition(this.getContentX() + ItemStatisticsList.this.getColumnX(3) - 18, this.getContentY() + 1);
-            this.itemUsed.extractRenderState(graphics, mouseX, mouseY, a);
+            this.itemUsed.extractRenderState(graphics);
             this.itemPickedUp.setPosition(this.getContentX() + ItemStatisticsList.this.getColumnX(4) - 18, this.getContentY() + 1);
-            this.itemPickedUp.extractRenderState(graphics, mouseX, mouseY, a);
+            this.itemPickedUp.extractRenderState(graphics);
             this.itemDropped.setPosition(this.getContentX() + ItemStatisticsList.this.getColumnX(5) - 18, this.getContentY() + 1);
-            this.itemDropped.extractRenderState(graphics, mouseX, mouseY, a);
+            this.itemDropped.extractRenderState(graphics);
             if (ItemStatisticsList.this.sortColumn != null) {
                int offset = ItemStatisticsList.this.getColumnX(ItemStatisticsList.this.getColumnIndex(ItemStatisticsList.this.sortColumn)) - 36;
                Identifier sprite = ItemStatisticsList.this.sortOrder == 1 ? StatsScreen.SORT_UP_SPRITE : StatsScreen.SORT_DOWN_SPRITE;
@@ -424,7 +428,7 @@ public class StatsScreen extends Screen {
             }
 
             @Override
-            public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+            public void extractContents(final GuiGraphicsExtractor graphics) {
                Identifier background = this.sprites.get(this.isActive(), this.isHoveredOrFocused());
                graphics.blitSprite(RenderPipelines.GUI_TEXTURED, background, this.getX(), this.getY(), this.width, this.height);
                graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.sprite, this.getX(), this.getY(), this.width, this.height);
@@ -446,16 +450,16 @@ public class StatsScreen extends Screen {
          }
 
          @Override
-         public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+         public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
             this.itemRowWidget.setPosition(this.getContentX(), this.getContentY());
-            this.itemRowWidget.extractRenderState(graphics, mouseX, mouseY, a);
+            this.itemRowWidget.extractRenderState(graphics);
             StatsScreen.ItemStatisticsList itemStatsList = ItemStatisticsList.this;
             int index = itemStatsList.children().indexOf(this);
 
-            for (int col = 0; col < itemStatsList.blockColumns.size(); col++) {
+            for (int col = 0; col < StatsScreen.ItemStatisticsList.BLOCK_COLUMNS.size(); col++) {
                Stat<Block> stat;
                if (this.item instanceof BlockItem blockItem) {
-                  stat = itemStatsList.blockColumns.get(col).get(blockItem.getBlock());
+                  stat = StatsScreen.ItemStatisticsList.BLOCK_COLUMNS.get(col).get(blockItem.getBlock());
                } else {
                   stat = null;
                }
@@ -463,11 +467,11 @@ public class StatsScreen extends Screen {
                this.extractStat(graphics, stat, this.getContentX() + ItemStatisticsList.this.getColumnX(col), this.getContentYMiddle() - 9 / 2, index % 2 == 0);
             }
 
-            for (int col = 0; col < itemStatsList.itemColumns.size(); col++) {
+            for (int col = 0; col < StatsScreen.ItemStatisticsList.ITEM_COLUMNS.size(); col++) {
                this.extractStat(
                   graphics,
-                  itemStatsList.itemColumns.get(col).get(this.item),
-                  this.getContentX() + ItemStatisticsList.this.getColumnX(col + itemStatsList.blockColumns.size()),
+                  StatsScreen.ItemStatisticsList.ITEM_COLUMNS.get(col).get(this.item),
+                  this.getContentX() + ItemStatisticsList.this.getColumnX(col + StatsScreen.ItemStatisticsList.BLOCK_COLUMNS.size()),
                   this.getContentYMiddle() - 9 / 2,
                   index % 2 == 0
                );
@@ -495,9 +499,9 @@ public class StatsScreen extends Screen {
             }
 
             @Override
-            protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+            protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics) {
                graphics.blitSprite(RenderPipelines.GUI_TEXTURED, StatsScreen.SLOT_SPRITE, ItemRow.this.getContentX(), ItemRow.this.getContentY(), 18, 18);
-               super.extractWidgetRenderState(graphics, mouseX, mouseY, a);
+               super.extractWidgetRenderState(graphics);
             }
 
             @Override
@@ -516,7 +520,7 @@ public class StatsScreen extends Screen {
             if (ItemStatisticsList.this.sortColumn == null) {
                key1 = 0;
                key2 = 0;
-            } else if (ItemStatisticsList.this.blockColumns.contains(ItemStatisticsList.this.sortColumn)) {
+            } else if (StatsScreen.ItemStatisticsList.BLOCK_COLUMNS.contains(ItemStatisticsList.this.sortColumn)) {
                StatType<Block> type = (StatType<Block>)ItemStatisticsList.this.sortColumn;
                key1 = item1 instanceof BlockItem blockItem ? StatsScreen.this.stats.getValue(type, blockItem.getBlock()) : -1;
                key2 = item2 instanceof BlockItem blockItem ? StatsScreen.this.stats.getValue(type, blockItem.getBlock()) : -1;
@@ -586,7 +590,7 @@ public class StatsScreen extends Screen {
          }
 
          @Override
-         public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+         public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
             graphics.text(StatsScreen.this.font, this.mobName, this.getContentX() + 2, this.getContentY() + 1, -1);
             graphics.text(StatsScreen.this.font, this.kills, this.getContentX() + 2 + 10, this.getContentY() + 2 + 9, this.hasKills ? -4539718 : -8355712);
             graphics.text(
@@ -597,6 +601,11 @@ public class StatsScreen extends Screen {
          @Override
          public Component getNarration() {
             return Component.translatable("narrator.select", CommonComponents.joinForNarration(this.kills, this.killedBy));
+         }
+
+         @Override
+         public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
+            return event.isLeftMouse();
          }
       }
    }

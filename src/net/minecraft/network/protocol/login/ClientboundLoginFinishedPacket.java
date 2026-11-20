@@ -9,12 +9,16 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.PacketType;
 
-public record ClientboundLoginFinishedPacket(GameProfile gameProfile, UUID sessionId) implements Packet<ClientLoginPacketListener> {
+public record ClientboundLoginFinishedPacket(GameProfile gameProfile, UUID sessionId, @ConnectionOptionsPacket.Flags byte options)
+   implements Packet<ClientLoginPacketListener>,
+   ConnectionOptionsPacket {
    public static final StreamCodec<ByteBuf, ClientboundLoginFinishedPacket> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.GAME_PROFILE,
       ClientboundLoginFinishedPacket::gameProfile,
       UUIDUtil.STREAM_CODEC,
       ClientboundLoginFinishedPacket::sessionId,
+      ConnectionOptionsPacket.FLAG_FIELD_STREAM_CODEC,
+      ClientboundLoginFinishedPacket::options,
       ClientboundLoginFinishedPacket::new
    );
 

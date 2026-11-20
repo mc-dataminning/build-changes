@@ -1,8 +1,6 @@
 package net.minecraft.world.level.entity;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
@@ -14,10 +12,12 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.io.Writer;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -32,7 +32,7 @@ import org.slf4j.Logger;
 
 public class PersistentEntitySectionManager<T extends EntityAccess> implements AutoCloseable {
    private static final Logger LOGGER = LogUtils.getLogger();
-   private final Set<UUID> knownUuids = Sets.newHashSet();
+   private final Set<UUID> knownUuids = new HashSet<>();
    private final LevelCallback<T> callbacks;
    private final EntityPersistentStorage<T> permanentStorage;
    private final EntityLookup<T> visibleEntityStorage;
@@ -41,7 +41,7 @@ public class PersistentEntitySectionManager<T extends EntityAccess> implements A
    private final Long2ObjectMap<Visibility> chunkVisibility = new Long2ObjectOpenHashMap();
    private final Long2ObjectMap<PersistentEntitySectionManager.ChunkLoadStatus> chunkLoadStatuses = new Long2ObjectOpenHashMap();
    private final LongSet chunksToUnload = new LongOpenHashSet();
-   private final Queue<ChunkEntities<T>> loadingInbox = Queues.newConcurrentLinkedQueue();
+   private final Queue<ChunkEntities<T>> loadingInbox = new ConcurrentLinkedQueue<>();
 
    public PersistentEntitySectionManager(final Class<T> entityClass, final LevelCallback<T> callbacks, final EntityPersistentStorage<T> permanentStorage) {
       this.visibleEntityStorage = new EntityLookup<>();

@@ -1,6 +1,6 @@
 package net.minecraft.client.renderer.entity;
 
-import com.google.common.collect.Maps;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import net.minecraft.client.model.EntityModel;
@@ -14,7 +14,7 @@ import net.minecraft.world.entity.animal.axolotl.Axolotl;
 
 public class AxolotlRenderer extends AgeableMobRenderer<Axolotl, AxolotlRenderState, EntityModel<AxolotlRenderState>> {
    private static final Map<Axolotl.Variant, AxolotlRenderer.AxolotlTextures> TEXTURE_BY_TYPE = Util.make(
-      Maps.newHashMap(),
+      new HashMap<>(),
       map -> {
          for (Axolotl.Variant variant : Axolotl.Variant.values()) {
             AxolotlRenderer.AxolotlTextures textures = new AxolotlRenderer.AxolotlTextures(

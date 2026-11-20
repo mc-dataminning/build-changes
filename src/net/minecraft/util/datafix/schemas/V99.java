@@ -1,6 +1,5 @@
 package net.minecraft.util.datafix.schemas;
 
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.schemas.Schema;
@@ -10,6 +9,7 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 import net.minecraft.util.datafix.fixes.References;
@@ -17,7 +17,7 @@ import org.slf4j.Logger;
 
 public class V99 extends Schema {
    private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Map<String, String> ITEM_TO_BLOCKENTITY = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), map -> {
+   private static final Map<String, String> ITEM_TO_BLOCKENTITY = (Map<String, String>)DataFixUtils.make(new HashMap(), map -> {
       map.put("minecraft:furnace", "Furnace");
       map.put("minecraft:lit_furnace", "Furnace");
       map.put("minecraft:chest", "Chest");
@@ -77,7 +77,7 @@ public class V99 extends Schema {
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = Maps.newHashMap();
+      Map<String, Supplier<TypeTemplate>> map = new HashMap<>();
       schema.register(map, "Item", name -> DSL.optionalFields("Item", References.ITEM_STACK.in(schema)));
       schema.registerSimple(map, "XPOrb");
       registerThrowableProjectile(schema, map, "ThrownEgg");
@@ -175,7 +175,7 @@ public class V99 extends Schema {
    }
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = Maps.newHashMap();
+      Map<String, Supplier<TypeTemplate>> map = new HashMap<>();
       registerInventory(schema, map, "Furnace");
       registerInventory(schema, map, "Chest");
       schema.registerSimple(map, "EnderChest");

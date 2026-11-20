@@ -1,13 +1,13 @@
 package net.minecraft.world.entity.ai.village.poi;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
 import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.SectionPos;
-import net.minecraft.util.Util;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.VisibleForDebug;
 import net.minecraft.util.debug.DebugPoiInfo;
 import org.jspecify.annotations.Nullable;
@@ -28,7 +28,7 @@ import org.slf4j.Logger;
 public class PoiSection {
    private static final Logger LOGGER = LogUtils.getLogger();
    private final Short2ObjectMap<PoiRecord> records = new Short2ObjectOpenHashMap();
-   private final Map<Holder<PoiType>, Set<PoiRecord>> byType = Maps.newHashMap();
+   private final Map<Holder<PoiType>, Set<PoiRecord>> byType = new HashMap<>();
    private final Runnable setDirty;
    private boolean isValid;
 
@@ -71,11 +71,11 @@ public class PoiSection {
             return false;
          }
 
-         Util.logAndPauseIfInIde("POI data mismatch: already registered at " + blockPos);
+         DevUtil.logAndPauseIfInIde("POI data mismatch: already registered at " + blockPos);
       }
 
       this.records.put(key, record);
-      this.byType.computeIfAbsent(poiType, k -> Sets.newHashSet()).add(record);
+      this.byType.computeIfAbsent(poiType, k -> new HashSet<>()).add(record);
       return true;
    }
 
@@ -99,7 +99,7 @@ public class PoiSection {
    public boolean release(final BlockPos pos) {
       PoiRecord record = (PoiRecord)this.records.get(SectionPos.sectionRelativePos(pos));
       if (record == null) {
-         throw (IllegalStateException)Util.pauseInIde(new IllegalStateException("POI never registered at " + pos));
+         throw (IllegalStateException)DevUtil.pauseInIde(new IllegalStateException("POI never registered at " + pos));
       }
 
       boolean success = record.releaseTicket();

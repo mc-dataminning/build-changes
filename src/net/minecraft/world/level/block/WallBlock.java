@@ -1,7 +1,5 @@
 package net.minecraft.world.level.block;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Function;
@@ -35,8 +33,8 @@ public class WallBlock extends Block implements SimpleWaterloggedBlock {
    public static final EnumProperty<WallSide> NORTH = BlockStateProperties.NORTH_WALL;
    public static final EnumProperty<WallSide> SOUTH = BlockStateProperties.SOUTH_WALL;
    public static final EnumProperty<WallSide> WEST = BlockStateProperties.WEST_WALL;
-   public static final Map<Direction, EnumProperty<WallSide>> PROPERTY_BY_DIRECTION = ImmutableMap.copyOf(
-      Maps.newEnumMap(Map.of(Direction.NORTH, NORTH, Direction.EAST, EAST, Direction.SOUTH, SOUTH, Direction.WEST, WEST))
+   public static final Map<Direction, EnumProperty<WallSide>> PROPERTY_BY_DIRECTION = Map.of(
+      Direction.NORTH, NORTH, Direction.EAST, EAST, Direction.SOUTH, SOUTH, Direction.WEST, WEST
    );
    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
    private final Function<BlockState, VoxelShape> shapes;

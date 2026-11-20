@@ -1,9 +1,9 @@
 package net.minecraft.client.gui.screens.inventory;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.platform.cursor.CursorTypes;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -25,7 +25,7 @@ import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.client.multiplayer.SessionSearchTrees;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.player.inventory.Hotbar;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.searchtree.SearchTree;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
@@ -487,7 +487,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
    }
 
    @Override
-   protected void extractLabels(final GuiGraphicsExtractor graphics, final int xm, final int ym) {
+   protected void extractLabels(final GuiGraphicsExtractor graphics) {
       if (selectedTab.showTitle()) {
          graphics.text(this.font, selectedTab.getDisplayName(), 8, 6, -12566464, false);
       }
@@ -681,20 +681,20 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      this.effects.extractRenderState(graphics, mouseX, mouseY);
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      this.effects.extractRenderState(graphics);
+      super.extractRenderState(graphics);
 
       for (CreativeModeTab tab : CreativeModeTabs.tabs()) {
-         if (this.checkTabHovering(graphics, tab, mouseX, mouseY)) {
+         if (this.checkTabHovering(graphics, tab, graphics.mouseX(), graphics.mouseY())) {
             break;
          }
       }
 
       if (this.destroyItemSlot != null
          && selectedTab.getType() == CreativeModeTab.Type.INVENTORY
-         && this.isHovering(this.destroyItemSlot.x, this.destroyItemSlot.y, 16, 16, mouseX, mouseY)) {
-         graphics.setTooltipForNextFrame(this.font, TRASH_SLOT_TOOLTIP, mouseX, mouseY);
+         && this.isHovering(this.destroyItemSlot.x, this.destroyItemSlot.y, 16, 16, graphics.mouseX(), graphics.mouseY())) {
+         graphics.setTooltipForNextFrame(this.font, TRASH_SLOT_TOOLTIP, graphics.mouseX(), graphics.mouseY());
       }
    }
 
@@ -719,7 +719,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
          return originalLines;
       }
 
-      List<Component> linesToDisplay = Lists.newArrayList(originalLines);
+      List<Component> linesToDisplay = new ArrayList<>(originalLines);
       if (isSearchTab && isCreativeSlot) {
          this.visibleTags.forEach(tag -> {
             if (itemStack.is((TagKey<Item>)tag)) {
@@ -740,19 +740,19 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
    }
 
    @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
+   public void extractBackground(final GuiGraphicsExtractor graphics) {
+      super.extractBackground(graphics);
 
       for (CreativeModeTab tab : CreativeModeTabs.tabs()) {
          if (tab != selectedTab) {
-            this.extractTabButton(graphics, mouseX, mouseY, tab);
+            this.extractTabButton(graphics, tab);
          }
       }
 
       graphics.blit(
          RenderPipelines.GUI_TEXTURED, selectedTab.getBackgroundTexture(), this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256
       );
-      if (this.insideScrollbar(mouseX, mouseY)) {
+      if (this.insideScrollbar(graphics.mouseX(), graphics.mouseY())) {
          if (this.canScroll()) {
             graphics.requestCursor(this.scrolling ? CursorTypes.RESIZE_NS : CursorTypes.POINTING_HAND);
          } else {
@@ -760,7 +760,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
          }
       }
 
-      this.searchBox.extractRenderState(graphics, mouseX, mouseY, a);
+      this.searchBox.extractRenderState(graphics);
       int xscr = this.leftPos + 175;
       int yscr = this.topPos + 18;
       int yscr2 = yscr + 112;
@@ -769,10 +769,10 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
          graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, xscr, yscr + (int)((yscr2 - yscr - 17) * this.scrollOffs), 12, 15);
       }
 
-      this.extractTabButton(graphics, mouseX, mouseY, selectedTab);
+      this.extractTabButton(graphics, selectedTab);
       if (selectedTab.getType() == CreativeModeTab.Type.INVENTORY) {
          EntityPortraitWidget.extractEntityInInventoryFollowsMouse(
-            graphics, this.leftPos + 73, this.topPos + 6, this.leftPos + 105, this.topPos + 49, 20.0F, 0.0625F, mouseX, mouseY, this.minecraft.player
+            graphics, this.leftPos + 73, this.topPos + 6, this.leftPos + 105, this.topPos + 49, 20.0F, 0.0625F, this.minecraft.player
          );
       }
    }
@@ -816,7 +816,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
       }
    }
 
-   protected void extractTabButton(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final CreativeModeTab tab) {
+   protected void extractTabButton(final GuiGraphicsExtractor graphics, final CreativeModeTab tab) {
       boolean selected = tab == selectedTab;
       boolean isTop = tab.row() == CreativeModeTab.Row.TOP;
       int pos = tab.column();
@@ -829,7 +829,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
          sprites = selected ? SELECTED_BOTTOM_TABS : UNSELECTED_BOTTOM_TABS;
       }
 
-      if (!selected && mouseX > x && mouseY > y && mouseX < x + 26 && mouseY < y + 32) {
+      if (!selected && graphics.mouseX() > x && graphics.mouseY() > y && graphics.mouseX() < x + 26 && graphics.mouseY() < y + 32) {
          graphics.requestCursor(CursorTypes.POINTING_HAND);
       }
 

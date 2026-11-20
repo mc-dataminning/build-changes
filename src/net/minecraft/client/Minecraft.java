@@ -214,6 +214,7 @@ import net.minecraft.sounds.Music;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DialogTags;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.FileUtil;
 import net.minecraft.util.FileZipper;
 import net.minecraft.util.MemoryReserve;
@@ -403,7 +404,9 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
       this.vanillaPackResources = clientPackSource.getVanillaPack();
       this.proxy = gameConfig.user.proxy;
       this.offlineDeveloperMode = gameConfig.game.offlineDeveloperMode;
-      MinecraftServicesDiscoveryService discoveryService = MinecraftServicesDiscoveryService.create(this.proxy, !this.offlineDeveloperMode);
+      MinecraftServicesDiscoveryService discoveryService = MinecraftServicesDiscoveryService.create(
+         this.proxy, !this.offlineDeveloperMode, SharedConstants.getCurrentVersion().id()
+      );
       this.services = Services.create(discoveryService, this.gameDirectory);
       this.user = gameConfig.user.user;
       this.profileFuture = this.offlineDeveloperMode
@@ -483,7 +486,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
                   gameConfig.game.renderDebugLabels,
                   gameConfig.game.vulkanValidation,
                   SharedConstants.IS_RENDERDOC_ATTACHED,
-                  SharedConstants.IS_RUNNING_IN_IDE
+                  DevUtil.IS_RUNNING_IN_IDE
                )
             );
             backend = backendToTry;
@@ -523,7 +526,6 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
          initialWindowTitle,
          this.monitorManager,
          backend,
-         device,
          maxSize
       );
 
@@ -533,7 +535,10 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
          LOGGER.error("Couldn't set icon", e);
       }
 
-      this.windowSurface = device.createSurface(this.window.handle(), this.window::isIconified);
+      this.windowSurface = device.createSurface(
+         this.window.handle(), this.window::isIconified, this.options.preferDXGIPresent().get() && deviceInfo.features().dxgiSurface()
+      );
+      this.window.setNeedsBorderlessFullscreenPadding(Util.getPlatform() == Util.OS.WINDOWS && !this.windowSurface.isDXGI());
       this.sdlEventHandler = new SDLEventHandler(this, this.window);
       this.textInputManager = new TextInputManager(this.window);
       this.sdlEventHandler.flushInputEvents();
@@ -707,7 +712,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
       GameLoadTimesEvent.INSTANCE.beginStep(TelemetryProperty.LOAD_TIME_LOADING_OVERLAY_MS);
       GameLoadCookie loadCookie = new GameLoadCookie(realmsClient, gameConfig.quickPlay);
       this.gui.setOverlay(new LoadingOverlay(this, reloadInstance, maybeT -> Util.ifElse(maybeT, t -> this.rollbackResourcePacks(t, loadCookie), () -> {
-         if (SharedConstants.IS_RUNNING_IN_IDE) {
+         if (DevUtil.IS_RUNNING_IN_IDE) {
             this.selfTest();
          }
 
@@ -2254,7 +2259,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
    }
 
    public boolean allowsTelemetry() {
-      return SharedConstants.IS_RUNNING_IN_IDE && !SharedConstants.DEBUG_FORCE_TELEMETRY ? false : this.userProperties().flag(UserFlag.TELEMETRY_ENABLED);
+      return DevUtil.IS_RUNNING_IN_IDE && !SharedConstants.DEBUG_FORCE_TELEMETRY ? false : this.userProperties().flag(UserFlag.TELEMETRY_ENABLED);
    }
 
    public boolean allowsMultiplayer() {
@@ -2464,6 +2469,10 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
       systemReport.setDetail("Surface Info", () -> {
          if (minecraft != null && minecraft.windowSurface != null) {
             StringBuilder builder = new StringBuilder();
+            if (minecraft.windowSurface.isDXGI()) {
+               builder.append("DXGI, ");
+            }
+
             if (minecraft.windowSurface.isAcquired()) {
                builder.append("acquired, ");
             }

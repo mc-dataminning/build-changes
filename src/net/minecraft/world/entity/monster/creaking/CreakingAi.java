@@ -58,15 +58,16 @@ public class CreakingAi {
          ImmutableList.of(
             SetWalkTargetFromAttackTargetIfTargetOutOfReach.create(1.0F),
             MeleeAttack.create(Creaking::canMove, 40),
-            StopAttackingIfTargetInvalid.create((level, target) -> !isAttackTargetStillReachable(body, target))
+            StopAttackingIfTargetInvalid.create((var1, target) -> !isAttackTargetStillValid(body, target))
          ),
          ImmutableSet.of(Pair.of(MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT))
       );
    }
 
-   private static boolean isAttackTargetStillReachable(final Creaking creaking, final LivingEntity target) {
+   private static boolean isAttackTargetStillValid(final Creaking creaking, final LivingEntity target) {
       Optional<List<Player>> visibleAttackablePlayers = creaking.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYERS);
-      return visibleAttackablePlayers.<Boolean>map(players -> target instanceof Player player && players.contains(player)).orElse(false);
+      return visibleAttackablePlayers.<Boolean>map(players -> target instanceof Player player && players.contains(player) && creaking.canAttack(target))
+         .orElse(false);
    }
 
    protected static List<ActivityData<Creaking>> getActivities(final Creaking creaking) {

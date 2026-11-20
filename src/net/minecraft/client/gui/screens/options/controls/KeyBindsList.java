@@ -73,9 +73,9 @@ public class KeyBindsList extends ContainerObjectSelectionList<KeyBindsList.Entr
       }
 
       @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          this.categoryName.setPosition(KeyBindsList.this.width / 2 - this.categoryName.getWidth() / 2, this.getContentBottom() - this.categoryName.getHeight());
-         this.categoryName.extractRenderState(graphics, mouseX, mouseY, a);
+         this.categoryName.extractRenderState(graphics);
       }
 
       @Override
@@ -128,15 +128,15 @@ public class KeyBindsList extends ContainerObjectSelectionList<KeyBindsList.Entr
       }
 
       @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          this.updateChangeButtonMessage();
          int resetButtonX = KeyBindsList.this.scrollBarX() - this.resetButton.getWidth() - 10;
          int buttonY = this.getContentY() - 2;
          this.resetButton.setPosition(resetButtonX, buttonY);
-         this.resetButton.extractRenderState(graphics, mouseX, mouseY, a);
+         this.resetButton.extractRenderState(graphics);
          int changeButtonX = resetButtonX - 5 - this.changeButton.getWidth();
          this.changeButton.setPosition(changeButtonX, buttonY);
-         this.changeButton.extractRenderState(graphics, mouseX, mouseY, a);
+         this.changeButton.extractRenderState(graphics);
          graphics.text(KeyBindsList.this.minecraft.font, this.name, this.getContentX(), this.getContentYMiddle() - 9 / 2, -1);
          if (this.hasCollision) {
             int stripeWidth = 3;

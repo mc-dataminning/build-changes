@@ -1,6 +1,5 @@
 package net.minecraft.client.sounds;
 
-import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -13,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import net.minecraft.SharedConstants;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Options;
 import net.minecraft.client.gui.components.debug.DebugFact;
@@ -30,6 +28,7 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceProvider;
 import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.profiling.ProfilerFiller;
@@ -43,7 +42,7 @@ public class SoundManager extends SimplePreparableReloadListener<SoundManager.Pr
    private static final String SOUNDS_PATH = "sounds.json";
    private static final Gson GSON = new GsonBuilder().registerTypeAdapter(SoundEventRegistration.class, new SoundEventRegistrationSerializer()).create();
    private static final TypeToken<Map<String, SoundEventRegistration>> SOUND_EVENT_REGISTRATION_TYPE = new TypeToken<Map<String, SoundEventRegistration>>() {};
-   private final Map<Identifier, WeighedSoundEvents> registry = Maps.newHashMap();
+   private final Map<Identifier, WeighedSoundEvents> registry = new HashMap<>();
    private final SoundEngine soundEngine;
    private final Map<Identifier, Resource> soundCache = new HashMap<>();
 
@@ -88,7 +87,7 @@ public class SoundManager extends SimplePreparableReloadListener<SoundManager.Pr
 
    protected void apply(final SoundManager.Preparations preparations, final ResourceManager manager, final ProfilerFiller profiler) {
       preparations.apply(this.registry, this.soundCache, this.soundEngine);
-      if (SharedConstants.IS_RUNNING_IN_IDE) {
+      if (DevUtil.IS_RUNNING_IN_IDE) {
          for (Identifier location : this.registry.keySet()) {
             WeighedSoundEvents event = this.registry.get(location);
             if (!ComponentUtils.isTranslationResolvable(event.getSubtitle()) && BuiltInRegistries.SOUND_EVENT.containsKey(location)) {
@@ -215,7 +214,7 @@ public class SoundManager extends SimplePreparableReloadListener<SoundManager.Pr
    }
 
    protected static class Preparations {
-      private final Map<Identifier, WeighedSoundEvents> registry = Maps.newHashMap();
+      private final Map<Identifier, WeighedSoundEvents> registry = new HashMap<>();
       private Map<Identifier, Resource> soundCache = Map.of();
 
       private void listResources(final ResourceManager resourceManager) {

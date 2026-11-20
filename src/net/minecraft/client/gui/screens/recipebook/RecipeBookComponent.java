@@ -1,8 +1,8 @@
 package net.minecraft.client.gui.screens.recipebook;
 
-import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ObjectSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -28,7 +28,7 @@ import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.input.PreeditEvent;
 import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.resources.language.LanguageInfo;
 import net.minecraft.client.resources.language.LanguageManager;
 import net.minecraft.network.chat.CommonComponents;
@@ -72,7 +72,7 @@ public abstract class RecipeBookComponent<T extends RecipeBookMenu> implements G
    private float time;
    private @Nullable RecipeDisplayId lastPlacedRecipe;
    private final GhostSlots ghostSlots;
-   private final List<RecipeBookTabButton> tabButtons = Lists.newArrayList();
+   private final List<RecipeBookTabButton> tabButtons = new ArrayList<>();
    private @Nullable RecipeBookTabButton selectedTab;
    protected CycleButton<Boolean> filterButton;
    protected final T menu;
@@ -231,7 +231,7 @@ public abstract class RecipeBookComponent<T extends RecipeBookMenu> implements G
 
    private void updateCollections(final boolean resetPage, final boolean isFiltering) {
       List<RecipeCollection> tabCollection = this.book.getCollection(this.selectedTab.getCategory());
-      List<RecipeCollection> collection = Lists.newArrayList(tabCollection);
+      List<RecipeCollection> collection = new ArrayList<>(tabCollection);
       collection.removeIf(c -> !c.hasAnySelected());
       String searchTarget = this.searchBox.getValue();
       if (!searchTarget.isEmpty()) {
@@ -294,30 +294,30 @@ public abstract class RecipeBookComponent<T extends RecipeBookMenu> implements G
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
       if (this.isVisible()) {
          if (!this.minecraft.hasControlDown()) {
-            this.time += a;
+            this.time = this.time + graphics.partialTicks();
          }
 
          int xo = this.getXOrigin();
          int yo = this.getYOrigin();
          graphics.blit(RenderPipelines.GUI_TEXTURED, RECIPE_BOOK_LOCATION, xo, yo, 1.0F, 1.0F, 147, 166, 256, 256);
-         this.searchBox.extractRenderState(graphics, mouseX, mouseY, a);
+         this.searchBox.extractRenderState(graphics);
 
          for (RecipeBookTabButton tabButton : this.tabButtons) {
-            tabButton.extractRenderState(graphics, mouseX, mouseY, a);
+            tabButton.extractRenderState(graphics);
          }
 
-         this.filterButton.extractRenderState(graphics, mouseX, mouseY, a);
-         this.recipeBookPage.extractRenderState(graphics, xo, yo, mouseX, mouseY, a);
+         this.filterButton.extractRenderState(graphics);
+         this.recipeBookPage.extractRenderState(graphics, xo, yo);
       }
    }
 
-   public void extractTooltip(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final @Nullable Slot hoveredSlot) {
+   public void extractTooltip(final GuiGraphicsExtractor graphics, final @Nullable Slot hoveredSlot) {
       if (this.isVisible()) {
-         this.recipeBookPage.extractTooltip(graphics, mouseX, mouseY);
-         this.ghostSlots.extractTooltip(graphics, this.minecraft, mouseX, mouseY, hoveredSlot);
+         this.recipeBookPage.extractTooltip(graphics);
+         this.ghostSlots.extractTooltip(graphics, this.minecraft, hoveredSlot);
       }
    }
 
@@ -563,7 +563,7 @@ public abstract class RecipeBookComponent<T extends RecipeBookMenu> implements G
 
    @Override
    public void updateNarration(final NarrationElementOutput output) {
-      List<NarratableEntry> narratableEntries = Lists.newArrayList();
+      List<NarratableEntry> narratableEntries = new ArrayList<>();
       this.recipeBookPage.listButtons(e -> {
          if (e.isActive()) {
             narratableEntries.add(e);

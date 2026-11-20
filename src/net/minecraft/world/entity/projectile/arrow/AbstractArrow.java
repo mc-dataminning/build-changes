@@ -1,6 +1,5 @@
 package net.minecraft.world.entity.projectile.arrow;
 
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import java.util.ArrayList;
@@ -438,7 +437,7 @@ public abstract class AbstractArrow extends Projectile {
          }
 
          if (this.piercedAndKilledEntities == null) {
-            this.piercedAndKilledEntities = Lists.newArrayListWithCapacity(5);
+            this.piercedAndKilledEntities = new ArrayList<>(5);
          }
 
          if (this.piercingIgnoreEntityIds.size() >= this.getPierceLevel() + 1) {

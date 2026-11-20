@@ -3,8 +3,6 @@ package net.minecraft.client;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -28,6 +26,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -45,6 +44,7 @@ import net.minecraft.client.gui.screens.options.OptionsSubScreen;
 import net.minecraft.client.input.InputQuirks;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.extract.LevelExtractor;
+import net.minecraft.client.renderer.state.OptionsRenderState;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.client.sounds.MusicManager;
 import net.minecraft.client.sounds.SoundEngine;
@@ -148,6 +148,18 @@ public class Options {
       PreferredGraphicsApi.DEFAULT,
       OptionInstance.NO_ACTION
    );
+   private boolean preferDXGIFromStartup = false;
+   private static final Component PREFER_DXGI_TOOLTIP = Component.translatable("options.preferDXGIPresent.tooltip.experimental");
+   private final OptionInstance<Boolean> preferDXGIPresent = OptionInstance.createBoolean("options.preferDXGIPresent.experimental", value -> {
+      List<Component> tooltipLines = new ArrayList<>();
+      if (value != this.preferDXGIFromStartup) {
+         tooltipLines.add(TOOLTIP_NEEDS_RESTART);
+         tooltipLines.add(CommonComponents.EMPTY);
+      }
+
+      tooltipLines.add(PREFER_DXGI_TOOLTIP);
+      return Tooltip.create(CommonComponents.joinLines(tooltipLines));
+   }, false);
    private boolean isApplyingGraphicsPreset;
    private final OptionInstance<GraphicsPreset> graphicsPreset = new OptionInstance<>(
       "options.graphics.preset",
@@ -254,8 +266,8 @@ public class Options {
       PrioritizeChunkUpdates.NONE,
       var1 -> this.setGraphicsPresetToCustom()
    );
-   public List<String> resourcePacks = Lists.newArrayList();
-   public List<String> incompatibleResourcePacks = Lists.newArrayList();
+   public List<String> resourcePacks = new ArrayList<>();
+   public List<String> incompatibleResourcePacks = new ArrayList<>();
    private final OptionInstance<ChatVisiblity> chatVisibility = new OptionInstance<>(
       "options.chat.visibility",
       OptionInstance.noTooltip(),
@@ -1045,8 +1057,12 @@ public class Options {
       return this.preferredGraphicsBackend;
    }
 
+   public OptionInstance<Boolean> preferDXGIPresent() {
+      return this.preferDXGIPresent;
+   }
+
    public boolean isRestartRequiredToApplyVideoSettings() {
-      return this.preferredGraphicsBackend.get() != this.preferredGraphicsBackendFromStartup;
+      return this.preferredGraphicsBackend.get() != this.preferredGraphicsBackendFromStartup || this.preferDXGIPresent.get() != this.preferDXGIFromStartup;
    }
 
    public void applyGraphicsPreset(final GraphicsPreset value) {
@@ -1547,6 +1563,7 @@ public class Options {
       access.process("glintSpeed", this.glintSpeed);
       access.process("glintStrength", this.glintStrength);
       access.process("preferredGraphicsBackend", this.preferredGraphicsBackend);
+      access.process("preferDXGIPresent", this.preferDXGIPresent);
       access.process("graphicsPreset", this.graphicsPreset);
       access.process("prioritizeChunkUpdates", this.prioritizeChunkUpdates);
       access.process("fullscreen", this.fullscreen);
@@ -1785,6 +1802,7 @@ public class Options {
       }
 
       this.preferredGraphicsBackendFromStartup = this.preferredGraphicsBackend.get();
+      this.preferDXGIFromStartup = this.preferDXGIPresent.get();
    }
 
    private static boolean isTrue(final String value) {
@@ -1930,7 +1948,7 @@ public class Options {
    }
 
    public void loadSelectedResourcePacks(final PackRepository repository) {
-      Set<String> selected = Sets.newLinkedHashSet();
+      Set<String> selected = new LinkedHashSet<>();
       Iterator<String> iterator = this.resourcePacks.iterator();
 
       while (iterator.hasNext()) {
@@ -1967,7 +1985,7 @@ public class Options {
 
    private static List<String> readListOfStrings(final String value) {
       List<String> result = GsonHelper.fromNullableJson(GSON, value, LIST_OF_STRINGS_TYPE);
-      return result != null ? result : Lists.newArrayList();
+      return result != null ? result : new ArrayList<>();
    }
 
    public File getFile() {
@@ -2001,6 +2019,30 @@ public class Options {
 
    public int getEffectiveRenderDistance() {
       return this.serverRenderDistance > 0 ? Math.min(this.renderDistance.get(), this.serverRenderDistance) : this.renderDistance.get();
+   }
+
+   public void extractRenderState(final OptionsRenderState optionsState) {
+      optionsState.cloudRange = this.cloudRange().get();
+      optionsState.cutoutLeaves = this.cutoutLeaves().get();
+      optionsState.improvedTransparency = this.improvedTransparency().get();
+      optionsState.ambientOcclusion = this.ambientOcclusion().get();
+      optionsState.menuBackgroundBlurriness = this.getMenuBackgroundBlurriness();
+      optionsState.panoramaSpeed = this.panoramaSpeed().get();
+      optionsState.maxAnisotropyValue = this.maxAnisotropyValue();
+      optionsState.textureFiltering = this.textureFiltering().get();
+      optionsState.bobView = this.bobView().get();
+      optionsState.screenEffectScale = this.screenEffectScale().get().floatValue();
+      optionsState.glintSpeed = this.glintSpeed().get();
+      optionsState.glintStrength = this.glintStrength().get();
+      optionsState.damageTiltStrength = this.damageTiltStrength().get();
+      optionsState.backgroundForChatOnly = this.backgroundForChatOnly().get();
+      optionsState.textBackgroundOpacity = this.textBackgroundOpacity().get().floatValue();
+      optionsState.cloudStatus = this.getCloudStatus();
+      optionsState.cameraType = this.getCameraType();
+      optionsState.renderDistance = this.getEffectiveRenderDistance();
+      optionsState.chunkSectionFadeInTime = this.chunkSectionFadeInTime().get();
+      optionsState.prioritizeChunkUpdates = this.prioritizeChunkUpdates().get();
+      optionsState.fov = this.fov().get();
    }
 
    private static Component pixelValueLabel(final Component caption, final int value) {

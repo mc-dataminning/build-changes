@@ -1,7 +1,6 @@
 package net.minecraft.util.datafix.fixes;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
@@ -13,6 +12,7 @@ import com.mojang.serialization.DynamicLike;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.OptionalDynamic;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
@@ -277,7 +277,7 @@ public class WorldGenSettingsFix extends DataFix {
       MutableInt strongholdSpread = new MutableInt(3);
       MutableInt strongholdCount = new MutableInt(128);
       MutableBoolean hasStronghold = new MutableBoolean(false);
-      Map<String, WorldGenSettingsFix.StructureFeatureConfiguration> structureConfig = Maps.newHashMap();
+      Map<String, WorldGenSettingsFix.StructureFeatureConfiguration> structureConfig = new HashMap<>();
       if (settings.result().isEmpty()) {
          hasStronghold.setTrue();
          structureConfig.put("minecraft:village", (WorldGenSettingsFix.StructureFeatureConfiguration)DEFAULTS.get("minecraft:village"));

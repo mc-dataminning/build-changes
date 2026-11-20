@@ -1,9 +1,9 @@
 package net.minecraft.world.entity;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
 import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -139,7 +139,7 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
    private DropChances dropChances = DropChances.DEFAULT;
    private boolean canPickUpLoot = false;
    private boolean persistenceRequired = false;
-   private final Map<PathType, Float> pathfindingMalus = Maps.newEnumMap(PathType.class);
+   private final Map<PathType, Float> pathfindingMalus = new EnumMap<>(PathType.class);
    private Optional<ResourceKey<LootTable>> lootTable = Optional.empty();
    private long lootTableSeed;
    private Leashable.@Nullable LeashData leashData;
@@ -574,7 +574,7 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
             && equippable.slot() == slot
             && (!EnchantmentHelper.has(itemStack, EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) || player.isCreative())) {
             this.shearItem(player, hand, heldItem, slot, itemStack);
-            this.playSound(equippable.shearingSound().value());
+            equippable.shearingSound().ifPresent(this::playSound);
             return true;
          }
       }
@@ -1402,9 +1402,9 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
    }
 
    @Override
-   protected void jumpInLiquid(final TagKey<Fluid> type) {
+   protected void jumpInLiquid(final List<Holder<Fluid>> fluidTypes) {
       if (this.getNavigation().canFloat()) {
-         super.jumpInLiquid(type);
+         super.jumpInLiquid(fluidTypes);
       } else {
          this.addDeltaMovement(0.0, 0.3, 0.0);
       }

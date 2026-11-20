@@ -1,10 +1,9 @@
 package net.minecraft.client.gui.contextualbar;
 
 import java.util.Objects;
-import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.PlayerRideableJumping;
@@ -22,7 +21,7 @@ public class JumpableVehicleBar implements ContextualBar {
    }
 
    @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final DeltaTracker deltaTracker) {
+   public void extractBackground(final GuiGraphicsExtractor graphics) {
       int left = this.left(this.minecraft.getWindow());
       int top = this.top(this.minecraft.getWindow());
       graphics.blitSprite(RenderPipelines.GUI_TEXTURED, JUMP_BAR_BACKGROUND_SPRITE, left, top, 182, 5);
@@ -37,6 +36,6 @@ public class JumpableVehicleBar implements ContextualBar {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final DeltaTracker deltaTracker) {
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
    }
 }

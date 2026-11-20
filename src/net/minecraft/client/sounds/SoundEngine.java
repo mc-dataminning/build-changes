@@ -1,8 +1,6 @@
 package net.minecraft.client.sounds;
 
 import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.mojang.blaze3d.audio.Channel;
 import com.mojang.blaze3d.audio.DeviceList;
@@ -13,6 +11,8 @@ import com.mojang.blaze3d.audio.ListenerTransform;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.objects.Object2FloatMap;
 import it.unimi.dsi.fastutil.objects.Object2FloatOpenHashMap;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -21,7 +21,6 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
-import net.minecraft.SharedConstants;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Options;
 import net.minecraft.client.gui.components.debug.DebugFact;
@@ -32,6 +31,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.ResourceProvider;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.Util;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
@@ -62,15 +62,15 @@ public class SoundEngine {
    private int tickCount;
    private DeviceList lastSeenDevices;
    private final DeviceTracker deviceTracker = Library.createDeviceTracker();
-   private final Map<SoundInstance, ChannelAccess.ChannelHandle> instanceToChannel = Maps.newHashMap();
+   private final Map<SoundInstance, ChannelAccess.ChannelHandle> instanceToChannel = new HashMap<>();
    private final Multimap<SoundSource, SoundInstance> instanceBySource = HashMultimap.create();
    private final Object2FloatMap<SoundSource> gainBySource = Util.make(new Object2FloatOpenHashMap(), map -> map.defaultReturnValue(1.0F));
-   private final List<TickableSoundInstance> tickingSounds = Lists.newArrayList();
-   private final Map<SoundInstance, Integer> queuedSounds = Maps.newHashMap();
-   private final Map<SoundInstance, Integer> soundDeleteTime = Maps.newHashMap();
-   private final List<SoundEventListener> listeners = Lists.newArrayList();
-   private final List<TickableSoundInstance> queuedTickableSounds = Lists.newArrayList();
-   private final List<Sound> preloadQueue = Lists.newArrayList();
+   private final List<TickableSoundInstance> tickingSounds = new ArrayList<>();
+   private final Map<SoundInstance, Integer> queuedSounds = new HashMap<>();
+   private final Map<SoundInstance, Integer> soundDeleteTime = new HashMap<>();
+   private final List<SoundEventListener> listeners = new ArrayList<>();
+   private final List<TickableSoundInstance> queuedTickableSounds = new ArrayList<>();
+   private final List<Sound> preloadQueue = new ArrayList<>();
 
    public SoundEngine(final SoundManager soundManager, final Options options, final ResourceProvider resourceProvider) {
       this.soundManager = soundManager;
@@ -391,7 +391,7 @@ public class SoundEngine {
             .createHandle(sound.shouldStream() ? Library.Pool.STREAMING : Library.Pool.STATIC);
          ChannelAccess.ChannelHandle handle = handleFuture.join();
          if (handle == null) {
-            if (SharedConstants.IS_RUNNING_IN_IDE) {
+            if (DevUtil.IS_RUNNING_IN_IDE) {
                LOGGER.warn("Failed to create new sound handle");
             }
 

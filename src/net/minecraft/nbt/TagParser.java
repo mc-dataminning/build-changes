@@ -15,8 +15,6 @@ public class TagParser<T> {
    public static final SimpleCommandExceptionType ERROR_EXPECTED_COMPOUND = new SimpleCommandExceptionType(
       Component.translatable("argument.nbt.expected.compound")
    );
-   public static final char ELEMENT_SEPARATOR = ',';
-   public static final char NAME_VALUE_SEPARATOR = ':';
    private static final TagParser<Tag> NBT_OPS_PARSER = create(NbtOps.INSTANCE);
    public static final Codec<CompoundTag> FLATTENED_CODEC = Codec.STRING
       .comapFlatMap(

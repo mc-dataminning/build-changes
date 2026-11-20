@@ -13,22 +13,22 @@ public class SharedConstants {
    @Deprecated
    public static final boolean SNAPSHOT = true;
    @Deprecated
-   public static final int WORLD_VERSION = 5124;
+   public static final int WORLD_VERSION = 5125;
    @Deprecated
    public static final String SERIES = "main";
    @Deprecated
    public static final int RELEASE_NETWORK_PROTOCOL_VERSION = 778;
    @Deprecated
-   public static final int SNAPSHOT_NETWORK_PROTOCOL_VERSION = 342;
+   public static final int SNAPSHOT_NETWORK_PROTOCOL_VERSION = 343;
    public static final int SNBT_NAG_VERSION = 5116;
    private static final int SNAPSHOT_PROTOCOL_BIT = 30;
    public static final boolean CRASH_EAGERLY = true;
    @Deprecated
    public static final int RESOURCE_PACK_FORMAT_MAJOR = 100;
    @Deprecated
-   public static final int RESOURCE_PACK_FORMAT_MINOR = 1;
+   public static final int RESOURCE_PACK_FORMAT_MINOR = 2;
    @Deprecated
-   public static final int DATA_PACK_FORMAT_MAJOR = 124;
+   public static final int DATA_PACK_FORMAT_MAJOR = 125;
    @Deprecated
    public static final int DATA_PACK_FORMAT_MINOR = 0;
    public static final String RPC_MANAGEMENT_SERVER_API_VERSION = "3.1.0";
@@ -104,7 +104,6 @@ public class SharedConstants {
    public static final boolean DEBUG_DISABLE_STRUCTURES = debugFlag("DISABLE_STRUCTURES");
    public static final boolean DEBUG_DISABLE_FEATURES = debugFlag("DISABLE_FEATURES");
    public static final boolean DEBUG_DISABLE_BLENDING = debugFlag("DISABLE_BLENDING");
-   public static final boolean DEBUG_DISABLE_BELOW_ZERO_RETROGENERATION = debugFlag("DISABLE_BELOW_ZERO_RETROGENERATION");
    public static final int DEFAULT_MINECRAFT_PORT = 25565;
    public static final int DEBUG_FAKE_LATENCY_MS = debugIntValue("FAKE_LATENCY_MS");
    public static final int DEBUG_FAKE_JITTER_MS = debugIntValue("FAKE_JITTER_MS");
@@ -117,11 +116,12 @@ public class SharedConstants {
    public static final boolean DEBUG_FORCE_TELEMETRY = debugFlag("FORCE_TELEMETRY");
    public static final boolean DEBUG_DONT_SEND_TELEMETRY_TO_BACKEND = debugFlag("DONT_SEND_TELEMETRY_TO_BACKEND");
    public static final boolean DEBUG_ENABLE_FARLANDS = debugFlag("ENABLE_FARLANDS");
+   public static final boolean DEBUG_DISABLE_RUNTIME_MONOMORPHIZATION = debugFlag("DISABLE_RUNTIME_MONOMORPHIZATION");
+   public static final boolean DEBUG_DUMP_RUNTIME_MONOMORPHIC_CLASSES = debugFlag("DUMP_RUNTIME_MONOMORPHIC_CLASSES");
    public static final long MAXIMUM_TICK_TIME_NANOS = Duration.ofMillis(300L).toNanos();
    public static final float MAXIMUM_BLOCK_EXPLOSION_RESISTANCE = 3600000.0F;
    public static final boolean USE_DEVONLY = false;
    public static boolean CHECK_DATA_FIXER_SCHEMA = true;
-   public static boolean IS_RUNNING_IN_IDE;
    public static boolean IS_RENDERDOC_ATTACHED = false;
    public static final int WORLD_RESOLUTION = 16;
    public static final int MAX_CHAT_LENGTH = 256;
@@ -131,7 +131,6 @@ public class SharedConstants {
    public static final int MAX_CHAINED_NEIGHBOR_UPDATES = 1000000;
    public static final int MAX_RENDER_DISTANCE = 32;
    public static final int MAX_CLOUD_DISTANCE = 128;
-   public static final char[] ILLEGAL_FILE_CHARACTERS = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
    public static final int TICKS_PER_SECOND = 20;
    public static final int MILLIS_PER_TICK = 50;
    public static final int TICKS_PER_MINUTE = 1200;
@@ -201,7 +200,7 @@ public class SharedConstants {
    }
 
    public static int getProtocolVersion() {
-      return 1073742166;
+      return 1073742167;
    }
 
    public static boolean debugVoidTerrain(final ChunkPos pos) {

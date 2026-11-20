@@ -1,8 +1,8 @@
 package net.minecraft.world.level.block;
 
-import com.google.common.collect.Maps;
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.function.Function;
 import net.minecraft.core.BlockPos;
@@ -54,7 +54,7 @@ public class BigDripleafBlock extends HorizontalDirectionalBlock implements Simp
    private static final int MAX_GEN_HEIGHT = 5;
    private static final int ENTITY_DETECTION_MIN_Y = 11;
    private static final int LOWEST_LEAF_TOP = 13;
-   private static final Map<Tilt, VoxelShape> SHAPE_LEAF = Maps.newEnumMap(
+   private static final Map<Tilt, VoxelShape> SHAPE_LEAF = new EnumMap<>(
       Map.of(
          Tilt.NONE,
          Block.column(16.0, 11.0, 15.0),

@@ -1,14 +1,15 @@
 package net.minecraft.world.level.saveddata.maps;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -68,11 +69,11 @@ public class MapItemSavedData extends SavedData {
    public final byte scale;
    public byte[] colors = new byte[16384];
    public final boolean locked;
-   private final List<MapItemSavedData.HoldingPlayer> carriedBy = Lists.newArrayList();
-   private final Map<Player, MapItemSavedData.HoldingPlayer> carriedByPlayers = Maps.newHashMap();
-   private final Map<String, MapBanner> bannerMarkers = Maps.newHashMap();
-   private final Map<String, MapDecoration> decorations = Maps.newLinkedHashMap();
-   private final Map<String, MapFrame> frameMarkers = Maps.newHashMap();
+   private final List<MapItemSavedData.HoldingPlayer> carriedBy = new ArrayList<>();
+   private final Map<Player, MapItemSavedData.HoldingPlayer> carriedByPlayers = new HashMap<>();
+   private final Map<String, MapBanner> bannerMarkers = new HashMap<>();
+   private final Map<String, MapDecoration> decorations = new LinkedHashMap<>();
+   private final Map<String, MapFrame> frameMarkers = new HashMap<>();
    private int trackedDecorationCount;
 
    public static SavedDataType<MapItemSavedData> type(final MapId id) {

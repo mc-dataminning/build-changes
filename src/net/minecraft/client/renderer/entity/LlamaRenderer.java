@@ -1,6 +1,6 @@
 package net.minecraft.client.renderer.entity;
 
-import com.google.common.collect.Maps;
+import java.util.EnumMap;
 import java.util.Map;
 import net.minecraft.client.model.animal.llama.BabyLlamaModel;
 import net.minecraft.client.model.animal.llama.LlamaModel;
@@ -11,7 +11,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.animal.equine.Llama;
 
 public class LlamaRenderer extends AgeableMobRenderer<Llama, LlamaRenderState, LlamaModel> {
-   private static final Map<Llama.Variant, Identifier> TEXTURES = Maps.newEnumMap(
+   private static final Map<Llama.Variant, Identifier> TEXTURES = new EnumMap<>(
       Map.of(
          Llama.Variant.CREAMY,
          Identifier.withDefaultNamespace("textures/entity/llama/llama_creamy.png"),
@@ -23,7 +23,7 @@ public class LlamaRenderer extends AgeableMobRenderer<Llama, LlamaRenderState, L
          Identifier.withDefaultNamespace("textures/entity/llama/llama_gray.png")
       )
    );
-   private static final Map<Llama.Variant, Identifier> BABY_TEXTURES = Maps.newEnumMap(
+   private static final Map<Llama.Variant, Identifier> BABY_TEXTURES = new EnumMap<>(
       Map.of(
          Llama.Variant.CREAMY,
          Identifier.withDefaultNamespace("textures/entity/llama/llama_creamy_baby.png"),

@@ -1,9 +1,9 @@
 package net.minecraft.world.level.levelgen.blending;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableMap.Builder;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import net.minecraft.SharedConstants;
@@ -391,7 +391,7 @@ public class Blender {
    public static Blender.DistanceGetter makeOldChunkDistanceGetter(
       final @Nullable BlendingData centerBlendingData, final Map<CompositeDirection.Direction8, BlendingData> oldSidesBlendingData
    ) {
-      List<Blender.DistanceGetter> distanceGetters = Lists.newArrayList();
+      List<Blender.DistanceGetter> distanceGetters = new ArrayList<>();
       if (centerBlendingData != null) {
          distanceGetters.add(makeOffsetOldChunkDistanceGetter(null, centerBlendingData));
       }

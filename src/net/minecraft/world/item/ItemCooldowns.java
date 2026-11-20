@@ -1,6 +1,6 @@
 package net.minecraft.world.item;
 
-import com.google.common.collect.Maps;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -10,7 +10,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.component.UseCooldown;
 
 public class ItemCooldowns {
-   private final Map<Identifier, ItemCooldowns.CooldownInstance> cooldowns = Maps.newHashMap();
+   private final Map<Identifier, ItemCooldowns.CooldownInstance> cooldowns = new HashMap<>();
    private int tickCount;
 
    public boolean isOnCooldown(final ItemStack item) {

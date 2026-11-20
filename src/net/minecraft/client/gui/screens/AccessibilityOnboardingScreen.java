@@ -129,8 +129,8 @@ public class AccessibilityOnboardingScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       this.handleInitialNarrationDelay();
       if (this.fadeInStart == 0.0F && this.fadingIn) {
          this.fadeInStart = (float)Util.getMillis();

@@ -20,9 +20,9 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.StaticCache2D;
-import net.minecraft.util.Util;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.attribute.EnvironmentAttributeReader;
 import net.minecraft.world.attribute.EnvironmentAttributeSystem;
@@ -253,7 +253,7 @@ public class WorldGenRegion implements WorldGenLevel {
                + "), step: "
                + this.generatingStep.targetStatus().getName()
                + (this.currentlyGenerating == null ? "" : ", currently generating: " + this.currentlyGenerating.get());
-            Util.logAndPauseIfInIde(warning);
+            DevUtil.logAndPauseIfInIde(warning);
          }
       }
    }
@@ -289,7 +289,7 @@ public class WorldGenRegion implements WorldGenLevel {
       if (!this.isWithinWriteZone(pos)) {
          int chunkX = SectionPos.blockToSectionCoord(pos.getX());
          int chunkZ = SectionPos.blockToSectionCoord(pos.getZ());
-         Util.logAndPauseIfInIde(
+         DevUtil.logAndPauseIfInIde(
             "Detected setBlock in a far chunk ["
                + chunkX
                + ", "

@@ -1,7 +1,7 @@
 package net.minecraft.client.renderer.entity.layers;
 
-import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
+import java.util.EnumMap;
 import java.util.Map;
 import net.minecraft.client.model.animal.equine.HorseModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -14,7 +14,7 @@ import net.minecraft.world.entity.animal.equine.Markings;
 
 public class HorseMarkingLayer extends RenderLayer<HorseRenderState, HorseModel> {
    private static final Identifier INVISIBLE_TEXTURE = Identifier.withDefaultNamespace("invisible");
-   private static final Map<Markings, HorseMarkingLayer.HorseMarkingTextures> LOCATION_BY_MARKINGS = Maps.newEnumMap(
+   private static final Map<Markings, HorseMarkingLayer.HorseMarkingTextures> LOCATION_BY_MARKINGS = new EnumMap<>(
       Map.of(
          Markings.NONE,
          new HorseMarkingLayer.HorseMarkingTextures(INVISIBLE_TEXTURE, INVISIBLE_TEXTURE),

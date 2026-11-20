@@ -1,7 +1,6 @@
 package net.minecraft.world.level.block;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -203,7 +202,7 @@ public class SculkSpreader {
       private int updateDelay;
       private int decayDelay;
       private @Nullable Set<Direction> facings;
-      private static final Codec<Set<Direction>> DIRECTION_SET = Direction.CODEC.listOf().xmap(l -> Sets.newEnumSet(l, Direction.class), Lists::newArrayList);
+      private static final Codec<Set<Direction>> DIRECTION_SET = Direction.CODEC.listOf().xmap(l -> Sets.newEnumSet(l, Direction.class), ArrayList::new);
       public static final Codec<SculkSpreader.ChargeCursor> CODEC = RecordCodecBuilder.create(
          i -> i.group(
                BlockPos.CODEC.fieldOf("pos").forGetter(SculkSpreader.ChargeCursor::getPos),

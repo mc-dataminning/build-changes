@@ -383,6 +383,25 @@ public class VanillaAdventureAdvancements extends AdvancementSubProvider {
          )
          .addCriterion("spear_many_mobs", SpearMobsTrigger.TriggerInstance.spearMobs(5))
          .save(this.output, "adventure/spear_many_mobs");
+      Advancement.Builder.advancement()
+         .parent(killAMob)
+         .display(
+            Items.ICE_BALL,
+            Component.translatable("advancements.adventure.what_goes_around_comes_around.title"),
+            Component.translatable("advancements.adventure.what_goes_around_comes_around.description"),
+            AdvancementType.TASK,
+            true,
+            true,
+            false
+         )
+         .addCriterion(
+            "kill_frostbite_with_ice_ball",
+            KilledTrigger.TriggerInstance.playerKilledEntity(
+               EntityPredicate.Builder.entity().of(this.entityTypes, EntityTypes.FROSTBITE),
+               this.isProjectile().direct(EntityPredicate.Builder.entity().of(this.entityTypes, EntityTypes.ICE_BALL))
+            )
+         )
+         .save(this.output, "adventure/what_goes_around_comes_around");
       AdvancementHolder olBetsy = Advancement.Builder.advancement()
          .parent(root)
          .display(

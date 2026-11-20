@@ -49,7 +49,7 @@ import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
 import org.jspecify.annotations.Nullable;
 
-public class DebugScreenOverlay {
+public class DebugScreenOverlay implements Renderable {
    private final Minecraft minecraft;
    private final Font font;
    private @Nullable ChunkPos lastPos;
@@ -89,6 +89,7 @@ public class DebugScreenOverlay {
       this.clientChunk = null;
    }
 
+   @Override
    public void extractRenderState(final GuiGraphicsExtractor graphics) {
       Options options = this.minecraft.options;
       if (this.minecraft.isGameLoadFinished() && (!this.minecraft.gui.hud.isHidden() || this.minecraft.gui.screen() != null)) {

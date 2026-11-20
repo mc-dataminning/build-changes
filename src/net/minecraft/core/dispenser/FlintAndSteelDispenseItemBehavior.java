@@ -22,32 +22,38 @@ public class FlintAndSteelDispenseItemBehavior extends OptionalDispenseItemBehav
    @Override
    protected ItemStack execute(final BlockSource source, final ItemStack dispensed) {
       ServerLevel level = source.level();
-      this.setSuccess(true);
       Direction facing = source.state().getValue(DispenserBlock.FACING);
       BlockPos targetPos = source.pos().relative(facing);
       BlockState target = level.getBlockState(targetPos);
-      if (!tryIgniteExplosiveEntities(level, targetPos)) {
-         if (BaseFireBlock.canBePlacedAt(level, targetPos, facing)) {
-            level.setBlockAndUpdate(targetPos, BaseFireBlock.getState(level, targetPos));
-            level.gameEvent(null, GameEvent.BLOCK_PLACE, targetPos);
-         } else if (CampfireBlock.canLight(target) || CandleBlock.canLight(target) || CandleCakeBlock.canLight(target)) {
-            level.setBlockAndUpdate(targetPos, target.setValue(BlockStateProperties.LIT, true));
-            level.gameEvent(null, GameEvent.BLOCK_CHANGE, targetPos);
-         } else if (target.getBlock() instanceof TntBlock) {
-            if (TntBlock.prime(level, targetPos, null, dispensed)) {
-               level.removeBlock(targetPos, false);
-            } else {
-               this.setSuccess(false);
-            }
-         }
-      }
-
+      boolean ignited = tryIgnite(dispensed, level, targetPos, facing, target);
+      this.setSuccess(ignited);
       if (this.isSuccess()) {
          FlintAndSteelItem.playSound(level, targetPos);
          dispensed.hurtAndBreak(1, level, null, var0 -> {});
       }
 
       return dispensed;
+   }
+
+   private static boolean tryIgnite(
+      final ItemStack dispensed, final ServerLevel level, final BlockPos targetPos, final Direction facing, final BlockState target
+   ) {
+      if (tryIgniteExplosiveEntities(level, targetPos)) {
+         return true;
+      } else if (BaseFireBlock.canBePlacedAt(level, targetPos, facing)) {
+         level.setBlockAndUpdate(targetPos, BaseFireBlock.getState(level, targetPos));
+         level.gameEvent(null, GameEvent.BLOCK_PLACE, targetPos);
+         return true;
+      } else if (CampfireBlock.canLight(target) || CandleBlock.canLight(target) || CandleCakeBlock.canLight(target)) {
+         level.setBlockAndUpdate(targetPos, target.setValue(BlockStateProperties.LIT, true));
+         level.gameEvent(null, GameEvent.BLOCK_CHANGE, targetPos);
+         return true;
+      } else if (target.getBlock() instanceof TntBlock && TntBlock.prime(level, targetPos, null, dispensed)) {
+         level.removeBlock(targetPos, false);
+         return true;
+      } else {
+         return false;
+      }
    }
 
    private static boolean tryIgniteExplosiveEntities(final ServerLevel level, final BlockPos pos) {

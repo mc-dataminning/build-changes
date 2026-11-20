@@ -1,8 +1,8 @@
 package net.minecraft.core;
 
-import com.google.common.collect.Maps;
 import com.mojang.math.MatrixUtil;
 import com.mojang.math.Transformation;
+import java.util.EnumMap;
 import java.util.Map;
 import net.minecraft.util.Util;
 import org.joml.Matrix4f;
@@ -10,7 +10,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 public class BlockMath {
-   private static final Map<Direction, Transformation> VANILLA_UV_TRANSFORM_LOCAL_TO_GLOBAL = Maps.newEnumMap(
+   private static final Map<Direction, Transformation> VANILLA_UV_TRANSFORM_LOCAL_TO_GLOBAL = new EnumMap<>(
       Map.of(
          Direction.SOUTH,
          Transformation.IDENTITY,
@@ -26,7 +26,7 @@ public class BlockMath {
          new Transformation(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null)
       )
    );
-   private static final Map<Direction, Transformation> VANILLA_UV_TRANSFORM_GLOBAL_TO_LOCAL = Maps.newEnumMap(
+   private static final Map<Direction, Transformation> VANILLA_UV_TRANSFORM_GLOBAL_TO_LOCAL = new EnumMap<>(
       Util.mapValues(VANILLA_UV_TRANSFORM_LOCAL_TO_GLOBAL, Transformation::inverse)
    );
 

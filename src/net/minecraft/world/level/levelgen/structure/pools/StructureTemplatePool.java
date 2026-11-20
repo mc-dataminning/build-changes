@@ -2,11 +2,11 @@ package net.minecraft.world.level.levelgen.structure.pools;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import net.minecraft.core.BlockPos;
@@ -65,7 +65,7 @@ public class StructureTemplatePool {
       final List<Pair<Function<StructureTemplatePool.Projection, ? extends StructurePoolElement>, Integer>> templates,
       final StructureTemplatePool.Projection projection
    ) {
-      this.rawTemplates = Lists.newArrayList();
+      this.rawTemplates = new ArrayList<>();
       this.templates = new ObjectArrayList();
 
       for (Pair<Function<StructureTemplatePool.Projection, ? extends StructurePoolElement>, Integer> templateDef : templates) {

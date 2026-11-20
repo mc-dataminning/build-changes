@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import java.util.Map;
 import net.minecraft.CrashReport;
 import net.minecraft.CrashReportCategory;
+import net.minecraft.CrashReportUtil;
 import net.minecraft.ReportedException;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelHeightAccessor;
@@ -69,7 +70,7 @@ public class SectionCopy {
          } catch (Throwable t) {
             CrashReport report = CrashReport.forThrowable(t, "Getting block state");
             CrashReportCategory category = report.addCategory("Block being got");
-            category.setDetail("Location", () -> CrashReportCategory.formatLocation(this.levelHeightAccessor, x, y, z));
+            category.setDetail("Location", () -> CrashReportUtil.formatLocation(this.levelHeightAccessor, x, y, z));
             throw new ReportedException(report);
          }
       }

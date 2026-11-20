@@ -1,7 +1,7 @@
 package net.minecraft.world.entity.animal.bee;
 
-import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.List;
@@ -9,6 +9,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -20,7 +21,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.PoiTypeTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.VisibleForDebug;
@@ -640,7 +640,7 @@ public class Bee extends Animal implements NeutralMob {
    }
 
    @Override
-   protected void jumpInLiquid(final TagKey<Fluid> type) {
+   protected void jumpInLiquid(final List<Holder<Fluid>> fluidTypes) {
       this.addDeltaMovement(0.0, 0.01, 0.0);
    }
 
@@ -775,7 +775,7 @@ public class Bee extends Animal implements NeutralMob {
       public static final int MAX_TRAVELLING_TICKS = 2400;
       private int travellingTicks;
       private static final int MAX_BLACKLISTED_TARGETS = 3;
-      private final List<BlockPos> blacklistedTargets = Lists.newArrayList();
+      private final List<BlockPos> blacklistedTargets = new ArrayList<>();
       private @Nullable Path lastPath;
       private static final int TICKS_BEFORE_HIVE_DROP = 60;
       private int ticksStuck;

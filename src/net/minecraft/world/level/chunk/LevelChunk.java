@@ -1,7 +1,6 @@
 package net.minecraft.world.level.chunk;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
 import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -10,12 +9,14 @@ import it.unimi.dsi.fastutil.shorts.ShortList;
 import it.unimi.dsi.fastutil.shorts.ShortListIterator;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
 import net.minecraft.CrashReport;
 import net.minecraft.CrashReportCategory;
+import net.minecraft.CrashReportUtil;
 import net.minecraft.ReportedException;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -86,7 +87,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
          return "<null>";
       }
    };
-   private final Map<BlockPos, LevelChunk.RebindableTickingBlockEntityWrapper> tickersInLevel = Maps.newHashMap();
+   private final Map<BlockPos, LevelChunk.RebindableTickingBlockEntityWrapper> tickersInLevel = new HashMap<>();
    private boolean loaded;
    private final Level level;
    private @Nullable Supplier<FullChunkStatus> fullStatus;
@@ -235,7 +236,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
          } catch (Throwable t) {
             CrashReport report = CrashReport.forThrowable(t, "Getting block state");
             CrashReportCategory category = report.addCategory("Block being got");
-            category.setDetail("Location", () -> CrashReportCategory.formatLocation(this, x, y, z));
+            category.setDetail("Location", () -> CrashReportUtil.formatLocation(this, x, y, z));
             throw new ReportedException(report);
          }
       }
@@ -260,7 +261,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
       } catch (Throwable t) {
          CrashReport report = CrashReport.forThrowable(t, "Getting fluid state");
          CrashReportCategory category = report.addCategory("Block being got");
-         category.setDetail("Location", () -> CrashReportCategory.formatLocation(this, x, y, z));
+         category.setDetail("Location", () -> CrashReportUtil.formatLocation(this, x, y, z));
          throw new ReportedException(report);
       }
    }

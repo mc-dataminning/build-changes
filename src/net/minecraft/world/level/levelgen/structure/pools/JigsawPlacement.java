@@ -1,7 +1,7 @@
 package net.minecraft.world.level.levelgen.structure.pools;
 
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import net.minecraft.core.BlockPos;
@@ -133,7 +133,7 @@ public class JigsawPlacement {
             new Structure.GenerationStub(
                new BlockPos(centerX, centerY, centerZ),
                builder -> {
-                  List<PoolElementStructurePiece> pieces = Lists.newArrayList();
+                  List<PoolElementStructurePiece> pieces = new ArrayList<>();
                   pieces.add(centerPiece);
                   if (maxDepth > 0) {
                      AABB aabb = new AABB(
@@ -358,7 +358,7 @@ public class JigsawPlacement {
                         childrenFree = contextFree;
                      }
 
-                     List<StructurePoolElement> targetPieces = Lists.newArrayList();
+                     List<StructurePoolElement> targetPieces = new ArrayList<>();
                      if (depth != this.maxDepth) {
                         targetPieces.addAll(targetPool.value().getShuffledTemplates(this.random));
                      }

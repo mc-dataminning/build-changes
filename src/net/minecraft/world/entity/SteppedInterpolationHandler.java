@@ -1,9 +1,9 @@
 package net.minecraft.world.entity;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import net.minecraft.core.PositionAndRotation;
+import net.minecraft.util.ArrayListDeque;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 
@@ -59,7 +59,7 @@ public class SteppedInterpolationHandler extends AbstractInterpolationHandler {
    }
 
    private static class InterpolationData extends PositionAndRotation.Mutable {
-      private final LinkedList<SteppedInterpolationHandler.Step> remainingSteps = new LinkedList<>();
+      private final List<SteppedInterpolationHandler.Step> remainingSteps = new ArrayListDeque<>();
       private final PositionAndRotation.Mutable lastStepPosRot = new PositionAndRotation.Mutable();
       private float currentStepTicks;
       private float remainingTicks;

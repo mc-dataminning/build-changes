@@ -1,6 +1,5 @@
 package net.minecraft.data.loot;
 
-import com.google.common.collect.Maps;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -58,7 +57,7 @@ public abstract class EntityLootSubProvider implements LootTableSubProvider {
    protected final HolderGetter<LootTable> lootTables;
    private final FeatureFlagSet allowed;
    private final FeatureFlagSet required;
-   private final Map<EntityType<?>, Map<ResourceKey<LootTable>, LootTable.Builder>> map = Maps.newHashMap();
+   private final Map<EntityType<?>, Map<ResourceKey<LootTable>, LootTable.Builder>> map = new HashMap<>();
 
    protected EntityLootSubProvider(final FeatureFlagSet enabledFeatures, final LootTableSubProvider.Context output) {
       this(enabledFeatures, enabledFeatures, output);

@@ -3,7 +3,9 @@ package net.minecraft.nbt;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.HexFormat;
 import java.util.Optional;
+import org.jspecify.annotations.Nullable;
 
 public record StringTag(String value) implements PrimitiveTag {
    private static final int SELF_SIZE_IN_BYTES = 36;
@@ -39,6 +41,7 @@ public record StringTag(String value) implements PrimitiveTag {
          return "TAG_String";
       }
    };
+   private static final HexFormat HEX_ESCAPE = HexFormat.of().withUpperCase();
    private static final StringTag EMPTY = new StringTag("");
    private static final char DOUBLE_QUOTE = '"';
    private static final char SINGLE_QUOTE = '\'';
@@ -55,6 +58,17 @@ public record StringTag(String value) implements PrimitiveTag {
 
    public static StringTag valueOf(final String data) {
       return data.isEmpty() ? EMPTY : new StringTag(data);
+   }
+
+   public static @Nullable String escapeControlCharacters(final char c) {
+      return switch (c) {
+         case '\b' -> "b";
+         case '\t' -> "t";
+         case '\n' -> "n";
+         default -> c < ' ' ? "x" + HEX_ESCAPE.toHexDigits((byte)c) : null;
+         case '\f' -> "f";
+         case '\r' -> "r";
+      };
    }
 
    @Override
@@ -114,7 +128,7 @@ public record StringTag(String value) implements PrimitiveTag {
          if (c == '\\') {
             result.append("\\\\");
          } else if (c != '"' && c != '\'') {
-            String escaped = SnbtGrammar.escapeControlCharacters(c);
+            String escaped = escapeControlCharacters(c);
             if (escaped != null) {
                result.append('\\');
                result.append(escaped);
@@ -159,7 +173,7 @@ public record StringTag(String value) implements PrimitiveTag {
                result.append(c);
                break;
             default:
-               String escaped = SnbtGrammar.escapeControlCharacters(c);
+               String escaped = escapeControlCharacters(c);
                if (escaped != null) {
                   result.append('\\');
                   result.append(escaped);

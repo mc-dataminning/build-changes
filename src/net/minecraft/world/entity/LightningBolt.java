@@ -1,6 +1,6 @@
 package net.minecraft.world.entity;
 
-import com.google.common.collect.Sets;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -37,7 +37,7 @@ public class LightningBolt extends Entity {
    private int flashes;
    private boolean visualOnly;
    private @Nullable ServerPlayer cause;
-   private final Set<Entity> hitEntities = Sets.newHashSet();
+   private final Set<Entity> hitEntities = new HashSet<>();
    private int blocksSetOnFire;
 
    public LightningBolt(final EntityType<? extends LightningBolt> type, final Level level) {

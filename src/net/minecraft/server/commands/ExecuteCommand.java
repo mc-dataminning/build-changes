@@ -1,7 +1,6 @@
 package net.minecraft.server.commands;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.RedirectModifier;
@@ -153,7 +152,7 @@ public class ExecuteCommand {
                                                 .then(addConditionals(execute, Commands.literal("if"), true, context)))
                                              .then(addConditionals(execute, Commands.literal("unless"), false, context)))
                                           .then(Commands.literal("as").then(Commands.argument("targets", EntityArgument.entities()).fork(execute, c -> {
-                                             List<CommandSourceStack> result = Lists.newArrayList();
+                                             List<CommandSourceStack> result = new ArrayList<>();
 
                                              for (Entity entity : EntityArgument.getOptionalEntities(c, "targets")) {
                                                 result.add(((CommandSourceStack)c.getSource()).withEntity(entity));
@@ -168,7 +167,7 @@ public class ExecuteCommand {
                                                    .fork(
                                                       execute,
                                                       c -> {
-                                                         List<CommandSourceStack> result = Lists.newArrayList();
+                                                         List<CommandSourceStack> result = new ArrayList<>();
 
                                                          for (Entity entity : EntityArgument.getOptionalEntities(c, "targets")) {
                                                             result.add(
@@ -200,7 +199,7 @@ public class ExecuteCommand {
                                                    )
                                              ))
                                           .then(Commands.literal("as").then(Commands.argument("targets", EntityArgument.entities()).fork(execute, c -> {
-                                             List<CommandSourceStack> result = Lists.newArrayList();
+                                             List<CommandSourceStack> result = new ArrayList<>();
 
                                              for (Entity entity : EntityArgument.getOptionalEntities(c, "targets")) {
                                                 result.add(((CommandSourceStack)c.getSource()).withPosition(entity.position()));
@@ -235,7 +234,7 @@ public class ExecuteCommand {
                                              )
                                        ))
                                     .then(Commands.literal("as").then(Commands.argument("targets", EntityArgument.entities()).fork(execute, c -> {
-                                       List<CommandSourceStack> result = Lists.newArrayList();
+                                       List<CommandSourceStack> result = new ArrayList<>();
 
                                        for (Entity entity : EntityArgument.getOptionalEntities(c, "targets")) {
                                           result.add(((CommandSourceStack)c.getSource()).withRotation(entity.getRotationVector()));
@@ -251,7 +250,7 @@ public class ExecuteCommand {
                                           .then(
                                              Commands.argument("targets", EntityArgument.entities())
                                                 .then(Commands.argument("anchor", EntityAnchorArgument.anchor()).fork(execute, c -> {
-                                                   List<CommandSourceStack> result = Lists.newArrayList();
+                                                   List<CommandSourceStack> result = new ArrayList<>();
                                                    EntityAnchorArgument.Anchor anchor = EntityAnchorArgument.getAnchor(c, "anchor");
 
                                                    for (Entity entity : EntityArgument.getOptionalEntities(c, "targets")) {

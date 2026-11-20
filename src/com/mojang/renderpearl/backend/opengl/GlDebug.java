@@ -2,8 +2,8 @@ package com.mojang.renderpearl.backend.opengl;
 
 import com.google.common.collect.EvictingQueue;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.HexFormat;
 import java.util.List;
 import java.util.Queue;
@@ -84,7 +84,7 @@ public class GlDebug {
 
    public List<String> getLastOpenGlDebugMessages() {
       synchronized (this.MESSAGE_BUFFER) {
-         List<String> result = Lists.newArrayListWithCapacity(this.MESSAGE_BUFFER.size());
+         List<String> result = new ArrayList<>(this.MESSAGE_BUFFER.size());
 
          for (GlDebug.LogEntry e : this.MESSAGE_BUFFER) {
             result.add(e + " x " + e.count);

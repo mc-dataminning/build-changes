@@ -7,6 +7,7 @@ import com.mojang.renderpearl.api.device.DeviceType;
 import java.util.List;
 import java.util.Locale;
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.Util;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.chunk.LevelChunk;
 import org.jspecify.annotations.Nullable;
@@ -57,6 +58,10 @@ public class DebugEntrySystemSpecs implements DebugScreenEntry {
             .formattedValue("%.2f", window.getPixelDensity())
             .text("x pixel density)")
       );
+      if (Util.getPlatform() == Util.OS.WINDOWS) {
+         displayer.addFactToGroup(DebugGroups.SYSTEM_SPECS, "DXGI", fact -> fact.value(Minecraft.getInstance().windowSurface().isDXGI() ? "On" : "Off"));
+      }
+
       displayer.addToGroup(
          DebugGroups.SYSTEM_SPECS,
          List.of(

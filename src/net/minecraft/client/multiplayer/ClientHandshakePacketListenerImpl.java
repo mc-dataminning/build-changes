@@ -13,11 +13,11 @@ import java.security.PublicKey;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
-import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import net.minecraft.CrashReport;
 import net.minecraft.CrashReportCategory;
@@ -27,9 +27,9 @@ import net.minecraft.client.gui.screens.DisconnectedScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.Connection;
 import net.minecraft.network.DisconnectionDetails;
-import net.minecraft.network.PacketSendListener;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.common.ServerboundClientInformationPacket;
 import net.minecraft.network.protocol.common.ServerboundCustomPayloadPacket;
 import net.minecraft.network.protocol.common.custom.BrandPayload;
@@ -38,17 +38,22 @@ import net.minecraft.network.protocol.configuration.ConfigurationProtocols;
 import net.minecraft.network.protocol.cookie.ClientboundCookieRequestPacket;
 import net.minecraft.network.protocol.cookie.ServerboundCookieResponsePacket;
 import net.minecraft.network.protocol.login.ClientLoginPacketListener;
+import net.minecraft.network.protocol.login.ClientboundApplyOptionsPacket;
 import net.minecraft.network.protocol.login.ClientboundCustomQueryPacket;
-import net.minecraft.network.protocol.login.ClientboundHelloPacket;
-import net.minecraft.network.protocol.login.ClientboundLoginCompressionPacket;
+import net.minecraft.network.protocol.login.ClientboundKeyPacket;
 import net.minecraft.network.protocol.login.ClientboundLoginDisconnectPacket;
 import net.minecraft.network.protocol.login.ClientboundLoginFinishedPacket;
+import net.minecraft.network.protocol.login.ClientboundSetupCompressionPacket;
+import net.minecraft.network.protocol.login.ConnectionOptionsPacket;
+import net.minecraft.network.protocol.login.ServerLoginPacketListener;
 import net.minecraft.network.protocol.login.ServerboundCustomQueryAnswerPacket;
 import net.minecraft.network.protocol.login.ServerboundKeyPacket;
 import net.minecraft.network.protocol.login.ServerboundLoginAcknowledgedPacket;
+import net.minecraft.network.protocol.login.ServerboundOptionsAppliedPacket;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.ServerLinks;
 import net.minecraft.util.Crypt;
+import net.minecraft.util.CryptException;
 import net.minecraft.util.Util;
 import net.minecraft.world.flag.FeatureFlags;
 import org.jspecify.annotations.Nullable;
@@ -69,6 +74,8 @@ public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListe
    private final boolean wasTransferredTo;
    private final Map<UUID, PlayerInfo> seenPlayers;
    private final boolean seenInsecureChatWarning;
+   private @Nullable SecretKey pendingSecretKey;
+   private int pendingCompressionThreshold;
    private final AtomicReference<ClientHandshakePacketListenerImpl.State> state = new AtomicReference<>(ClientHandshakePacketListenerImpl.State.CONNECTING);
 
    public ClientHandshakePacketListenerImpl(
@@ -108,21 +115,18 @@ public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListe
    }
 
    @Override
-   public void handleHello(final ClientboundHelloPacket packet) {
+   public void handleKey(final ClientboundKeyPacket packet) {
       this.switchState(ClientHandshakePacketListenerImpl.State.AUTHORIZING);
 
-      Cipher decryptCipher;
-      Cipher encryptCipher;
       String digest;
       ServerboundKeyPacket setKeyPacket;
+      SecretKey secretKey;
       try {
-         SecretKey secretKey = Crypt.generateSecretKey();
-         PublicKey publicKey = packet.getPublicKey();
-         digest = new BigInteger(Crypt.digestData(packet.getServerId(), publicKey, secretKey)).toString(16);
-         decryptCipher = Crypt.getCipher(2, secretKey);
-         encryptCipher = Crypt.getCipher(1, secretKey);
-         byte[] challenge = packet.getChallenge();
-         setKeyPacket = new ServerboundKeyPacket(secretKey, publicKey, challenge);
+         secretKey = Crypt.generateSecretKey();
+         PublicKey publicKey = Crypt.byteToPublicKey(packet.publicKey());
+         digest = new BigInteger(Crypt.digestData(packet.serverId(), publicKey, secretKey)).toString(16);
+         byte[] challenge = packet.challenge();
+         setKeyPacket = new ServerboundKeyPacket(Crypt.encryptUsingKey(publicKey, secretKey.getEncoded()), Crypt.encryptUsingKey(publicKey, challenge));
       } catch (Exception e) {
          throw new IllegalStateException("Protocol error", e);
       }
@@ -139,16 +143,17 @@ public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListe
                LOGGER.warn("Authentication failed: {}", error.getString());
             }
 
-            this.setEncryption(setKeyPacket, decryptCipher, encryptCipher);
+            this.sendKeys(setKeyPacket, secretKey);
          });
       } else {
-         this.setEncryption(setKeyPacket, decryptCipher, encryptCipher);
+         this.sendKeys(setKeyPacket, secretKey);
       }
    }
 
-   private void setEncryption(final ServerboundKeyPacket setKeyPacket, final Cipher decryptCipher, final Cipher encryptCipher) {
+   private void sendKeys(final ServerboundKeyPacket setKeyPacket, final SecretKey secretKey) {
+      this.pendingSecretKey = secretKey;
       this.switchState(ClientHandshakePacketListenerImpl.State.ENCRYPTING);
-      this.connection.send(setKeyPacket, PacketSendListener.thenRun(() -> this.connection.setEncryptionKey(decryptCipher, encryptCipher)));
+      this.connection.send(setKeyPacket);
    }
 
    private @Nullable Component authenticateServer(final String digest) {
@@ -196,7 +201,7 @@ public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListe
                )
             )
          );
-      this.connection.send(ServerboundLoginAcknowledgedPacket.INSTANCE);
+      this.applyConnectionOptions(packet.options(), ServerboundLoginAcknowledgedPacket.INSTANCE);
       this.connection.setupOutboundProtocol(ConfigurationProtocols.SERVERBOUND);
       this.connection.send(new ServerboundCustomPayloadPacket(new BrandPayload(ClientBrandRetriever.getClientModName())));
       this.connection.send(new ServerboundCustomPayloadPacket(ModListPayload.createClient()));
@@ -224,10 +229,8 @@ public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListe
    }
 
    @Override
-   public void handleCompression(final ClientboundLoginCompressionPacket packet) {
-      if (!this.connection.isMemoryConnection()) {
-         this.connection.setupCompression(packet.getCompressionThreshold(), false);
-      }
+   public void handleCompression(final ClientboundSetupCompressionPacket packet) {
+      this.pendingCompressionThreshold = packet.compressionThreshold();
    }
 
    @Override
@@ -243,6 +246,49 @@ public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListe
    @Override
    public void handleRequestCookie(final ClientboundCookieRequestPacket packet) {
       this.connection.send(new ServerboundCookieResponsePacket(packet.key(), this.cookies.get(packet.key())));
+   }
+
+   @Override
+   public void handleEnableOptions(final ClientboundApplyOptionsPacket packet) {
+      this.applyConnectionOptions(packet.options(), ServerboundOptionsAppliedPacket.INSTANCE);
+   }
+
+   private void applyConnectionOptions(final @ConnectionOptionsPacket.Flags byte options, final Packet<? extends ServerLoginPacketListener> response) {
+      this.applyInboundConnectionOptions(options);
+      this.connection.send(response);
+      this.applyOutboundConnectionOptions(options);
+   }
+
+   private void applyInboundConnectionOptions(final @ConnectionOptionsPacket.Flags byte options) {
+      if (ConnectionOptionsPacket.isEncryption(options)) {
+         SecretKey secretKey = Objects.requireNonNull(this.pendingSecretKey, "Key not initialized");
+
+         try {
+            this.connection.setInboundEncryptionKey(Crypt.getCipher(2, secretKey));
+         } catch (CryptException e) {
+            throw new IllegalStateException("Failed to setup inbound key", e);
+         }
+      }
+
+      if (ConnectionOptionsPacket.isCompression(options)) {
+         this.connection.setupInboundCompression(this.pendingCompressionThreshold, false);
+      }
+   }
+
+   private void applyOutboundConnectionOptions(final @ConnectionOptionsPacket.Flags byte options) {
+      if (ConnectionOptionsPacket.isEncryption(options)) {
+         SecretKey secretKey = Objects.requireNonNull(this.pendingSecretKey, "Key not initialized");
+
+         try {
+            this.connection.setOutboundEncryptionKey(Crypt.getCipher(1, secretKey));
+         } catch (CryptException e) {
+            throw new IllegalStateException("Failed to setup outbound key", e);
+         }
+      }
+
+      if (ConnectionOptionsPacket.isCompression(options)) {
+         this.connection.setupOutboundCompression(this.pendingCompressionThreshold);
+      }
    }
 
    @Override

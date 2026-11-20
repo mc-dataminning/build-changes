@@ -2,7 +2,6 @@ package net.minecraft.advancements.predicates.entity;
 
 import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -12,6 +11,7 @@ import it.unimi.dsi.fastutil.objects.Object2BooleanMaps;
 import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -190,7 +190,7 @@ public record PlayerPredicate(
       private GameTypePredicate gameType = GameTypePredicate.ANY;
       private final com.google.common.collect.ImmutableList.Builder<PlayerPredicate.StatMatcher<?>> stats = ImmutableList.builder();
       private final Object2BooleanMap<ResourceKey<Recipe<?>>> recipes = new Object2BooleanOpenHashMap();
-      private final Map<Identifier, PlayerPredicate.AdvancementPredicate> advancements = Maps.newHashMap();
+      private final Map<Identifier, PlayerPredicate.AdvancementPredicate> advancements = new HashMap<>();
       private Optional<EntityPredicate> lookingAt = Optional.empty();
       private Optional<InputPredicate> input = Optional.empty();
 

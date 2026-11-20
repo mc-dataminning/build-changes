@@ -1,6 +1,5 @@
 package net.minecraft.recipebook;
 
-import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.core.Holder;
@@ -194,7 +193,7 @@ public class ServerPlaceRecipe<R extends Recipe<?>> {
    }
 
    private boolean testClearGrid() {
-      List<ItemStack> freeSlots = Lists.newArrayList();
+      List<ItemStack> freeSlots = new ArrayList<>();
       int freeSlotsInInventory = this.getAmountOfFreeSlotsInInventory();
 
       for (Slot inputSlot : this.inputGridSlots) {

@@ -1,13 +1,13 @@
 package net.minecraft.world.level.block;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.ArrayListDeque;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.SideChainPart;
@@ -30,7 +30,7 @@ public interface SideChainPartBlock {
       }
 
       SideChainPartBlock.Neighbors neighbors = this.getNeighbors(level, pos, this.getFacing(state));
-      List<BlockPos> results = new LinkedList<>();
+      List<BlockPos> results = new ArrayListDeque<>();
       results.add(pos);
       this.addBlocksConnectingTowards(neighbors::left, SideChainPart.LEFT, results::addFirst);
       this.addBlocksConnectingTowards(neighbors::right, SideChainPart.RIGHT, results::addLast);

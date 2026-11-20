@@ -1,6 +1,6 @@
 package net.minecraft.world.level.block.state.predicate;
 
-import com.google.common.collect.Maps;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Predicate;
@@ -13,7 +13,7 @@ import org.jspecify.annotations.Nullable;
 public class BlockStatePredicate implements Predicate<BlockState> {
    public static final Predicate<BlockState> ANY = input -> true;
    private final StateDefinition<Block, BlockState> definition;
-   private final Map<Property<?>, Predicate<Object>> properties = Maps.newHashMap();
+   private final Map<Property<?>, Predicate<Object>> properties = new HashMap<>();
 
    private BlockStatePredicate(final StateDefinition<Block, BlockState> definition) {
       this.definition = definition;

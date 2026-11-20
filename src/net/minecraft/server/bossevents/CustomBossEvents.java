@@ -1,8 +1,8 @@
 package net.minecraft.server.bossevents;
 
-import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import net.minecraft.network.chat.Component;
@@ -26,7 +26,7 @@ public class CustomBossEvents extends SavedData {
    public static final SavedDataType<CustomBossEvents> TYPE = new SavedDataType<>(
       Identifier.withDefaultNamespace("custom_boss_events"), CustomBossEvents::new, CODEC, DataFixTypes.SAVED_DATA_CUSTOM_BOSS_EVENTS
    );
-   private final Map<Identifier, CustomBossEvent> events = Maps.newHashMap();
+   private final Map<Identifier, CustomBossEvent> events = new HashMap<>();
 
    public @Nullable CustomBossEvent get(final Identifier id) {
       return this.events.get(id);

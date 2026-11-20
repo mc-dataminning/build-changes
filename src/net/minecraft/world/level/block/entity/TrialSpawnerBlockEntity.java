@@ -5,8 +5,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.component.TypedEntityData;
 import net.minecraft.world.level.Level;
@@ -60,7 +60,7 @@ public class TrialSpawnerBlockEntity extends BlockEntity implements TrialSpawner
    @Override
    public void setEntityId(final EntityType<?> type, final RandomSource random) {
       if (this.level == null) {
-         Util.logAndPauseIfInIde("Expected non-null level");
+         DevUtil.logAndPauseIfInIde("Expected non-null level");
       } else {
          this.trialSpawner.overrideEntityToSpawn(type, this.level);
          this.setChanged();
@@ -70,7 +70,7 @@ public class TrialSpawnerBlockEntity extends BlockEntity implements TrialSpawner
    @Override
    public void setEntityData(final TypedEntityData<EntityType<?>> entityData, final RandomSource random) {
       if (this.level == null) {
-         Util.logAndPauseIfInIde("Expected non-null level");
+         DevUtil.logAndPauseIfInIde("Expected non-null level");
       } else {
          this.trialSpawner.overrideEntityToSpawn(entityData, this.level);
          this.setChanged();
@@ -83,9 +83,7 @@ public class TrialSpawnerBlockEntity extends BlockEntity implements TrialSpawner
 
    @Override
    public TrialSpawnerState getState() {
-      return !this.getBlockState().hasProperty(BlockStateProperties.TRIAL_SPAWNER_STATE)
-         ? TrialSpawnerState.INACTIVE
-         : this.getBlockState().getValue(BlockStateProperties.TRIAL_SPAWNER_STATE);
+      return this.getBlockState().getValueOrElse(BlockStateProperties.TRIAL_SPAWNER_STATE, TrialSpawnerState.INACTIVE);
    }
 
    @Override

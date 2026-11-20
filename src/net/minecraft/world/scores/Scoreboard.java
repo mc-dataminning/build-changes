@@ -1,6 +1,5 @@
 package net.minecraft.world.scores;
 
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -54,7 +53,7 @@ public class Scoreboard {
       }
 
       Objective objective = new Objective(this, name, criteria, displayName, renderType, displayAutoUpdate, numberFormat);
-      ((List)this.objectivesByCriteria.computeIfAbsent(criteria, k -> Lists.newArrayList())).add(objective);
+      ((List)this.objectivesByCriteria.computeIfAbsent(criteria, k -> new ArrayList())).add(objective);
       this.objectivesByName.put(name, objective);
       this.onObjectiveAdded(objective);
       return objective;

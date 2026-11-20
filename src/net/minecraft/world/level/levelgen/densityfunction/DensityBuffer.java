@@ -74,4 +74,8 @@ public class DensityBuffer {
    public int size() {
       return this.size;
    }
+
+   public float[] asArrayUnsafe() {
+      return this.values;
+   }
 }

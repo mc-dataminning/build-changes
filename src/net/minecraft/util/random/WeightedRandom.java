@@ -3,8 +3,8 @@ package net.minecraft.util.random;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.ToIntFunction;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
 
 public class WeightedRandom {
    private WeightedRandom() {
@@ -26,7 +26,7 @@ public class WeightedRandom {
 
    public static <T> Optional<T> getRandomItem(final RandomSource random, final List<T> items, final int totalWeight, final ToIntFunction<T> weightGetter) {
       if (totalWeight < 0) {
-         throw (IllegalArgumentException)Util.pauseInIde(new IllegalArgumentException("Negative total weight in getRandomItem"));
+         throw (IllegalArgumentException)DevUtil.pauseInIde(new IllegalArgumentException("Negative total weight in getRandomItem"));
       }
 
       if (totalWeight == 0) {

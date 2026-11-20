@@ -119,7 +119,7 @@ public class ItemFrame extends HangingEntity {
          return true;
       }
 
-      if (this.hasLevelCollision(this.getPopBox())) {
+      if (this.collidesWithBlocks(this.getPopBox())) {
          return false;
       }
 

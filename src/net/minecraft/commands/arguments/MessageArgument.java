@@ -1,10 +1,10 @@
 package net.minecraft.commands.arguments;
 
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -128,7 +128,7 @@ public class MessageArgument implements SignedArgument<MessageArgument.Message> 
             return new MessageArgument.Message(text, new MessageArgument.Part[0]);
          }
 
-         List<MessageArgument.Part> result = Lists.newArrayList();
+         List<MessageArgument.Part> result = new ArrayList<>();
          int offset = reader.getCursor();
 
          while (true) {

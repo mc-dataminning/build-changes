@@ -1,7 +1,7 @@
 package net.minecraft.data.tags;
 
-import com.google.common.collect.Maps;
 import java.nio.file.Path;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -30,7 +30,7 @@ public abstract class TagsProvider<T> implements DataProvider {
    private final CompletableFuture<Void> contentsDone = new CompletableFuture<>();
    private final CompletableFuture<TagsProvider.TagLookup<T>> parentProvider;
    protected final ResourceKey<? extends Registry<T>> registryKey;
-   private final Map<Identifier, TagBuilder> builders = Maps.newLinkedHashMap();
+   private final Map<Identifier, TagBuilder> builders = new LinkedHashMap<>();
 
    protected TagsProvider(
       final PackOutput output, final ResourceKey<? extends Registry<T>> registryKey, final CompletableFuture<HolderLookup.Provider> lookupProvider

@@ -126,7 +126,7 @@ public class MultiLineEditBox extends AbstractTextAreaWidget {
    }
 
    @Override
-   protected void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   protected void extractContents(final GuiGraphicsExtractor graphics) {
       String value = this.textField.value();
       if (value.isEmpty() && !this.isFocused()) {
          graphics.textWithWordWrap(

@@ -4,7 +4,7 @@ import net.minecraft.client.gui.ComponentPath;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.navigation.FocusNavigationEvent;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.sounds.SoundManager;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.resources.Identifier;
@@ -52,7 +52,7 @@ public abstract class ImageWidget extends AbstractWidget {
       }
 
       @Override
-      public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+      public void extractWidgetRenderState(final GuiGraphicsExtractor graphics) {
          graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.sprite, this.getX(), this.getY(), this.getWidth(), this.getHeight());
       }
 
@@ -75,7 +75,7 @@ public abstract class ImageWidget extends AbstractWidget {
       }
 
       @Override
-      protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+      protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics) {
          graphics.blit(
             RenderPipelines.GUI_TEXTURED,
             this.texture,

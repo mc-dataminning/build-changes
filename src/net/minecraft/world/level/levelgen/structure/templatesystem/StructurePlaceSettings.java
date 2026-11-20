@@ -1,6 +1,6 @@
 package net.minecraft.world.level.levelgen.structure.templatesystem;
 
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
@@ -20,7 +20,7 @@ public class StructurePlaceSettings {
    private LiquidSettings liquidSettings = LiquidSettings.APPLY_WATERLOGGING;
    private @Nullable RandomSource random;
    private int palette;
-   private final List<StructureProcessor> processors = Lists.newArrayList();
+   private final List<StructureProcessor> processors = new ArrayList<>();
    private boolean knownShape;
    private boolean finalizeEntities;
 

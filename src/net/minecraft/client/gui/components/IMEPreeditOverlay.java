@@ -4,7 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.input.PreeditEvent;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.Identifier;
@@ -43,7 +43,7 @@ public class IMEPreeditOverlay implements Renderable {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
       int preeditLeft = this.inputLeft;
       int preeditRight = preeditLeft + this.preEditTextWidth;
       if (preeditRight > graphics.guiWidth()) {

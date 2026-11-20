@@ -2,13 +2,12 @@ package net.minecraft.world.inventory;
 
 import com.google.common.base.Suppliers;
 import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.google.common.collect.Table;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
@@ -52,7 +51,7 @@ public abstract class AbstractContainerMenu {
    public static final int SLOT_SIZE = 18;
    private final NonNullList<ItemStack> lastSlots = NonNullList.create();
    public final NonNullList<Slot> slots = NonNullList.create();
-   private final List<DataSlot> dataSlots = Lists.newArrayList();
+   private final List<DataSlot> dataSlots = new ArrayList<>();
    private ItemStack carried = ItemStack.EMPTY;
    private final NonNullList<RemoteSlot> remoteSlots = NonNullList.create();
    private final IntList remoteDataSlots = new IntArrayList();
@@ -62,8 +61,8 @@ public abstract class AbstractContainerMenu {
    public final int containerId;
    private int quickcraftType = -1;
    private int quickcraftStatus;
-   private final Set<Slot> quickcraftSlots = Sets.newHashSet();
-   private final List<ContainerListener> containerListeners = Lists.newArrayList();
+   private final Set<Slot> quickcraftSlots = new HashSet<>();
+   private final List<ContainerListener> containerListeners = new ArrayList<>();
    private @Nullable ContainerSynchronizer synchronizer;
    private boolean suppressRemoteUpdates;
 

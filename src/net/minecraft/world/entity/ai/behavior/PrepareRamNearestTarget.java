@@ -1,7 +1,7 @@
 package net.minecraft.world.entity.ai.behavior;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -127,7 +127,7 @@ public class PrepareRamNearestTarget<E extends PathfinderMob> extends Behavior<E
          return Optional.empty();
       }
 
-      List<BlockPos> possibleRamPositions = Lists.newArrayList();
+      List<BlockPos> possibleRamPositions = new ArrayList<>();
       BlockPos.MutableBlockPos walkablePosFurthestAwayFromTarget = targetPos.mutable();
 
       for (Direction direction : Direction.Plane.HORIZONTAL) {

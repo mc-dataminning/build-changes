@@ -1,7 +1,7 @@
 package net.minecraft.client.model;
 
-import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
@@ -40,7 +40,7 @@ public class HumanoidModel<T extends HumanoidRenderState> extends EntityModel<T>
    private static final float HORIZONTAL_SHIELD_MOVEMENT_LIMIT = (float) (Math.PI / 6);
    public static final float TOOT_HORN_XROT_BASE = 1.4835298F;
    public static final float TOOT_HORN_YROT_BASE = (float) (Math.PI / 6);
-   protected static final Map<EquipmentSlot, Set<String>> ADULT_ARMOR_PARTS_PER_SLOT = Maps.newEnumMap(
+   protected static final Map<EquipmentSlot, Set<String>> ADULT_ARMOR_PARTS_PER_SLOT = new EnumMap<>(
       Map.of(
          EquipmentSlot.HEAD,
          Set.of("head"),
@@ -52,7 +52,7 @@ public class HumanoidModel<T extends HumanoidRenderState> extends EntityModel<T>
          Set.of("left_leg", "right_leg")
       )
    );
-   protected static final Map<EquipmentSlot, Set<String>> BABY_ARMOR_PARTS_PER_SLOT = Maps.newEnumMap(
+   protected static final Map<EquipmentSlot, Set<String>> BABY_ARMOR_PARTS_PER_SLOT = new EnumMap<>(
       Map.of(
          EquipmentSlot.HEAD,
          Set.of("head"),

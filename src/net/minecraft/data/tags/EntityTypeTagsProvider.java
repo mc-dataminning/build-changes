@@ -81,7 +81,7 @@ public class EntityTypeTagsProvider extends TagsProvider<EntityType<?>> {
             EntityTypeIds.TADPOLE
          );
       this.tag(EntityTypeTags.AXOLOTL_ALWAYS_HOSTILES).add(EntityTypeIds.DROWNED, EntityTypeIds.GUARDIAN, EntityTypeIds.ELDER_GUARDIAN);
-      this.tag(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)
+      this.tag(EntityTypeTags.IMMUNE_TO_FREEZING)
          .add(
             EntityTypeIds.STRAY,
             EntityTypeIds.POLAR_BEAR,
@@ -173,7 +173,15 @@ public class EntityTypeTagsProvider extends TagsProvider<EntityType<?>> {
          .add(EntityTypeIds.SILVERFISH)
          .add(EntityTypeIds.SPIDER)
          .add(EntityTypeIds.CAVE_SPIDER);
-      this.tag(EntityTypeTags.IGNORES_POISON_AND_REGEN).addTag(EntityTypeTags.UNDEAD);
+      this.tag(EntityTypeTags.IMMUNE_TO_REGENERATION).addTag(EntityTypeTags.UNDEAD);
+      this.tag(EntityTypeTags.IMMUNE_TO_POISON)
+         .addTag(EntityTypeTags.UNDEAD)
+         .add(EntityTypeIds.NAUTILUS)
+         .add(EntityTypeIds.ZOMBIE_NAUTILUS)
+         .add(EntityTypeIds.SPIDER)
+         .add(EntityTypeIds.CAVE_SPIDER);
+      this.tag(EntityTypeTags.IMMUNE_TO_WITHER).add(EntityTypeIds.WITHER).add(EntityTypeIds.WITHER_SKELETON);
+      this.tag(EntityTypeTags.IMMUNE_TO_WEAKNESS).add(EntityTypeIds.PARCHED);
       this.tag(EntityTypeTags.INVERTED_HEALING_AND_HARM).addTag(EntityTypeTags.UNDEAD);
       this.tag(EntityTypeTags.WITHER_FRIENDS).addTag(EntityTypeTags.UNDEAD);
       this.tag(EntityTypeTags.ILLAGER_FRIENDS).addTag(EntityTypeTags.ILLAGER);

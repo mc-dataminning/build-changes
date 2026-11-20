@@ -11,17 +11,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import net.minecraft.SharedConstants;
 import org.apache.commons.io.FilenameUtils;
 
 public class FileUtil {
+   public static final char[] ILLEGAL_FILE_CHARACTERS = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
    private static final Pattern COPY_COUNTER_PATTERN = Pattern.compile("(<name>.*) \\((<count>\\d*)\\)", 66);
    private static final int MAX_FILE_NAME = 255;
    private static final Pattern RESERVED_WINDOWS_FILENAMES = Pattern.compile(".*\\.|(?:COM|CLOCK\\$|CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\\..*)?", 2);
    private static final Pattern STRICT_PATH_SEGMENT_CHECK = Pattern.compile("[-._a-z0-9]+");
 
    public static String sanitizeName(String baseName) {
-      for (char replacer : SharedConstants.ILLEGAL_FILE_CHARACTERS) {
+      for (char replacer : ILLEGAL_FILE_CHARACTERS) {
          baseName = baseName.replace(replacer, '_');
       }
 

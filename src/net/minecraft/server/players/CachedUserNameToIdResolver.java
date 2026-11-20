@@ -20,6 +20,7 @@ import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
@@ -147,7 +148,7 @@ public class CachedUserNameToIdResolver implements UserNameToIdResolver {
    }
 
    private List<CachedUserNameToIdResolver.GameProfileInfo> load() {
-      List<CachedUserNameToIdResolver.GameProfileInfo> result = Lists.newArrayList();
+      List<CachedUserNameToIdResolver.GameProfileInfo> result = new ArrayList<>();
 
       try (Reader reader = Files.newReader(this.file, StandardCharsets.UTF_8)) {
          JsonArray entryList = (JsonArray)this.gson.fromJson(reader, JsonArray.class);

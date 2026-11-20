@@ -270,19 +270,19 @@ public class ChatScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
       graphics.fill(2, this.height - 14, this.width - 2, this.height - 2, this.minecraft.options.getBackgroundColor(Integer.MIN_VALUE));
       this.minecraft
          .gui
          .hud
          .getChat()
-         .extractRenderState(graphics, this.font, this.minecraft.gui.hud.getGuiTicks(), mouseX, mouseY, this.displayMode, this.insertionClickMode());
-      super.extractRenderState(graphics, mouseX, mouseY, a);
-      this.commandSuggestions.extractRenderState(graphics, mouseX, mouseY);
+         .extractRenderState(graphics, this.font, this.minecraft.gui.hud.getGuiTicks(), this.displayMode, this.insertionClickMode());
+      super.extractRenderState(graphics);
+      this.commandSuggestions.extractRenderState(graphics);
    }
 
    @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public void extractBackground(final GuiGraphicsExtractor graphics) {
    }
 
    @Override

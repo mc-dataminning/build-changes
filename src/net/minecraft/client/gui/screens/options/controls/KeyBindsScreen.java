@@ -95,8 +95,8 @@ public class KeyBindsScreen extends OptionsSubScreen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       boolean canReset = false;
 
       for (KeyMapping key : this.options.keyMappings) {

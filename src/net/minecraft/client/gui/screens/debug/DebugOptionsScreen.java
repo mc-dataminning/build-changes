@@ -1,6 +1,5 @@
 package net.minecraft.client.gui.screens.debug;
 
-import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.floats.FloatComparators;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -133,10 +132,10 @@ public class DebugOptionsScreen extends Screen {
       }
 
       @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          this.widget
             .setPosition(this.getContentX() + this.getContentWidth() / 2 - this.widget.getWidth() / 2, this.getContentYMiddle() - this.widget.getHeight() / 2);
-         this.widget.extractRenderState(graphics, mouseX, mouseY, a);
+         this.widget.extractRenderState(graphics);
       }
 
       @Override
@@ -157,7 +156,7 @@ public class DebugOptionsScreen extends Screen {
    private class OptionEntry extends DebugOptionsScreen.AbstractOptionEntry {
       private static final int BUTTON_WIDTH = 60;
       private final ResourceKey<DebugScreenEntry> key;
-      protected final List<AbstractWidget> children = Lists.newArrayList();
+      protected final List<AbstractWidget> children = new ArrayList<>();
       private final CycleButton<Boolean> always;
       private final CycleButton<Boolean> overlay;
       private final CycleButton<Boolean> never;
@@ -226,13 +225,13 @@ public class DebugOptionsScreen extends Screen {
       }
 
       @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          int x = this.getContentX();
          int y = this.getContentY();
          graphics.text(DebugOptionsScreen.this.minecraft.font, this.name, x, y + 5, this.isAllowed ? -1 : -8355712);
          int buttonsStartX = x + this.getContentWidth() - this.never.getWidth() - this.overlay.getWidth() - this.always.getWidth();
-         if (!this.isAllowed && hovered && mouseX < buttonsStartX) {
-            graphics.setTooltipForNextFrame(DebugOptionsScreen.NOT_ALLOWED_TOOLTIP, mouseX, mouseY);
+         if (!this.isAllowed && hovered && graphics.mouseX() < buttonsStartX) {
+            graphics.setTooltipForNextFrame(DebugOptionsScreen.NOT_ALLOWED_TOOLTIP, graphics.mouseX(), graphics.mouseY());
          }
 
          this.never.setX(buttonsStartX);
@@ -241,9 +240,9 @@ public class DebugOptionsScreen extends Screen {
          this.always.setY(y);
          this.overlay.setY(y);
          this.never.setY(y);
-         this.always.extractRenderState(graphics, mouseX, mouseY, a);
-         this.overlay.extractRenderState(graphics, mouseX, mouseY, a);
-         this.never.extractRenderState(graphics, mouseX, mouseY, a);
+         this.always.extractRenderState(graphics);
+         this.overlay.extractRenderState(graphics);
+         this.never.extractRenderState(graphics);
       }
 
       @Override
@@ -277,8 +276,8 @@ public class DebugOptionsScreen extends Screen {
       }
 
       @Override
-      public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-         super.extractWidgetRenderState(graphics, mouseX, mouseY, a);
+      public void extractWidgetRenderState(final GuiGraphicsExtractor graphics) {
+         super.extractWidgetRenderState(graphics);
       }
 
       @Override

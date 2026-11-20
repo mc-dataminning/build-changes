@@ -62,8 +62,8 @@ public class UnsupportedGraphicsWarningScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       ActiveTextCollector textRenderer = graphics.textRenderer();
       graphics.centeredText(this.font, this.title, this.width / 2, this.contentTop - 9 * 2, -1);
       this.messageLines.visitLines(TextAlignment.CENTER, this.width / 2, this.contentTop, 9, textRenderer);

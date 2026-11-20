@@ -1,10 +1,11 @@
 package net.minecraft.core;
 
 import com.mojang.datafixers.util.Either;
+import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ReferenceSet;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 import net.minecraft.core.component.DataComponentMap;
@@ -133,7 +134,7 @@ public sealed interface Holder<T> permits Holder.Direct, Holder.Reference {
 
    non-sealed class Reference<T> implements Holder<T> {
       private final HolderOwner<T> owner;
-      private @Nullable Set<TagKey<T>> tags;
+      private @Nullable ReferenceSet<TagKey<T>> tags;
       private @Nullable DataComponentMap components;
       private final Holder.Reference.Type type;
       private @Nullable ResourceKey<T> key;
@@ -182,7 +183,7 @@ public sealed interface Holder<T> permits Holder.Direct, Holder.Reference {
          return this.key() == key;
       }
 
-      private Set<TagKey<T>> boundTags() {
+      private ReferenceSet<TagKey<T>> boundTags() {
          if (this.tags == null) {
             throw new IllegalStateException("Tags not bound");
          } else {
@@ -252,7 +253,7 @@ public sealed interface Holder<T> permits Holder.Direct, Holder.Reference {
       }
 
       void bindTags(final Collection<TagKey<T>> tags) {
-         this.tags = Set.copyOf(tags);
+         this.tags = new ReferenceOpenHashSet(tags);
       }
 
       public void bindComponents(final DataComponentMap components) {

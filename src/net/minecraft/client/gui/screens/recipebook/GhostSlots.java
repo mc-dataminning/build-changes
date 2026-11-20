@@ -59,15 +59,17 @@ public class GhostSlots {
       });
    }
 
-   public void extractTooltip(
-      final GuiGraphicsExtractor graphics, final Minecraft minecraft, final int mouseX, final int mouseY, final @Nullable Slot hoveredSlot
-   ) {
+   public void extractTooltip(final GuiGraphicsExtractor graphics, final Minecraft minecraft, final @Nullable Slot hoveredSlot) {
       if (hoveredSlot != null) {
          GhostSlots.GhostSlot hoveredGhostSlot = (GhostSlots.GhostSlot)this.ingredients.get(hoveredSlot);
          if (hoveredGhostSlot != null) {
             ItemStack hoveredItem = hoveredGhostSlot.getItem(this.slotSelectTime.currentIndex());
             graphics.setComponentTooltipForNextFrame(
-               minecraft.font, Screen.getTooltipFromItem(minecraft, hoveredItem), mouseX, mouseY, hoveredItem.get(DataComponents.TOOLTIP_STYLE)
+               minecraft.font,
+               Screen.getTooltipFromItem(minecraft, hoveredItem),
+               graphics.mouseX(),
+               graphics.mouseY(),
+               hoveredItem.get(DataComponents.TOOLTIP_STYLE)
             );
          }
       }

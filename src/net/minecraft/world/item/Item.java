@@ -1,17 +1,16 @@
 package net.minecraft.world.item;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
-import net.minecraft.SharedConstants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -39,6 +38,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.Mth;
 import net.minecraft.util.Util;
 import net.minecraft.world.Difficulty;
@@ -120,7 +120,7 @@ public class Item implements ItemLike, FeatureElement {
          : DataResult.success(item)
    );
    private static final Logger LOGGER = LogUtils.getLogger();
-   public static final Map<Block, Item> BY_BLOCK = Maps.newHashMap();
+   public static final Map<Block, Item> BY_BLOCK = new HashMap<>();
    public static final Identifier BASE_ATTACK_DAMAGE_ID = Identifier.withDefaultNamespace("base_attack_damage");
    public static final Identifier BASE_ATTACK_SPEED_ID = Identifier.withDefaultNamespace("base_attack_speed");
    public static final int DEFAULT_MAX_STACK_SIZE = 64;
@@ -153,7 +153,7 @@ public class Item implements ItemLike, FeatureElement {
       BuiltInRegistries.DATA_COMPONENT_INITIALIZERS.add(properties.itemIdOrThrow(), componentInitializer);
       this.craftingRemainingItem = properties.craftingRemainingItem;
       this.requiredFeatures = properties.requiredFeatures;
-      if (SharedConstants.IS_RUNNING_IN_IDE) {
+      if (DevUtil.IS_RUNNING_IN_IDE) {
          String className = this.getClass().getSimpleName();
          if (!className.endsWith("Item")) {
             LOGGER.error("Item classes should end with Item and {} doesn't.", className);

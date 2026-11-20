@@ -1,6 +1,6 @@
 package net.minecraft.client.renderer.entity;
 
-import com.google.common.collect.Maps;
+import java.util.EnumMap;
 import java.util.Map;
 import net.minecraft.client.model.animal.rabbit.AdultRabbitModel;
 import net.minecraft.client.model.animal.rabbit.BabyRabbitModel;
@@ -13,7 +13,7 @@ import net.minecraft.world.entity.animal.rabbit.Rabbit;
 public class RabbitRenderer extends AgeableMobRenderer<Rabbit, RabbitRenderState, RabbitModel> {
    private static final Identifier TOAST = Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_toast.png");
    private static final Identifier TOAST_BABY = Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_toast_baby.png");
-   private static final Map<Rabbit.Variant, Identifier> RABBIT_LOCATIONS = Maps.newEnumMap(
+   private static final Map<Rabbit.Variant, Identifier> RABBIT_LOCATIONS = new EnumMap<>(
       Map.of(
          Rabbit.Variant.BROWN,
          Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_brown.png"),
@@ -31,7 +31,7 @@ public class RabbitRenderer extends AgeableMobRenderer<Rabbit, RabbitRenderState
          Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_salt.png")
       )
    );
-   private static final Map<Rabbit.Variant, Identifier> BABY_RABBIT_LOCATIONS = Maps.newEnumMap(
+   private static final Map<Rabbit.Variant, Identifier> BABY_RABBIT_LOCATIONS = new EnumMap<>(
       Map.of(
          Rabbit.Variant.BROWN,
          Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_brown_baby.png"),

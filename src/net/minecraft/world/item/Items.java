@@ -1029,6 +1029,11 @@ public class Items {
    );
    public static final Item TERRACOTTA = registerBlock(BlockItemIds.TERRACOTTA, Blocks.TERRACOTTA);
    public static final Item PACKED_ICE = registerBlock(BlockItemIds.PACKED_ICE, Blocks.PACKED_ICE);
+   public static final Item PACKED_ICE_BRICKS = registerBlock(BlockItemIds.PACKED_ICE_BRICKS, Blocks.PACKED_ICE_BRICKS);
+   public static final Item PACKED_ICE_BRICK_SLAB = registerBlock(BlockItemIds.PACKED_ICE_BRICK_SLAB, Blocks.PACKED_ICE_BRICK_SLAB);
+   public static final Item PACKED_ICE_BRICK_STAIRS = registerBlock(BlockItemIds.PACKED_ICE_BRICK_STAIRS, Blocks.PACKED_ICE_BRICK_STAIRS);
+   public static final Item PACKED_ICE_BRICK_WALL = registerBlock(BlockItemIds.PACKED_ICE_BRICK_WALL, Blocks.PACKED_ICE_BRICK_WALL);
+   public static final Item CHISELED_PACKED_ICE = registerBlock(BlockItemIds.CHISELED_PACKED_ICE, Blocks.CHISELED_PACKED_ICE);
    public static final Item DIRT_PATH = registerBlock(BlockItemIds.DIRT_PATH, Blocks.DIRT_PATH);
    public static final Item SUNFLOWER = registerBlock(
       BlockItemIds.SUNFLOWER, Blocks.SUNFLOWER, DoubleHighBlockItem::new, new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_MEDIUM)

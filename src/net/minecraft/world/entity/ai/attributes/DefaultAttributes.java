@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.mojang.logging.LogUtils;
 import java.util.Map;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.Util;
+import net.minecraft.util.DevUtil;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.LivingEntity;
@@ -205,6 +205,6 @@ public class DefaultAttributes {
          .filter(entityType -> entityType.getCategory() != MobCategory.MISC)
          .filter(entityType -> !hasSupplier((EntityType<?>)entityType))
          .map(BuiltInRegistries.ENTITY_TYPE::getKey)
-         .forEach(id -> Util.logAndPauseIfInIde("Entity " + id + " has no attributes"));
+         .forEach(id -> DevUtil.logAndPauseIfInIde("Entity " + id + " has no attributes"));
    }
 }

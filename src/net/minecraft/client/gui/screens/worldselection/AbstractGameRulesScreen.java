@@ -1,12 +1,12 @@
 package net.minecraft.client.gui.screens.worldselection;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -43,7 +43,7 @@ public abstract class AbstractGameRulesScreen extends Screen {
    protected static final Component TITLE = Component.translatable("editGamerule.title");
    private static final Component SEARCH_HINT = Component.translatable("gui.game_rule.search").withStyle(EditBox.SEARCH_HINT_STYLE);
    private static final int SEARCH_BOX_HEIGHT = 15;
-   private final Set<AbstractGameRulesScreen.RuleEntry> invalidEntries = Sets.newHashSet();
+   private final Set<AbstractGameRulesScreen.RuleEntry> invalidEntries = new HashSet<>();
    private final Consumer<Optional<GameRules>> exitCallback;
    protected final HeaderAndFooterLayout layout;
    protected final GameRules gameRules;
@@ -142,11 +142,11 @@ public abstract class AbstractGameRulesScreen extends Screen {
       }
 
       @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          this.extractLabel(graphics, this.getContentY(), this.getContentX());
          this.checkbox.setX(this.getContentRight() - 45);
          this.checkbox.setY(this.getContentY());
-         this.checkbox.extractRenderState(graphics, mouseX, mouseY, a);
+         this.checkbox.extractRenderState(graphics);
       }
    }
 
@@ -162,9 +162,9 @@ public abstract class AbstractGameRulesScreen extends Screen {
       }
 
       @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          this.widget.setPosition(this.getContentXMiddle() - this.widget.getWidth() / 2, this.getContentYMiddle() - this.widget.getHeight() / 2);
-         this.widget.extractRenderState(graphics, mouseX, mouseY, a);
+         this.widget.extractRenderState(graphics);
       }
 
       @Override
@@ -185,7 +185,7 @@ public abstract class AbstractGameRulesScreen extends Screen {
 
    public abstract class GameRuleEntry extends AbstractGameRulesScreen.RuleEntry {
       private final List<FormattedCharSequence> label;
-      protected final List<AbstractWidget> children = Lists.newArrayList();
+      protected final List<AbstractWidget> children = new ArrayList<>();
 
       public GameRuleEntry(final @Nullable List<FormattedCharSequence> tooltip, final Component label) {
          super(tooltip);
@@ -234,11 +234,11 @@ public abstract class AbstractGameRulesScreen extends Screen {
       }
 
       @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          this.extractLabel(graphics, this.getContentY(), this.getContentX());
          this.input.setX(this.getContentRight() - 45);
          this.input.setY(this.getContentY());
-         this.input.extractRenderState(graphics, mouseX, mouseY, a);
+         this.input.extractRenderState(graphics);
       }
    }
 
@@ -268,7 +268,7 @@ public abstract class AbstractGameRulesScreen extends Screen {
 
       private void populateChildren(final String filter) {
          this.clearEntries();
-         final Map<GameRuleCategory, Map<GameRule<?>, AbstractGameRulesScreen.RuleEntry>> entries = Maps.newHashMap();
+         final Map<GameRuleCategory, Map<GameRule<?>, AbstractGameRulesScreen.RuleEntry>> entries = new HashMap<>();
          final String lowerCaseFilter = filter.toLowerCase(Locale.ROOT);
          this.gameRules
             .visitGameRuleTypes(
@@ -306,7 +306,7 @@ public abstract class AbstractGameRulesScreen extends Screen {
                            narration = defaultValue.getString();
                         }
 
-                        entries.computeIfAbsent(gameRule.category(), k -> Maps.newHashMap())
+                        entries.computeIfAbsent(gameRule.category(), k -> new HashMap<>())
                            .put(gameRule, factory.create(readableName, tooltip, narration, gameRule));
                      }
                   }
@@ -349,11 +349,11 @@ public abstract class AbstractGameRulesScreen extends Screen {
       }
 
       @Override
-      public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-         super.extractWidgetRenderState(graphics, mouseX, mouseY, a);
+      public void extractWidgetRenderState(final GuiGraphicsExtractor graphics) {
+         super.extractWidgetRenderState(graphics);
          AbstractGameRulesScreen.RuleEntry hovered = this.getHovered();
          if (hovered != null && hovered.tooltip != null) {
-            graphics.setTooltipForNextFrame(hovered.tooltip, mouseX, mouseY);
+            graphics.setTooltipForNextFrame(hovered.tooltip, graphics.mouseX(), graphics.mouseY());
          }
       }
    }

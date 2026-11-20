@@ -648,7 +648,8 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
          .add(BlockItemIds.MELON, BlockItemIds.HAY_BLOCK, BlockItemIds.PUMPKIN, BlockItemIds.CARVED_PUMPKIN, BlockItemIds.JACK_O_LANTERN)
          .add(BlockItemIds.OCHRE_FROGLIGHT, BlockItemIds.PEARLESCENT_FROGLIGHT, BlockItemIds.VERDANT_FROGLIGHT);
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_LIGHT).addTag(ItemTags.WOOL);
-      this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_SLIDING).add(BlockItemIds.BLUE_ICE, BlockItemIds.PACKED_ICE, BlockItemIds.SNOW_BLOCK);
+      this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_SLIDING)
+         .add(BlockItemIds.BLUE_ICE, BlockItemIds.PACKED_ICE, BlockItemIds.PACKED_ICE_BRICKS, BlockItemIds.CHISELED_PACKED_ICE, BlockItemIds.SNOW_BLOCK);
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_SLIDING)
          .add(BlockItemIds.BROWN_MUSHROOM_BLOCK, BlockItemIds.RED_MUSHROOM_BLOCK, BlockItemIds.MUSHROOM_STEM, BlockItemIds.MYCELIUM)
          .addTag(ItemTags.WART_BLOCKS)

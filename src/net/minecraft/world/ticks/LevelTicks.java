@@ -22,6 +22,7 @@ import java.util.function.Predicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.core.Vec3i;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.Util;
 import net.minecraft.util.profiling.Profiler;
 import net.minecraft.util.profiling.ProfilerFiller;
@@ -72,7 +73,7 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
       long chunkKey = ChunkPos.pack(tick.pos());
       LevelChunkTicks<T> tickContainer = (LevelChunkTicks<T>)this.allContainers.get(chunkKey);
       if (tickContainer == null) {
-         Util.logAndPauseIfInIde("Trying to schedule tick in not loaded position " + tick.pos());
+         DevUtil.logAndPauseIfInIde("Trying to schedule tick in not loaded position " + tick.pos());
       } else {
          tickContainer.schedule(tick);
       }

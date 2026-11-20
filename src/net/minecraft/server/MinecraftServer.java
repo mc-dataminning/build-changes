@@ -2,9 +2,6 @@ package net.minecraft.server;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.mojang.authlib.GameProfile;
 import com.mojang.datafixers.DataFixer;
 import com.mojang.jtracy.DiscontinuousFrame;
@@ -21,10 +18,13 @@ import java.nio.file.FileStore;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.KeyPair;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -215,7 +215,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
    protected final LevelStorageSource.LevelStorageAccess storageSource;
    protected final PlayerDataStorage playerDataStorage;
    private final SavedDataStorage savedDataStorage;
-   private final List<Runnable> tickables = Lists.newArrayList();
+   private final List<Runnable> tickables = new ArrayList<>();
    private final GameRules gameRules;
    private MetricsRecorder metricsRecorder = InactiveMetricsRecorder.INSTANCE;
    private Consumer<ProfileResults> onMetricsRecordingStopped = results -> this.stopRecordingMetrics();
@@ -232,7 +232,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
    private String localIp;
    private int port = -1;
    private final LayeredRegistryAccess<RegistryLayer> registries;
-   private final Map<ResourceKey<Level>, ServerLevel> levels = Maps.newLinkedHashMap();
+   private final Map<ResourceKey<Level>, ServerLevel> levels = new LinkedHashMap<>();
    private PlayerList playerList;
    private volatile boolean running = true;
    private boolean stopped;
@@ -1569,7 +1569,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          return configureRepositoryWithSelection(packRepository, List.of("vanilla"), forcedFeatures, false);
       }
 
-      Set<String> selected = Sets.newLinkedHashSet();
+      Set<String> selected = new LinkedHashSet<>();
 
       for (String id : dataPackConfig.getEnabled()) {
          if (packRepository.isAvailable(id)) {
@@ -1667,7 +1667,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          PlayerList playerList = this.getPlayerList();
          UserWhiteList whiteList = playerList.getWhiteList();
 
-         for (ServerPlayer player : Lists.newArrayList(playerList.getPlayers())) {
+         for (ServerPlayer player : List.copyOf(playerList.getPlayers())) {
             if (!whiteList.isWhiteListed(player.nameAndId())) {
                player.connection.disconnect(Component.translatable("multiplayer.disconnect.not_whitelisted"));
             }
@@ -1856,7 +1856,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
 
    private void dumpGameRules(final Path path) throws IOException {
       try (Writer output = Files.newBufferedWriter(path)) {
-         final List<String> entries = Lists.newArrayList();
+         final List<String> entries = new ArrayList<>();
          final GameRules gameRules = this.getGameRules();
          gameRules.visitGameRuleTypes(new GameRuleTypeVisitor() {
             @Override
@@ -1899,7 +1899,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
       try (Writer output = Files.newBufferedWriter(path)) {
          List<NativeModuleLister.NativeModuleInfo> modules;
          try {
-            modules = Lists.newArrayList(NativeModuleLister.listModules());
+            modules = new ArrayList<>(NativeModuleLister.listModules());
          } catch (Throwable t) {
             LOGGER.warn("Failed to list native modules", t);
             return;

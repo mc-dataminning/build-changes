@@ -31,8 +31,8 @@ public class RealmsConfirmScreen extends RealmsScreen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int xm, final int ym, final float a) {
-      super.extractRenderState(graphics, xm, ym, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       graphics.centeredText(this.font, this.title1, this.width / 2, row(3), -1);
       graphics.centeredText(this.font, this.title2, this.width / 2, row(5), -1);
    }

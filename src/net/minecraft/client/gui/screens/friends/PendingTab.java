@@ -10,7 +10,7 @@ import net.minecraft.client.gui.components.LoadingDotsWidget;
 import net.minecraft.client.gui.components.MultiLineTextWidget;
 import net.minecraft.client.gui.layouts.LayoutSettings;
 import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.Component;
 
 class PendingTab extends AbstractFriendsTab {
@@ -117,7 +117,7 @@ class PendingTab extends AbstractFriendsTab {
    }
 
    @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public void extractBackground(final GuiGraphicsExtractor graphics) {
       if (this.showingSearchBar) {
          graphics.blitSprite(
             RenderPipelines.GUI_TEXTURED,

@@ -187,8 +187,8 @@ class AddFriendWidget extends AbstractContainerWidget {
    }
 
    @Override
-   protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      this.layout.visitWidgets(child -> child.extractRenderState(graphics, mouseX, mouseY, a));
+   protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics) {
+      this.layout.visitWidgets(child -> child.extractRenderState(graphics));
    }
 
    @Override

@@ -2,11 +2,12 @@ package net.minecraft.world.food;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -39,12 +40,10 @@ public record FoodProperties(int nutrition, float saturation, boolean canAlwaysE
    @Override
    public void onConsume(final Level level, final LivingEntity user, final ItemStack stack, final Consumable consumable) {
       RandomSource random = user.getRandom();
-      level.playSound(null, user.getX(), user.getY(), user.getZ(), consumable.sound().value(), SoundSource.NEUTRAL, 1.0F, random.triangle(1.0F, 0.4F));
+      consumable.sound().ifPresent(consumeSound -> user.playSound((Holder<SoundEvent>)consumeSound, 1.0F, random.triangle(1.0F, 0.4F)));
       if (user instanceof Player player) {
          player.getFoodData().eat(this);
-         level.playSound(
-            null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, Mth.randomBetween(random, 0.9F, 1.0F)
-         );
+         player.playSound(SoundEvents.PLAYER_BURP, 0.5F, Mth.randomBetween(random, 0.9F, 1.0F));
       }
    }
 

@@ -15,10 +15,6 @@ import com.mojang.renderpearl.api.buffers.GpuBuffer;
 import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.commands.RenderPass;
 import com.mojang.renderpearl.api.commands.RenderPassDescriptor;
-import com.mojang.renderpearl.api.device.DeviceFeatures;
-import com.mojang.renderpearl.api.device.DeviceInfo;
-import com.mojang.renderpearl.api.device.DeviceLimits;
-import com.mojang.renderpearl.api.device.HintsAndWorkarounds;
 import com.mojang.renderpearl.api.pipeline.IndexType;
 import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
 import com.mojang.renderpearl.api.textures.AddressMode;
@@ -69,6 +65,7 @@ import net.minecraft.client.renderer.feature.FeatureRenderDispatcher;
 import net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives;
 import net.minecraft.client.renderer.oit.OitRenderPassProvider;
 import net.minecraft.client.renderer.oit.OitStage;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.OptionsRenderState;
@@ -169,13 +166,7 @@ public class LevelRenderer implements AutoCloseable {
       this.levelRenderState = gameRenderer.gameRenderState().levelRenderState;
       this.optionsRenderState = gameRenderer.gameRenderState().optionsRenderState;
       this.entityOutlineTarget = new TextureTarget("Entity Outline", width, height, GpuFormat.RGBA8_UNORM, null);
-      DeviceInfo deviceInfo = RenderSystem.getDevice().getDeviceInfo();
-      DeviceFeatures deviceFeatures = deviceInfo.features();
-      DeviceLimits deviceLimits = deviceInfo.limits();
-      HintsAndWorkarounds hintsAndWorkarounds = deviceInfo.hintsAndWorkarounds();
-      this.multiDrawIndirectAvailable = deviceLimits.maxDrawIndirectDrawCount() > 0
-         && deviceFeatures.nonZeroFirstInstance()
-         && !hintsAndWorkarounds.multiDrawIndirectHasKnownIssues();
+      this.multiDrawIndirectAvailable = RenderSystem.isMultidrawIndirectAvailable();
       this.usingMultiDrawIndirectForTerrain = this.multiDrawIndirectAvailable;
    }
 
@@ -562,7 +553,7 @@ public class LevelRenderer implements AutoCloseable {
       renderPass.pushDebugGroup(() -> "Blit clouds");
       renderPass.setUniform("InSampler", cloudTarget.getColorTextureView(), nearestSampler);
       renderPass.setUniform("InDepthSampler", cloudTarget.getDepthTextureView(), nearestSampler);
-      renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.OIT_BLIT_CLOUDS.getPipeline(stage)));
+      renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.blitClouds(stage)));
       renderPass.draw(3, 1, 0, 0);
       renderPass.popDebugGroup();
    }
@@ -697,8 +688,8 @@ public class LevelRenderer implements AutoCloseable {
                   blockAtlas,
                   lightmap,
                   improvedFogTextures,
-                  RenderPipelines.OIT_TERRAIN.getPipeline(stage),
-                  RenderPipelines.OIT_TERRAIN_MULTIDRAW.getPipeline(stage)
+                  this.levelRenderState.renderWireframeTerrain,
+                  stage
                );
             }
          }
@@ -715,15 +706,15 @@ public class LevelRenderer implements AutoCloseable {
                   blockAtlas,
                   lightmap,
                   improvedFogTextures,
-                  RenderPipelines.OIT_TERRAIN.getPipeline(stage),
-                  RenderPipelines.OIT_TERRAIN_MULTIDRAW.getPipeline(stage)
+                  this.levelRenderState.renderWireframeTerrain,
+                  stage
                );
                renderPass.popDebugGroup();
             }
 
             featureFrame.executeOit(stage, renderPass);
-            this.worldBorderRenderer.renderOit(this.levelRenderState.worldBorderRenderState, cameraState.pos, renderDistance, stage, renderPass);
-            this.weatherEffectRenderer.renderOit(stage, this.levelRenderState.weatherRenderState, renderPass);
+            this.worldBorderRenderer.render(this.levelRenderState.worldBorderRenderState, renderPass, cameraState.pos, renderDistance, stage);
+            this.weatherEffectRenderer.render(this.levelRenderState.weatherRenderState, renderPass, stage);
             if (shouldRenderClouds) {
                this.blitClouds(stage, renderPass);
             }
@@ -819,8 +810,8 @@ public class LevelRenderer implements AutoCloseable {
       }
 
       Vec3 cameraPos = this.levelRenderState.cameraRenderState.pos;
-      this.weatherEffectRenderer.render(this.levelRenderState.weatherRenderState, renderPass);
-      this.worldBorderRenderer.render(this.levelRenderState.worldBorderRenderState, renderPass, cameraPos, renderDistance);
+      this.weatherEffectRenderer.render(this.levelRenderState.weatherRenderState, renderPass, null);
+      this.worldBorderRenderer.render(this.levelRenderState.worldBorderRenderState, renderPass, cameraPos, renderDistance, null);
    }
 
    private void executeOutline(final FeatureRenderDispatcher.PreparedFrame featureFrame) {
@@ -1199,7 +1190,7 @@ public class LevelRenderer implements AutoCloseable {
          poseStack.pushPose();
          poseStack.translate(pos.getX() - cameraPos.x, pos.getY() - cameraPos.y, pos.getZ() - cameraPos.z);
          if (state.highContrast()) {
-            this.submitHitOutline(poseStack, submitNodeCollector, RenderTypes.secondaryBlockOutline(), state, -16777216, 7.0F, state.isTranslucent());
+            this.submitHitOutline(poseStack, submitNodeCollector, RenderTypes.lines(), state, -16777216, 7.0F, state.isTranslucent());
          }
 
          int outlineColor = state.highContrast() ? -11010079 : ARGB.black(102);

@@ -1,6 +1,6 @@
 package net.minecraft.network.protocol.game;
 
-import com.google.common.collect.Sets;
+import java.util.HashSet;
 import java.util.Set;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -30,7 +30,7 @@ public record ClientboundLoginPacket(
       ClientboundLoginPacket::playerId,
       ByteBufCodecs.BOOL,
       ClientboundLoginPacket::hardcore,
-      ResourceKey.streamCodec(Registries.DIMENSION).apply(ByteBufCodecs.collection(Sets::newHashSetWithExpectedSize)),
+      ResourceKey.streamCodec(Registries.DIMENSION).apply(ByteBufCodecs.collection(HashSet::new)),
       ClientboundLoginPacket::levels,
       ByteBufCodecs.VAR_INT,
       ClientboundLoginPacket::maxPlayers,

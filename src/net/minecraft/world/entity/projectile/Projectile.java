@@ -204,12 +204,18 @@ public abstract class Projectile extends Entity implements TraceableEntity {
       this.resetFallDistance();
    }
 
-   public boolean canBreakBlockInAdventureMode(final ServerLevel level, final BlockInWorld blockInWorld) {
-      Entity owner = this.getOwner();
-      GameType worldGameMode = level.getServer().getDefaultGameType();
-      return (owner != null || worldGameMode == GameType.ADVENTURE) && !(owner instanceof Player player && player.gameMode() != GameType.ADVENTURE)
-         ? this.canBreak != null && this.canBreak.test(blockInWorld)
-         : true;
+   public boolean ownerCanBreakBlock(final ServerLevel level, final BlockInWorld blockInWorld) {
+      if (this.canBreak != null && this.canBreak.test(blockInWorld)) {
+         return true;
+      } else {
+         Entity owner = this.getOwner();
+         GameType worldGameMode = level.getServer().getDefaultGameType();
+         if (owner == null) {
+            return worldGameMode != GameType.ADVENTURE;
+         } else {
+            return owner instanceof Player player ? player.gameMode() != GameType.ADVENTURE : level.getGameRules().get(GameRules.MOB_GRIEFING);
+         }
+      }
    }
 
    public static <T extends Projectile> T spawnProjectileFromRotation(
@@ -429,7 +435,7 @@ public abstract class Projectile extends Entity implements TraceableEntity {
    public boolean mayBreak(final ServerLevel level, final BlockPos pos) {
       return this.is(EntityTypeTags.IMPACT_PROJECTILES)
          && level.getGameRules().get(GameRules.PROJECTILES_CAN_BREAK_BLOCKS)
-         && this.canBreakBlockInAdventureMode(level, new BlockInWorld(level, pos, false));
+         && this.ownerCanBreakBlock(level, new BlockInWorld(level, pos, false));
    }
 
    @Override

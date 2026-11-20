@@ -6,7 +6,7 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.crafting.ExtendedRecipeBookCategory;
 import net.minecraft.world.item.crafting.display.RecipeDisplayEntry;
@@ -41,7 +41,7 @@ public class RecipeBookTabButton extends ImageButton {
    }
 
    @Override
-   public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   public void extractContents(final GuiGraphicsExtractor graphics) {
       if (this.animationTime > 0.0F) {
          float squeeze = 1.0F + 0.1F * (float)Math.sin(this.animationTime / 15.0F * (float) Math.PI);
          graphics.pose().pushMatrix();
@@ -60,7 +60,7 @@ public class RecipeBookTabButton extends ImageButton {
       this.extractIcon(graphics);
       if (this.animationTime > 0.0F) {
          graphics.pose().popMatrix();
-         this.animationTime -= a;
+         this.animationTime = this.animationTime - graphics.partialTicks();
       }
    }
 

@@ -85,7 +85,7 @@ public sealed interface CubicSpline<I> permits CubicSpline.Multipoint, CubicSpli
       private final I coordinate;
       private final Float2FloatFunction valueTransformer;
       private final FloatList locations = new FloatArrayList();
-      private final List<CubicSpline<I>> values = Lists.newArrayList();
+      private final List<CubicSpline<I>> values = new ArrayList<>();
       private final FloatList derivatives = new FloatArrayList();
 
       private Builder(final I coordinate) {

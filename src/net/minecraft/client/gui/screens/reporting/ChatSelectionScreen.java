@@ -24,7 +24,7 @@ import net.minecraft.client.multiplayer.chat.GuiMessageTag;
 import net.minecraft.client.multiplayer.chat.LoggedChatMessage;
 import net.minecraft.client.multiplayer.chat.report.ChatReport;
 import net.minecraft.client.multiplayer.chat.report.ReportingContext;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.locale.Language;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
@@ -96,8 +96,8 @@ public class ChatSelectionScreen extends Screen {
    }
 
    @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
+   public void extractRenderState(final GuiGraphicsExtractor graphics) {
+      super.extractRenderState(graphics);
       ActiveTextCollector textRenderer = graphics.textRenderer();
       graphics.centeredText(this.font, this.title, this.width / 2, 10, -1);
       AbuseReportLimits reportLimits = this.reportingContext.sender().reportLimits();
@@ -178,16 +178,14 @@ public class ChatSelectionScreen extends Screen {
          return Mth.positiveCeilDiv(this.height, 16);
       }
 
-      protected void extractItem(
-         final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a, final ChatSelectionScreen.ChatSelectionList.Entry entry
-      ) {
+      protected void extractItem(final GuiGraphicsExtractor graphics, final ChatSelectionScreen.ChatSelectionList.Entry entry) {
          if (this.shouldHighlightEntry(entry)) {
             boolean selected = this.getSelected() == entry;
             int outlineColor = this.isFocused() && selected ? -1 : -8355712;
             this.extractSelection(graphics, entry, outlineColor);
          }
 
-         entry.extractContent(graphics, mouseX, mouseY, this.getHovered() == entry, a);
+         entry.extractContent(graphics, this.getHovered() == entry);
       }
 
       private boolean shouldHighlightEntry(final ChatSelectionScreen.ChatSelectionList.Entry entry) {
@@ -231,7 +229,7 @@ public class ChatSelectionScreen extends Screen {
          }
 
          @Override
-         public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+         public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
             int centerY = this.getContentYMiddle();
             int rowRight = this.getContentRight() - 8;
             int textWidth = ChatSelectionScreen.this.font.width(this.text);
@@ -319,7 +317,7 @@ public class ChatSelectionScreen extends Screen {
          }
 
          @Override
-         public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+         public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
             if (this.isSelected() && this.canReport) {
                this.extractSelectedCheckmark(graphics, this.getContentY(), this.getContentX(), this.getContentHeight());
             }
@@ -328,25 +326,23 @@ public class ChatSelectionScreen extends Screen {
             int textY = this.getContentY() + 1 + (this.getContentHeight() - 9) / 2;
             graphics.text(ChatSelectionScreen.this.font, Language.getInstance().getVisualOrder(this.text), textX, textY, this.canReport ? -1 : -1593835521);
             if (this.hoverText != null && hovered) {
-               graphics.setTooltipForNextFrame(this.hoverText, mouseX, mouseY);
+               graphics.setTooltipForNextFrame(this.hoverText, graphics.mouseX(), graphics.mouseY());
             }
 
             int textWidth = ChatSelectionScreen.this.font.width(this.text);
-            this.extractTag(graphics, textX + textWidth + 4, this.getContentY(), this.getContentHeight(), mouseX, mouseY);
+            this.extractTag(graphics, textX + textWidth + 4, this.getContentY(), this.getContentHeight());
          }
 
-         private void extractTag(
-            final GuiGraphicsExtractor graphics, final int iconLeft, final int rowTop, final int rowHeight, final int mouseX, final int mouseY
-         ) {
+         private void extractTag(final GuiGraphicsExtractor graphics, final int iconLeft, final int rowTop, final int rowHeight) {
             if (this.tagIcon != null) {
                int iconTop = rowTop + (rowHeight - this.tagIcon.height) / 2;
                this.tagIcon.extractRenderState(graphics, iconLeft, iconTop);
                if (this.tagHoverText != null
-                  && mouseX >= iconLeft
-                  && mouseX <= iconLeft + this.tagIcon.width
-                  && mouseY >= iconTop
-                  && mouseY <= iconTop + this.tagIcon.height) {
-                  graphics.setTooltipForNextFrame(this.tagHoverText, mouseX, mouseY);
+                  && graphics.mouseX() >= iconLeft
+                  && graphics.mouseX() <= iconLeft + this.tagIcon.width
+                  && graphics.mouseY() >= iconTop
+                  && graphics.mouseY() <= iconTop + this.tagIcon.height) {
+                  graphics.setTooltipForNextFrame(this.tagHoverText, graphics.mouseX(), graphics.mouseY());
                }
             }
          }
@@ -426,7 +422,7 @@ public class ChatSelectionScreen extends Screen {
          }
 
          @Override
-         public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+         public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
             int faceX = this.getContentX() - 12 + 4;
             int faceY = this.getContentY() + (this.getContentHeight() - 12) / 2;
             PlayerFaceExtractor.extractRenderState(graphics, this.skin.get(), faceX, faceY, 12);
@@ -437,7 +433,7 @@ public class ChatSelectionScreen extends Screen {
 
       public static class PaddingEntry extends ChatSelectionScreen.ChatSelectionList.Entry {
          @Override
-         public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+         public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          }
       }
    }

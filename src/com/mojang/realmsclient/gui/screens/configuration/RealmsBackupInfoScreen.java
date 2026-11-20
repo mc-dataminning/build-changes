@@ -124,7 +124,7 @@ public class RealmsBackupInfoScreen extends RealmsScreen {
       }
 
       @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          graphics.text(RealmsBackupInfoScreen.this.font, this.keyComponent, this.getContentX(), this.getContentY(), -6250336);
          graphics.text(RealmsBackupInfoScreen.this.font, this.valueComponent, this.getContentX(), this.getContentY() + 12, -1);
       }

@@ -21,8 +21,8 @@ import net.minecraft.SharedConstants;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.resources.IoSupplier;
+import net.minecraft.util.DevUtil;
 import net.minecraft.util.FileUtil;
-import net.minecraft.util.Util;
 import org.apache.commons.lang3.StringUtils;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
@@ -107,7 +107,7 @@ public class PathPackResources extends AbstractPackMetadataResources implements 
             String resourcePath = PATH_JOINER.join(topDir.relativize(file));
             Identifier identifier = Identifier.tryBuild(namespace, resourcePath);
             if (identifier == null) {
-               Util.logAndPauseIfInIde(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", namespace, resourcePath));
+               DevUtil.logAndPauseIfInIde(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", namespace, resourcePath));
             } else {
                output.accept(identifier, IoSupplier.create(file));
             }
@@ -119,7 +119,7 @@ public class PathPackResources extends AbstractPackMetadataResources implements 
    }
 
    private static boolean isRegularFile(final Path file, final BasicFileAttributes attributes) {
-      return !SharedConstants.IS_RUNNING_IN_IDE
+      return !DevUtil.IS_RUNNING_IN_IDE
          ? attributes.isRegularFile()
          : attributes.isRegularFile() && !StringUtils.equalsIgnoreCase(file.getFileName().toString(), ".ds_store");
    }

@@ -9,7 +9,7 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.TabButton;
 import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
@@ -36,7 +36,7 @@ public class MenuTabBar extends TabNavigationBar {
    }
 
    @Override
-   protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+   protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics) {
       graphics.blit(
          RenderPipelines.GUI_TEXTURED,
          Screen.HEADER_SEPARATOR,
@@ -62,7 +62,7 @@ public class MenuTabBar extends TabNavigationBar {
          32,
          2
       );
-      super.extractWidgetRenderState(graphics, mouseX, mouseY, a);
+      super.extractWidgetRenderState(graphics);
    }
 
    @Override
@@ -115,7 +115,7 @@ public class MenuTabBar extends TabNavigationBar {
       }
 
       @Override
-      protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
+      protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics) {
          graphics.blitSprite(
             RenderPipelines.GUI_TEXTURED, SPRITES.get(this.isSelected(), this.isHoveredOrFocused()), this.getX(), this.getY(), this.width, this.height
          );

@@ -1,7 +1,7 @@
 package net.minecraft.world.entity.npc.villager;
 
-import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
+import java.util.HashMap;
 import java.util.Map;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -26,7 +26,7 @@ public final class VillagerType {
    public static final ResourceKey<VillagerType> TAIGA = createKey("taiga");
    public static final Codec<Holder<VillagerType>> CODEC = RegistryCodecs.holder(Registries.VILLAGER_TYPE);
    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<VillagerType>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.VILLAGER_TYPE);
-   private static final Map<ResourceKey<Biome>, ResourceKey<VillagerType>> BY_BIOME = Util.make(Maps.newHashMap(), map -> {
+   private static final Map<ResourceKey<Biome>, ResourceKey<VillagerType>> BY_BIOME = Util.make(new HashMap<>(), map -> {
       map.put(Biomes.BADLANDS, DESERT);
       map.put(Biomes.DESERT, DESERT);
       map.put(Biomes.ERODED_BADLANDS, DESERT);

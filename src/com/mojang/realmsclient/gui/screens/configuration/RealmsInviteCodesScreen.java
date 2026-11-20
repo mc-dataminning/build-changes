@@ -310,7 +310,7 @@ public class RealmsInviteCodesScreen extends AbstractRealmsCodeScreen {
          }
 
          @Override
-         public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
+         public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
             int textY = this.getContentYMiddle() - 9 / 2;
             graphics.text(RealmsInviteCodesScreen.this.font, this.inviteCode.code(), this.getContentX() + 8, textY, -1);
          }

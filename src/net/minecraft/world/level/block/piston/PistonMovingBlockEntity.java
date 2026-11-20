@@ -303,7 +303,7 @@ public class PistonMovingBlockEntity extends BlockEntity {
                   level.setBlock(pos, entity.movedState, 340);
                   Block.updateOrDestroy(entity.movedState, newState, level, pos, 3);
                } else {
-                  if (newState.hasProperty(BlockStateProperties.WATERLOGGED) && newState.getValue(BlockStateProperties.WATERLOGGED)) {
+                  if (newState.getValueOrElse(BlockStateProperties.WATERLOGGED, false)) {
                      newState = newState.setValue(BlockStateProperties.WATERLOGGED, false);
                   }
 

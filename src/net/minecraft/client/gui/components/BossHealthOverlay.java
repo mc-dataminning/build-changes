@@ -1,11 +1,11 @@
 package net.minecraft.client.gui.components;
 
-import com.google.common.collect.Maps;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBossEventPacket;
 import net.minecraft.resources.Identifier;
@@ -14,7 +14,7 @@ import net.minecraft.util.profiling.Profiler;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.BossEvent;
 
-public class BossHealthOverlay {
+public class BossHealthOverlay implements Renderable {
    private static final int BAR_WIDTH = 182;
    private static final int BAR_HEIGHT = 5;
    private static final Identifier[] BAR_BACKGROUND_SPRITES = new Identifier[]{
@@ -48,12 +48,13 @@ public class BossHealthOverlay {
       Identifier.withDefaultNamespace("boss_bar/notched_20_progress")
    };
    private final Minecraft minecraft;
-   private final Map<UUID, LerpingBossEvent> events = Maps.newLinkedHashMap();
+   private final Map<UUID, LerpingBossEvent> events = new LinkedHashMap<>();
 
    public BossHealthOverlay(final Minecraft minecraft) {
       this.minecraft = minecraft;
    }
 
+   @Override
    public void extractRenderState(final GuiGraphicsExtractor graphics) {
       if (!this.events.isEmpty()) {
          graphics.nextStratum();

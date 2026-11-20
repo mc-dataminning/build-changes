@@ -188,6 +188,11 @@ public class VulkanGpuSurface implements GpuSurfaceBackend {
    }
 
    @Override
+   public boolean isDXGI() {
+      return false;
+   }
+
+   @Override
    public void configure(final GpuSurface.Configuration config) throws SurfaceException {
       this.destroySwapchain();
 

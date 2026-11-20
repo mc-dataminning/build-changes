@@ -3,8 +3,6 @@ package net.minecraft.world.entity;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
@@ -12,9 +10,11 @@ import it.unimi.dsi.fastutil.objects.Object2LongMap;
 import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.ConcurrentModificationException;
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -126,6 +126,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.level.storage.loot.LootParams;
@@ -201,15 +202,11 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
    private static final int DEFAULT_CURRENT_IMPULSE_CONTEXT_RESET_GRACE_TIME = 0;
    public static final float BASE_HORIZONTAL_AIR_DRAG = 0.91F;
    public static final float BASE_VERTICAL_AIR_DRAG = 0.98F;
-   public static final float WATER_DRAG = 0.8F;
    public static final float SPRINTING_WATER_DRAG = 0.9F;
-   public static final float LAVA_DRAG = 0.5F;
    public static final float LAVA_SHALLOW_VERTICAL_DRAG = 0.8F;
    public static final float DOLPHINS_GRACE_WATER_DRAG = 0.96F;
    public static final float FLYING_AIR_DRAG = 0.91F;
    public static final float FLYING_VERTICAL_AIR_DRAG = 0.91F;
-   public static final float FLYING_LAVA_DRAG = 0.5F;
-   public static final float FLYING_WATER_DRAG = 0.8F;
    public static final float ELYTRA_HORIZONTAL_AIR_DRAG = 0.99F;
    public static final float ELYTRA_VERTICAL_AIR_DRAG = 0.98F;
    public static final float BASE_SWIM_SPEED = 0.02F;
@@ -224,7 +221,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
    };
    private final AttributeMap attributes;
    private final CombatTracker combatTracker = new CombatTracker(this);
-   private final Map<Holder<MobEffect>, MobEffectInstance> activeEffects = Maps.newHashMap();
+   private final Map<Holder<MobEffect>, MobEffectInstance> activeEffects = new HashMap<>();
    private final Map<EquipmentSlot, ItemStack> lastEquipmentItems = Util.makeEnumMap(EquipmentSlot.class, slot -> ItemStack.EMPTY);
    private final LivingEntity.SwingState swingState = new LivingEntity.SwingState();
    private boolean discardFriction = false;
@@ -682,17 +679,20 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
          if (!ItemStack.isSameItemSameComponents(oldStack, stack) && !this.firstTick) {
             Equippable equippable = stack.get(DataComponents.EQUIPPABLE);
             if (!this.isSilent() && equippable != null && slot == equippable.slot()) {
-               this.level()
-                  .playSeededSound(
-                     null,
-                     this.getX(),
-                     this.getY(),
-                     this.getZ(),
-                     this.getEquipSound(slot, equippable),
-                     this.getSoundSource(),
-                     1.0F,
-                     1.0F,
-                     this.random.nextLong()
+               this.getEquipSound(slot, equippable)
+                  .ifPresent(
+                     equipSound -> this.level()
+                        .playSeededSound(
+                           null,
+                           this.getX(),
+                           this.getY(),
+                           this.getZ(),
+                           (Holder<SoundEvent>)equipSound,
+                           this.getSoundSource(),
+                           1.0F,
+                           1.0F,
+                           this.random.nextLong()
+                        )
                   );
             }
 
@@ -703,10 +703,13 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
       }
    }
 
-   protected final Holder<SoundEvent> getEquipSound(final EquipmentSlot slot, final Equippable equippable) {
-      Holder<SoundEvent> equipSound = equippable.equipSound();
-      return slot == EquipmentSlot.SADDLE && this instanceof Saddleable saddleable && equipSound.is(Saddleable.DEFAULT_EQUIP_SOUND)
-         ? saddleable.getSaddleEquipSound()
+   protected final Optional<Holder<SoundEvent>> getEquipSound(final EquipmentSlot slot, final Equippable equippable) {
+      Optional<Holder<SoundEvent>> equipSound = equippable.equipSound();
+      return equipSound.isPresent()
+            && slot == EquipmentSlot.SADDLE
+            && this instanceof Saddleable saddleable
+            && equipSound.get().is(Saddleable.DEFAULT_EQUIP_SOUND)
+         ? Optional.of(saddleable.getSaddleEquipSound())
          : equipSound;
    }
 
@@ -969,7 +972,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
          return false;
       }
 
-      Map<Holder<MobEffect>, MobEffectInstance> copy = Maps.newHashMap(this.activeEffects);
+      Map<Holder<MobEffect>, MobEffectInstance> copy = new HashMap<>(this.activeEffects);
       this.activeEffects.clear();
       this.onEffectsRemoved(copy.values());
       return true;
@@ -1021,15 +1024,21 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
       return changed;
    }
 
-   public boolean canBeAffected(final MobEffectInstance newEffect) {
-      if (this.is(EntityTypeTags.IMMUNE_TO_INFESTED)) {
-         return !newEffect.is(MobEffects.INFESTED);
-      } else if (this.is(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)) {
-         return !newEffect.is(MobEffects.FREEZING);
-      } else if (this.is(EntityTypeTags.IMMUNE_TO_OOZING)) {
-         return !newEffect.is(MobEffects.OOZING);
+   public final boolean canBeAffected(final MobEffectInstance newEffect) {
+      if (newEffect.is(MobEffects.INFESTED) && this.is(EntityTypeTags.IMMUNE_TO_INFESTED)) {
+         return false;
+      } else if (newEffect.is(MobEffects.FREEZING) && this.is(EntityTypeTags.IMMUNE_TO_FREEZING)) {
+         return false;
+      } else if (newEffect.is(MobEffects.OOZING) && this.is(EntityTypeTags.IMMUNE_TO_OOZING)) {
+         return false;
+      } else if (newEffect.is(MobEffects.REGENERATION) && this.is(EntityTypeTags.IMMUNE_TO_REGENERATION)) {
+         return false;
+      } else if (newEffect.is(MobEffects.POISON) && this.is(EntityTypeTags.IMMUNE_TO_POISON)) {
+         return false;
       } else {
-         return !this.is(EntityTypeTags.IGNORES_POISON_AND_REGEN) ? true : !newEffect.is(MobEffects.REGENERATION) && !newEffect.is(MobEffects.POISON);
+         return newEffect.is(MobEffects.WITHER) && this.is(EntityTypeTags.IMMUNE_TO_WITHER)
+            ? false
+            : !newEffect.is(MobEffects.WEAKNESS) || !this.is(EntityTypeTags.IMMUNE_TO_WEAKNESS);
       }
    }
 
@@ -1344,6 +1353,10 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
          SoundSource soundSource = this instanceof Player ? SoundSource.PLAYERS : SoundSource.HOSTILE;
          this.level().playSound(null, this.position().x, this.position().y, this.position().z, SoundEvents.THORNS_HIT, soundSource);
       }
+   }
+
+   public Optional<Holder<SoundEvent>> getConsumeSoundOverride(final ItemStack itemStack) {
+      return Optional.empty();
    }
 
    protected void resolveMobResponsibleForDamage(final DamageSource source) {
@@ -2388,12 +2401,12 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
       this.addDeltaMovement(0.0, -0.04F, 0.0);
    }
 
-   protected void jumpInLiquid(final TagKey<Fluid> type) {
+   protected void jumpInLiquid(final List<Holder<Fluid>> fluidTypes) {
       this.addDeltaMovement(0.0, 0.04F, 0.0);
    }
 
    protected float getWaterSlowDown() {
-      return 0.8F;
+      return Fluids.WATER.getDrag();
    }
 
    public boolean canStandOnFluid(final FluidState fluid) {
@@ -2430,23 +2443,14 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
    }
 
    protected void travelFlying(final Vec3 input, final float speed) {
-      this.travelFlying(input, 0.02F, 0.02F, speed);
+      this.travelFlying(input, 0.02F, speed);
    }
 
-   protected void travelFlying(final Vec3 input, final float waterSpeed, final float lavaSpeed, final float airSpeed) {
-      if (this.isInWater()) {
-         this.moveRelative(waterSpeed, input);
-         this.move(MoverType.SELF, this.getDeltaMovement());
-         this.setDeltaMovement(this.getDeltaMovement().scale(0.8F));
-      } else if (this.isInLava()) {
-         this.moveRelative(lavaSpeed, input);
-         this.move(MoverType.SELF, this.getDeltaMovement());
-         this.setDeltaMovement(this.getDeltaMovement().scale(0.5));
-      } else {
-         this.moveRelative(airSpeed, input);
-         this.move(MoverType.SELF, this.getDeltaMovement());
-         this.setDeltaMovement(this.getDeltaMovement().scale(0.91F));
-      }
+   protected void travelFlying(final Vec3 input, final float fluidSpeed, final float airSpeed) {
+      OptionalDouble fluidDrag = this.fluidInteraction.getDrag();
+      this.moveRelative(fluidDrag.isPresent() ? fluidSpeed : airSpeed, input);
+      this.move(MoverType.SELF, this.getDeltaMovement());
+      this.setDeltaMovement(this.getDeltaMovement().scale(fluidDrag.orElse(0.91F)));
    }
 
    private void travelInAir(final Vec3 input) {
@@ -2493,7 +2497,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
          this.travelInLava(input, baseGravity, isFalling, oldY);
       }
 
-      this.floatInLiquidWhileRidden(FluidTags.ENTITY_FLOATABLE);
+      this.floatInLiquidWhileRidden();
    }
 
    protected void travelInWater(final Vec3 input, final double baseGravity, final boolean isFalling, final double oldY) {
@@ -2520,24 +2524,20 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
          movement = new Vec3(movement.x, 0.2, movement.z);
       }
 
-      movement = movement.multiply(slowDown, 0.8F, slowDown);
+      movement = movement.multiply(slowDown, Fluids.WATER.getDrag(), slowDown);
       this.setDeltaMovement(this.getFluidFallingAdjustedMovement(baseGravity, isFalling, movement));
       this.jumpOutOfFluid(oldY);
-   }
-
-   protected boolean isInShallowFluid(final TagKey<Fluid> fluidTag) {
-      return this.getFluidHeight(fluidTag) <= this.getFluidJumpThreshold();
    }
 
    private void travelInLava(final Vec3 input, final double baseGravity, final boolean isFalling, final double oldY) {
       this.moveRelative(0.02F, input);
       this.move(MoverType.SELF, this.getDeltaMovement());
-      if (this.isInShallowFluid(FluidTags.LAVA)) {
-         this.setDeltaMovement(this.getDeltaMovement().multiply(0.5, 0.8F, 0.5));
+      if (this.isFluidDeepEnoughToSwim(FluidTags.LAVA)) {
+         this.setDeltaMovement(this.getDeltaMovement().scale(Fluids.LAVA.getDrag()));
+      } else {
+         this.setDeltaMovement(this.getDeltaMovement().multiply(Fluids.LAVA.getDrag(), 0.8F, Fluids.LAVA.getDrag()));
          Vec3 movement = this.getFluidFallingAdjustedMovement(baseGravity, isFalling, this.getDeltaMovement());
          this.setDeltaMovement(movement);
-      } else {
-         this.setDeltaMovement(this.getDeltaMovement().scale(0.5));
       }
 
       if (baseGravity != 0.0) {
@@ -2556,14 +2556,14 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
       }
    }
 
-   private void floatInLiquidWhileRidden(final TagKey<Fluid> fluidTag) {
-      if (this.isVehicle() && this.is(EntityTypeTags.CAN_FLOAT_WHILE_RIDDEN) && this.isInFluidDeeperThan(this.getFluidJumpThreshold(), fluidTag)) {
+   private void floatInLiquidWhileRidden() {
+      if (this.isVehicle() && this.is(EntityTypeTags.CAN_FLOAT_WHILE_RIDDEN) && this.isFluidDeepEnoughToSwim(FluidTags.ENTITY_FLOATABLE)) {
          this.addDeltaMovement(0.0, 0.04F, 0.0);
       }
    }
 
-   public boolean isInFluidDeeperThan(final double depth, final TagKey<Fluid> fluidTag) {
-      return this.getFluidHeight(fluidTag) > depth;
+   public boolean isFluidDeepEnoughToSwim(final TagKey<Fluid> fluidTag) {
+      return this.getFluidHeight(fluidTag) > this.getFluidJumpThreshold();
    }
 
    private void travelFallFlying(final Vec3 input) {
@@ -2952,7 +2952,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
          ItemStack current = this.getItemBySlot(slot);
          if (this.equipmentHasChanged(previous, current)) {
             if (changedItems == null) {
-               changedItems = Maps.newEnumMap(EquipmentSlot.class);
+               changedItems = new EnumMap<>(EquipmentSlot.class);
             }
 
             changedItems.put(slot, current);
@@ -3005,7 +3005,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
    }
 
    private void handleEquipmentChanges(final Map<EquipmentSlot, ItemStack> changedItems) {
-      List<Pair<EquipmentSlot, ItemStack>> itemsToSend = Lists.newArrayListWithCapacity(changedItems.size());
+      List<Pair<EquipmentSlot, ItemStack>> itemsToSend = new ArrayList<>(changedItems.size());
       changedItems.forEach((slot, newItem) -> {
          ItemStack newItemToStore = newItem.copy();
          itemsToSend.add(Pair.of(slot, newItemToStore));
@@ -3087,26 +3087,12 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
       profiler.pop();
       profiler.push("jump");
       if (this.jumping && this.isAffectedByFluids()) {
-         double fluidHeight;
-         if (this.isInLava()) {
-            fluidHeight = this.getFluidHeight(FluidTags.LAVA);
-         } else {
-            fluidHeight = this.getFluidHeight(FluidTags.WATER);
-         }
-
-         boolean inWaterAndHasFluidHeight = this.isInWater() && fluidHeight > 0.0;
-         double fluidJumpThreshold = this.getFluidJumpThreshold();
-         if (!inWaterAndHasFluidHeight || this.onGround() && !(fluidHeight > fluidJumpThreshold)) {
-            if (!this.isInLava() || this.onGround() && this.isInShallowFluid(FluidTags.LAVA)) {
-               if ((this.onGround() || inWaterAndHasFluidHeight && fluidHeight <= fluidJumpThreshold) && this.noJumpDelay == 0) {
-                  this.jumpFromGround();
-                  this.noJumpDelay = 10;
-               }
-            } else {
-               this.jumpInLiquid(FluidTags.LAVA);
-            }
-         } else {
-            this.jumpInLiquid(FluidTags.WATER);
+         List<Holder<Fluid>> fluidsToJumpIn = this.fluidInteraction.getFluidsToJumpIn(this.onGround() ? this.getFluidJumpThreshold() : 0.0);
+         if (!fluidsToJumpIn.isEmpty()) {
+            this.jumpInLiquid(fluidsToJumpIn);
+         } else if (this.onGround() && this.noJumpDelay == 0) {
+            this.jumpFromGround();
+            this.noJumpDelay = 10;
          }
       } else {
          this.noJumpDelay = 0;

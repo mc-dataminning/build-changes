@@ -1,7 +1,7 @@
 package net.minecraft.client.renderer.entity;
 
-import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
+import java.util.EnumMap;
 import java.util.Map;
 import net.minecraft.client.model.AdultAndBabyModelPair;
 import net.minecraft.client.model.animal.cow.CowModel;
@@ -23,7 +23,7 @@ public class CowRenderer extends MobRenderer<Cow, CowRenderState, CowModel> {
    }
 
    private static Map<CowVariant.ModelType, AdultAndBabyModelPair<CowModel>> bakeModels(final EntityRendererProvider.Context context) {
-      return Maps.newEnumMap(
+      return new EnumMap<>(
          Map.of(
             CowVariant.ModelType.NORMAL,
             new AdultAndBabyModelPair<>(new CowModel(context.bakeLayer(ModelLayers.COW)), new CowModel(context.bakeLayer(ModelLayers.COW_BABY))),

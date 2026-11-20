@@ -1,10 +1,9 @@
 package net.minecraft.server.commands;
 
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import java.util.Collection;
+import java.util.stream.Stream;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
@@ -21,7 +20,7 @@ public class BanListCommands {
                         PlayerList players = ((CommandSourceStack)s.getSource()).getServer().getPlayerList();
                         return showList(
                            (CommandSourceStack)s.getSource(),
-                           Lists.newArrayList(Iterables.concat(players.getBans().getEntries(), players.getIpBans().getEntries()))
+                           Stream.concat(players.getBans().getEntries().stream(), players.getIpBans().getEntries().stream()).toList()
                         );
                      }
                   ))

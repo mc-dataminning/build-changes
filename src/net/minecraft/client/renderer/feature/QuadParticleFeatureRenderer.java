@@ -83,21 +83,18 @@ public class QuadParticleFeatureRenderer implements FeatureRenderer<QuadParticle
       for (Entry<SingleQuadParticle.Layer, StagedVertexBuffer.Draw> entry : group.layers.entrySet()) {
          StagedVertexBuffer.ExecuteInfo executeInfo = stagedBuffer.getExecuteInfo(entry.getValue());
          if (executeInfo != null) {
-            renderPass.setPipeline(RenderSystem.getCompiledPipeline(stage != null ? getOitPipeline(stage, entry.getKey()) : entry.getKey().pipeline()));
+            RenderPipeline pipeline = entry.getKey().pipelineProvider().apply(stage);
+            if (pipeline == null) {
+               throw new IllegalStateException("No pipeline for particle layer " + entry.getKey() + " with OIT stage " + stage);
+            }
+
+            renderPass.setPipeline(RenderSystem.getCompiledPipeline(pipeline));
             renderPass.setVertexBuffer(0, executeInfo.vertexBuffer().slice());
             renderPass.setIndexBuffer(executeInfo.indexBuffer(), executeInfo.indexType());
             TextureHandle texture = group.textures.get(entry.getKey());
             renderPass.setUniform("Sampler0", texture.textureView(), texture.sampler());
             renderPass.drawIndexed(executeInfo.indexCount(), 1, executeInfo.firstIndex(), executeInfo.baseVertex(), 0);
          }
-      }
-   }
-
-   private static RenderPipeline getOitPipeline(final OitStage stage, final SingleQuadParticle.Layer layer) {
-      if (layer.oitPipelineSet() == null) {
-         throw new IllegalStateException("OIT pipeline set for particle layer not specified.");
-      } else {
-         return layer.oitPipelineSet().getPipeline(stage);
       }
    }
 

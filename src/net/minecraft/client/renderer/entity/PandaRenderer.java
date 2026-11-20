@@ -1,8 +1,8 @@
 package net.minecraft.client.renderer.entity;
 
-import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import java.util.EnumMap;
 import java.util.Map;
 import net.minecraft.client.model.animal.panda.BabyPandaModel;
 import net.minecraft.client.model.animal.panda.PandaModel;
@@ -15,7 +15,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.animal.panda.Panda;
 
 public class PandaRenderer extends AgeableMobRenderer<Panda, PandaRenderState, PandaModel> {
-   private static final Map<Panda.Gene, Identifier> TEXTURES = Maps.newEnumMap(
+   private static final Map<Panda.Gene, Identifier> TEXTURES = new EnumMap<>(
       Map.of(
          Panda.Gene.NORMAL,
          Identifier.withDefaultNamespace("textures/entity/panda/panda.png"),
@@ -33,7 +33,7 @@ public class PandaRenderer extends AgeableMobRenderer<Panda, PandaRenderState, P
          Identifier.withDefaultNamespace("textures/entity/panda/panda_aggressive.png")
       )
    );
-   private static final Map<Panda.Gene, Identifier> BABY_TEXTURES = Maps.newEnumMap(
+   private static final Map<Panda.Gene, Identifier> BABY_TEXTURES = new EnumMap<>(
       Map.of(
          Panda.Gene.NORMAL,
          Identifier.withDefaultNamespace("textures/entity/panda/panda_baby.png"),
