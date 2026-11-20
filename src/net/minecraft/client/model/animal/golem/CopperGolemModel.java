@@ -14,12 +14,14 @@ import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.MeshTransformer;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.entity.state.CopperGolemRenderState;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.animal.golem.CopperGolemState;
 
 public class CopperGolemModel extends EntityModel<CopperGolemRenderState> implements ArmedModel<CopperGolemRenderState>, HeadedModel {
+   private static final MeshTransformer BODY_TRANSLATION = MeshTransformer.translating(0.0F, 24.0F, 0.0F);
    private static final float MAX_WALK_ANIMATION_SPEED = 2.0F;
    private static final float WALK_ANIMATION_SCALE_FACTOR = 2.5F;
    private static final float Z_FIGHT_MITIGATION = 0.015F;
@@ -51,7 +53,7 @@ public class CopperGolemModel extends EntityModel<CopperGolemRenderState> implem
    }
 
    public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshDefinition = new MeshDefinition().transformed(p -> p.translated(0.0F, 24.0F, 0.0F));
+      MeshDefinition meshDefinition = new MeshDefinition().apply(BODY_TRANSLATION);
       PartDefinition root = meshDefinition.getRoot();
       PartDefinition body = root.addOrReplaceChild(
          "body",
@@ -95,7 +97,7 @@ public class CopperGolemModel extends EntityModel<CopperGolemRenderState> implem
    }
 
    public static LayerDefinition createRunningPoseBodyLayer() {
-      MeshDefinition meshDefinition = new MeshDefinition().transformed(p -> p.translated(0.0F, 0.0F, 0.0F));
+      MeshDefinition meshDefinition = new MeshDefinition();
       PartDefinition root = meshDefinition.getRoot();
       PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create(), PartPose.offset(-1.064F, -5.0F, 0.0F));
       body.addOrReplaceChild(
@@ -144,7 +146,7 @@ public class CopperGolemModel extends EntityModel<CopperGolemRenderState> implem
    }
 
    public static LayerDefinition createSittingPoseBodyLayer() {
-      MeshDefinition meshDefinition = new MeshDefinition().transformed(p -> p.translated(0.0F, 0.0F, 0.0F));
+      MeshDefinition meshDefinition = new MeshDefinition();
       PartDefinition root = meshDefinition.getRoot();
       PartDefinition body = root.addOrReplaceChild(
          "body",
@@ -205,7 +207,7 @@ public class CopperGolemModel extends EntityModel<CopperGolemRenderState> implem
    }
 
    public static LayerDefinition createStarPoseBodyLayer() {
-      MeshDefinition meshDefinition = new MeshDefinition().transformed(p -> p.translated(0.0F, 0.0F, 0.0F));
+      MeshDefinition meshDefinition = new MeshDefinition();
       PartDefinition root = meshDefinition.getRoot();
       PartDefinition body = root.addOrReplaceChild(
          "body",

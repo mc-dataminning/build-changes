@@ -1910,9 +1910,13 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       this.entityManager.close();
    }
 
-   @Override
    public String gatherChunkSourceStats() {
       return "Chunks[S] W: " + this.chunkSource.gatherStats() + " E: " + this.entityManager.gatherStats();
+   }
+
+   @VisibleForTesting
+   public PersistentEntitySectionManager<Entity> getEntityManager() {
+      return this.entityManager;
    }
 
    public boolean areEntitiesLoaded(final long chunkKey) {

@@ -95,8 +95,8 @@ public class ImposterProtoChunk extends ProtoChunk {
    }
 
    @Override
-   public int getHeight(final Heightmap.Types type, final int x, final int z) {
-      return this.wrapped.getHeight(this.fixType(type), x, z);
+   public Heightmap getHeightmap(final Heightmap.Types type) {
+      return this.wrapped.getHeightmap(this.fixType(type));
    }
 
    @Override

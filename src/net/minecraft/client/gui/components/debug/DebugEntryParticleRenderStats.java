@@ -13,6 +13,6 @@ public class DebugEntryParticleRenderStats implements DebugScreenEntry {
       final @Nullable LevelChunk clientChunk,
       final @Nullable LevelChunk serverChunk
    ) {
-      displayer.addLine("P: " + Minecraft.getInstance().particleEngine.countParticles());
+      displayer.addFactToGroup(DebugGroups.PERFORMANCE_IMPACTORS, "Particles", fact -> fact.value(Minecraft.getInstance().particleEngine.countParticles()));
    }
 }

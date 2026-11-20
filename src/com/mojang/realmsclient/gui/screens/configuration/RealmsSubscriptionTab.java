@@ -48,7 +48,6 @@ public class RealmsSubscriptionTab extends GridLayoutTab implements RealmsConfig
    public RealmsSubscriptionTab(
       final RealmsConfigureWorldScreen configurationScreen, final Minecraft minecraft, final RealmsServer serverData, final Subscription subscription
    ) {
-      super(TITLE);
       this.configurationScreen = configurationScreen;
       this.minecraft = minecraft;
       this.serverData = serverData;

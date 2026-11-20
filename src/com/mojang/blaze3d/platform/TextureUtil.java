@@ -104,11 +104,12 @@ public class TextureUtil {
       int offset = 0;
 
       for (int i = 0; i <= maxMipLevel; i++) {
-         commandEncoder.copyTextureToBuffer(texture, buffer, offset, () -> {
+         commandEncoder.copyTextureToBuffer(texture, buffer, offset, i);
+         RenderSystem.queueFencedTask(() -> {
             if (completedCopies.getAndIncrement() == maxMipLevel) {
                onCopyComplete.run();
             }
-         }, i);
+         });
          offset += texture.getFormat().blockSize() * texture.getWidth(i) * texture.getHeight(i);
       }
    }

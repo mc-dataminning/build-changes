@@ -9,20 +9,13 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class RandomBlockMatchTest extends RuleTest {
+public record RandomBlockMatchTest(Block block, float probability) implements RuleTest {
    public static final MapCodec<RandomBlockMatchTest> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
             BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(t -> t.block), Codec.FLOAT.fieldOf("probability").forGetter(t -> t.probability)
          )
          .apply(i, RandomBlockMatchTest::new)
    );
-   private final Block block;
-   private final float probability;
-
-   public RandomBlockMatchTest(final Block block, final float probability) {
-      this.block = block;
-      this.probability = probability;
-   }
 
    @Override
    public boolean test(final BlockState blockState, final BlockPos pos, final RandomSource random) {
@@ -30,7 +23,7 @@ public class RandomBlockMatchTest extends RuleTest {
    }
 
    @Override
-   protected RuleTestType<?> getType() {
-      return RuleTestType.RANDOM_BLOCK_TEST;
+   public MapCodec<RandomBlockMatchTest> codec() {
+      return CODEC;
    }
 }

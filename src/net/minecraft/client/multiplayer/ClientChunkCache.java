@@ -160,6 +160,10 @@ public class ClientChunkCache extends ChunkSource {
       return this.storage.chunkCount;
    }
 
+   public int getMaxChunksCount() {
+      return this.storage.chunks.length();
+   }
+
    @Override
    public void onLightUpdate(final LightLayer layer, final SectionPos pos) {
       Minecraft.getInstance().levelExtractor.setSectionDirty(pos.x(), pos.y(), pos.z());

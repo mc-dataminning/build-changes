@@ -8,6 +8,7 @@ import com.mojang.renderpearl.api.buffers.GpuBuffer;
 import com.mojang.renderpearl.api.commands.CommandEncoder;
 import com.mojang.renderpearl.api.commands.GpuQueryPool;
 import com.mojang.renderpearl.api.device.DeviceInfo;
+import com.mojang.renderpearl.api.device.GpuDebugOptions;
 import com.mojang.renderpearl.api.device.GpuDevice;
 import com.mojang.renderpearl.api.device.GpuSurface;
 import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
@@ -34,19 +35,18 @@ import java.util.List;
 import java.util.OptionalDouble;
 import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
-import net.minecraft.SharedConstants;
 import net.minecraft.util.Mth;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
 public class FrontendGpuDevice implements GpuDevice {
    private static final Logger LOGGER = LogUtils.getLogger();
-   public static final boolean STRICT_VALIDATION = SharedConstants.IS_RUNNING_IN_IDE;
    private final GpuDeviceBackend backend;
    private final @Nullable TracyGpuProfiler profiler;
    private final CommandEncoder encoder;
+   public final boolean strictValidation;
 
-   public FrontendGpuDevice(final GpuDeviceBackend backend) {
+   public FrontendGpuDevice(final GpuDeviceBackend backend, final GpuDebugOptions debugOptions) {
       this.backend = backend;
       if (TracyClient.isAvailable()) {
          this.profiler = new TracyGpuProfiler(this);
@@ -54,7 +54,8 @@ public class FrontendGpuDevice implements GpuDevice {
          this.profiler = null;
       }
 
-      this.encoder = new FrontendCommandEncoder(this.profiler, backend, backend.createCommandEncoder());
+      this.encoder = new FrontendCommandEncoder(this.profiler, this, backend.createCommandEncoder());
+      this.strictValidation = debugOptions.strictValidation();
    }
 
    @Override

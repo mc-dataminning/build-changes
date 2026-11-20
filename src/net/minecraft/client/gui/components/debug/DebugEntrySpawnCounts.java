@@ -1,8 +1,6 @@
 package net.minecraft.client.gui.components.debug;
 
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerLevel;
@@ -30,12 +28,11 @@ public class DebugEntrySpawnCounts implements DebugScreenEntry {
          if (lastSpawnState != null) {
             Object2IntMap<MobCategory> mobCategoryCounts = lastSpawnState.getMobCategoryCounts();
             int chunkCount = lastSpawnState.getSpawnableChunkCount();
-            displayer.addLine(
-               "SC: "
-                  + chunkCount
-                  + ", "
-                  + Stream.of(MobCategory.values()).map(c -> c.getDebugAbbreviation() + ": " + mobCategoryCounts.getInt(c)).collect(Collectors.joining(", "))
-            );
+            displayer.addFactToGroup(DebugGroups.SPAWN_COUNTS, "Chunks", fact -> fact.value(chunkCount));
+
+            for (MobCategory category : MobCategory.values()) {
+               displayer.addFactToGroup(DebugGroups.SPAWN_COUNTS, category.getDebugName(), fact -> fact.value(mobCategoryCounts.getInt(category)));
+            }
          }
       }
    }

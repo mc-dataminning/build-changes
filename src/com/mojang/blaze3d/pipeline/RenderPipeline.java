@@ -152,6 +152,10 @@ public class RenderPipeline {
       return builder;
    }
 
+   public static RenderPipeline fromSnippets(final String location, final RenderPipeline.Snippet... snippets) {
+      return builder(snippets).withLocation(location).build();
+   }
+
    public static class Builder {
       private static int nextPipelineSortKey;
       private Optional<Identifier> location = Optional.empty();

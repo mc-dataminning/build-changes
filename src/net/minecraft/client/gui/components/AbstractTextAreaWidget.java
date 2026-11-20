@@ -61,7 +61,7 @@ public abstract class AbstractTextAreaWidget extends AbstractScrollArea {
 
    @Override
    public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      if (this.visible) {
+      if (this.isVisible()) {
          if (this.showBackground) {
             this.extractBackground(graphics);
          }
@@ -93,7 +93,7 @@ public abstract class AbstractTextAreaWidget extends AbstractScrollArea {
    @Override
    public boolean isMouseOver(final double mouseX, final double mouseY) {
       return this.active
-         && this.visible
+         && this.isVisible()
          && mouseX >= this.getX()
          && mouseY >= this.getY()
          && mouseX < this.getRight() + this.scrollbarWidth()

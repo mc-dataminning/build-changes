@@ -13,7 +13,6 @@ import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
 import com.mojang.renderpearl.api.pipeline.IndexType;
 import com.mojang.renderpearl.api.textures.GpuSampler;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
-import com.mojang.renderpearl.backend.api.GpuDeviceBackend;
 import com.mojang.renderpearl.backend.api.RenderPassBackend;
 import com.mojang.renderpearl.backend.common.BaseGpuBuffer;
 import com.mojang.renderpearl.util.TextureViewAndSampler;
@@ -34,7 +33,7 @@ import org.lwjgl.vulkan.VkDrawIndirectCommand;
 
 public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploader {
    private final RenderPassBackend backend;
-   private final GpuDeviceBackend device;
+   private final FrontendGpuDevice device;
    private final DeviceFeatures deviceFeatures;
    private final DeviceLimits deviceLimits;
    private final Runnable onFinish;
@@ -51,7 +50,7 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
 
    public FrontendRenderPass(
       final RenderPassBackend backend,
-      final GpuDeviceBackend device,
+      final FrontendGpuDevice device,
       final List<RenderPassDescriptor.@Nullable Attachment<Optional<Vector4fc>>> colorAttachments,
       final @Nullable GpuFormat depthAttachmentFormat,
       final Runnable onFinish,
@@ -133,6 +132,12 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
          if (frontendPipeline.wantsDepthTexture() && this.depthAttachmentFormat == null) {
             throw new IllegalStateException(
                String.format(Locale.ROOT, "Render pipeline %s wants a depth texture but none was provided", frontendPipeline.name())
+            );
+         }
+
+         if (!frontendPipeline.wantsDepthTexture() && this.depthAttachmentFormat != null) {
+            throw new IllegalStateException(
+               String.format(Locale.ROOT, "Render pipeline %s doesn't want a depth texture but one was provided", frontendPipeline.name())
             );
          }
 
@@ -371,7 +376,7 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
          assert indexBuffer != null;
          assert indexType != null;
          this.setVertexBuffer(draw.slot(), draw.vertexBuffer().slice());
-         if (FrontendGpuDevice.STRICT_VALIDATION) {
+         if (this.device.strictValidation) {
             if (indexBuffer == null) {
                throw new IllegalStateException("Missing index buffer");
             }
@@ -522,7 +527,7 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
          throw new IllegalStateException("Can't draw without a render pipeline");
       }
 
-      if (FrontendGpuDevice.STRICT_VALIDATION) {
+      if (this.device.strictValidation) {
          if (this.boundPipeline.pushConstantSize() > 0 && !this.constantsPushed) {
             throw new IllegalStateException("Missing push constants");
          }

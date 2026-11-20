@@ -51,8 +51,8 @@ public class ChunkStatusTasks {
       final WorldGenContext context, final ChunkStep step, final StaticCache2D<GenerationChunkHolder> chunks, final ChunkAccess chunk
    ) {
       ServerLevel level = context.level();
-      if (level.getServer().getWorldGenSettings().options().generateStructures()) {
-         context.generator()
+      if (!SharedConstants.DEBUG_DISABLE_STRUCTURES && level.getServer().getWorldGenSettings().options().generateStructures()) {
+         return context.generator()
             .createStructures(
                level.registryAccess(),
                level.getChunkSource().getGeneratorState(),
@@ -60,7 +60,11 @@ public class ChunkStatusTasks {
                chunk,
                context.structureManager(),
                level.dimension()
-            );
+            )
+            .thenApply(c -> {
+               level.onStructureStartsAvailable(c);
+               return (ChunkAccess)c;
+            });
       }
 
       level.onStructureStartsAvailable(chunk);

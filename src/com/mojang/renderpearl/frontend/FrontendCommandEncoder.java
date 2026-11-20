@@ -1,8 +1,6 @@
 package com.mojang.renderpearl.frontend;
 
-import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.logging.LogUtils;
-import com.mojang.renderpearl.api.GpuFormat;
 import com.mojang.renderpearl.api.buffers.GpuBuffer;
 import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.buffers.TransientMemory;
@@ -14,7 +12,6 @@ import com.mojang.renderpearl.api.commands.RenderPassDescriptor;
 import com.mojang.renderpearl.api.textures.GpuTexture;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
 import com.mojang.renderpearl.backend.api.CommandEncoderBackend;
-import com.mojang.renderpearl.backend.api.GpuDeviceBackend;
 import java.nio.ByteBuffer;
 import java.util.Optional;
 import java.util.OptionalDouble;
@@ -26,12 +23,12 @@ import org.slf4j.Logger;
 
 public class FrontendCommandEncoder implements CommandEncoder {
    private static final Logger LOGGER = LogUtils.getLogger();
-   private final GpuDeviceBackend device;
+   private final FrontendGpuDevice device;
    private final CommandEncoderBackend backend;
    private boolean isInRenderPass;
    private final @Nullable TracyGpuProfiler profiler;
 
-   public FrontendCommandEncoder(final @Nullable TracyGpuProfiler profiler, final GpuDeviceBackend device, final CommandEncoderBackend backend) {
+   public FrontendCommandEncoder(final @Nullable TracyGpuProfiler profiler, final FrontendGpuDevice device, final CommandEncoderBackend backend) {
       this.profiler = profiler;
       this.device = device;
       this.backend = backend;
@@ -253,32 +250,6 @@ public class FrontendCommandEncoder implements CommandEncoder {
    }
 
    @Override
-   public void clearColorAndDepthTextures(
-      final GpuTexture colorTexture,
-      final Vector4fc clearColor,
-      final GpuTexture depthTexture,
-      final double clearDepth,
-      final int regionX,
-      final int regionY,
-      final int regionWidth,
-      final int regionHeight,
-      final int mipLevel
-   ) {
-      if (this.isInRenderPass) {
-         throw new IllegalStateException("Close the existing render pass before creating a new one!");
-      }
-
-      this.verifyColorTexture(colorTexture);
-      this.verifyDepthTexture(depthTexture);
-      if (colorTexture.getMipLevels() != depthTexture.getMipLevels()) {
-         throw new IllegalArgumentException("Both textures must have the same mip count");
-      }
-
-      this.verifyRegion(colorTexture, regionX, regionY, regionWidth, regionHeight, mipLevel);
-      this.backend.clearColorAndDepthTextures(colorTexture, clearColor, depthTexture, clearDepth, regionX, regionY, regionWidth, regionHeight, mipLevel);
-   }
-
-   @Override
    public void clearDepthTexture(final GpuTexture depthTexture, final double clearDepth) {
       if (this.isInRenderPass) {
          throw new IllegalStateException("Close the existing render pass before creating a new one!");
@@ -380,76 +351,6 @@ public class FrontendCommandEncoder implements CommandEncoder {
       }
 
       this.backend.copyToBuffer(source, target);
-   }
-
-   @Override
-   public void writeToTexture(final GpuTexture destination, final NativeImage source) {
-      int width = destination.getWidth(0);
-      int height = destination.getHeight(0);
-      if (source.getWidth() == width && source.getHeight() == height) {
-         this.writeToTexture(destination, source, 0, 0, 0, 0);
-      } else {
-         throw new IllegalArgumentException(
-            "Cannot replace texture of size " + width + "x" + height + " with image of size " + source.getWidth() + "x" + source.getHeight()
-         );
-      }
-   }
-
-   @Override
-   public void writeToTexture(
-      final GpuTexture destination, final NativeImage source, final int mipLevel, final int depthOrLayer, final int destX, final int destY
-   ) {
-      if (this.isInRenderPass) {
-         throw new IllegalStateException("Close the existing render pass before performing additional commands");
-      }
-
-      if (destination.getFormat().componentType() != GpuFormat.ComponentType.UNORM_8) {
-         throw new IllegalArgumentException("Destination texture for NativeImage writes must have component type of UNORM_8");
-      }
-
-      if (destination.getFormat().componentCount() != source.format().components()) {
-         throw new IllegalArgumentException(
-            "Destination(" + destination.getFormat() + ") texture for NativeImage(" + source.format() + ") write must have channel count matching source"
-         );
-      }
-
-      if (mipLevel >= 0 && mipLevel < destination.getMipLevels()) {
-         if (destX + source.getWidth() > destination.getWidth(mipLevel) || destY + source.getHeight() > destination.getHeight(mipLevel)) {
-            throw new IllegalArgumentException(
-               "Dest texture ("
-                  + source.getWidth()
-                  + "x"
-                  + source.getHeight()
-                  + ") is not large enough to write a rectangle of "
-                  + source.getWidth()
-                  + "x"
-                  + source.getHeight()
-                  + " at "
-                  + destX
-                  + "x"
-                  + destY
-                  + " (at mip level "
-                  + mipLevel
-                  + ")"
-            );
-         }
-
-         if (destination.isClosed()) {
-            throw new IllegalStateException("Destination texture is closed");
-         }
-
-         if ((destination.usage() & 1) == 0) {
-            throw new IllegalStateException("Color texture must have USAGE_COPY_DST to be a destination for a write");
-         }
-
-         if (depthOrLayer >= destination.getDepthOrLayers()) {
-            throw new UnsupportedOperationException("Depth or layer is out of range, must be >= 0 and < " + destination.getDepthOrLayers());
-         }
-
-         this.writeToTexture(destination, source.getPixelBytes(), mipLevel, depthOrLayer, destX, destY, source.getWidth(), source.getHeight());
-      } else {
-         throw new IllegalArgumentException("Invalid mipLevel " + mipLevel + ", must be >= 0 and < " + destination.getMipLevels());
-      }
    }
 
    @Override
@@ -615,25 +516,17 @@ public class FrontendCommandEncoder implements CommandEncoder {
    }
 
    @Override
-   public void copyTextureToBuffer(final GpuTexture source, final GpuBuffer destination, final long offset, final Runnable callback, final int mipLevel) {
+   public void copyTextureToBuffer(final GpuTexture source, final GpuBuffer destination, final long offset, final int mipLevel) {
       if (this.isInRenderPass) {
          throw new IllegalStateException("Close the existing render pass before performing additional commands");
       }
 
-      this.backend.copyTextureToBuffer(source, destination, offset, callback, mipLevel);
+      this.copyTextureToBuffer(source, destination, offset, mipLevel, 0, 0, source.getWidth(mipLevel), source.getHeight(mipLevel));
    }
 
    @Override
    public void copyTextureToBuffer(
-      final GpuTexture source,
-      final GpuBuffer destination,
-      final long offset,
-      final Runnable callback,
-      final int mipLevel,
-      final int x,
-      final int y,
-      final int width,
-      final int height
+      final GpuTexture source, final GpuBuffer destination, final long offset, final int mipLevel, final int x, final int y, final int width, final int height
    ) {
       if (this.isInRenderPass) {
          throw new IllegalStateException("Close the existing render pass before performing additional commands");
@@ -692,7 +585,7 @@ public class FrontendCommandEncoder implements CommandEncoder {
             throw new UnsupportedOperationException("Textures with multiple depths or layers are not yet supported for copying");
          }
 
-         this.backend.copyTextureToBuffer(source, destination, offset, callback, mipLevel, x, y, width, height);
+         this.backend.copyTextureToBuffer(source, destination, offset, mipLevel, x, y, width, height);
       } else {
          throw new IllegalArgumentException("Invalid mipLevel " + mipLevel + ", must be >= 0 and < " + source.getMipLevels());
       }

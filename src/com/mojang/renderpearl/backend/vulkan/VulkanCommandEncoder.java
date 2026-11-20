@@ -26,10 +26,8 @@ import org.lwjgl.vulkan.KHRSynchronization2;
 import org.lwjgl.vulkan.VK12;
 import org.lwjgl.vulkan.VkBufferCopy;
 import org.lwjgl.vulkan.VkBufferImageCopy;
-import org.lwjgl.vulkan.VkClearAttachment;
 import org.lwjgl.vulkan.VkClearColorValue;
 import org.lwjgl.vulkan.VkClearDepthStencilValue;
-import org.lwjgl.vulkan.VkClearRect;
 import org.lwjgl.vulkan.VkClearValue;
 import org.lwjgl.vulkan.VkCommandBuffer;
 import org.lwjgl.vulkan.VkCommandBufferBeginInfo;
@@ -418,7 +416,7 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
          subpassBeginInfo.contents(0);
          VK12.vkCmdBeginRenderPass2(this.commandBuffer(), beginInfo, subpassBeginInfo);
          this.currentRenderPass = new VulkanRenderPass(
-            this.device, this, this.commandBuffer(), this.checkpointStorage, renderArea, width, height, depthAttachment != null, descriptor.label()
+            this.device, this, this.commandBuffer(), this.checkpointStorage, renderArea, width, height, descriptor.label()
          );
       } catch (Throwable var21) {
          if (stack != null) {
@@ -558,70 +556,6 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
 
       if (stack != null) {
          stack.close();
-      }
-   }
-
-   @Override
-   public void clearColorAndDepthTextures(
-      final GpuTexture colorTexture,
-      final Vector4fc clearColor,
-      final GpuTexture depthTexture,
-      final double clearDepth,
-      final int regionX,
-      final int regionY,
-      final int regionWidth,
-      final int regionHeight,
-      final int mipLevel
-   ) {
-      try (
-         GpuTextureView colorTextureView = this.device.createTextureView(colorTexture, mipLevel, 1);
-         GpuTextureView depthTextureView = this.device.createTextureView(depthTexture, mipLevel, 1);
-      ) {
-         MemoryStack stack = MemoryStack.stackPush();
-
-         try {
-            this.createRenderPass(
-               RenderPassDescriptor.builder(() -> "ClearColorDepthTextures")
-                  .withColorAttachment(colorTextureView)
-                  .withDepthAttachment(depthTextureView)
-                  .withRenderArea(new RenderPass.RenderArea(0, 0, colorTexture.getWidth(mipLevel), colorTexture.getHeight(mipLevel)))
-                  .build()
-            );
-            assert this.currentRenderPass != null;
-            org.lwjgl.vulkan.VkClearRect.Buffer rects = VkClearRect.calloc(1, stack);
-            rects.baseArrayLayer(0);
-            rects.layerCount(1);
-            rects.rect().offset().set(regionX, regionY);
-            rects.rect().extent().set(regionWidth, regionHeight);
-            org.lwjgl.vulkan.VkClearAttachment.Buffer attachments = VkClearAttachment.calloc(2, stack);
-            VkClearValue colorClearValue = VkClearValue.calloc(stack);
-            VulkanUtils.putArgb(colorClearValue.color(), clearColor);
-            attachments.aspectMask(1);
-            attachments.clearValue(colorClearValue);
-            VkClearValue depthClearValue = VkClearValue.calloc(stack);
-            VkClearDepthStencilValue clearValue = depthClearValue.depthStencil();
-            clearValue.depth((float)clearDepth);
-            attachments.position(1);
-            attachments.aspectMask(2);
-            attachments.clearValue(depthClearValue);
-            attachments.position(0);
-            VK12.vkCmdClearAttachments(this.commandBuffer(), attachments, rects);
-            this.submitRenderPass();
-         } catch (Throwable var22) {
-            if (stack != null) {
-               try {
-                  stack.close();
-               } catch (Throwable var21) {
-                  var22.addSuppressed(var21);
-               }
-            }
-
-            throw var22;
-         }
-
-         if (stack != null) {
-            stack.close();
-         }
       }
    }
 
@@ -806,21 +740,8 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
    }
 
    @Override
-   public void copyTextureToBuffer(final GpuTexture source, final GpuBuffer destination, final long offset, final Runnable callback, final int mipLevel) {
-      this.copyTextureToBuffer(source, destination, offset, callback, mipLevel, 0, 0, source.getWidth(mipLevel), source.getHeight(mipLevel));
-   }
-
-   @Override
    public void copyTextureToBuffer(
-      final GpuTexture source,
-      final GpuBuffer destination,
-      final long offset,
-      final Runnable callback,
-      final int mipLevel,
-      final int x,
-      final int y,
-      final int width,
-      final int height
+      final GpuTexture source, final GpuBuffer destination, final long offset, final int mipLevel, final int x, final int y, final int width, final int height
    ) {
       MemoryStack stack = MemoryStack.stackPush();
 
@@ -838,23 +759,21 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
          copy.bufferImageHeight(height);
          VK12.vkCmdCopyImageToBuffer(this.commandBuffer(), ((VulkanGpuTexture)source).vkImage(), 1, ((VulkanGpuBuffer)destination).vkBuffer(), copy);
          this.memoryBarrier(stack);
-      } catch (Throwable var15) {
+      } catch (Throwable var14) {
          if (stack != null) {
             try {
                stack.close();
-            } catch (Throwable var14) {
-               var15.addSuppressed(var14);
+            } catch (Throwable var13) {
+               var14.addSuppressed(var13);
             }
          }
 
-         throw var15;
+         throw var14;
       }
 
       if (stack != null) {
          stack.close();
       }
-
-      this.queueForDestroy(callback::run);
    }
 
    @Override

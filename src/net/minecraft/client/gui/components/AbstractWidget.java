@@ -33,7 +33,7 @@ public abstract class AbstractWidget implements LayoutElement, Renderable, GuiEv
    protected Component message;
    protected boolean isHovered;
    public boolean active = true;
-   public boolean visible = true;
+   protected boolean visible = true;
    protected float alpha = 1.0F;
    private int tabOrderGroup;
    private boolean focused;
@@ -54,7 +54,7 @@ public abstract class AbstractWidget implements LayoutElement, Renderable, GuiEv
 
    @Override
    public final void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      if (this.visible) {
+      if (this.isVisible()) {
          this.isHovered = graphics.containsPointInScissor(mouseX, mouseY) && this.areCoordinatesInRectangle(mouseX, mouseY);
          this.extractWidgetRenderState(graphics, mouseX, mouseY, a);
          this.extractTooltipForNextRenderPass(graphics, mouseX, mouseY);
@@ -214,7 +214,15 @@ public abstract class AbstractWidget implements LayoutElement, Renderable, GuiEv
 
    @Override
    public boolean isActive() {
-      return this.visible && this.active;
+      return this.isVisible() && this.active;
+   }
+
+   public boolean isVisible() {
+      return this.visible;
+   }
+
+   public void setVisible(final boolean visible) {
+      this.visible = visible;
    }
 
    @Override

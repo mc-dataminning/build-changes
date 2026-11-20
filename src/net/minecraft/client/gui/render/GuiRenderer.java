@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.OptionalDouble;
 import java.util.Set;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
@@ -205,13 +204,7 @@ public class GuiRenderer implements AutoCloseable {
    ) {
       try (RenderPass renderPass = RenderSystem.getDevice()
             .createCommandEncoder()
-            .createRenderPass(
-               label,
-               mainRenderTarget.getColorTextureView(),
-               Optional.empty(),
-               mainRenderTarget.hasDepth() ? mainRenderTarget.getDepthTextureView() : null,
-               OptionalDouble.empty()
-            )) {
+            .createRenderPass(label, mainRenderTarget.getColorTextureView(), Optional.empty())) {
          RenderSystem.bindDefaultUniforms(renderPass);
          renderPass.setUniform("DynamicTransforms", dynamicTransforms);
 

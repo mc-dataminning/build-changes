@@ -98,7 +98,7 @@ public class BeaconScreen extends AbstractContainerScreen<BeaconMenu> {
       BeaconScreen.BeaconPowerButton beaconPowerButton = new BeaconScreen.BeaconUpgradePowerButton(
          this.leftPos + 167 + (count - 1) * 24 - totalWidth / 2, this.topPos + 47, dummyEffect
       );
-      beaconPowerButton.visible = false;
+      beaconPowerButton.setVisible(false);
       this.addBeaconButton(beaconPowerButton);
       this.addBeaconButton(new BeaconScreen.BeaconConfirmButton(this.leftPos + 164, this.topPos + 107));
       this.addBeaconButton(new BeaconScreen.BeaconCancelButton(this.leftPos + 190, this.topPos + 107));
@@ -300,11 +300,11 @@ public class BeaconScreen extends AbstractContainerScreen<BeaconMenu> {
       @Override
       public void updateStatus(final int levels) {
          if (BeaconScreen.this.primary != null) {
-            this.visible = true;
+            this.setVisible(true);
             this.setEffect(BeaconScreen.this.primary);
             super.updateStatus(levels);
          } else {
-            this.visible = false;
+            this.setVisible(false);
          }
       }
    }

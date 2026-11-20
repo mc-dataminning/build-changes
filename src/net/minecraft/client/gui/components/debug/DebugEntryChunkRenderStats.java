@@ -13,10 +13,7 @@ public class DebugEntryChunkRenderStats implements DebugScreenEntry {
       final @Nullable LevelChunk clientChunk,
       final @Nullable LevelChunk serverChunk
    ) {
-      String stats = Minecraft.getInstance().levelExtractor.sectionStatistics();
-      if (stats != null) {
-         displayer.addLine(stats);
-      }
+      Minecraft.getInstance().levelExtractor.sectionStatistics((name, provider) -> displayer.addFactToGroup(DebugGroups.CHUNK_RENDERING, name, provider));
    }
 
    @Override

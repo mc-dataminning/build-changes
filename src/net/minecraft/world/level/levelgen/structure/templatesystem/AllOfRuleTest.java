@@ -6,13 +6,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class AllOfRuleTest extends RuleTest {
+public record AllOfRuleTest(List<RuleTest> rules) implements RuleTest {
    public static final MapCodec<AllOfRuleTest> CODEC = RuleTest.CODEC.listOf().fieldOf("rules").xmap(AllOfRuleTest::new, t -> t.rules);
-   private final List<RuleTest> rules;
-
-   public AllOfRuleTest(final List<RuleTest> rules) {
-      this.rules = rules;
-   }
 
    @Override
    public boolean test(final BlockState blockState, final BlockPos pos, final RandomSource random) {
@@ -26,7 +21,7 @@ public class AllOfRuleTest extends RuleTest {
    }
 
    @Override
-   protected RuleTestType<?> getType() {
-      return RuleTestType.ALL_OF_TEST;
+   public MapCodec<AllOfRuleTest> codec() {
+      return CODEC;
    }
 }

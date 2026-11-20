@@ -336,18 +336,10 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
       final List<Block> ignoreBlocks
    ) {
       StructureTemplateManager manager = level.getStructureTemplateManager();
-
-      StructureTemplate structureTemplate;
-      try {
-         structureTemplate = manager.getOrCreate(structureName);
-      } catch (IdentifierException e) {
-         return false;
-      }
-
-      structureTemplate.fillFromWorld(
-         level, pos, structureSize, !ignoreEntities, Stream.concat(ignoreBlocks.stream(), Stream.of(Blocks.STRUCTURE_VOID)).toList()
+      StructureTemplate structureTemplate = StructureTemplate.createFromWorld(
+         level, pos, structureSize, author, !ignoreEntities, Stream.concat(ignoreBlocks.stream(), Stream.of(Blocks.STRUCTURE_VOID)).toList()
       );
-      structureTemplate.setAuthor(author);
+      manager.store(structureName, structureTemplate);
       if (saveToDisk) {
          try {
             return manager.save(structureName);

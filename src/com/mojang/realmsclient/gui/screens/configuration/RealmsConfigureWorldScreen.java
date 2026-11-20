@@ -100,12 +100,10 @@ public class RealmsConfigureWorldScreen extends RealmsScreen {
 
       Component loadingTitle = Component.translatable("mco.configure.world.loading");
       this.tabNavigationBar = MenuTabBar.builder(this.tabManager, this.width)
-         .addTabs(
-            new LoadingTab(this.getFont(), RealmsWorldsTab.TITLE, loadingTitle),
-            new LoadingTab(this.getFont(), RealmsPlayersTab.TITLE, loadingTitle),
-            new LoadingTab(this.getFont(), RealmsSubscriptionTab.TITLE, loadingTitle),
-            new LoadingTab(this.getFont(), RealmsSettingsTab.TITLE, loadingTitle)
-         )
+         .addTab(RealmsWorldsTab.TITLE, new LoadingTab(this.getFont(), loadingTitle))
+         .addTab(RealmsPlayersTab.TITLE, new LoadingTab(this.getFont(), loadingTitle))
+         .addTab(RealmsSubscriptionTab.TITLE, new LoadingTab(this.getFont(), loadingTitle))
+         .addTab(RealmsSettingsTab.TITLE, new LoadingTab(this.getFont(), loadingTitle))
          .build();
       this.tabNavigationBar.setTabActiveState(3, false);
       this.addRenderableWidget(this.tabNavigationBar);
@@ -272,12 +270,10 @@ public class RealmsConfigureWorldScreen extends RealmsScreen {
 
          this.tabNavigationBar = this.addRenderableWidget(
             MenuTabBar.builder(this.tabManager, this.width)
-               .addTabs(
-                  new RealmsWorldsTab(this, Objects.requireNonNull(this.minecraft), this.serverData),
-                  new RealmsPlayersTab(this, this.minecraft, this.serverData),
-                  new RealmsSubscriptionTab(this, this.minecraft, this.serverData, this.subscription),
-                  new RealmsSettingsTab(this, this.minecraft, this.serverData, this.tierConfiguration, this.regionServiceQuality)
-               )
+               .addTab(RealmsWorldsTab.TITLE, new RealmsWorldsTab(this, Objects.requireNonNull(this.minecraft), this.serverData))
+               .addTab(RealmsPlayersTab.TITLE, new RealmsPlayersTab(this, this.minecraft, this.serverData))
+               .addTab(RealmsSubscriptionTab.TITLE, new RealmsSubscriptionTab(this, this.minecraft, this.serverData, this.subscription))
+               .addTab(RealmsSettingsTab.TITLE, new RealmsSettingsTab(this, this.minecraft, this.serverData, this.tierConfiguration, this.regionServiceQuality))
                .build()
          );
          this.setFocused(this.tabNavigationBar);

@@ -53,7 +53,6 @@ import org.slf4j.Logger;
 public class NativeLibrariesBootstrap {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final HexFormat HEX_FORMAT = HexFormat.of().withUpperCase();
-   private static boolean vulkanLoaderAvailable;
 
    public static void loadLibraries() throws IOException {
       Stopwatch stopwatch = Stopwatch.createStarted();
@@ -73,15 +72,15 @@ public class NativeLibrariesBootstrap {
          }
 
          loadLibrary(stopCapturing, "LWJGL system", NativeLibrariesBootstrap::loadLWJGLSystem);
-         vulkanLoaderAvailable = tryLoadingVulkan();
+         boolean vulkanLoaderAvailable = tryLoadingVulkan();
          entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("SDL", NativeLibrariesBootstrap::loadSdl));
          entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("OpenGL", NativeLibrariesBootstrap::loadOpenGL));
          entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("OpenAL", NativeLibrariesBootstrap::loadOpenAL));
          entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("STB", NativeLibrariesBootstrap::loadSTB));
          entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("freetype", NativeLibrariesBootstrap::loadFreeType));
+         entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("shaderc", NativeLibrariesBootstrap::loadShaderc));
+         entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("spvc", NativeLibrariesBootstrap::loadSpvc));
          if (vulkanLoaderAvailable) {
-            entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("shaderc", NativeLibrariesBootstrap::loadShaderc));
-            entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("spvc", NativeLibrariesBootstrap::loadSpvc));
             entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("vma", NativeLibrariesBootstrap::loadVma));
          }
 
@@ -290,10 +289,6 @@ public class NativeLibrariesBootstrap {
          LOGGER.warn("Failed to load Vulkan loader", t);
          return false;
       }
-   }
-
-   public static boolean isVulkanLoaderAvailable() {
-      return vulkanLoaderAvailable;
    }
 
    private static void loadShaderc() {

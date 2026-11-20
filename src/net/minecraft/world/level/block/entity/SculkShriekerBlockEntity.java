@@ -20,6 +20,8 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityTypes;
+import net.minecraft.world.entity.decoration.ArmorStand;
+import net.minecraft.world.entity.decoration.BlockAttachedEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.monster.warden.WardenSpawnTracker;
@@ -92,8 +94,18 @@ public class SculkShriekerBlockEntity extends BlockEntity implements GameEventLi
          return player;
       } else if (sourceEntity instanceof Projectile projectile && projectile.getOwner() instanceof ServerPlayer player) {
          return player;
+      } else if (sourceEntity instanceof ItemEntity item && item.getOwner() instanceof ServerPlayer player) {
+         return player;
+      } else if (sourceEntity instanceof BlockAttachedEntity entity
+         && entity.getLastDamageSource() != null
+         && entity.getLastDamageSource().getEntity() instanceof ServerPlayer player) {
+         return player;
       } else {
-         return sourceEntity instanceof ItemEntity item && item.getOwner() instanceof ServerPlayer player ? player : null;
+         return sourceEntity instanceof ArmorStand armorStand
+               && armorStand.getLastDamageSource() != null
+               && armorStand.getLastDamageSource().getEntity() instanceof ServerPlayer player
+            ? player
+            : null;
       }
    }
 

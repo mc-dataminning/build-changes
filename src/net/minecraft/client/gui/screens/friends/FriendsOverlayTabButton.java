@@ -9,6 +9,7 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.components.tabs.Tab;
 import net.minecraft.client.gui.components.tabs.TabManager;
 import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 
 class FriendsOverlayTabButton extends TabButton {
@@ -24,8 +25,8 @@ class FriendsOverlayTabButton extends TabButton {
    private static final int UNDERLINE_MARGIN_X = 4;
    private static final int UNDERLINE_MARGIN_BOTTOM = 2;
 
-   public FriendsOverlayTabButton(final TabManager tabManager, final Tab tab, final int width, final int height) {
-      super(tabManager, tab, width, height);
+   public FriendsOverlayTabButton(final TabManager tabManager, final Tab tab, final int width, final int height, final Component label) {
+      super(tabManager, tab, width, height, label);
    }
 
    @Override

@@ -67,25 +67,37 @@ public class RenderPipelines {
       .withPrimitiveTopology(PrimitiveTopology.QUADS)
       .withDepthStencilState(DepthStencilState.DEFAULT)
       .buildSnippet();
-   private static final RenderPipeline.Snippet LIT_BLOCKS_SNIPPET = RenderPipeline.builder(GENERIC_BLOCKS_SNIPPET)
+   private static final RenderPipeline.Snippet UNLIT_TERRAIN_SNIPPET = RenderPipeline.builder(GENERIC_BLOCKS_SNIPPET)
+      .withBindGroupLayout(BindGroupLayouts.PROJECTION)
+      .withBindGroupLayout(BindGroupLayouts.TERRAIN_INFO)
+      .withVertexShader("core/terrain")
+      .withFragmentShader("core/terrain")
+      .buildSnippet();
+   private static final RenderPipeline.Snippet TERRAIN_SNIPPET = RenderPipeline.builder(UNLIT_TERRAIN_SNIPPET)
       .withBindGroupLayout(BindGroupLayouts.SAMPLER2)
       .buildSnippet();
-   private static final RenderPipeline.Snippet TERRAIN_SNIPPET = RenderPipeline.builder(LIT_BLOCKS_SNIPPET)
-      .withBindGroupLayout(BindGroupLayouts.PROJECTION)
-      .withBindGroupLayout(BindGroupLayouts.CHUNK_SECTION)
-      .withBindGroupLayout(BindGroupLayouts.TERRAIN_INFO)
-      .withVertexShader("core/terrain")
-      .withFragmentShader("core/terrain")
+   private static final RenderPipeline.Snippet IMPROVED_FOG_SNIPPET = RenderPipeline.builder()
+      .withBindGroupLayout(BindGroupLayouts.SKY_CLOUDS_SAMPLER)
+      .withShaderDefine("IMPROVED_FOG")
       .buildSnippet();
-   private static final RenderPipeline.Snippet MULTIDRAW_TERRAIN_SNIPPET = RenderPipeline.builder(LIT_BLOCKS_SNIPPET)
-      .withBindGroupLayout(BindGroupLayouts.PROJECTION)
-      .withBindGroupLayout(BindGroupLayouts.TERRAIN_INFO)
+   private static final RenderPipeline.Snippet SINGLEDRAW_TERRAIN_SNIPPET = RenderPipeline.builder()
+      .withBindGroupLayout(BindGroupLayouts.CHUNK_SECTION)
+      .buildSnippet();
+   private static final RenderPipeline.Snippet MULTIDRAW_TERRAIN_SNIPPET = RenderPipeline.builder()
       .withVertexBinding(1, DefaultVertexFormat.CHUNK_DATA_INSTANCED)
-      .withVertexShader("core/terrain")
-      .withFragmentShader("core/terrain")
       .withShaderDefine("MULTIDRAW_TERRAIN")
       .buildSnippet();
-   private static final RenderPipeline.Snippet BLOCK_SNIPPET = RenderPipeline.builder(LIT_BLOCKS_SNIPPET)
+   private static final RenderPipeline.Snippet SOLID_SNIPPET = RenderPipeline.builder().withColorTargetState(ColorTargetState.DEFAULT).buildSnippet();
+   private static final RenderPipeline.Snippet CUTOUT_SNIPPET = RenderPipeline.builder()
+      .withShaderDefine("ALPHA_CUTOUT", 0.5F)
+      .withColorTargetState(ColorTargetState.DEFAULT)
+      .buildSnippet();
+   private static final RenderPipeline.Snippet TRANSLUCENT_SNIPPET = RenderPipeline.builder()
+      .withColorTargetState(new ColorTargetState(BlendFunction.TRANSLUCENT))
+      .withShaderDefine("ALPHA_CUTOUT", 0.1F)
+      .buildSnippet();
+   private static final RenderPipeline.Snippet BLOCK_SNIPPET = RenderPipeline.builder(GENERIC_BLOCKS_SNIPPET)
+      .withBindGroupLayout(BindGroupLayouts.SAMPLER2)
       .withBindGroupLayout(BindGroupLayouts.PROJECTION)
       .withBindGroupLayout(BindGroupLayouts.DYNAMIC_TRANSFORMS)
       .withVertexShader("core/block")
@@ -99,6 +111,10 @@ public class RenderPipelines {
       .withVertexBinding(0, DefaultVertexFormat.POSITION)
       .withPrimitiveTopology(PrimitiveTopology.QUADS)
       .withDepthStencilState(DepthStencilState.DEFAULT)
+      .buildSnippet();
+   private static final RenderPipeline.Snippet WIREFRAME_SNIPPET = RenderPipeline.builder()
+      .withPolygonMode(PolygonMode.WIREFRAME)
+      .withColorTargetState(ColorTargetState.DEFAULT)
       .buildSnippet();
    private static final RenderPipeline.Snippet LIGHTNING_SNIPPET = RenderPipeline.builder(MATRICES_FOG_SNIPPET)
       .withVertexShader("core/rendertype_lightning")
@@ -216,13 +232,11 @@ public class RenderPipelines {
       .withBindGroupLayout(BindGroupLayouts.CLOUD_INFO)
       .withDepthStencilState(DepthStencilState.DEFAULT)
       .buildSnippet();
-   private static final RenderPipeline.Snippet OIT_CLOUDS_SNIPPET = RenderPipeline.builder()
-      .withVertexShader("core/clouds")
-      .withFragmentShader("core/clouds")
-      .withPrimitiveTopology(PrimitiveTopology.QUADS)
-      .withBindGroupLayout(BindGroupLayouts.DYNAMIC_TRANSFORMS)
-      .withBindGroupLayout(BindGroupLayouts.FOG)
-      .withBindGroupLayout(BindGroupLayouts.CLOUD_INFO)
+   private static final RenderPipeline.Snippet OIT_BLIT_CLOUDS_SNIPPET = RenderPipeline.builder()
+      .withVertexShader("core/screentriangle")
+      .withFragmentShader("core/blit_clouds")
+      .withBindGroupLayout(BindGroupLayouts.IN_SAMPLER_IN_DEPTH_SAMPLER)
+      .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
       .buildSnippet();
    private static final RenderPipeline.Snippet LINES_SNIPPET = RenderPipeline.builder(MATRICES_FOG_SNIPPET)
       .withVertexShader("core/rendertype_lines")
@@ -337,98 +351,114 @@ public class RenderPipelines {
    public static final RenderPipeline.Snippet POST_PROCESSING_SNIPPET = RenderPipeline.builder(GLOBALS_SNIPPET)
       .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
       .buildSnippet();
-   public static final RenderPipeline SOLID_BLOCK = register(
-      RenderPipeline.builder(BLOCK_SNIPPET).withLocation("pipeline/solid_block").withColorTargetState(ColorTargetState.DEFAULT).build()
-   );
+   private static final RenderPipeline.Snippet SKY_SNIPPET = RenderPipeline.builder(MATRICES_FOG_SNIPPET)
+      .withVertexShader("core/sky")
+      .withFragmentShader("core/sky")
+      .withVertexBinding(0, DefaultVertexFormat.POSITION)
+      .withPrimitiveTopology(PrimitiveTopology.TRIANGLE_FAN)
+      .withColorTargetState(ColorTargetState.DEFAULT)
+      .buildSnippet();
+   public static final RenderPipeline.Snippet SKY_OCCLUDER_SNIPPET = RenderPipeline.builder(MATRICES_FOG_SNIPPET)
+      .withVertexShader("core/sky_occluder")
+      .withFragmentShader("core/sky_occluder")
+      .withBindGroupLayout(BindGroupLayouts.SKY_OCCLUDER_INFO)
+      .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
+      .withColorTargetState(new ColorTargetState(BlendFunction.TRANSLUCENT))
+      .buildSnippet();
+   private static final RenderPipeline.Snippet END_SKY_SNIPPET = RenderPipeline.builder(GLOBALS_SNIPPET)
+      .withBindGroupLayout(BindGroupLayouts.PROJECTION)
+      .withBindGroupLayout(BindGroupLayouts.DYNAMIC_TRANSFORMS)
+      .withVertexShader("core/position_tex_color")
+      .withFragmentShader("core/position_tex_color")
+      .withBindGroupLayout(BindGroupLayouts.SAMPLER0)
+      .withColorTargetState(new ColorTargetState(BlendFunction.TRANSLUCENT))
+      .withVertexBinding(0, DefaultVertexFormat.POSITION_TEX_COLOR)
+      .withPrimitiveTopology(PrimitiveTopology.QUADS)
+      .buildSnippet();
+   private static final RenderPipeline.Snippet SUNRISE_SUNSET_SNIPPET = RenderPipeline.builder(GLOBALS_SNIPPET)
+      .withBindGroupLayout(BindGroupLayouts.PROJECTION)
+      .withBindGroupLayout(BindGroupLayouts.DYNAMIC_TRANSFORMS)
+      .withVertexShader("core/position_color")
+      .withFragmentShader("core/position_color")
+      .withColorTargetState(new ColorTargetState(BlendFunction.TRANSLUCENT))
+      .withVertexBinding(0, DefaultVertexFormat.POSITION_COLOR)
+      .withPrimitiveTopology(PrimitiveTopology.TRIANGLE_FAN)
+      .buildSnippet();
+   private static final RenderPipeline.Snippet STARS_SNIPPET = RenderPipeline.builder(GLOBALS_SNIPPET)
+      .withBindGroupLayout(BindGroupLayouts.PROJECTION)
+      .withBindGroupLayout(BindGroupLayouts.DYNAMIC_TRANSFORMS)
+      .withVertexShader("core/stars")
+      .withFragmentShader("core/stars")
+      .withColorTargetState(new ColorTargetState(BlendFunction.OVERLAY))
+      .withVertexBinding(0, DefaultVertexFormat.POSITION)
+      .withPrimitiveTopology(PrimitiveTopology.QUADS)
+      .buildSnippet();
+   private static final RenderPipeline.Snippet CELESTIAL_SNIPPET = RenderPipeline.builder(GLOBALS_SNIPPET)
+      .withBindGroupLayout(BindGroupLayouts.PROJECTION)
+      .withBindGroupLayout(BindGroupLayouts.DYNAMIC_TRANSFORMS)
+      .withVertexShader("core/position_tex")
+      .withFragmentShader("core/position_tex")
+      .withBindGroupLayout(BindGroupLayouts.SAMPLER0)
+      .withColorTargetState(new ColorTargetState(BlendFunction.OVERLAY))
+      .withVertexBinding(0, DefaultVertexFormat.POSITION_TEX)
+      .withPrimitiveTopology(PrimitiveTopology.QUADS)
+      .buildSnippet();
+   public static final RenderPipeline SOLID_BLOCK = register(RenderPipeline.fromSnippets("pipeline/solid_block", BLOCK_SNIPPET, SOLID_SNIPPET));
    public static final RenderPipeline SOLID_TERRAIN = register(
-      RenderPipeline.builder(TERRAIN_SNIPPET).withLocation("pipeline/solid_terrain").withColorTargetState(ColorTargetState.DEFAULT).build()
+      RenderPipeline.fromSnippets("pipeline/solid_terrain", TERRAIN_SNIPPET, SOLID_SNIPPET, SINGLEDRAW_TERRAIN_SNIPPET)
+   );
+   public static final RenderPipeline SOLID_TERRAIN_IMPROVED_FOG = register(
+      RenderPipeline.fromSnippets("pipeline/solid_terrain_improved_for", TERRAIN_SNIPPET, SOLID_SNIPPET, IMPROVED_FOG_SNIPPET, SINGLEDRAW_TERRAIN_SNIPPET)
    );
    public static final RenderPipeline SOLID_TERRAIN_MULTIDRAW = register(
-      RenderPipeline.builder(MULTIDRAW_TERRAIN_SNIPPET).withLocation("pipeline/solid_terrain_multidraw").withColorTargetState(ColorTargetState.DEFAULT).build()
+      RenderPipeline.fromSnippets("pipeline/solid_terrain_multidraw", TERRAIN_SNIPPET, SOLID_SNIPPET, MULTIDRAW_TERRAIN_SNIPPET)
+   );
+   public static final RenderPipeline SOLID_TERRAIN_IMPROVED_FOG_MULTIDRAW = register(
+      RenderPipeline.fromSnippets(
+         "pipeline/solid_terrain_improved_fog_multidraw", TERRAIN_SNIPPET, SOLID_SNIPPET, IMPROVED_FOG_SNIPPET, MULTIDRAW_TERRAIN_SNIPPET
+      )
    );
    public static final RenderPipeline WIREFRAME = registerOptional(
-      RenderPipeline.builder(TERRAIN_SNIPPET)
-         .withLocation("pipeline/wireframe")
-         .withPolygonMode(PolygonMode.WIREFRAME)
-         .withColorTargetState(ColorTargetState.DEFAULT)
-         .build()
+      RenderPipeline.fromSnippets("pipeline/wireframe", TERRAIN_SNIPPET, SINGLEDRAW_TERRAIN_SNIPPET, WIREFRAME_SNIPPET)
    );
    public static final RenderPipeline WIREFRAME_MULTIDRAW = registerOptional(
-      RenderPipeline.builder(MULTIDRAW_TERRAIN_SNIPPET)
-         .withLocation("pipeline/wireframe_multidraw")
-         .withPolygonMode(PolygonMode.WIREFRAME)
-         .withColorTargetState(ColorTargetState.DEFAULT)
-         .build()
+      RenderPipeline.fromSnippets("pipeline/wireframe_multidraw", TERRAIN_SNIPPET, MULTIDRAW_TERRAIN_SNIPPET, WIREFRAME_SNIPPET)
    );
-   public static final RenderPipeline CUTOUT_BLOCK = register(
-      RenderPipeline.builder(BLOCK_SNIPPET)
-         .withLocation("pipeline/cutout_block")
-         .withShaderDefine("ALPHA_CUTOUT", 0.5F)
-         .withColorTargetState(ColorTargetState.DEFAULT)
-         .build()
-   );
+   public static final RenderPipeline CUTOUT_BLOCK = register(RenderPipeline.fromSnippets("pipeline/cutout_block", BLOCK_SNIPPET, CUTOUT_SNIPPET));
    public static final RenderPipeline CUTOUT_TERRAIN = register(
-      RenderPipeline.builder(TERRAIN_SNIPPET)
-         .withLocation("pipeline/cutout_terrain")
-         .withShaderDefine("ALPHA_CUTOUT", 0.5F)
-         .withColorTargetState(ColorTargetState.DEFAULT)
-         .build()
+      RenderPipeline.fromSnippets("pipeline/cutout_terrain", TERRAIN_SNIPPET, CUTOUT_SNIPPET, SINGLEDRAW_TERRAIN_SNIPPET)
+   );
+   public static final RenderPipeline CUTOUT_TERRAIN_IMPROVED_FOG = register(
+      RenderPipeline.fromSnippets("pipeline/cutout_terrain_improved_fog", TERRAIN_SNIPPET, CUTOUT_SNIPPET, IMPROVED_FOG_SNIPPET, SINGLEDRAW_TERRAIN_SNIPPET)
    );
    public static final RenderPipeline CUTOUT_TERRAIN_MULTIDRAW = register(
-      RenderPipeline.builder(MULTIDRAW_TERRAIN_SNIPPET)
-         .withLocation("pipeline/cutout_terrain_multidraw")
-         .withShaderDefine("ALPHA_CUTOUT", 0.5F)
-         .withColorTargetState(ColorTargetState.DEFAULT)
-         .build()
+      RenderPipeline.fromSnippets("pipeline/cutout_terrain_multidraw", TERRAIN_SNIPPET, CUTOUT_SNIPPET, MULTIDRAW_TERRAIN_SNIPPET)
+   );
+   public static final RenderPipeline CUTOUT_TERRAIN_IMPROVED_FOG_MULTIDRAW = register(
+      RenderPipeline.fromSnippets(
+         "pipeline/cutout_terrain_improved_fog_multidraw", TERRAIN_SNIPPET, CUTOUT_SNIPPET, IMPROVED_FOG_SNIPPET, MULTIDRAW_TERRAIN_SNIPPET
+      )
    );
    public static final RenderPipeline TRANSLUCENT_TERRAIN = register(
-      RenderPipeline.builder(TERRAIN_SNIPPET)
-         .withLocation("pipeline/translucent_terrain")
-         .withColorTargetState(new ColorTargetState(BlendFunction.TRANSLUCENT))
-         .withShaderDefine("ALPHA_CUTOUT", 0.1F)
-         .build()
+      RenderPipeline.fromSnippets("pipeline/translucent_terrain", TERRAIN_SNIPPET, TRANSLUCENT_SNIPPET, SINGLEDRAW_TERRAIN_SNIPPET)
    );
    public static final RenderPipeline TRANSLUCENT_TERRAIN_MULTIDRAW = register(
-      RenderPipeline.builder(MULTIDRAW_TERRAIN_SNIPPET)
-         .withLocation("pipeline/translucent_terrain_multidraw")
-         .withColorTargetState(new ColorTargetState(BlendFunction.TRANSLUCENT))
-         .withShaderDefine("ALPHA_CUTOUT", 0.1F)
-         .build()
+      RenderPipeline.fromSnippets("pipeline/translucent_terrain_multidraw", TERRAIN_SNIPPET, TRANSLUCENT_SNIPPET, MULTIDRAW_TERRAIN_SNIPPET)
    );
    public static final OitPipelineSet OIT_TERRAIN = register(
-      OitPipelineSet.builder(
-            "terrain",
-            RenderPipeline.builder(GENERIC_BLOCKS_SNIPPET)
-               .withVertexShader("core/terrain")
-               .withFragmentShader("core/terrain")
-               .withBindGroupLayout(BindGroupLayouts.CHUNK_SECTION)
-               .withBindGroupLayout(BindGroupLayouts.TERRAIN_INFO)
-               .withShaderDefine("ALPHA_CUTOUT", 0.1F)
-         )
-         .withAccumulateModifier(accumulate -> accumulate.withBindGroupLayout(BindGroupLayouts.SAMPLER2))
+      OitPipelineSet.builder("terrain", RenderPipeline.builder(UNLIT_TERRAIN_SNIPPET, SINGLEDRAW_TERRAIN_SNIPPET).withShaderDefine("ALPHA_CUTOUT", 0.1F))
+         .withAccumulateModifier(accumulate -> accumulate.withBindGroupLayout(BindGroupLayouts.SAMPLER2).withSnippet(IMPROVED_FOG_SNIPPET))
          .build()
    );
    public static final OitPipelineSet OIT_TERRAIN_MULTIDRAW = register(
       OitPipelineSet.builder(
-            "terrain_multidraw",
-            RenderPipeline.builder(GENERIC_BLOCKS_SNIPPET)
-               .withVertexShader("core/terrain")
-               .withFragmentShader("core/terrain")
-               .withBindGroupLayout(BindGroupLayouts.TERRAIN_INFO)
-               .withVertexBinding(1, DefaultVertexFormat.CHUNK_DATA_INSTANCED)
-               .withShaderDefine("ALPHA_CUTOUT", 0.1F)
-               .withShaderDefine("MULTIDRAW_TERRAIN")
+            "terrain_multidraw", RenderPipeline.builder(UNLIT_TERRAIN_SNIPPET, MULTIDRAW_TERRAIN_SNIPPET).withShaderDefine("ALPHA_CUTOUT", 0.1F)
          )
-         .withAccumulateModifier(accumulate -> accumulate.withBindGroupLayout(BindGroupLayouts.SAMPLER2))
+         .withAccumulateModifier(accumulate -> accumulate.withBindGroupLayout(BindGroupLayouts.SAMPLER2).withSnippet(IMPROVED_FOG_SNIPPET))
          .build()
    );
    public static final RenderPipeline TRANSLUCENT_BLOCK = register(
-      RenderPipeline.builder(BLOCK_SNIPPET)
-         .withLocation("pipeline/translucent_block")
-         .withShaderDefine("ALPHA_CUTOUT", 0.1F)
-         .withColorTargetState(new ColorTargetState(BlendFunction.TRANSLUCENT))
-         .withDepthStencilState(DepthStencilState.DEFAULT)
-         .build()
+      RenderPipeline.fromSnippets("pipeline/translucent_block", BLOCK_SNIPPET, TRANSLUCENT_SNIPPET)
    );
    public static final OitPipelineSet OIT_TRANSLUCENT_BLOCK = register(
       OitPipelineSet.builder(
@@ -882,6 +912,13 @@ public class RenderPipelines {
    public static final OitPipelineSet OIT_DRAGON_RAYS = register(
       OitPipelineSet.builder("dragon_rays", RenderPipeline.builder(DRAGON_RAYS_SNIPPET).withShaderDefine("OIT_ADDITIVE")).build()
    );
+   public static final RenderPipeline END_PORTAL_GUI = register(
+      RenderPipeline.builder(END_PORTAL_SNIPPET)
+         .withLocation("pipeline/end_portal_gui")
+         .withShaderDefine("PORTAL_LAYERS", 15)
+         .withDepthStencilState(Optional.empty())
+         .build()
+   );
    public static final RenderPipeline END_PORTAL = register(
       RenderPipeline.builder(END_PORTAL_SNIPPET).withLocation("pipeline/end_portal").withShaderDefine("PORTAL_LAYERS", 15).build()
    );
@@ -892,14 +929,6 @@ public class RenderPipelines {
       RenderPipeline.builder(CLOUDS_SNIPPET).withLocation("pipeline/flat_clouds").withCull(false).build()
    );
    public static final RenderPipeline CLOUDS = register(RenderPipeline.builder(CLOUDS_SNIPPET).withLocation("pipeline/clouds").build());
-   public static final OitPipelineSet OIT_CLOUDS = register(
-      OitPipelineSet.builder("clouds", RenderPipeline.builder(OIT_CLOUDS_SNIPPET))
-         .withDepthBoundsModifier(depthBounds -> depthBounds.withDepthStencilState(DepthStencilState.DEFAULT))
-         .build()
-   );
-   public static final OitPipelineSet OIT_FLAT_CLOUDS = register(
-      OitPipelineSet.builder("flat_clouds", RenderPipeline.builder(OIT_CLOUDS_SNIPPET).withCull(false)).build()
-   );
    public static final RenderPipeline LINES = register(
       RenderPipeline.builder(LINES_SNIPPET).withLocation("pipeline/lines").withColorTargetState(ColorTargetState.DEFAULT).build()
    );
@@ -1022,65 +1051,35 @@ public class RenderPipelines {
    public static final OitPipelineSet OIT_WEATHER = register(
       OitPipelineSet.builder("weather", RenderPipeline.builder(OIT_PARTICLE_SNIPPET).withCull(false)).build()
    );
-   public static final RenderPipeline SKY = register(
-      RenderPipeline.builder(MATRICES_FOG_SNIPPET)
-         .withLocation("pipeline/sky")
-         .withVertexShader("core/sky")
-         .withFragmentShader("core/sky")
-         .withVertexBinding(0, DefaultVertexFormat.POSITION)
-         .withPrimitiveTopology(PrimitiveTopology.TRIANGLE_FAN)
-         .withColorTargetState(ColorTargetState.DEFAULT)
+   public static final RenderPipeline SKY = register(RenderPipeline.builder(SKY_SNIPPET).withLocation("pipeline/sky").build());
+   public static final RenderPipeline SKY_WITH_DEPTH_ATTACHMENT = register(
+      RenderPipeline.builder(SKY_SNIPPET).withLocation("pipeline/sky_with_depth_attachment").withDepthStencilState(DepthStencilState.OFF).build()
+   );
+   public static final RenderPipeline SKY_OCCLUDER = register(RenderPipeline.builder(SKY_OCCLUDER_SNIPPET).withLocation("pipeline/sky_occluder").build());
+   public static final RenderPipeline SKY_OCCLUDER_WITH_DEPTH_ATTACHMENT = register(
+      RenderPipeline.builder(SKY_OCCLUDER_SNIPPET)
+         .withLocation("pipeline/sky_occluder_with_depth_attachment")
+         .withDepthStencilState(DepthStencilState.OFF)
          .build()
    );
-   public static final RenderPipeline END_SKY = register(
-      RenderPipeline.builder(GLOBALS_SNIPPET)
-         .withBindGroupLayout(BindGroupLayouts.PROJECTION)
-         .withBindGroupLayout(BindGroupLayouts.DYNAMIC_TRANSFORMS)
-         .withLocation("pipeline/end_sky")
-         .withVertexShader("core/position_tex_color")
-         .withFragmentShader("core/position_tex_color")
-         .withBindGroupLayout(BindGroupLayouts.SAMPLER0)
-         .withColorTargetState(new ColorTargetState(BlendFunction.TRANSLUCENT))
-         .withVertexBinding(0, DefaultVertexFormat.POSITION_TEX_COLOR)
-         .withPrimitiveTopology(PrimitiveTopology.QUADS)
+   public static final RenderPipeline END_SKY = register(RenderPipeline.builder(END_SKY_SNIPPET).withLocation("pipeline/end_sky").build());
+   public static final RenderPipeline END_SKY_WITH_DEPTH_ATTACHMENT = register(
+      RenderPipeline.builder(END_SKY_SNIPPET).withLocation("pipeline/end_sky_with_depth_attachment").withDepthStencilState(DepthStencilState.OFF).build()
+   );
+   public static final RenderPipeline SUNRISE_SUNSET = register(RenderPipeline.builder(SUNRISE_SUNSET_SNIPPET).withLocation("pipeline/sunrise_sunset").build());
+   public static final RenderPipeline SUNRISE_SUNSET_WITH_DEPTH_ATTACHMENT = register(
+      RenderPipeline.builder(SUNRISE_SUNSET_SNIPPET)
+         .withLocation("pipeline/sunrise_sunset_with_depth_attachment")
+         .withDepthStencilState(DepthStencilState.OFF)
          .build()
    );
-   public static final RenderPipeline SUNRISE_SUNSET = register(
-      RenderPipeline.builder(GLOBALS_SNIPPET)
-         .withBindGroupLayout(BindGroupLayouts.PROJECTION)
-         .withBindGroupLayout(BindGroupLayouts.DYNAMIC_TRANSFORMS)
-         .withLocation("pipeline/sunrise_sunset")
-         .withVertexShader("core/position_color")
-         .withFragmentShader("core/position_color")
-         .withColorTargetState(new ColorTargetState(BlendFunction.TRANSLUCENT))
-         .withVertexBinding(0, DefaultVertexFormat.POSITION_COLOR)
-         .withPrimitiveTopology(PrimitiveTopology.TRIANGLE_FAN)
-         .build()
+   public static final RenderPipeline STARS = register(RenderPipeline.builder(STARS_SNIPPET).withLocation("pipeline/stars").build());
+   public static final RenderPipeline STARS_WITH_DEPTH_ATTACHMENT = register(
+      RenderPipeline.builder(STARS_SNIPPET).withLocation("pipeline/stars_with_depth_attachment").withDepthStencilState(DepthStencilState.OFF).build()
    );
-   public static final RenderPipeline STARS = register(
-      RenderPipeline.builder(GLOBALS_SNIPPET)
-         .withBindGroupLayout(BindGroupLayouts.PROJECTION)
-         .withBindGroupLayout(BindGroupLayouts.DYNAMIC_TRANSFORMS)
-         .withLocation("pipeline/stars")
-         .withVertexShader("core/stars")
-         .withFragmentShader("core/stars")
-         .withColorTargetState(new ColorTargetState(BlendFunction.OVERLAY))
-         .withVertexBinding(0, DefaultVertexFormat.POSITION)
-         .withPrimitiveTopology(PrimitiveTopology.QUADS)
-         .build()
-   );
-   public static final RenderPipeline CELESTIAL = register(
-      RenderPipeline.builder(GLOBALS_SNIPPET)
-         .withBindGroupLayout(BindGroupLayouts.PROJECTION)
-         .withBindGroupLayout(BindGroupLayouts.DYNAMIC_TRANSFORMS)
-         .withLocation("pipeline/celestial")
-         .withVertexShader("core/position_tex")
-         .withFragmentShader("core/position_tex")
-         .withBindGroupLayout(BindGroupLayouts.SAMPLER0)
-         .withColorTargetState(new ColorTargetState(BlendFunction.OVERLAY))
-         .withVertexBinding(0, DefaultVertexFormat.POSITION_TEX)
-         .withPrimitiveTopology(PrimitiveTopology.QUADS)
-         .build()
+   public static final RenderPipeline CELESTIAL = register(RenderPipeline.builder(CELESTIAL_SNIPPET).withLocation("pipeline/celestial").build());
+   public static final RenderPipeline CELESTIAL_WITH_DEPTH_ATTACHMENT = register(
+      RenderPipeline.builder(CELESTIAL_SNIPPET).withLocation("pipeline/celestial_with_depth_attachment").withDepthStencilState(DepthStencilState.OFF).build()
    );
    public static final RenderPipeline GUI = register(RenderPipeline.builder(GUI_SNIPPET).withLocation("pipeline/gui").build());
    public static final RenderPipeline GUI_INVERT = register(
@@ -1100,10 +1099,10 @@ public class RenderPipelines {
          .build()
    );
    public static final RenderPipeline BLOCK_SCREEN_EFFECT = register(
-      RenderPipeline.builder(GUI_TEXTURED_SNIPPET).withLocation("pipeline/block_screen_effect").build()
+      RenderPipeline.builder(GUI_TEXTURED_SNIPPET).withLocation("pipeline/block_screen_effect").withDepthStencilState(DepthStencilState.OFF).build()
    );
    public static final RenderPipeline FIRE_SCREEN_EFFECT = register(
-      RenderPipeline.builder(GUI_TEXTURED_SNIPPET).withLocation("pipeline/fire_screen_effect").build()
+      RenderPipeline.builder(GUI_TEXTURED_SNIPPET).withLocation("pipeline/fire_screen_effect").withDepthStencilState(DepthStencilState.OFF).build()
    );
    public static final RenderPipeline GUI_OPAQUE_TEXTURED_BACKGROUND = register(
       RenderPipeline.builder(GUI_TEXTURED_SNIPPET)
@@ -1135,7 +1134,7 @@ public class RenderPipelines {
    public static final RenderPipeline ENTITY_OUTLINE_BLIT = register(
       RenderPipeline.builder(GLOBALS_SNIPPET)
          .withLocation("pipeline/entity_outline_blit")
-         .withVertexShader("core/screenquad")
+         .withVertexShader("core/screentriangle")
          .withFragmentShader("core/blit_screen")
          .withBindGroupLayout(BindGroupLayouts.IN_SAMPLER)
          .withColorTargetState(new ColorTargetState(Optional.of(BlendFunction.ENTITY_OUTLINE_BLIT), GpuFormat.RGBA8_UNORM, 7))
@@ -1145,7 +1144,7 @@ public class RenderPipelines {
    public static final RenderPipeline TRACY_BLIT = register(
       RenderPipeline.builder(GLOBALS_SNIPPET)
          .withLocation("pipeline/tracy_blit")
-         .withVertexShader("core/screenquad")
+         .withVertexShader("core/screentriangle")
          .withFragmentShader("core/blit_screen")
          .withBindGroupLayout(BindGroupLayouts.IN_SAMPLER)
          .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
@@ -1172,7 +1171,7 @@ public class RenderPipelines {
    public static final RenderPipeline LIGHTMAP = register(
       RenderPipeline.builder(GLOBALS_SNIPPET)
          .withLocation("pipeline/lightmap")
-         .withVertexShader("core/screenquad")
+         .withVertexShader("core/screentriangle")
          .withFragmentShader("core/lightmap")
          .withBindGroupLayout(BindGroupLayouts.LIGHTMAP_INFO)
          .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
@@ -1202,16 +1201,17 @@ public class RenderPipelines {
    public static final RenderPipeline BLIT_DEPTH_BOUNDS = register(
       RenderPipeline.builder(GLOBALS_SNIPPET)
          .withLocation("pipeline/blit_depth_bounds")
-         .withVertexShader("core/screenquad")
+         .withVertexShader("core/screentriangle")
          .withFragmentShader("core/blit_screen")
          .withBindGroupLayout(BindGroupLayouts.IN_SAMPLER)
          .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
          .withColorTargetState(new ColorTargetState(Optional.empty(), GpuFormat.RGBA32_FLOAT, 15))
+         .withDepthStencilState(DepthStencilState.OFF)
          .build()
    );
    public static final RenderPipeline OIT_DEPTH_BOUNDS_CULL = register(
       RenderPipeline.builder(OIT_SNIPPET)
-         .withVertexShader("core/screenquad")
+         .withVertexShader("core/screentriangle")
          .withFragmentShader("core/oit_depth_bounds_cull")
          .withLocation("pipeline/oit_depth_bounds_cull")
          .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
@@ -1221,21 +1221,22 @@ public class RenderPipelines {
          .withDepthStencilState(DepthStencilState.DEFAULT)
          .build()
    );
-   public static final RenderPipeline BLIT_DEPTH_DURING_DEPTH_BOUNDS = register(
+   public static final RenderPipeline BLIT_SKY = register(
       RenderPipeline.builder(GLOBALS_SNIPPET)
-         .withLocation("pipeline/blit_depth_during_depth_bounds")
-         .withVertexShader("core/screenquad")
-         .withFragmentShader("core/blit_depth")
+         .withLocation("pipeline/blit_sky")
+         .withVertexShader("core/screentriangle")
+         .withFragmentShader("core/blit_screen")
          .withBindGroupLayout(BindGroupLayouts.IN_SAMPLER)
          .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
-         .withDepthStencilState(new DepthStencilState(CompareOp.ALWAYS_PASS, true))
-         .withColorTargetState(new ColorTargetState(Optional.empty(), GpuFormat.RGBA32_FLOAT, 0))
+         .withDepthStencilState(DepthStencilState.DEFAULT)
+         .withColorTargetState(ColorTargetState.DEFAULT)
          .build()
    );
+   public static final OitPipelineSet OIT_BLIT_CLOUDS = register(OitPipelineSet.builder("blit_clouds", RenderPipeline.builder(OIT_BLIT_CLOUDS_SNIPPET)).build());
    public static final RenderPipeline BLIT_DEPTH = register(
       RenderPipeline.builder(GLOBALS_SNIPPET)
          .withLocation("pipeline/blit_depth")
-         .withVertexShader("core/screenquad")
+         .withVertexShader("core/screentriangle")
          .withFragmentShader("core/blit_depth")
          .withBindGroupLayout(BindGroupLayouts.IN_SAMPLER)
          .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
@@ -1245,7 +1246,7 @@ public class RenderPipelines {
    public static final RenderPipeline OIT_COMPOSITE = register(
       RenderPipeline.builder(OIT_SNIPPET)
          .withBindGroupLayout(BindGroupLayouts.PROJECTION)
-         .withVertexShader("core/screenquad")
+         .withVertexShader("core/screentriangle")
          .withFragmentShader("core/oit_composite")
          .withLocation("pipeline/oit_composite")
          .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)
@@ -1256,7 +1257,7 @@ public class RenderPipelines {
    );
    public static final RenderPipeline INTEGRATE_DEPTH = register(
       RenderPipeline.builder()
-         .withVertexShader("core/screenquad")
+         .withVertexShader("core/screentriangle")
          .withFragmentShader("core/integrate_depth")
          .withLocation("pipeline/integrate_depth")
          .withPrimitiveTopology(PrimitiveTopology.TRIANGLES)

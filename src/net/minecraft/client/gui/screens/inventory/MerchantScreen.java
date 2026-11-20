@@ -213,7 +213,7 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
                button.extractToolTip(graphics, mouseX, mouseY);
             }
 
-            button.visible = button.index < this.menu.getOffers().size();
+            button.setVisible(button.index < this.menu.getOffers().size());
          }
       }
    }

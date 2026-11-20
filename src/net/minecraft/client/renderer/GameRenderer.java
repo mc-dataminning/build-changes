@@ -65,6 +65,7 @@ import net.minecraft.client.resources.model.ModelManager;
 import net.minecraft.client.resources.model.sprite.AtlasManager;
 import net.minecraft.client.server.IntegratedServer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.FileToIdConverter;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
@@ -256,7 +257,7 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       ShaderSource shaderSource = new ShaderSource() {
          @Override
          public @Nullable String getShader(final Identifier id, final ShaderType type) {
-            Identifier location = type.idConverter().idToFile(id);
+            Identifier location = new FileToIdConverter("shaders", type.getExtension()).idToFile(id);
 
             try {
                return resourceManager.getResourceOrThrow(location).readAllAsString();
@@ -468,11 +469,6 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
          this.resize(windowRenderState.width, windowRenderState.height);
       }
 
-      RenderSystem.getDevice()
-         .createCommandEncoder()
-         .clearColorAndDepthTextures(
-            this.mainRenderTarget.getColorTexture(), this.gameRenderState.guiRenderState.clearColorOverride, this.mainRenderTarget.getDepthTexture(), 0.0
-         );
       this.globalSettingsUniform
          .update(
             windowRenderState.width,
@@ -494,6 +490,11 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
          this.applyPostEffects();
          profiler.pop();
       } else {
+         RenderSystem.getDevice()
+            .createCommandEncoder()
+            .clearColorAndDepthTextures(
+               this.mainRenderTarget.getColorTexture(), this.gameRenderState.guiRenderState.clearColorOverride, this.mainRenderTarget.getDepthTexture(), 0.0
+            );
          this.preparePostEffects(Collections.emptyList());
       }
 
@@ -641,7 +642,6 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       }
 
       projectionMatrix.mul(bobStack.last().pose());
-      float worldPartialTicks = this.gameRenderState.levelRenderState.worldPartialTicks;
       float screenEffectScale = optionsState.screenEffectScale;
       float portalIntensity = playerState.portalEffectIntensity;
       float nauseaIntensity = playerState.nauseaEffectIntensity;
@@ -659,13 +659,10 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       RenderSystem.setProjectionMatrix(this.levelProjectionMatrixBuffer.getBuffer(projectionMatrix), ProjectionType.PERSPECTIVE);
       profiler.popPush("fog");
       this.fogRenderer.updateBuffer(cameraState.fogData);
-      GpuBufferSlice terrainFog = this.fogRenderer.getBuffer(FogRenderer.FogMode.WORLD);
+      GpuBufferSlice fogBuffer = this.fogRenderer.getBuffer(FogRenderer.FogMode.WORLD);
       profiler.popPush("level");
-      boolean shouldCreateBossFog = this.minecraft.gui.hud.getBossOverlay().shouldCreateWorldFog();
       boolean consistentDepthRequired = !this.appliedPostEffects.isEmpty();
-      this.minecraft
-         .levelRenderer
-         .render(this.resourcePool, renderOutline, cameraState, terrainFog, cameraState.fogData.color, !shouldCreateBossFog, consistentDepthRequired);
+      this.minecraft.levelRenderer.render(this.resourcePool, renderOutline, cameraState, fogBuffer, consistentDepthRequired);
       this.render3dHud(cameraState, playerState, optionsState, consistentDepthRequired);
    }
 
@@ -772,14 +769,16 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
    private void extractCamera(final DeltaTracker deltaTracker, final float worldPartialTicks) {
       CameraRenderState cameraState = this.gameRenderState.levelRenderState.cameraRenderState;
       this.mainCamera.extractRenderState(cameraState, deltaTracker);
-      cameraState.fogType = this.mainCamera.getFluidInCamera();
+      cameraState.fogType = this.mainCamera.getFogType();
+      boolean shouldCreateBossFog = this.minecraft.gui.hud.getBossOverlay().shouldCreateWorldFog();
       cameraState.fogData = this.fogRenderer
          .setupFog(
             this.mainCamera,
             this.minecraft.options.getEffectiveRenderDistance(),
             deltaTracker,
             this.bossOverlayWorldDarkening(worldPartialTicks),
-            this.minecraft.level
+            this.minecraft.level,
+            shouldCreateBossFog
          );
    }
 

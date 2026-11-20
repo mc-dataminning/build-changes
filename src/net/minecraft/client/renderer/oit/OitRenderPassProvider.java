@@ -7,22 +7,26 @@ import com.mojang.renderpearl.api.textures.FilterMode;
 import com.mojang.renderpearl.api.textures.GpuSampler;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
 import java.util.Optional;
-import java.util.OptionalDouble;
 import java.util.function.Supplier;
+import net.minecraft.client.renderer.LevelRenderer;
 
 public class OitRenderPassProvider {
-   public static RenderPass createRenderPass(final OitStage stage, final Supplier<String> label, final OitRenderPassProvider.Parameters params) {
+   public static RenderPass createRenderPass(
+      final OitStage stage, final Supplier<String> label, final OitRenderPassProvider.Parameters params, final boolean shouldClearTargets
+   ) {
       return switch (stage) {
-         case DEPTH_BOUNDS -> createDepthBoundsPass(label, params);
-         case TRANSMITTANCE -> createTransmittancePass(label, params);
-         case ACCUMULATE -> createAccumulatePass(label, params);
+         case DEPTH_BOUNDS -> createDepthBoundsPass(label, params, shouldClearTargets);
+         case TRANSMITTANCE -> createTransmittancePass(label, params, shouldClearTargets);
+         case ACCUMULATE -> createAccumulatePass(label, params, shouldClearTargets);
          default -> throw new IllegalArgumentException("Invalid OIT stage.");
       };
    }
 
-   private static RenderPass createDepthBoundsPass(final Supplier<String> label, final OitRenderPassProvider.Parameters params) {
+   private static RenderPass createDepthBoundsPass(
+      final Supplier<String> label, final OitRenderPassProvider.Parameters params, final boolean shouldClearTargets
+   ) {
       RenderPassDescriptor descriptor = RenderPassDescriptor.builder(() -> "OIT Depth Bounds for " + label.get())
-         .withColorAttachment(params.depthBoundsTargetView)
+         .withColorAttachment(params.depthBoundsTargetView, shouldClearTargets ? Optional.of(LevelRenderer.DEPTH_BOUNDS_CLEAR_COLOR) : Optional.empty())
          .withDepthAttachment(params.depthTextureView)
          .build();
       RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(descriptor);
@@ -30,12 +34,14 @@ public class OitRenderPassProvider {
       return renderPass;
    }
 
-   private static RenderPass createTransmittancePass(final Supplier<String> label, final OitRenderPassProvider.Parameters params) {
+   private static RenderPass createTransmittancePass(
+      final Supplier<String> label, final OitRenderPassProvider.Parameters params, final boolean shouldClearTargets
+   ) {
       RenderPassDescriptor.Builder descriptor = RenderPassDescriptor.builder(() -> "OIT Transmittance for " + label.get())
-         .withDepthAttachment(params.depthTextureView, OptionalDouble.empty());
+         .withDepthAttachment(params.depthTextureView);
 
       for (int i = 0; i < 2; i++) {
-         descriptor.withColorAttachment(params.transmittanceTargetViews[i], Optional.empty());
+         descriptor.withColorAttachment(params.transmittanceTargetViews[i], shouldClearTargets ? Optional.of(LevelRenderer.ZERO_CLEAR_COLOR) : Optional.empty());
       }
 
       GpuSampler nearestSampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST);
@@ -45,9 +51,9 @@ public class OitRenderPassProvider {
       return renderPass;
    }
 
-   private static RenderPass createAccumulatePass(final Supplier<String> label, final OitRenderPassProvider.Parameters params) {
+   private static RenderPass createAccumulatePass(final Supplier<String> label, final OitRenderPassProvider.Parameters params, final boolean shouldClearTargets) {
       RenderPassDescriptor descriptor = RenderPassDescriptor.builder(() -> "OIT Accumulate for " + label.get())
-         .withColorAttachment(params.accumulateTargetView)
+         .withColorAttachment(params.accumulateTargetView, shouldClearTargets ? Optional.of(LevelRenderer.ZERO_CLEAR_COLOR) : Optional.empty())
          .withDepthAttachment(params.depthTextureView)
          .build();
       RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(descriptor);

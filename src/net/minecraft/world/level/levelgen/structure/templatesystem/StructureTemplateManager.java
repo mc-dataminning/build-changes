@@ -80,15 +80,8 @@ public class StructureTemplateManager {
       this.sources = sources.build();
    }
 
-   public StructureTemplate getOrCreate(final Identifier id) {
-      Optional<StructureTemplate> cachedTemplate = this.get(id);
-      if (cachedTemplate.isPresent()) {
-         return cachedTemplate.get();
-      }
-
-      StructureTemplate template = new StructureTemplate();
-      this.structureRepository.put(id, Optional.of(template));
-      return template;
+   public StructureTemplate getOrEmpty(final Identifier id) {
+      return this.get(id).orElse(StructureTemplate.EMPTY);
    }
 
    public Optional<StructureTemplate> get(final Identifier id) {
@@ -116,6 +109,10 @@ public class StructureTemplateManager {
    public void onResourceManagerReload(final ResourceManager resourceManager) {
       this.resourceManagerSource.setResourceManager(resourceManager);
       this.structureRepository.clear();
+   }
+
+   public void store(final Identifier id, final StructureTemplate template) {
+      this.structureRepository.put(id, Optional.of(template));
    }
 
    public boolean save(final Identifier id) {

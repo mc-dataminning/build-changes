@@ -387,6 +387,10 @@ public abstract class AbstractNautilus extends TamableAnimal implements PlayerRi
       return null;
    }
 
+   public SoundEvent getRidingSound() {
+      return SoundEvents.NAUTILUS_RIDING;
+   }
+
    @Override
    public InteractionResult interact(final Player player, final InteractionHand hand, final Vec3 location) {
       this.setPersistenceRequired();

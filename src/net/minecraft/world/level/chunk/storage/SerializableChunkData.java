@@ -441,7 +441,10 @@ public record SerializableChunkData(
          }
 
          if (this.noiseBiomeChunk != null) {
-            sectionTag.store("noise_biomes", noiseBiomeCodec, this.noiseBiomeChunk.getSection(section.y));
+            PalettedContainerRO<Holder<Biome>> biomeSection = this.noiseBiomeChunk.getSection(section.y);
+            if (biomeSection != null) {
+               sectionTag.store("noise_biomes", noiseBiomeCodec, biomeSection);
+            }
          }
 
          if (section.blockLight != null) {

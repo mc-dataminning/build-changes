@@ -35,25 +35,24 @@ public class FramerateLimitTracker {
 
    public FramerateLimitTracker.FramerateThrottleReason getThrottleReason() {
       InactivityFpsLimit inactivityFpsLimit = this.options.inactivityFpsLimit().get();
-      Window window = this.minecraft.getWindow();
-      if (!window.isIconified() && (window.isFocused() || !window.isExclusiveFullscreen())) {
-         if (inactivityFpsLimit == InactivityFpsLimit.AFK) {
-            long afkTimeMillis = Util.getMillis() - this.latestInputTime;
-            if (afkTimeMillis > 600000L) {
-               return FramerateLimitTracker.FramerateThrottleReason.LONG_AFK;
-            }
-
-            if (afkTimeMillis > 60000L) {
-               return FramerateLimitTracker.FramerateThrottleReason.SHORT_AFK;
-            }
-         }
-
-         return this.minecraft.level != null || this.minecraft.gui.screen() == null && this.minecraft.gui.overlay() == null
-            ? FramerateLimitTracker.FramerateThrottleReason.NONE
-            : FramerateLimitTracker.FramerateThrottleReason.OUT_OF_LEVEL_MENU;
-      } else {
+      if (this.minecraft.getWindow().isIconified()) {
          return FramerateLimitTracker.FramerateThrottleReason.WINDOW_ICONIFIED;
       }
+
+      if (inactivityFpsLimit == InactivityFpsLimit.AFK) {
+         long afkTimeMillis = Util.getMillis() - this.latestInputTime;
+         if (afkTimeMillis > 600000L) {
+            return FramerateLimitTracker.FramerateThrottleReason.LONG_AFK;
+         }
+
+         if (afkTimeMillis > 60000L) {
+            return FramerateLimitTracker.FramerateThrottleReason.SHORT_AFK;
+         }
+      }
+
+      return this.minecraft.level != null || this.minecraft.gui.screen() == null && this.minecraft.gui.overlay() == null
+         ? FramerateLimitTracker.FramerateThrottleReason.NONE
+         : FramerateLimitTracker.FramerateThrottleReason.OUT_OF_LEVEL_MENU;
    }
 
    public boolean isHeavilyThrottled() {

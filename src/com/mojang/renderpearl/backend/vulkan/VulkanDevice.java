@@ -20,6 +20,7 @@ import com.mojang.renderpearl.backend.api.GpuDeviceBackend;
 import com.mojang.renderpearl.backend.api.GpuSurfaceBackend;
 import com.mojang.renderpearl.backend.vulkan.checkpoints.CheckpointExtension;
 import com.mojang.renderpearl.backend.vulkan.init.FeatureSet;
+import com.mojang.renderpearl.util.PlatformUtil;
 import it.unimi.dsi.fastutil.ints.IntIntPair;
 import java.nio.ByteBuffer;
 import java.nio.LongBuffer;
@@ -30,7 +31,6 @@ import java.util.OptionalDouble;
 import java.util.Set;
 import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
-import net.minecraft.util.Util;
 import org.jspecify.annotations.Nullable;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.util.vma.Vma;
@@ -116,7 +116,7 @@ public class VulkanDevice implements GpuDeviceBackend {
             true
          ),
          Collections.unmodifiableSet(extensionNames),
-         new HintsAndWorkarounds(false, false, Util.isAppleSiliconMac(physicalDevice.deviceName()), false),
+         new HintsAndWorkarounds(false, false, PlatformUtil.isAppleSiliconMac(physicalDevice.deviceName()), false),
          physicalDevice.deviceType()
       );
       IntIntPair graphicsQueueFamily = physicalDevice.graphicsQueueFamilyAndIndex();

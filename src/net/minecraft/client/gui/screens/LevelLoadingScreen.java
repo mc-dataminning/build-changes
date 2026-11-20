@@ -154,7 +154,7 @@ public class LevelLoadingScreen extends Screen {
             TextureSetup textureSetup = TextureSetup.doubleTexture(
                skyTexture.getTextureView(), skyTexture.getSampler(), portalTexture.getTextureView(), portalTexture.getSampler()
             );
-            graphics.fill(RenderPipelines.END_PORTAL, textureSetup, 0, 0, this.width, this.height);
+            graphics.fill(RenderPipelines.END_PORTAL_GUI, textureSetup, 0, 0, this.width, this.height);
             break;
          case OTHER:
             this.extractPanorama(graphics, a);

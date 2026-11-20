@@ -288,7 +288,7 @@ public class ArmorStand extends LivingEntity {
       }
 
       if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
-         this.kill(level, source.getEntity());
+         this.kill(level, source);
          return false;
       }
 
@@ -298,7 +298,7 @@ public class ArmorStand extends LivingEntity {
 
       if (source.is(DamageTypeTags.IS_EXPLOSION)) {
          this.brokenByAnything(level, source);
-         this.kill(level, source.getEntity());
+         this.kill(level, source);
          return false;
       }
 
@@ -324,7 +324,7 @@ public class ArmorStand extends LivingEntity {
             if (source.isCreativePlayer()) {
                this.playBrokenSound();
                this.showBreakingParticles();
-               this.kill(level, source.getEntity());
+               this.kill(level, source);
                return true;
             }
 
@@ -336,7 +336,7 @@ public class ArmorStand extends LivingEntity {
             } else {
                this.brokenByPlayer(level, source);
                this.showBreakingParticles();
-               this.kill(level, source.getEntity());
+               this.kill(level, source);
             }
 
             return true;
@@ -389,7 +389,7 @@ public class ArmorStand extends LivingEntity {
       health -= dmg;
       if (health <= 0.5F) {
          this.brokenByAnything(level, source);
-         this.kill(level, source.getEntity());
+         this.kill(level, source);
       } else {
          this.setHealth(health);
          this.gameEvent(GameEvent.ENTITY_DAMAGE, source.getEntity());
@@ -469,9 +469,15 @@ public class ArmorStand extends LivingEntity {
       return this.isSmall();
    }
 
-   public void kill(final ServerLevel level, final @Nullable Entity attributedTo) {
+   protected void kill(final ServerLevel level, final DamageSource source) {
+      this.lastDamageSource = source;
+      this.kill(level);
+   }
+
+   @Override
+   public void kill(final ServerLevel level) {
       this.remove(Entity.RemovalReason.KILLED);
-      this.gameEvent(GameEvent.ENTITY_DIE, attributedTo != null ? attributedTo : this);
+      this.gameEvent(GameEvent.ENTITY_DIE);
    }
 
    @Override

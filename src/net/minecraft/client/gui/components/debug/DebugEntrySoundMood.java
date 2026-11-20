@@ -1,6 +1,5 @@
 package net.minecraft.client.gui.components.debug;
 
-import java.util.Locale;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.chunk.LevelChunk;
@@ -16,10 +15,8 @@ public class DebugEntrySoundMood implements DebugScreenEntry {
    ) {
       Minecraft minecraft = Minecraft.getInstance();
       if (minecraft.player != null) {
-         displayer.addLine(
-            minecraft.getSoundManager().getChannelDebugString()
-               + String.format(Locale.ROOT, " (Mood %d%%)", Math.round(minecraft.player.getCurrentMood() * 100.0F))
-         );
+         displayer.addFactToGroup(DebugGroups.MISC, "Sounds", fact -> minecraft.getSoundManager().fillChannelDebug(fact));
+         displayer.addFactToGroup(DebugGroups.MISC, "Mood", fact -> fact.formattedValue("%.2f", minecraft.player.getCurrentMood() * 100.0F).text("%"));
       }
    }
 }

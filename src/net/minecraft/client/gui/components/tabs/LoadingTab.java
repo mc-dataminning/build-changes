@@ -11,21 +11,14 @@ import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.network.chat.Component;
 
 public class LoadingTab implements Tab {
-   private final Component title;
    private final Component loadingTitle;
    protected final LinearLayout layout = LinearLayout.vertical();
 
-   public LoadingTab(final Font font, final Component title, final Component loadingTitle) {
-      this.title = title;
+   public LoadingTab(final Font font, final Component loadingTitle) {
       this.loadingTitle = loadingTitle;
       LoadingDotsWidget loadingDotsWidget = new LoadingDotsWidget(font, loadingTitle);
       this.layout.defaultCellSetting().alignVerticallyMiddle().alignHorizontallyCenter();
       this.layout.addChild(loadingDotsWidget, layoutSettings -> layoutSettings.paddingBottom(30));
-   }
-
-   @Override
-   public Component getTabTitle() {
-      return this.title;
    }
 
    @Override

@@ -164,187 +164,491 @@ public class MineshaftPieces {
 
       @Override
       public void addChildren(final StructurePiece startPiece, final StructurePiecesBuilder builder, final RandomSource random) {
-         int depth = this.getGenDepth();
-         int endSelection = random.nextInt(4);
-         Direction orientation = this.getOrientation();
-         if (orientation != null) {
-            switch (orientation) {
-               case NORTH:
-               default:
-                  if (endSelection <= 1) {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece,
-                        builder,
-                        random,
-                        this.boundingBox.minX(),
-                        this.boundingBox.minY() - 1 + random.nextInt(3),
-                        this.boundingBox.minZ() - 1,
-                        orientation,
-                        depth
-                     );
-                  } else if (endSelection == 2) {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece,
-                        builder,
-                        random,
-                        this.boundingBox.minX() - 1,
-                        this.boundingBox.minY() - 1 + random.nextInt(3),
-                        this.boundingBox.minZ(),
-                        Direction.WEST,
-                        depth
-                     );
-                  } else {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece,
-                        builder,
-                        random,
-                        this.boundingBox.maxX() + 1,
-                        this.boundingBox.minY() - 1 + random.nextInt(3),
-                        this.boundingBox.minZ(),
-                        Direction.EAST,
-                        depth
-                     );
-                  }
-                  break;
-               case SOUTH:
-                  if (endSelection <= 1) {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece,
-                        builder,
-                        random,
-                        this.boundingBox.minX(),
-                        this.boundingBox.minY() - 1 + random.nextInt(3),
-                        this.boundingBox.maxZ() + 1,
-                        orientation,
-                        depth
-                     );
-                  } else if (endSelection == 2) {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece,
-                        builder,
-                        random,
-                        this.boundingBox.minX() - 1,
-                        this.boundingBox.minY() - 1 + random.nextInt(3),
-                        this.boundingBox.maxZ() - 3,
-                        Direction.WEST,
-                        depth
-                     );
-                  } else {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece,
-                        builder,
-                        random,
-                        this.boundingBox.maxX() + 1,
-                        this.boundingBox.minY() - 1 + random.nextInt(3),
-                        this.boundingBox.maxZ() - 3,
-                        Direction.EAST,
-                        depth
-                     );
-                  }
-                  break;
-               case WEST:
-                  if (endSelection <= 1) {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece,
-                        builder,
-                        random,
-                        this.boundingBox.minX() - 1,
-                        this.boundingBox.minY() - 1 + random.nextInt(3),
-                        this.boundingBox.minZ(),
-                        orientation,
-                        depth
-                     );
-                  } else if (endSelection == 2) {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece,
-                        builder,
-                        random,
-                        this.boundingBox.minX(),
-                        this.boundingBox.minY() - 1 + random.nextInt(3),
-                        this.boundingBox.minZ() - 1,
-                        Direction.NORTH,
-                        depth
-                     );
-                  } else {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece,
-                        builder,
-                        random,
-                        this.boundingBox.minX(),
-                        this.boundingBox.minY() - 1 + random.nextInt(3),
-                        this.boundingBox.maxZ() + 1,
-                        Direction.SOUTH,
-                        depth
-                     );
-                  }
-                  break;
-               case EAST:
-                  if (endSelection <= 1) {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece,
-                        builder,
-                        random,
-                        this.boundingBox.maxX() + 1,
-                        this.boundingBox.minY() - 1 + random.nextInt(3),
-                        this.boundingBox.minZ(),
-                        orientation,
-                        depth
-                     );
-                  } else if (endSelection == 2) {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece,
-                        builder,
-                        random,
-                        this.boundingBox.maxX() - 3,
-                        this.boundingBox.minY() - 1 + random.nextInt(3),
-                        this.boundingBox.minZ() - 1,
-                        Direction.NORTH,
-                        depth
-                     );
-                  } else {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece,
-                        builder,
-                        random,
-                        this.boundingBox.maxX() - 3,
-                        this.boundingBox.minY() - 1 + random.nextInt(3),
-                        this.boundingBox.maxZ() + 1,
-                        Direction.SOUTH,
-                        depth
-                     );
-                  }
-            }
-         }
-
-         if (depth < 8) {
-            if (orientation != Direction.NORTH && orientation != Direction.SOUTH) {
-               for (int x = this.boundingBox.minX() + 3; x + 3 <= this.boundingBox.maxX(); x += 5) {
-                  int selection = random.nextInt(5);
-                  if (selection == 0) {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece, builder, random, x, this.boundingBox.minY(), this.boundingBox.minZ() - 1, Direction.NORTH, depth + 1
-                     );
-                  } else if (selection == 1) {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece, builder, random, x, this.boundingBox.minY(), this.boundingBox.maxZ() + 1, Direction.SOUTH, depth + 1
-                     );
-                  }
-               }
-            } else {
-               for (int z = this.boundingBox.minZ() + 3; z + 3 <= this.boundingBox.maxZ(); z += 5) {
-                  int selection = random.nextInt(5);
-                  if (selection == 0) {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece, builder, random, this.boundingBox.minX() - 1, this.boundingBox.minY(), z, Direction.WEST, depth + 1
-                     );
-                  } else if (selection == 1) {
-                     MineshaftPieces.generateAndAddPiece(
-                        startPiece, builder, random, this.boundingBox.maxX() + 1, this.boundingBox.minY(), z, Direction.EAST, depth + 1
-                     );
-                  }
-               }
-            }
-         }
+         // $VF: Couldn't be decompiled
+         // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+         //
+         // Bytecode:
+         // 000: aload 0
+         // 001: invokevirtual net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.getGenDepth ()I
+         // 004: istore 4
+         // 006: aload 3
+         // 007: bipush 4
+         // 008: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 00d: istore 5
+         // 00f: aload 0
+         // 010: invokevirtual net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.getOrientation ()Lnet/minecraft/core/Direction;
+         // 013: astore 6
+         // 015: aload 6
+         // 017: ifnull 2b1
+         // 01a: getstatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$1.$SwitchMap$net$minecraft$core$Direction [I
+         // 01d: aload 6
+         // 01f: invokevirtual net/minecraft/core/Direction.ordinal ()I
+         // 022: iaload
+         // 023: tableswitch 29 1 4 29 184 343 498
+         // 040: iload 5
+         // 042: bipush 1
+         // 043: if_icmpgt 075
+         // 046: aload 1
+         // 047: aload 2
+         // 048: aload 3
+         // 049: aload 0
+         // 04a: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 04d: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minX ()I
+         // 050: aload 0
+         // 051: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 054: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 057: bipush 1
+         // 058: isub
+         // 059: aload 3
+         // 05a: bipush 3
+         // 05b: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 060: iadd
+         // 061: aload 0
+         // 062: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 065: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minZ ()I
+         // 068: bipush 1
+         // 069: isub
+         // 06a: aload 6
+         // 06c: iload 4
+         // 06e: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 071: pop
+         // 072: goto 2b1
+         // 075: iload 5
+         // 077: bipush 2
+         // 078: if_icmpne 0ab
+         // 07b: aload 1
+         // 07c: aload 2
+         // 07d: aload 3
+         // 07e: aload 0
+         // 07f: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 082: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minX ()I
+         // 085: bipush 1
+         // 086: isub
+         // 087: aload 0
+         // 088: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 08b: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 08e: bipush 1
+         // 08f: isub
+         // 090: aload 3
+         // 091: bipush 3
+         // 092: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 097: iadd
+         // 098: aload 0
+         // 099: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 09c: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minZ ()I
+         // 09f: getstatic net/minecraft/core/Direction.WEST Lnet/minecraft/core/Direction;
+         // 0a2: iload 4
+         // 0a4: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 0a7: pop
+         // 0a8: goto 2b1
+         // 0ab: aload 1
+         // 0ac: aload 2
+         // 0ad: aload 3
+         // 0ae: aload 0
+         // 0af: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 0b2: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.maxX ()I
+         // 0b5: bipush 1
+         // 0b6: iadd
+         // 0b7: aload 0
+         // 0b8: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 0bb: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 0be: bipush 1
+         // 0bf: isub
+         // 0c0: aload 3
+         // 0c1: bipush 3
+         // 0c2: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 0c7: iadd
+         // 0c8: aload 0
+         // 0c9: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 0cc: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minZ ()I
+         // 0cf: getstatic net/minecraft/core/Direction.EAST Lnet/minecraft/core/Direction;
+         // 0d2: iload 4
+         // 0d4: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 0d7: pop
+         // 0d8: goto 2b1
+         // 0db: iload 5
+         // 0dd: bipush 1
+         // 0de: if_icmpgt 110
+         // 0e1: aload 1
+         // 0e2: aload 2
+         // 0e3: aload 3
+         // 0e4: aload 0
+         // 0e5: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 0e8: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minX ()I
+         // 0eb: aload 0
+         // 0ec: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 0ef: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 0f2: bipush 1
+         // 0f3: isub
+         // 0f4: aload 3
+         // 0f5: bipush 3
+         // 0f6: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 0fb: iadd
+         // 0fc: aload 0
+         // 0fd: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 100: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ ()I
+         // 103: bipush 1
+         // 104: iadd
+         // 105: aload 6
+         // 107: iload 4
+         // 109: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 10c: pop
+         // 10d: goto 2b1
+         // 110: iload 5
+         // 112: bipush 2
+         // 113: if_icmpne 148
+         // 116: aload 1
+         // 117: aload 2
+         // 118: aload 3
+         // 119: aload 0
+         // 11a: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 11d: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minX ()I
+         // 120: bipush 1
+         // 121: isub
+         // 122: aload 0
+         // 123: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 126: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 129: bipush 1
+         // 12a: isub
+         // 12b: aload 3
+         // 12c: bipush 3
+         // 12d: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 132: iadd
+         // 133: aload 0
+         // 134: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 137: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ ()I
+         // 13a: bipush 3
+         // 13b: isub
+         // 13c: getstatic net/minecraft/core/Direction.WEST Lnet/minecraft/core/Direction;
+         // 13f: iload 4
+         // 141: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 144: pop
+         // 145: goto 2b1
+         // 148: aload 1
+         // 149: aload 2
+         // 14a: aload 3
+         // 14b: aload 0
+         // 14c: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 14f: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.maxX ()I
+         // 152: bipush 1
+         // 153: iadd
+         // 154: aload 0
+         // 155: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 158: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 15b: bipush 1
+         // 15c: isub
+         // 15d: aload 3
+         // 15e: bipush 3
+         // 15f: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 164: iadd
+         // 165: aload 0
+         // 166: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 169: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ ()I
+         // 16c: bipush 3
+         // 16d: isub
+         // 16e: getstatic net/minecraft/core/Direction.EAST Lnet/minecraft/core/Direction;
+         // 171: iload 4
+         // 173: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 176: pop
+         // 177: goto 2b1
+         // 17a: iload 5
+         // 17c: bipush 1
+         // 17d: if_icmpgt 1af
+         // 180: aload 1
+         // 181: aload 2
+         // 182: aload 3
+         // 183: aload 0
+         // 184: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 187: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minX ()I
+         // 18a: bipush 1
+         // 18b: isub
+         // 18c: aload 0
+         // 18d: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 190: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 193: bipush 1
+         // 194: isub
+         // 195: aload 3
+         // 196: bipush 3
+         // 197: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 19c: iadd
+         // 19d: aload 0
+         // 19e: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 1a1: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minZ ()I
+         // 1a4: aload 6
+         // 1a6: iload 4
+         // 1a8: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 1ab: pop
+         // 1ac: goto 2b1
+         // 1af: iload 5
+         // 1b1: bipush 2
+         // 1b2: if_icmpne 1e5
+         // 1b5: aload 1
+         // 1b6: aload 2
+         // 1b7: aload 3
+         // 1b8: aload 0
+         // 1b9: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 1bc: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minX ()I
+         // 1bf: aload 0
+         // 1c0: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 1c3: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 1c6: bipush 1
+         // 1c7: isub
+         // 1c8: aload 3
+         // 1c9: bipush 3
+         // 1ca: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 1cf: iadd
+         // 1d0: aload 0
+         // 1d1: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 1d4: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minZ ()I
+         // 1d7: bipush 1
+         // 1d8: isub
+         // 1d9: getstatic net/minecraft/core/Direction.NORTH Lnet/minecraft/core/Direction;
+         // 1dc: iload 4
+         // 1de: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 1e1: pop
+         // 1e2: goto 2b1
+         // 1e5: aload 1
+         // 1e6: aload 2
+         // 1e7: aload 3
+         // 1e8: aload 0
+         // 1e9: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 1ec: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minX ()I
+         // 1ef: aload 0
+         // 1f0: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 1f3: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 1f6: bipush 1
+         // 1f7: isub
+         // 1f8: aload 3
+         // 1f9: bipush 3
+         // 1fa: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 1ff: iadd
+         // 200: aload 0
+         // 201: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 204: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ ()I
+         // 207: bipush 1
+         // 208: iadd
+         // 209: getstatic net/minecraft/core/Direction.SOUTH Lnet/minecraft/core/Direction;
+         // 20c: iload 4
+         // 20e: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 211: pop
+         // 212: goto 2b1
+         // 215: iload 5
+         // 217: bipush 1
+         // 218: if_icmpgt 24a
+         // 21b: aload 1
+         // 21c: aload 2
+         // 21d: aload 3
+         // 21e: aload 0
+         // 21f: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 222: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.maxX ()I
+         // 225: bipush 1
+         // 226: iadd
+         // 227: aload 0
+         // 228: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 22b: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 22e: bipush 1
+         // 22f: isub
+         // 230: aload 3
+         // 231: bipush 3
+         // 232: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 237: iadd
+         // 238: aload 0
+         // 239: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 23c: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minZ ()I
+         // 23f: aload 6
+         // 241: iload 4
+         // 243: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 246: pop
+         // 247: goto 2b1
+         // 24a: iload 5
+         // 24c: bipush 2
+         // 24d: if_icmpne 282
+         // 250: aload 1
+         // 251: aload 2
+         // 252: aload 3
+         // 253: aload 0
+         // 254: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 257: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.maxX ()I
+         // 25a: bipush 3
+         // 25b: isub
+         // 25c: aload 0
+         // 25d: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 260: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 263: bipush 1
+         // 264: isub
+         // 265: aload 3
+         // 266: bipush 3
+         // 267: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 26c: iadd
+         // 26d: aload 0
+         // 26e: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 271: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minZ ()I
+         // 274: bipush 1
+         // 275: isub
+         // 276: getstatic net/minecraft/core/Direction.NORTH Lnet/minecraft/core/Direction;
+         // 279: iload 4
+         // 27b: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 27e: pop
+         // 27f: goto 2b1
+         // 282: aload 1
+         // 283: aload 2
+         // 284: aload 3
+         // 285: aload 0
+         // 286: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 289: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.maxX ()I
+         // 28c: bipush 3
+         // 28d: isub
+         // 28e: aload 0
+         // 28f: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 292: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 295: bipush 1
+         // 296: isub
+         // 297: aload 3
+         // 298: bipush 3
+         // 299: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 29e: iadd
+         // 29f: aload 0
+         // 2a0: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 2a3: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ ()I
+         // 2a6: bipush 1
+         // 2a7: iadd
+         // 2a8: getstatic net/minecraft/core/Direction.SOUTH Lnet/minecraft/core/Direction;
+         // 2ab: iload 4
+         // 2ad: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 2b0: pop
+         // 2b1: iload 4
+         // 2b3: bipush 8
+         // 2b5: if_icmpge 3b7
+         // 2b8: aload 6
+         // 2ba: getstatic net/minecraft/core/Direction.NORTH Lnet/minecraft/core/Direction;
+         // 2bd: if_acmpeq 2c8
+         // 2c0: aload 6
+         // 2c2: getstatic net/minecraft/core/Direction.SOUTH Lnet/minecraft/core/Direction;
+         // 2c5: if_acmpne 341
+         // 2c8: aload 0
+         // 2c9: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 2cc: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minZ ()I
+         // 2cf: bipush 3
+         // 2d0: iadd
+         // 2d1: istore 7
+         // 2d3: iload 7
+         // 2d5: bipush 3
+         // 2d6: iadd
+         // 2d7: aload 0
+         // 2d8: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 2db: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ ()I
+         // 2de: if_icmpgt 33e
+         // 2e1: aload 3
+         // 2e2: bipush 5
+         // 2e3: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 2e8: istore 8
+         // 2ea: iload 8
+         // 2ec: ifne 312
+         // 2ef: aload 1
+         // 2f0: aload 2
+         // 2f1: aload 3
+         // 2f2: aload 0
+         // 2f3: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 2f6: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minX ()I
+         // 2f9: bipush 1
+         // 2fa: isub
+         // 2fb: aload 0
+         // 2fc: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 2ff: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 302: iload 7
+         // 304: getstatic net/minecraft/core/Direction.WEST Lnet/minecraft/core/Direction;
+         // 307: iload 4
+         // 309: bipush 1
+         // 30a: iadd
+         // 30b: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 30e: pop
+         // 30f: goto 338
+         // 312: iload 8
+         // 314: bipush 1
+         // 315: if_icmpne 338
+         // 318: aload 1
+         // 319: aload 2
+         // 31a: aload 3
+         // 31b: aload 0
+         // 31c: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 31f: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.maxX ()I
+         // 322: bipush 1
+         // 323: iadd
+         // 324: aload 0
+         // 325: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 328: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 32b: iload 7
+         // 32d: getstatic net/minecraft/core/Direction.EAST Lnet/minecraft/core/Direction;
+         // 330: iload 4
+         // 332: bipush 1
+         // 333: iadd
+         // 334: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 337: pop
+         // 338: iinc 7 5
+         // 33b: goto 2d3
+         // 33e: goto 3b7
+         // 341: aload 0
+         // 342: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 345: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minX ()I
+         // 348: bipush 3
+         // 349: iadd
+         // 34a: istore 7
+         // 34c: iload 7
+         // 34e: bipush 3
+         // 34f: iadd
+         // 350: aload 0
+         // 351: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 354: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.maxX ()I
+         // 357: if_icmpgt 3b7
+         // 35a: aload 3
+         // 35b: bipush 5
+         // 35c: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 361: istore 8
+         // 363: iload 8
+         // 365: ifne 38b
+         // 368: aload 1
+         // 369: aload 2
+         // 36a: aload 3
+         // 36b: iload 7
+         // 36d: aload 0
+         // 36e: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 371: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 374: aload 0
+         // 375: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 378: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minZ ()I
+         // 37b: bipush 1
+         // 37c: isub
+         // 37d: getstatic net/minecraft/core/Direction.NORTH Lnet/minecraft/core/Direction;
+         // 380: iload 4
+         // 382: bipush 1
+         // 383: iadd
+         // 384: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 387: pop
+         // 388: goto 3b1
+         // 38b: iload 8
+         // 38d: bipush 1
+         // 38e: if_icmpne 3b1
+         // 391: aload 1
+         // 392: aload 2
+         // 393: aload 3
+         // 394: iload 7
+         // 396: aload 0
+         // 397: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 39a: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.minY ()I
+         // 39d: aload 0
+         // 39e: getfield net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftCorridor.boundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+         // 3a1: invokevirtual net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ ()I
+         // 3a4: bipush 1
+         // 3a5: iadd
+         // 3a6: getstatic net/minecraft/core/Direction.SOUTH Lnet/minecraft/core/Direction;
+         // 3a9: iload 4
+         // 3ab: bipush 1
+         // 3ac: iadd
+         // 3ad: invokestatic net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces.generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
+         // 3b0: pop
+         // 3b1: iinc 7 5
+         // 3b4: goto 34c
+         // 3b7: return
       }
 
       @Override

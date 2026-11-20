@@ -78,11 +78,9 @@ public class StatsScreen extends Screen {
    protected void init() {
       Component loadingTitle = PENDING_TEXT;
       this.tabNavigationBar = MenuTabBar.builder(this.tabManager, this.width)
-         .addTabs(
-            new LoadingTab(this.getFont(), GENERAL_BUTTON, loadingTitle),
-            new LoadingTab(this.getFont(), ITEMS_BUTTON, loadingTitle),
-            new LoadingTab(this.getFont(), MOBS_BUTTON, loadingTitle)
-         )
+         .addTab(GENERAL_BUTTON, new LoadingTab(this.getFont(), loadingTitle))
+         .addTab(ITEMS_BUTTON, new LoadingTab(this.getFont(), loadingTitle))
+         .addTab(MOBS_BUTTON, new LoadingTab(this.getFont(), loadingTitle))
          .build();
       this.addRenderableWidget(this.tabNavigationBar);
       this.layout.addToFooter(Button.builder(CommonComponents.GUI_DONE, button -> this.onClose()).width(200).build());
@@ -105,11 +103,9 @@ public class StatsScreen extends Screen {
          }
 
          this.tabNavigationBar = MenuTabBar.builder(this.tabManager, this.width)
-            .addTabs(
-               new StatsScreen.StatisticsTab(GENERAL_BUTTON, new StatsScreen.GeneralStatisticsList(this.minecraft)),
-               new StatsScreen.StatisticsTab(ITEMS_BUTTON, new StatsScreen.ItemStatisticsList(this.minecraft)),
-               new StatsScreen.StatisticsTab(MOBS_BUTTON, new StatsScreen.MobsStatisticsList(this.minecraft))
-            )
+            .addTab(GENERAL_BUTTON, new StatsScreen.StatisticsTab(new StatsScreen.GeneralStatisticsList(this.minecraft)))
+            .addTab(ITEMS_BUTTON, new StatsScreen.StatisticsTab(new StatsScreen.ItemStatisticsList(this.minecraft)))
+            .addTab(MOBS_BUTTON, new StatsScreen.StatisticsTab(new StatsScreen.MobsStatisticsList(this.minecraft)))
             .build();
          this.setFocused(this.tabNavigationBar);
          this.addRenderableWidget(this.tabNavigationBar);
@@ -608,8 +604,7 @@ public class StatsScreen extends Screen {
    private class StatisticsTab extends GridLayoutTab {
       protected final AbstractSelectionList<?> list;
 
-      public StatisticsTab(final Component title, final AbstractSelectionList<?> list) {
-         super(title);
+      public StatisticsTab(final AbstractSelectionList<?> list) {
          this.layout.addChild(list, 1, 1);
          this.list = list;
       }

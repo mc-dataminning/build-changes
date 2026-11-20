@@ -142,8 +142,8 @@ public class BookViewScreen extends Screen {
    }
 
    private void updateButtonVisibility() {
-      this.forwardButton.visible = this.currentPage < this.getNumPages() - 1;
-      this.backButton.visible = this.currentPage > 0;
+      this.forwardButton.setVisible(this.currentPage < this.getNumPages() - 1);
+      this.backButton.setVisible(this.currentPage > 0);
    }
 
    @Override

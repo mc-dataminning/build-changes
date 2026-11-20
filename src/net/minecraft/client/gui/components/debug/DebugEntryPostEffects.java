@@ -19,7 +19,9 @@ public class DebugEntryPostEffects implements DebugScreenEntry {
       Minecraft minecraft = Minecraft.getInstance();
       List<Identifier> effectIds = minecraft.gameRenderer.getAppliedPostEffects();
       if (!effectIds.isEmpty()) {
-         displayer.addLine("Post: " + effectIds.stream().map(Identifier::toString).collect(Collectors.joining(", ")));
+         displayer.addFactToGroup(
+            DebugGroups.MISC, "Post Effects", fact -> fact.value(effectIds.stream().map(Identifier::toString).collect(Collectors.joining(", ")))
+         );
       }
    }
 }

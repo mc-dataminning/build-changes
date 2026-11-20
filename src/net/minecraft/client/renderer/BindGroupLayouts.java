@@ -15,6 +15,12 @@ public class BindGroupLayouts {
    public static final BindGroupLayout SAMPLER0 = BindGroupLayout.builder().withUniform("Sampler0", UniformType.COMBINED_IMAGE_SAMPLER).build();
    public static final BindGroupLayout SAMPLER1 = BindGroupLayout.builder().withUniform("Sampler1", UniformType.COMBINED_IMAGE_SAMPLER).build();
    public static final BindGroupLayout SAMPLER2 = BindGroupLayout.builder().withUniform("Sampler2", UniformType.COMBINED_IMAGE_SAMPLER).build();
+   public static final BindGroupLayout SKY_SAMPLER = BindGroupLayout.builder().withUniform("SkySampler", UniformType.COMBINED_IMAGE_SAMPLER).build();
+   public static final BindGroupLayout SKY_CLOUDS_SAMPLER = BindGroupLayout.builder()
+      .withUniform("SkySampler", UniformType.COMBINED_IMAGE_SAMPLER)
+      .withUniform("CloudsSampler", UniformType.COMBINED_IMAGE_SAMPLER)
+      .withUniform("CloudsDepthSampler", UniformType.COMBINED_IMAGE_SAMPLER)
+      .build();
    public static final BindGroupLayout SAMPLER0_SAMPLER2 = BindGroupLayout.builder()
       .withUniform("Sampler0", UniformType.COMBINED_IMAGE_SAMPLER)
       .withUniform("Sampler2", UniformType.COMBINED_IMAGE_SAMPLER)
@@ -36,6 +42,11 @@ public class BindGroupLayouts {
       .withUniform("DissolveMaskSampler", UniformType.COMBINED_IMAGE_SAMPLER)
       .build();
    public static final BindGroupLayout IN_SAMPLER = BindGroupLayout.builder().withUniform("InSampler", UniformType.COMBINED_IMAGE_SAMPLER).build();
+   public static final BindGroupLayout IN_SAMPLER_IN_DEPTH_SAMPLER = BindGroupLayout.builder()
+      .withUniform("InSampler", UniformType.COMBINED_IMAGE_SAMPLER)
+      .withUniform("InDepthSampler", UniformType.COMBINED_IMAGE_SAMPLER)
+      .build();
+   public static final BindGroupLayout SKY_OCCLUDER_INFO = BindGroupLayout.builder().withUniform("SkyOccluderInfo", UniformType.UNIFORM_BUFFER).build();
    public static final BindGroupLayout LIGHTMAP_INFO = BindGroupLayout.builder().withUniform("LightmapInfo", UniformType.UNIFORM_BUFFER).build();
    public static final BindGroupLayout SPRITE_ANIMATION_INFO = BindGroupLayout.builder().withUniform("SpriteAnimationInfo", UniformType.UNIFORM_BUFFER).build();
    public static final BindGroupLayout SPRITE = BindGroupLayout.builder().withUniform("Sprite", UniformType.COMBINED_IMAGE_SAMPLER).build();
@@ -50,7 +61,6 @@ public class BindGroupLayouts {
    public static final BindGroupLayout OIT_COEFFS_DEPTH_BOUNDS_SAMPLER;
    public static final BindGroupLayout SAMPLER0_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER;
    public static final BindGroupLayout SAMPLER0_SAMPLER2_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER;
-   public static final BindGroupLayout CLOUD_INFO_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER;
 
    private BindGroupLayouts() {
    }
@@ -82,15 +92,5 @@ public class BindGroupLayouts {
       }
 
       SAMPLER0_SAMPLER2_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER = builder.build();
-      builder = BindGroupLayout.builder()
-         .withUniform("CloudInfo", UniformType.UNIFORM_BUFFER)
-         .withUniform("CloudFaces", UniformType.TEXEL_BUFFER, GpuFormat.R8_SINT)
-         .withUniform("DepthBoundsSampler", UniformType.COMBINED_IMAGE_SAMPLER);
-
-      for (int i = 0; i < 2; i++) {
-         builder.withUniform("Bins" + i, UniformType.COMBINED_IMAGE_SAMPLER);
-      }
-
-      CLOUD_INFO_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER = builder.build();
    }
 }

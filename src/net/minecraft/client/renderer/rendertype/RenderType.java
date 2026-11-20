@@ -2,7 +2,6 @@ package net.minecraft.client.renderer.rendertype;
 
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.systems.ScissorState;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.pipeline.ColorTargetState;
@@ -67,12 +66,7 @@ public class RenderType {
             minecraft.gameRenderer.lightmap()
          );
       return new PreparedRenderType(
-         this.name,
-         this.state.pipeline,
-         this.state.oitPipelineSet,
-         this.writeDynamicTransforms(RenderSystem.getModelViewMatrixCopy()),
-         new ScissorState(RenderSystem.getScissorStateForRenderTypeDraws()),
-         textures
+         this.name, this.state.pipeline, this.state.oitPipelineSet, this.writeDynamicTransforms(RenderSystem.getModelViewMatrixCopy()), textures
       );
    }
 

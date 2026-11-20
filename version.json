@@ -199,7 +199,11 @@
             }
           }
         ],
-        "value": "-Xss1M"
+        "value": [
+          "-Xss1M",
+          "-XX:+UnlockDiagnosticVMOptions",
+          "-XX:-UseBASE64Intrinsics"
+        ]
       },
       "-XX:StackShadowPages=32",
       "--enable-native-access=ALL-UNNAMED",
@@ -217,26 +221,26 @@
   },
   "assetIndex": {
     "id": "35",
-    "sha1": "91cc37ae51ad43de461c33c040afea26dfbced25",
-    "size": 595439,
-    "totalSize": 474383120,
-    "url": "https://piston-meta.mojang.com/v1/packages/91cc37ae51ad43de461c33c040afea26dfbced25/35.json"
+    "sha1": "f425dfa52dd14851a150e0bd12c31d54343074df",
+    "size": 606444,
+    "totalSize": 479696664,
+    "url": "https://piston-meta.mojang.com/v1/packages/f425dfa52dd14851a150e0bd12c31d54343074df/35.json"
   },
   "assets": "35",
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "99dea8ec5ae3c5adc7d246061a90960e7d8441c3",
-      "size": 41549885,
-      "url": "https://piston-data.mojang.com/v1/objects/99dea8ec5ae3c5adc7d246061a90960e7d8441c3/client.jar"
+      "sha1": "57390e151851510972714846a752c6b8307f7fae",
+      "size": 41582220,
+      "url": "https://piston-data.mojang.com/v1/objects/57390e151851510972714846a752c6b8307f7fae/client.jar"
     },
     "server": {
-      "sha1": "1c5ef8ced87763278a406812e7f0932384c3bb44",
-      "size": 62324106,
-      "url": "https://piston-data.mojang.com/v1/objects/1c5ef8ced87763278a406812e7f0932384c3bb44/server.jar"
+      "sha1": "e6cac6e2fa35d5847e60dede721ec75f7a28c34d",
+      "size": 62330081,
+      "url": "https://piston-data.mojang.com/v1/objects/e6cac6e2fa35d5847e60dede721ec75f7a28c34d/server.jar"
     }
   },
-  "id": "26.4-snapshot-1",
+  "id": "26.4-snapshot-2",
   "javaVersion": {
     "component": "java-runtime-epsilon",
     "majorVersion": 25
@@ -1999,7 +2003,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2026-09-22T13:38:53+00:00",
-  "time": "2026-09-22T13:38:53+00:00",
+  "releaseTime": "2026-09-29T11:32:57+00:00",
+  "time": "2026-09-29T11:32:57+00:00",
   "type": "snapshot"
 }

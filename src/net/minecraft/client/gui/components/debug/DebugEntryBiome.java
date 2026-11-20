@@ -1,11 +1,9 @@
 package net.minecraft.client.gui.components.debug;
 
-import java.util.List;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
@@ -14,8 +12,6 @@ import net.minecraft.world.level.chunk.LevelChunk;
 import org.jspecify.annotations.Nullable;
 
 public class DebugEntryBiome implements DebugScreenEntry {
-   private static final Identifier GROUP = Identifier.withDefaultNamespace("biome");
-
    @Override
    public void display(
       final DebugScreenDisplayer displayer,
@@ -29,12 +25,10 @@ public class DebugEntryBiome implements DebugScreenEntry {
          BlockPos feetPos = entity.blockPosition();
          if (minecraft.level.isInsideBuildHeight(feetPos.getY())) {
             if (SharedConstants.DEBUG_SHOW_SERVER_DEBUG_VALUES && serverOrClientLevel instanceof ServerLevel) {
-               displayer.addToGroup(
-                  GROUP,
-                  List.of("Biome: " + printBiome(minecraft.level.getBiome(feetPos)), "Server Biome: " + printBiome(serverOrClientLevel.getBiome(feetPos)))
-               );
+               displayer.addFactToGroup(DebugGroups.POSITION, "Client Biome", fact -> fact.value(printBiome(minecraft.level.getBiome(feetPos))));
+               displayer.addFactToGroup(DebugGroups.POSITION, "Server Biome", fact -> fact.value(printBiome(serverOrClientLevel.getBiome(feetPos))));
             } else {
-               displayer.addLine("Biome: " + printBiome(minecraft.level.getBiome(feetPos)));
+               displayer.addFactToGroup(DebugGroups.POSITION, "Biome", fact -> fact.value(printBiome(minecraft.level.getBiome(feetPos))));
             }
          }
       }

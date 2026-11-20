@@ -192,6 +192,10 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
       }
 
       boolean quickKey = containerInput == ContainerInput.QUICK_MOVE;
+      if (quickKey) {
+         this.updateLastQuickMoved(slot);
+      }
+
       containerInput = slotId == -999 && containerInput == ContainerInput.PICKUP ? ContainerInput.THROW : containerInput;
       if (containerInput != ContainerInput.THROW || this.minecraft.player.canDropItems()) {
          this.onMouseClickAction(slot, containerInput);
@@ -645,8 +649,8 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
    }
 
    @Override
-   protected boolean hasClickedOutside(final double mx, final double my, final int xo, final int yo) {
-      boolean clickedOutside = mx < xo || my < yo || mx >= xo + this.imageWidth || my >= yo + this.imageHeight;
+   protected boolean hasClickedOutside(final double mx, final double my) {
+      boolean clickedOutside = super.hasClickedOutside(mx, my);
       this.hasClickedOutside = clickedOutside && !this.checkTabClicked(selectedTab, mx, my);
       return this.hasClickedOutside;
    }

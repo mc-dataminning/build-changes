@@ -36,10 +36,12 @@ public class KeyMapping implements Comparable<KeyMapping> {
    }
 
    private static void forAllKeyMappings(final InputConstants.Key key, final Consumer<KeyMapping> operation) {
-      List<KeyMapping> keyMappings = MAP.get(key);
-      if (keyMappings != null && !keyMappings.isEmpty()) {
-         for (KeyMapping keyMapping : keyMappings) {
-            operation.accept(keyMapping);
+      if (!key.equals(InputConstants.UNKNOWN)) {
+         List<KeyMapping> keyMappings = MAP.get(key);
+         if (keyMappings != null && !keyMappings.isEmpty()) {
+            for (KeyMapping keyMapping : keyMappings) {
+               operation.accept(keyMapping);
+            }
          }
       }
    }

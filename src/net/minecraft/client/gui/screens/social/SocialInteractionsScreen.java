@@ -239,7 +239,7 @@ public class SocialInteractionsScreen extends Screen {
          graphics.centeredText(this.minecraft.font, EMPTY_BLOCKED, this.width / 2, (72 + this.listEnd()) / 2, -1);
       }
 
-      this.blockingHintButton.visible = this.page == SocialInteractionsScreen.Page.BLOCKED;
+      this.blockingHintButton.setVisible(this.page == SocialInteractionsScreen.Page.BLOCKED);
    }
 
    @Override

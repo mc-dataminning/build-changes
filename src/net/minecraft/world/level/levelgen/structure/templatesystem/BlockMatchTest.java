@@ -7,13 +7,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BlockMatchTest extends RuleTest {
+public record BlockMatchTest(Block block) implements RuleTest {
    public static final MapCodec<BlockMatchTest> CODEC = BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").xmap(BlockMatchTest::new, t -> t.block);
-   private final Block block;
-
-   public BlockMatchTest(final Block block) {
-      this.block = block;
-   }
 
    @Override
    public boolean test(final BlockState blockState, final BlockPos pos, final RandomSource random) {
@@ -21,7 +16,7 @@ public class BlockMatchTest extends RuleTest {
    }
 
    @Override
-   protected RuleTestType<?> getType() {
-      return RuleTestType.BLOCK_TEST;
+   public MapCodec<BlockMatchTest> codec() {
+      return CODEC;
    }
 }

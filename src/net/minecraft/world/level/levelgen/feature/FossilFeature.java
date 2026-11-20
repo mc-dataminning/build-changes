@@ -60,8 +60,8 @@ public record FossilFeature(
       Rotation rotation = Rotation.getRandom(random);
       int fossilIndex = random.nextInt(this.fossilStructures().size());
       StructureTemplateManager structureTemplateManager = level.getLevel().getServer().getStructureTemplateManager();
-      StructureTemplate fossilBase = structureTemplateManager.getOrCreate(this.fossilStructures().get(fossilIndex));
-      StructureTemplate fossilOverlay = structureTemplateManager.getOrCreate(this.overlayStructures().get(fossilIndex));
+      StructureTemplate fossilBase = structureTemplateManager.getOrEmpty(this.fossilStructures().get(fossilIndex));
+      StructureTemplate fossilOverlay = structureTemplateManager.getOrEmpty(this.overlayStructures().get(fossilIndex));
       ChunkPos chunkPos = ChunkPos.containing(origin);
       BoundingBox boundingBox = new BoundingBox(
          chunkPos.getMinBlockX() - 16,

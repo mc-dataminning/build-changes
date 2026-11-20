@@ -474,8 +474,15 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
             backendToTry.loadLibrary();
             libraryLoaded = true;
             device = backendToTry.createDevice(
+               "Minecraft Java Edition",
+               SharedConstants.getCurrentVersion().dataVersion().version(),
                new GpuDebugOptions(
-                  this.options.glDebugVerbosity, SharedConstants.DEBUG_SYNCHRONOUS_GL_LOGS, gameConfig.game.renderDebugLabels, gameConfig.game.vulkanValidation
+                  this.options.glDebugVerbosity,
+                  SharedConstants.DEBUG_SYNCHRONOUS_GL_LOGS,
+                  gameConfig.game.renderDebugLabels,
+                  gameConfig.game.vulkanValidation,
+                  SharedConstants.IS_RENDERDOC_ATTACHED,
+                  SharedConstants.IS_RUNNING_IN_IDE
                )
             );
             backend = backendToTry;
@@ -1576,9 +1583,6 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
    public void pauseGame(final boolean suppressPauseMenuIfWeReallyArePausing) {
       boolean canGameReallyBePaused = this.hasSingleplayerServer() && !this.singleplayerServer.isPublished();
       this.gui.setPauseScreen(suppressPauseMenuIfWeReallyArePausing, canGameReallyBePaused);
-      if (this.gameMode != null) {
-         this.gameMode.stopDestroyBlock();
-      }
    }
 
    private void continueAttack(final boolean down) {

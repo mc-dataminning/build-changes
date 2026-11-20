@@ -150,15 +150,15 @@ public record NoiseGeneratorSettings(
          false,
          new NoiseGeneratorSettings.DebugFunctions(
             List.of(
-               new NoiseGeneratorSettings.DebugFunctionEntry("N", router.finalDensity()),
-               new NoiseGeneratorSettings.DebugFunctionEntry("T", router.temperature()),
-               new NoiseGeneratorSettings.DebugFunctionEntry("V", router.vegetation()),
-               new NoiseGeneratorSettings.DebugFunctionEntry("C", router.continents()),
-               new NoiseGeneratorSettings.DebugFunctionEntry("E", router.erosion()),
-               new NoiseGeneratorSettings.DebugFunctionEntry("D", router.depth()),
-               new NoiseGeneratorSettings.DebugFunctionEntry("W", router.ridges()),
-               new NoiseGeneratorSettings.DebugFunctionEntry("PV", NoiseRouterData.peaksAndValleys(router.ridges())),
-               new NoiseGeneratorSettings.DebugFunctionEntry("PS", NoiseRouterData.getFunction(functions, functionNames.preliminarySurfaceLevel()))
+               new NoiseGeneratorSettings.DebugFunctionEntry("Final density", router.finalDensity()),
+               new NoiseGeneratorSettings.DebugFunctionEntry("Temperature", router.temperature()),
+               new NoiseGeneratorSettings.DebugFunctionEntry("Vegitation", router.vegetation()),
+               new NoiseGeneratorSettings.DebugFunctionEntry("Contintents", router.continents()),
+               new NoiseGeneratorSettings.DebugFunctionEntry("Erosion", router.erosion()),
+               new NoiseGeneratorSettings.DebugFunctionEntry("Depth", router.depth()),
+               new NoiseGeneratorSettings.DebugFunctionEntry("Ridges", router.ridges()),
+               new NoiseGeneratorSettings.DebugFunctionEntry("Peaks/Valleys", NoiseRouterData.peaksAndValleys(router.ridges())),
+               new NoiseGeneratorSettings.DebugFunctionEntry("Prelim Surface", NoiseRouterData.getFunction(functions, functionNames.preliminarySurfaceLevel()))
             )
          )
       );

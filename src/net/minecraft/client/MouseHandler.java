@@ -376,17 +376,22 @@ public class MouseHandler {
          try {
             FloatBuffer x = stack.mallocFloat(1);
             FloatBuffer y = stack.mallocFloat(1);
-            IntBuffer windowX = stack.mallocInt(1);
-            IntBuffer windowY = stack.mallocInt(1);
-            SDLMouse.SDL_GetGlobalMouseState(x, y);
-            if (SDLVideo.SDL_GetWindowPosition(this.minecraft.getWindow().handle(), windowX, windowY)) {
-               this.xpos = x.get(0) - windowX.get(0);
-               this.ypos = y.get(0) - windowY.get(0);
-            } else {
+            if (this.minecraft.getWindow().isWayland()) {
                SDLMouse.SDL_GetMouseState(x, y);
-               this.xpos = x.get(0);
-               this.ypos = y.get(0);
+            } else {
+               IntBuffer windowX = stack.mallocInt(1);
+               IntBuffer windowY = stack.mallocInt(1);
+               SDLMouse.SDL_GetGlobalMouseState(x, y);
+               if (SDLVideo.SDL_GetWindowPosition(this.minecraft.getWindow().handle(), windowX, windowY)) {
+                  x.put(0, x.get(0) - windowX.get(0));
+                  y.put(0, y.get(0) - windowY.get(0));
+               } else {
+                  SDLMouse.SDL_GetMouseState(x, y);
+               }
             }
+
+            this.xpos = x.get(0);
+            this.ypos = y.get(0);
          } catch (Throwable var7) {
             if (stack != null) {
                try {
@@ -407,6 +412,13 @@ public class MouseHandler {
 
    public boolean isMouseGrabbed() {
       return this.mouseGrabbed;
+   }
+
+   public void refreshMouseState() {
+      if (this.mouseGrabbed) {
+         Window window = this.minecraft.getWindow();
+         InputConstants.grabMouse(window, window.getScreenWidth() / 2.0, window.getScreenHeight() / 2.0);
+      }
    }
 
    public void grabMouse() {

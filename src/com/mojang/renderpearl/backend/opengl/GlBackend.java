@@ -66,7 +66,7 @@ public class GlBackend implements GpuBackend {
    }
 
    @Override
-   public GpuDevice createDevice(final GpuDebugOptions debugOptions) throws BackendCreationException {
-      return new FrontendGpuDevice(new GlDevice(this, debugOptions));
+   public GpuDevice createDevice(final String applicationName, final int applicationVersion, final GpuDebugOptions debugOptions) throws BackendCreationException {
+      return new FrontendGpuDevice(new GlDevice(this, debugOptions), debugOptions);
    }
 }

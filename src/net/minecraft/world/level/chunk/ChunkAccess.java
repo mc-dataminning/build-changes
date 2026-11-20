@@ -176,17 +176,22 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
       return this.heightmaps.get(type) != null;
    }
 
-   public int getHeight(final Heightmap.Types type, final int x, final int z) {
+   public Heightmap getHeightmap(final Heightmap.Types type) {
       Heightmap heightmap = this.heightmaps.get(type);
       if (heightmap == null) {
          if (SharedConstants.IS_RUNNING_IN_IDE && this instanceof LevelChunk) {
-            LOGGER.error("Unprimed heightmap: {} {} {}", new Object[]{type, x, z});
+            LOGGER.error("Unprimed heightmap: {} {} {}", new Object[]{type, this.chunkPos.x(), this.chunkPos.z()});
          }
 
          Heightmap.primeHeightmaps(this, EnumSet.of(type));
          heightmap = this.heightmaps.get(type);
       }
 
+      return heightmap;
+   }
+
+   public int getHeight(final Heightmap.Types type, final int x, final int z) {
+      Heightmap heightmap = this.getHeightmap(type);
       return heightmap.getFirstAvailable(x & 15, z & 15) - 1;
    }
 

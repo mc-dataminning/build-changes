@@ -1,12 +1,9 @@
 package net.minecraft.client.gui.components.debug;
 
 import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.chunk.LevelChunk;
@@ -17,20 +14,19 @@ public class DebugEntryHeightmap implements DebugScreenEntry {
    private static final Map<Heightmap.Types, String> HEIGHTMAP_NAMES = Maps.newEnumMap(
       Map.of(
          Heightmap.Types.WORLD_SURFACE_WG,
-         "SW",
+         "(WG) Surface",
          Heightmap.Types.WORLD_SURFACE,
-         "S",
+         "Surface",
          Heightmap.Types.OCEAN_FLOOR_WG,
-         "OW",
+         "(WG) Ocean Floor",
          Heightmap.Types.OCEAN_FLOOR,
-         "O",
+         "Ocean Floor",
          Heightmap.Types.MOTION_BLOCKING,
-         "M",
+         "Motion",
          Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-         "ML"
+         "Motion (w/o Leaves)"
       )
    );
-   private static final Identifier GROUP = Identifier.withDefaultNamespace("heightmaps");
 
    @Override
    public void display(
@@ -43,32 +39,21 @@ public class DebugEntryHeightmap implements DebugScreenEntry {
       Entity entity = minecraft.getCameraEntity();
       if (entity != null && minecraft.level != null && clientChunk != null) {
          BlockPos feetPos = entity.blockPosition();
-         List<String> result = new ArrayList<>();
-         StringBuilder heightmaps = new StringBuilder("CH");
 
          for (Heightmap.Types type : Heightmap.Types.values()) {
-            if (type.sendToClient()) {
-               heightmaps.append(" ").append(HEIGHTMAP_NAMES.get(type)).append(": ").append(clientChunk.getHeight(type, feetPos.getX(), feetPos.getZ()));
-            }
-         }
-
-         result.add(heightmaps.toString());
-         heightmaps.setLength(0);
-         heightmaps.append("SH");
-
-         for (Heightmap.Types type : Heightmap.Types.values()) {
-            if (type.keepAfterWorldgen()) {
-               heightmaps.append(" ").append(HEIGHTMAP_NAMES.get(type)).append(": ");
-               if (serverChunk != null) {
-                  heightmaps.append(serverChunk.getHeight(type, feetPos.getX(), feetPos.getZ()));
-               } else {
-                  heightmaps.append("??");
+            displayer.addFactToGroup(DebugGroups.HEIGHTMAP, HEIGHTMAP_NAMES.get(type), fact -> {
+               int clientHeight = clientChunk.getHeight(type, feetPos.getX(), feetPos.getZ());
+               int serverHeight = serverChunk == null ? -1 : serverChunk.getHeight(type, feetPos.getX(), feetPos.getZ());
+               boolean verbose = type.sendToClient() && serverChunk != null && clientHeight != serverHeight;
+               if (verbose) {
+                  fact.value(clientHeight).text(" (client), ").value(serverHeight).text(" (server)");
+               } else if (type.sendToClient()) {
+                  fact.value(clientHeight);
+               } else if (serverChunk != null) {
+                  fact.value(serverHeight);
                }
-            }
+            });
          }
-
-         result.add(heightmaps.toString());
-         displayer.addToGroup(GROUP, result);
       }
    }
 }

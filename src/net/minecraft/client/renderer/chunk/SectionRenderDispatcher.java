@@ -11,7 +11,6 @@ import com.mojang.blaze3d.vertex.VertexSorting;
 import com.mojang.renderpearl.api.buffers.GpuBuffer;
 import com.mojang.renderpearl.api.device.GpuDevice;
 import java.nio.ByteBuffer;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Map.Entry;
@@ -68,7 +67,7 @@ public class SectionRenderDispatcher {
       GpuDevice gpuDevice = RenderSystem.getDevice();
       this.stagingBuffer = StagingBuffer.create("Chunk", gpuDevice, 102760448);
       this.chunkUberBuffers = Util.makeEnumMap(ChunkSectionLayer.class, layer -> {
-         VertexFormat vertexFormat = layer.pipeline(false).getVertexFormatBinding(0);
+         VertexFormat vertexFormat = layer.vertexFormat();
          UberGpuBuffer<SectionMesh> vertexUberBuffer = new UberGpuBuffer<>(layer.label(), 32, 134217728, vertexFormat.getVertexSize(), this.stagingBuffer);
          UberGpuBuffer<SectionMesh> indexUberBuffer = new UberGpuBuffer<>(layer.label(), 64, 33554432, 8, this.stagingBuffer);
          return new SectionRenderDispatcher.SectionUberBuffers(vertexUberBuffer, indexUberBuffer);
@@ -181,11 +180,6 @@ public class SectionRenderDispatcher {
       } finally {
          this.copyLock.unlock();
       }
-   }
-
-   @VisibleForDebug
-   public String getStats() {
-      return String.format(Locale.ROOT, "pC: %03d, aB: %02d", this.queue.size(), this.bufferPool.getFreeBufferCount());
    }
 
    @VisibleForDebug

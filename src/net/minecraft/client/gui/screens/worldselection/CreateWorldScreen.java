@@ -244,7 +244,9 @@ public class CreateWorldScreen extends Screen {
    @Override
    protected void init() {
       this.tabNavigationBar = MenuTabBar.builder(this.tabManager, this.width)
-         .addTabs(new CreateWorldScreen.GameTab(), new CreateWorldScreen.WorldTab(), new CreateWorldScreen.MoreTab())
+         .addTab(CreateWorldScreen.GameTab.TITLE, new CreateWorldScreen.GameTab())
+         .addTab(CreateWorldScreen.WorldTab.TITLE, new CreateWorldScreen.WorldTab())
+         .addTab(CreateWorldScreen.MoreTab.TITLE, new CreateWorldScreen.MoreTab())
          .build();
       this.addRenderableWidget(this.tabNavigationBar);
       LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
@@ -632,7 +634,6 @@ public class CreateWorldScreen extends Screen {
       private final EditBox nameEdit;
 
       private GameTab() {
-         super(TITLE);
          GridLayout.RowHelper helper = this.layout.rowSpacing(8).createRowHelper(1);
          LayoutSettings buttonLayoutSettings = helper.newCellSettings();
          this.nameEdit = new EditBox(CreateWorldScreen.this.font, 208, 20, Component.translatable("selectWorld.enterName"));
@@ -708,7 +709,6 @@ public class CreateWorldScreen extends Screen {
       private static final Component DATA_PACKS_LABEL = Component.translatable("selectWorld.dataPacks");
 
       private MoreTab() {
-         super(TITLE);
          GridLayout.RowHelper helper = this.layout.rowSpacing(8).createRowHelper(1);
          helper.addChild(Button.builder(GAME_RULES_LABEL, b -> this.openGameRulesScreen()).width(210).build());
          helper.addChild(
@@ -756,7 +756,6 @@ public class CreateWorldScreen extends Screen {
       private final Button customizeTypeButton;
 
       private WorldTab() {
-         super(TITLE);
          GridLayout.RowHelper helper = this.layout.columnSpacing(10).rowSpacing(8).createRowHelper(2);
          CycleButton<WorldCreationUiState.WorldTypeEntry> typeButton = helper.addChild(
             CycleButton.builder(WorldCreationUiState.WorldTypeEntry::describePreset, CreateWorldScreen.this.uiState.getWorldType())

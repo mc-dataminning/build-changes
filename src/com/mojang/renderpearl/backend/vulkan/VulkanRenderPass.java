@@ -45,7 +45,6 @@ public class VulkanRenderPass implements RenderPassBackend {
    private final RenderPass.@Nullable RenderArea renderArea;
    private final int outputWidth;
    private final int outputHeight;
-   private final boolean hasDepth;
    private final Supplier<String> label;
    protected int pushedDebugGroups = 0;
    private final VkCommandBuffer commandBuffer;
@@ -61,7 +60,6 @@ public class VulkanRenderPass implements RenderPassBackend {
       final RenderPass.RenderArea renderArea,
       final int outputWidth,
       final int outputHeight,
-      final boolean hasDepth,
       final Supplier<String> label
    ) {
       this.device = device;
@@ -71,7 +69,6 @@ public class VulkanRenderPass implements RenderPassBackend {
       this.renderArea = renderArea;
       this.outputWidth = outputWidth;
       this.outputHeight = outputHeight;
-      this.hasDepth = hasDepth;
       this.label = label;
       MemoryStack stack = MemoryStack.stackPush();
 
@@ -85,16 +82,16 @@ public class VulkanRenderPass implements RenderPassBackend {
          viewport.maxDepth(1.0F);
          VK12.vkCmdSetViewport(this.commandBuffer(), 0, viewport);
          setScissor(stack, this.commandBuffer(), renderArea.x(), renderArea.y(), renderArea.width(), renderArea.height());
-      } catch (Throwable var14) {
+      } catch (Throwable var13) {
          if (stack != null) {
             try {
                stack.close();
-            } catch (Throwable var13) {
-               var14.addSuppressed(var13);
+            } catch (Throwable var12) {
+               var13.addSuppressed(var12);
             }
          }
 
-         throw var14;
+         throw var13;
       }
 
       if (stack != null) {
@@ -129,7 +126,7 @@ public class VulkanRenderPass implements RenderPassBackend {
          this.anyDescriptorDirty = true;
          this.uniforms.clear();
          this.uniforms.size(vulkanRenderPipeline.maxUniformBinding() + 1);
-         VK12.vkCmdBindPipeline(this.commandBuffer(), 0, this.hasDepth ? this.pipeline.withDepthPipeline() : this.pipeline.withoutDepthPipeline());
+         VK12.vkCmdBindPipeline(this.commandBuffer(), 0, this.pipeline.vkPipeline());
       } else {
          throw new IllegalArgumentException("Pipeline must be instance of VulkanRenderPipeline");
       }

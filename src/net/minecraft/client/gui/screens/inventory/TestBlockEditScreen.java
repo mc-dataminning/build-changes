@@ -90,6 +90,6 @@ public class TestBlockEditScreen extends Screen {
 
    private void updateMode(final TestBlockMode value) {
       this.mode = value;
-      this.messageEdit.visible = value != TestBlockMode.START;
+      this.messageEdit.setVisible(value != TestBlockMode.START);
    }
 }

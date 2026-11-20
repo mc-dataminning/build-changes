@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.BlockPos;
@@ -133,20 +134,16 @@ public final class NoiseBasedChunkGenerator extends ChunkGenerator {
    }
 
    @Override
-   public void addDebugScreenInfo(final List<String> result, final RandomState randomState, final BlockPos feetPos, final SamplerContext samplerContext) {
+   public void addDebugScreenInfo(
+      final BiConsumer<String, String> addFact, final RandomState randomState, final BlockPos feetPos, final SamplerContext samplerContext
+   ) {
       List<NoiseGeneratorSettings.DebugFunctionEntry> functions = this.settings.value().debugFunctions().functions();
       if (!functions.isEmpty()) {
          DensitySamplerSet samplers = randomState.samplersWithContext(samplerContext);
-         StringBuilder builder = new StringBuilder("Density ");
 
          for (NoiseGeneratorSettings.DebugFunctionEntry entry : functions) {
-            builder.append(entry.label()).append(": ");
-            builder.append(DEBUG_DENSITY_FORMAT.format(samplers.sampleValue(entry.function(), feetPos.getX(), feetPos.getY(), feetPos.getZ())));
-            builder.append(' ');
+            addFact.accept(entry.label(), DEBUG_DENSITY_FORMAT.format(samplers.sampleValue(entry.function(), feetPos.getX(), feetPos.getY(), feetPos.getZ())));
          }
-
-         builder.deleteCharAt(builder.length() - 1);
-         result.add(builder.toString());
       }
    }
 

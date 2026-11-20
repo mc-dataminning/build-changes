@@ -7,7 +7,6 @@ import com.mojang.renderpearl.api.device.DeviceType;
 import java.util.List;
 import java.util.Locale;
 import net.minecraft.client.Minecraft;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.chunk.LevelChunk;
 import org.jspecify.annotations.Nullable;
@@ -15,7 +14,6 @@ import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 
 public class DebugEntrySystemSpecs implements DebugScreenEntry {
-   private static final Identifier GROUP = Identifier.withDefaultNamespace("system");
    private static @Nullable String cpuInfo;
 
    public static String getCpuInfo() {
@@ -42,13 +40,26 @@ public class DebugEntrySystemSpecs implements DebugScreenEntry {
    ) {
       DeviceInfo deviceInfo = RenderSystem.getDevice().getDeviceInfo();
       Window window = Minecraft.getInstance().getWindow();
+      displayer.addFactToGroup(DebugGroups.SYSTEM_SPECS, "Java", fact -> fact.value(System.getProperty("java.version")));
+      displayer.addFactToGroup(DebugGroups.SYSTEM_SPECS, "CPU", fact -> fact.value(getCpuInfo()));
+      displayer.addFactToGroup(
+         DebugGroups.SYSTEM_SPECS,
+         "Display",
+         fact -> fact.value(window.getWidth()).text("x").value(window.getHeight()).text(" (").value(deviceInfo.vendorName()).text(")")
+      );
+      displayer.addFactToGroup(
+         DebugGroups.SYSTEM_SPECS,
+         "Window",
+         fact -> fact.value(window.getScreenWidth())
+            .text("x")
+            .value(window.getScreenHeight())
+            .text(" (")
+            .formattedValue("%.2f", window.getPixelDensity())
+            .text("x pixel density)")
+      );
       displayer.addToGroup(
-         GROUP,
+         DebugGroups.SYSTEM_SPECS,
          List.of(
-            String.format(Locale.ROOT, "Java: %s", System.getProperty("java.version")),
-            String.format(Locale.ROOT, "CPU: %s", getCpuInfo()),
-            String.format(Locale.ROOT, "Display: %dx%d (%s)", window.getWidth(), window.getHeight(), deviceInfo.vendorName()),
-            String.format(Locale.ROOT, "Window: %dx%d (%.2fx pixel density)", window.getScreenWidth(), window.getScreenHeight(), window.getPixelDensity()),
             String.format(Locale.ROOT, "%s%s", deviceInfo.name(), this.typeName(deviceInfo.type())),
             String.format(Locale.ROOT, "%s %s", deviceInfo.backendName(), this.firstLine(deviceInfo.driverInfo()))
          )

@@ -83,51 +83,46 @@ public class Screenshot {
 
       if (width % downscaleFactor == 0 && height % downscaleFactor == 0) {
          GpuBuffer buffer = RenderSystem.getDevice().createBuffer(() -> "Screenshot buffer", 9, (long)width * height * sourceTexture.getFormat().blockSize());
-         RenderSystem.getDevice()
-            .createCommandEncoder()
-            .copyTextureToBuffer(
-               sourceTexture,
-               buffer,
-               0L,
-               () -> {
-                  try (GpuBufferSlice.MappedView read = buffer.map(true, false)) {
-                     int outputHeight = height / downscaleFactor;
-                     int outputWidth = width / downscaleFactor;
-                     NativeImage image = new NativeImage(outputWidth, outputHeight, false);
+         RenderSystem.getDevice().createCommandEncoder().copyTextureToBuffer(sourceTexture, buffer, 0L, 0);
+         RenderSystem.queueFencedTask(
+            () -> {
+               try (GpuBufferSlice.MappedView read = buffer.map(true, false)) {
+                  int outputHeight = height / downscaleFactor;
+                  int outputWidth = width / downscaleFactor;
+                  NativeImage image = new NativeImage(outputWidth, outputHeight, false);
 
-                     for (int y = 0; y < outputHeight; y++) {
-                        for (int x = 0; x < outputWidth; x++) {
-                           if (downscaleFactor == 1) {
-                              int argb = read.data().getInt((x + y * width) * sourceTexture.getFormat().blockSize());
-                              image.setPixelABGR(x, height - y - 1, argb | 0xFF000000);
-                           } else {
-                              int red = 0;
-                              int green = 0;
-                              int blue = 0;
+                  for (int y = 0; y < outputHeight; y++) {
+                     for (int x = 0; x < outputWidth; x++) {
+                        if (downscaleFactor == 1) {
+                           int argb = read.data().getInt((x + y * width) * sourceTexture.getFormat().blockSize());
+                           image.setPixelABGR(x, height - y - 1, argb | 0xFF000000);
+                        } else {
+                           int red = 0;
+                           int green = 0;
+                           int blue = 0;
 
-                              for (int i = 0; i < downscaleFactor; i++) {
-                                 for (int j = 0; j < downscaleFactor; j++) {
-                                    int argb = read.data()
-                                       .getInt((x * downscaleFactor + i + (y * downscaleFactor + j) * width) * sourceTexture.getFormat().blockSize());
-                                    red += ARGB.red(argb);
-                                    green += ARGB.green(argb);
-                                    blue += ARGB.blue(argb);
-                                 }
+                           for (int i = 0; i < downscaleFactor; i++) {
+                              for (int j = 0; j < downscaleFactor; j++) {
+                                 int argb = read.data()
+                                    .getInt((x * downscaleFactor + i + (y * downscaleFactor + j) * width) * sourceTexture.getFormat().blockSize());
+                                 red += ARGB.red(argb);
+                                 green += ARGB.green(argb);
+                                 blue += ARGB.blue(argb);
                               }
-
-                              int sampleCount = downscaleFactor * downscaleFactor;
-                              image.setPixelABGR(x, outputHeight - y - 1, ARGB.color(255, red / sampleCount, green / sampleCount, blue / sampleCount));
                            }
+
+                           int sampleCount = downscaleFactor * downscaleFactor;
+                           image.setPixelABGR(x, outputHeight - y - 1, ARGB.color(255, red / sampleCount, green / sampleCount, blue / sampleCount));
                         }
                      }
-
-                     callback.accept(image);
                   }
 
-                  buffer.close();
-               },
-               0
-            );
+                  callback.accept(image);
+               }
+
+               buffer.close();
+            }
+         );
       } else {
          throw new IllegalArgumentException("Image size is not divisible by downscale factor");
       }

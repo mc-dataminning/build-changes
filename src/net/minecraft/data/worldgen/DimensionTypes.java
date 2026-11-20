@@ -36,6 +36,7 @@ public class DimensionTypes {
          .set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, ARGB.vector3fFromRGB24(-16119286))
          .set(EnvironmentAttributes.CLOUD_COLOR, ARGB.vector4fFromARGB32(ARGB.white(0.8F)))
          .set(EnvironmentAttributes.CLOUD_HEIGHT, 192.33F)
+         .set(EnvironmentAttributes.HAS_SKY_OCCLUDER, true)
          .set(EnvironmentAttributes.BACKGROUND_MUSIC, BackgroundMusic.OVERWORLD)
          .set(EnvironmentAttributes.BED_RULE, BedRule.CAN_SLEEP_WHEN_DARK)
          .set(EnvironmentAttributes.STRAW_BED_RULE, BedRule.DESTROY_ON_LEAVE)

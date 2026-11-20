@@ -1,6 +1,5 @@
 package net.minecraft.client.gui.components.debug;
 
-import java.util.Locale;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.sounds.SoundBufferLibrary;
 import net.minecraft.util.Mth;
@@ -23,7 +22,9 @@ public class DebugEntrySoundCache implements DebugScreenEntry {
    ) {
       SoundBufferLibrary.DebugOutput.Counter counter = new SoundBufferLibrary.DebugOutput.Counter();
       Minecraft.getInstance().getSoundManager().getSoundCacheDebugStats(counter);
-      displayer.addLine(String.format(Locale.ROOT, "Sound cache: %d buffers, %d MiB", counter.totalCount(), bytesToMegabytes(counter.totalSize())));
+      displayer.addFactToGroup(
+         DebugGroups.MISC, "Sound Cache", fact -> fact.value(counter.totalCount()).text(" buffers, ").value(bytesToMegabytes(counter.totalSize())).text(" MiB")
+      );
    }
 
    private static long bytesToMegabytes(final long used) {

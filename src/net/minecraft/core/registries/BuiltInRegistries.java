@@ -153,7 +153,8 @@ import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElementTy
 import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding;
 import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBindings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.PosRuleTestType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTestType;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTestTypes;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorTypes;
 import net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity.RuleBlockEntityModifierType;
@@ -202,7 +203,7 @@ public class BuiltInRegistries {
    );
    public static final Registry<Identifier> CUSTOM_STAT = registerSimple(Registries.CUSTOM_STAT, var0 -> Stats.JUMP);
    public static final DefaultedRegistry<ChunkStatus> CHUNK_STATUS = registerDefaulted(Registries.CHUNK_STATUS, "empty", var0 -> ChunkStatus.EMPTY);
-   public static final Registry<RuleTestType<?>> RULE_TEST = registerSimple(Registries.RULE_TEST, var0 -> RuleTestType.ALWAYS_TRUE_TEST);
+   public static final Registry<MapCodec<? extends RuleTest>> RULE_TEST_TYPE = registerSimple(Registries.RULE_TEST_TYPE, RuleTestTypes::bootstrap);
    public static final Registry<RuleBlockEntityModifierType<?>> RULE_BLOCK_ENTITY_MODIFIER = registerSimple(
       Registries.RULE_BLOCK_ENTITY_MODIFIER, var0 -> RuleBlockEntityModifierType.PASSTHROUGH
    );

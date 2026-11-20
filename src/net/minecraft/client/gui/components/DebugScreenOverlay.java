@@ -1,24 +1,30 @@
 package net.minecraft.client.gui.components;
 
-import com.google.common.base.Strings;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.datafixers.DataFixUtils;
 import com.mojang.renderpearl.api.textures.FilterMode;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.components.debug.DebugColumn;
+import net.minecraft.client.gui.components.debug.DebugCustomRenderer;
+import net.minecraft.client.gui.components.debug.DebugFact;
+import net.minecraft.client.gui.components.debug.DebugGroup;
+import net.minecraft.client.gui.components.debug.DebugGroupContents;
+import net.minecraft.client.gui.components.debug.DebugGroups;
 import net.minecraft.client.gui.components.debug.DebugScreenDisplayer;
 import net.minecraft.client.gui.components.debug.DebugScreenEntries;
 import net.minecraft.client.gui.components.debug.DebugScreenEntry;
@@ -48,9 +54,6 @@ import net.minecraft.world.level.chunk.status.ChunkStatus;
 import org.jspecify.annotations.Nullable;
 
 public class DebugScreenOverlay {
-   private static final int MARGIN_RIGHT = 2;
-   private static final int MARGIN_LEFT = 2;
-   private static final int MARGIN_TOP = 2;
    private final Minecraft minecraft;
    private final Font font;
    private @Nullable ChunkPos lastPos;
@@ -70,6 +73,9 @@ public class DebugScreenOverlay {
    private final PingDebugChart pingChart;
    private final BandwidthDebugChart bandwidthChart;
    private final ProfilerPieChart profilerPieChart;
+   private final DebugColumn leftColumn = new DebugColumn(DebugColumn.Side.LEFT);
+   private final DebugColumn rightColumn = new DebugColumn(DebugColumn.Side.RIGHT);
+   private long lastDebugEntriesVersion;
 
    public DebugScreenOverlay(final Minecraft minecraft) {
       this.minecraft = minecraft;
@@ -92,7 +98,14 @@ public class DebugScreenOverlay {
       Options options = this.minecraft.options;
       if (this.minecraft.isGameLoadFinished() && (!this.minecraft.gui.hud.isHidden() || this.minecraft.gui.screen() != null)) {
          Collection<Identifier> visibleEntries = this.minecraft.debugEntries.getCurrentlyEnabled();
-         if (!visibleEntries.isEmpty()) {
+         if (visibleEntries.isEmpty()) {
+            this.clearColumnCache();
+         } else {
+            if (this.lastDebugEntriesVersion != this.minecraft.debugEntries.getCurrentlyEnabledVersion()) {
+               this.lastDebugEntriesVersion = this.minecraft.debugEntries.getCurrentlyEnabledVersion();
+               this.clearColumnCache();
+            }
+
             graphics.nextStratum();
             ProfilerFiller profiler = Profiler.get();
             profiler.push("debug");
@@ -109,33 +122,39 @@ public class DebugScreenOverlay {
                this.clearChunkCache();
             }
 
-            final List<String> leftLines = new ArrayList<>();
-            final List<String> rightLines = new ArrayList<>();
-            final Map<Identifier, Collection<String>> groups = new LinkedHashMap<>();
-            final List<String> regularLines = new ArrayList<>();
+            final DebugGroupContents leftPriority = new DebugGroupContents(DebugGroups.PRIORITY);
+            final DebugGroupContents rightPriority = new DebugGroupContents(DebugGroups.PRIORITY);
+            final Map<DebugGroup, DebugGroupContents> groups = new LinkedHashMap<>();
             DebugScreenDisplayer displayer = new DebugScreenDisplayer() {
                @Override
                public void addPriorityLine(final String line) {
-                  if (leftLines.size() > rightLines.size()) {
-                     rightLines.add(line);
+                  if (leftPriority.lines().size() > rightPriority.lines().size()) {
+                     rightPriority.lines().add(line);
                   } else {
-                     leftLines.add(line);
+                     leftPriority.lines().add(line);
                   }
                }
 
                @Override
-               public void addLine(final String line) {
-                  regularLines.add(line);
+               public void addToGroup(final DebugGroup group, final Collection<String> lines) {
+                  groups.computeIfAbsent(group, k -> new DebugGroupContents(group)).lines().addAll(lines);
                }
 
                @Override
-               public void addToGroup(final Identifier group, final Collection<String> lines) {
-                  groups.computeIfAbsent(group, k -> new ArrayList<>()).addAll(lines);
+               public void addToGroup(final DebugGroup group, final String lines) {
+                  groups.computeIfAbsent(group, k -> new DebugGroupContents(group)).lines().add(lines);
                }
 
                @Override
-               public void addToGroup(final Identifier group, final String lines) {
-                  groups.computeIfAbsent(group, k -> new ArrayList<>()).add(lines);
+               public void addFactToGroup(final DebugGroup group, final String name, final Consumer<DebugFact> builder) {
+                  DebugFact fact = new DebugFact();
+                  builder.accept(fact);
+                  groups.computeIfAbsent(group, k -> new DebugGroupContents(group)).addFact(name, fact.result());
+               }
+
+               @Override
+               public void addToGroup(final DebugGroup group, final DebugCustomRenderer customRenderer) {
+                  groups.computeIfAbsent(group, k -> new DebugGroupContents(group)).addCustomRenderer(customRenderer);
                }
             };
             Level level = this.getLevel();
@@ -147,64 +166,34 @@ public class DebugScreenOverlay {
                }
             }
 
-            if (!leftLines.isEmpty()) {
-               leftLines.add("");
-            }
-
-            if (!rightLines.isEmpty()) {
-               rightLines.add("");
-            }
-
-            if (!regularLines.isEmpty()) {
-               int mid = (regularLines.size() + 1) / 2;
-               leftLines.addAll(regularLines.subList(0, mid));
-               rightLines.addAll(regularLines.subList(mid, regularLines.size()));
-               leftLines.add("");
-               if (mid < regularLines.size()) {
-                  rightLines.add("");
-               }
-            }
-
-            List<Collection<String>> finalGroups = new ArrayList<>(groups.values());
-            if (!finalGroups.isEmpty()) {
-               int mid = (finalGroups.size() + 1) / 2;
-
-               for (int i = 0; i < finalGroups.size(); i++) {
-                  Collection<String> lines = finalGroups.get(i);
-                  if (!lines.isEmpty()) {
-                     if (i < mid) {
-                        leftLines.addAll(lines);
-                        leftLines.add("");
-                     } else {
-                        rightLines.addAll(lines);
-                        rightLines.add("");
-                     }
-                  }
-               }
+            DebugGroupContents miscContents = groups.get(DebugGroups.MISC);
+            if (miscContents != null) {
+               groups.remove(DebugGroups.MISC);
+               groups.put(DebugGroups.MISC, miscContents);
             }
 
             if (this.minecraft.debugEntries.isOverlayVisible()) {
-               leftLines.add("");
                boolean hasServer = this.minecraft.getSingleplayerServer() != null;
                KeyMapping keyDebugModifier = options.keyDebugModifier;
-               leftLines.add(
-                  "Debug charts: "
-                     + formatChart(keyDebugModifier, options.keyDebugPofilingChart, "Profiler", this.renderProfilerChart)
-                     + "; "
-                     + formatChart(keyDebugModifier, options.keyDebugFpsCharts, hasServer ? "fps + tps" : "fps", this.renderFpsCharts)
-                     + ";"
+               displayer.addToGroup(
+                  DebugGroups.HELP,
+                  List.of(
+                     "Debug charts: "
+                        + formatChart(keyDebugModifier, options.keyDebugPofilingChart, "Profiler", this.renderProfilerChart)
+                        + "; "
+                        + formatChart(keyDebugModifier, options.keyDebugFpsCharts, hasServer ? "fps + tps" : "fps", this.renderFpsCharts)
+                        + ";",
+                     formatChart(
+                           keyDebugModifier,
+                           options.keyDebugNetworkCharts,
+                           !this.minecraft.isLocalServer() ? "Bandwidth + Ping" : "Ping",
+                           this.renderNetworkCharts
+                        )
+                        + "; "
+                        + formatChart(keyDebugModifier, options.keyDebugLightmapTexture, "Lightmap", this.renderLightmapTexture),
+                     "To edit: press " + formatKeybind(keyDebugModifier, options.keyDebugDebugOptions)
+                  )
                );
-               leftLines.add(
-                  formatChart(
-                        keyDebugModifier,
-                        options.keyDebugNetworkCharts,
-                        !this.minecraft.isLocalServer() ? "Bandwidth + Ping" : "Ping",
-                        this.renderNetworkCharts
-                     )
-                     + "; "
-                     + formatChart(keyDebugModifier, options.keyDebugLightmapTexture, "Lightmap", this.renderLightmapTexture)
-               );
-               leftLines.add("To edit: press " + formatKeybind(keyDebugModifier, options.keyDebugDebugOptions));
             }
 
             Window window = this.minecraft.getWindow();
@@ -231,8 +220,60 @@ public class DebugScreenOverlay {
                scaledScreenHeight = graphics.guiHeight();
             }
 
-            this.extractLines(graphics, leftLines, true, scaledScreenWidth);
-            this.extractLines(graphics, rightLines, false, scaledScreenWidth);
+            this.leftColumn.newFrame();
+            this.rightColumn.newFrame();
+            if (!leftPriority.lines().isEmpty()) {
+               this.leftColumn.add(leftPriority, graphics, this.font, scaledScreenWidth);
+            }
+
+            if (!rightPriority.lines().isEmpty()) {
+               this.rightColumn.add(rightPriority, graphics, this.font, scaledScreenWidth);
+            }
+
+            groups.values().removeIf(contents -> contents.lines().isEmpty() && contents.facts().isEmpty() && contents.customRenderers().isEmpty());
+
+            for (DebugGroup group : this.leftColumn.getPreviousGroups()) {
+               if (!this.leftColumn.isFull(scaledScreenHeight)) {
+                  DebugGroupContents contents = groups.remove(group);
+                  if (contents != null) {
+                     this.leftColumn.add(contents, graphics, this.font, scaledScreenWidth);
+                  }
+               }
+            }
+
+            for (DebugGroup group : this.rightColumn.getPreviousGroups()) {
+               if (!this.rightColumn.isFull(scaledScreenHeight)) {
+                  DebugGroupContents contents = groups.remove(group);
+                  if (contents != null) {
+                     this.rightColumn.add(contents, graphics, this.font, scaledScreenWidth);
+                  }
+               }
+            }
+
+            Iterator<DebugGroupContents> iterator = groups.values().iterator();
+
+            while (iterator.hasNext()) {
+               DebugGroupContents contents = iterator.next();
+               Optional<DebugColumn.Side> preferredSide = contents.group().preferredColumn();
+               if (preferredSide.isPresent()) {
+                  if (preferredSide.get() == DebugColumn.Side.LEFT && !this.leftColumn.isFull(scaledScreenHeight)) {
+                     this.leftColumn.add(contents, graphics, this.font, scaledScreenWidth);
+                     iterator.remove();
+                  } else if (preferredSide.get() == DebugColumn.Side.RIGHT && !this.rightColumn.isFull(scaledScreenHeight)) {
+                     this.rightColumn.add(contents, graphics, this.font, scaledScreenWidth);
+                     iterator.remove();
+                  }
+               }
+            }
+
+            for (DebugGroupContents contents : groups.values()) {
+               if (this.leftColumn.getHeightSoFar() < this.rightColumn.getHeightSoFar() && !this.leftColumn.isFull(scaledScreenHeight)) {
+                  this.leftColumn.add(contents, graphics, this.font, scaledScreenWidth);
+               } else if (!this.rightColumn.isFull(scaledScreenHeight)) {
+                  this.rightColumn.add(contents, graphics, this.font, scaledScreenWidth);
+               }
+            }
+
             graphics.nextStratum();
             this.profilerPieChart.setBottomOffset(10);
             if (this.showFpsCharts()) {
@@ -284,7 +325,14 @@ public class DebugScreenOverlay {
             graphics.pose().popMatrix();
             profiler.pop();
          }
+      } else {
+         this.clearColumnCache();
       }
+   }
+
+   public void clearColumnCache() {
+      this.leftColumn.clear();
+      this.rightColumn.clear();
    }
 
    private static String formatChart(final KeyMapping keyDebugModifier, final KeyMapping keybind, final String name, final boolean status) {
@@ -296,30 +344,6 @@ public class DebugScreenOverlay {
          + (keyDebugModifier.isUnbound() ? "" : keyDebugModifier.getTranslatedKeyMessage().getString() + "+")
          + keybind.getTranslatedKeyMessage().getString()
          + "]";
-   }
-
-   private void extractLines(final GuiGraphicsExtractor graphics, final List<String> lines, final boolean alignLeft, final int scaledScreenWidth) {
-      int height = 9;
-
-      for (int i = 0; i < lines.size(); i++) {
-         String line = lines.get(i);
-         if (!Strings.isNullOrEmpty(line)) {
-            int width = this.font.width(line);
-            int left = alignLeft ? 2 : scaledScreenWidth - 2 - width;
-            int top = 2 + height * i;
-            graphics.fill(left - 1, top - 1, left + width + 1, top + height - 1, -1873784752);
-         }
-      }
-
-      for (int i = 0; i < lines.size(); i++) {
-         String line = lines.get(i);
-         if (!Strings.isNullOrEmpty(line)) {
-            int width = this.font.width(line);
-            int left = alignLeft ? 2 : scaledScreenWidth - 2 - width;
-            int top = 2 + height * i;
-            graphics.text(this.font, line, left, top, -2039584, false);
-         }
-      }
    }
 
    private @Nullable ServerLevel getServerLevel() {

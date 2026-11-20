@@ -101,65 +101,191 @@ public class EndCityPieces {
          final List<StructurePiece> pieces,
          final RandomSource random
       ) {
-         Rotation rotation = parent.placeSettings().getRotation();
-         EndCityPieces.EndCityPiece lastPiece = parent;
-         lastPiece = EndCityPieces.addHelper(
-            pieces,
-            EndCityPieces.addPiece(
-               structureTemplateManager, lastPiece, new BlockPos(3 + random.nextInt(2), -3, 3 + random.nextInt(2)), "tower_base", rotation, true
-            )
-         );
-         lastPiece = EndCityPieces.addHelper(
-            pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(0, 7, 0), "tower_piece", rotation, true)
-         );
-         EndCityPieces.EndCityPiece bridgePiece = random.nextInt(3) == 0 ? lastPiece : null;
-         int towerHeight = 1 + random.nextInt(3);
-
-         for (int i = 0; i < towerHeight; i++) {
-            lastPiece = EndCityPieces.addHelper(
-               pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(0, 4, 0), "tower_piece", rotation, true)
-            );
-            if (i < towerHeight - 1 && random.nextBoolean()) {
-               bridgePiece = lastPiece;
-            }
-         }
-
-         if (bridgePiece != null) {
-            for (Pair<Rotation, BlockPos> bridge : EndCityPieces.TOWER_BRIDGES) {
-               if (random.nextBoolean()) {
-                  EndCityPieces.EndCityPiece bridgeStart = EndCityPieces.addHelper(
-                     pieces,
-                     EndCityPieces.addPiece(
-                        structureTemplateManager,
-                        bridgePiece,
-                        (BlockPos)bridge.getSecond(),
-                        "bridge_end",
-                        rotation.getRotated((Rotation)bridge.getFirst()),
-                        true
-                     )
-                  );
-                  EndCityPieces.recursiveChildren(
-                     structureTemplateManager, EndCityPieces.TOWER_BRIDGE_GENERATOR, genDepth + 1, bridgeStart, null, pieces, random
-                  );
-               }
-            }
-
-            lastPiece = EndCityPieces.addHelper(
-               pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(-1, 4, -1), "tower_top", rotation, true)
-            );
-         } else {
-            if (genDepth != 7) {
-               return EndCityPieces.recursiveChildren(
-                  structureTemplateManager, EndCityPieces.FAT_TOWER_GENERATOR, genDepth + 1, lastPiece, null, pieces, random
-               );
-            }
-
-            lastPiece = EndCityPieces.addHelper(
-               pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(-1, 4, -1), "tower_top", rotation, true)
-            );
-         }
-
-         return true;
+         // $VF: Couldn't be decompiled
+         // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+         //
+         // Bytecode:
+         // 000: aload 3
+         // 001: invokevirtual net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece.placeSettings ()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+         // 004: invokevirtual net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.getRotation ()Lnet/minecraft/world/level/block/Rotation;
+         // 007: astore 7
+         // 009: aload 3
+         // 00a: astore 8
+         // 00c: aload 5
+         // 00e: aload 1
+         // 00f: aload 8
+         // 011: new net/minecraft/core/BlockPos
+         // 014: dup
+         // 015: bipush 3
+         // 016: aload 6
+         // 018: bipush 2
+         // 019: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 01e: iadd
+         // 01f: bipush -3
+         // 021: bipush 3
+         // 022: aload 6
+         // 024: bipush 2
+         // 025: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 02a: iadd
+         // 02b: invokespecial net/minecraft/core/BlockPos.<init> (III)V
+         // 02e: ldc "tower_base"
+         // 030: aload 7
+         // 032: bipush 1
+         // 033: invokestatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.addPiece (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;Lnet/minecraft/core/BlockPos;Ljava/lang/String;Lnet/minecraft/world/level/block/Rotation;Z)Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;
+         // 036: invokestatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.addHelper (Ljava/util/List;Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;)Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;
+         // 039: astore 8
+         // 03b: aload 5
+         // 03d: aload 1
+         // 03e: aload 8
+         // 040: new net/minecraft/core/BlockPos
+         // 043: dup
+         // 044: bipush 0
+         // 045: bipush 7
+         // 047: bipush 0
+         // 048: invokespecial net/minecraft/core/BlockPos.<init> (III)V
+         // 04b: ldc "tower_piece"
+         // 04d: aload 7
+         // 04f: bipush 1
+         // 050: invokestatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.addPiece (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;Lnet/minecraft/core/BlockPos;Ljava/lang/String;Lnet/minecraft/world/level/block/Rotation;Z)Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;
+         // 053: invokestatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.addHelper (Ljava/util/List;Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;)Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;
+         // 056: astore 8
+         // 058: aload 6
+         // 05a: bipush 3
+         // 05b: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 060: ifne 068
+         // 063: aload 8
+         // 065: goto 069
+         // 068: aconst_null
+         // 069: astore 9
+         // 06b: bipush 1
+         // 06c: aload 6
+         // 06e: bipush 3
+         // 06f: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 074: iadd
+         // 075: istore 10
+         // 077: bipush 0
+         // 078: istore 11
+         // 07a: iload 11
+         // 07c: iload 10
+         // 07e: if_icmpge 0ba
+         // 081: aload 5
+         // 083: aload 1
+         // 084: aload 8
+         // 086: new net/minecraft/core/BlockPos
+         // 089: dup
+         // 08a: bipush 0
+         // 08b: bipush 4
+         // 08c: bipush 0
+         // 08d: invokespecial net/minecraft/core/BlockPos.<init> (III)V
+         // 090: ldc "tower_piece"
+         // 092: aload 7
+         // 094: bipush 1
+         // 095: invokestatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.addPiece (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;Lnet/minecraft/core/BlockPos;Ljava/lang/String;Lnet/minecraft/world/level/block/Rotation;Z)Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;
+         // 098: invokestatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.addHelper (Ljava/util/List;Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;)Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;
+         // 09b: astore 8
+         // 09d: iload 11
+         // 09f: iload 10
+         // 0a1: bipush 1
+         // 0a2: isub
+         // 0a3: if_icmpge 0b4
+         // 0a6: aload 6
+         // 0a8: invokeinterface net/minecraft/util/RandomSource.nextBoolean ()Z 1
+         // 0ad: ifeq 0b4
+         // 0b0: aload 8
+         // 0b2: astore 9
+         // 0b4: iinc 11 1
+         // 0b7: goto 07a
+         // 0ba: aload 9
+         // 0bc: ifnull 142
+         // 0bf: getstatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.TOWER_BRIDGES Ljava/util/List;
+         // 0c2: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
+         // 0c7: astore 11
+         // 0c9: aload 11
+         // 0cb: invokeinterface java/util/Iterator.hasNext ()Z 1
+         // 0d0: ifeq 123
+         // 0d3: aload 11
+         // 0d5: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
+         // 0da: checkcast com/mojang/datafixers/util/Pair
+         // 0dd: astore 12
+         // 0df: aload 6
+         // 0e1: invokeinterface net/minecraft/util/RandomSource.nextBoolean ()Z 1
+         // 0e6: ifeq 120
+         // 0e9: aload 5
+         // 0eb: aload 1
+         // 0ec: aload 9
+         // 0ee: aload 12
+         // 0f0: invokevirtual com/mojang/datafixers/util/Pair.getSecond ()Ljava/lang/Object;
+         // 0f3: checkcast net/minecraft/core/BlockPos
+         // 0f6: ldc "bridge_end"
+         // 0f8: aload 7
+         // 0fa: aload 12
+         // 0fc: invokevirtual com/mojang/datafixers/util/Pair.getFirst ()Ljava/lang/Object;
+         // 0ff: checkcast net/minecraft/world/level/block/Rotation
+         // 102: invokevirtual net/minecraft/world/level/block/Rotation.getRotated (Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/Rotation;
+         // 105: bipush 1
+         // 106: invokestatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.addPiece (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;Lnet/minecraft/core/BlockPos;Ljava/lang/String;Lnet/minecraft/world/level/block/Rotation;Z)Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;
+         // 109: invokestatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.addHelper (Ljava/util/List;Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;)Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;
+         // 10c: astore 13
+         // 10e: aload 1
+         // 10f: getstatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.TOWER_BRIDGE_GENERATOR Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$SectionGenerator;
+         // 112: iload 2
+         // 113: bipush 1
+         // 114: iadd
+         // 115: aload 13
+         // 117: aconst_null
+         // 118: aload 5
+         // 11a: aload 6
+         // 11c: invokestatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.recursiveChildren (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$SectionGenerator;ILnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;Lnet/minecraft/core/BlockPos;Ljava/util/List;Lnet/minecraft/util/RandomSource;)Z
+         // 11f: pop
+         // 120: goto 0c9
+         // 123: aload 5
+         // 125: aload 1
+         // 126: aload 8
+         // 128: new net/minecraft/core/BlockPos
+         // 12b: dup
+         // 12c: bipush -1
+         // 12d: bipush 4
+         // 12e: bipush -1
+         // 12f: invokespecial net/minecraft/core/BlockPos.<init> (III)V
+         // 132: ldc "tower_top"
+         // 134: aload 7
+         // 136: bipush 1
+         // 137: invokestatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.addPiece (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;Lnet/minecraft/core/BlockPos;Ljava/lang/String;Lnet/minecraft/world/level/block/Rotation;Z)Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;
+         // 13a: invokestatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.addHelper (Ljava/util/List;Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;)Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;
+         // 13d: astore 8
+         // 13f: goto 179
+         // 142: iload 2
+         // 143: bipush 7
+         // 145: if_icmpne 167
+         // 148: aload 5
+         // 14a: aload 1
+         // 14b: aload 8
+         // 14d: new net/minecraft/core/BlockPos
+         // 150: dup
+         // 151: bipush -1
+         // 152: bipush 4
+         // 153: bipush -1
+         // 154: invokespecial net/minecraft/core/BlockPos.<init> (III)V
+         // 157: ldc "tower_top"
+         // 159: aload 7
+         // 15b: bipush 1
+         // 15c: invokestatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.addPiece (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;Lnet/minecraft/core/BlockPos;Ljava/lang/String;Lnet/minecraft/world/level/block/Rotation;Z)Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;
+         // 15f: invokestatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.addHelper (Ljava/util/List;Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;)Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;
+         // 162: astore 8
+         // 164: goto 179
+         // 167: aload 1
+         // 168: getstatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.FAT_TOWER_GENERATOR Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$SectionGenerator;
+         // 16b: iload 2
+         // 16c: bipush 1
+         // 16d: iadd
+         // 16e: aload 8
+         // 170: aconst_null
+         // 171: aload 5
+         // 173: aload 6
+         // 175: invokestatic net/minecraft/world/level/levelgen/structure/structures/EndCityPieces.recursiveChildren (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$SectionGenerator;ILnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;Lnet/minecraft/core/BlockPos;Ljava/util/List;Lnet/minecraft/util/RandomSource;)Z
+         // 178: ireturn
+         // 179: bipush 1
+         // 17a: ireturn
       }
    };
    private static final EndCityPieces.SectionGenerator TOWER_BRIDGE_GENERATOR = new EndCityPieces.SectionGenerator() {

@@ -18,11 +18,13 @@ public class DebugEntryLookingAtEntityTags implements DebugScreenEntry {
    ) {
       Minecraft minecraft = Minecraft.getInstance();
       Entity entity = minecraft.crosshairPickEntity;
-      List<String> result = new ArrayList<>();
+      List<String> tags = new ArrayList<>();
       if (entity != null) {
-         DebugEntryLookingAt.addTagEntries(result, entity);
+         DebugEntryLookingAt.addTagEntries(tags, entity);
       }
 
-      displayer.addToGroup(DebugEntryLookingAtEntity.GROUP, result);
+      if (!tags.isEmpty()) {
+         displayer.addToGroup(DebugGroups.LOOKING_AT_ENTITY, tags);
+      }
    }
 }

@@ -681,8 +681,6 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       final Holder<SoundEvent> explosionSound
    );
 
-   public abstract String gatherChunkSourceStats();
-
    @Override
    public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
       if (!this.isInValidBounds(pos)) {

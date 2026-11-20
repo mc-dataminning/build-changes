@@ -214,7 +214,7 @@ public class Options {
    private final OptionInstance<Boolean> vignette = OptionInstance.createBoolean(
       "options.vignette", OptionInstance.cachedConstantTooltip(GRAPHICS_TOOLTIP_VIGNETTE), true
    );
-   private static final Component GRAPHICS_TOOLTIP_IMPROVED_TRANSPARENCY = Component.translatable("options.improvedTransparency.oit.tooltip");
+   private static final Component GRAPHICS_TOOLTIP_IMPROVED_TRANSPARENCY = Component.translatable("options.improvedTransparency.oitWithImprovedFog.tooltip");
    private final OptionInstance<Boolean> improvedTransparency = OptionInstance.createBoolean(
       "options.improvedTransparency", OptionInstance.cachedConstantTooltip(GRAPHICS_TOOLTIP_IMPROVED_TRANSPARENCY), false, value -> {
          operateOnLevelExtractor(LevelExtractor::allChanged);

@@ -74,6 +74,9 @@ public interface EnvironmentAttributes {
       "visual/star_brightness",
       EnvironmentAttribute.builder(AttributeTypes.FLOAT).defaultValue(0.0F).valueRange(AttributeRange.UNIT_FLOAT).spatiallyInterpolated().syncable()
    );
+   EnvironmentAttribute<Boolean> HAS_SKY_OCCLUDER = register(
+      "visual/has_sky_occluder", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(false).syncable()
+   );
    EnvironmentAttribute<Vector3fc> BLOCK_LIGHT_TINT = register(
       "visual/block_light_tint",
       EnvironmentAttribute.builder(AttributeTypes.RGB_COLOR).defaultValue(ARGB.vector3fFromRGB24(-10100)).spatiallyInterpolated().syncable()

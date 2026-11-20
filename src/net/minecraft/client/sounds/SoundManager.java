@@ -16,6 +16,7 @@ import java.util.Map.Entry;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Options;
+import net.minecraft.client.gui.components.debug.DebugFact;
 import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.client.resources.sounds.SoundEventRegistration;
 import net.minecraft.client.resources.sounds.SoundEventRegistrationSerializer;
@@ -209,8 +210,8 @@ public class SoundManager extends SimplePreparableReloadListener<SoundManager.Pr
       this.soundEngine.stop(sound, source);
    }
 
-   public String getChannelDebugString() {
-      return this.soundEngine.getChannelDebugString();
+   public void fillChannelDebug(final DebugFact fact) {
+      this.soundEngine.getChannelDebugString(fact);
    }
 
    public void getSoundCacheDebugStats(final SoundBufferLibrary.DebugOutput output) {

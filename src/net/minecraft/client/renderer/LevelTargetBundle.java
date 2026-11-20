@@ -14,12 +14,13 @@ public class LevelTargetBundle implements PostChain.TargetBundle {
    public static final Set<Identifier> MAIN_TARGETS = Set.of(MAIN_TARGET_ID);
    public static final Set<Identifier> OUTLINE_TARGETS = Set.of(MAIN_TARGET_ID, ENTITY_OUTLINE_TARGET_ID);
    public ResourceHandle<RenderTarget> main = ResourceHandle.invalid();
+   public ResourceHandle<RenderTarget> sky = ResourceHandle.invalid();
+   public ResourceHandle<RenderTarget> clouds = ResourceHandle.invalid();
    public ResourceHandle<RenderTarget> alwaysOnTopDepth = ResourceHandle.invalid();
    public ResourceHandle<RenderTarget> depthBounds = ResourceHandle.invalid();
    public ResourceHandle<RenderTarget> depthBoundsCulled = ResourceHandle.invalid();
    public final List<ResourceHandle<RenderTarget>> transmittance = new ArrayList<>();
    public ResourceHandle<RenderTarget> accumulate = ResourceHandle.invalid();
-   public ResourceHandle<RenderTarget> oitCloudDepth = ResourceHandle.invalid();
    public ResourceHandle<RenderTarget> oitTerrainWithWaterPatchDepth = ResourceHandle.invalid();
    public @Nullable ResourceHandle<RenderTarget> entityOutline;
 
@@ -53,6 +54,8 @@ public class LevelTargetBundle implements PostChain.TargetBundle {
 
    public void clear() {
       this.main = ResourceHandle.invalid();
+      this.sky = ResourceHandle.invalid();
+      this.clouds = ResourceHandle.invalid();
       this.entityOutline = null;
    }
 }

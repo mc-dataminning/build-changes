@@ -205,7 +205,7 @@ public class VanillaAdventureAdvancements extends AdvancementSubProvider {
    public void generate() {
       AdvancementHolder root = Advancement.Builder.advancement()
          .rootDisplay(
-            Items.MAP,
+            Items.BURIED_TREASURE_MAP,
             Component.translatable("advancements.adventure.root.title"),
             Component.translatable("advancements.adventure.root.description"),
             Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),

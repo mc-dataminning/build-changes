@@ -72,6 +72,7 @@ public class Camera implements TrackedWaypoint.Camera {
    private float oldFovModifier;
    private float fov;
    private float hudFov;
+   private FogType fogType;
    private float depthFar;
    private boolean isPanoramicMode;
    private final EnvironmentAttributeProbe attributeProbe = new EnvironmentAttributeProbe();
@@ -104,6 +105,7 @@ public class Camera implements TrackedWaypoint.Camera {
          float windowWidth = this.minecraft.getWindow().getWidth();
          float windowHeight = this.minecraft.getWindow().getHeight();
          this.setupPerspective(0.05F, this.depthFar, this.fov, windowWidth, windowHeight);
+         this.fogType = this.calculateFogType();
          this.initialized = true;
       }
    }
@@ -238,7 +240,7 @@ public class Camera implements TrackedWaypoint.Camera {
          fov /= (1.0F - 500.0F / (duration + 500.0F)) * 2.0F + 1.0F;
       }
 
-      FogType state = this.getFluidInCamera();
+      FogType state = this.getFogType();
       if (state == FogType.LAVA || state == FogType.WATER) {
          float effectScale = this.minecraft.options.fovEffectScale().get().floatValue();
          fov *= Mth.lerp(effectScale, 1.0F, 0.85714287F);
@@ -322,6 +324,10 @@ public class Camera implements TrackedWaypoint.Camera {
 
    public float getFov() {
       return this.fov;
+   }
+
+   public FogType getFogType() {
+      return this.fogType;
    }
 
    private void setupPerspective(final float zNear, final float zFar, final float fov, final float width, final float height) {
@@ -435,11 +441,7 @@ public class Camera implements TrackedWaypoint.Camera {
       return new Camera.NearPlane(forwardsVec3, leftVec3, upVec3);
    }
 
-   public FogType getFluidInCamera() {
-      if (!this.initialized) {
-         return FogType.NONE;
-      }
-
+   private FogType calculateFogType() {
       FluidState fluidState1 = this.level.getFluidState(this.blockPosition);
       if (fluidState1.is(FluidTags.WATER) && this.position.y < this.blockPosition.getY() + fluidState1.getHeightForCamera(this.level, this.blockPosition)) {
          return FogType.WATER;

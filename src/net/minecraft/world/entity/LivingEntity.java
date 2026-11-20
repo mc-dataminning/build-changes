@@ -267,7 +267,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
    private long lastKineticHitFeedbackTime = -2147483648L;
    private BlockPos lastPos;
    private Optional<BlockPos> lastClimbablePos = Optional.empty();
-   private @Nullable DamageSource lastDamageSource;
+   protected @Nullable DamageSource lastDamageSource;
    private long lastDamageStamp;
    protected int autoSpinAttackTicks;
    protected float autoSpinAttackDmg;
@@ -291,7 +291,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
       this.equipment = this.createEquipment();
       this.blocksBuilding = true;
       this.reapplyPosition();
-      this.setYRot(this.random.nextFloat() * (float) (Math.PI * 2));
+      this.setYRot(this.random.nextFloat() * 360.0F);
       this.yHeadRot = this.getYRot();
       this.brain = this.makeBrain(Brain.Packed.EMPTY);
    }
@@ -2547,7 +2547,7 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
    }
 
    protected void jumpOutOfFluid(final double oldY) {
-      if (this.isJumping() || this.isSwimming()) {
+      if (this.isJumping() || this.isSwimming() || this.hasControllingPassenger()) {
          Vec3 movement = this.getDeltaMovement();
          if (this.horizontalCollision && this.isFree(movement.x, movement.y + 0.6F - this.getY() + oldY, movement.z)) {
             this.setDeltaMovement(movement.x, 0.3F, movement.z);

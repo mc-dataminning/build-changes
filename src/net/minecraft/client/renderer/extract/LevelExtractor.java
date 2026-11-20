@@ -9,14 +9,16 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.SortedSet;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Camera;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.client.SectionUpdateTracker;
+import net.minecraft.client.gui.components.debug.DebugFact;
 import net.minecraft.client.gui.components.debug.DebugScreenEntries;
 import net.minecraft.client.multiplayer.ClientChunkCache;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -621,31 +623,31 @@ public class LevelExtractor implements ResourceManagerReloadListener {
    }
 
    @VisibleForDebug
-   public @Nullable String sectionStatistics() {
+   public void sectionStatistics(final BiConsumer<String, Consumer<DebugFact>> addFact) {
       ViewArea viewArea = this.levelRenderer.viewArea();
-      if (viewArea == null) {
-         return null;
-      }
+      if (viewArea != null) {
+         int totalSections = viewArea.size();
+         int rendered = this.countRenderedSections();
+         SectionRenderDispatcher sectionRenderDispatcher = this.levelRenderer.sectionRenderDispatcher();
+         addFact.accept("Chunk Sections", fact -> fact.value(rendered).text(" / ").value(totalSections));
+         if (!this.minecraft.smartCull) {
+            addFact.accept("Culling", fact -> fact.value("off"));
+         }
 
-      int totalSections = viewArea.size();
-      int rendered = this.countRenderedSections();
-      SectionRenderDispatcher sectionRenderDispatcher = this.levelRenderer.sectionRenderDispatcher();
-      return String.format(
-         Locale.ROOT,
-         "C: %d/%d %sD: %d, %s",
-         rendered,
-         totalSections,
-         this.minecraft.smartCull ? "(s) " : "",
-         this.lastViewDistance,
-         sectionRenderDispatcher == null ? "null" : sectionRenderDispatcher.getStats()
-      );
+         addFact.accept("View Distance", fact -> fact.value(this.lastViewDistance));
+         if (sectionRenderDispatcher != null) {
+            addFact.accept("Queued", fact -> fact.value(sectionRenderDispatcher.getCompileQueueSize()));
+            addFact.accept("Avail Buffers", fact -> fact.value(sectionRenderDispatcher.getFreeBufferCount()));
+         }
+      }
    }
 
-   @VisibleForDebug
-   public @Nullable String entityStatistics() {
-      return this.level == null
-         ? null
-         : "E: " + this.levelRenderState.lastEntityRenderStateCount + "/" + this.level.getEntityCount() + ", SD: " + this.level.getServerSimulationDistance();
+   public int getRenderedEntityCount() {
+      return this.levelRenderState.lastEntityRenderStateCount;
+   }
+
+   public int getTotalEntityCount() {
+      return this.level.getEntityCount();
    }
 
    @VisibleForDebug

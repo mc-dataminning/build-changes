@@ -86,7 +86,7 @@ public class SinglePoolElement extends StructurePoolElement {
    }
 
    private StructureTemplate getTemplate(final StructureTemplateManager structureTemplateManager) {
-      return (StructureTemplate)this.template.map(structureTemplateManager::getOrCreate, Function.identity());
+      return (StructureTemplate)this.template.map(structureTemplateManager::getOrEmpty, Function.identity());
    }
 
    public List<StructureTemplate.StructureBlockInfo> getDataMarkers(

@@ -2,7 +2,6 @@ package net.minecraft.client.renderer.rendertype;
 
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.systems.ScissorState;
 import com.mojang.renderpearl.api.buffers.GpuBuffer;
 import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.commands.RenderPass;
@@ -15,12 +14,7 @@ import net.minecraft.client.renderer.oit.OitStage;
 import org.jspecify.annotations.Nullable;
 
 public record PreparedRenderType(
-   String name,
-   RenderPipeline pipeline,
-   @Nullable OitPipelineSet oitPipelineSet,
-   GpuBufferSlice dynamicTransforms,
-   ScissorState scissorState,
-   List<PreparedRenderType.Texture> textures
+   String name, RenderPipeline pipeline, @Nullable OitPipelineSet oitPipelineSet, GpuBufferSlice dynamicTransforms, List<PreparedRenderType.Texture> textures
 ) {
    public void drawFromBuffer(final StagedVertexBuffer.ExecuteInfo info, final RenderPass renderPass) {
       this.draw(info, renderPass, this.pipeline);
@@ -38,10 +32,6 @@ public record PreparedRenderType(
       renderPass.pushDebugGroup(() -> "Render Type " + this.name);
       GpuBuffer indexBuffer = info.indexBuffer();
       renderPass.setPipeline(RenderSystem.getCompiledPipeline(renderPipeline));
-      if (this.scissorState.enabled()) {
-         renderPass.enableScissor(this.scissorState.x(), this.scissorState.y(), this.scissorState.width(), this.scissorState.height());
-      }
-
       RenderSystem.bindDefaultUniforms(renderPass);
       renderPass.setUniform("DynamicTransforms", this.dynamicTransforms);
       renderPass.setVertexBuffer(0, info.vertexBuffer().slice());

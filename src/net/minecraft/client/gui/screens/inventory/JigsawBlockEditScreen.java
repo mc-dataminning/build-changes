@@ -130,7 +130,7 @@ public class JigsawBlockEditScreen extends Screen {
       );
       boolean vertical = JigsawBlock.getFrontFacing(this.jigsawEntity.getBlockState()).getAxis().isVertical();
       this.jointButton.active = vertical;
-      this.jointButton.visible = vertical;
+      this.jointButton.setVisible(vertical);
       this.addRenderableWidget(new AbstractSliderButton(this.width / 2 - 154, 185, 100, 20, CommonComponents.EMPTY, 0.0) {
          {
             this.updateMessage();

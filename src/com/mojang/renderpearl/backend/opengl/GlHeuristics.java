@@ -6,18 +6,19 @@ import com.mojang.renderpearl.api.device.DeviceInfo;
 import com.mojang.renderpearl.api.device.DeviceLimits;
 import com.mojang.renderpearl.api.device.DeviceType;
 import com.mojang.renderpearl.api.device.HintsAndWorkarounds;
+import com.mojang.renderpearl.util.PlatformUtil;
 import java.nio.ByteBuffer;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-import net.minecraft.util.Util;
 import org.lwjgl.opengl.GL33C;
 import org.lwjgl.opengl.GLCapabilities;
 import org.slf4j.Logger;
 
 public class GlHeuristics {
    private static final Logger LOGGER = LogUtils.getLogger();
+   public static final int MINIMUM_SUPPORTED_MAX_TEXTURE_SIZE = 1024;
    private static final List<String> DEVICE_NAMES_THAT_IMPLY_CPU = List.of("mesa offscreen", "llvmpipe");
    private static final List<String> DEVICE_NAMES_THAT_IMPLY_VIRTUAL = List.of("virtgl");
    private final boolean isGlOnDx12;
@@ -49,7 +50,7 @@ public class GlHeuristics {
    }
 
    private static boolean isGlOnDx12(final String deviceName) {
-      boolean isWindowsArm64 = Util.getPlatform() == Util.OS.WINDOWS && Util.isAarch64();
+      boolean isWindowsArm64 = PlatformUtil.IS_WINDOWS && PlatformUtil.IS_AARCH64;
       return isWindowsArm64 || deviceName.startsWith("D3D12");
    }
 
@@ -107,7 +108,7 @@ public class GlHeuristics {
          ),
          Collections.unmodifiableSet(enabledExtensions),
          new HintsAndWorkarounds(
-            this.isGlOnDx12(), this.isAmd(), Util.isAppleSiliconMac(renderer), vendorLowerCase.contains("intel") && !rendererLowerCase.contains("arc")
+            this.isGlOnDx12(), this.isAmd(), PlatformUtil.isAppleSiliconMac(renderer), vendorLowerCase.contains("intel") && !rendererLowerCase.contains("arc")
          ),
          this.guessDeviceType(rendererLowerCase, vendorLowerCase)
       );

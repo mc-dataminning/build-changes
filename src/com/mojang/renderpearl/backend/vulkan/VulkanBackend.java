@@ -1,6 +1,5 @@
 package com.mojang.renderpearl.backend.vulkan;
 
-import com.mojang.blaze3d.platform.NativeLibrariesBootstrap;
 import com.mojang.logging.LogUtils;
 import com.mojang.renderpearl.api.device.BackendCreationException;
 import com.mojang.renderpearl.api.device.GpuBackend;
@@ -49,6 +48,15 @@ public class VulkanBackend implements GpuBackend {
    private boolean libraryLoaded;
    private @Nullable BackendCreationException libraryLoadFailure;
 
+   private static boolean isVulkanLoaderAvailable() {
+      try {
+         VK.getFunctionProvider();
+         return true;
+      } catch (Throwable t) {
+         return false;
+      }
+   }
+
    @Override
    public String getName() {
       return "Vulkan";
@@ -61,7 +69,7 @@ public class VulkanBackend implements GpuBackend {
             throw this.libraryLoadFailure;
          }
 
-         if (!NativeLibrariesBootstrap.isVulkanLoaderAvailable()) {
+         if (!isVulkanLoaderAvailable()) {
             this.libraryLoadFailure = new BackendCreationException("Vulkan loader library is missing", BackendCreationException.Reason.VULKAN_LOADER_MISSING);
             throw this.libraryLoadFailure;
          }
@@ -112,7 +120,7 @@ public class VulkanBackend implements GpuBackend {
       Set<FeatureSet> requiredIfExtensionsAvailableFeatureSets = VulkanFeatureSets.requiredIfExtensionsAvailableFeatureSets();
 
       try (
-         VulkanInstance instance = new VulkanInstance(0, false, false);
+         VulkanInstance instance = new VulkanInstance("RenderPearl", 0, 0, false, false);
          VulkanPhysicalDevice physicalDevice = findPhysicalDevice(instance, requiredFeatureSets, requiredIfExtensionsAvailableFeatureSets);
       ) {
          return null;
@@ -127,8 +135,8 @@ public class VulkanBackend implements GpuBackend {
    }
 
    @Override
-   public GpuDevice createDevice(final GpuDebugOptions debugOptions) throws BackendCreationException {
-      if (!NativeLibrariesBootstrap.isVulkanLoaderAvailable()) {
+   public GpuDevice createDevice(final String applicationName, final int applicationVersion, final GpuDebugOptions debugOptions) throws BackendCreationException {
+      if (!isVulkanLoaderAvailable()) {
          throw new BackendCreationException("Vulkan loader library is missing", BackendCreationException.Reason.VULKAN_LOADER_MISSING);
       }
 
@@ -144,7 +152,9 @@ public class VulkanBackend implements GpuBackend {
       FeatureSet enabledFeatures;
       try {
          boolean renderdocAttached = "1".equals(System.getenv("ENABLE_VULKAN_RENDERDOC_CAPTURE"));
-         instance = new VulkanInstance(debugOptions.logLevel(), debugOptions.useLabels() || renderdocAttached, debugOptions.useValidationLayers());
+         instance = new VulkanInstance(
+            applicationName, applicationVersion, debugOptions.logLevel(), debugOptions.useLabels() || renderdocAttached, debugOptions.useValidationLayers()
+         );
          physicalDevice = findPhysicalDevice(instance, requiredFeatureSets, requiredIfExtensionsAvailableFeatureSets);
          Set<String> deviceExtensions = VulkanUtils.enumerateExtensions(physicalDevice.vkPhysicalDevice());
          Set<FeatureSet> enabledFeatureSets = new ObjectOpenHashSet(requiredFeatureSets);
@@ -198,7 +208,7 @@ public class VulkanBackend implements GpuBackend {
          throw e;
       }
 
-      return new FrontendGpuDevice(new VulkanDevice(instance, physicalDevice, enabledFeatures, device, vma, checkpointExtension));
+      return new FrontendGpuDevice(new VulkanDevice(instance, physicalDevice, enabledFeatures, device, vma, checkpointExtension), debugOptions);
    }
 
    private static long createVma(final VkDevice vkDevice) throws BackendCreationException {
@@ -367,9 +377,9 @@ public class VulkanBackend implements GpuBackend {
 
       String var3;
       try {
-         VkPhysicalDeviceProperties2 deviceProperties = VkPhysicalDeviceProperties2.calloc(stack).sType$Default();
-         VK12.vkGetPhysicalDeviceProperties2(vkPhysicalDevice, deviceProperties);
-         var3 = deviceProperties.properties().deviceNameString();
+         VkPhysicalDeviceProperties properties = VkPhysicalDeviceProperties.calloc(stack);
+         VK12.vkGetPhysicalDeviceProperties(vkPhysicalDevice, properties);
+         var3 = properties.deviceNameString();
       } catch (Throwable var5) {
          if (stack != null) {
             try {

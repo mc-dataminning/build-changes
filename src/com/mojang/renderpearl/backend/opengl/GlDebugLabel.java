@@ -3,7 +3,6 @@ package com.mojang.renderpearl.backend.opengl;
 import com.mojang.logging.LogUtils;
 import java.util.Set;
 import java.util.function.Supplier;
-import net.minecraft.util.StringUtil;
 import org.jspecify.annotations.Nullable;
 import org.lwjgl.opengl.EXTDebugLabel;
 import org.lwjgl.opengl.GL33C;
@@ -54,29 +53,37 @@ public abstract class GlDebugLabel {
       return false;
    }
 
+   private static String truncateStringIfNecessary(final String s, final int maxLength, final boolean addDotDotDotIfTruncated) {
+      if (s.length() <= maxLength) {
+         return s;
+      } else {
+         return addDotDotDotIfTruncated && maxLength > 3 ? s.substring(0, maxLength - 3) + "..." : s.substring(0, maxLength);
+      }
+   }
+
    private static class Core extends GlDebugLabel {
       private final int maxLabelLength = GL33C.glGetInteger(33512);
 
       @Override
       public void applyLabel(final GlBuffer buffer, final @Nullable Supplier<String> label) {
          if (label != null) {
-            KHRDebug.glObjectLabel(33504, buffer.handle(), StringUtil.truncateStringIfNecessary(label.get(), this.maxLabelLength, true));
+            KHRDebug.glObjectLabel(33504, buffer.handle(), GlDebugLabel.truncateStringIfNecessary(label.get(), this.maxLabelLength, true));
          }
       }
 
       @Override
       public void applyLabel(final GlTexture texture) {
-         KHRDebug.glObjectLabel(5890, texture.id, StringUtil.truncateStringIfNecessary(texture.getLabel(), this.maxLabelLength, true));
+         KHRDebug.glObjectLabel(5890, texture.id, GlDebugLabel.truncateStringIfNecessary(texture.getLabel(), this.maxLabelLength, true));
       }
 
       @Override
       public void applyLabel(final GlShaderModule shaderModule) {
-         KHRDebug.glObjectLabel(33505, shaderModule.getShaderId(), StringUtil.truncateStringIfNecessary(shaderModule.getLabel(), this.maxLabelLength, true));
+         KHRDebug.glObjectLabel(33505, shaderModule.getShaderId(), GlDebugLabel.truncateStringIfNecessary(shaderModule.getLabel(), this.maxLabelLength, true));
       }
 
       @Override
       public void applyLabel(final GlProgram program) {
-         KHRDebug.glObjectLabel(33506, program.getProgramId(), StringUtil.truncateStringIfNecessary(program.getDebugLabel(), this.maxLabelLength, true));
+         KHRDebug.glObjectLabel(33506, program.getProgramId(), GlDebugLabel.truncateStringIfNecessary(program.getDebugLabel(), this.maxLabelLength, true));
       }
 
       @Override
@@ -102,23 +109,23 @@ public abstract class GlDebugLabel {
       @Override
       public void applyLabel(final GlBuffer buffer, final @Nullable Supplier<String> label) {
          if (label != null) {
-            EXTDebugLabel.glLabelObjectEXT(37201, buffer.handle(), StringUtil.truncateStringIfNecessary(label.get(), 256, true));
+            EXTDebugLabel.glLabelObjectEXT(37201, buffer.handle(), GlDebugLabel.truncateStringIfNecessary(label.get(), 256, true));
          }
       }
 
       @Override
       public void applyLabel(final GlTexture texture) {
-         EXTDebugLabel.glLabelObjectEXT(5890, texture.id, StringUtil.truncateStringIfNecessary(texture.getLabel(), 256, true));
+         EXTDebugLabel.glLabelObjectEXT(5890, texture.id, GlDebugLabel.truncateStringIfNecessary(texture.getLabel(), 256, true));
       }
 
       @Override
       public void applyLabel(final GlShaderModule shaderModule) {
-         EXTDebugLabel.glLabelObjectEXT(35656, shaderModule.getShaderId(), StringUtil.truncateStringIfNecessary(shaderModule.getLabel(), 256, true));
+         EXTDebugLabel.glLabelObjectEXT(35656, shaderModule.getShaderId(), GlDebugLabel.truncateStringIfNecessary(shaderModule.getLabel(), 256, true));
       }
 
       @Override
       public void applyLabel(final GlProgram program) {
-         EXTDebugLabel.glLabelObjectEXT(35648, program.getProgramId(), StringUtil.truncateStringIfNecessary(program.getDebugLabel(), 256, true));
+         EXTDebugLabel.glLabelObjectEXT(35648, program.getProgramId(), GlDebugLabel.truncateStringIfNecessary(program.getDebugLabel(), 256, true));
       }
 
       @Override

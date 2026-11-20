@@ -18,6 +18,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -507,7 +508,7 @@ public abstract class ChunkGenerator {
       return level.environmentAttributes().getValue(EnvironmentAttributes.NATURAL_MOB_SPAWNS, pos).getMobsToSpawn(mobCategory);
    }
 
-   public void createStructures(
+   public CompletableFuture<ChunkAccess> createStructures(
       final RegistryAccess registryAccess,
       final ChunkGeneratorStructureState state,
       final StructureManager structureManager,
@@ -515,85 +516,102 @@ public abstract class ChunkGenerator {
       final StructureTemplateManager structureTemplateManager,
       final ResourceKey<Level> level
    ) {
-      if (!SharedConstants.DEBUG_DISABLE_STRUCTURES) {
-         ChunkPos sourceChunkPos = centerChunk.getPos();
-         RandomState randomState = state.randomState();
-         Climate.Sampler climateSampler = randomState.createClimateSampler(SamplerContext.builder().enableCaches().build());
-         state.possibleStructureSets()
-            .forEach(
-               set -> {
-                  StructurePlacement featurePlacement = set.value().placement();
-                  List<StructureSet.StructureSelectionEntry> structures = set.value().structures();
+      ChunkPos sourceChunkPos = centerChunk.getPos();
+      List<Holder<StructureSet>> structureSetsInChunk = state.possibleStructureSets().stream().filter(set -> {
+         StructurePlacement featurePlacement = set.value().placement();
 
-                  for (StructureSet.StructureSelectionEntry structure : structures) {
-                     StructureStart existingStart = structureManager.getStartForStructure(structure.structure().value(), centerChunk);
-                     if (existingStart != null && existingStart.isValid()) {
-                        return;
-                     }
-                  }
+         for (StructureSet.StructureSelectionEntry structure : set.value().structures()) {
+            StructureStart existingStart = structureManager.getStartForStructure(structure.structure().value(), centerChunk);
+            if (existingStart != null && existingStart.isValid()) {
+               return false;
+            }
+         }
 
-                  if (featurePlacement.isStructureChunk(state, sourceChunkPos.x(), sourceChunkPos.z())) {
-                     if (structures.size() == 1) {
-                        this.tryGenerateStructure(
-                           structures.get(0),
-                           structureManager,
-                           registryAccess,
-                           randomState,
-                           structureTemplateManager,
-                           state.getLevelSeed(),
-                           centerChunk,
-                           sourceChunkPos,
-                           level,
-                           climateSampler
-                        );
-                     } else {
-                        ArrayList<StructureSet.StructureSelectionEntry> options = new ArrayList<>(structures.size());
-                        options.addAll(structures);
-                        WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(0L));
-                        random.setLargeFeatureSeed(state.getLevelSeed(), sourceChunkPos.x(), sourceChunkPos.z());
-                        int total = 0;
+         return featurePlacement.isStructureChunk(state, sourceChunkPos.x(), sourceChunkPos.z());
+      }).toList();
+      return structureSetsInChunk.isEmpty()
+         ? CompletableFuture.completedFuture(centerChunk)
+         : CompletableFuture.supplyAsync(
+            () -> this.createStructuresForSets(structureSetsInChunk, registryAccess, state, structureManager, centerChunk, structureTemplateManager, level),
+            Util.backgroundExecutor().forName("createStructures")
+         );
+   }
 
-                        for (StructureSet.StructureSelectionEntry option : options) {
-                           total += option.weight();
-                        }
+   private ChunkAccess createStructuresForSets(
+      final List<Holder<StructureSet>> structureSetsInChunk,
+      final RegistryAccess registryAccess,
+      final ChunkGeneratorStructureState state,
+      final StructureManager structureManager,
+      final ChunkAccess centerChunk,
+      final StructureTemplateManager structureTemplateManager,
+      final ResourceKey<Level> level
+   ) {
+      RandomState randomState = state.randomState();
+      Climate.Sampler climateSampler = randomState.createClimateSampler(SamplerContext.builder().enableCaches().build());
+      ChunkPos sourceChunkPos = centerChunk.getPos();
+      structureSetsInChunk.forEach(
+         set -> {
+            List<StructureSet.StructureSelectionEntry> structures = set.value().structures();
+            if (structures.size() == 1) {
+               this.tryGenerateStructure(
+                  structures.getFirst(),
+                  structureManager,
+                  registryAccess,
+                  randomState,
+                  structureTemplateManager,
+                  state.getLevelSeed(),
+                  centerChunk,
+                  sourceChunkPos,
+                  level,
+                  climateSampler
+               );
+            } else {
+               ArrayList<StructureSet.StructureSelectionEntry> options = new ArrayList<>(structures.size());
+               options.addAll(structures);
+               WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(0L));
+               random.setLargeFeatureSeed(state.getLevelSeed(), sourceChunkPos.x(), sourceChunkPos.z());
+               int total = 0;
 
-                        while (!options.isEmpty()) {
-                           int choice = random.nextInt(total);
-                           int index = 0;
-
-                           for (StructureSet.StructureSelectionEntry option : options) {
-                              choice -= option.weight();
-                              if (choice < 0) {
-                                 break;
-                              }
-
-                              index++;
-                           }
-
-                           StructureSet.StructureSelectionEntry selected = options.get(index);
-                           if (this.tryGenerateStructure(
-                              selected,
-                              structureManager,
-                              registryAccess,
-                              randomState,
-                              structureTemplateManager,
-                              state.getLevelSeed(),
-                              centerChunk,
-                              sourceChunkPos,
-                              level,
-                              climateSampler
-                           )) {
-                              return;
-                           }
-
-                           options.remove(index);
-                           total -= selected.weight();
-                        }
-                     }
-                  }
+               for (StructureSet.StructureSelectionEntry option : options) {
+                  total += option.weight();
                }
-            );
-      }
+
+               while (!options.isEmpty()) {
+                  int choice = random.nextInt(total);
+                  int index = 0;
+
+                  for (StructureSet.StructureSelectionEntry option : options) {
+                     choice -= option.weight();
+                     if (choice < 0) {
+                        break;
+                     }
+
+                     index++;
+                  }
+
+                  StructureSet.StructureSelectionEntry selected = options.get(index);
+                  if (this.tryGenerateStructure(
+                     selected,
+                     structureManager,
+                     registryAccess,
+                     randomState,
+                     structureTemplateManager,
+                     state.getLevelSeed(),
+                     centerChunk,
+                     sourceChunkPos,
+                     level,
+                     climateSampler
+                  )) {
+                     return;
+                  }
+
+                  options.remove(index);
+                  total -= selected.weight();
+               }
+            }
+         }
+      );
+      return centerChunk;
    }
 
    private boolean tryGenerateStructure(
@@ -703,7 +721,7 @@ public abstract class ChunkGenerator {
    }
 
    public abstract void addDebugScreenInfo(
-      final List<String> result, final RandomState randomState, final BlockPos feetPos, final SamplerContext samplerContext
+      final BiConsumer<String, String> addFact, final RandomState randomState, final BlockPos feetPos, final SamplerContext samplerContext
    );
 
    @Deprecated

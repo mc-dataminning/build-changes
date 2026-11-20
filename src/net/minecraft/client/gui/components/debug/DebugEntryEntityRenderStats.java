@@ -1,6 +1,8 @@
 package net.minecraft.client.gui.components.debug;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.extract.LevelExtractor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.chunk.LevelChunk;
 import org.jspecify.annotations.Nullable;
@@ -13,9 +15,13 @@ public class DebugEntryEntityRenderStats implements DebugScreenEntry {
       final @Nullable LevelChunk clientChunk,
       final @Nullable LevelChunk serverChunk
    ) {
-      String stats = Minecraft.getInstance().levelExtractor.entityStatistics();
-      if (stats != null) {
-         displayer.addLine(stats);
+      ClientLevel clientLevel = Minecraft.getInstance().level;
+      if (clientLevel != null) {
+         LevelExtractor levelExtractor = Minecraft.getInstance().levelExtractor;
+         displayer.addFactToGroup(
+            DebugGroups.MISC, "Entities", fact -> fact.value(levelExtractor.getRenderedEntityCount()).text(" / ").value(levelExtractor.getTotalEntityCount())
+         );
+         displayer.addFactToGroup(DebugGroups.MISC, "Simulation Distance", fact -> fact.value(clientLevel.getServerSimulationDistance()));
       }
    }
 

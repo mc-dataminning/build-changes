@@ -917,7 +917,7 @@ public class Items {
    public static final Item MUD_BRICK_STAIRS = registerBlock(BlockItemIds.MUD_BRICK_STAIRS, Blocks.MUD_BRICK_STAIRS);
    public static final Item MYCELIUM = registerBlock(BlockItemIds.MYCELIUM, Blocks.MYCELIUM);
    public static final Item LILY_PAD = registerBlock(
-      BlockItemIds.LILY_PAD, Blocks.LILY_PAD, PlaceOnWaterBlockItem::new, new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_MEDIUM)
+      BlockItemIds.LILY_PAD, Blocks.LILY_PAD, PlaceOnFluidBlockItem::new, new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_MEDIUM)
    );
    public static final Item NETHER_BRICKS = registerBlock(BlockItemIds.NETHER_BRICKS, Blocks.NETHER_BRICKS);
    public static final Item CRACKED_NETHER_BRICKS = registerBlock(BlockItemIds.CRACKED_NETHER_BRICKS, Blocks.CRACKED_NETHER_BRICKS);
@@ -2762,7 +2762,7 @@ public class Items {
    public static final Item OCHRE_FROGLIGHT = registerBlock(BlockItemIds.OCHRE_FROGLIGHT, Blocks.OCHRE_FROGLIGHT);
    public static final Item VERDANT_FROGLIGHT = registerBlock(BlockItemIds.VERDANT_FROGLIGHT, Blocks.VERDANT_FROGLIGHT);
    public static final Item PEARLESCENT_FROGLIGHT = registerBlock(BlockItemIds.PEARLESCENT_FROGLIGHT, Blocks.PEARLESCENT_FROGLIGHT);
-   public static final Item FROGSPAWN = registerBlock(BlockItemIds.FROGSPAWN, Blocks.FROGSPAWN, PlaceOnWaterBlockItem::new);
+   public static final Item FROGSPAWN = registerBlock(BlockItemIds.FROGSPAWN, Blocks.FROGSPAWN, PlaceOnFluidBlockItem::new);
    public static final Item ECHO_SHARD = registerItem(ItemIds.ECHO_SHARD, new Item.Properties().rarity(Rarity.UNCOMMON));
    public static final Item BRUSH = registerItem(ItemIds.BRUSH, BrushItem::new, new Item.Properties().durability(64));
    public static final Item NETHERITE_UPGRADE_SMITHING_TEMPLATE = registerItem(

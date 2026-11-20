@@ -12,7 +12,6 @@ import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
@@ -26,6 +25,7 @@ public abstract class BlockAttachedEntity extends Entity {
    private static final int CHECK_INTERVAL = 100;
    private int ticksSinceLastCheck;
    protected BlockPos pos;
+   protected @Nullable DamageSource lastDamageSource;
 
    protected BlockAttachedEntity(final EntityType<? extends BlockAttachedEntity> type, final Level level) {
       super(type, level);
@@ -73,22 +73,13 @@ public abstract class BlockAttachedEntity extends Entity {
    }
 
    @Override
-   public void kill(final ServerLevel level) {
-      this.kill(level, this);
-   }
-
-   public void kill(final ServerLevel level, final @Nullable Entity attributedTo) {
-      this.onKilled();
-      this.remove(Entity.RemovalReason.KILLED);
-      this.gameEvent(GameEvent.ENTITY_DIE, attributedTo != null ? attributedTo : this);
-   }
-
-   protected void onKilled() {
-   }
-
-   @Override
    public boolean hurtClient(final DamageSource source) {
       return !this.isInvulnerableToBase(source);
+   }
+
+   protected void kill(final ServerLevel level, final DamageSource source) {
+      this.lastDamageSource = source;
+      this.kill(level);
    }
 
    @Override
@@ -102,12 +93,16 @@ public abstract class BlockAttachedEntity extends Entity {
       }
 
       if (!this.isRemoved()) {
-         this.kill(level, source.getEntity());
+         this.kill(level, source);
          this.markHurt();
          this.dropItem(level, source.getEntity());
       }
 
       return true;
+   }
+
+   public @Nullable DamageSource getLastDamageSource() {
+      return this.lastDamageSource;
    }
 
    @Override

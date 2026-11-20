@@ -1,7 +1,7 @@
 package net.minecraft.client.gui.components.debug;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.chunk.LevelChunk;
 import org.jspecify.annotations.Nullable;
@@ -15,9 +15,13 @@ public class DebugEntryGpuUtilization implements DebugScreenEntry {
       final @Nullable LevelChunk serverChunk
    ) {
       Minecraft minecraft = Minecraft.getInstance();
-      String gpuUtilizationString = "GPU: "
-         + (minecraft.getGpuUtilization() > 100.0 ? ChatFormatting.RED + "100%" : Math.round(minecraft.getGpuUtilization()) + "%");
-      displayer.addLine(gpuUtilizationString);
+      displayer.addFactToGroup(DebugGroups.MISC, "GPU Utilization", fact -> {
+         if (minecraft.getGpuUtilization() > 100.0) {
+            fact.text(Component.literal("100%").withColor(-65536));
+         } else {
+            fact.value((int)Math.round(minecraft.getGpuUtilization())).text("%");
+         }
+      });
    }
 
    @Override

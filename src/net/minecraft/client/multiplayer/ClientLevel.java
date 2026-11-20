@@ -1082,9 +1082,8 @@ public class ClientLevel extends Level implements BlockAndTintGetter, CacheSlot.
       return this.entityStorage.getEntityGetter();
    }
 
-   @Override
-   public String gatherChunkSourceStats() {
-      return "Chunks[C] W: " + this.chunkSource.gatherStats() + " E: " + this.entityStorage.gatherStats();
+   public TransientEntitySectionManager<Entity> getEntityStorage() {
+      return this.entityStorage;
    }
 
    @Override
@@ -1297,10 +1296,6 @@ public class ClientLevel extends Level implements BlockAndTintGetter, CacheSlot.
 
       public void setDifficultyLocked(final boolean locked) {
          this.difficultyLocked = locked;
-      }
-
-      public double getHorizonHeight(final LevelHeightAccessor level) {
-         return this.isFlat ? level.getMinY() : 63.0;
       }
 
       public float voidDarknessOnsetRange() {
