@@ -1,5 +1,6 @@
 package net.minecraft.world.level.levelgen.structure.structures;
 
+import com.google.common.collect.Lists;
 import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -195,162 +196,16 @@ public class OceanRuinPieces {
    }
 
    private static List<BlockPos> allPositions(final RandomSource random, final BlockPos origin) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.OutOfMemoryError: Java heap space
-      //   at java.base/java.util.Arrays.copyOf(Arrays.java:3478)
-      //   at java.base/java.util.ArrayList.toArray(ArrayList.java:370)
-      //   at java.base/java.util.ArrayList.addAll(ArrayList.java:753)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.getAllExprents(InvocationExprent.java:678)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.Exprent.getAllExprents(Exprent.java:159)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.iterateChildExprent(StackVarsProcessor.java:761)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.iterateExprent(StackVarsProcessor.java:321)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.iterateStatements(StackVarsProcessor.java:192)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.simplifyStackVars(StackVarsProcessor.java:91)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.simplifyStackVars(StackVarsProcessor.java:43)
-      //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:238)
-      //
-      // Bytecode:
-      // 00: invokestatic com/google/common/collect/Lists.newArrayList ()Ljava/util/ArrayList;
-      // 03: astore 2
-      // 04: aload 2
-      // 05: aload 1
-      // 06: bipush -16
-      // 08: aload 0
-      // 09: bipush 1
-      // 0a: bipush 8
-      // 0c: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // 0f: iadd
-      // 10: bipush 0
-      // 11: bipush 16
-      // 13: aload 0
-      // 14: bipush 1
-      // 15: bipush 7
-      // 17: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // 1a: iadd
-      // 1b: invokevirtual net/minecraft/core/BlockPos.offset (III)Lnet/minecraft/core/BlockPos;
-      // 1e: invokeinterface java/util/List.add (Ljava/lang/Object;)Z 2
-      // 23: pop
-      // 24: aload 2
-      // 25: aload 1
-      // 26: bipush -16
-      // 28: aload 0
-      // 29: bipush 1
-      // 2a: bipush 8
-      // 2c: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // 2f: iadd
-      // 30: bipush 0
-      // 31: aload 0
-      // 32: bipush 1
-      // 33: bipush 7
-      // 35: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // 38: invokevirtual net/minecraft/core/BlockPos.offset (III)Lnet/minecraft/core/BlockPos;
-      // 3b: invokeinterface java/util/List.add (Ljava/lang/Object;)Z 2
-      // 40: pop
-      // 41: aload 2
-      // 42: aload 1
-      // 43: bipush -16
-      // 45: aload 0
-      // 46: bipush 1
-      // 47: bipush 8
-      // 49: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // 4c: iadd
-      // 4d: bipush 0
-      // 4e: bipush -16
-      // 50: aload 0
-      // 51: bipush 4
-      // 52: bipush 8
-      // 54: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // 57: iadd
-      // 58: invokevirtual net/minecraft/core/BlockPos.offset (III)Lnet/minecraft/core/BlockPos;
-      // 5b: invokeinterface java/util/List.add (Ljava/lang/Object;)Z 2
-      // 60: pop
-      // 61: aload 2
-      // 62: aload 1
-      // 63: aload 0
-      // 64: bipush 1
-      // 65: bipush 7
-      // 67: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // 6a: bipush 0
-      // 6b: bipush 16
-      // 6d: aload 0
-      // 6e: bipush 1
-      // 6f: bipush 7
-      // 71: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // 74: iadd
-      // 75: invokevirtual net/minecraft/core/BlockPos.offset (III)Lnet/minecraft/core/BlockPos;
-      // 78: invokeinterface java/util/List.add (Ljava/lang/Object;)Z 2
-      // 7d: pop
-      // 7e: aload 2
-      // 7f: aload 1
-      // 80: aload 0
-      // 81: bipush 1
-      // 82: bipush 7
-      // 84: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // 87: bipush 0
-      // 88: bipush -16
-      // 8a: aload 0
-      // 8b: bipush 4
-      // 8c: bipush 6
-      // 8e: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // 91: iadd
-      // 92: invokevirtual net/minecraft/core/BlockPos.offset (III)Lnet/minecraft/core/BlockPos;
-      // 95: invokeinterface java/util/List.add (Ljava/lang/Object;)Z 2
-      // 9a: pop
-      // 9b: aload 2
-      // 9c: aload 1
-      // 9d: bipush 16
-      // 9f: aload 0
-      // a0: bipush 1
-      // a1: bipush 7
-      // a3: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // a6: iadd
-      // a7: bipush 0
-      // a8: bipush 16
-      // aa: aload 0
-      // ab: bipush 3
-      // ac: bipush 8
-      // ae: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // b1: iadd
-      // b2: invokevirtual net/minecraft/core/BlockPos.offset (III)Lnet/minecraft/core/BlockPos;
-      // b5: invokeinterface java/util/List.add (Ljava/lang/Object;)Z 2
-      // ba: pop
-      // bb: aload 2
-      // bc: aload 1
-      // bd: bipush 16
-      // bf: aload 0
-      // c0: bipush 1
-      // c1: bipush 7
-      // c3: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // c6: iadd
-      // c7: bipush 0
-      // c8: aload 0
-      // c9: bipush 1
-      // ca: bipush 7
-      // cc: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // cf: invokevirtual net/minecraft/core/BlockPos.offset (III)Lnet/minecraft/core/BlockPos;
-      // d2: invokeinterface java/util/List.add (Ljava/lang/Object;)Z 2
-      // d7: pop
-      // d8: aload 2
-      // d9: aload 1
-      // da: bipush 16
-      // dc: aload 0
-      // dd: bipush 1
-      // de: bipush 7
-      // e0: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // e3: iadd
-      // e4: bipush 0
-      // e5: bipush -16
-      // e7: aload 0
-      // e8: bipush 4
-      // e9: bipush 8
-      // eb: invokestatic net/minecraft/util/Mth.nextInt (Lnet/minecraft/util/RandomSource;II)I
-      // ee: iadd
-      // ef: invokevirtual net/minecraft/core/BlockPos.offset (III)Lnet/minecraft/core/BlockPos;
-      // f2: invokeinterface java/util/List.add (Ljava/lang/Object;)Z 2
-      // f7: pop
-      // f8: aload 2
-      // f9: areturn
+      List<BlockPos> positions = Lists.newArrayList();
+      positions.add(origin.offset(-16 + Mth.nextInt(random, 1, 8), 0, 16 + Mth.nextInt(random, 1, 7)));
+      positions.add(origin.offset(-16 + Mth.nextInt(random, 1, 8), 0, Mth.nextInt(random, 1, 7)));
+      positions.add(origin.offset(-16 + Mth.nextInt(random, 1, 8), 0, -16 + Mth.nextInt(random, 4, 8)));
+      positions.add(origin.offset(Mth.nextInt(random, 1, 7), 0, 16 + Mth.nextInt(random, 1, 7)));
+      positions.add(origin.offset(Mth.nextInt(random, 1, 7), 0, -16 + Mth.nextInt(random, 4, 6)));
+      positions.add(origin.offset(16 + Mth.nextInt(random, 1, 7), 0, 16 + Mth.nextInt(random, 3, 8)));
+      positions.add(origin.offset(16 + Mth.nextInt(random, 1, 7), 0, Mth.nextInt(random, 1, 7)));
+      positions.add(origin.offset(16 + Mth.nextInt(random, 1, 7), 0, -16 + Mth.nextInt(random, 4, 8)));
+      return positions;
    }
 
    private static void addPiece(

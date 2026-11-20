@@ -31,15 +31,4 @@ public record HeightMatchTest(int minInclusive, int maxInclusive) implements Rul
    public MapCodec<HeightMatchTest> codec() {
       return CODEC;
    }
-
-   @Override
-   public final String toString() {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      //
-      // Bytecode:
-      // 0: aload 0
-      // 1: invokedynamic toString (Lnet/minecraft/world/level/levelgen/structure/templatesystem/HeightMatchTest;)Ljava/lang/String; bsm=java/lang/runtime/ObjectMethods.bootstrap (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object; args=[ net/minecraft/world/level/levelgen/structure/templatesystem/HeightMatchTest, "minInclusive;maxInclusive", net/minecraft/world/level/levelgen/structure/templatesystem/HeightMatchTest.minInclusive I, net/minecraft/world/level/levelgen/structure/templatesystem/HeightMatchTest.maxInclusive I ]
-      // 6: areturn
-   }
 }
