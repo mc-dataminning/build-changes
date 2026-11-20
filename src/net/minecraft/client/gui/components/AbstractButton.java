@@ -43,7 +43,7 @@ public abstract class AbstractButton extends AbstractWidget.WithInactiveMessage 
    protected final void extractDefaultSprite(final GuiGraphicsExtractor graphics) {
       graphics.blitSprite(
          GuiPipeline.TEXTURED,
-         SPRITES.get(this.active, this.overrideRenderHighlightedSprite != null ? this.overrideRenderHighlightedSprite.get() : this.isHoveredOrFocused()),
+         SPRITES.get(this.active, this.overrideRenderHighlightedSprite != null ? this.overrideRenderHighlightedSprite.get() : this.isHighlighted()),
          this.getX(),
          this.getY(),
          this.getWidth(),

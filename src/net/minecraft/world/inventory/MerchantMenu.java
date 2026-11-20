@@ -31,6 +31,7 @@ public class MerchantMenu extends AbstractContainerMenu {
    private int merchantLevel;
    private boolean showProgressBar;
    private boolean canRestock;
+   private Runnable onTradesChanged = () -> {};
 
    public MerchantMenu(final int containerId, final Inventory inventory) {
       this(containerId, inventory, new ClientSideMerchant(inventory.player));
@@ -40,8 +41,8 @@ public class MerchantMenu extends AbstractContainerMenu {
       super(MenuType.MERCHANT, containerId);
       this.trader = merchant;
       this.tradeContainer = new MerchantContainer(merchant);
-      this.addSlot(new Slot(this.tradeContainer, 0, 136, 37));
-      this.addSlot(new Slot(this.tradeContainer, 1, 162, 37));
+      this.addSlot(new Slot(this.tradeContainer, 0, 136, 37, Slot.Section.INPUT));
+      this.addSlot(new Slot(this.tradeContainer, 1, 162, 37, Slot.Section.INPUT));
       this.addSlot(new MerchantResultSlot(inventory.player, merchant, this.tradeContainer, 2, 220, 37));
       this.addStandardInventorySlots(inventory, 108, 84);
    }
@@ -222,6 +223,7 @@ public class MerchantMenu extends AbstractContainerMenu {
 
    public void setOffers(final MerchantOffers offers) {
       this.trader.overrideOffers(offers);
+      this.onTradesChanged.run();
    }
 
    public MerchantOffers getOffers() {
@@ -230,5 +232,9 @@ public class MerchantMenu extends AbstractContainerMenu {
 
    public boolean showProgressBar() {
       return this.showProgressBar;
+   }
+
+   public void registerUpdateListener(final Runnable onTradesChanged) {
+      this.onTradesChanged = onTradesChanged;
    }
 }

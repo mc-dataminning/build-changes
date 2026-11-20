@@ -12,7 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.apache.commons.lang3.function.TriFunction;
 
-public record WeatheringCopperCollection<T>(WeatheringCopperCollection.ByState<T> weathering, WeatheringCopperCollection.ByState<T> waxed) {
+public record WeatheringCopperCollection<T>(WeatheringCopperCollection.ByState<T> weathering, WeatheringCopperCollection.ByState<T> waxed) implements Group<T> {
    public static final WeatheringCopperCollection.ByState<WeatheringCopper.WeatherState> STATES = new WeatheringCopperCollection.ByState<>(
       WeatheringCopper.WeatherState.UNAFFECTED,
       WeatheringCopper.WeatherState.EXPOSED,
@@ -76,12 +76,14 @@ public record WeatheringCopperCollection<T>(WeatheringCopperCollection.ByState<T
       );
    }
 
+   @Override
    public List<T> asList() {
       Builder<T> builder = ImmutableList.builderWithExpectedSize(8);
       this.forEach(builder::add);
       return builder.build();
    }
 
+   @Override
    public void forEach(final Consumer<T> consumer) {
       this.weathering.forEach(consumer);
       this.waxed.forEach(consumer);

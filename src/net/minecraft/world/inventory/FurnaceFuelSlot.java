@@ -1,5 +1,6 @@
 package net.minecraft.world.inventory;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -8,13 +9,18 @@ public class FurnaceFuelSlot extends Slot {
    private final AbstractFurnaceMenu menu;
 
    public FurnaceFuelSlot(final AbstractFurnaceMenu menu, final Container container, final int slot, final int x, final int y) {
-      super(container, slot, x, y);
+      super(container, slot, x, y, Slot.Section.FUEL);
       this.menu = menu;
    }
 
    @Override
    public boolean mayPlace(final ItemStack itemStack) {
       return this.menu.isFuel(itemStack) || isBucket(itemStack);
+   }
+
+   @Override
+   public Component getNarrationName() {
+      return Component.translatable("narration.slot.name.fuel");
    }
 
    @Override

@@ -17,7 +17,16 @@ import net.minecraft.world.level.storage.ValueOutput;
 public class Skeleton extends AbstractSkeleton {
    private static final EntityDataAccessor<Boolean> DATA_STRAY_CONVERSION_ID = SynchedEntityData.defineId(Skeleton.class, EntityDataSerializers.BOOLEAN);
    private final ConversionTracker<AbstractSkeleton> freezingTracker = new ConversionTracker<>(
-      this, DATA_STRAY_CONVERSION_ID, () -> EntityTypes.STRAY, () -> 1048, () -> this.isInPowderSnow, "FreezingTime", 140, "StrayConversionTime", 300, null
+      this,
+      DATA_STRAY_CONVERSION_ID,
+      () -> EntityTypes.STRAY,
+      () -> 1048,
+      () -> this.isInPowderSnow && !this.isWearingFreezeImmuneWearables(),
+      "FreezingTime",
+      140,
+      "StrayConversionTime",
+      300,
+      null
    );
 
    public Skeleton(final EntityType<? extends Skeleton> type, final Level level) {

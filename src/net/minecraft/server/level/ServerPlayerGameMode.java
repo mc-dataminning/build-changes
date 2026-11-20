@@ -389,7 +389,7 @@ public class ServerPlayerGameMode {
          }
 
          ServerLevel serverLevel = player.level();
-         if (!serverLevel.isDebug() && state.getBlock() instanceof Portal portal) {
+         if (state.getBlock() instanceof Portal portal) {
             TeleportTransition teleportTransition = portal.getPortalDestination(serverLevel, player, pos);
             if (teleportTransition != null) {
                if (player.getCamera() != player) {

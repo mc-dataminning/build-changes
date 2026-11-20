@@ -73,14 +73,7 @@ public class VulkanRenderPass implements RenderPassBackend {
       MemoryStack stack = MemoryStack.stackPush();
 
       try {
-         Buffer viewport = VkViewport.calloc(1, stack);
-         viewport.x(0.0F);
-         viewport.y(0.0F);
-         viewport.width(outputWidth);
-         viewport.height(outputHeight);
-         viewport.minDepth(0.0F);
-         viewport.maxDepth(1.0F);
-         VK12.vkCmdSetViewport(this.commandBuffer(), 0, viewport);
+         this.setViewport(0, 0, outputWidth, outputHeight);
          setScissor(stack, this.commandBuffer(), renderArea.x(), renderArea.y(), renderArea.width(), renderArea.height());
       } catch (Throwable var13) {
          if (stack != null) {
@@ -147,6 +140,36 @@ public class VulkanRenderPass implements RenderPassBackend {
    public void pushConstants(final ByteBuffer value) {
       assert this.pipeline != null;
       VK12.vkCmdPushConstants(this.commandBuffer(), this.pipeline.pipelineLayout(), Integer.MAX_VALUE, 0, value);
+   }
+
+   @Override
+   public void setViewport(final int x, final int y, final int width, final int height) {
+      MemoryStack stack = MemoryStack.stackPush();
+
+      try {
+         Buffer viewport = VkViewport.calloc(1, stack);
+         viewport.x(x);
+         viewport.y(y);
+         viewport.width(width);
+         viewport.height(height);
+         viewport.minDepth(0.0F);
+         viewport.maxDepth(1.0F);
+         VK12.vkCmdSetViewport(this.commandBuffer, 0, viewport);
+      } catch (Throwable var9) {
+         if (stack != null) {
+            try {
+               stack.close();
+            } catch (Throwable var8) {
+               var9.addSuppressed(var8);
+            }
+         }
+
+         throw var9;
+      }
+
+      if (stack != null) {
+         stack.close();
+      }
    }
 
    @Override

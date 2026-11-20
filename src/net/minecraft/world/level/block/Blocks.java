@@ -1595,7 +1595,7 @@ public class Blocks {
    );
    public static final Block OAK_DOOR = register(
       BlockItemIds.OAK_DOOR,
-      p -> new DoorBlock(BlockSetType.OAK, p),
+      p -> new DoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(OAK_PLANKS.defaultMapColor())
          .instrument(NoteBlockInstrument.BASS)
@@ -1817,7 +1817,7 @@ public class Blocks {
    );
    public static final Block OAK_PRESSURE_PLATE = register(
       BlockItemIds.OAK_PRESSURE_PLATE,
-      p -> new PressurePlateBlock(BlockSetType.OAK, p),
+      p -> new PressurePlateBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(OAK_PLANKS.defaultMapColor())
          .forceSolidOn()
@@ -1829,7 +1829,7 @@ public class Blocks {
    );
    public static final Block SPRUCE_PRESSURE_PLATE = register(
       BlockItemIds.SPRUCE_PRESSURE_PLATE,
-      p -> new PressurePlateBlock(BlockSetType.SPRUCE, p),
+      p -> new PressurePlateBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(SPRUCE_PLANKS.defaultMapColor())
          .forceSolidOn()
@@ -1841,7 +1841,7 @@ public class Blocks {
    );
    public static final Block BIRCH_PRESSURE_PLATE = register(
       BlockItemIds.BIRCH_PRESSURE_PLATE,
-      p -> new PressurePlateBlock(BlockSetType.BIRCH, p),
+      p -> new PressurePlateBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(BIRCH_PLANKS.defaultMapColor())
          .forceSolidOn()
@@ -1853,7 +1853,7 @@ public class Blocks {
    );
    public static final Block JUNGLE_PRESSURE_PLATE = register(
       BlockItemIds.JUNGLE_PRESSURE_PLATE,
-      p -> new PressurePlateBlock(BlockSetType.JUNGLE, p),
+      p -> new PressurePlateBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(JUNGLE_PLANKS.defaultMapColor())
          .forceSolidOn()
@@ -1865,7 +1865,7 @@ public class Blocks {
    );
    public static final Block ACACIA_PRESSURE_PLATE = register(
       BlockItemIds.ACACIA_PRESSURE_PLATE,
-      p -> new PressurePlateBlock(BlockSetType.ACACIA, p),
+      p -> new PressurePlateBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(ACACIA_PLANKS.defaultMapColor())
          .forceSolidOn()
@@ -1889,7 +1889,7 @@ public class Blocks {
    );
    public static final Block DARK_OAK_PRESSURE_PLATE = register(
       BlockItemIds.DARK_OAK_PRESSURE_PLATE,
-      p -> new PressurePlateBlock(BlockSetType.DARK_OAK, p),
+      p -> new PressurePlateBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(DARK_OAK_PLANKS.defaultMapColor())
          .forceSolidOn()
@@ -1901,7 +1901,7 @@ public class Blocks {
    );
    public static final Block PALE_OAK_PRESSURE_PLATE = register(
       BlockItemIds.PALE_OAK_PRESSURE_PLATE,
-      p -> new PressurePlateBlock(BlockSetType.PALE_OAK, p),
+      p -> new PressurePlateBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(PALE_OAK_PLANKS.defaultMapColor())
          .forceSolidOn()
@@ -1913,7 +1913,7 @@ public class Blocks {
    );
    public static final Block MANGROVE_PRESSURE_PLATE = register(
       BlockItemIds.MANGROVE_PRESSURE_PLATE,
-      p -> new PressurePlateBlock(BlockSetType.MANGROVE, p),
+      p -> new PressurePlateBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(MANGROVE_PLANKS.defaultMapColor())
          .forceSolidOn()
@@ -1925,7 +1925,7 @@ public class Blocks {
    );
    public static final Block POPLAR_PRESSURE_PLATE = register(
       BlockItemIds.POPLAR_PRESSURE_PLATE,
-      p -> new PressurePlateBlock(BlockSetType.POPLAR, p),
+      p -> new PressurePlateBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(POPLAR_PLANKS.defaultMapColor())
          .forceSolidOn()
@@ -2188,7 +2188,7 @@ public class Blocks {
    );
    public static final Block OAK_TRAPDOOR = register(
       BlockItemIds.OAK_TRAPDOOR,
-      p -> new TrapDoorBlock(BlockSetType.OAK, p),
+      p -> new TrapDoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(MapColor.WOOD)
          .instrument(NoteBlockInstrument.BASS)
@@ -2199,7 +2199,7 @@ public class Blocks {
    );
    public static final Block SPRUCE_TRAPDOOR = register(
       BlockItemIds.SPRUCE_TRAPDOOR,
-      p -> new TrapDoorBlock(BlockSetType.SPRUCE, p),
+      p -> new TrapDoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(MapColor.PODZOL)
          .instrument(NoteBlockInstrument.BASS)
@@ -2210,7 +2210,7 @@ public class Blocks {
    );
    public static final Block BIRCH_TRAPDOOR = register(
       BlockItemIds.BIRCH_TRAPDOOR,
-      p -> new TrapDoorBlock(BlockSetType.BIRCH, p),
+      p -> new TrapDoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(MapColor.SAND)
          .instrument(NoteBlockInstrument.BASS)
@@ -2221,7 +2221,7 @@ public class Blocks {
    );
    public static final Block JUNGLE_TRAPDOOR = register(
       BlockItemIds.JUNGLE_TRAPDOOR,
-      p -> new TrapDoorBlock(BlockSetType.JUNGLE, p),
+      p -> new TrapDoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(MapColor.DIRT)
          .instrument(NoteBlockInstrument.BASS)
@@ -2232,7 +2232,7 @@ public class Blocks {
    );
    public static final Block ACACIA_TRAPDOOR = register(
       BlockItemIds.ACACIA_TRAPDOOR,
-      p -> new TrapDoorBlock(BlockSetType.ACACIA, p),
+      p -> new TrapDoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(MapColor.COLOR_ORANGE)
          .instrument(NoteBlockInstrument.BASS)
@@ -2254,7 +2254,7 @@ public class Blocks {
    );
    public static final Block DARK_OAK_TRAPDOOR = register(
       BlockItemIds.DARK_OAK_TRAPDOOR,
-      p -> new TrapDoorBlock(BlockSetType.DARK_OAK, p),
+      p -> new TrapDoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(MapColor.COLOR_BROWN)
          .instrument(NoteBlockInstrument.BASS)
@@ -2265,7 +2265,7 @@ public class Blocks {
    );
    public static final Block PALE_OAK_TRAPDOOR = register(
       BlockItemIds.PALE_OAK_TRAPDOOR,
-      p -> new TrapDoorBlock(BlockSetType.PALE_OAK, p),
+      p -> new TrapDoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(PALE_OAK_PLANKS.defaultMapColor())
          .instrument(NoteBlockInstrument.BASS)
@@ -2276,7 +2276,7 @@ public class Blocks {
    );
    public static final Block MANGROVE_TRAPDOOR = register(
       BlockItemIds.MANGROVE_TRAPDOOR,
-      p -> new TrapDoorBlock(BlockSetType.MANGROVE, p),
+      p -> new TrapDoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(MapColor.COLOR_RED)
          .instrument(NoteBlockInstrument.BASS)
@@ -2287,7 +2287,7 @@ public class Blocks {
    );
    public static final Block POPLAR_TRAPDOOR = register(
       BlockItemIds.POPLAR_TRAPDOOR,
-      p -> new TrapDoorBlock(BlockSetType.POPLAR, p),
+      p -> new TrapDoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(POPLAR_PLANKS.defaultMapColor())
          .instrument(NoteBlockInstrument.BASS)
@@ -2792,16 +2792,22 @@ public class Blocks {
          .sound(BlockSoundSets.CROP)
          .pushReaction(PushReaction.POPPED)
    );
-   public static final Block OAK_BUTTON = register(BlockItemIds.OAK_BUTTON, p -> new ButtonBlock(BlockSetType.OAK, 30, p), buttonProperties());
-   public static final Block SPRUCE_BUTTON = register(BlockItemIds.SPRUCE_BUTTON, p -> new ButtonBlock(BlockSetType.SPRUCE, 30, p), buttonProperties());
-   public static final Block BIRCH_BUTTON = register(BlockItemIds.BIRCH_BUTTON, p -> new ButtonBlock(BlockSetType.BIRCH, 30, p), buttonProperties());
-   public static final Block JUNGLE_BUTTON = register(BlockItemIds.JUNGLE_BUTTON, p -> new ButtonBlock(BlockSetType.JUNGLE, 30, p), buttonProperties());
-   public static final Block ACACIA_BUTTON = register(BlockItemIds.ACACIA_BUTTON, p -> new ButtonBlock(BlockSetType.ACACIA, 30, p), buttonProperties());
+   public static final Block OAK_BUTTON = register(BlockItemIds.OAK_BUTTON, p -> new ButtonBlock(BlockSetType.DEFAULT_WOOD, 30, p), buttonProperties());
+   public static final Block SPRUCE_BUTTON = register(BlockItemIds.SPRUCE_BUTTON, p -> new ButtonBlock(BlockSetType.DEFAULT_WOOD, 30, p), buttonProperties());
+   public static final Block BIRCH_BUTTON = register(BlockItemIds.BIRCH_BUTTON, p -> new ButtonBlock(BlockSetType.DEFAULT_WOOD, 30, p), buttonProperties());
+   public static final Block JUNGLE_BUTTON = register(BlockItemIds.JUNGLE_BUTTON, p -> new ButtonBlock(BlockSetType.DEFAULT_WOOD, 30, p), buttonProperties());
+   public static final Block ACACIA_BUTTON = register(BlockItemIds.ACACIA_BUTTON, p -> new ButtonBlock(BlockSetType.DEFAULT_WOOD, 30, p), buttonProperties());
    public static final Block CHERRY_BUTTON = register(BlockItemIds.CHERRY_BUTTON, p -> new ButtonBlock(BlockSetType.CHERRY, 30, p), buttonProperties());
-   public static final Block DARK_OAK_BUTTON = register(BlockItemIds.DARK_OAK_BUTTON, p -> new ButtonBlock(BlockSetType.DARK_OAK, 30, p), buttonProperties());
-   public static final Block PALE_OAK_BUTTON = register(BlockItemIds.PALE_OAK_BUTTON, p -> new ButtonBlock(BlockSetType.PALE_OAK, 30, p), buttonProperties());
-   public static final Block MANGROVE_BUTTON = register(BlockItemIds.MANGROVE_BUTTON, p -> new ButtonBlock(BlockSetType.MANGROVE, 30, p), buttonProperties());
-   public static final Block POPLAR_BUTTON = register(BlockItemIds.POPLAR_BUTTON, p -> new ButtonBlock(BlockSetType.POPLAR, 30, p), buttonProperties());
+   public static final Block DARK_OAK_BUTTON = register(
+      BlockItemIds.DARK_OAK_BUTTON, p -> new ButtonBlock(BlockSetType.DEFAULT_WOOD, 30, p), buttonProperties()
+   );
+   public static final Block PALE_OAK_BUTTON = register(
+      BlockItemIds.PALE_OAK_BUTTON, p -> new ButtonBlock(BlockSetType.DEFAULT_WOOD, 30, p), buttonProperties()
+   );
+   public static final Block MANGROVE_BUTTON = register(
+      BlockItemIds.MANGROVE_BUTTON, p -> new ButtonBlock(BlockSetType.DEFAULT_WOOD, 30, p), buttonProperties()
+   );
+   public static final Block POPLAR_BUTTON = register(BlockItemIds.POPLAR_BUTTON, p -> new ButtonBlock(BlockSetType.DEFAULT_WOOD, 30, p), buttonProperties());
    public static final Block BAMBOO_BUTTON = register(BlockItemIds.BAMBOO_BUTTON, p -> new ButtonBlock(BlockSetType.BAMBOO, 30, p), buttonProperties());
    public static final Block SKELETON_SKULL = register(
       BlockItemIds.SKELETON_SKULL,
@@ -3448,7 +3454,7 @@ public class Blocks {
    );
    public static final Block SPRUCE_DOOR = register(
       BlockItemIds.SPRUCE_DOOR,
-      p -> new DoorBlock(BlockSetType.SPRUCE, p),
+      p -> new DoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(SPRUCE_PLANKS.defaultMapColor())
          .instrument(NoteBlockInstrument.BASS)
@@ -3459,7 +3465,7 @@ public class Blocks {
    );
    public static final Block BIRCH_DOOR = register(
       BlockItemIds.BIRCH_DOOR,
-      p -> new DoorBlock(BlockSetType.BIRCH, p),
+      p -> new DoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(BIRCH_PLANKS.defaultMapColor())
          .instrument(NoteBlockInstrument.BASS)
@@ -3470,7 +3476,7 @@ public class Blocks {
    );
    public static final Block JUNGLE_DOOR = register(
       BlockItemIds.JUNGLE_DOOR,
-      p -> new DoorBlock(BlockSetType.JUNGLE, p),
+      p -> new DoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(JUNGLE_PLANKS.defaultMapColor())
          .instrument(NoteBlockInstrument.BASS)
@@ -3481,7 +3487,7 @@ public class Blocks {
    );
    public static final Block ACACIA_DOOR = register(
       BlockItemIds.ACACIA_DOOR,
-      p -> new DoorBlock(BlockSetType.ACACIA, p),
+      p -> new DoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(ACACIA_PLANKS.defaultMapColor())
          .instrument(NoteBlockInstrument.BASS)
@@ -3503,7 +3509,7 @@ public class Blocks {
    );
    public static final Block DARK_OAK_DOOR = register(
       BlockItemIds.DARK_OAK_DOOR,
-      p -> new DoorBlock(BlockSetType.DARK_OAK, p),
+      p -> new DoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(DARK_OAK_PLANKS.defaultMapColor())
          .instrument(NoteBlockInstrument.BASS)
@@ -3514,7 +3520,7 @@ public class Blocks {
    );
    public static final Block PALE_OAK_DOOR = register(
       BlockItemIds.PALE_OAK_DOOR,
-      p -> new DoorBlock(BlockSetType.PALE_OAK, p),
+      p -> new DoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(PALE_OAK_PLANKS.defaultMapColor())
          .instrument(NoteBlockInstrument.BASS)
@@ -3525,7 +3531,7 @@ public class Blocks {
    );
    public static final Block MANGROVE_DOOR = register(
       BlockItemIds.MANGROVE_DOOR,
-      p -> new DoorBlock(BlockSetType.MANGROVE, p),
+      p -> new DoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(MANGROVE_PLANKS.defaultMapColor())
          .instrument(NoteBlockInstrument.BASS)
@@ -3536,7 +3542,7 @@ public class Blocks {
    );
    public static final Block POPLAR_DOOR = register(
       BlockItemIds.POPLAR_DOOR,
-      p -> new DoorBlock(BlockSetType.POPLAR, p),
+      p -> new DoorBlock(BlockSetType.DEFAULT_WOOD, p),
       BlockBehaviour.Properties.of()
          .mapColor(POPLAR_PLANKS.defaultMapColor())
          .instrument(NoteBlockInstrument.BASS)
@@ -4989,6 +4995,18 @@ public class Blocks {
          .requiresCorrectToolForDrops()
          .strength(0.75F)
    );
+   public static final Block CALCITE_PILLAR = register(BlockItemIds.CALCITE_PILLAR, RotatedPillarBlock::new, BlockBehaviour.Properties.ofFullCopy(CALCITE));
+   public static final Block CALCITE_SLAB = registerSlab(BlockItemIds.CALCITE_SLAB, CALCITE);
+   public static final Block CALCITE_STAIRS = registerStair(BlockItemIds.CALCITE_STAIRS, CALCITE);
+   public static final Block CALCITE_WALL = registerWall(BlockItemIds.CALCITE_WALL, CALCITE);
+   public static final Block POLISHED_CALCITE = register(BlockItemIds.POLISHED_CALCITE, BlockBehaviour.Properties.ofFullCopy(CALCITE));
+   public static final Block POLISHED_CALCITE_SLAB = registerSlab(BlockItemIds.POLISHED_CALCITE_SLAB, POLISHED_CALCITE);
+   public static final Block POLISHED_CALCITE_STAIRS = registerStair(BlockItemIds.POLISHED_CALCITE_STAIRS, POLISHED_CALCITE);
+   public static final Block POLISHED_CALCITE_WALL = registerWall(BlockItemIds.POLISHED_CALCITE_WALL, POLISHED_CALCITE);
+   public static final Block POLISHED_CALCITE_BRICKS = register(BlockItemIds.POLISHED_CALCITE_BRICKS, BlockBehaviour.Properties.ofFullCopy(POLISHED_CALCITE));
+   public static final Block POLISHED_CALCITE_BRICK_SLAB = registerSlab(BlockItemIds.POLISHED_CALCITE_BRICK_SLAB, POLISHED_CALCITE_BRICKS);
+   public static final Block POLISHED_CALCITE_BRICK_STAIRS = registerStair(BlockItemIds.POLISHED_CALCITE_BRICK_STAIRS, POLISHED_CALCITE_BRICKS);
+   public static final Block POLISHED_CALCITE_BRICK_WALL = registerWall(BlockItemIds.POLISHED_CALCITE_BRICK_WALL, POLISHED_CALCITE_BRICKS);
    public static final Block TINTED_GLASS = register(
       BlockItemIds.TINTED_GLASS,
       TintedGlassBlock::new,
@@ -5046,6 +5064,10 @@ public class Blocks {
       BlockItemIds.SCULK_SHRIEKER,
       p -> new SculkShriekerBlock(ConstantInt.of(5), p),
       BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 3.0F).sound(BlockSoundSets.SCULK_SHRIEKER)
+   );
+   public static final Block CHISELED_SOULSHALE = register(
+      BlockItemIds.CHISELED_SOULSHALE,
+      BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_STEM).strength(2.0F, 6.0F).sound(BlockSoundSets.CHISELED_SOULSHALE)
    );
    public static final WeatheringCopperCollection<Block> COPPER_BLOCK = WeatheringCopperCollection.registerBlocks(
       BlockItemIds.COPPER_BLOCK, Blocks::register, (var0, p) -> new Block(p), WeatheringCopperFullBlock::new, state -> {

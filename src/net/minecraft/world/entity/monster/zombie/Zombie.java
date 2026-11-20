@@ -120,7 +120,7 @@ public class Zombie extends Monster {
       DATA_FROSTBITE_CONVERSION_ID,
       this::convertsToWhenFreezing,
       this::getFreezingConversionSound,
-      () -> this.isInPowderSnow,
+      () -> this.isInPowderSnow && !this.isWearingFreezeImmuneWearables(),
       "FreezingTime",
       140,
       "FrostbiteConversionTime",

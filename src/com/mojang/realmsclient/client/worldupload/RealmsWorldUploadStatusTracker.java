@@ -7,6 +7,10 @@ public interface RealmsWorldUploadStatusTracker {
 
    void setUploading();
 
+   void setCommitting();
+
+   void setProcessing();
+
    static RealmsWorldUploadStatusTracker noOp() {
       return new RealmsWorldUploadStatusTracker() {
          private final UploadStatus uploadStatus = new UploadStatus();
@@ -18,6 +22,14 @@ public interface RealmsWorldUploadStatusTracker {
 
          @Override
          public void setUploading() {
+         }
+
+         @Override
+         public void setCommitting() {
+         }
+
+         @Override
+         public void setProcessing() {
          }
       };
    }

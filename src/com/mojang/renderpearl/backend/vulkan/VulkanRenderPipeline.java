@@ -5,6 +5,7 @@ import com.mojang.renderpearl.api.pipeline.ColorTargetState;
 import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
 import com.mojang.renderpearl.api.pipeline.DepthStencilState;
 import com.mojang.renderpearl.api.pipeline.SpvModule;
+import com.mojang.renderpearl.api.pipeline.StencilTest;
 import com.mojang.renderpearl.api.pipeline.UniformType;
 import com.mojang.renderpearl.backend.api.BackendRenderPipeline;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
@@ -31,6 +32,7 @@ import org.lwjgl.vulkan.VkPipelineVertexInputStateCreateInfo;
 import org.lwjgl.vulkan.VkPipelineViewportStateCreateInfo;
 import org.lwjgl.vulkan.VkPushConstantRange;
 import org.lwjgl.vulkan.VkShaderModuleCreateInfo;
+import org.lwjgl.vulkan.VkStencilOpState;
 import org.lwjgl.vulkan.VkVertexInputAttributeDescription;
 import org.lwjgl.vulkan.VkVertexInputBindingDescription;
 import org.lwjgl.vulkan.VkVertexInputBindingDivisorDescriptionEXT;
@@ -288,6 +290,12 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
             vkDepthStencilState.depthTestEnable(true);
             vkDepthStencilState.depthWriteEnable(depthStencilState.writeDepth());
             vkDepthStencilState.depthCompareOp(VulkanConst.toVk(depthStencilState.depthTest()));
+            StencilTest stencilTest = depthStencilState.stencilTest();
+            if (stencilTest != null) {
+               vkDepthStencilState.stencilTestEnable(true);
+               setupStencilState(stencilTest.front(), vkDepthStencilState.front());
+               setupStencilState(stencilTest.back(), vkDepthStencilState.back());
+            }
          }
 
          org.lwjgl.vulkan.VkPipelineColorBlendAttachmentState.Buffer blendAttachments = VkPipelineColorBlendAttachmentState.calloc(
@@ -378,6 +386,15 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
             VK12.vkDestroyShaderModule(this.device.vkDevice(), this.shaderModules.getLong(i), null);
          }
       }
+   }
+
+   private static void setupStencilState(final StencilTest.PerFace face, final VkStencilOpState vkState) {
+      vkState.failOp(VulkanConst.toVk(face.fail()));
+      vkState.passOp(VulkanConst.toVk(face.pass()));
+      vkState.depthFailOp(VulkanConst.toVk(face.depthFail()));
+      vkState.compareMask(face.compareMask());
+      vkState.writeMask(face.writeMask());
+      vkState.reference(face.reference());
    }
 
    private static void applyBlendInformation(

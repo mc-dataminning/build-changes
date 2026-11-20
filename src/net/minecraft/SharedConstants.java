@@ -13,24 +13,24 @@ public class SharedConstants {
    @Deprecated
    public static final boolean SNAPSHOT = true;
    @Deprecated
-   public static final int WORLD_VERSION = 5126;
+   public static final int WORLD_VERSION = 5127;
    @Deprecated
    public static final String SERIES = "main";
    @Deprecated
    public static final int RELEASE_NETWORK_PROTOCOL_VERSION = 778;
    @Deprecated
-   public static final int SNAPSHOT_NETWORK_PROTOCOL_VERSION = 344;
+   public static final int SNAPSHOT_NETWORK_PROTOCOL_VERSION = 345;
    public static final int SNBT_NAG_VERSION = 5116;
    private static final int SNAPSHOT_PROTOCOL_BIT = 30;
    public static final boolean CRASH_EAGERLY = true;
    @Deprecated
-   public static final int RESOURCE_PACK_FORMAT_MAJOR = 101;
+   public static final int RESOURCE_PACK_FORMAT_MAJOR = 102;
    @Deprecated
    public static final int RESOURCE_PACK_FORMAT_MINOR = 0;
    @Deprecated
-   public static final int DATA_PACK_FORMAT_MAJOR = 125;
+   public static final int DATA_PACK_FORMAT_MAJOR = 126;
    @Deprecated
-   public static final int DATA_PACK_FORMAT_MINOR = 1;
+   public static final int DATA_PACK_FORMAT_MINOR = 0;
    public static final String RPC_MANAGEMENT_SERVER_API_VERSION = "3.1.0";
    @Deprecated
    public static final int LANGUAGE_FORMAT = 1;
@@ -200,7 +200,7 @@ public class SharedConstants {
    }
 
    public static int getProtocolVersion() {
-      return 1073742168;
+      return 1073742169;
    }
 
    public static boolean debugVoidTerrain(final ChunkPos pos) {

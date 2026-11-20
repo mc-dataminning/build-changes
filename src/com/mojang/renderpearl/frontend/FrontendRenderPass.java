@@ -254,6 +254,24 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
    }
 
    @Override
+   public void setViewport(final int x, final int y, final int width, final int height) {
+      if (width > 0 && height > 0) {
+         if (x >= this.renderArea.x()
+            && y >= this.renderArea.y()
+            && x + width <= this.renderArea.x() + this.renderArea.width()
+            && y + height <= this.renderArea.y() + this.renderArea.height()) {
+            this.backend.setViewport(x, y, width, height);
+         } else {
+            throw new IllegalArgumentException(
+               "Viewport at " + x + ", " + y + " with size " + width + "x" + height + " is out of bounds for render area " + this.renderArea
+            );
+         }
+      } else {
+         throw new IllegalArgumentException("Viewport size must be >0, was " + width + "x" + height);
+      }
+   }
+
+   @Override
    public void enableScissor(final int x, final int y, final int width, final int height) {
       if (width > 0 && height > 0) {
          if (x >= this.renderArea.x()

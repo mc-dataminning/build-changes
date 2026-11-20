@@ -271,7 +271,10 @@ public class VanillaBlockItemTagsProvider extends BlockItemTagsProvider {
             BlockItemIds.RED_NETHER_BRICK_SLAB,
             BlockItemIds.BLACKSTONE_SLAB,
             BlockItemIds.POLISHED_BLACKSTONE_SLAB,
-            BlockItemIds.POLISHED_BLACKSTONE_BRICK_SLAB
+            BlockItemIds.POLISHED_BLACKSTONE_BRICK_SLAB,
+            BlockItemIds.CALCITE_SLAB,
+            BlockItemIds.POLISHED_CALCITE_SLAB,
+            BlockItemIds.POLISHED_CALCITE_BRICK_SLAB
          )
          .addAll(BlockItemIds.CUT_COPPER_SLAB.asList())
          .add(
@@ -330,7 +333,10 @@ public class VanillaBlockItemTagsProvider extends BlockItemTagsProvider {
             BlockItemIds.POLISHED_SULFUR_WALL,
             BlockItemIds.SULFUR_BRICK_WALL,
             BlockItemIds.PACKED_ICE_BRICK_WALL,
-            BlockItemIds.SNOW_BRICK_WALL
+            BlockItemIds.SNOW_BRICK_WALL,
+            BlockItemIds.CALCITE_WALL,
+            BlockItemIds.POLISHED_CALCITE_WALL,
+            BlockItemIds.POLISHED_CALCITE_BRICK_WALL
          );
       this.tag(BlockItemTags.STAIRS)
          .addTag(BlockItemTags.WOODEN_STAIRS)
@@ -383,7 +389,10 @@ public class VanillaBlockItemTagsProvider extends BlockItemTagsProvider {
             BlockItemIds.POLISHED_SULFUR_STAIRS,
             BlockItemIds.SULFUR_BRICK_STAIRS,
             BlockItemIds.PACKED_ICE_BRICK_STAIRS,
-            BlockItemIds.SNOW_BRICK_STAIRS
+            BlockItemIds.SNOW_BRICK_STAIRS,
+            BlockItemIds.CALCITE_STAIRS,
+            BlockItemIds.POLISHED_CALCITE_STAIRS,
+            BlockItemIds.POLISHED_CALCITE_BRICK_STAIRS
          )
          .addTag(BlockItemTags.WOOL_STAIRS, BlockItemTags.CONCRETE_STAIRS);
       this.tag(BlockItemTags.ANVIL).add(BlockItemIds.ANVIL, BlockItemIds.CHIPPED_ANVIL, BlockItemIds.DAMAGED_ANVIL);

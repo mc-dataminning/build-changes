@@ -52,13 +52,13 @@ public class EnchantmentMenu extends AbstractContainerMenu {
    public EnchantmentMenu(final int containerId, final Inventory inventory, final ContainerLevelAccess access) {
       super(MenuType.ENCHANTMENT, containerId);
       this.access = access;
-      this.addSlot(new Slot(this.enchantSlots, 0, 15, 47) {
+      this.addSlot(new Slot(this.enchantSlots, 0, 15, 47, Slot.Section.INPUT) {
          @Override
          public int getMaxStackSize() {
             return 1;
          }
       });
-      this.addSlot(new Slot(this.enchantSlots, 1, 35, 47) {
+      this.addSlot(new Slot(this.enchantSlots, 1, 35, 47, Slot.Section.INPUT) {
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return itemStack.is(Items.LAPIS_LAZULI);

@@ -1597,7 +1597,7 @@ public abstract class Entity
 
    private void updateFallDistanceAndCheckFallDamage(final double movementY, final boolean onGround, final BlockState state, final BlockPos pos) {
       if (movementY < 0.0) {
-         this.fallDistance -= (float)movementY;
+         this.fallDistance -= movementY;
       }
 
       this.fallDistance = this.fallDistance * this.fluidInteraction.getFallDistanceMultiplier();
@@ -4028,7 +4028,7 @@ public abstract class Entity
    }
 
    public boolean canFreeze() {
-      return !this.is(EntityTypeTags.IMMUNE_TO_FREEZING);
+      return !this.is(EntityTypeTags.IMMUNE_TO_FREEZING) && !this.isOnFire();
    }
 
    public boolean isFreezing() {
@@ -4162,6 +4162,10 @@ public abstract class Entity
 
    public RandomSource getRandom() {
       return this.random;
+   }
+
+   public void setSynchronizedRandomSeed(final RandomSource random) {
+      random.setSeed(this.getUUID().getLeastSignificantBits() ^ this.level().getGameTime());
    }
 
    public Vec3 getKnownMovement() {

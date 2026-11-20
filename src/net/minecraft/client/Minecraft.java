@@ -1253,7 +1253,8 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
                   this.surfaceIsInvalid = false;
                   this.windowSurfaceNeedsReconfiguring = false;
                } catch (SurfaceException exception) {
-                  LOGGER.warn("Couldn't configure surface to {}", config, exception);
+                  String message = exception.getMessage();
+                  LOGGER.info("Couldn't configure surface to {}: {}", config, message);
                   this.surfaceIsInvalid = true;
                }
             }
@@ -1262,7 +1263,8 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
                try {
                   this.windowSurface.acquireNextTexture();
                } catch (SurfaceException ex) {
-                  LOGGER.warn("Couldn't acquire next surface texture with config {}", this.windowSurface.currentConfiguration(), ex);
+                  String message = ex.getMessage();
+                  LOGGER.info("Couldn't acquire next surface texture with config {}: {}", this.windowSurface.currentConfiguration(), message);
                   this.surfaceIsInvalid = true;
                   this.windowSurfaceNeedsReconfiguring = true;
                }
@@ -2916,6 +2918,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
 
    public void setLastInputType(final InputType lastInputType) {
       this.lastInputType = lastInputType;
+      this.mouseHandler.onInputTypeChanged(lastInputType);
    }
 
    public GameNarrator getNarrator() {

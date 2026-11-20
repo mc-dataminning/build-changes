@@ -22,6 +22,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.InputQuirks;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.input.MouseButtonInfo;
+import net.minecraft.util.Mth;
 import net.minecraft.util.SmoothDouble;
 import net.minecraft.util.Util;
 import net.minecraft.world.entity.player.Inventory;
@@ -35,10 +36,8 @@ import org.slf4j.Logger;
 public class MouseHandler {
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final long DOUBLE_CLICK_THRESHOLD_MS = 250L;
+   private static final double MOUSE_INPUT_SWITCH_DISTANCE = 7.0;
    private final Minecraft minecraft;
-   private boolean isLeftPressed;
-   private boolean isMiddlePressed;
-   private boolean isRightPressed;
    private double xpos;
    private double ypos;
    private MouseHandler.@Nullable LastClick lastClick;
@@ -52,6 +51,9 @@ public class MouseHandler {
    private double accumulatedDY;
    private final ScrollWheelHandler scrollWheelHandler;
    private double lastHandleMovementTime = Double.MIN_VALUE;
+   private double inputTypeAnchorX;
+   private double inputTypeAnchorY;
+   private boolean cursorHidden;
    private boolean mouseGrabbed;
 
    public MouseHandler(final Minecraft minecraft) {
@@ -128,14 +130,6 @@ public class MouseHandler {
          }
 
          if (this.minecraft.gui.screen() == null && this.minecraft.gui.overlay() == null) {
-            if (rawButtonInfo.isLeftMouse()) {
-               this.isLeftPressed = pressed;
-            } else if (rawButtonInfo.isMiddleMouse()) {
-               this.isMiddlePressed = pressed;
-            } else if (rawButtonInfo.isRightMouse()) {
-               this.isRightPressed = pressed;
-            }
-
             InputConstants.Key mouseKey = InputConstants.Type.MOUSE.getOrCreate(rawButtonInfo.button());
             KeyMapping.set(mouseKey, pressed);
             if (pressed) {
@@ -168,6 +162,7 @@ public class MouseHandler {
 
    public void onScroll(final long handle, final double xoffset, final double yoffset) {
       if (handle != 0L && handle == this.minecraft.getWindow().handle()) {
+         this.minecraft.setLastInputType(InputType.MOUSE);
          this.minecraft.getFramerateLimitTracker().onInputReceived();
          boolean discreteScroll = this.minecraft.options.discreteMouseScroll().get();
          double scrollSensitivity = this.minecraft.options.mouseWheelSensitivity().get();
@@ -202,7 +197,7 @@ public class MouseHandler {
       }
    }
 
-   public void onDrop(final long handle, final List<String> rawPaths) {
+   public void onDrop(final List<String> rawPaths) {
       this.minecraft.getFramerateLimitTracker().onInputReceived();
       List<Path> files = new ArrayList<>(rawPaths.size());
       int failedCount = 0;
@@ -230,6 +225,7 @@ public class MouseHandler {
          if (this.ignoreFirstMove) {
             this.xpos = xpos;
             this.ypos = ypos;
+            this.resetInputTypeAnchor();
             this.ignoreFirstMove = false;
          } else {
             if (this.minecraft.isWindowActive()) {
@@ -244,6 +240,36 @@ public class MouseHandler {
 
             this.xpos = xpos;
             this.ypos = ypos;
+            if (!this.mouseGrabbed
+               && this.minecraft.gui.screen() != null
+               && !this.minecraft.getLastInputType().isMouse()
+               && this.hasMovedAwayFromInputTypeAnchor()) {
+               this.minecraft.setLastInputType(InputType.MOUSE);
+            }
+         }
+      }
+   }
+
+   private boolean hasMovedAwayFromInputTypeAnchor() {
+      double dx = getScaledXPos(this.minecraft.getWindow(), this.xpos - this.inputTypeAnchorX);
+      double dy = getScaledYPos(this.minecraft.getWindow(), this.ypos - this.inputTypeAnchorY);
+      return Mth.lengthSquared(dx, dy) > Mth.square(7.0);
+   }
+
+   public void resetInputTypeAnchor() {
+      this.inputTypeAnchorX = this.xpos;
+      this.inputTypeAnchorY = this.ypos;
+   }
+
+   public void onInputTypeChanged(final InputType inputType) {
+      boolean hide = inputType.isKeyboard();
+      if (hide != this.cursorHidden) {
+         this.cursorHidden = hide;
+         if (hide) {
+            SDLMouse.SDL_HideCursor();
+            this.resetInputTypeAnchor();
+         } else {
+            SDLMouse.SDL_ShowCursor();
          }
       }
    }
@@ -344,26 +370,6 @@ public class MouseHandler {
       }
    }
 
-   public boolean isLeftPressed() {
-      return this.isLeftPressed;
-   }
-
-   public boolean isMiddlePressed() {
-      return this.isMiddlePressed;
-   }
-
-   public boolean isRightPressed() {
-      return this.isRightPressed;
-   }
-
-   public double xpos() {
-      return this.xpos;
-   }
-
-   public double ypos() {
-      return this.ypos;
-   }
-
    public void setIgnoreFirstMove() {
       this.ignoreFirstMove = true;
    }
@@ -406,6 +412,8 @@ public class MouseHandler {
          if (stack != null) {
             stack.close();
          }
+
+         this.resetInputTypeAnchor();
       }
    }
 
@@ -444,6 +452,7 @@ public class MouseHandler {
          this.xpos = this.minecraft.getWindow().getScreenWidth() / 2.0;
          this.ypos = this.minecraft.getWindow().getScreenHeight() / 2.0;
          InputConstants.releaseMouse(this.minecraft.getWindow(), this.xpos, this.ypos);
+         this.resetInputTypeAnchor();
       }
    }
 

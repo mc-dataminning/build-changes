@@ -90,6 +90,7 @@ public class FallingParticle extends SingleQuadParticle {
             this.xd = this.xd * this.friction;
             this.yd = this.yd * this.friction;
             this.zd = this.zd * this.friction;
+            this.age++;
          }
       }
    }

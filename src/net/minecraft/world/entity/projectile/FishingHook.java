@@ -53,7 +53,7 @@ import org.slf4j.Logger;
 
 public class FishingHook extends Projectile {
    private static final Logger LOGGER = LogUtils.getLogger();
-   private final RandomSource syncronizedRandom = RandomSource.create();
+   private final RandomSource synchronizedRandom = RandomSource.create(0L);
    private boolean biting;
    private int outOfWaterTime;
    private static final int MAX_OUT_OF_WATER_TIME = 10;
@@ -134,7 +134,7 @@ public class FishingHook extends Projectile {
       if (DATA_BITING.equals(accessor)) {
          this.biting = this.getEntityData().get(DATA_BITING);
          if (this.biting) {
-            this.setDeltaMovement(this.getDeltaMovement().x, -0.4F * Mth.nextFloat(this.syncronizedRandom, 0.6F, 1.0F), this.getDeltaMovement().z);
+            this.setDeltaMovement(this.getDeltaMovement().x, -0.4F * Mth.nextFloat(this.synchronizedRandom, 0.6F, 1.0F), this.getDeltaMovement().z);
          }
       }
 
@@ -149,7 +149,6 @@ public class FishingHook extends Projectile {
 
    @Override
    public void tick() {
-      this.syncronizedRandom.setSeed(this.getUUID().getLeastSignificantBits() ^ this.level().getGameTime());
       super.tick();
       Player owner = this.getPlayerOwner();
       if (owner == null) {
@@ -218,7 +217,8 @@ public class FishingHook extends Projectile {
                if (isInWater) {
                   this.outOfWaterTime = Math.max(0, this.outOfWaterTime - 1);
                   if (this.biting) {
-                     this.addDeltaMovement(0.0, -0.1 * this.syncronizedRandom.nextFloat() * this.syncronizedRandom.nextFloat(), 0.0);
+                     this.setSynchronizedRandomSeed(this.synchronizedRandom);
+                     this.addDeltaMovement(0.0, -0.1 * this.synchronizedRandom.nextFloat() * this.synchronizedRandom.nextFloat(), 0.0);
                   }
 
                   if (!this.level().isClientSide()) {

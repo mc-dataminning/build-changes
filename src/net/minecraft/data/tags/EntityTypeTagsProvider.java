@@ -167,19 +167,6 @@ public class EntityTypeTagsProvider extends TagsProvider<EntityType<?>> {
          .add(EntityTypeIds.TADPOLE)
          .add(EntityTypeIds.NAUTILUS)
          .add(EntityTypeIds.ZOMBIE_NAUTILUS);
-      this.tag(EntityTypeTags.SWIMMING).addTag(EntityTypeTags.AQUATIC).add(EntityTypeIds.FROG);
-      this.tag(EntityTypeTags.FLYING)
-         .add(EntityTypeIds.ALLAY)
-         .add(EntityTypeIds.BAT)
-         .add(EntityTypeIds.BEE)
-         .add(EntityTypeIds.BLAZE)
-         .add(EntityTypeIds.ENDER_DRAGON)
-         .add(EntityTypeIds.PARROT)
-         .add(EntityTypeIds.PHANTOM)
-         .add(EntityTypeIds.GHAST)
-         .add(EntityTypeIds.HAPPY_GHAST)
-         .add(EntityTypeIds.VEX)
-         .add(EntityTypeIds.WITHER);
       this.tag(EntityTypeTags.ARTHROPOD)
          .add(EntityTypeIds.BEE)
          .add(EntityTypeIds.ENDERMITE)

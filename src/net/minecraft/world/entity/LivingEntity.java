@@ -1156,6 +1156,16 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
       }
    }
 
+   public void healNaturally(final float heal) {
+      if (heal > 0.0F && this.canHealNaturally()) {
+         this.setHealth(Math.min(this.getHealth() + heal, this.getMaxHealth()));
+      }
+   }
+
+   public boolean canHealNaturally() {
+      return this.getHealth() > 0.0F && this.getHealth() < this.getMaxHealth();
+   }
+
    public float getHealth() {
       return this.entityData.get(DATA_HEALTH_ID);
    }
@@ -3963,15 +3973,19 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
    public boolean canFreeze() {
       if (this.isSpectator()) {
          return false;
+      } else {
+         return this.isWearingFreezeImmuneWearables() ? false : super.canFreeze();
       }
+   }
 
+   protected boolean isWearingFreezeImmuneWearables() {
       for (EquipmentSlot slot : EquipmentSlotGroup.ARMOR) {
          if (this.getItemBySlot(slot).is(ItemTags.FREEZE_IMMUNE_WEARABLES)) {
-            return false;
+            return true;
          }
       }
 
-      return super.canFreeze();
+      return false;
    }
 
    @Override

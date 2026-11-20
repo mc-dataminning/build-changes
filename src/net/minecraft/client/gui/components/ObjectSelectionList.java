@@ -2,6 +2,7 @@ package net.minecraft.client.gui.components;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ComponentPath;
+import net.minecraft.client.gui.narration.GroupNarration;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.narration.NarrationSupplier;
@@ -46,16 +47,10 @@ public abstract class ObjectSelectionList<E extends ObjectSelectionList.Entry<E>
 
    @Override
    public void updateWidgetNarration(final NarrationElementOutput output) {
-      E hovered = this.getHovered();
-      if (hovered != null) {
-         this.narrateListElementPosition(output.nest(), hovered);
-         hovered.updateNarration(output);
-      } else {
-         E selected = this.getSelected();
-         if (selected != null) {
-            this.narrateListElementPosition(output.nest(), selected);
-            selected.updateNarration(output);
-         }
+      E narrated = getNarratedChild(output.narrationTrigger(), this.getHovered(), this.getSelected());
+      if (narrated != null) {
+         GroupNarration.LIST.narratePosition(output.nest(), this.children(), narrated);
+         narrated.updateNarration(output);
       }
 
       if (this.isFocused()) {
@@ -68,7 +63,7 @@ public abstract class ObjectSelectionList<E extends ObjectSelectionList.Entry<E>
 
       @Override
       public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-         return true;
+         return event.isLeftMouse();
       }
 
       @Override

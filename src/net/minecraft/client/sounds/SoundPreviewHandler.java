@@ -15,14 +15,16 @@ public final class SoundPreviewHandler {
       stopOtherCategoryPreview(soundManager, category);
       if (canPlaySound(soundManager)) {
          SoundInstance previewSound = switch (category) {
-            case RECORDS -> SimpleSoundInstance.forUI(SoundEvents.NOTE_BLOCK_GUITAR, 1.0F, volume);
-            case WEATHER -> SimpleSoundInstance.forUI(SoundEvents.LIGHTNING_BOLT_THUNDER, 1.0F, volume);
-            case BLOCKS -> SimpleSoundInstance.forUI(SoundEvents.GRASS.placeSound().orElseThrow(), 1.0F, volume);
-            case HOSTILE -> SimpleSoundInstance.forUI(SoundEvents.ZOMBIE_AMBIENT, 1.0F, volume);
-            case NEUTRAL -> SimpleSoundInstance.forUI(SoundEvents.COW_SOUNDS.get(CowSoundVariants.SoundSet.CLASSIC).ambientSound().orElseThrow(), 1.0F, volume);
-            case PLAYERS -> SimpleSoundInstance.forUI(SoundEvents.GENERIC_EAT, 1.0F, volume);
-            case AMBIENT -> SimpleSoundInstance.forUI(SoundEvents.AMBIENT_CAVE, 1.0F, volume);
-            case UI -> SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F, volume);
+            case RECORDS -> SimpleSoundInstance.forPreview(SoundEvents.NOTE_BLOCK_GUITAR, category, volume);
+            case WEATHER -> SimpleSoundInstance.forPreview(SoundEvents.LIGHTNING_BOLT_THUNDER, category, volume);
+            case BLOCKS -> SimpleSoundInstance.forPreview(SoundEvents.GRASS.placeSound().orElseThrow(), category, volume);
+            case HOSTILE -> SimpleSoundInstance.forPreview(SoundEvents.ZOMBIE_AMBIENT, category, volume);
+            case NEUTRAL -> SimpleSoundInstance.forPreview(
+               SoundEvents.COW_SOUNDS.get(CowSoundVariants.SoundSet.CLASSIC).ambientSound().orElseThrow(), category, volume
+            );
+            case PLAYERS -> SimpleSoundInstance.forPreview(SoundEvents.GENERIC_EAT, category, volume);
+            case AMBIENT -> SimpleSoundInstance.forPreview(SoundEvents.AMBIENT_CAVE, category, volume);
+            case UI -> SimpleSoundInstance.forPreview(SoundEvents.UI_BUTTON_CLICK, category, volume);
             default -> null;
          };
          if (previewSound != null) {

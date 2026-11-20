@@ -709,6 +709,7 @@ public class SoundEvents {
    public static final Holder<SoundEvent> MUSIC_DISC_CAT = registerForHolder("music_disc.cat");
    public static final Holder<SoundEvent> MUSIC_DISC_CHIRP = registerForHolder("music_disc.chirp");
    public static final Holder<SoundEvent> MUSIC_DISC_FAR = registerForHolder("music_disc.far");
+   public static final Holder<SoundEvent> MUSIC_DISC_FLURRY = registerForHolder("music_disc.flurry");
    public static final Holder<SoundEvent> MUSIC_DISC_LAVA_CHICKEN = registerForHolder("music_disc.lava_chicken");
    public static final Holder<SoundEvent> MUSIC_DISC_MALL = registerForHolder("music_disc.mall");
    public static final Holder<SoundEvent> MUSIC_DISC_MELLOHI = registerForHolder("music_disc.mellohi");
@@ -841,6 +842,7 @@ public class SoundEvents {
    public static final SoundEvent PARROT_IMITATE_ENDER_DRAGON = register("entity.parrot.imitate.ender_dragon");
    public static final SoundEvent PARROT_IMITATE_ENDERMITE = register("entity.parrot.imitate.endermite");
    public static final SoundEvent PARROT_IMITATE_EVOKER = register("entity.parrot.imitate.evoker");
+   public static final SoundEvent PARROT_IMITATE_FROSTBITE = register("entity.parrot.imitate.frostbite");
    public static final SoundEvent PARROT_IMITATE_GHAST = register("entity.parrot.imitate.ghast");
    public static final SoundEvent PARROT_IMITATE_GUARDIAN = register("entity.parrot.imitate.guardian");
    public static final SoundEvent PARROT_IMITATE_HOGLIN = register("entity.parrot.imitate.hoglin");
@@ -1485,7 +1487,7 @@ public class SoundEvents {
    public static final BlockSoundCollection<Optional<Holder<SoundEvent>>> PACKED_ICE = registerForBlockSoundSet(BlockSoundSets.PACKED_ICE);
    public static final BlockSoundCollection<Optional<Holder<SoundEvent>>> ICICLE = registerForBlockSoundSet(BlockSoundSets.ICICLE);
    public static final BlockSoundCollection<Optional<Holder<SoundEvent>>> ICE_CRYSTAL = registerForBlockSoundSet(BlockSoundSets.ICE_CRYSTAL);
-   public static final BlockSoundCollection<Optional<Holder<SoundEvent>>> TWISTING_VINES = WEEPING_VINES;
+   public static final BlockSoundCollection<Optional<Holder<SoundEvent>>> CHISELED_SOULSHALE = registerForBlockSoundSet(BlockSoundSets.CHISELED_SOULSHALE);
    public static final BlockSoundCollection<Optional<Holder<SoundEvent>>> GLOW_LICHEN = GRASS.withStep(VINE.stepSound());
    public static final BlockSoundCollection<Optional<Holder<SoundEvent>>> CROP = GRASS.withBreak(Optional.of(CROP_BREAK)).withPlace(Optional.of(CROP_PLANTED));
    public static final BlockSoundCollection<Optional<Holder<SoundEvent>>> HARD_CROP = WOOD.withPlace(Optional.of(CROP_PLANTED));

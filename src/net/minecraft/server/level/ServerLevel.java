@@ -232,11 +232,10 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       final ServerLevelData levelData,
       final ResourceKey<Level> dimension,
       final LevelStem levelStem,
-      final boolean isDebug,
       final List<CustomSpawner> customSpawners,
       final boolean tickTime
    ) {
-      super(levelData, dimension, server.registryAccess(), levelStem.type(), false, isDebug, server.getMaxChainedNeighborUpdates());
+      super(levelData, dimension, server.registryAccess(), levelStem.type(), false, server.getMaxChainedNeighborUpdates());
       this.tickTime = tickTime;
       this.server = server;
       this.customSpawners = customSpawners;
@@ -386,12 +385,12 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       }
 
       profiler.push("tickPending");
-      if (!this.isDebug() && runs) {
-         long tick = this.getGameTime();
+      if (runs) {
+         long gameTime = this.getGameTime();
          profiler.push("blockTicks");
-         this.blockTicks.tick(tick, 65536, this::tickBlock);
+         this.blockTicks.tick(gameTime, 65536, this::tickBlock);
          profiler.popPush("fluidTicks");
-         this.fluidTicks.tick(tick, 65536, this::tickFluid);
+         this.fluidTicks.tick(gameTime, 65536, this::tickFluid);
          profiler.pop();
       }
 
@@ -1645,7 +1644,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       Optional<Holder<PoiType>> newType = PoiTypes.forState(newState);
       if (!Objects.equals(oldType, newType)) {
          BlockPos immutable = pos.immutable();
-         oldType.ifPresent(poiType -> this.getServer().execute(() -> {
+         oldType.ifPresent(var2 -> this.getServer().execute(() -> {
             this.getPoiManager().remove(immutable);
             this.debugSynchronizers.dropPoi(immutable);
          }));

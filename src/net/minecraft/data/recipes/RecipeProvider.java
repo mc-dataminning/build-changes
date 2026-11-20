@@ -312,13 +312,14 @@ public abstract class RecipeProvider {
          .save(this.output, getItemName(result) + "_smithing");
    }
 
-   protected void trimSmithing(final Item trimTemplate, final ResourceKey<TrimPattern> patternId, final ResourceKey<Recipe<?>> id) {
+   protected void trimSmithing(final ResourceKey<Item> trimTemplateId, final ResourceKey<TrimPattern> patternId, final ResourceKey<Recipe<?>> recipeId) {
       Holder.Reference<TrimPattern> pattern = this.trimPatterns.getOrThrow(patternId);
+      Holder.Reference<Item> trimTemplate = this.items.getOrThrow(trimTemplateId);
       SmithingTrimRecipeBuilder.smithingTrim(
             Ingredient.of(trimTemplate), this.tag(ItemTags.TRIMMABLE_ARMOR), this.tag(ItemTags.TRIM_MATERIALS), pattern, RecipeCategory.MISC
          )
-         .unlocks("has_smithing_trim_template", this.has(trimTemplate))
-         .save(this.output, id);
+         .unlocks("has_smithing_trim_template", has(trimTemplate))
+         .save(this.output, recipeId);
    }
 
    protected void twoByTwoPacker(final RecipeCategory category, final ItemLike result, final ItemLike ingredient) {
@@ -969,6 +970,10 @@ public abstract class RecipeProvider {
 
    protected Criterion<InventoryChangeTrigger.TriggerInstance> has(final ItemLike item) {
       return inventoryTrigger(ItemPredicate.Builder.item().of(this.items, item));
+   }
+
+   protected static Criterion<InventoryChangeTrigger.TriggerInstance> has(final Holder<Item> item) {
+      return inventoryTrigger(ItemPredicate.Builder.item().of(HolderSet.direct(item)));
    }
 
    protected Criterion<InventoryChangeTrigger.TriggerInstance> has(final TagKey<Item> tag) {

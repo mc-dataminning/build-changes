@@ -69,12 +69,12 @@ public class IceBlock extends HalfTransparentBlock {
    }
 
    protected void melt(final BlockState state, final Level level, final BlockPos pos) {
+      level.gameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Context.of(state));
       if (level.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, pos)) {
          level.removeBlock(pos, false);
       } else {
          level.setBlockAndUpdate(pos, this.meltsInto());
          level.neighborChanged(pos, this.meltsInto().getBlock(), null);
-         level.gameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Context.of(state));
       }
    }
 }

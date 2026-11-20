@@ -11,8 +11,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.ColorCollection;
-import net.minecraft.world.level.block.WeatheringCopperCollection;
 
 public class VanillaItemTagsProvider extends TagsProvider<Item> {
    public VanillaItemTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
@@ -31,7 +29,7 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
    @Override
    protected void addTags(final HolderLookup.Provider registries) {
       new VanillaBlockItemTagsProvider(tagId -> BlockItemTagsProvider.wrapForItems(this.tag(tagId.item()))).run();
-      this.tag(ItemTags.BANNERS).addAll(toIds(BlockItemIds.BANNER));
+      this.tag(ItemTags.BANNERS).addAllBlockItems(BlockItemIds.BANNER);
       this.tag(ItemTags.BOATS)
          .add(
             ItemIds.OAK_BOAT,
@@ -521,7 +519,7 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
          .addTag(ItemTags.LOGS)
          .addTag(ItemTags.BAMBOO_BLOCKS);
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_BOUNCY)
-         .add(BlockItemIds.AMETHYST_BLOCK, BlockItemIds.ANDESITE, BlockItemIds.BASALT, BlockItemIds.BLACKSTONE, BlockItemIds.BRICKS, BlockItemIds.CALCITE)
+         .add(BlockItemIds.AMETHYST_BLOCK, BlockItemIds.ANDESITE, BlockItemIds.BASALT, BlockItemIds.BLACKSTONE, BlockItemIds.BRICKS)
          .add(
             BlockItemIds.CHISELED_CINNABAR,
             BlockItemIds.CHISELED_DEEPSLATE,
@@ -610,7 +608,9 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
          .addTag(ItemTags.DIAMOND_ORES)
          .addTag(ItemTags.EMERALD_ORES)
          .addTag(ItemTags.TERRACOTTA)
-         .addTag(ItemTags.GLAZED_TERRACOTTA);
+         .addTag(ItemTags.GLAZED_TERRACOTTA)
+         .add(BlockItemIds.CALCITE, BlockItemIds.CALCITE_PILLAR, BlockItemIds.POLISHED_CALCITE, BlockItemIds.POLISHED_CALCITE_BRICKS)
+         .add(new BlockItemId[]{BlockItemIds.CHISELED_SOULSHALE});
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_REGULAR)
          .addTag(ItemTags.CONCRETE_POWDERS)
          .add(BlockItemIds.MUD, BlockItemIds.MUDDY_MANGROVE_ROOTS, BlockItemIds.PACKED_MUD)
@@ -623,10 +623,10 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
          .addTag(ItemTags.IRON_ORES)
          .addTag(ItemTags.COPPER_ORES)
          .add(BlockItemIds.NETHERITE_BLOCK, BlockItemIds.ANCIENT_DEBRIS)
-         .addAll(toIds(BlockItemIds.COPPER_BLOCK))
-         .addAll(toIds(BlockItemIds.COPPER_BULB))
-         .addAll(toIds(BlockItemIds.CUT_COPPER))
-         .addAll(toIds(BlockItemIds.CHISELED_COPPER));
+         .addAllBlockItems(BlockItemIds.COPPER_BLOCK)
+         .addAllBlockItems(BlockItemIds.COPPER_BULB)
+         .addAllBlockItems(BlockItemIds.CUT_COPPER)
+         .addAllBlockItems(BlockItemIds.CHISELED_COPPER);
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_FLAT)
          .add(
             BlockItemIds.TUBE_CORAL_BLOCK,
@@ -693,13 +693,5 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
       this.tag(ItemTags.DOUSES_CAMPFIRES).addTag(ItemTags.SHOVELS);
       this.tag(ItemTags.BREWING_POTION_INPUTS).add(ItemIds.POTION).add(ItemIds.SPLASH_POTION).add(ItemIds.LINGERING_POTION).add(ItemIds.GLASS_BOTTLE);
       this.tag(ItemTags.FURNACE_FUEL_BOTTOM_TAKEABLE).add(ItemIds.WATER_BUCKET).add(ItemIds.BUCKET);
-   }
-
-   private static ColorCollection<ResourceKey<Item>> toIds(final ColorCollection<BlockItemId> ids) {
-      return ids.map(BlockItemId::item);
-   }
-
-   private static WeatheringCopperCollection<ResourceKey<Item>> toIds(final WeatheringCopperCollection<BlockItemId> ids) {
-      return ids.map(BlockItemId::item);
    }
 }

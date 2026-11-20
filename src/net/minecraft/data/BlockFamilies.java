@@ -589,6 +589,26 @@ public class BlockFamilies {
       .stairs(Blocks.SNOW_BRICK_STAIRS)
       .wall(Blocks.SNOW_BRICK_WALL)
       .getFamily();
+   public static final BlockFamily CALCITE = familyBuilder(Blocks.CALCITE)
+      .slab(Blocks.CALCITE_SLAB)
+      .stairs(Blocks.CALCITE_STAIRS)
+      .wall(Blocks.CALCITE_WALL)
+      .pillar(Blocks.CALCITE_PILLAR)
+      .polished(Blocks.POLISHED_CALCITE)
+      .generateStonecutterRecipe()
+      .getFamily();
+   public static final BlockFamily POLISHED_CALCITE = familyBuilder(Blocks.POLISHED_CALCITE)
+      .stairs(Blocks.POLISHED_CALCITE_STAIRS)
+      .wall(Blocks.POLISHED_CALCITE_WALL)
+      .bricks(Blocks.POLISHED_CALCITE_BRICKS)
+      .generateStonecutterRecipe()
+      .getFamily();
+   public static final BlockFamily POLISHED_CALCITE_BRICKS = familyBuilder(Blocks.POLISHED_CALCITE_BRICKS)
+      .slab(Blocks.POLISHED_CALCITE_BRICK_SLAB)
+      .stairs(Blocks.POLISHED_CALCITE_BRICK_STAIRS)
+      .wall(Blocks.POLISHED_CALCITE_BRICK_WALL)
+      .generateStonecutterRecipe()
+      .getFamily();
 
    private static BlockFamily.Builder familyBuilder(final Block base) {
       BlockFamily.Builder builder = new BlockFamily.Builder(base);

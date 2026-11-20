@@ -40,10 +40,12 @@ public class GhostSlots {
       this.setSlot(slot, context, contents, true);
    }
 
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final Minecraft minecraft, final boolean isResultSlotBig) {
+   public void extractRenderState(
+      final GuiGraphicsExtractor graphics, final int xOffset, final int yOffset, final Minecraft minecraft, final boolean isResultSlotBig
+   ) {
       this.ingredients.forEach((slot, ingredient) -> {
-         int x = slot.x;
-         int y = slot.y;
+         int x = slot.x + xOffset;
+         int y = slot.y + yOffset;
          if (ingredient.isResultSlot && isResultSlotBig) {
             graphics.fill(x - 4, y - 4, x + 20, y + 20, 822018048);
          } else {

@@ -270,7 +270,7 @@ public class WitherBoss extends Monster implements RangedAttackMob {
 
          this.setInvulnerableTicks(newCount);
          if (this.tickCount % 10 == 0) {
-            this.heal(10.0F);
+            this.healNaturally(10.0F);
          }
       } else {
          super.customServerAiStep(level);
@@ -344,7 +344,7 @@ public class WitherBoss extends Monster implements RangedAttackMob {
          }
 
          if (this.tickCount % 20 == 0) {
-            this.heal(1.0F);
+            this.healNaturally(1.0F);
          }
 
          this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());

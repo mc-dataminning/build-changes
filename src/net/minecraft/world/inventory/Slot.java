@@ -1,6 +1,7 @@
 package net.minecraft.world.inventory;
 
 import java.util.Optional;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
@@ -13,12 +14,14 @@ public class Slot {
    public int index;
    public final int x;
    public final int y;
+   private final Slot.Section section;
 
-   public Slot(final Container container, final int slot, final int x, final int y) {
+   public Slot(final Container container, final int slot, final int x, final int y, final Slot.Section section) {
       this.container = container;
       this.slot = slot;
       this.x = x;
       this.y = y;
+      this.section = section;
    }
 
    public void onQuickCraft(final ItemStack picked, final ItemStack original) {
@@ -82,6 +85,10 @@ public class Slot {
       return null;
    }
 
+   public @Nullable Component getNarrationName() {
+      return null;
+   }
+
    public ItemStack remove(final int amount) {
       return this.container.removeItem(this.slot, amount);
    }
@@ -92,6 +99,10 @@ public class Slot {
 
    public boolean isActive() {
       return true;
+   }
+
+   public Slot.Section getSection() {
+      return this.section;
    }
 
    public Optional<ItemStack> tryRemove(int amount, final int maxAmount, final Player player) {
@@ -167,5 +178,16 @@ public class Slot {
 
    public boolean isFake() {
       return false;
+   }
+
+   public enum Section {
+      EQUIPMENT,
+      CONTAINER,
+      INPUT,
+      SECOND_INPUT,
+      FUEL,
+      RESULT,
+      INVENTORY,
+      HOTBAR;
    }
 }

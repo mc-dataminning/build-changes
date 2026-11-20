@@ -26,7 +26,7 @@ public class LecternMenu extends AbstractContainerMenu {
       checkContainerDataCount(lecternData, 1);
       this.lectern = lectern;
       this.lecternData = lecternData;
-      this.addSlot(new Slot(lectern, 0, 0, 0) {
+      this.addSlot(new Slot(lectern, 0, 0, 0, Slot.Section.CONTAINER) {
          @Override
          public void setChanged() {
             super.setChanged();

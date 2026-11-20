@@ -34,7 +34,8 @@ public class PlainTextButton extends Button {
 
    @Override
    public void extractContents(final GuiGraphicsExtractor graphics) {
-      Component messageToRender = this.isHoveredOrFocused() ? this.underlinedMessage : this.message;
-      graphics.text(this.font, messageToRender, this.getX(), this.getY(), 16777215 | Mth.ceil(this.alpha * 255.0F) << 24);
+      graphics.text(
+         this.font, this.isHighlighted() ? this.underlinedMessage : this.message, this.getX(), this.getY(), 16777215 | Mth.ceil(this.alpha * 255.0F) << 24
+      );
    }
 }

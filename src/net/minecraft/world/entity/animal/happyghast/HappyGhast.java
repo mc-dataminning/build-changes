@@ -32,7 +32,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.BodyRotationControl;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
-import net.minecraft.world.entity.ai.control.LookControl;
+import net.minecraft.world.entity.ai.control.StandardLookControl;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
@@ -131,7 +131,7 @@ public class HappyGhast extends Animal {
 
    private void babyGhastSetup() {
       this.moveControl = new FlyingMoveControl<>(this, 180, true);
-      this.lookControl = new LookControl(this);
+      this.lookControl = new StandardLookControl(this);
       this.navigation = this.createBabyNavigation(this.level());
       this.setServerStillTimeout(0);
       this.removeAllGoals(goal -> true);
@@ -462,7 +462,7 @@ public class HappyGhast extends Animal {
       if (this.level() instanceof ServerLevel level && this.isAlive() && this.deathTime == 0 && this.getMaxHealth() != this.getHealth()) {
          boolean isFastHealing = this.isInClouds() || level.precipitationAt(this.blockPosition()) != Biome.Precipitation.NONE;
          if (this.tickCount % (isFastHealing ? 20 : 600) == 0) {
-            this.heal(1.0F);
+            this.healNaturally(1.0F);
          }
       }
    }
@@ -636,7 +636,7 @@ public class HappyGhast extends Animal {
       }
    }
 
-   private class HappyGhastLookControl extends LookControl {
+   private class HappyGhastLookControl extends StandardLookControl {
       private HappyGhastLookControl() {
          super(HappyGhast.this);
       }

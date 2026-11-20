@@ -107,7 +107,7 @@ public class MenuTabBar extends TabNavigationBar {
 
       @Override
       protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics) {
-         graphics.blitSprite(GuiPipeline.TEXTURED, SPRITES.get(this.isSelected(), this.isHoveredOrFocused()), this.getX(), this.getY(), this.width, this.height);
+         graphics.blitSprite(GuiPipeline.TEXTURED, SPRITES.get(this.isSelected(), this.isHighlighted()), this.getX(), this.getY(), this.width, this.height);
          Font font = Minecraft.getInstance().font;
          int underlineColor = this.active ? -1 : -6250336;
          if (this.isSelected()) {

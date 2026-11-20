@@ -399,6 +399,19 @@ public class CreativeModeTabs {
                buildingBlocks.accept(Items.SNOW_BRICK_STAIRS);
                buildingBlocks.accept(Items.SNOW_BRICK_SLAB);
                buildingBlocks.accept(Items.SNOW_BRICK_WALL);
+               buildingBlocks.accept(Items.CALCITE);
+               buildingBlocks.accept(Items.CALCITE_PILLAR);
+               buildingBlocks.accept(Items.CALCITE_STAIRS);
+               buildingBlocks.accept(Items.CALCITE_SLAB);
+               buildingBlocks.accept(Items.CALCITE_WALL);
+               buildingBlocks.accept(Items.POLISHED_CALCITE);
+               buildingBlocks.accept(Items.POLISHED_CALCITE_STAIRS);
+               buildingBlocks.accept(Items.POLISHED_CALCITE_SLAB);
+               buildingBlocks.accept(Items.POLISHED_CALCITE_WALL);
+               buildingBlocks.accept(Items.POLISHED_CALCITE_BRICKS);
+               buildingBlocks.accept(Items.POLISHED_CALCITE_BRICK_STAIRS);
+               buildingBlocks.accept(Items.POLISHED_CALCITE_BRICK_SLAB);
+               buildingBlocks.accept(Items.POLISHED_CALCITE_BRICK_WALL);
                buildingBlocks.accept(Items.SEA_LANTERN);
                buildingBlocks.accept(Items.PRISMARINE);
                buildingBlocks.accept(Items.PRISMARINE_STAIRS);
@@ -1198,6 +1211,7 @@ public class CreativeModeTabs {
                   toolsAndUtilities.accept(Items.MUSIC_DISC_TEARS);
                   toolsAndUtilities.accept(Items.MUSIC_DISC_LAVA_CHICKEN);
                   toolsAndUtilities.accept(Items.MUSIC_DISC_BOUNCE);
+                  toolsAndUtilities.accept(Items.MUSIC_DISC_FLURRY);
                }
             )
             .build()

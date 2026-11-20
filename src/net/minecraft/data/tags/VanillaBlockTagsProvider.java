@@ -13,8 +13,6 @@ import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ColorCollection;
-import net.minecraft.world.level.block.WeatheringCopperCollection;
 
 public class VanillaBlockTagsProvider extends TagsProvider<Block> {
    public VanillaBlockTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
@@ -33,7 +31,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
    @Override
    protected void addTags(final HolderLookup.Provider registries) {
       new VanillaBlockItemTagsProvider(tagId -> BlockItemTagsProvider.wrapForBlocks(this.tag(tagId.block()))).run();
-      this.tag(BlockTags.MOB_INTERACTABLE_DOORS).addTag(BlockTags.WOODEN_DOORS).addAll(toIds(BlockItemIds.COPPER_DOOR));
+      this.tag(BlockTags.MOB_INTERACTABLE_DOORS).addTag(BlockTags.WOODEN_DOORS).addAllBlockItems(BlockItemIds.COPPER_DOOR);
       this.tag(BlockTags.OVERWORLD_NATURAL_LOGS)
          .add(new BlockItemId[]{BlockItemIds.ACACIA_LOG})
          .add(new BlockItemId[]{BlockItemIds.BIRCH_LOG})
@@ -114,7 +112,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockIds.POTTED_GOLDEN_DANDELION,
             BlockIds.POTTED_POPLAR_SAPLING
          );
-      this.tag(BlockTags.BANNERS).addAll(toIds(BlockItemIds.BANNER)).addAll(BlockIds.WALL_BANNER);
+      this.tag(BlockTags.BANNERS).addAllBlockItems(BlockItemIds.BANNER).addAll(BlockIds.WALL_BANNER);
       this.tag(BlockTags.STONE_PRESSURE_PLATES).add(BlockItemIds.STONE_PRESSURE_PLATE, BlockItemIds.POLISHED_BLACKSTONE_PRESSURE_PLATE);
       this.tag(BlockTags.PRESSURE_PLATES)
          .add(BlockItemIds.LIGHT_WEIGHTED_PRESSURE_PLATE, BlockItemIds.HEAVY_WEIGHTED_PRESSURE_PLATE)
@@ -155,7 +153,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .add(BlockIds.FROSTED_ICE);
       this.tag(BlockTags.FACE_OCCLUDING_ICE_BLOCKS).add(BlockItemIds.ICE, BlockItemIds.BRITTLE_ICE).add(BlockIds.FROSTED_ICE);
       this.tag(BlockTags.VALID_SPAWN).add(BlockItemIds.GRASS_BLOCK, BlockItemIds.PODZOL);
-      this.tag(BlockTags.IMPERMEABLE).addAll(toIds(BlockItemIds.STAINED_GLASS)).add(BlockItemIds.GLASS, BlockItemIds.TINTED_GLASS, BlockItemIds.BARRIER);
+      this.tag(BlockTags.IMPERMEABLE).addAllBlockItems(BlockItemIds.STAINED_GLASS).add(BlockItemIds.GLASS, BlockItemIds.TINTED_GLASS, BlockItemIds.BARRIER);
       this.tag(BlockTags.UNDERWATER_BONEMEALS).add(new BlockItemId[]{BlockItemIds.SEAGRASS}).addTag(BlockTags.CORALS).addTag(BlockTags.WALL_CORALS);
       this.tag(BlockTags.WALL_SIGNS)
          .add(
@@ -846,23 +844,38 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .addTag(BlockTags.LANTERNS)
          .addTag(BlockTags.CHAINS)
          .addTag(BlockTags.BARS)
-         .addAll(toIds(BlockItemIds.COPPER_BLOCK))
-         .addAll(toIds(BlockItemIds.COPPER_BULB))
-         .addAll(toIds(BlockItemIds.CUT_COPPER))
-         .addAll(toIds(BlockItemIds.CHISELED_COPPER))
-         .addAll(toIds(BlockItemIds.CUT_COPPER_STAIRS))
-         .addAll(toIds(BlockItemIds.CUT_COPPER_SLAB))
-         .addAll(toIds(BlockItemIds.COPPER_DOOR))
-         .addAll(toIds(BlockItemIds.COPPER_TRAPDOOR))
-         .addAll(toIds(BlockItemIds.COPPER_GRATE))
-         .addAll(toIds(BlockItemIds.GLAZED_TERRACOTTA))
-         .addAll(toIds(BlockItemIds.DYED_TERRACOTTA))
-         .addAll(toIds(BlockItemIds.CONCRETE))
+         .addAllBlockItems(BlockItemIds.COPPER_BLOCK)
+         .addAllBlockItems(BlockItemIds.COPPER_BULB)
+         .addAllBlockItems(BlockItemIds.CUT_COPPER)
+         .addAllBlockItems(BlockItemIds.CHISELED_COPPER)
+         .addAllBlockItems(BlockItemIds.CUT_COPPER_STAIRS)
+         .addAllBlockItems(BlockItemIds.CUT_COPPER_SLAB)
+         .addAllBlockItems(BlockItemIds.COPPER_DOOR)
+         .addAllBlockItems(BlockItemIds.COPPER_TRAPDOOR)
+         .addAllBlockItems(BlockItemIds.COPPER_GRATE)
+         .addAllBlockItems(BlockItemIds.GLAZED_TERRACOTTA)
+         .addAllBlockItems(BlockItemIds.DYED_TERRACOTTA)
+         .addAllBlockItems(BlockItemIds.CONCRETE)
          .addTag(BlockTags.SPELEOTHEMS)
-         .addAll(toIds(BlockItemIds.CONCRETE_STAIRS))
-         .addAll(toIds(BlockItemIds.CONCRETE_SLAB))
+         .addAllBlockItems(BlockItemIds.CONCRETE_STAIRS)
+         .addAllBlockItems(BlockItemIds.CONCRETE_SLAB)
          .add(new BlockItemId[]{BlockItemIds.ICE_CRYSTAL})
-         .add(new BlockItemId[]{BlockItemIds.BRITTLE_ICE});
+         .add(new BlockItemId[]{BlockItemIds.BRITTLE_ICE})
+         .add(
+            BlockItemIds.CALCITE_PILLAR,
+            BlockItemIds.CALCITE_SLAB,
+            BlockItemIds.CALCITE_STAIRS,
+            BlockItemIds.CALCITE_WALL,
+            BlockItemIds.POLISHED_CALCITE,
+            BlockItemIds.POLISHED_CALCITE_SLAB,
+            BlockItemIds.POLISHED_CALCITE_STAIRS,
+            BlockItemIds.POLISHED_CALCITE_WALL,
+            BlockItemIds.POLISHED_CALCITE_BRICKS,
+            BlockItemIds.POLISHED_CALCITE_BRICK_SLAB,
+            BlockItemIds.POLISHED_CALCITE_BRICK_STAIRS,
+            BlockItemIds.POLISHED_CALCITE_BRICK_WALL
+         )
+         .add(new BlockItemId[]{BlockItemIds.CHISELED_SOULSHALE});
       this.tag(BlockTags.MINEABLE_WITH_SHOVEL)
          .add(
             BlockItemIds.CLAY,
@@ -944,14 +957,14 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          )
          .addTag(BlockTags.COPPER_CHESTS)
          .addTag(BlockTags.LIGHTNING_RODS)
-         .addAll(toIds(BlockItemIds.COPPER_BLOCK))
-         .addAll(toIds(BlockItemIds.COPPER_BULB))
-         .addAll(toIds(BlockItemIds.CUT_COPPER))
-         .addAll(toIds(BlockItemIds.CHISELED_COPPER))
-         .addAll(toIds(BlockItemIds.CUT_COPPER_STAIRS))
-         .addAll(toIds(BlockItemIds.CUT_COPPER_SLAB))
-         .addAll(toIds(BlockItemIds.COPPER_TRAPDOOR))
-         .addAll(toIds(BlockItemIds.COPPER_GRATE));
+         .addAllBlockItems(BlockItemIds.COPPER_BLOCK)
+         .addAllBlockItems(BlockItemIds.COPPER_BULB)
+         .addAllBlockItems(BlockItemIds.CUT_COPPER)
+         .addAllBlockItems(BlockItemIds.CHISELED_COPPER)
+         .addAllBlockItems(BlockItemIds.CUT_COPPER_STAIRS)
+         .addAllBlockItems(BlockItemIds.CUT_COPPER_SLAB)
+         .addAllBlockItems(BlockItemIds.COPPER_TRAPDOOR)
+         .addAllBlockItems(BlockItemIds.COPPER_GRATE);
       this.tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
       this.tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL);
       this.tag(BlockTags.INCORRECT_FOR_IRON_TOOL).addTag(BlockTags.NEEDS_DIAMOND_TOOL);
@@ -1320,12 +1333,12 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .addTag(BlockTags.ICE)
          .addTag(BlockTags.STONE_BRICKS)
          .addTag(BlockTags.ANVIL)
-         .addAll(toIds(BlockItemIds.STAINED_GLASS))
-         .addAll(toIds(BlockItemIds.STAINED_GLASS_PANE))
-         .addAll(toIds(BlockItemIds.CUT_COPPER))
-         .addAll(toIds(BlockItemIds.CHISELED_COPPER))
-         .addAll(toIds(BlockItemIds.COPPER_GRATE))
-         .addAll(toIds(BlockItemIds.COPPER_BULB))
+         .addAllBlockItems(BlockItemIds.STAINED_GLASS)
+         .addAllBlockItems(BlockItemIds.STAINED_GLASS_PANE)
+         .addAllBlockItems(BlockItemIds.CUT_COPPER)
+         .addAllBlockItems(BlockItemIds.CHISELED_COPPER)
+         .addAllBlockItems(BlockItemIds.COPPER_GRATE)
+         .addAllBlockItems(BlockItemIds.COPPER_BULB)
          .add(
             BlockIds.DEAD_TUBE_CORAL_WALL_FAN,
             BlockIds.DEAD_BRAIN_CORAL_WALL_FAN,
@@ -1536,6 +1549,9 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.CINNABAR_BRICKS,
             BlockItemIds.CHISELED_CINNABAR,
             BlockItemIds.CALCITE,
+            BlockItemIds.CALCITE_PILLAR,
+            BlockItemIds.POLISHED_CALCITE,
+            BlockItemIds.POLISHED_CALCITE_BRICKS,
             BlockItemIds.TINTED_GLASS,
             BlockItemIds.SCULK_SENSOR,
             BlockItemIds.CALIBRATED_SCULK_SENSOR,
@@ -1565,6 +1581,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.DECORATED_POT,
             BlockItemIds.CRAFTER,
             BlockItemIds.TRIAL_SPAWNER,
+            BlockItemIds.CHISELED_SOULSHALE,
             BlockItemIds.VAULT,
             BlockItemIds.PALE_MOSS_BLOCK,
             BlockItemIds.STRAW_BED
@@ -1591,7 +1608,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .addTag(BlockTags.CANDLES)
          .addTag(BlockTags.RAILS)
          .addTag(BlockTags.SKULLS)
-         .addAll(toIds(BlockItemIds.COPPER_GOLEM_STATUE))
+         .addAllBlockItems(BlockItemIds.COPPER_GOLEM_STATUE)
          .add(
             BlockIds.WATER,
             BlockIds.LAVA,
@@ -1741,13 +1758,5 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
       this.tag(BlockTags.PATHFINDING_OPEN).addTag(BlockTags.AIR);
       this.tag(BlockTags.PATHFINDING_RAILS).addTag(BlockTags.RAILS);
       this.tag(BlockTags.PATHFINDING_STICKY).add(new BlockItemId[]{BlockItemIds.HONEY_BLOCK});
-   }
-
-   private static ColorCollection<ResourceKey<Block>> toIds(final ColorCollection<BlockItemId> ids) {
-      return ids.map(BlockItemId::block);
-   }
-
-   private static WeatheringCopperCollection<ResourceKey<Block>> toIds(final WeatheringCopperCollection<BlockItemId> ids) {
-      return ids.map(BlockItemId::block);
    }
 }

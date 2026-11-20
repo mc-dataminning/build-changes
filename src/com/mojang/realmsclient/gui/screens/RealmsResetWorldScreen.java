@@ -280,9 +280,9 @@ public class RealmsResetWorldScreen extends RealmsScreen {
 
       @Override
       public void extractContents(final GuiGraphicsExtractor graphics) {
-         boolean hoveredOrFocused = this.isHoveredOrFocused();
+         boolean isHighlighted = this.isHighlighted();
          int color = -1;
-         if (hoveredOrFocused) {
+         if (isHighlighted) {
             color = ARGB.colorFromFloat(1.0F, 0.56F, 0.56F, 0.56F);
          }
 
@@ -290,7 +290,7 @@ public class RealmsResetWorldScreen extends RealmsScreen {
          int y = this.getY();
          graphics.blit(GuiPipeline.TEXTURED, this.image, x + 2, y + 2, 0.0F, 0.0F, 56, 56, 56, 56, 56, 56, color);
          graphics.blitSprite(GuiPipeline.TEXTURED, SLOT_FRAME_SPRITE, x, y, 60, 60, color);
-         int textColor = hoveredOrFocused ? -6250336 : -1;
+         int textColor = isHighlighted ? -6250336 : -1;
          graphics.centeredText(RealmsResetWorldScreen.this.font, this.getMessage(), x + 28, y - 14, textColor);
       }
    }

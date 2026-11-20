@@ -109,7 +109,6 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    private final List<TickingBlockEntity> pendingBlockEntityTickers = new ArrayList<>();
    private boolean tickingBlockEntities;
    private final Thread thread;
-   private final boolean isDebug;
    private int skyDarken;
    protected int randValue = RandomSource.createThreadLocalInstance().nextInt();
    protected final int addend = 1013904223;
@@ -135,7 +134,6 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       final RegistryAccess registryAccess,
       final Holder<DimensionType> dimensionTypeRegistration,
       final boolean isClientSide,
-      final boolean isDebug,
       final int maxChainedNeighborUpdates
    ) {
       this.levelData = levelData;
@@ -143,7 +141,6 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       this.dimension = dimension;
       this.isClientSide = isClientSide;
       this.thread = Thread.currentThread();
-      this.isDebug = isDebug;
       this.neighborUpdater = new CollectingNeighborUpdater(this, maxChainedNeighborUpdates);
       this.registryAccess = registryAccess;
       this.palettedContainerFactory = PalettedContainerFactory.create(registryAccess);
@@ -211,10 +208,6 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    @Override
    public boolean setBlock(final BlockPos pos, final BlockState blockState, final @Block.UpdateFlags int updateFlags, final int updateLimit) {
       if (!this.isInValidBounds(pos)) {
-         return false;
-      }
-
-      if (!this.isClientSide() && this.isDebug()) {
          return false;
       }
 
@@ -1077,10 +1070,6 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
 
    public boolean noSave() {
       return false;
-   }
-
-   public final boolean isDebug() {
-      return this.isDebug;
    }
 
    protected abstract LevelEntityGetter<Entity> getEntities();

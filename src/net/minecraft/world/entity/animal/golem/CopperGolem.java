@@ -118,6 +118,16 @@ public class CopperGolem extends AbstractGolem implements ContainerUser, Shearab
       this.entityData.set(DATA_WEATHER_STATE, state);
    }
 
+   public boolean isWaxed() {
+      return this.nextWeatheringTick == -2L;
+   }
+
+   public void setWaxed(final boolean waxed) {
+      if (waxed != this.isWaxed()) {
+         this.nextWeatheringTick = waxed ? -2L : -1L;
+      }
+   }
+
    public void setOpenedChestPos(final BlockPos openedChestPos) {
       this.openedChestPos = openedChestPos;
    }
@@ -229,19 +239,19 @@ public class CopperGolem extends AbstractGolem implements ContainerUser, Shearab
             return InteractionResult.PASS;
          }
 
-         if (itemStack.is(Items.HONEYCOMB) && this.nextWeatheringTick != -2L) {
+         if (itemStack.is(Items.HONEYCOMB) && !this.isWaxed()) {
             BlockPos pos = this.blockPosition();
             level.levelEvent(this, 3003, pos, 0);
             level.playSound(null, pos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0F, 1.0F);
-            this.nextWeatheringTick = -2L;
+            this.setWaxed(true);
             this.usePlayerItem(player, hand, itemStack);
             return InteractionResult.SUCCESS_SERVER;
          }
 
-         if (itemStack.is(ItemTags.AXES) && this.nextWeatheringTick == -2L) {
+         if (itemStack.is(ItemTags.AXES) && this.isWaxed()) {
             level.playSound(null, this, SoundEvents.AXE_SCRAPE, this.getSoundSource(), 1.0F, 1.0F);
             level.levelEvent(this, 3004, this.blockPosition(), 0);
-            this.nextWeatheringTick = -1L;
+            this.setWaxed(false);
             itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
             return InteractionResult.SUCCESS_SERVER;
          }
@@ -263,7 +273,7 @@ public class CopperGolem extends AbstractGolem implements ContainerUser, Shearab
    }
 
    private void updateWeathering(final ServerLevel level, final RandomSource random, final long gameTime) {
-      if (this.nextWeatheringTick != -2L) {
+      if (!this.isWaxed()) {
          if (this.nextWeatheringTick == -1L) {
             this.nextWeatheringTick = gameTime + random.nextIntBetweenInclusive(504000, 552000);
          } else {
@@ -462,7 +472,7 @@ public class CopperGolem extends AbstractGolem implements ContainerUser, Shearab
       if (!lightningBoltUUID.equals(this.lastLightningBoltUUID)) {
          this.lastLightningBoltUUID = lightningBoltUUID;
          WeatheringCopper.WeatherState weatherState = this.getWeatherState();
-         if (weatherState != WeatheringCopper.WeatherState.UNAFFECTED) {
+         if (weatherState != WeatheringCopper.WeatherState.UNAFFECTED && !this.isWaxed()) {
             this.nextWeatheringTick = -1L;
             this.entityData.set(DATA_WEATHER_STATE, weatherState.previous(), true);
          }

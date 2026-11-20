@@ -37,8 +37,8 @@ import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.BodyRotationControl;
-import net.minecraft.world.entity.ai.control.LookControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.ai.control.StandardLookControl;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.sensing.SensorType;
 import net.minecraft.world.entity.animal.Animal;
@@ -419,9 +419,9 @@ public class Camel extends AbstractHorse {
          return false;
       }
 
-      boolean couldHeal = this.getHealth() < this.getMaxHealth();
-      if (couldHeal) {
-         this.heal(2.0F);
+      boolean canHealNaturally = this.canHealNaturally();
+      if (canHealNaturally) {
+         this.healNaturally(2.0F);
       }
 
       boolean couldSetInLove = this.isTamed() && this.getAge() == 0 && this.canFallInLove();
@@ -437,7 +437,7 @@ public class Camel extends AbstractHorse {
          }
       }
 
-      if (!couldHeal && !couldSetInLove && !couldAgeUp) {
+      if (!canHealNaturally && !couldSetInLove && !couldAgeUp) {
          return false;
       }
 
@@ -670,7 +670,7 @@ public class Camel extends AbstractHorse {
       }
    }
 
-   private class CamelLookControl extends LookControl {
+   private class CamelLookControl extends StandardLookControl {
       private CamelLookControl() {
          super(Camel.this);
       }

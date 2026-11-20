@@ -460,18 +460,14 @@ public class Guardian extends Monster {
             double newLookX = this.mob.getX() + xd * 2.0;
             double newLookY = this.mob.getEyeY() + yd / length;
             double newLookZ = this.mob.getZ() + zd * 2.0;
-            double oldLookX = control.getWantedX();
-            double oldLookY = control.getWantedY();
-            double oldLookZ = control.getWantedZ();
-            if (!control.isLookingAtTarget()) {
-               oldLookX = newLookX;
-               oldLookY = newLookY;
-               oldLookZ = newLookZ;
+            Vec3 oldLook = control.getWantedPosition();
+            if (oldLook == null || !control.isLookingAtTarget()) {
+               oldLook = new Vec3(newLookX, newLookY, newLookZ);
             }
 
             this.mob
                .getLookControl()
-               .setLookAt(Mth.lerp(0.125, oldLookX, newLookX), Mth.lerp(0.125, oldLookY, newLookY), Mth.lerp(0.125, oldLookZ, newLookZ), 10.0F, 40.0F);
+               .setLookAt(Mth.lerp(0.125, oldLook.x, newLookX), Mth.lerp(0.125, oldLook.y, newLookY), Mth.lerp(0.125, oldLook.z, newLookZ), 10.0F, 40.0F);
             this.mob.setMoving(true);
          } else {
             this.mob.setSpeed(0.0F);

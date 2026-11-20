@@ -53,7 +53,7 @@ import net.minecraft.world.entity.SulfurCubeArchetype;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.control.LookControl;
+import net.minecraft.world.entity.ai.control.StandardLookControl;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -1001,7 +1001,7 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
       return !this.hasBodyItem();
    }
 
-   private class SulfurCubeLookControl extends LookControl {
+   private class SulfurCubeLookControl extends StandardLookControl {
       private SulfurCubeLookControl() {
          super(SulfurCube.this);
       }

@@ -29,8 +29,8 @@ public class RealmsWorldUpload {
    private final User user;
    private final long realmId;
    private final RealmsWorldUploadStatusTracker statusCallback;
-   private volatile boolean cancelled;
-   private volatile @Nullable CompletableFuture<?> uploadTask;
+   private final UploadCancellation cancellation = new UploadCancellation();
+   private volatile @Nullable ContentV2WorldUploader contentV2Uploader;
 
    public RealmsWorldUpload(
       final Path worldFolder, final RealmsSlot realmsSlot, final User user, final long realmId, final RealmsWorldUploadStatusTracker statusCallback
@@ -43,86 +43,101 @@ public class RealmsWorldUpload {
    }
 
    public CompletableFuture<?> packAndUpload() {
-      return CompletableFuture.runAsync(
-         () -> {
-            File archive = null;
+      return CompletableFuture.runAsync(() -> {
+         File archive = null;
 
-            try {
-               UploadInfo uploadInfo = this.requestUploadInfoWithRetries();
-               archive = RealmsUploadWorldPacker.pack(this.worldFolder, () -> this.cancelled);
-               this.statusCallback.setUploading();
+         try {
+            this.cancellation.throwIfCancelled();
+            boolean useContentV2Upload = this.client.isContentV2UploadEnabled();
+            archive = RealmsUploadWorldPacker.pack(this.worldFolder, this.cancellation::isCancelled);
+            this.cancellation.throwIfCancelled();
+            if (useContentV2Upload) {
+               this.uploadContentV2(archive);
+            } else {
+               this.uploadLegacy(archive, this.requestUploadInfoWithRetries());
+            }
 
-               try (FileUpload fileUpload = new FileUpload(
-                     archive,
-                     this.realmId,
-                     this.realmsSlot.slotId,
-                     uploadInfo,
-                     this.user,
-                     SharedConstants.getCurrentVersion().name(),
-                     this.realmsSlot.options.version,
-                     this.statusCallback.getUploadStatus()
-                  )) {
-                  CompletableFuture<UploadResult> uploadTask = fileUpload.startUpload();
-                  this.uploadTask = uploadTask;
-                  if (!this.cancelled) {
-                     UploadResult join;
-                     try {
-                        join = uploadTask.join();
-                     } catch (CompletionException e) {
-                        throw e.getCause();
-                     }
+            this.client.updateSlot(this.realmId, this.realmsSlot.slotId, this.realmsSlot.options, this.realmsSlot.settings);
+         } catch (RealmsServiceException e) {
+            throw new RealmsUploadFailedException(e.realmsError.errorMessage());
+         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RealmsUploadCanceledException();
+         } catch (CancellationException e) {
+            throw new RealmsUploadCanceledException();
+         } catch (RealmsUploadException e) {
+            throw e;
+         } catch (Throwable e) {
+            if (e instanceof Error error) {
+               throw error;
+            }
 
-                     String errorMessage = join.getSimplifiedErrorMessage();
-                     if (errorMessage != null) {
-                        throw new RealmsUploadFailedException(errorMessage);
-                     }
-
-                     UploadTokenCache.invalidate(this.realmId);
-                     this.client.updateSlot(this.realmId, this.realmsSlot.slotId, this.realmsSlot.options, this.realmsSlot.settings);
-                     return;
-                  }
-
-                  uploadTask.cancel(true);
-               }
-            } catch (RealmsServiceException e) {
-               throw new RealmsUploadFailedException(e.realmsError.errorMessage());
-            } catch (InterruptedException | CancellationException e) {
-               throw new RealmsUploadCanceledException();
-            } catch (RealmsUploadException e) {
-               throw e;
-            } catch (Throwable e) {
-               if (e instanceof Error error) {
-                  throw error;
-               }
-
-               throw new RealmsUploadFailedException(e.getMessage());
-            } finally {
-               if (archive != null) {
-                  LOGGER.debug("Deleting file {}", archive.getAbsolutePath());
-                  archive.delete();
+            throw new RealmsUploadFailedException(e.getMessage());
+         } finally {
+            if (archive != null) {
+               LOGGER.debug("Deleting file {}", archive.getAbsolutePath());
+               if (!archive.delete()) {
+                  LOGGER.warn("Could not delete upload archive {}", archive);
                }
             }
-         },
-         Util.backgroundExecutor()
-      );
+         }
+      }, Util.nonCriticalIoPool());
    }
 
    public void cancel() {
-      this.cancelled = true;
-      CompletableFuture<?> uploadTask = this.uploadTask;
-      if (uploadTask != null) {
-         uploadTask.cancel(true);
+      ContentV2WorldUploader uploader = this.contentV2Uploader;
+      if (uploader != null) {
+         uploader.cancel();
+      } else {
+         this.cancellation.cancel();
+      }
+   }
+
+   private void uploadContentV2(final File archive) {
+      try (ContentV2WorldUploader uploader = new ContentV2WorldUploader(this.client, this.statusCallback, this.cancellation)) {
+         this.contentV2Uploader = uploader;
+         uploader.upload(archive.toPath(), this.realmId, this.realmsSlot.slotId, "tar.gz");
+      } finally {
+         this.contentV2Uploader = null;
+      }
+   }
+
+   private void uploadLegacy(final File archive, final UploadInfo uploadInfo) throws Throwable {
+      this.statusCallback.setUploading();
+
+      try (FileUpload fileUpload = new FileUpload(
+            archive,
+            this.realmId,
+            this.realmsSlot.slotId,
+            uploadInfo,
+            this.user,
+            SharedConstants.getCurrentVersion().name(),
+            this.realmsSlot.options.version,
+            this.statusCallback.getUploadStatus()
+         )) {
+         UploadResult result;
+         try {
+            result = this.cancellation.join(fileUpload.startUpload());
+         } catch (CompletionException e) {
+            throw e.getCause();
+         }
+
+         String errorMessage = result.getSimplifiedErrorMessage();
+         if (errorMessage != null) {
+            throw new RealmsUploadFailedException(errorMessage);
+         }
+
+         UploadTokenCache.invalidate(this.realmId);
       }
    }
 
    private UploadInfo requestUploadInfoWithRetries() throws RealmsServiceException, InterruptedException {
       for (int i = 0; i < 20; i++) {
+         this.cancellation.throwIfCancelled();
+
          try {
             UploadInfo uploadInfo = this.client.requestUploadInfo(this.realmId);
-            if (this.cancelled) {
-               throw new RealmsUploadCanceledException();
-            }
-
+            this.cancellation.throwIfCancelled();
             if (uploadInfo != null) {
                if (!uploadInfo.worldClosed()) {
                   throw new RealmsUploadWorldNotClosedException();

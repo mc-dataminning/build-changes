@@ -1,6 +1,7 @@
 package com.mojang.renderpearl.frontend;
 
 import com.mojang.logging.LogUtils;
+import com.mojang.renderpearl.api.GpuFormat;
 import com.mojang.renderpearl.api.buffers.GpuBuffer;
 import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.buffers.TransientMemory;
@@ -187,6 +188,16 @@ public class FrontendCommandEncoder implements CommandEncoder {
    }
 
    @Override
+   public void clearStencilTexture(final GpuTexture stencilTexture, final byte clearStencil) {
+      if (this.isInRenderPass) {
+         throw new IllegalStateException("Close the existing render pass before creating a new one!");
+      }
+
+      this.verifyStencilTexture(stencilTexture);
+      this.backend.clearStencilTexture(stencilTexture, clearStencil);
+   }
+
+   @Override
    public void writeToBuffer(final GpuBufferSlice destination, final ByteBuffer data) {
       if (this.isInRenderPass) {
          throw new IllegalStateException("Close the existing render pass before performing additional commands");
@@ -296,7 +307,7 @@ public class FrontendCommandEncoder implements CommandEncoder {
       }
 
       if (mipLevel >= 0 && mipLevel < destination.getMipLevels()) {
-         if (width * height * destination.getFormat().blockSize() > source.remaining()) {
+         if ((long)width * height * destination.getFormat().blockSize() > source.remaining()) {
             throw new IllegalArgumentException(
                "Copy would overrun the source buffer (remaining length of "
                   + source.remaining()
@@ -593,6 +604,23 @@ public class FrontendCommandEncoder implements CommandEncoder {
             throw new UnsupportedOperationException("Textures with multiple depths or layers are not yet supported for copying");
          }
 
+         GpuFormat sourceFormat = source.getFormat();
+         GpuFormat destFormat = destination.getFormat();
+         if ((sourceFormat.hasDepthAspect() || sourceFormat.hasStencilAspect()) && sourceFormat != destFormat) {
+            throw new IllegalArgumentException(
+               "When copying depth or stencil data, the source and destination texture formats must be identical. Source: "
+                  + sourceFormat
+                  + ", Destination: "
+                  + destFormat
+            );
+         }
+
+         if (sourceFormat.hasColorAspect() != destFormat.hasColorAspect()) {
+            throw new IllegalArgumentException(
+               "Source and destination texture formats must have consistent color aspects. Source: " + sourceFormat + ", Destination: " + destFormat
+            );
+         }
+
          this.backend.copyTextureToTexture(source, destination, mipLevel, destX, destY, sourceX, sourceY, width, height);
       } else {
          throw new IllegalArgumentException(
@@ -656,6 +684,24 @@ public class FrontendCommandEncoder implements CommandEncoder {
 
       if ((depthTexture.usage() & 1) == 0) {
          throw new IllegalStateException("Depth texture must have USAGE_COPY_DST");
+      }
+
+      if (depthTexture.getDepthOrLayers() > 1) {
+         throw new UnsupportedOperationException("Clearing a texture with multiple layers or depths is not yet supported");
+      }
+   }
+
+   private void verifyStencilTexture(final GpuTexture depthTexture) {
+      if (!depthTexture.getFormat().hasStencilAspect()) {
+         throw new IllegalStateException("Trying to clear a non-stencil texture as stencil");
+      }
+
+      if (depthTexture.isClosed()) {
+         throw new IllegalStateException("Stencil texture is closed");
+      }
+
+      if ((depthTexture.usage() & 1) == 0) {
+         throw new IllegalStateException("Stencil texture must have USAGE_COPY_DST");
       }
 
       if (depthTexture.getDepthOrLayers() > 1) {

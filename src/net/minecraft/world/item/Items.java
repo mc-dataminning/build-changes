@@ -80,6 +80,18 @@ public class Items {
    public static final Item COBBLED_DEEPSLATE = registerBlock(BlockItemIds.COBBLED_DEEPSLATE, Blocks.COBBLED_DEEPSLATE);
    public static final Item POLISHED_DEEPSLATE = registerBlock(BlockItemIds.POLISHED_DEEPSLATE, Blocks.POLISHED_DEEPSLATE);
    public static final Item CALCITE = registerBlock(BlockItemIds.CALCITE, Blocks.CALCITE);
+   public static final Item CALCITE_PILLAR = registerBlock(BlockItemIds.CALCITE_PILLAR, Blocks.CALCITE_PILLAR);
+   public static final Item CALCITE_SLAB = registerBlock(BlockItemIds.CALCITE_SLAB, Blocks.CALCITE_SLAB);
+   public static final Item CALCITE_STAIRS = registerBlock(BlockItemIds.CALCITE_STAIRS, Blocks.CALCITE_STAIRS);
+   public static final Item CALCITE_WALL = registerBlock(BlockItemIds.CALCITE_WALL, Blocks.CALCITE_WALL);
+   public static final Item POLISHED_CALCITE = registerBlock(BlockItemIds.POLISHED_CALCITE, Blocks.POLISHED_CALCITE);
+   public static final Item POLISHED_CALCITE_SLAB = registerBlock(BlockItemIds.POLISHED_CALCITE_SLAB, Blocks.POLISHED_CALCITE_SLAB);
+   public static final Item POLISHED_CALCITE_STAIRS = registerBlock(BlockItemIds.POLISHED_CALCITE_STAIRS, Blocks.POLISHED_CALCITE_STAIRS);
+   public static final Item POLISHED_CALCITE_WALL = registerBlock(BlockItemIds.POLISHED_CALCITE_WALL, Blocks.POLISHED_CALCITE_WALL);
+   public static final Item POLISHED_CALCITE_BRICKS = registerBlock(BlockItemIds.POLISHED_CALCITE_BRICKS, Blocks.POLISHED_CALCITE_BRICKS);
+   public static final Item POLISHED_CALCITE_BRICK_SLAB = registerBlock(BlockItemIds.POLISHED_CALCITE_BRICK_SLAB, Blocks.POLISHED_CALCITE_BRICK_SLAB);
+   public static final Item POLISHED_CALCITE_BRICK_STAIRS = registerBlock(BlockItemIds.POLISHED_CALCITE_BRICK_STAIRS, Blocks.POLISHED_CALCITE_BRICK_STAIRS);
+   public static final Item POLISHED_CALCITE_BRICK_WALL = registerBlock(BlockItemIds.POLISHED_CALCITE_BRICK_WALL, Blocks.POLISHED_CALCITE_BRICK_WALL);
    public static final Item TUFF = registerBlock(BlockItemIds.TUFF, Blocks.TUFF);
    public static final Item TUFF_SLAB = registerBlock(BlockItemIds.TUFF_SLAB, Blocks.TUFF_SLAB);
    public static final Item TUFF_STAIRS = registerBlock(BlockItemIds.TUFF_STAIRS, Blocks.TUFF_STAIRS);
@@ -932,6 +944,7 @@ public class Items {
    public static final Item SCULK_VEIN = registerBlock(BlockItemIds.SCULK_VEIN, Blocks.SCULK_VEIN);
    public static final Item SCULK_CATALYST = registerBlock(BlockItemIds.SCULK_CATALYST, Blocks.SCULK_CATALYST);
    public static final Item SCULK_SHRIEKER = registerBlock(BlockItemIds.SCULK_SHRIEKER, Blocks.SCULK_SHRIEKER);
+   public static final Item CHISELED_SOULSHALE = registerBlock(BlockItemIds.CHISELED_SOULSHALE, Blocks.CHISELED_SOULSHALE);
    public static final Item ENCHANTING_TABLE = registerBlock(BlockItemIds.ENCHANTING_TABLE, Blocks.ENCHANTING_TABLE);
    public static final Item END_PORTAL_FRAME = registerBlock(BlockItemIds.END_PORTAL_FRAME, Blocks.END_PORTAL_FRAME);
    public static final Item END_STONE = registerBlock(BlockItemIds.END_STONE, Blocks.END_STONE);
@@ -2517,6 +2530,9 @@ public class Items {
    );
    public static final Item MUSIC_DISC_FAR = registerItem(
       ItemIds.MUSIC_DISC_FAR, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).jukeboxPlayable(JukeboxSongs.FAR)
+   );
+   public static final Item MUSIC_DISC_FLURRY = registerItem(
+      ItemIds.MUSIC_DISC_FLURRY, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).jukeboxPlayable(JukeboxSongs.FLURRY)
    );
    public static final Item MUSIC_DISC_LAVA_CHICKEN = registerItem(
       ItemIds.MUSIC_DISC_LAVA_CHICKEN, new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(JukeboxSongs.LAVA_CHICKEN)

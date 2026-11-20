@@ -1,9 +1,5 @@
 package net.minecraft.world.level.block.state.properties;
 
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -11,7 +7,6 @@ import net.minecraft.world.level.block.sounds.BlockSoundSet;
 import net.minecraft.world.level.block.sounds.BlockSoundSets;
 
 public record BlockSetType(
-   String name,
    boolean canOpenByHand,
    boolean canOpenByWindCharge,
    boolean canButtonBeActivatedByArrows,
@@ -26,207 +21,156 @@ public record BlockSetType(
    SoundEvent buttonClickOff,
    SoundEvent buttonClickOn
 ) {
-   private static final Map<String, BlockSetType> TYPES = new Object2ObjectArrayMap();
-   public static final Codec<BlockSetType> CODEC = Codec.stringResolver(BlockSetType::name, TYPES::get);
-   public static final BlockSetType IRON = register(
-      new BlockSetType(
-         "iron",
-         false,
-         false,
-         false,
-         BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         BlockSoundSets.IRON,
-         SoundEvents.IRON_DOOR_CLOSE,
-         SoundEvents.IRON_DOOR_OPEN,
-         SoundEvents.IRON_TRAPDOOR_CLOSE,
-         SoundEvents.IRON_TRAPDOOR_OPEN,
-         SoundEvents.METAL_PRESSURE_PLATE_CLICK_OFF,
-         SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON,
-         SoundEvents.STONE_BUTTON_CLICK_OFF,
-         SoundEvents.STONE_BUTTON_CLICK_ON
-      )
+   public static final BlockSetType DEFAULT_WOOD = new BlockSetType(
+      true,
+      true,
+      true,
+      BlockSetType.PressurePlateSensitivity.EVERYTHING,
+      BlockSoundSets.WOOD,
+      SoundEvents.WOODEN_DOOR_CLOSE,
+      SoundEvents.WOODEN_DOOR_OPEN,
+      SoundEvents.WOODEN_TRAPDOOR_CLOSE,
+      SoundEvents.WOODEN_TRAPDOOR_OPEN,
+      SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF,
+      SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
+      SoundEvents.WOODEN_BUTTON_CLICK_OFF,
+      SoundEvents.WOODEN_BUTTON_CLICK_ON
    );
-   public static final BlockSetType COPPER = register(
-      new BlockSetType(
-         "copper",
-         true,
-         true,
-         false,
-         BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         BlockSoundSets.COPPER,
-         SoundEvents.COPPER_DOOR_CLOSE,
-         SoundEvents.COPPER_DOOR_OPEN,
-         SoundEvents.COPPER_TRAPDOOR_CLOSE,
-         SoundEvents.COPPER_TRAPDOOR_OPEN,
-         SoundEvents.METAL_PRESSURE_PLATE_CLICK_OFF,
-         SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON,
-         SoundEvents.STONE_BUTTON_CLICK_OFF,
-         SoundEvents.STONE_BUTTON_CLICK_ON
-      )
+   public static final BlockSetType IRON = new BlockSetType(
+      false,
+      false,
+      false,
+      BlockSetType.PressurePlateSensitivity.EVERYTHING,
+      BlockSoundSets.IRON,
+      SoundEvents.IRON_DOOR_CLOSE,
+      SoundEvents.IRON_DOOR_OPEN,
+      SoundEvents.IRON_TRAPDOOR_CLOSE,
+      SoundEvents.IRON_TRAPDOOR_OPEN,
+      SoundEvents.METAL_PRESSURE_PLATE_CLICK_OFF,
+      SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON,
+      SoundEvents.STONE_BUTTON_CLICK_OFF,
+      SoundEvents.STONE_BUTTON_CLICK_ON
    );
-   public static final BlockSetType GOLD = register(
-      new BlockSetType(
-         "gold",
-         false,
-         true,
-         false,
-         BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         BlockSoundSets.METAL,
-         SoundEvents.IRON_DOOR_CLOSE,
-         SoundEvents.IRON_DOOR_OPEN,
-         SoundEvents.IRON_TRAPDOOR_CLOSE,
-         SoundEvents.IRON_TRAPDOOR_OPEN,
-         SoundEvents.METAL_PRESSURE_PLATE_CLICK_OFF,
-         SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON,
-         SoundEvents.STONE_BUTTON_CLICK_OFF,
-         SoundEvents.STONE_BUTTON_CLICK_ON
-      )
+   public static final BlockSetType COPPER = new BlockSetType(
+      true,
+      true,
+      false,
+      BlockSetType.PressurePlateSensitivity.EVERYTHING,
+      BlockSoundSets.COPPER,
+      SoundEvents.COPPER_DOOR_CLOSE,
+      SoundEvents.COPPER_DOOR_OPEN,
+      SoundEvents.COPPER_TRAPDOOR_CLOSE,
+      SoundEvents.COPPER_TRAPDOOR_OPEN,
+      SoundEvents.METAL_PRESSURE_PLATE_CLICK_OFF,
+      SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON,
+      SoundEvents.STONE_BUTTON_CLICK_OFF,
+      SoundEvents.STONE_BUTTON_CLICK_ON
    );
-   public static final BlockSetType STONE = register(
-      new BlockSetType(
-         "stone",
-         true,
-         true,
-         false,
-         BlockSetType.PressurePlateSensitivity.MOBS,
-         BlockSoundSets.STONE,
-         SoundEvents.IRON_DOOR_CLOSE,
-         SoundEvents.IRON_DOOR_OPEN,
-         SoundEvents.IRON_TRAPDOOR_CLOSE,
-         SoundEvents.IRON_TRAPDOOR_OPEN,
-         SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF,
-         SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON,
-         SoundEvents.STONE_BUTTON_CLICK_OFF,
-         SoundEvents.STONE_BUTTON_CLICK_ON
-      )
+   public static final BlockSetType GOLD = new BlockSetType(
+      false,
+      true,
+      false,
+      BlockSetType.PressurePlateSensitivity.EVERYTHING,
+      BlockSoundSets.METAL,
+      SoundEvents.IRON_DOOR_CLOSE,
+      SoundEvents.IRON_DOOR_OPEN,
+      SoundEvents.IRON_TRAPDOOR_CLOSE,
+      SoundEvents.IRON_TRAPDOOR_OPEN,
+      SoundEvents.METAL_PRESSURE_PLATE_CLICK_OFF,
+      SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON,
+      SoundEvents.STONE_BUTTON_CLICK_OFF,
+      SoundEvents.STONE_BUTTON_CLICK_ON
    );
-   public static final BlockSetType POLISHED_BLACKSTONE = register(
-      new BlockSetType(
-         "polished_blackstone",
-         true,
-         true,
-         false,
-         BlockSetType.PressurePlateSensitivity.MOBS,
-         BlockSoundSets.STONE,
-         SoundEvents.IRON_DOOR_CLOSE,
-         SoundEvents.IRON_DOOR_OPEN,
-         SoundEvents.IRON_TRAPDOOR_CLOSE,
-         SoundEvents.IRON_TRAPDOOR_OPEN,
-         SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF,
-         SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON,
-         SoundEvents.STONE_BUTTON_CLICK_OFF,
-         SoundEvents.STONE_BUTTON_CLICK_ON
-      )
+   public static final BlockSetType STONE = new BlockSetType(
+      true,
+      true,
+      false,
+      BlockSetType.PressurePlateSensitivity.MOBS,
+      BlockSoundSets.STONE,
+      SoundEvents.IRON_DOOR_CLOSE,
+      SoundEvents.IRON_DOOR_OPEN,
+      SoundEvents.IRON_TRAPDOOR_CLOSE,
+      SoundEvents.IRON_TRAPDOOR_OPEN,
+      SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF,
+      SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON,
+      SoundEvents.STONE_BUTTON_CLICK_OFF,
+      SoundEvents.STONE_BUTTON_CLICK_ON
    );
-   public static final BlockSetType OAK = register(new BlockSetType("oak"));
-   public static final BlockSetType SPRUCE = register(new BlockSetType("spruce"));
-   public static final BlockSetType BIRCH = register(new BlockSetType("birch"));
-   public static final BlockSetType ACACIA = register(new BlockSetType("acacia"));
-   public static final BlockSetType CHERRY = register(
-      new BlockSetType(
-         "cherry",
-         true,
-         true,
-         true,
-         BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         BlockSoundSets.CHERRY_WOOD,
-         SoundEvents.CHERRY_WOOD_DOOR_CLOSE,
-         SoundEvents.CHERRY_WOOD_DOOR_OPEN,
-         SoundEvents.CHERRY_WOOD_TRAPDOOR_CLOSE,
-         SoundEvents.CHERRY_WOOD_TRAPDOOR_OPEN,
-         SoundEvents.CHERRY_WOOD_PRESSURE_PLATE_CLICK_OFF,
-         SoundEvents.CHERRY_WOOD_PRESSURE_PLATE_CLICK_ON,
-         SoundEvents.CHERRY_WOOD_BUTTON_CLICK_OFF,
-         SoundEvents.CHERRY_WOOD_BUTTON_CLICK_ON
-      )
+   public static final BlockSetType POLISHED_BLACKSTONE = new BlockSetType(
+      true,
+      true,
+      false,
+      BlockSetType.PressurePlateSensitivity.MOBS,
+      BlockSoundSets.STONE,
+      SoundEvents.IRON_DOOR_CLOSE,
+      SoundEvents.IRON_DOOR_OPEN,
+      SoundEvents.IRON_TRAPDOOR_CLOSE,
+      SoundEvents.IRON_TRAPDOOR_OPEN,
+      SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF,
+      SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON,
+      SoundEvents.STONE_BUTTON_CLICK_OFF,
+      SoundEvents.STONE_BUTTON_CLICK_ON
    );
-   public static final BlockSetType JUNGLE = register(new BlockSetType("jungle"));
-   public static final BlockSetType DARK_OAK = register(new BlockSetType("dark_oak"));
-   public static final BlockSetType PALE_OAK = register(new BlockSetType("pale_oak"));
-   public static final BlockSetType POPLAR = register(new BlockSetType("poplar"));
-   public static final BlockSetType CRIMSON = register(
-      new BlockSetType(
-         "crimson",
-         true,
-         true,
-         true,
-         BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         BlockSoundSets.NETHER_WOOD,
-         SoundEvents.NETHER_WOOD_DOOR_CLOSE,
-         SoundEvents.NETHER_WOOD_DOOR_OPEN,
-         SoundEvents.NETHER_WOOD_TRAPDOOR_CLOSE,
-         SoundEvents.NETHER_WOOD_TRAPDOOR_OPEN,
-         SoundEvents.NETHER_WOOD_PRESSURE_PLATE_CLICK_OFF,
-         SoundEvents.NETHER_WOOD_PRESSURE_PLATE_CLICK_ON,
-         SoundEvents.NETHER_WOOD_BUTTON_CLICK_OFF,
-         SoundEvents.NETHER_WOOD_BUTTON_CLICK_ON
-      )
+   public static final BlockSetType CHERRY = new BlockSetType(
+      true,
+      true,
+      true,
+      BlockSetType.PressurePlateSensitivity.EVERYTHING,
+      BlockSoundSets.CHERRY_WOOD,
+      SoundEvents.CHERRY_WOOD_DOOR_CLOSE,
+      SoundEvents.CHERRY_WOOD_DOOR_OPEN,
+      SoundEvents.CHERRY_WOOD_TRAPDOOR_CLOSE,
+      SoundEvents.CHERRY_WOOD_TRAPDOOR_OPEN,
+      SoundEvents.CHERRY_WOOD_PRESSURE_PLATE_CLICK_OFF,
+      SoundEvents.CHERRY_WOOD_PRESSURE_PLATE_CLICK_ON,
+      SoundEvents.CHERRY_WOOD_BUTTON_CLICK_OFF,
+      SoundEvents.CHERRY_WOOD_BUTTON_CLICK_ON
    );
-   public static final BlockSetType WARPED = register(
-      new BlockSetType(
-         "warped",
-         true,
-         true,
-         true,
-         BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         BlockSoundSets.NETHER_WOOD,
-         SoundEvents.NETHER_WOOD_DOOR_CLOSE,
-         SoundEvents.NETHER_WOOD_DOOR_OPEN,
-         SoundEvents.NETHER_WOOD_TRAPDOOR_CLOSE,
-         SoundEvents.NETHER_WOOD_TRAPDOOR_OPEN,
-         SoundEvents.NETHER_WOOD_PRESSURE_PLATE_CLICK_OFF,
-         SoundEvents.NETHER_WOOD_PRESSURE_PLATE_CLICK_ON,
-         SoundEvents.NETHER_WOOD_BUTTON_CLICK_OFF,
-         SoundEvents.NETHER_WOOD_BUTTON_CLICK_ON
-      )
+   public static final BlockSetType CRIMSON = new BlockSetType(
+      true,
+      true,
+      true,
+      BlockSetType.PressurePlateSensitivity.EVERYTHING,
+      BlockSoundSets.NETHER_WOOD,
+      SoundEvents.NETHER_WOOD_DOOR_CLOSE,
+      SoundEvents.NETHER_WOOD_DOOR_OPEN,
+      SoundEvents.NETHER_WOOD_TRAPDOOR_CLOSE,
+      SoundEvents.NETHER_WOOD_TRAPDOOR_OPEN,
+      SoundEvents.NETHER_WOOD_PRESSURE_PLATE_CLICK_OFF,
+      SoundEvents.NETHER_WOOD_PRESSURE_PLATE_CLICK_ON,
+      SoundEvents.NETHER_WOOD_BUTTON_CLICK_OFF,
+      SoundEvents.NETHER_WOOD_BUTTON_CLICK_ON
    );
-   public static final BlockSetType MANGROVE = register(new BlockSetType("mangrove"));
-   public static final BlockSetType BAMBOO = register(
-      new BlockSetType(
-         "bamboo",
-         true,
-         true,
-         true,
-         BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         BlockSoundSets.BAMBOO_WOOD,
-         SoundEvents.BAMBOO_WOOD_DOOR_CLOSE,
-         SoundEvents.BAMBOO_WOOD_DOOR_OPEN,
-         SoundEvents.BAMBOO_WOOD_TRAPDOOR_CLOSE,
-         SoundEvents.BAMBOO_WOOD_TRAPDOOR_OPEN,
-         SoundEvents.BAMBOO_WOOD_PRESSURE_PLATE_CLICK_OFF,
-         SoundEvents.BAMBOO_WOOD_PRESSURE_PLATE_CLICK_ON,
-         SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_OFF,
-         SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON
-      )
+   public static final BlockSetType WARPED = new BlockSetType(
+      true,
+      true,
+      true,
+      BlockSetType.PressurePlateSensitivity.EVERYTHING,
+      BlockSoundSets.NETHER_WOOD,
+      SoundEvents.NETHER_WOOD_DOOR_CLOSE,
+      SoundEvents.NETHER_WOOD_DOOR_OPEN,
+      SoundEvents.NETHER_WOOD_TRAPDOOR_CLOSE,
+      SoundEvents.NETHER_WOOD_TRAPDOOR_OPEN,
+      SoundEvents.NETHER_WOOD_PRESSURE_PLATE_CLICK_OFF,
+      SoundEvents.NETHER_WOOD_PRESSURE_PLATE_CLICK_ON,
+      SoundEvents.NETHER_WOOD_BUTTON_CLICK_OFF,
+      SoundEvents.NETHER_WOOD_BUTTON_CLICK_ON
    );
-
-   public BlockSetType(final String name) {
-      this(
-         name,
-         true,
-         true,
-         true,
-         BlockSetType.PressurePlateSensitivity.EVERYTHING,
-         BlockSoundSets.WOOD,
-         SoundEvents.WOODEN_DOOR_CLOSE,
-         SoundEvents.WOODEN_DOOR_OPEN,
-         SoundEvents.WOODEN_TRAPDOOR_CLOSE,
-         SoundEvents.WOODEN_TRAPDOOR_OPEN,
-         SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF,
-         SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
-         SoundEvents.WOODEN_BUTTON_CLICK_OFF,
-         SoundEvents.WOODEN_BUTTON_CLICK_ON
-      );
-   }
-
-   private static BlockSetType register(final BlockSetType type) {
-      TYPES.put(type.name, type);
-      return type;
-   }
-
-   public static Stream<BlockSetType> values() {
-      return TYPES.values().stream();
-   }
+   public static final BlockSetType BAMBOO = new BlockSetType(
+      true,
+      true,
+      true,
+      BlockSetType.PressurePlateSensitivity.EVERYTHING,
+      BlockSoundSets.BAMBOO_WOOD,
+      SoundEvents.BAMBOO_WOOD_DOOR_CLOSE,
+      SoundEvents.BAMBOO_WOOD_DOOR_OPEN,
+      SoundEvents.BAMBOO_WOOD_TRAPDOOR_CLOSE,
+      SoundEvents.BAMBOO_WOOD_TRAPDOOR_OPEN,
+      SoundEvents.BAMBOO_WOOD_PRESSURE_PLATE_CLICK_OFF,
+      SoundEvents.BAMBOO_WOOD_PRESSURE_PLATE_CLICK_ON,
+      SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_OFF,
+      SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON
+   );
 
    public enum PressurePlateSensitivity {
       EVERYTHING,

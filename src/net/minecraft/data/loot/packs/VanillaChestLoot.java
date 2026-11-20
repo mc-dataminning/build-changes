@@ -215,6 +215,12 @@ public class VanillaChestLoot implements LootTableSubProvider {
                      .add(LootItem.lootTableItem(Items.WHEAT).setWeight(10).apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 3))))
                )
                .withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.GOLDEN_APPLE)))
+               .withPool(
+                  LootPool.lootPool()
+                     .setRolls(ContextIntProviders.exactly(1))
+                     .when(LootItemRandomChanceCondition.randomChance(0.3F))
+                     .add(LootItem.lootTableItem(Items.MUSIC_DISC_FLURRY))
+               )
          );
       this.output.accept(BuiltInLootTables.JUNGLE_TEMPLE, this.jungleTempleLootTable());
       this.output
@@ -2099,6 +2105,7 @@ public class VanillaChestLoot implements LootTableSubProvider {
                      .setWeight(3)
                      .apply(EnchantWithLevelsFunction.enchantWithLevels(this.enchantments, ContextIntProviders.between(20, 39)))
                )
+               .add(LootItem.lootTableItem(Items.CHISELED_SOULSHALE).setWeight(3))
                .add(LootItem.lootTableItem(Items.ECHO_SHARD).setWeight(4).apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 3))))
                .add(LootItem.lootTableItem(Items.DISC_FRAGMENT_5).setWeight(4).apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 3))))
                .add(

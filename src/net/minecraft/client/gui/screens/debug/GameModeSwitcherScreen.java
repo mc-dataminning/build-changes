@@ -87,7 +87,7 @@ public class GameModeSwitcherScreen extends Screen {
       for (GameModeSwitcherScreen.GameModeSlot slot : this.slots) {
          slot.extractRenderState(graphics);
          slot.setSelected(this.currentlyHovered == slot.icon);
-         if (!sameAsFirstMousePos && slot.isHoveredOrFocused()) {
+         if (!sameAsFirstMousePos && slot.isMouseWithinSlot(graphics.mouseX(), graphics.mouseY())) {
             this.currentlyHovered = slot.icon;
          }
       }
@@ -217,9 +217,8 @@ public class GameModeSwitcherScreen extends Screen {
          this.defaultButtonNarrationText(output);
       }
 
-      @Override
-      public boolean isHoveredOrFocused() {
-         return super.isHoveredOrFocused() || this.isSelected;
+      private boolean isMouseWithinSlot(final double mouseX, final double mouseY) {
+         return this.areCoordinatesInRectangle(mouseX, mouseY);
       }
 
       public void setSelected(final boolean isSelected) {

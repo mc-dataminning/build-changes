@@ -6,11 +6,14 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.narration.NarrationSupplier;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.locale.Language;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
+import net.minecraft.world.item.ItemStack;
 import org.jspecify.annotations.Nullable;
 
 public class Tooltip implements NarrationSupplier {
@@ -21,12 +24,24 @@ public class Tooltip implements NarrationSupplier {
    private final @Nullable Identifier style;
    private final @Nullable Component narration;
    private final Optional<TooltipComponent> component;
+   private final boolean extraSpaceAfterFirstLine;
 
    private Tooltip(final Component message, final @Nullable Component narration, final Optional<TooltipComponent> component, final @Nullable Identifier style) {
+      this(message, narration, component, style, false);
+   }
+
+   private Tooltip(
+      final Component message,
+      final @Nullable Component narration,
+      final Optional<TooltipComponent> component,
+      final @Nullable Identifier style,
+      final boolean extraSpaceAfterFirstLine
+   ) {
       this.message = message;
       this.narration = narration;
       this.component = component;
       this.style = style;
+      this.extraSpaceAfterFirstLine = extraSpaceAfterFirstLine;
    }
 
    public static Tooltip create(final Component message) {
@@ -41,12 +56,22 @@ public class Tooltip implements NarrationSupplier {
       return new Tooltip(message, message, component, style);
    }
 
+   public static Tooltip createForItem(final List<Component> lines, final ItemStack item) {
+      Component message = CommonComponents.joinLines(lines);
+      Component narration = lines.size() > 1 ? CommonComponents.joinLines(lines.subList(1, lines.size())) : null;
+      return new Tooltip(message, narration, item.getTooltipImage(), item.get(DataComponents.TOOLTIP_STYLE), true);
+   }
+
    public Optional<TooltipComponent> component() {
       return this.component;
    }
 
    public @Nullable Identifier style() {
       return this.style;
+   }
+
+   public boolean extraSpaceAfterFirstLine() {
+      return this.extraSpaceAfterFirstLine;
    }
 
    @Override

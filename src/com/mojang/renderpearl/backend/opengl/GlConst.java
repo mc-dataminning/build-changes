@@ -9,6 +9,7 @@ import com.mojang.renderpearl.api.pipeline.IndexType;
 import com.mojang.renderpearl.api.pipeline.PolygonMode;
 import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
 import com.mojang.renderpearl.api.pipeline.ShaderType;
+import com.mojang.renderpearl.api.pipeline.StencilTest;
 import com.mojang.renderpearl.api.textures.AddressMode;
 
 public class GlConst {
@@ -326,6 +327,19 @@ public class GlConst {
       return switch (type) {
          case VERTEX -> 35633;
          case FRAGMENT -> 35632;
+      };
+   }
+
+   public static int toGl(final StencilTest.Op op) {
+      return switch (op) {
+         case KEEP -> 7680;
+         case ZERO -> 0;
+         case REPLACE -> 7681;
+         case INCREMENT_CLAMP -> 7682;
+         case DECREEMENT_CLAMP -> 7683;
+         case INVERT -> 5386;
+         case INCREMENT_WRAP -> 34055;
+         case DECREMENT_WRAP -> 34056;
       };
    }
 

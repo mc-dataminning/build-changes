@@ -25,6 +25,7 @@ public record EntityEquipmentPredicate(
    Optional<ItemPredicate> legs,
    Optional<ItemPredicate> feet,
    Optional<ItemPredicate> body,
+   Optional<ItemPredicate> saddle,
    Optional<ItemPredicate> mainhand,
    Optional<ItemPredicate> offhand
 ) implements EntitySubPredicate {
@@ -35,6 +36,7 @@ public record EntityEquipmentPredicate(
             ItemPredicate.CODEC.optionalFieldOf("legs").forGetter(EntityEquipmentPredicate::legs),
             ItemPredicate.CODEC.optionalFieldOf("feet").forGetter(EntityEquipmentPredicate::feet),
             ItemPredicate.CODEC.optionalFieldOf("body").forGetter(EntityEquipmentPredicate::body),
+            ItemPredicate.CODEC.optionalFieldOf("saddle").forGetter(EntityEquipmentPredicate::saddle),
             ItemPredicate.CODEC.optionalFieldOf("mainhand").forGetter(EntityEquipmentPredicate::mainhand),
             ItemPredicate.CODEC.optionalFieldOf("offhand").forGetter(EntityEquipmentPredicate::offhand)
          )
@@ -71,6 +73,8 @@ public record EntityEquipmentPredicate(
             return false;
          } else if (this.body.isPresent() && !this.body.get().test(livingEntity.getItemBySlot(EquipmentSlot.BODY))) {
             return false;
+         } else if (this.saddle.isPresent() && !this.saddle.get().test(livingEntity.getItemBySlot(EquipmentSlot.SADDLE))) {
+            return false;
          } else {
             return this.mainhand.isPresent() && !this.mainhand.get().test(livingEntity.getItemBySlot(EquipmentSlot.MAINHAND))
                ? false
@@ -92,6 +96,7 @@ public record EntityEquipmentPredicate(
       private Optional<ItemPredicate> legs = Optional.empty();
       private Optional<ItemPredicate> feet = Optional.empty();
       private Optional<ItemPredicate> body = Optional.empty();
+      private Optional<ItemPredicate> saddle = Optional.empty();
       private Optional<ItemPredicate> mainhand = Optional.empty();
       private Optional<ItemPredicate> offhand = Optional.empty();
 
@@ -124,6 +129,11 @@ public record EntityEquipmentPredicate(
          return this;
       }
 
+      public EntityEquipmentPredicate.Builder saddle(final ItemPredicate.Builder saddle) {
+         this.saddle = Optional.of(saddle.build());
+         return this;
+      }
+
       public EntityEquipmentPredicate.Builder mainhand(final ItemPredicate.Builder mainhand) {
          this.mainhand = Optional.of(mainhand.build());
          return this;
@@ -135,7 +145,7 @@ public record EntityEquipmentPredicate(
       }
 
       public EntityEquipmentPredicate build() {
-         return new EntityEquipmentPredicate(this.head, this.chest, this.legs, this.feet, this.body, this.mainhand, this.offhand);
+         return new EntityEquipmentPredicate(this.head, this.chest, this.legs, this.feet, this.body, this.saddle, this.mainhand, this.offhand);
       }
    }
 }

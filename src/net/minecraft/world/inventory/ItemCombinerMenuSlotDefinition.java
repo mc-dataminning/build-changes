@@ -51,12 +51,18 @@ public class ItemCombinerMenuSlotDefinition {
       public ItemCombinerMenuSlotDefinition.Builder withSlot(
          final int slotIndex, final int xPlacement, final int yPlacement, final Predicate<ItemStack> mayPlace
       ) {
-         this.inputSlots.add(new ItemCombinerMenuSlotDefinition.SlotDefinition(slotIndex, xPlacement, yPlacement, mayPlace));
+         return this.withSlot(slotIndex, xPlacement, yPlacement, mayPlace, Slot.Section.INPUT);
+      }
+
+      public ItemCombinerMenuSlotDefinition.Builder withSlot(
+         final int slotIndex, final int xPlacement, final int yPlacement, final Predicate<ItemStack> mayPlace, final Slot.Section section
+      ) {
+         this.inputSlots.add(new ItemCombinerMenuSlotDefinition.SlotDefinition(slotIndex, xPlacement, yPlacement, mayPlace, section));
          return this;
       }
 
       public ItemCombinerMenuSlotDefinition.Builder withResultSlot(final int slotIndex, final int xPlacement, final int yPlacement) {
-         this.resultSlot = new ItemCombinerMenuSlotDefinition.SlotDefinition(slotIndex, xPlacement, yPlacement, itemStack -> false);
+         this.resultSlot = new ItemCombinerMenuSlotDefinition.SlotDefinition(slotIndex, xPlacement, yPlacement, itemStack -> false, Slot.Section.RESULT);
          return this;
       }
 
@@ -78,7 +84,9 @@ public class ItemCombinerMenuSlotDefinition {
       }
    }
 
-   public record SlotDefinition(int slotIndex, int x, int y, Predicate<ItemStack> mayPlace) {
-      private static final ItemCombinerMenuSlotDefinition.SlotDefinition EMPTY = new ItemCombinerMenuSlotDefinition.SlotDefinition(0, 0, 0, itemStack -> true);
+   public record SlotDefinition(int slotIndex, int x, int y, Predicate<ItemStack> mayPlace, Slot.Section section) {
+      private static final ItemCombinerMenuSlotDefinition.SlotDefinition EMPTY = new ItemCombinerMenuSlotDefinition.SlotDefinition(
+         0, 0, 0, itemStack -> true, Slot.Section.INPUT
+      );
    }
 }

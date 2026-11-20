@@ -9,6 +9,7 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.layouts.Layout;
 import net.minecraft.client.gui.layouts.LayoutElement;
+import net.minecraft.client.gui.narration.GroupNarration;
 import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.navigation.ScreenDirection;
@@ -21,21 +22,32 @@ public class ScrollableLayout implements Layout {
    private final Layout content;
    private final ScrollableLayout.Container container;
    private final ScrollableLayout.ReserveStrategy reserveStrategy;
-   private int scrollbarSpacing = 4;
+   private final @Nullable GroupNarration groupNarration;
+   private int scrollbarSpacing;
    private int minWidth;
    private int minHeight;
    private int maxHeight;
    private float yAlignment;
 
    public ScrollableLayout(final Minecraft minecraft, final Layout content, final int maxHeight) {
-      this(minecraft, content, maxHeight, ScrollableLayout.ReserveStrategy.BOTH);
+      this(minecraft, content, maxHeight, AbstractScrollArea.defaultSettings(10), 4, ScrollableLayout.ReserveStrategy.BOTH, null);
    }
 
-   public ScrollableLayout(final Minecraft minecraft, final Layout content, final int maxHeight, final ScrollableLayout.ReserveStrategy reserveStrategy) {
+   public ScrollableLayout(
+      final Minecraft minecraft,
+      final Layout content,
+      final int maxHeight,
+      final AbstractScrollArea.ScrollbarSettings scrollbarSettings,
+      final int scrollbarSpacing,
+      final ScrollableLayout.ReserveStrategy reserveStrategy,
+      final @Nullable GroupNarration groupNarration
+   ) {
       this.content = content;
       this.maxHeight = maxHeight;
       this.reserveStrategy = reserveStrategy;
-      this.container = new ScrollableLayout.Container(minecraft, 0, maxHeight, AbstractScrollArea.defaultSettings(10));
+      this.groupNarration = groupNarration;
+      this.scrollbarSpacing = scrollbarSpacing;
+      this.container = new ScrollableLayout.Container(minecraft, 0, maxHeight, scrollbarSettings);
    }
 
    public void setScrollbarSpacing(final int scrollbarSpacing) {
@@ -134,6 +146,19 @@ public class ScrollableLayout implements Layout {
       return this.container.scrollAmount();
    }
 
+   public void setScrollAmount(final double scrollAmount) {
+      this.container.setScrollAmount(scrollAmount);
+   }
+
+   public void setTabGroup(final int tabGroup) {
+      this.container.setTabOrderGroup(tabGroup);
+      this.container.children.forEach(child -> child.setTabOrderGroup(tabGroup));
+   }
+
+   public void allowTabNavigationInside(final boolean allowTabNavigationInside) {
+      this.container.allowTabNavigationInside(allowTabNavigationInside);
+   }
+
    private class Container extends AbstractContainerWidget {
       private final Minecraft minecraft;
       private final List<AbstractWidget> children = new ArrayList<>();
@@ -159,7 +184,9 @@ public class ScrollableLayout implements Layout {
          graphics.enableScissor(this.getX(), this.getY(), this.getX() + this.width, this.getY() + this.height);
 
          for (AbstractWidget child : this.children) {
-            child.extractRenderState(graphics);
+            if (child.getBottom() >= this.getY() && child.getY() <= this.getBottom()) {
+               child.extractRenderState(graphics);
+            }
          }
 
          graphics.disableScissor();
@@ -167,7 +194,37 @@ public class ScrollableLayout implements Layout {
       }
 
       @Override
+      public NarratableEntry.NarrationPriority narrationPriority() {
+         return NarratableEntry.NarrationPriority.of(this.isFocused(), this.getHoveredChild() != null);
+      }
+
+      @Override
       protected void updateWidgetNarration(final NarrationElementOutput output) {
+         if (ScrollableLayout.this.groupNarration != null) {
+            AbstractWidget narrated = getNarratedChild(output.narrationTrigger(), this.getHoveredChild(), this.getFocusedChild());
+            if (narrated != null) {
+               narrated.updateNarration(output.nest());
+               ScrollableLayout.this.groupNarration.narratePosition(output, this.children, narrated);
+            }
+
+            if (this.isFocused()) {
+               ScrollableLayout.this.groupNarration.narrateUsage(output, this.children);
+            }
+         }
+      }
+
+      private @Nullable AbstractWidget getHoveredChild() {
+         for (AbstractWidget child : this.children) {
+            if (child.isHovered()) {
+               return child;
+            }
+         }
+
+         return null;
+      }
+
+      private @Nullable AbstractWidget getFocusedChild() {
+         return this.getFocused() instanceof AbstractWidget widget ? widget : null;
       }
 
       @Override
@@ -229,7 +286,7 @@ public class ScrollableLayout implements Layout {
 
       @Override
       public Collection<? extends NarratableEntry> getNarratables() {
-         return this.children;
+         return ScrollableLayout.this.groupNarration != null ? List.of(this) : this.children;
       }
    }
 

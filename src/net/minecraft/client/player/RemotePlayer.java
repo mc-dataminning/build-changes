@@ -67,11 +67,7 @@ public class RemotePlayer extends AbstractClientPlayer {
    @Override
    public void lerpMotion(final Vec3 movement) {
       this.lerpDeltaMovement = movement;
-      if (this.getType().hasUpdateInterval()) {
-         this.lerpDeltaMovementSteps = this.getType().updateInterval() + 1;
-      } else {
-         this.lerpDeltaMovementSteps = 1;
-      }
+      this.lerpDeltaMovementSteps = 3;
    }
 
    @Override

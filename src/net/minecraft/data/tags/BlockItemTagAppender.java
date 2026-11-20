@@ -4,8 +4,7 @@ import java.util.Arrays;
 import net.minecraft.references.BlockItemId;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.block.ColorCollection;
-import net.minecraft.world.level.block.WeatheringCopperCollection;
+import net.minecraft.world.level.block.Group;
 
 public abstract class BlockItemTagAppender<Element> implements TagAppender<Element> {
    private final TagAppender<Element> original;
@@ -26,13 +25,14 @@ public abstract class BlockItemTagAppender<Element> implements TagAppender<Eleme
       return this;
    }
 
-   public BlockItemTagAppender<Element> addAll(final ColorCollection<ResourceKey<Element>> collection) {
+   public BlockItemTagAppender<Element> addAll(final Group<ResourceKey<Element>> collection) {
       collection.forEach(this::add);
       return this;
    }
 
-   public BlockItemTagAppender<Element> addAll(final WeatheringCopperCollection<ResourceKey<Element>> collection) {
-      collection.forEach(this::add);
+   public BlockItemTagAppender<Element> addAllBlockItems(final Group<BlockItemId> collection) {
+      BlockItemTagAppender var2 = this;
+      collection.forEach(xva$0 -> var2.add(new BlockItemId[]{xva$0}));
       return this;
    }
 

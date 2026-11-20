@@ -7,6 +7,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.BrewingStandMenu;
+import net.minecraft.world.inventory.Slot;
 
 public class BrewingStandScreen extends AbstractContainerScreen<BrewingStandMenu> {
    private static final Identifier FUEL_LENGTH_SPRITE = Identifier.withDefaultNamespace("container/brewing_stand/fuel_length");
@@ -23,6 +24,11 @@ public class BrewingStandScreen extends AbstractContainerScreen<BrewingStandMenu
    protected void init() {
       super.init();
       this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
+   }
+
+   @Override
+   protected int getTabOrderGroup(final Slot.Section section) {
+      return section == Slot.Section.FUEL ? 3 : super.getTabOrderGroup(section);
    }
 
    @Override

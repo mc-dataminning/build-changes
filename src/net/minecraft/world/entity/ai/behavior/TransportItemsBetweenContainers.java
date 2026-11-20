@@ -162,7 +162,7 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
       if (this.isWithinTargetDistance(3.0, target, level, body, this.getCenterPos(body)) && this.isAnotherMobInteractingWithTarget(target, level)) {
          this.startQueuing(body);
       } else if (this.isWithinTargetDistance(getInteractionRange(body), target, level, body, this.getCenterPos(body))) {
-         this.startOnReachedTargetInteraction(target, body);
+         this.startOnReachedTargetInteraction(target, level, body);
       } else {
          this.walkTowardsTarget(body);
       }
@@ -179,15 +179,20 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
          this.ticksSinceReachingTarget++;
          this.onTargetInteraction(target, body);
          if (this.ticksSinceReachingTarget >= 60) {
-            this.doReachedTargetInteraction(
-               body,
-               target.container,
-               this::pickUpItems,
-               (mob, container) -> this.stopTargetingCurrentTarget(body),
-               this::putDownItem,
-               (mob, container) -> this.stopTargetingCurrentTarget(body)
-            );
-            this.onStartTravelling(body);
+            Container container = target.getBlockEntityContainer(level);
+            if (container != null) {
+               this.doReachedTargetInteraction(
+                  body,
+                  container,
+                  this::pickUpItems,
+                  (var2, var3) -> this.stopTargetingCurrentTarget(body),
+                  this::putDownItem,
+                  (var2, var3) -> this.stopTargetingCurrentTarget(body)
+               );
+               this.onStartTravelling(body);
+            } else {
+               this.stopTargetingCurrentTarget(body);
+            }
          }
       }
    }
@@ -208,16 +213,21 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
       }
    }
 
-   private void startOnReachedTargetInteraction(final TransportItemsBetweenContainers.TransportItemTarget target, final PathfinderMob body) {
-      this.doReachedTargetInteraction(
-         body,
-         target.container,
-         this.onReachedInteraction(TransportItemsBetweenContainers.ContainerInteractionState.PICKUP_ITEM),
-         this.onReachedInteraction(TransportItemsBetweenContainers.ContainerInteractionState.PICKUP_NO_ITEM),
-         this.onReachedInteraction(TransportItemsBetweenContainers.ContainerInteractionState.PLACE_ITEM),
-         this.onReachedInteraction(TransportItemsBetweenContainers.ContainerInteractionState.PLACE_NO_ITEM)
-      );
-      this.setTransportingState(TransportItemsBetweenContainers.TransportItemState.INTERACTING);
+   private void startOnReachedTargetInteraction(final TransportItemsBetweenContainers.TransportItemTarget target, final Level level, final PathfinderMob body) {
+      Container container = target.getBlockEntityContainer(level);
+      if (container != null) {
+         this.doReachedTargetInteraction(
+            body,
+            container,
+            this.onReachedInteraction(TransportItemsBetweenContainers.ContainerInteractionState.PICKUP_ITEM),
+            this.onReachedInteraction(TransportItemsBetweenContainers.ContainerInteractionState.PICKUP_NO_ITEM),
+            this.onReachedInteraction(TransportItemsBetweenContainers.ContainerInteractionState.PLACE_ITEM),
+            this.onReachedInteraction(TransportItemsBetweenContainers.ContainerInteractionState.PLACE_NO_ITEM)
+         );
+         this.setTransportingState(TransportItemsBetweenContainers.TransportItemState.INTERACTING);
+      } else {
+         this.stopTargetingCurrentTarget(body);
+      }
    }
 
    private void onStartTravelling(final PathfinderMob body) {
@@ -623,17 +633,22 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
       INTERACTING;
    }
 
-   public record TransportItemTarget(BlockPos pos, Container container, BlockEntity blockEntity, BlockState state) {
+   public record TransportItemTarget(BlockPos pos, BlockEntity blockEntity, BlockState state) {
       public static TransportItemsBetweenContainers.@Nullable TransportItemTarget tryCreatePossibleTarget(final BlockEntity blockEntity, final Level level) {
          BlockPos blockPos = blockEntity.getBlockPos();
          BlockState blockState = blockEntity.getBlockState();
-         Container container = getBlockEntityContainer(blockEntity, blockState, level, blockPos);
-         return container != null ? new TransportItemsBetweenContainers.TransportItemTarget(blockPos, container, blockEntity, blockState) : null;
+         return isPossibleTarget(blockEntity, blockState, level, blockPos)
+            ? new TransportItemsBetweenContainers.TransportItemTarget(blockPos, blockEntity, blockState)
+            : null;
       }
 
       public static TransportItemsBetweenContainers.@Nullable TransportItemTarget tryCreatePossibleTarget(final BlockPos blockPos, final Level level) {
          BlockEntity blockEntity = level.getBlockEntity(blockPos);
          return blockEntity == null ? null : tryCreatePossibleTarget(blockEntity, level);
+      }
+
+      private static boolean isPossibleTarget(final BlockEntity blockEntity, final BlockState state, final Level level, final BlockPos pos) {
+         return getBlockEntityContainer(blockEntity, state, level, pos) != null;
       }
 
       private static @Nullable Container getBlockEntityContainer(
@@ -644,6 +659,10 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
          } else {
             return blockEntity instanceof Container container ? container : null;
          }
+      }
+
+      public @Nullable Container getBlockEntityContainer(final Level level) {
+         return getBlockEntityContainer(this.blockEntity, this.state, level, this.pos);
       }
    }
 }

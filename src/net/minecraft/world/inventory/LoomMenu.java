@@ -61,25 +61,25 @@ public class LoomMenu extends AbstractContainerMenu {
    public LoomMenu(final int containerId, final Inventory inventory, final ContainerLevelAccess access) {
       super(MenuType.LOOM, containerId);
       this.access = access;
-      this.bannerSlot = this.addSlot(new Slot(this.inputContainer, 0, 13, 26) {
+      this.bannerSlot = this.addSlot(new Slot(this.inputContainer, 0, 13, 26, Slot.Section.INPUT) {
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return itemStack.getItem() instanceof BannerItem;
          }
       });
-      this.dyeSlot = this.addSlot(new Slot(this.inputContainer, 1, 33, 26) {
+      this.dyeSlot = this.addSlot(new Slot(this.inputContainer, 1, 33, 26, Slot.Section.INPUT) {
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return LoomMenu.isDyeItem(itemStack);
          }
       });
-      this.patternSlot = this.addSlot(new Slot(this.inputContainer, 2, 23, 45) {
+      this.patternSlot = this.addSlot(new Slot(this.inputContainer, 2, 23, 45, Slot.Section.INPUT) {
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return LoomMenu.isPatternItem(itemStack);
          }
       });
-      this.resultSlot = this.addSlot(new Slot(this.outputContainer, 0, 143, 57) {
+      this.resultSlot = this.addSlot(new Slot(this.outputContainer, 0, 143, 57, Slot.Section.RESULT) {
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return false;

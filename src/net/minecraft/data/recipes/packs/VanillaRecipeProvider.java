@@ -1,7 +1,6 @@
 package net.minecraft.data.recipes.packs;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -26,7 +25,7 @@ import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SpecialRecipeBuilder;
 import net.minecraft.data.recipes.TransmuteRecipeBuilder;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
+import net.minecraft.references.ItemIds;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.flag.FeatureFlagSet;
@@ -1693,6 +1692,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
          .unlockedBy("has_cobblestone", this.has(ItemTags.STONE_TOOL_MATERIALS))
          .save(this.output);
       this.slab(RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_STONE_SLAB, Blocks.SMOOTH_STONE);
+      this.slab(RecipeCategory.BUILDING_BLOCKS, Blocks.POLISHED_CALCITE_SLAB, Blocks.POLISHED_CALCITE);
       this.shaped(RecipeCategory.COMBAT, Items.STONE_SWORD)
          .define('#', Items.STICK)
          .define('X', ItemTags.STONE_TOOL_MATERIALS)
@@ -2502,6 +2502,8 @@ public class VanillaRecipeProvider extends RecipeProvider {
       this.cookRecipes("campfire_cooking", CampfireCookingRecipe::new, 600);
       this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.POLISHED_BASALT, Blocks.BASALT);
       this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_STONE_SLAB, Blocks.SMOOTH_STONE, 2);
+      this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.POLISHED_CALCITE_SLAB, Blocks.CALCITE, 2);
+      this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.POLISHED_CALCITE_SLAB, Blocks.POLISHED_CALCITE, 2);
       WeatheringCopperCollection.zipApply(
          Blocks.CUT_COPPER, Blocks.COPPER_BLOCK, (cutBlock, material) -> this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, cutBlock, material, 4)
       );
@@ -2515,7 +2517,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
          Blocks.COPPER_BLOCK,
          (cutSlab, material) -> this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, cutSlab, material, 8)
       );
-      smithingTrims().forEach(trim -> this.trimSmithing(trim.template(), trim.patternId(), trim.recipeId()));
+      smithingTrims().forEach(trim -> this.trimSmithing(trim.templateItem(), trim.pattern(), trim.recipe()));
       this.netheriteSmithing(Items.DIAMOND_CHESTPLATE, RecipeCategory.COMBAT, Items.NETHERITE_CHESTPLATE);
       this.netheriteSmithing(Items.DIAMOND_LEGGINGS, RecipeCategory.COMBAT, Items.NETHERITE_LEGGINGS);
       this.netheriteSmithing(Items.DIAMOND_HELMET, RecipeCategory.COMBAT, Items.NETHERITE_HELMET);
@@ -2644,35 +2646,32 @@ public class VanillaRecipeProvider extends RecipeProvider {
       this.brewingProvider.buildRecipes();
    }
 
-   public static Stream<VanillaRecipeProvider.TrimTemplate> smithingTrims() {
+   public static Stream<VanillaRecipeProvider.TrimTemplateIds> smithingTrims() {
       return Stream.of(
-            Pair.of(Items.BOLT_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.BOLT),
-            Pair.of(Items.COAST_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.COAST),
-            Pair.of(Items.DUNE_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.DUNE),
-            Pair.of(Items.EYE_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.EYE),
-            Pair.of(Items.FLOW_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.FLOW),
-            Pair.of(Items.HOST_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.HOST),
-            Pair.of(Items.RAISER_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.RAISER),
-            Pair.of(Items.RIB_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.RIB),
-            Pair.of(Items.SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.SENTRY),
-            Pair.of(Items.SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.SHAPER),
-            Pair.of(Items.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.SILENCE),
-            Pair.of(Items.SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.SNOUT),
-            Pair.of(Items.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.SPIRE),
-            Pair.of(Items.TIDE_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.TIDE),
-            Pair.of(Items.VEX_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.VEX),
-            Pair.of(Items.WARD_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.WARD),
-            Pair.of(Items.WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.WAYFINDER),
-            Pair.of(Items.WILD_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.WILD)
-         )
-         .map(itemAndPattern -> {
-            Item item = (Item)itemAndPattern.getFirst();
-            ResourceKey<TrimPattern> patternId = (ResourceKey<TrimPattern>)itemAndPattern.getSecond();
-            ResourceKey<Recipe<?>> recipeId = ResourceKey.create(Registries.RECIPE, Identifier.withDefaultNamespace(getItemName(item) + "_smithing_trim"));
-            return new VanillaRecipeProvider.TrimTemplate(item, patternId, recipeId);
-         });
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.BOLT_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.BOLT),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.COAST_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.COAST),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.DUNE_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.DUNE),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.EYE_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.EYE),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.FLOW_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.FLOW),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.HOST_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.HOST),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.RAISER_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.RAISER),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.RIB_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.RIB),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.SENTRY),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.SHAPER),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.SILENCE),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.SNOUT),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.SPIRE),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.TIDE_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.TIDE),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.VEX_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.VEX),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.WARD_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.WARD),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.WAYFINDER),
+         new VanillaRecipeProvider.TrimTemplateIds(ItemIds.WILD_ARMOR_TRIM_SMITHING_TEMPLATE, TrimPatterns.WILD)
+      );
    }
 
-   public record TrimTemplate(Item template, ResourceKey<TrimPattern> patternId, ResourceKey<Recipe<?>> recipeId) {
+   public record TrimTemplateIds(ResourceKey<Item> templateItem, ResourceKey<TrimPattern> pattern) {
+      public ResourceKey<Recipe<?>> recipe() {
+         return ResourceKey.create(Registries.RECIPE, this.templateItem.identifier().withSuffix("_smithing_trim"));
+      }
    }
 }

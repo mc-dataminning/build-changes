@@ -1,9 +1,12 @@
 package net.minecraft.client.gui.screens.inventory;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.GuiPipeline;
+import net.minecraft.client.gui.components.Tooltip;
+import net.minecraft.client.gui.components.inventory.SlotWidget;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.client.renderer.entity.state.ArmorStandRenderState;
 import net.minecraft.client.renderer.item.ItemModelResolver;
@@ -14,6 +17,7 @@ import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.inventory.SmithingMenu;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
@@ -23,6 +27,7 @@ import org.joml.Quaternionf;
 import org.joml.Quaternionfc;
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
+import org.jspecify.annotations.Nullable;
 
 public class SmithingScreen extends ItemCombinerScreen<SmithingMenu> {
    private static final Identifier ERROR_SPRITE = Identifier.withDefaultNamespace("container/smithing/error");
@@ -73,6 +78,32 @@ public class SmithingScreen extends ItemCombinerScreen<SmithingMenu> {
    }
 
    @Override
+   protected void updateSlotWidgets() {
+      List<SlotWidget> widgets = new ArrayList<>();
+
+      for (Slot slot : this.menu.slots) {
+         widgets.add(new SlotWidget(slot, this.minecraft, this.imageWidth, this.leftPos, this.topPos, () -> this.createEmptySlotTooltip(slot)));
+      }
+
+      this.setSlotWidgets(widgets);
+   }
+
+   private @Nullable Tooltip createEmptySlotTooltip(final Slot slot) {
+      if (slot.index == 0) {
+         return Tooltip.create(MISSING_TEMPLATE_TOOLTIP);
+      } else {
+         SmithingTemplateItem template = this.getTemplateItem().orElse(null);
+         if (template == null) {
+            return null;
+         } else if (slot.index == 1) {
+            return Tooltip.create(template.getBaseSlotDescription());
+         } else {
+            return slot.index == 2 ? Tooltip.create(template.getAdditionSlotDescription()) : null;
+         }
+      }
+   }
+
+   @Override
    public void containerTick() {
       super.containerTick();
       Optional<SmithingTemplateItem> template = this.getTemplateItem();
@@ -91,7 +122,7 @@ public class SmithingScreen extends ItemCombinerScreen<SmithingMenu> {
    @Override
    public void extractRenderState(final GuiGraphicsExtractor graphics) {
       super.extractRenderState(graphics);
-      this.extractOnboardingTooltips(graphics);
+      this.extractErrorTooltip(graphics);
    }
 
    @Override
@@ -160,29 +191,10 @@ public class SmithingScreen extends ItemCombinerScreen<SmithingMenu> {
       }
    }
 
-   private void extractOnboardingTooltips(final GuiGraphicsExtractor graphics) {
-      Optional<Component> tooltip = Optional.empty();
+   private void extractErrorTooltip(final GuiGraphicsExtractor graphics) {
       if (this.hasRecipeError() && this.isHovering(65, 46, 28, 21, graphics.mouseX(), graphics.mouseY())) {
-         tooltip = Optional.of(ERROR_TOOLTIP);
+         graphics.setTooltipForNextFrame(this.font, this.font.split(ERROR_TOOLTIP, 115), graphics.mouseX(), graphics.mouseY());
       }
-
-      if (this.hoveredSlot != null) {
-         ItemStack template = this.menu.getSlot(0).getItem();
-         ItemStack hoveredStack = this.hoveredSlot.getItem();
-         if (template.isEmpty()) {
-            if (this.hoveredSlot.index == 0) {
-               tooltip = Optional.of(MISSING_TEMPLATE_TOOLTIP);
-            }
-         } else if (template.getItem() instanceof SmithingTemplateItem templateItem && hoveredStack.isEmpty()) {
-            if (this.hoveredSlot.index == 1) {
-               tooltip = Optional.of(templateItem.getBaseSlotDescription());
-            } else if (this.hoveredSlot.index == 2) {
-               tooltip = Optional.of(templateItem.getAdditionSlotDescription());
-            }
-         }
-      }
-
-      tooltip.ifPresent(component -> graphics.setTooltipForNextFrame(this.font, this.font.split(component, 115), graphics.mouseX(), graphics.mouseY()));
    }
 
    private boolean hasRecipeError() {

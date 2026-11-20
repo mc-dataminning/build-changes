@@ -419,9 +419,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          new PhantomSpawner(), new PatrolSpawner(), new CatSpawner(), new VillageSiege(), new WanderingTraderSpawner(this.savedDataStorage)
       );
       LevelStem overworldData = dimensions.getValue(LevelStem.OVERWORLD);
-      ServerLevel overworld = new ServerLevel(
-         this, this.executor, this.storageSource, levelData, Level.OVERWORLD, overworldData, isDebug, overworldCustomSpawners, true
-      );
+      ServerLevel overworld = new ServerLevel(this, this.executor, this.storageSource, levelData, Level.OVERWORLD, overworldData, overworldCustomSpawners, true);
       this.levels.put(Level.OVERWORLD, overworld);
       this.scoreboard.load(this.savedDataStorage.computeIfAbsent(ScoreboardSaveData.TYPE).getData());
       this.commandStorage = new CommandStorage(this.savedDataStorage);
@@ -447,6 +445,10 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          levelData.setInitialized(true);
       }
 
+      if (isDebug) {
+         this.tickRateManager.setFrozen(true);
+      }
+
       GlobalPos focusPos = this.selectLevelLoadFocusPos();
       this.levelLoadListener.updateFocus(focusPos.dimension(), ChunkPos.containing(focusPos.pos()));
 
@@ -456,7 +458,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          if (name != LevelStem.OVERWORLD) {
             ResourceKey<Level> dimension = ResourceKey.create(Registries.DIMENSION, name.identifier());
             DerivedLevelData derivedLevelData = new DerivedLevelData(this.worldData, levelData);
-            level = new ServerLevel(this, this.executor, this.storageSource, derivedLevelData, dimension, entry.getValue(), isDebug, ImmutableList.of(), false);
+            level = new ServerLevel(this, this.executor, this.storageSource, derivedLevelData, dimension, entry.getValue(), ImmutableList.of(), false);
             this.levels.put(dimension, level);
          } else {
             level = overworld;
@@ -522,10 +524,13 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
    }
 
    private void setupDebugLevel(final WorldData worldData) {
-      worldData.setDifficulty(Difficulty.PEACEFUL);
+      worldData.setDifficulty(Difficulty.NORMAL);
       worldData.setDifficultyLocked(true);
       ServerLevelData levelData = worldData.overworldData();
       this.getGameRules().set(GameRules.ADVANCE_WEATHER, false, this);
+      this.getGameRules().set(GameRules.ADVANCE_TIME, false, this);
+      this.getGameRules().set(GameRules.SPAWN_WANDERING_TRADERS, false, this);
+      this.getGameRules().set(GameRules.TNT_EXPLODES, false, this);
       this.clockManager.moveToTimeMarker(this.registryAccess().getOrThrow(WorldClocks.OVERWORLD), ClockTimeMarkers.NOON);
       levelData.setGameType(GameType.SPECTATOR);
    }

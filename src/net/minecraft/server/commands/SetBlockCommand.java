@@ -108,10 +108,6 @@ public class SetBlockCommand {
       final boolean strict
    ) throws CommandSyntaxException {
       ServerLevel level = source.getLevel();
-      if (level.isDebug()) {
-         throw ERROR_FAILED.create();
-      }
-
       if (predicate != null && !predicate.test(new BlockInWorld(level, pos, true))) {
          throw ERROR_FAILED.create();
       }

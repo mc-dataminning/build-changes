@@ -14,7 +14,7 @@ import org.apache.commons.lang3.function.TriFunction;
 
 public record ColorCollection<T>(
    T white, T orange, T magenta, T lightBlue, T yellow, T lime, T pink, T gray, T lightGray, T cyan, T purple, T blue, T brown, T green, T red, T black
-) {
+) implements Group<T> {
    public static final ColorCollection<DyeColor> VALUES = new ColorCollection<>(
       DyeColor.WHITE,
       DyeColor.ORANGE,
@@ -68,12 +68,14 @@ public record ColorCollection<T>(
       return zipMap(NAMES, ids, (color, id) -> color + "_" + id);
    }
 
+   @Override
    public List<T> asList() {
       Builder<T> builder = ImmutableList.builderWithExpectedSize(16);
       this.forEach(builder::add);
       return builder.build();
    }
 
+   @Override
    public void forEach(final Consumer<T> consumer) {
       consumer.accept(this.white);
       consumer.accept(this.orange);

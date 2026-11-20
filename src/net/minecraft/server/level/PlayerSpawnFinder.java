@@ -48,6 +48,10 @@ public class PlayerSpawnFinder {
    }
 
    public static CompletableFuture<Vec3> findSpawn(final ServerLevel level, final BlockPos spawnSuggestion) {
+      if (level.getServer().getWorldData().getGameType() == GameType.SPECTATOR) {
+         return CompletableFuture.completedFuture(Vec3.atBottomCenterOf(spawnSuggestion));
+      }
+
       if (level.getServer().getWorldData().getGameType() == GameType.ADVENTURE) {
          return CompletableFuture.completedFuture(fixupSpawnHeight(level, spawnSuggestion));
       }

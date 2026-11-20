@@ -384,6 +384,7 @@ public class ItemIds {
    public static final ResourceKey<Item> MUSIC_DISC_CREATOR = createMusicDisc(JukeboxSongs.CREATOR);
    public static final ResourceKey<Item> MUSIC_DISC_CREATOR_MUSIC_BOX = createMusicDisc(JukeboxSongs.CREATOR_MUSIC_BOX);
    public static final ResourceKey<Item> MUSIC_DISC_FAR = createMusicDisc(JukeboxSongs.FAR);
+   public static final ResourceKey<Item> MUSIC_DISC_FLURRY = createMusicDisc(JukeboxSongs.FLURRY);
    public static final ResourceKey<Item> MUSIC_DISC_LAVA_CHICKEN = createMusicDisc(JukeboxSongs.LAVA_CHICKEN);
    public static final ResourceKey<Item> MUSIC_DISC_MALL = createMusicDisc(JukeboxSongs.MALL);
    public static final ResourceKey<Item> MUSIC_DISC_MELLOHI = createMusicDisc(JukeboxSongs.MELLOHI);

@@ -87,7 +87,7 @@ public class CampfireBlockEntity extends BlockEntity implements Clearable {
       for (int slot = 0; slot < entity.items.size(); slot++) {
          if (entity.cookingProgress[slot] > 0) {
             changed = true;
-            entity.cookingProgress[slot] = Math.clamp(entity.cookingProgress[slot] - 2, 0, entity.cookingTime[slot]);
+            entity.cookingProgress[slot] = Math.clamp(entity.cookingProgress[slot] - 2, 0, Math.max(0, entity.cookingTime[slot]));
          }
       }
 

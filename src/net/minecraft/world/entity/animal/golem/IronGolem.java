@@ -265,7 +265,7 @@ public class IronGolem extends AbstractGolem implements NeutralMob {
       }
 
       float healthBefore = this.getHealth();
-      this.heal(25.0F);
+      this.healNaturally(25.0F);
       if (this.getHealth() == healthBefore) {
          return InteractionResult.PASS;
       }

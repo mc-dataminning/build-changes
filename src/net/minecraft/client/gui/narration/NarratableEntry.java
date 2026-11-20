@@ -23,5 +23,9 @@ public interface NarratableEntry extends NarrationSupplier, TabOrderedElement {
       public boolean isTerminal() {
          return this == FOCUSED;
       }
+
+      public static NarratableEntry.NarrationPriority of(final boolean focused, final boolean hovered) {
+         return focused ? FOCUSED : (hovered ? HOVERED : NONE);
+      }
    }
 }

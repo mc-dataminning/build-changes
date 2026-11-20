@@ -52,6 +52,7 @@ import net.minecraft.world.entity.ai.control.BodyRotationControl;
 import net.minecraft.world.entity.ai.control.JumpControl;
 import net.minecraft.world.entity.ai.control.LookControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.ai.control.StandardLookControl;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.GoalSelector;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
@@ -150,7 +151,7 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
       super(type, level);
       this.goalSelector = new GoalSelector();
       this.targetSelector = new GoalSelector();
-      this.lookControl = new LookControl(this);
+      this.lookControl = new StandardLookControl(this);
       this.moveControl = new MoveControl<>(this);
       this.jumpControl = new JumpControl(this);
       this.bodyRotationControl = this.createBodyControl();

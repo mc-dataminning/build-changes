@@ -47,19 +47,19 @@ public class CartographyTableMenu extends AbstractContainerMenu {
    public CartographyTableMenu(final int containerId, final Inventory inventory, final ContainerLevelAccess access) {
       super(MenuType.CARTOGRAPHY_TABLE, containerId);
       this.access = access;
-      this.addSlot(new Slot(this.container, 0, 15, 15) {
+      this.addSlot(new Slot(this.container, 0, 15, 15, Slot.Section.INPUT) {
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return itemStack.has(DataComponents.MAP_ID);
          }
       });
-      this.addSlot(new Slot(this.container, 1, 15, 52) {
+      this.addSlot(new Slot(this.container, 1, 15, 52, Slot.Section.SECOND_INPUT) {
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return itemStack.is(Items.PAPER) || itemStack.is(Items.MAP) || itemStack.is(Items.GLASS_PANE);
          }
       });
-      this.addSlot(new Slot(this.resultContainer, 2, 145, 39) {
+      this.addSlot(new Slot(this.resultContainer, 2, 145, 39, Slot.Section.RESULT) {
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return false;

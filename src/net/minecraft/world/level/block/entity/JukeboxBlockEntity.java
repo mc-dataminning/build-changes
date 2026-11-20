@@ -102,7 +102,11 @@ public class JukeboxBlockEntity extends BlockEntity implements ContainerSingleIt
    }
 
    public static void tickWithRecord(final Level level, final BlockPos blockPos, final BlockState blockState, final JukeboxBlockEntity jukebox) {
-      jukebox.jukeboxSongPlayer.tick(level, blockState);
+      if (jukebox.jukeboxSongPlayer.isPlaying()) {
+         jukebox.jukeboxSongPlayer.tick(level, blockState);
+      } else if (jukebox.shouldLoop()) {
+         jukebox.tryToAdvancePlaylist(true);
+      }
    }
 
    public static void tickWithoutRecord(final Level level, final BlockPos blockPos, final BlockState blockState, final JukeboxBlockEntity jukebox) {
@@ -235,7 +239,7 @@ public class JukeboxBlockEntity extends BlockEntity implements ContainerSingleIt
    }
 
    public static OptionalInt findNextPlaylistPosition(final Container container, final int startPosition) {
-      int startIndex = Math.max(-1, startPosition);
+      int startIndex = Math.clamp(startPosition, -1, container.getContainerSize());
 
       for (int offset = 1; offset <= container.getContainerSize(); offset++) {
          int slot = (startIndex + offset) % container.getContainerSize();

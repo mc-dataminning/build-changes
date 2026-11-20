@@ -48,7 +48,7 @@ public class SteppedInterpolationTracker extends InterpolationHandler.NoOpInterp
    @Override
    public PositionPath getPositionPath(final Vec3 currentPosition) {
       this.addStep(currentPosition);
-      return this.trackedSteps.isEmpty() ? PositionPath.of(currentPosition) : PositionPath.stepped(List.copyOf(this.trackedSteps));
+      return this.trackedSteps.isEmpty() ? PositionPath.of(currentPosition) : PositionPath.stepped(List.copyOf(this.trackedSteps), this.entity.needsSync);
    }
 
    @Override

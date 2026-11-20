@@ -28,6 +28,7 @@ public sealed interface VecDelta permits VecDelta.Linear, VecDelta.Stepped {
          return new VecDelta.Linear(xa, ya, za);
       }
 
+      boolean startImmediately = input.readBoolean();
       int maxSteps = input.readableBytes() / 7;
       if (stepCount > maxSteps) {
          throw new DecoderException("VecDelta with size " + stepCount + " is bigger than allowed " + maxSteps);
@@ -43,7 +44,7 @@ public sealed interface VecDelta permits VecDelta.Linear, VecDelta.Stepped {
          steps.add(new VecDelta.Stepped.DeltaStep(xa, ya, za, ticks));
       }
 
-      return new VecDelta.Stepped(steps);
+      return new VecDelta.Stepped(steps, startImmediately);
    }
 
    static void write(final FriendlyByteBuf output, final VecDelta delta) {
@@ -56,10 +57,10 @@ public sealed interface VecDelta permits VecDelta.Linear, VecDelta.Stepped {
                output.writeShort(ya);
                output.writeShort(za);
                break;
-            case VecDelta.Stepped(List var20):
-               List var10 = var20;
+            case VecDelta.Stepped(List<VecDelta.Stepped.DeltaStep> steps, boolean startImmediately):
+               output.writeBoolean(startImmediately);
 
-               for (VecDelta.Stepped.DeltaStep step : var10) {
+               for (VecDelta.Stepped.DeltaStep step : steps) {
                   output.writeVarInt(step.ticks);
                   output.writeShort(step.xa);
                   output.writeShort(step.ya);
@@ -97,7 +98,7 @@ public sealed interface VecDelta permits VecDelta.Linear, VecDelta.Stepped {
       }
    }
 
-   record Stepped(List<VecDelta.Stepped.DeltaStep> steps) implements VecDelta {
+   record Stepped(List<VecDelta.Stepped.DeltaStep> steps, boolean startImmediately) implements VecDelta {
       private static final int MIN_BYTES_PER_STEP = 7;
 
       @Override
@@ -143,12 +144,12 @@ public sealed interface VecDelta permits VecDelta.Linear, VecDelta.Stepped {
          }
 
          positionCodec.setBase(originalBase);
-         return PositionPath.stepped(output);
+         return PositionPath.stepped(output, this.startImmediately);
       }
 
-      public static VecDelta.@Nullable Stepped tryEncode(final VecDeltaCodec positionCodec, final List<PositionStep> steps) {
+      public static VecDelta.@Nullable Stepped tryEncode(final VecDeltaCodec positionCodec, final List<PositionStep> steps, final boolean startImmediately) {
          if (steps.isEmpty()) {
-            return new VecDelta.Stepped(List.of());
+            return new VecDelta.Stepped(List.of(), startImmediately);
          }
 
          List<VecDelta.Stepped.DeltaStep> output = new ArrayList<>(steps.size());
@@ -169,7 +170,7 @@ public sealed interface VecDelta permits VecDelta.Linear, VecDelta.Stepped {
          }
 
          positionCodec.setBase(originalBase);
-         return new VecDelta.Stepped(output);
+         return new VecDelta.Stepped(output, startImmediately);
       }
 
       public record DeltaStep(short xa, short ya, short za, int ticks) {

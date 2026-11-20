@@ -2259,7 +2259,6 @@ public class ServerPlayer extends Player {
          level.dimension(),
          this.gameMode.getGameModeForPlayer(),
          Optional.ofNullable(this.gameMode.getPreviousGameModeForPlayer()),
-         level.isDebug(),
          level.isFlat(),
          this.getLastDeathLocation(),
          this.getPortalCooldown(),

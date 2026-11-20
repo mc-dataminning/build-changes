@@ -45,6 +45,11 @@ public record ItemPredicate(Optional<HolderSet<Item>> items, MinMaxBounds.Ints c
          return this;
       }
 
+      public ItemPredicate.Builder of(final HolderSet<Item> items) {
+         this.items = Optional.of(items);
+         return this;
+      }
+
       public ItemPredicate.Builder of(final HolderGetter<Item> lookup, final TagKey<Item> tag) {
          this.items = Optional.of(lookup.getOrThrow(tag));
          return this;

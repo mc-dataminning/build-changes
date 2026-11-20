@@ -455,15 +455,14 @@ public class KeyboardHandler {
 
          Screen screen = this.minecraft.gui.screen();
          if (screen != null) {
-            switch (event.shortcutKey()) {
-               case 9:
-                  this.minecraft.setLastInputType(InputType.KEYBOARD_TAB);
-                  break;
-               case 1073741903:
-               case 1073741904:
-               case 1073741905:
-               case 1073741906:
+            if (event.isCycleFocus()) {
+               this.minecraft.setLastInputType(InputType.KEYBOARD_TAB);
+            } else if (!screen.isInputCaptured()) {
+               if (event.isSelection()) {
+                  this.minecraft.setLastInputType(InputType.KEYBOARD_SELECTION);
+               } else if (event.isLeft() || event.isRight() || event.isUp() || event.isDown()) {
                   this.minecraft.setLastInputType(InputType.KEYBOARD_ARROW);
+               }
             }
          }
 

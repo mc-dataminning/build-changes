@@ -10,6 +10,7 @@ import com.mojang.renderpearl.api.pipeline.CompareOp;
 import com.mojang.renderpearl.api.pipeline.PolygonMode;
 import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
 import com.mojang.renderpearl.api.pipeline.ShaderType;
+import com.mojang.renderpearl.api.pipeline.StencilTest;
 import com.mojang.renderpearl.api.textures.AddressMode;
 import com.mojang.renderpearl.api.textures.FilterMode;
 import com.mojang.renderpearl.api.textures.GpuTexture;
@@ -268,6 +269,19 @@ public final class VulkanConst {
       return switch (shaderType) {
          case VERTEX -> 1;
          case FRAGMENT -> 16;
+      };
+   }
+
+   public static int toVk(final StencilTest.Op op) {
+      return switch (op) {
+         case KEEP -> 0;
+         case ZERO -> 1;
+         case REPLACE -> 2;
+         case INCREMENT_CLAMP -> 3;
+         case DECREEMENT_CLAMP -> 4;
+         case INVERT -> 5;
+         case INCREMENT_WRAP -> 6;
+         case DECREMENT_WRAP -> 7;
       };
    }
 }

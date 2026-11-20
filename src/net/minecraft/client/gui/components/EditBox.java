@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.function.Consumer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ComponentPath;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
+import net.minecraft.client.gui.navigation.FocusNavigationEvent;
 import net.minecraft.client.input.CharacterEvent;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
@@ -45,6 +47,7 @@ public class EditBox extends AbstractWidget {
    private boolean centered = false;
    private boolean textShadow = true;
    private boolean invertHighlightedTextColor = true;
+   private boolean canChangeValue = true;
    private int displayPos;
    private int cursorPos;
    private int highlightPos;
@@ -280,7 +283,11 @@ public class EditBox extends AbstractWidget {
 
    @Override
    public boolean keyPressed(final KeyEvent event) {
-      if (this.isActive() && this.isFocused()) {
+      if (!this.isActive() || !this.isFocused()) {
+         return false;
+      }
+
+      if (this.isInEditMode()) {
          switch (event.shortcutKey()) {
             case 8:
                if (this.isEditable) {
@@ -341,6 +348,9 @@ public class EditBox extends AbstractWidget {
                   return false;
                }
          }
+      } else if (event.isSelection()) {
+         this.setCanChangeValue(true);
+         return true;
       } else {
          return false;
       }
@@ -352,12 +362,12 @@ public class EditBox extends AbstractWidget {
 
    @Override
    public boolean capturesInput() {
-      return this.canConsumeInput();
+      return this.canConsumeInput() && this.isInEditMode();
    }
 
    @Override
    public boolean charTyped(final CharacterEvent event) {
-      if (!this.canConsumeInput()) {
+      if (!this.canConsumeInput() || !this.isInEditMode()) {
          return false;
       }
 
@@ -394,6 +404,7 @@ public class EditBox extends AbstractWidget {
 
    @Override
    public void onClick(final MouseButtonEvent event, final boolean doubleClick) {
+      this.setCanChangeValue(true);
       if (doubleClick) {
          this.selectWord(event);
       } else {
@@ -414,7 +425,7 @@ public class EditBox extends AbstractWidget {
    public void extractWidgetRenderState(final GuiGraphicsExtractor graphics) {
       if (this.isVisible()) {
          if (this.isBordered()) {
-            Identifier sprite = SPRITES.get(this.isActive(), this.isFocused());
+            Identifier sprite = SPRITES.get(this.isActive(), this.isInEditMode() || this.isHighlighted());
             graphics.blitSprite(GuiPipeline.TEXTURED, sprite, this.getX(), this.getY(), this.getWidth(), this.getHeight());
          }
 
@@ -422,7 +433,7 @@ public class EditBox extends AbstractWidget {
          int relCursorPos = this.cursorPos - this.displayPos;
          String displayed = this.font.plainSubstrByWidth(this.value.substring(this.displayPos), this.getInnerWidth());
          boolean cursorOnScreen = relCursorPos >= 0 && relCursorPos <= displayed.length();
-         boolean showCursor = this.isFocused() && TextCursorUtils.isCursorVisible(Util.getMillis() - this.focusedTime) && cursorOnScreen;
+         boolean showCursor = this.isInEditMode() && TextCursorUtils.isCursorVisible(Util.getMillis() - this.focusedTime) && cursorOnScreen;
          int drawX = this.textX;
          int relHighlightPos = Math.clamp(this.highlightPos - this.displayPos, 0, displayed.length());
          if (!displayed.isEmpty()) {
@@ -445,7 +456,7 @@ public class EditBox extends AbstractWidget {
             graphics.text(this.font, this.applyFormat(displayed.substring(relCursorPos), this.cursorPos), drawX, this.textY, color, this.textShadow);
          }
 
-         if (this.hint != null && displayed.isEmpty() && !this.isFocused()) {
+         if (this.hint != null && displayed.isEmpty() && !this.isInEditMode()) {
             graphics.text(this.font, this.hint, drawX, this.textY, color);
          }
 
@@ -549,11 +560,38 @@ public class EditBox extends AbstractWidget {
          super.setFocused(focused);
          if (focused) {
             this.focusedTime = Util.getMillis();
+         } else {
+            this.canChangeValue = true;
          }
 
-         if (this.isEditable()) {
-            Minecraft.getInstance().onTextInputFocusChange(this, focused);
-         }
+         this.updateTextInput();
+      }
+   }
+
+   @Override
+   public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
+      ComponentPath path = super.nextFocusPath(navigationEvent);
+      if (path != null && !this.isFocused()) {
+         this.canChangeValue = !(navigationEvent instanceof FocusNavigationEvent.ArrowNavigation);
+      }
+
+      return path;
+   }
+
+   private boolean isInEditMode() {
+      return this.isFocused() && this.canChangeValue;
+   }
+
+   public void setCanChangeValue(final boolean canChangeValue) {
+      if (this.isFocused() && this.canChangeValue != canChangeValue) {
+         this.canChangeValue = canChangeValue;
+         this.updateTextInput();
+      }
+   }
+
+   private void updateTextInput() {
+      if (this.isEditable()) {
+         Minecraft.getInstance().onTextInputFocusChange(this, this.isInEditMode());
       }
    }
 
@@ -563,7 +601,7 @@ public class EditBox extends AbstractWidget {
 
    public void setEditable(final boolean isEditable) {
       if (this.isFocused()) {
-         Minecraft.getInstance().onTextInputFocusChange(this, isEditable);
+         Minecraft.getInstance().onTextInputFocusChange(this, isEditable && this.isInEditMode());
       }
 
       this.isEditable = isEditable;

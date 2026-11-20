@@ -17,8 +17,8 @@ public sealed interface PositionPath permits PositionPath.Linear, PositionPath.S
       return new PositionPath.Linear(position);
    }
 
-   static PositionPath stepped(final List<PositionStep> steps) {
-      return new PositionPath.Stepped(steps);
+   static PositionPath stepped(final List<PositionStep> steps, final boolean startImmediately) {
+      return new PositionPath.Stepped(steps, startImmediately);
    }
 
    record Linear(Vec3 endPosition) implements PositionPath {
@@ -31,13 +31,17 @@ public sealed interface PositionPath permits PositionPath.Linear, PositionPath.S
       }
    }
 
-   record Stepped(Vec3 endPosition, List<PositionStep> steps) implements PositionPath {
-      public static final StreamCodec<ByteBuf, PositionPath.Stepped> STREAM_CODEC = PositionStep.STREAM_CODEC
-         .apply(ByteBufCodecs.list())
-         .map(PositionPath.Stepped::new, PositionPath.Stepped::steps);
+   record Stepped(Vec3 endPosition, List<PositionStep> steps, boolean startImmediately) implements PositionPath {
+      public static final StreamCodec<ByteBuf, PositionPath.Stepped> STREAM_CODEC = StreamCodec.composite(
+         PositionStep.STREAM_CODEC.apply(ByteBufCodecs.list()),
+         PositionPath.Stepped::steps,
+         ByteBufCodecs.BOOL,
+         PositionPath.Stepped::startImmediately,
+         PositionPath.Stepped::new
+      );
 
-      public Stepped(final List<PositionStep> steps) {
-         this(steps.getLast().position(), steps);
+      public Stepped(final List<PositionStep> steps, final boolean startImmediately) {
+         this(steps.getLast().position(), steps, startImmediately);
       }
 
       @Override

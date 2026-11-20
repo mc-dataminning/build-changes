@@ -2,6 +2,7 @@ package net.minecraft.world.inventory;
 
 import java.util.List;
 import java.util.Map;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Prediction;
@@ -60,7 +61,7 @@ public class InventoryMenu extends AbstractCraftingMenu {
       }
 
       this.addStandardInventorySlots(inventory, 8, 84);
-      this.addSlot(new Slot(inventory, 40, 77, 62) {
+      this.addSlot(new Slot(inventory, 40, 77, 62, Slot.Section.EQUIPMENT) {
          @Override
          public void setByPlayer(final ItemStack itemStack, final ItemStack previous) {
             owner.onEquipItem(EquipmentSlot.OFFHAND, previous, itemStack);
@@ -70,6 +71,11 @@ public class InventoryMenu extends AbstractCraftingMenu {
          @Override
          public Identifier getNoItemIcon() {
             return InventoryMenu.EMPTY_ARMOR_SLOT_SHIELD;
+         }
+
+         @Override
+         public Component getNarrationName() {
+            return Component.translatable("narration.slot.name.offhand");
          }
       });
    }

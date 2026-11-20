@@ -591,7 +591,9 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
          .filter(NarratableEntry::isActive)
          .sorted(Comparator.comparingInt(TabOrderedElement::getTabOrderGroup))
          .toList();
-      Screen.NarratableSearchResult result = findNarratableWidget(activeNarratables, this.lastNarratable);
+      Screen.NarratableSearchResult result = findNarratableWidget(
+         activeNarratables, output.narrationTrigger() == NarrationTrigger.KEYBOARD ? null : this.lastNarratable
+      );
       if (result != null) {
          if (result.priority.isTerminal()) {
             this.lastNarratable = result.entry;

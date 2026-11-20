@@ -1,5 +1,6 @@
 package com.mojang.renderpearl.backend.opengl;
 
+import com.mojang.renderpearl.api.GpuFormat;
 import com.mojang.renderpearl.backend.common.BaseGpuTextureView;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,5 +59,10 @@ public class GlTextureView extends BaseGpuTextureView implements FrameBufferAtta
    @Override
    public void removeAssociatedFbo(final FrameBufferCache.CacheKey fboKey) {
       this.fboKeys.remove(fboKey);
+   }
+
+   @Override
+   public GpuFormat getFormat() {
+      return this.texture().getFormat();
    }
 }

@@ -45,10 +45,12 @@ public abstract class DirectStateAccess {
 
    public abstract int createFrameBufferObject();
 
-   public abstract void bindFrameBufferTextures(int fbo, int[] color, int[] colorMipLevels, int depth, int depthMipLevel, int bindSlot);
+   public abstract void bindFrameBufferTextures(
+      int fbo, int[] color, int[] colorMipLevels, int depth, int depthMipLevel, int stencil, int stencilMipLevel, int bindSlot
+   );
 
-   public void bindFrameBufferTextures(final int fbo, final int color, final int depth, final int mipLevel, final int bindSlot) {
-      this.bindFrameBufferTextures(fbo, new int[]{color}, new int[]{mipLevel}, depth, mipLevel, bindSlot);
+   public void bindFrameBufferTextures(final int fbo, final int color, final int depth, final int stencil, final int mipLevel, final int bindSlot) {
+      this.bindFrameBufferTextures(fbo, new int[]{color}, new int[]{mipLevel}, depth, mipLevel, stencil, mipLevel, bindSlot);
    }
 
    public abstract void blitFrameBuffers(
@@ -112,13 +114,21 @@ public abstract class DirectStateAccess {
 
       @Override
       public void bindFrameBufferTextures(
-         final int fbo, final int[] color, final int[] colorMipLevels, final int depth, final int depthMipLevel, final int bindSlot
+         final int fbo,
+         final int[] color,
+         final int[] colorMipLevels,
+         final int depth,
+         final int depthMipLevel,
+         final int stencil,
+         final int stencilMipLevel,
+         final int bindSlot
       ) {
          for (int i = 0; i < color.length; i++) {
             ARBDirectStateAccess.glNamedFramebufferTexture(fbo, 36064 + i, color[i], colorMipLevels[i]);
          }
 
          ARBDirectStateAccess.glNamedFramebufferTexture(fbo, 36096, depth, depthMipLevel);
+         ARBDirectStateAccess.glNamedFramebufferTexture(fbo, 36128, stencil, stencilMipLevel);
          if (bindSlot != 0) {
             this.stateManager._glBindFramebuffer(bindSlot, fbo);
          }
@@ -244,7 +254,14 @@ public abstract class DirectStateAccess {
 
       @Override
       public void bindFrameBufferTextures(
-         final int fbo, final int[] color, final int[] colorMipLevels, final int depth, final int depthMipLevel, final int bindSlot
+         final int fbo,
+         final int[] color,
+         final int[] colorMipLevels,
+         final int depth,
+         final int stencil,
+         final int stencilMipLevel,
+         final int depthMipLevel,
+         final int bindSlot
       ) {
          int tempBindSlot = bindSlot == 0 ? 36009 : bindSlot;
          int oldFbo = this.stateManager.getFrameBuffer(tempBindSlot);
@@ -255,6 +272,7 @@ public abstract class DirectStateAccess {
          }
 
          GL33C.glFramebufferTexture2D(tempBindSlot, 36096, 3553, depth, depthMipLevel);
+         GL33C.glFramebufferTexture2D(tempBindSlot, 36128, 3553, stencil, stencilMipLevel);
          if (bindSlot == 0) {
             this.stateManager._glBindFramebuffer(tempBindSlot, oldFbo);
          }

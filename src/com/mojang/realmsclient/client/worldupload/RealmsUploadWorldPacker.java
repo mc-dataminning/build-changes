@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.function.BooleanSupplier;
 import java.util.zip.GZIPOutputStream;
@@ -18,7 +20,7 @@ public class RealmsUploadWorldPacker {
    private final Path directoryToPack;
 
    public static File pack(final Path directoryToPack, final BooleanSupplier isCanceled) throws IOException {
-      return new RealmsUploadWorldPacker(directoryToPack, isCanceled).tarGzipArchive();
+      return new RealmsUploadWorldPacker(directoryToPack, isCanceled).tarGzipArchive(File.createTempFile("realms-upload-file", ".tar.gz"));
    }
 
    private RealmsUploadWorldPacker(final Path directoryToPack, final BooleanSupplier isCanceled) {
@@ -26,25 +28,45 @@ public class RealmsUploadWorldPacker {
       this.directoryToPack = directoryToPack;
    }
 
-   private File tarGzipArchive() throws IOException {
-      TarArchiveOutputStream tar = null;
-
+   private File tarGzipArchive(final File file) throws IOException {
       try {
-         File file = File.createTempFile("realms-upload-file", ".tar.gz");
-         tar = new TarArchiveOutputStream(new GZIPOutputStream(new FileOutputStream(file)));
-         tar.setLongFileMode(3);
-         this.addFileToTarGz(tar, this.directoryToPack, "world", true);
-         if (this.isCanceled.getAsBoolean()) {
-            throw new RealmsUploadCanceledException();
-         }
+         try (
+            OutputStream output = new FileOutputStream(file);
+            GZIPOutputStream gzip = new GZIPOutputStream(output);
+         ) {
+            TarArchiveOutputStream tar = new TarArchiveOutputStream(gzip);
 
-         tar.finish();
-         this.verifyBelowSizeLimit(file.length());
-         return file;
-      } finally {
-         if (tar != null) {
+            try {
+               tar.setLongFileMode(3);
+               this.addFileToTarGz(tar, this.directoryToPack, "world", true);
+               if (this.isCanceled.getAsBoolean()) {
+                  throw new RealmsUploadCanceledException();
+               }
+
+               tar.finish();
+            } catch (Throwable var11) {
+               try {
+                  tar.close();
+               } catch (Throwable var10) {
+                  var11.addSuppressed(var10);
+               }
+
+               throw var11;
+            }
+
             tar.close();
          }
+
+         this.verifyBelowSizeLimit(file.length());
+         return file;
+      } catch (IOException | RuntimeException | Error e) {
+         try {
+            Files.deleteIfExists(file.toPath());
+         } catch (IOException cleanupFailure) {
+            e.addSuppressed(cleanupFailure);
+         }
+
+         throw e;
       }
    }
 

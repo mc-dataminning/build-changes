@@ -5,12 +5,12 @@ import com.mojang.renderpearl.api.device.GpuBackend;
 import com.mojang.renderpearl.api.device.GpuDebugOptions;
 import com.mojang.renderpearl.api.device.GpuDevice;
 import com.mojang.renderpearl.frontend.FrontendGpuDevice;
+import java.nio.ByteBuffer;
 import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.sdl.SDLError;
 import org.lwjgl.sdl.SDLVideo;
-import org.lwjgl.system.SharedLibrary;
 
 public class GlBackend implements GpuBackend {
    private static final int VERSION_MAJOR = 3;
@@ -30,13 +30,15 @@ public class GlBackend implements GpuBackend {
             throw this.libraryLoadFailure;
          }
 
-         if (!SDLVideo.SDL_GL_LoadLibrary(((SharedLibrary)GL.getFunctionProvider()).getPath())) {
+         if (!SDLVideo.SDL_GL_LoadLibrary((ByteBuffer)null)) {
             this.libraryLoadFailure = new BackendCreationException(
                "OpenGL is not supported: " + Objects.requireNonNullElse(SDLError.SDL_GetError(), "<no error>"), BackendCreationException.Reason.OPENGL_MISSING
             );
             throw this.libraryLoadFailure;
          }
 
+         GL.destroy();
+         GL.create(SDLVideo::SDL_GL_GetProcAddress);
          if (GL.getFunctionProvider().getFunctionAddress("glGetError") != SDLVideo.SDL_GL_GetProcAddress("glGetError")) {
             this.libraryLoadFailure = new BackendCreationException("glGetError mismatch", BackendCreationException.Reason.OPENGL_MISSING);
             SDLVideo.SDL_GL_UnloadLibrary();
@@ -50,6 +52,7 @@ public class GlBackend implements GpuBackend {
    @Override
    public void unloadLibrary() {
       if (this.libraryLoaded) {
+         GL.destroy();
          SDLVideo.SDL_GL_UnloadLibrary();
          this.libraryLoaded = false;
       }

@@ -83,8 +83,7 @@ public class RangedAttackGoal extends Goal {
          this.seeTime = 0;
       }
 
-      boolean targetIsOutOfRange = targetDistSqr > this.attackRadiusSqr;
-      if (!targetIsOutOfRange && this.seeTime >= 5 && this.stopWhenInRange()) {
+      if (!(targetDistSqr > this.attackRadiusSqr) && this.seeTime >= 5 && this.stopWhenInRange()) {
          this.mob.getNavigation().stop();
       } else {
          this.mob.getNavigation().moveTo(this.target, this.speedModifier);
@@ -92,7 +91,7 @@ public class RangedAttackGoal extends Goal {
 
       this.mob.getLookControl().setLookAt(this.target, 30.0F, 30.0F);
       if (--this.attackTime == 0) {
-         if (!hasLineOfSight || targetIsOutOfRange) {
+         if (!hasLineOfSight) {
             return;
          }
 

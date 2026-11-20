@@ -184,10 +184,6 @@ public class FillCommand {
 
       List<UpdatedPosition> updatePositions = new ArrayList<>();
       ServerLevel level = source.getLevel();
-      if (level.isDebug()) {
-         throw ERROR_FAILED.create();
-      }
-
       int count = 0;
 
       for (BlockPos pos : BlockPos.betweenClosed(region.minX(), region.minY(), region.minZ(), region.maxX(), region.maxY(), region.maxZ())) {

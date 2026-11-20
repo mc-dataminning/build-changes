@@ -160,7 +160,7 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
                   GL33C.glClear(256);
                }
 
-               if (format.hasDepthAspect()) {
+               if (format.hasStencilAspect()) {
                   GL33C.glClear(1024);
                }
             }
@@ -211,7 +211,7 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
       this.stateManager._colorMask(15);
 
       for (int i = 0; i < colorTexture.getMipLevels(); i++) {
-         this.device.directStateAccess().bindFrameBufferTextures(this.drawFbo, ((GlTexture)colorTexture).id, 0, i, 36160);
+         this.device.directStateAccess().bindFrameBufferTextures(this.drawFbo, ((GlTexture)colorTexture).id, 0, 0, i, 36160);
          GlStateManager._clear(16384);
       }
 
@@ -247,13 +247,31 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
       this.stateManager._disableScissorTest();
 
       for (int i = 0; i < depthTexture.getMipLevels(); i++) {
-         this.device.directStateAccess().bindFrameBufferTextures(this.drawFbo, 0, ((GlTexture)depthTexture).id, i, 36160);
+         this.device.directStateAccess().bindFrameBufferTextures(this.drawFbo, 0, ((GlTexture)depthTexture).id, 0, i, 36160);
          GL33C.glDrawBuffer(0);
          GlStateManager._clear(256);
       }
 
       GL33C.glDrawBuffer(36064);
       GL33C.glFramebufferTexture2D(36160, 36096, 3553, 0, 0);
+      this.stateManager._glBindFramebuffer(36160, 0);
+   }
+
+   @Override
+   public void clearStencilTexture(final GpuTexture stencilTexture, final byte clearStencil) {
+      this.device.ensureCurrent();
+      GL33C.glClearStencil(clearStencil);
+      this.stateManager._depthMask(true);
+      this.stateManager._disableScissorTest();
+
+      for (int i = 0; i < stencilTexture.getMipLevels(); i++) {
+         this.device.directStateAccess().bindFrameBufferTextures(this.drawFbo, 0, 0, ((GlTexture)stencilTexture).id, i, 36160);
+         GL33C.glDrawBuffer(0);
+         GlStateManager._clear(1024);
+      }
+
+      GL33C.glDrawBuffer(36064);
+      GL33C.glFramebufferTexture2D(36160, 36128, 3553, 0, 0);
       this.stateManager._glBindFramebuffer(36160, 0);
    }
 
@@ -287,6 +305,7 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
       final int height
    ) {
       this.device.ensureCurrent();
+      GlStateManager.clearGlErrors();
       int target;
       if ((destination.usage() & 16) != 0) {
          target = GlConst.CUBEMAP_TARGETS[depthOrLayer % 6];
@@ -303,6 +322,10 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
       GL33C.glTexSubImage2D(
          target, mipLevel, destX, destY, width, height, GlConst.toGlExternalId(destination.getFormat()), GlConst.toGlType(destination.getFormat()), source
       );
+      int error = GL33C.glGetError();
+      if (error != 0) {
+         throw new IllegalStateException("Couldn't perform writeToTexture for destination texture " + destination.getLabel() + ": GL error " + error);
+      }
    }
 
    @Override
@@ -321,6 +344,7 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
       final int arrayLayer
    ) {
       this.device.ensureCurrent();
+      GlStateManager.clearGlErrors();
       int target;
       if ((destination.usage() & 16) != 0) {
          target = GlConst.CUBEMAP_TARGETS[arrayLayer % 6];
@@ -352,6 +376,10 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
          source.offset() + skipBytes
       );
       GL33C.glBindBuffer(35052, 0);
+      int error = GL33C.glGetError();
+      if (error != 0) {
+         throw new IllegalStateException("Couldn't perform copyBufferToTexture for destination texture " + destination.getLabel() + ": GL error " + error);
+      }
    }
 
    @Override
@@ -363,14 +391,10 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
       GlStateManager.clearGlErrors();
       boolean isDepth = source.getFormat().hasDepthAspect();
       int textureId = ((GlTexture)source).glId();
-      this.device.directStateAccess().bindFrameBufferTextures(this.readFbo, !isDepth ? textureId : 0, isDepth ? textureId : 0, mipLevel, 36008);
+      this.device.directStateAccess().bindFrameBufferTextures(this.readFbo, !isDepth ? textureId : 0, isDepth ? textureId : 0, 0, mipLevel, 36008);
       GL33C.glBindBuffer(35051, ((GlBuffer)destination).handle());
       GL33C.glPixelStorei(3333, source.getFormat().byteAlignment());
       GL33C.glPixelStorei(3330, width);
-      if (isDepth) {
-         GL33C.glReadBuffer(0);
-      }
-
       GL33C.glReadPixels(x, y, width, height, GlConst.toGlExternalId(source.getFormat()), GlConst.toGlType(source.getFormat()), offset);
       GL33C.glFramebufferTexture2D(36008, isDepth ? 36096 : 36064, 3553, 0, mipLevel);
       this.stateManager._glBindFramebuffer(36008, 0);
@@ -396,14 +420,33 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
       this.device.ensureCurrent();
       GlStateManager.clearGlErrors();
       this.stateManager._disableScissorTest();
-      boolean isDepth = source.getFormat().hasDepthAspect();
+      GpuFormat srcFormat = source.getFormat();
       int sourceId = ((GlTexture)source).glId();
       int destId = ((GlTexture)destination).glId();
-      this.device.directStateAccess().bindFrameBufferTextures(this.readFbo, isDepth ? 0 : sourceId, isDepth ? sourceId : 0, mipLevel, 0);
-      this.device.directStateAccess().bindFrameBufferTextures(this.drawFbo, isDepth ? 0 : destId, isDepth ? destId : 0, mipLevel, 0);
+      boolean hasDepth = srcFormat.hasDepthAspect();
+      boolean hasStencil = srcFormat.hasStencilAspect();
       this.device
          .directStateAccess()
-         .blitFrameBuffers(this.readFbo, this.drawFbo, sourceX, sourceY, width, height, destX, destY, width, height, isDepth ? 256 : 16384, 9728);
+         .bindFrameBufferTextures(this.readFbo, !hasDepth && !hasStencil ? sourceId : 0, hasDepth ? sourceId : 0, 0, hasStencil ? sourceId : 0, 0);
+      this.device
+         .directStateAccess()
+         .bindFrameBufferTextures(this.drawFbo, !hasDepth && !hasStencil ? destId : 0, hasDepth ? destId : 0, 0, hasStencil ? destId : 0, 0);
+      int bufferMask = 0;
+      if (srcFormat.hasColorAspect()) {
+         bufferMask |= 16384;
+      }
+
+      if (srcFormat.hasDepthAspect()) {
+         bufferMask |= 256;
+      }
+
+      if (srcFormat.hasStencilAspect()) {
+         bufferMask |= 1024;
+      }
+
+      this.device
+         .directStateAccess()
+         .blitFrameBuffers(this.readFbo, this.drawFbo, sourceX, sourceY, width, height, destX, destY, width, height, bufferMask, 9728);
       int error = GL33C.glGetError();
       if (error != 0) {
          throw new IllegalStateException(
@@ -421,7 +464,7 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
       GL33C.glViewport(0, 0, textureView.getWidth(0), textureView.getHeight(0));
       this.stateManager._depthMask(true);
       this.stateManager._colorMask(15);
-      this.device.directStateAccess().bindFrameBufferTextures(this.drawFbo, ((GlTexture)textureView.texture()).glId(), 0, 0, 0);
+      this.device.directStateAccess().bindFrameBufferTextures(this.drawFbo, ((GlTexture)textureView.texture()).glId(), 0, 0, 0, 0);
       this.device.directStateAccess().blitFrameBuffers(this.drawFbo, 0, 0, 0, copyWidth, copyHeight, 0, destY, copyWidth, copyHeight + destY, 16384, 9728);
    }
 

@@ -59,7 +59,8 @@ public class WidgetTooltipHolder {
                mouseX,
                mouseY,
                isFocused,
-               this.tooltip.style()
+               this.tooltip.style(),
+               this.tooltip.extraSpaceAfterFirstLine()
             );
          }
       }

@@ -40,7 +40,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.BodyRotationControl;
-import net.minecraft.world.entity.ai.control.LookControl;
+import net.minecraft.world.entity.ai.control.StandardLookControl;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
@@ -235,12 +235,7 @@ public class Shulker extends AbstractGolem implements Enemy {
          return false;
       }
 
-      if (this.currentPeekAmount > targetPeekAmount) {
-         this.currentPeekAmount = Math.clamp(this.currentPeekAmount - 0.05F, targetPeekAmount, 1.0F);
-      } else {
-         this.currentPeekAmount = Math.clamp(this.currentPeekAmount + 0.05F, 0.0F, targetPeekAmount);
-      }
-
+      this.currentPeekAmount = Mth.approach(this.currentPeekAmount, targetPeekAmount, 0.05F);
       return true;
    }
 
@@ -686,7 +681,7 @@ public class Shulker extends AbstractGolem implements Enemy {
       }
    }
 
-   private class ShulkerLookControl extends LookControl {
+   private class ShulkerLookControl extends StandardLookControl {
       public ShulkerLookControl(final Mob mob) {
          super(mob);
       }

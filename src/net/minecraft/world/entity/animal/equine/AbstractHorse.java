@@ -60,6 +60,7 @@ import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.player.Input;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.inventory.AbstractMountInventoryMenu;
@@ -113,7 +114,6 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
    private int mouthCounter;
    private int standCounter;
    public int tailCounter;
-   public int sprintCounter;
    protected SimpleContainer inventory;
    protected int temper = 0;
    protected float playerJumpPendingScale;
@@ -459,8 +459,8 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
          }
       }
 
-      if (this.getHealth() < this.getMaxHealth() && heal > 0.0F) {
-         this.heal(heal);
+      if (this.canHealNaturally() && heal > 0.0F) {
+         this.healNaturally(heal);
          itemUsed = true;
       }
 
@@ -531,7 +531,7 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
       super.aiStep();
       if (this.level() instanceof ServerLevel level && this.isAlive()) {
          if (this.random.nextInt(900) == 0 && this.deathTime == 0) {
-            this.heal(1.0F);
+            this.healNaturally(1.0F);
          }
 
          if (this.canEatGrass()) {
@@ -581,13 +581,6 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
 
       if (this.tailCounter > 0 && ++this.tailCounter > 8) {
          this.tailCounter = 0;
-      }
-
-      if (this.sprintCounter > 0) {
-         this.sprintCounter++;
-         if (this.sprintCounter > 300) {
-            this.sprintCounter = 0;
-         }
       }
 
       this.eatAnimO = this.eatAnim;
@@ -728,6 +721,11 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
             }
 
             this.playerJumpPendingScale = 0.0F;
+         }
+      } else if (controller instanceof ServerPlayer serverPlayer) {
+         Input input = serverPlayer.getLastClientInput();
+         if (!input.forward() || input.backward()) {
+            this.gallopSoundCounter = 0;
          }
       }
    }

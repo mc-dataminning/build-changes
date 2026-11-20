@@ -48,7 +48,7 @@ import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
-import net.minecraft.world.entity.ai.control.LookControl;
+import net.minecraft.world.entity.ai.control.StandardLookControl;
 import net.minecraft.world.entity.ai.goal.BreedGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.FollowParentGoal;
@@ -1054,7 +1054,7 @@ public class Bee extends Animal implements NeutralMob {
       }
    }
 
-   private class BeeLookControl extends LookControl {
+   private class BeeLookControl extends StandardLookControl {
       public BeeLookControl(final Mob mob) {
          super(mob);
       }

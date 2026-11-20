@@ -191,9 +191,4 @@ public class Painting extends HangingEntity {
    public ItemStack getPickResult() {
       return new ItemStack(Items.PAINTING);
    }
-
-   @Override
-   public boolean canBePlaced() {
-      return this.level().noBorderCollision(this, this.getPopBox()) && super.canBePlaced();
-   }
 }

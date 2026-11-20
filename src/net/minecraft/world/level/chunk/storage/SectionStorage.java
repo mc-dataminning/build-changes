@@ -161,12 +161,12 @@ public class SectionStorage<R, P> implements AutoCloseable {
       return newR;
    }
 
-   public CompletableFuture<?> prefetch(final ChunkPos chunkPos) {
+   public @Nullable CompletableFuture<?> prefetch(final int x, final int z) {
       synchronized (this.loadLock) {
-         long chunkKey = chunkPos.pack();
+         long chunkKey = ChunkPos.pack(x, z);
          return this.loadedChunks.contains(chunkKey)
-            ? CompletableFuture.completedFuture(null)
-            : (CompletableFuture)this.pendingLoads.computeIfAbsent(chunkKey, k -> this.tryRead(chunkPos));
+            ? null
+            : (CompletableFuture)this.pendingLoads.computeIfAbsent(chunkKey, var3 -> this.tryRead(new ChunkPos(x, z)));
       }
    }
 

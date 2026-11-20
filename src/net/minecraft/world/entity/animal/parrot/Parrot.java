@@ -90,6 +90,7 @@ public class Parrot extends ShoulderRidingEntity {
       .put(EntityTypes.ENDER_DRAGON, SoundEvents.PARROT_IMITATE_ENDER_DRAGON)
       .put(EntityTypes.ENDERMITE, SoundEvents.PARROT_IMITATE_ENDERMITE)
       .put(EntityTypes.EVOKER, SoundEvents.PARROT_IMITATE_EVOKER)
+      .put(EntityTypes.FROSTBITE, SoundEvents.PARROT_IMITATE_FROSTBITE)
       .put(EntityTypes.GHAST, SoundEvents.PARROT_IMITATE_GHAST)
       .put(EntityTypes.GUARDIAN, SoundEvents.PARROT_IMITATE_GUARDIAN)
       .put(EntityTypes.HOGLIN, SoundEvents.PARROT_IMITATE_HOGLIN)

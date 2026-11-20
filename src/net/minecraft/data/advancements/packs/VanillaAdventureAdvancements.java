@@ -68,6 +68,7 @@ import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
+import net.minecraft.references.ItemIds;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
@@ -1110,22 +1111,22 @@ public class VanillaAdventureAdvancements extends AdvancementSubProvider {
 
    private Advancement.Builder smithingWithStyle(final Advancement.Builder advancement) {
       advancement.requirements(AdvancementRequirements.Strategy.AND);
-      Set<Item> required = Set.of(
-         Items.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE,
-         Items.SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE,
-         Items.RIB_ARMOR_TRIM_SMITHING_TEMPLATE,
-         Items.WARD_ARMOR_TRIM_SMITHING_TEMPLATE,
-         Items.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE,
-         Items.VEX_ARMOR_TRIM_SMITHING_TEMPLATE,
-         Items.TIDE_ARMOR_TRIM_SMITHING_TEMPLATE,
-         Items.WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE
+      Set<ResourceKey<Item>> required = Set.of(
+         ItemIds.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE,
+         ItemIds.SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE,
+         ItemIds.RIB_ARMOR_TRIM_SMITHING_TEMPLATE,
+         ItemIds.WARD_ARMOR_TRIM_SMITHING_TEMPLATE,
+         ItemIds.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE,
+         ItemIds.VEX_ARMOR_TRIM_SMITHING_TEMPLATE,
+         ItemIds.TIDE_ARMOR_TRIM_SMITHING_TEMPLATE,
+         ItemIds.WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE
       );
       VanillaRecipeProvider.smithingTrims()
-         .filter(trim -> required.contains(trim.template()))
+         .filter(trim -> required.contains(trim.templateItem()))
          .forEach(
             trimTemplate -> advancement.addCriterion(
-               "armor_trimmed_" + trimTemplate.recipeId().identifier(),
-               RecipeCraftedTrigger.TriggerInstance.craftedItem(HolderSet.direct(this.recipes.getOrThrow(trimTemplate.recipeId())))
+               "armor_trimmed_" + trimTemplate.recipe().identifier(),
+               RecipeCraftedTrigger.TriggerInstance.craftedItem(HolderSet.direct(this.recipes.getOrThrow(trimTemplate.recipe())))
             )
          );
       return advancement;
@@ -1134,7 +1135,7 @@ public class VanillaAdventureAdvancements extends AdvancementSubProvider {
    private Advancement.Builder craftingANewLook(final Advancement.Builder advancement) {
       advancement.requirements(AdvancementRequirements.Strategy.OR);
       VanillaRecipeProvider.smithingTrims()
-         .map(VanillaRecipeProvider.TrimTemplate::recipeId)
+         .map(VanillaRecipeProvider.TrimTemplateIds::recipe)
          .forEach(
             recipeId -> advancement.addCriterion(
                "armor_trimmed_" + recipeId.identifier(),
