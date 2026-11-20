@@ -188,6 +188,7 @@ public class Slot {
       FUEL,
       RESULT,
       INVENTORY,
-      HOTBAR;
+      HOTBAR,
+      DESTROY_ITEM;
    }
 }

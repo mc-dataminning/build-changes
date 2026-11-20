@@ -11,15 +11,16 @@ import io.netty.buffer.ByteBuf;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.ints.IntSets;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntMaps;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Queue;
 import java.util.function.BiPredicate;
+import java.util.function.ToIntFunction;
 import net.minecraft.commands.arguments.SerializableArgument;
 import net.minecraft.commands.arguments.SerializableArgumentTypes;
 import net.minecraft.commands.suggestions.CustomSuggestion;
@@ -58,7 +59,7 @@ public class ClientboundCommandsPacket implements Packet<ClientCommonPacketListe
    private final List<ClientboundCommandsPacket.Entry> entries;
 
    public <S, T extends S> ClientboundCommandsPacket(final RootCommandNode<T> root, final ClientboundCommandsPacket.NodeInspector<S> inspector) {
-      Object2IntMap<CommandNode<T>> nodeToId = enumerateNodes(root);
+      Reference2IntMap<CommandNode<T>> nodeToId = enumerateNodes(root);
       this.entries = createEntries(nodeToId, inspector);
       this.rootIndex = nodeToId.getInt(root);
    }
@@ -87,8 +88,8 @@ public class ClientboundCommandsPacket implements Packet<ClientCommonPacketListe
       validateEntries(entries, ClientboundCommandsPacket.Entry::canResolve);
    }
 
-   private static <S> Object2IntMap<CommandNode<S>> enumerateNodes(final RootCommandNode<S> root) {
-      Object2IntMap<CommandNode<S>> nodeToId = new Object2IntOpenHashMap();
+   private static <S> Reference2IntMap<CommandNode<S>> enumerateNodes(final RootCommandNode<S> root) {
+      Reference2IntMap<CommandNode<S>> nodeToId = new Reference2IntOpenHashMap();
       Queue<CommandNode<S>> queue = new ArrayDeque<>();
       queue.add(root);
 
@@ -107,16 +108,16 @@ public class ClientboundCommandsPacket implements Packet<ClientCommonPacketListe
       return nodeToId;
    }
 
-   private static <S> List<ClientboundCommandsPacket.Entry> createEntries(
-      final Object2IntMap<? extends CommandNode<? extends S>> nodeToId, final ClientboundCommandsPacket.NodeInspector<S> inspector
+   private static <S, T extends S> List<ClientboundCommandsPacket.Entry> createEntries(
+      final Reference2IntMap<CommandNode<T>> nodeToId, final ClientboundCommandsPacket.NodeInspector<S> inspector
    ) {
       ObjectArrayList<ClientboundCommandsPacket.Entry> result = new ObjectArrayList(nodeToId.size());
       result.size(nodeToId.size());
-      ObjectIterator var3 = Object2IntMaps.fastIterable(nodeToId).iterator();
+      ObjectIterator var3 = Reference2IntMaps.fastIterable(nodeToId).iterator();
 
       while (var3.hasNext()) {
-         it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<? extends CommandNode<? extends S>> entry = (it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<? extends CommandNode<? extends S>>)var3.next();
-         result.set(entry.getIntValue(), createEntry((CommandNode<? extends S>)entry.getKey(), inspector, nodeToId));
+         it.unimi.dsi.fastutil.objects.Reference2IntMap.Entry<CommandNode<T>> entry = (it.unimi.dsi.fastutil.objects.Reference2IntMap.Entry<CommandNode<T>>)var3.next();
+         result.set(entry.getIntValue(), createEntry((CommandNode<S>)entry.getKey(), inspector, nodeToId));
       }
 
       return result;
@@ -143,15 +144,13 @@ public class ClientboundCommandsPacket implements Packet<ClientCommonPacketListe
    }
 
    private static <S> ClientboundCommandsPacket.Entry createEntry(
-      final CommandNode<? extends S> node,
-      final ClientboundCommandsPacket.NodeInspector<S> inspector,
-      final Object2IntMap<? extends CommandNode<? extends S>> ids
+      final CommandNode<S> node, final ClientboundCommandsPacket.NodeInspector<? super S> inspector, final ToIntFunction<CommandNode<S>> ids
    ) {
       int flags = 0;
       int redirect;
       if (node.getRedirect() != null) {
          flags |= 8;
-         redirect = ids.getInt(node.getRedirect());
+         redirect = ids.applyAsInt(node.getRedirect());
       } else {
          redirect = 0;
       }
@@ -172,16 +171,16 @@ public class ClientboundCommandsPacket implements Packet<ClientCommonPacketListe
             break;
          case ArgumentCommandNode<? extends S, ?> arg:
             String id = arg.getName();
-            SerializableArgument.BrigadierWrapper<?> type = SerializableArgument.unwrapOrThrow(arg.getType());
+            SerializableArgument<?> type = SerializableArgument.unwrapOrThrow(arg.getType());
             flags |= 2;
             SuggestionProvider<? extends S> customSuggestions = arg.getCustomSuggestions();
             if (customSuggestions != null) {
                nodeStub = new ClientboundCommandsPacket.ArgumentNodeStubWithSuggestion(
-                  id, type.argument(), CustomSuggestion.unwrapOrThrow(customSuggestions).suggestion().serializable()
+                  id, type, CustomSuggestion.unwrapOrThrow(customSuggestions).serializable()
                );
                flags |= 16;
             } else {
-               nodeStub = new ClientboundCommandsPacket.ArgumentNodeStubWithoutSuggestion(id, type.argument());
+               nodeStub = new ClientboundCommandsPacket.ArgumentNodeStubWithoutSuggestion(id, type);
             }
             break;
          case LiteralCommandNode<? extends S> literal:
@@ -192,7 +191,7 @@ public class ClientboundCommandsPacket implements Packet<ClientCommonPacketListe
             throw new UnsupportedOperationException("Unknown node type " + node);
       }
 
-      int[] childrenIds = node.getChildren().stream().mapToInt(ids::getInt).toArray();
+      int[] childrenIds = node.getChildren().stream().mapToInt(ids).toArray();
       return new ClientboundCommandsPacket.Entry(nodeStub, flags, redirect, childrenIds);
    }
 

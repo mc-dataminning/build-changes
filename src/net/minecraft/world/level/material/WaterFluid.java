@@ -13,7 +13,6 @@ import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.InsideBlockEffectType;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -52,10 +51,6 @@ public class WaterFluid extends FlowingFluid {
    @Override
    protected boolean canConvertToSource(final ServerLevel level) {
       return level.getGameRules().get(GameRules.WATER_SOURCE_CONVERSION);
-   }
-
-   @Override
-   protected void beforeDestroyingBlock(final LevelAccessor level, final BlockPos pos, final BlockState state) {
    }
 
    @Override

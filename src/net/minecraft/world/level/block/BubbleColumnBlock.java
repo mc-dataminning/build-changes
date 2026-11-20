@@ -3,7 +3,8 @@ package net.minecraft.world.level.block;
 import java.util.Optional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.BubbleColumnUpParticleOptions;
+import net.minecraft.core.particles.WaterCurrentDownParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -110,7 +111,7 @@ public class BubbleColumnBlock extends Block implements BucketPickup {
       double y = pos.getY();
       double z = pos.getZ();
       if (state.getValue(DRAG_DOWN)) {
-         level.addAlwaysVisibleParticle(ParticleTypes.CURRENT_DOWN, x + 0.5, y + 0.8, z, 0.0, 0.0, 0.0);
+         level.addAlwaysVisibleParticle(WaterCurrentDownParticleOptions.DEFAULT, x + 0.5, y + 0.8, z, 0.0, 0.0, 0.0);
          if (random.nextInt(200) == 0) {
             level.playLocalSound(
                x,
@@ -124,8 +125,10 @@ public class BubbleColumnBlock extends Block implements BucketPickup {
             );
          }
       } else {
-         level.addAlwaysVisibleParticle(ParticleTypes.BUBBLE_COLUMN_UP, x + 0.5, y, z + 0.5, 0.0, 0.04, 0.0);
-         level.addAlwaysVisibleParticle(ParticleTypes.BUBBLE_COLUMN_UP, x + random.nextFloat(), y + random.nextFloat(), z + random.nextFloat(), 0.0, 0.04, 0.0);
+         level.addAlwaysVisibleParticle(BubbleColumnUpParticleOptions.HALF_POP, x + 0.5, y, z + 0.5, 0.0, 0.04, 0.0);
+         level.addAlwaysVisibleParticle(
+            BubbleColumnUpParticleOptions.HALF_POP, x + random.nextFloat(), y + random.nextFloat(), z + random.nextFloat(), 0.0, 0.04, 0.0
+         );
          if (random.nextInt(200) == 0) {
             level.playLocalSound(
                x,

@@ -18,17 +18,19 @@ import net.minecraft.util.parsing.packrat.commands.ParserBasedArgument;
 import net.minecraft.world.entity.Entity;
 
 public class ComponentArgument extends ParserBasedArgument<CommandArgumentParser.RegistryAwareState, Component> {
-   private static final ComponentArgument INSTANCE = new ComponentArgument();
+   public static final ComponentArgument INSTANCE = new ComponentArgument();
    public static final SerializableArgument.Type<ComponentArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
    private static final Collection<String> EXAMPLES = List.of("\"hello world\"", "'hello world'", "\"\"", "{text:\"hello world\"}", "[\"\"]");
-   public static final DynamicCommandExceptionType ERROR_INVALID_COMPONENT = new DynamicCommandExceptionType(
-      message -> Component.translatableEscape("argument.component.invalid", message)
-   );
 
    private ComponentArgument() {
       super(
          CommandArgumentParser.RegistryAwareState.FACTORY,
-         CommandArgumentParser.withCodec(NbtOps.INSTANCE, SnbtGrammar.createParser(NbtOps.INSTANCE), ComponentSerialization.CODEC, ERROR_INVALID_COMPONENT)
+         CommandArgumentParser.withCodec(
+            NbtOps.INSTANCE,
+            SnbtGrammar.createParser(NbtOps.INSTANCE),
+            ComponentSerialization.CODEC,
+            new DynamicCommandExceptionType(message -> Component.translatableEscape("argument.component.invalid", message))
+         )
       );
    }
 

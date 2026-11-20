@@ -4,7 +4,11 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.blaze3d.platform.InputConstants;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 import java.util.OptionalInt;
 import java.util.concurrent.atomic.AtomicBoolean;
 import net.minecraft.client.gui.ComponentPath;
@@ -14,6 +18,7 @@ import net.minecraft.client.gui.components.TabButton;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.layouts.FrameLayout;
+import net.minecraft.client.gui.layouts.LayoutSettings;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.narration.GroupNarration;
 import net.minecraft.client.gui.narration.NarratableEntry;
@@ -32,6 +37,7 @@ public class TabNavigationBar extends AbstractContainerWidget {
    private static final Component USAGE_NARRATION = Component.translatable("narration.tab_navigation.usage");
    private static final Component USAGE_NARRATION_MAC = Component.translatable("narration.tab_navigation.mac.usage");
    private static final GroupNarration GROUP_NARRATION = GroupNarration.list("narrator.position.tab");
+   private static final GroupNarration NAMED_GROUP_NARRATION = GroupNarration.list("narrator.position.tab.index");
    protected final FrameLayout layout;
    private final TabManager tabManager;
    protected final ImmutableList<Tab> tabs;
@@ -42,24 +48,38 @@ public class TabNavigationBar extends AbstractContainerWidget {
       final int y,
       final int width,
       final int height,
+      final LinearLayout.Orientation orientation,
+      final int spacing,
       final TabManager tabManager,
-      final ImmutableList<TabButton> tabButtons,
-      final ImmutableList<Tab> tabs
+      final Map<TabNavigationBar.Align, TabNavigationBar.TabGroup> tabGroups,
+      final Component name
    ) {
-      super(x, y, width, height, CommonComponents.EMPTY);
+      super(x, y, width, height, name);
       this.tabManager = tabManager;
-      this.tabButtons = tabButtons;
-      this.tabs = ImmutableList.copyOf(tabs);
       this.layout = new FrameLayout();
       this.layout.setPosition(x, y);
-      LinearLayout linearLayout = this.layout.addChild(LinearLayout.horizontal());
-      UnmodifiableIterator var9 = tabButtons.iterator();
+      this.layout.setMinWidth(width);
+      this.layout.setMinHeight(height);
+      com.google.common.collect.ImmutableList.Builder<TabButton> tabButtonBuilder = ImmutableList.builder();
+      com.google.common.collect.ImmutableList.Builder<Tab> tabsBuilder = ImmutableList.builder();
+      boolean horizontal = orientation == LinearLayout.Orientation.HORIZONTAL;
 
-      while (var9.hasNext()) {
-         TabButton tabButton = (TabButton)var9.next();
-         linearLayout.addChild(tabButton);
+      for (TabNavigationBar.Align alignment : tabGroups.keySet()) {
+         TabNavigationBar.TabGroup tabGroup = tabGroups.get(alignment);
+         LinearLayout linearLayout = new LinearLayout(0, 0, orientation).spacing(spacing);
+         LayoutSettings settings = this.layout.newChildLayoutSettings();
+         this.layout.addChild(linearLayout, horizontal ? settings.alignHorizontally(alignment.value) : settings.alignVertically(alignment.value));
+
+         for (TabButton tabButton : tabGroup.tabButtons()) {
+            tabButtonBuilder.add(tabButton);
+            linearLayout.addChild(tabButton);
+         }
+
+         tabsBuilder.addAll(tabGroup.tabs());
       }
 
+      this.tabButtons = tabButtonBuilder.build();
+      this.tabs = tabsBuilder.build();
       this.layout.arrangeElements();
    }
 
@@ -69,7 +89,13 @@ public class TabNavigationBar extends AbstractContainerWidget {
    }
 
    public static TabNavigationBar.Builder builder(final TabManager tabManager, final int x, final int y, final int width, final int height) {
-      return new TabNavigationBar.Builder(tabManager, x, y, width, height);
+      return builder(tabManager, x, y, width, height, LinearLayout.Orientation.HORIZONTAL);
+   }
+
+   public static TabNavigationBar.Builder builder(
+      final TabManager tabManager, final int x, final int y, final int width, final int height, final LinearLayout.Orientation orientation
+   ) {
+      return new TabNavigationBar.Builder(tabManager, x, y, width, height, orientation);
    }
 
    public void arrangeElements(final int width) {
@@ -131,10 +157,23 @@ public class TabNavigationBar extends AbstractContainerWidget {
    }
 
    @Override
+   public Collection<? extends NarratableEntry> getNarratables() {
+      return this.currentTabButton() == null && this.getHoveredTabButton() == null ? List.of() : super.getNarratables();
+   }
+
+   @Override
    protected void updateWidgetNarration(final NarrationElementOutput output) {
       TabButton narrated = getNarratedChild(output.narrationTrigger(), this.getHoveredTabButton(), this.currentTabButton());
       if (narrated != null) {
-         GROUP_NARRATION.narratePosition(output.nest(), this.tabButtons, narrated);
+         if (this.getMessage().equals(CommonComponents.EMPTY)) {
+            GROUP_NARRATION.narratePosition(output.nest(), this.tabButtons, narrated);
+         } else {
+            Component position = NAMED_GROUP_NARRATION.createPositionNarration(this.tabButtons, narrated);
+            if (position != null) {
+               output.nest().add(NarratedElementType.POSITION, Component.translatable("narrator.position.tab.named", this.getMessage(), position));
+            }
+         }
+
          narrated.updateNarration(output);
       }
 
@@ -227,9 +266,21 @@ public class TabNavigationBar extends AbstractContainerWidget {
       return index != -1 ? index : -1;
    }
 
-   private @Nullable TabButton currentTabButton() {
+   public @Nullable TabButton currentTabButton() {
       int index = this.currentTabIndex();
       return index != -1 ? (TabButton)this.tabButtons.get(index) : null;
+   }
+
+   public enum Align {
+      LEFT_OR_TOP(0.0F),
+      CENTER(0.5F),
+      RIGHT_OR_BOTTOM(1.0F);
+
+      private final float value;
+
+      Align(final float value) {
+         this.value = value;
+      }
    }
 
    public static class Builder {
@@ -237,28 +288,65 @@ public class TabNavigationBar extends AbstractContainerWidget {
       protected final int y;
       protected final int width;
       protected final int height;
+      protected final LinearLayout.Orientation orientation;
       protected final TabManager tabManager;
-      protected final List<TabButton> tabButtons = new ArrayList<>();
-      protected final List<Tab> tabs = new ArrayList<>();
+      protected final Map<TabNavigationBar.Align, TabNavigationBar.TabGroup> groups = new EnumMap<>(TabNavigationBar.Align.class);
+      protected int spacing;
+      protected Component name = CommonComponents.EMPTY;
 
-      protected Builder(final TabManager tabManager, final int x, final int y, final int width, final int height) {
+      protected Builder(final TabManager tabManager, final int x, final int y, final int width, final int height, final LinearLayout.Orientation orientation) {
          this.tabManager = tabManager;
          this.x = x;
          this.y = y;
          this.width = width;
          this.height = height;
+         this.orientation = orientation;
       }
 
-      public TabNavigationBar.Builder addTab(final TabButton button, final Tab tab) {
-         this.tabButtons.add(button);
-         this.tabs.add(tab);
+      public TabNavigationBar.Builder spacing(final int spacing) {
+         this.spacing = spacing;
          return this;
       }
 
+      public TabNavigationBar.Builder name(final Component name) {
+         this.name = name;
+         return this;
+      }
+
+      public TabNavigationBar.Builder addTabToGroup(final TabNavigationBar.Align align, final TabButton button, final Tab tab) {
+         this.group(align).add(button, tab);
+         return this;
+      }
+
+      public TabNavigationBar.Builder addTab(final TabButton button, final Tab tab) {
+         this.group(TabNavigationBar.Align.LEFT_OR_TOP).add(button, tab);
+         return this;
+      }
+
+      private TabNavigationBar.TabGroup group(final TabNavigationBar.Align align) {
+         return this.groups.computeIfAbsent(align, var0 -> new TabNavigationBar.TabGroup());
+      }
+
       public TabNavigationBar build() {
-         return new TabNavigationBar(
-            this.x, this.y, this.width, this.height, this.tabManager, ImmutableList.copyOf(this.tabButtons), ImmutableList.copyOf(this.tabs)
-         );
+         return new TabNavigationBar(this.x, this.y, this.width, this.height, this.orientation, this.spacing, this.tabManager, this.groups, this.name);
+      }
+   }
+
+   protected static final class TabGroup {
+      private final List<TabButton> tabButtons = new ArrayList<>();
+      private final List<Tab> tabs = new ArrayList<>();
+
+      public void add(final TabButton button, final Tab tab) {
+         this.tabButtons.add(button);
+         this.tabs.add(tab);
+      }
+
+      public List<TabButton> tabButtons() {
+         return Collections.unmodifiableList(this.tabButtons);
+      }
+
+      public List<Tab> tabs() {
+         return Collections.unmodifiableList(this.tabs);
       }
    }
 }

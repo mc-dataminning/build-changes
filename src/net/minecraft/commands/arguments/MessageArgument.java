@@ -25,7 +25,7 @@ import net.minecraft.server.network.FilteredText;
 import net.minecraft.server.permissions.Permissions;
 
 public class MessageArgument implements SignedArgument<MessageArgument.Message> {
-   private static final MessageArgument INSTANCE = new MessageArgument();
+   public static final MessageArgument INSTANCE = new MessageArgument();
    public static final SerializableArgument.Type<MessageArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
    private static final Collection<String> EXAMPLES = List.of("Hello world!", "foo", "@e", "Hello @p :)");
    private static final Dynamic2CommandExceptionType TOO_LONG = new Dynamic2CommandExceptionType(

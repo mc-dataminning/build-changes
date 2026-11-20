@@ -1,6 +1,11 @@
 package net.minecraft.world.entity;
 
+import java.util.List;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.dispenser.DispenseBehavior;
+import net.minecraft.core.dispenser.ShootProjectileDispenseBehavior;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -88,8 +93,20 @@ public class OminousItemSpawner extends Entity {
    }
 
    private Entity spawnProjectile(final ServerLevel level, final ProjectileItem projectileItem, final ItemStack item) {
-      ProjectileItem.DispenseConfig dispenseConfig = projectileItem.createDispenseConfig();
-      dispenseConfig.overrideDispenseEvent().ifPresent(event -> level.levelEvent(event, this.blockPosition(), 0));
+      Holder<List<DispenseBehavior>> holder = item.get(DataComponents.DISPENSE_BEHAVIOR);
+      List<DispenseBehavior> dispenseBehaviors = holder != null ? holder.value() : List.of();
+      ShootProjectileDispenseBehavior dispenseConfig = dispenseBehaviors.stream()
+         .filter(ShootProjectileDispenseBehavior.class::isInstance)
+         .map(ShootProjectileDispenseBehavior.class::cast)
+         .findFirst()
+         .orElse(ShootProjectileDispenseBehavior.DEFAULT);
+      Vec3 pos = this.position();
+      dispenseConfig.sound()
+         .ifPresent(
+            sound -> level.playSound(
+               null, pos.x(), pos.y(), pos.z(), sound.sound(), this.getSoundSource(), sound.volume().sample(this.random), sound.pitch().sample(this.random)
+            )
+         );
       Direction direction = Direction.DOWN;
       Projectile projectile = Projectile.spawnProjectileUsingShoot(
          projectileItem.asProjectile(level, this.position(), item, direction),

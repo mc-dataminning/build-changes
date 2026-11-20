@@ -36,6 +36,7 @@ import net.minecraft.world.entity.vehicle.VehicleEntity;
 import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.TypedEntityData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseRailBlock;
 import net.minecraft.world.level.block.Blocks;
@@ -121,28 +122,33 @@ public abstract class AbstractMinecart extends VehicleEntity {
       this.zo = z;
    }
 
-   public static <T extends AbstractMinecart> @Nullable T createMinecart(
+   public static @Nullable AbstractMinecart createMinecart(
       final Level level,
       final double x,
       final double y,
       final double z,
-      final EntityType<T> type,
       final EntitySpawnReason reason,
       final ItemStack itemStack,
       final @Nullable Player player
    ) {
-      T entity = (T)type.create(level, reason);
-      if (entity != null) {
+      EntityType<?> type = TypedEntityData.getType(itemStack);
+      if (type == null) {
+         return null;
+      }
+
+      if (type.create(level, reason) instanceof AbstractMinecart entity) {
          entity.setInitialPos(x, y, z);
-         EntityType.createDefaultStackConfig(level, itemStack, player).apply(entity);
+         EntityType.<AbstractMinecart>createDefaultStackConfig(level, itemStack, player).apply(entity);
          if (entity.getBehavior() instanceof NewMinecartBehavior newMinecartBehavior) {
             BlockPos currentPos = entity.getCurrentBlockPosOrRailBelow();
             BlockState currentState = level.getBlockState(currentPos);
             newMinecartBehavior.adjustToRails(currentPos, currentState, true);
          }
-      }
 
-      return entity;
+         return entity;
+      } else {
+         return null;
+      }
    }
 
    public MinecartBehavior getBehavior() {

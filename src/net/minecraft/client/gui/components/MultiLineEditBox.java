@@ -23,7 +23,7 @@ public class MultiLineEditBox extends AbstractTextAreaWidget {
    private final Font font;
    private final Component placeholder;
    private final MultilineTextField textField;
-   private final int textColor;
+   private int textColor;
    private final boolean textShadow;
    private final int cursorColor;
    private @Nullable IMEPreeditOverlay preeditOverlay;
@@ -272,6 +272,10 @@ public class MultiLineEditBox extends AbstractTextAreaWidget {
 
    public static MultiLineEditBox.Builder builder() {
       return new MultiLineEditBox.Builder();
+   }
+
+   public void setTextColor(final int color) {
+      this.textColor = color;
    }
 
    public static class Builder {

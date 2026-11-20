@@ -165,7 +165,8 @@ public class GameTestServer extends MinecraftServer {
          NO_SERVICES,
          LoggingLevelLoadListener.forDedicatedServer(),
          false,
-         new NotificationManager()
+         new NotificationManager(),
+         DEFAULT_MIN_REKEY_TIME_MS
       );
       this.testSelection = testSelection;
       this.repeatCount = repeatCount;

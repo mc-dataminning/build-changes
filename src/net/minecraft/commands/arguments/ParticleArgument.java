@@ -24,9 +24,9 @@ import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceKey;
 
 public class ParticleArgument implements SerializableArgument<ParticleOptions> {
-   private static final ParticleArgument INSTANCE = new ParticleArgument();
+   public static final ParticleArgument INSTANCE = new ParticleArgument();
    public static final SerializableArgument.Type<ParticleArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
-   private static final Collection<String> EXAMPLES = List.of("foo", "foo:bar", "particle{foo:bar}");
+   private static final Collection<String> EXAMPLES = List.of("angry_villager", "minecraft:angry_villager", "block{block_state:dirt}");
    public static final DynamicCommandExceptionType ERROR_UNKNOWN_PARTICLE = new DynamicCommandExceptionType(
       value -> Component.translatableEscape("particle.notFound", value)
    );

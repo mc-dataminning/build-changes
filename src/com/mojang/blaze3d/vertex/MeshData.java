@@ -57,15 +57,15 @@ public class MeshData implements AutoCloseable {
       int bakedFaceVertexSize = bakedFaceSize / 4;
       int quadCount = vertexCount / 4;
       int bakedFaceStartOffset = quadCount * faceSize + positionOffset;
+      long vertexBufferPointer = MemoryUtil.memAddress(vertexBuffer);
 
       for (int i = 0; i < quadCount; i++) {
-         int offset = i * faceSize + positionOffset;
-         int packedFacePos = vertexBuffer.getInt(offset);
-         int packedColor = vertexBuffer.getInt(offset + 4);
-         float fx = ((packedFacePos & 0xFF) - 7) / 15.0F;
-         float fy = ((packedFacePos >> 8 & 0xFF) - 7) / 15.0F;
-         float fz = ((packedFacePos >> 16 & 0xFF) - 7) / 15.0F;
-         int bakedQuadIndex = packedColor << 8 & 0xFF00 | packedFacePos >> 24 & 0xFF;
+         int faceOffset = i * faceSize + positionOffset;
+         int packedFacePos = MemoryUtil.memGetInt(vertexBufferPointer + faceOffset + 0L);
+         int bakedQuadIndex = MemoryUtil.memGetInt(vertexBufferPointer + faceOffset + 20L);
+         float fx = SectionBufferBuilder.unpackPositionChannel(packedFacePos >> 0);
+         float fy = SectionBufferBuilder.unpackPositionChannel(packedFacePos >> 8);
+         float fz = SectionBufferBuilder.unpackPositionChannel(packedFacePos >> 16);
          int firstPosOffset = bakedFaceStartOffset + bakedQuadIndex * bakedFaceSize;
          int secondPosOffset = firstPosOffset + bakedFaceVertexSize * 2;
          float x0 = vertexBuffer.getFloat(firstPosOffset + 0) + fx;

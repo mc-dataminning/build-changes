@@ -18,6 +18,8 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.component.predicates.DataComponentPredicate;
 import net.minecraft.core.component.predicates.DataComponentPredicates;
+import net.minecraft.core.dispenser.DispenseBehavior;
+import net.minecraft.core.dispenser.DispenseBehaviorTypes;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.gametest.framework.BuiltinTestFunctions;
@@ -180,6 +182,9 @@ public class BuiltInRegistries {
    );
    public static final Registry<MobEffect> MOB_EFFECT = BUILDER.registerSimple(
       Registries.MOB_EFFECT, BuiltinRegistryBuilder.staticFieldBootstrap(() -> MobEffects.SPEED)
+   );
+   public static final Registry<MapCodec<? extends DispenseBehavior>> DISPENSE_BEHAVIOR_TYPE = BUILDER.registerSimple(
+      Registries.DISPENSE_BEHAVIOR_TYPE, DispenseBehaviorTypes::bootstrap
    );
    public static final DefaultedRegistry<Block> BLOCK = BUILDER.registerDefaultedWithIntrusiveHolders(
       Registries.BLOCK, "air", BuiltinRegistryBuilder.staticFieldBootstrap(() -> Blocks.AIR)

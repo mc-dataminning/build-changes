@@ -1,6 +1,7 @@
 package net.minecraft.world.level.material;
 
 import java.util.Optional;
+import java.util.OptionalDouble;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -37,7 +38,10 @@ public abstract class Fluid {
    private final Holder.Reference<Fluid> builtInRegistryHolder = BuiltInRegistries.FLUID.createIntrusiveHolder(this);
    private final float drag;
    private final FogType fogType;
+   private final boolean useCameraPositionForFogDetection;
    private final float fallDistanceMultiplier;
+   private final OptionalDouble dripstoneTransferProbability;
+   private final boolean pathfindable;
 
    protected Fluid(final Fluid.Properties properties) {
       StateDefinition.Builder<Fluid, FluidState> builder = new StateDefinition.Builder<>(this);
@@ -51,7 +55,10 @@ public abstract class Fluid {
       this.randomTicking = properties.randomTicking;
       this.drag = properties.drag;
       this.fogType = properties.fogType;
+      this.useCameraPositionForFogDetection = properties.useCameraPositionForFogDetection;
       this.fallDistanceMultiplier = properties.fallDistanceMultiplier;
+      this.dripstoneTransferProbability = properties.dripstoneTransferProbability;
+      this.pathfindable = properties.pathfindable;
    }
 
    protected void createFluidStateDefinition(final StateDefinition.Builder<Fluid, FluidState> builder) {
@@ -159,6 +166,18 @@ public abstract class Fluid {
       return this.fogType;
    }
 
+   public boolean getUseCameraPositionForFogDetection() {
+      return this.useCameraPositionForFogDetection;
+   }
+
+   public OptionalDouble dripstoneTransferProbability() {
+      return this.dripstoneTransferProbability;
+   }
+
+   public boolean isPathfindable() {
+      return this.pathfindable;
+   }
+
    public static class Properties {
       private ResourceKey<Item> bucketItem = BlockItemIds.AIR.item();
       private Optional<SoundEvent> pickupSound = Optional.empty();
@@ -167,7 +186,10 @@ public abstract class Fluid {
       private boolean randomTicking;
       private float drag = 1.0F;
       private FogType fogType = FogType.NONE;
+      private boolean useCameraPositionForFogDetection;
       private float fallDistanceMultiplier;
+      private boolean pathfindable;
+      private OptionalDouble dripstoneTransferProbability = OptionalDouble.empty();
 
       private Properties() {
       }
@@ -211,8 +233,23 @@ public abstract class Fluid {
          return this;
       }
 
+      public Fluid.Properties useCameraPositionForFogDetection() {
+         this.useCameraPositionForFogDetection = true;
+         return this;
+      }
+
       public Fluid.Properties fallDistanceMultiplier(final float fallDistanceMultiplier) {
          this.fallDistanceMultiplier = fallDistanceMultiplier;
+         return this;
+      }
+
+      public Fluid.Properties dripstoneTransferProbability(final double dripstoneTransferProbability) {
+         this.dripstoneTransferProbability = OptionalDouble.of(dripstoneTransferProbability);
+         return this;
+      }
+
+      public Fluid.Properties pathfindable() {
+         this.pathfindable = true;
          return this;
       }
    }

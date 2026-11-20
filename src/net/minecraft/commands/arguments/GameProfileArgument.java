@@ -24,9 +24,9 @@ import net.minecraft.server.permissions.Permissions;
 import net.minecraft.server.players.NameAndId;
 
 public class GameProfileArgument implements SerializableArgument<GameProfileArgument.Result> {
-   private static final GameProfileArgument INSTANCE = new GameProfileArgument();
+   public static final GameProfileArgument INSTANCE = new GameProfileArgument();
    public static final SerializableArgument.Type<GameProfileArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
-   private static final Collection<String> EXAMPLES = List.of("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
+   private static final Collection<String> EXAMPLES = List.of("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@p");
    public static final SimpleCommandExceptionType ERROR_UNKNOWN_PLAYER = new SimpleCommandExceptionType(Component.translatable("argument.player.unknown"));
 
    private GameProfileArgument() {

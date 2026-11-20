@@ -27,7 +27,7 @@ public class SlotSourceArgument implements SerializableArgument<SlotSourceArgume
    private static final Collection<String> EXAMPLES = Util.join(ResourceOrIdArgument.EXAMPLES, SlotsArgument.EXAMPLES);
    private final SlotSourceArgument.RawArgument holderArgument;
 
-   private SlotSourceArgument(final ContextKeySet contextKeySet) {
+   public SlotSourceArgument(final ContextKeySet contextKeySet) {
       this.holderArgument = new SlotSourceArgument.RawArgument(contextKeySet);
    }
 

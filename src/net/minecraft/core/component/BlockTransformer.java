@@ -117,7 +117,8 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
 
    private static boolean playerHasBlockingItemUseIntent(final UseOnContext context) {
       Player player = context.getPlayer();
-      return context.getHand().equals(InteractionHand.MAIN_HAND)
+      return player != null
+         && context.getHand().equals(InteractionHand.MAIN_HAND)
          && player.getOffhandItem().has(DataComponents.BLOCKS_ATTACKS)
          && !player.isSecondaryUseActive();
    }

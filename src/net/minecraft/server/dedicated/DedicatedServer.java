@@ -59,6 +59,7 @@ import net.minecraft.server.rcon.thread.QueryThreadGs4;
 import net.minecraft.server.rcon.thread.RconThread;
 import net.minecraft.util.Mth;
 import net.minecraft.util.StringUtil;
+import net.minecraft.util.TimeUtil;
 import net.minecraft.util.Util;
 import net.minecraft.util.debug.DebugSubscriptions;
 import net.minecraft.util.debugchart.RemoteDebugSampleType;
@@ -115,7 +116,8 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
          services,
          LoggingLevelLoadListener.forDedicatedServer(),
          true,
-         notificationManager
+         notificationManager,
+         settings.getProperties().keyRotationPeriodSeconds * TimeUtil.MILLISECONDS_PER_SECOND
       );
       this.settings = settings;
       this.rconConsoleSource = new RconConsoleSource(this);
@@ -211,7 +213,6 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
          this.setPort(properties.serverPort);
       }
 
-      this.initializeKeyPair();
       LOGGER.info("Starting Minecraft server on {}:{}", this.getLocalIp().isEmpty() ? "*" : this.getLocalIp(), this.getPort());
 
       try {

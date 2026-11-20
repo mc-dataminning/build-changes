@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 import net.minecraft.network.chat.Component;
 
 public class UuidArgument implements SerializableArgument.ContextFree<UUID> {
-   private static final UuidArgument INSTANCE = new UuidArgument();
+   public static final UuidArgument INSTANCE = new UuidArgument();
    public static final SerializableArgument.Type<UuidArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
    public static final SimpleCommandExceptionType ERROR_INVALID_UUID = new SimpleCommandExceptionType(Component.translatable("argument.uuid.invalid"));
    private static final Collection<String> EXAMPLES = List.of("dd12be42-52a9-4a91-a8a1-11c01849e498");

@@ -68,7 +68,7 @@ public record PiercingWeapon(boolean dealsKnockback, boolean dismounts, Optional
       } else {
          return target instanceof Player targetPlayer && jabber instanceof Player jabbingPlayer && !jabbingPlayer.canHarmPlayer(targetPlayer)
             ? false
-            : !jabber.isPassengerOfSameVehicle(target);
+            : !jabber.isPartOfSameEntityGraph(target);
       }
    }
 

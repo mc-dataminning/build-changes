@@ -29,14 +29,13 @@ import net.minecraft.world.item.ItemProvider;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.slot.CountingModifier;
 import net.minecraft.world.item.slot.SlotCollection;
-import net.minecraft.world.item.slot.SlotSelector;
 import net.minecraft.world.item.slot.SlotSource;
+import net.minecraft.world.item.slot.TrackingSlotSelector;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import org.apache.commons.lang3.mutable.MutableInt;
 import org.jspecify.annotations.Nullable;
 
 public class ItemCommands {
@@ -75,10 +74,10 @@ public class ItemCommands {
 
       for (ArgProvider<ItemAccessor<?>> targetProvider : TARGET_PROVIDERS) {
          ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)root.then(
-                     wrapSetItems(Commands.literal("replace"), targetProvider, ItemCommands::replaceItemProvider)
+                     wrapSetItems(Commands.literal("replace"), targetProvider, ItemCommands::replaceItemProvider, true)
                   ))
-                  .then(wrapSetItems(Commands.literal("fill"), targetProvider, ItemCommands::fillItemProvider)))
-               .then(wrapSetItems(Commands.literal("override"), targetProvider, ItemCommands::overrideItemProvider)))
+                  .then(wrapSetItems(Commands.literal("fill"), targetProvider, ItemCommands::fillItemProvider, true)))
+               .then(wrapSetItems(Commands.literal("override"), targetProvider, ItemCommands::overrideItemProvider, false)))
             .then(
                targetProvider.wrap(
                   Commands.literal("modify"),
@@ -104,7 +103,10 @@ public class ItemCommands {
    }
 
    private static ArgumentBuilder<CommandSourceStack, ?> wrapSetItems(
-      final ArgumentBuilder<CommandSourceStack, ?> builder, final ArgProvider<ItemAccessor<?>> targetProvider, final ItemCommands.ItemDistributor distributor
+      final ArgumentBuilder<CommandSourceStack, ?> builder,
+      final ArgProvider<ItemAccessor<?>> targetProvider,
+      final ItemCommands.ItemDistributor distributor,
+      final boolean requireNonEmptySlotSource
    ) {
       return targetProvider.wrap(
          builder,
@@ -124,7 +126,11 @@ public class ItemCommands {
                                     SlotSourceArgument.getSlotSource(c, "slots"),
                                     distributor,
                                     getItems(
-                                       (CommandSourceStack)c.getSource(), sourceProvider.access(c), SlotSourceArgument.getSlotSource(c, "sourceSlots"), null
+                                       (CommandSourceStack)c.getSource(),
+                                       sourceProvider.access(c),
+                                       SlotSourceArgument.getSlotSource(c, "sourceSlots"),
+                                       requireNonEmptySlotSource,
+                                       null
                                     )
                                  )
                               ))
@@ -140,6 +146,7 @@ public class ItemCommands {
                                           (CommandSourceStack)c.getSource(),
                                           sourceProvider.access(c),
                                           SlotSourceArgument.getSlotSource(c, "sourceSlots"),
+                                          requireNonEmptySlotSource,
                                           LootModifierArgument.getLootModifier(c, "modifier")
                                        )
                                     )
@@ -201,8 +208,7 @@ public class ItemCommands {
       final ItemProvider items,
       final @Nullable ItemStack knownItem
    ) throws CommandSyntaxException {
-      MutableInt selectedCount = new MutableInt();
-      SlotSelector slotSelector = SlotSelector.tracking(selectedCount);
+      TrackingSlotSelector slotSelector = new TrackingSlotSelector();
       CommandResponseTracker<Target> tracker = CommandResponseTracker.create();
       accessor.setItems(source, slotSource.value(), (target, slots) -> {
          items.restart();
@@ -210,7 +216,7 @@ public class ItemCommands {
          tracker.track(target, count);
          return count;
       });
-      if (selectedCount.intValue() == 0) {
+      if (slotSelector.selectedCount() == 0) {
          throw (CommandSyntaxException)slotSource.name().map(ERROR_TARGET_INAPPLICABLE_SLOT::create).orElseGet(ERROR_TARGET_INAPPLICABLE_UNNAMED_SLOT::create);
       } else {
          return accessor.getReplaceSuccess(source, tracker, knownItem);
@@ -243,8 +249,7 @@ public class ItemCommands {
       final SlotSourceArgument.SlotResult slotSource,
       final ValidationWrapper<LootItemFunction> modifier
    ) throws CommandSyntaxException {
-      MutableInt selectedCount = new MutableInt();
-      SlotSelector slotSelector = SlotSelector.tracking(SlotSelector.NON_EMPTY_SLOTS, selectedCount);
+      TrackingSlotSelector slotSelector = new TrackingSlotSelector();
       CountingModifier countingModifier = new CountingModifier(applyModifier(source, modifier));
       CommandResponseTracker<Target> tracker = CommandResponseTracker.create();
       accessor.setItems(source, slotSource.value(), (target, slots) -> {
@@ -254,7 +259,7 @@ public class ItemCommands {
          tracker.track(target, count);
          return count;
       });
-      if (selectedCount.intValue() == 0) {
+      if (slotSelector.selectedCount() == 0) {
          throw (CommandSyntaxException)slotSource.name().map(ERROR_TARGET_INAPPLICABLE_SLOT::create).orElseGet(ERROR_TARGET_INAPPLICABLE_UNNAMED_SLOT::create);
       } else {
          return accessor.getModifySuccess(source, tracker);
@@ -265,11 +270,12 @@ public class ItemCommands {
       final CommandSourceStack source,
       final ItemAccessor<?> accessor,
       final SlotSourceArgument.SlotResult slotSource,
+      final boolean requireNonEmptySlotSource,
       final @Nullable ValidationWrapper<LootItemFunction> modifier
    ) throws CommandSyntaxException {
       SlotCollection slots = accessor.getSlots(source, slotSource.value());
       Collection<ItemStack> items = modifier != null ? slots.itemCopies().map(applyModifier(source, modifier)).toList() : slots.itemCopies().toList();
-      if (items.isEmpty()) {
+      if (requireNonEmptySlotSource && items.isEmpty()) {
          throw (CommandSyntaxException)slotSource.name().map(ERROR_SOURCE_INAPPLICABLE_SLOT::create).orElseGet(ERROR_SOURCE_INAPPLICABLE_UNNAMED_SLOT::create);
       } else {
          return items;

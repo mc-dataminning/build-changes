@@ -15,7 +15,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.scores.TeamColor;
 
 public class TeamColorArgument implements SerializableArgument.ContextFree<TeamColor> {
-   private static final TeamColorArgument INSTANCE = new TeamColorArgument();
+   public static final TeamColorArgument INSTANCE = new TeamColorArgument();
    public static final SerializableArgument.Type<TeamColorArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
    private static final Collection<String> EXAMPLES = List.of("red", "green");
    public static final DynamicCommandExceptionType ERROR_INVALID_VALUE = new DynamicCommandExceptionType(

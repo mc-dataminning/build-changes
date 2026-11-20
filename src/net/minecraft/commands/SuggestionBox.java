@@ -231,12 +231,12 @@ public class SuggestionBox extends CommandBox<SuggestionContext> {
 
       @Override
       protected SuggestionProvider<SuggestionContext> convert(final SuggestionProvider<CommandSourceStack> customSuggestions) {
-         return CustomSuggestion.unwrapOrThrow(customSuggestions).cast();
+         return CustomSuggestion.castOrThrow(customSuggestions).cast();
       }
 
       @Override
       protected ArgumentType<?> convert(final ArgumentType<?> type) {
-         return SerializableArgument.unwrapOrThrow(type);
+         return SerializableArgument.castOrThrow(type);
       }
    }
 }

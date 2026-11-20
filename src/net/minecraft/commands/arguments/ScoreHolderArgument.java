@@ -63,7 +63,7 @@ public class ScoreHolderArgument implements SerializableArgument<ScoreHolderArgu
    private static final SimpleCommandExceptionType ERROR_NO_RESULTS = new SimpleCommandExceptionType(Component.translatable("argument.scoreHolder.empty"));
    private final boolean multiple;
 
-   private ScoreHolderArgument(final boolean multiple) {
+   public ScoreHolderArgument(final boolean multiple) {
       this.multiple = multiple;
    }
 

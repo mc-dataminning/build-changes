@@ -81,7 +81,7 @@ public class TimeCommand {
       return (A)node.then(
             ((LiteralArgumentBuilder)Commands.literal("set")
                   .then(
-                     Commands.argument("time", TimeArgument.time())
+                     Commands.argument("time", TimeArgument.time(0))
                         .executes(c -> setTotalTicks((CommandSourceStack)c.getSource(), clockGetter.getClock(c), IntegerArgument.getInteger(c, "time")))
                   ))
                .then(
@@ -99,7 +99,7 @@ public class TimeCommand {
          .then(
             Commands.literal("add")
                .then(
-                  Commands.argument("time", TimeArgument.time(Integer.MIN_VALUE))
+                  Commands.argument("time", TimeArgument.unboundedTime())
                      .executes(c -> addTime((CommandSourceStack)c.getSource(), clockGetter.getClock(c), IntegerArgument.getInteger(c, "time")))
                )
          )

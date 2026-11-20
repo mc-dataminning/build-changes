@@ -230,17 +230,17 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "20d822c927fd9b3246f72b5af93b1e4f8e410d74",
-      "size": 42514822,
-      "url": "https://piston-data.mojang.com/v1/objects/20d822c927fd9b3246f72b5af93b1e4f8e410d74/client.jar"
+      "sha1": "fa80c90020e1060cf2cfb79dde9f148fef01114f",
+      "size": 42620504,
+      "url": "https://piston-data.mojang.com/v1/objects/fa80c90020e1060cf2cfb79dde9f148fef01114f/client.jar"
     },
     "server": {
-      "sha1": "5c4d729eca710d0a83b2d54a2cc94216b568385c",
-      "size": 63590880,
-      "url": "https://piston-data.mojang.com/v1/objects/5c4d729eca710d0a83b2d54a2cc94216b568385c/server.jar"
+      "sha1": "c969aafcecae7859d466147c6847d63d28d545eb",
+      "size": 63998075,
+      "url": "https://piston-data.mojang.com/v1/objects/c969aafcecae7859d466147c6847d63d28d545eb/server.jar"
     }
   },
-  "id": "26.4-snapshot-8",
+  "id": "26.4-snapshot-9",
   "javaVersion": {
     "component": "java-runtime-epsilon",
     "majorVersion": 25
@@ -367,13 +367,13 @@
     {
       "downloads": {
         "artifact": {
-          "path": "com/mojang/authlib/12.0.81/authlib-12.0.81.jar",
-          "sha1": "7fac0f563667040e4d25a0c7f8714f8241c5e377",
-          "size": 158375,
-          "url": "https://libraries.minecraft.net/com/mojang/authlib/12.0.81/authlib-12.0.81.jar"
+          "path": "com/mojang/authlib/12.0.82/authlib-12.0.82.jar",
+          "sha1": "93399b2668d84d171c07b8eb99bd118823285fc2",
+          "size": 167403,
+          "url": "https://libraries.minecraft.net/com/mojang/authlib/12.0.82/authlib-12.0.82.jar"
         }
       },
-      "name": "com.mojang:authlib:12.0.81"
+      "name": "com.mojang:authlib:12.0.82"
     },
     {
       "downloads": {
@@ -2014,7 +2014,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2026-11-10T14:20:05+00:00",
-  "time": "2026-11-10T14:20:05+00:00",
+  "releaseTime": "2026-11-17T12:58:45+00:00",
+  "time": "2026-11-17T12:58:45+00:00",
   "type": "snapshot"
 }

@@ -200,7 +200,7 @@ public abstract class PatrollingMonster extends Monster {
       private List<PatrollingMonster> findPatrolCompanions() {
          return this.mob
             .level()
-            .getEntitiesOfClass(PatrollingMonster.class, this.mob.getBoundingBox().inflate(16.0), mob -> mob.canJoinPatrol() && !mob.is(this.mob));
+            .getEntitiesOfClass(PatrollingMonster.class, this.mob.getBoundingBox().inflate(16.0), mob -> mob.canJoinPatrol() && mob != this.mob);
       }
 
       private boolean moveRandomly() {

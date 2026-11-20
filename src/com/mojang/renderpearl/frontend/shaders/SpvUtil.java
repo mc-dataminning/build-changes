@@ -82,4 +82,33 @@ public class SpvUtil {
          case FRAGMENT -> 4;
       };
    }
+
+   public static String validationErrorString(final int result) {
+      return switch (result) {
+         case -17 -> "SPV_ERROR_FNVAR";
+         case -16 -> "SPV_ERROR_WRONG_VERSION";
+         case -15 -> "SPV_ERROR_MISSING_EXTENSION";
+         case -14 -> "SPV_ERROR_INVALID_DATA";
+         case -13 -> "SPV_ERROR_INVALID_CAPABILITY";
+         case -12 -> "SPV_ERROR_INVALID_LAYOUT";
+         case -11 -> "SPV_ERROR_INVALID_CFG";
+         case -10 -> "SPV_ERROR_INVALID_ID";
+         case -9 -> "SPV_ERROR_INVALID_LOOKUP";
+         case -8 -> "SPV_ERROR_INVALID_DIAGNOSTIC";
+         case -7 -> "SPV_ERROR_INVALID_VALUE";
+         case -6 -> "SPV_ERROR_INVALID_TABLE";
+         case -5 -> "SPV_ERROR_INVALID_TEXT";
+         case -4 -> "SPV_ERROR_INVALID_BINARY";
+         case -3 -> "SPV_ERROR_INVALID_POINTER";
+         case -2 -> "SPV_ERROR_OUT_OF_MEMORY";
+         case -1 -> "SPV_ERROR_INTERNAL";
+         case 0 -> "SPV_SUCCESS";
+         case 1 -> "SPV_UNSUPPORTED";
+         case 2 -> "SPV_END_OF_STREAM";
+         case 3 -> "SPV_WARNING";
+         case 4 -> "SPV_FAILED_MATCH";
+         case 5 -> "SPV_REQUESTED_TERMINATION";
+         default -> "Unknown(" + result + ")";
+      };
+   }
 }

@@ -38,7 +38,7 @@ public class ResourceSelectorArgument implements SerializableArgument.ContextFre
    );
    private final ResourceKey<? extends Registry<?>> registryKey;
 
-   private ResourceSelectorArgument(final ResourceKey<? extends Registry<?>> registryKey) {
+   public ResourceSelectorArgument(final ResourceKey<? extends Registry<?>> registryKey) {
       this.registryKey = registryKey;
    }
 

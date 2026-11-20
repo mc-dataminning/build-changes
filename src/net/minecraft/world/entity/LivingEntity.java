@@ -1208,9 +1208,12 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
 
       float originalDamage = damage;
       ItemStack itemInUse = this.getUseItem();
-      float damageBlocked = this.applyItemBlocking(level, source, damage);
-      damage -= damageBlocked;
-      boolean blocked = damageBlocked > 0.0F;
+      Optional<Float> damageBlocked = this.applyItemBlocking(level, source, damage);
+      boolean blocked = damageBlocked.isPresent();
+      if (blocked) {
+         damage -= damageBlocked.get();
+      }
+
       if (source.is(DamageTypeTags.IS_FREEZING) && this.is(EntityTypeTags.FREEZE_HURTS_EXTRA_TYPES)) {
          damage *= 5.0F;
       }
@@ -1286,8 +1289,8 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
 
       if (this instanceof ServerPlayer serverPlayer) {
          CriteriaTriggers.ENTITY_HURT_PLAYER.trigger(serverPlayer, source, originalDamage, damage, blocked);
-         if (damageBlocked > 0.0F && damageBlocked < 3.4028235E37F) {
-            serverPlayer.awardStat(Stats.DAMAGE_BLOCKED_BY_SHIELD, Math.round(damageBlocked * 10.0F));
+         if (damageBlocked.isPresent() && damageBlocked.get() < 3.4028235E37F) {
+            serverPlayer.awardStat(Stats.DAMAGE_BLOCKED_BY_SHIELD, Math.round(damageBlocked.get() * 10.0F));
          }
       }
 
@@ -1316,20 +1319,16 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
       }
    }
 
-   public float applyItemBlocking(final ServerLevel level, final DamageSource source, final float damage) {
-      if (damage <= 0.0F) {
-         return 0.0F;
-      }
-
+   public Optional<Float> applyItemBlocking(final ServerLevel level, final DamageSource source, final float damage) {
       ItemStack blockingWith = this.getItemBlockingWith();
       if (blockingWith == null) {
-         return 0.0F;
+         return Optional.empty();
       }
 
       BlocksAttacks blocksAttacks = blockingWith.get(DataComponents.BLOCKS_ATTACKS);
       if (blocksAttacks != null && !blocksAttacks.bypassedBy().map(t -> t.contains(source.typeHolder())).orElse(false)) {
          if (source.getDirectEntity() instanceof AbstractArrow abstractArrow && abstractArrow.getPierceLevel() > 0) {
-            return 0.0F;
+            return Optional.empty();
          } else {
             Vec3 sourcePosition = source.getSourcePosition();
             double angle;
@@ -1342,16 +1341,25 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
                angle = (float) Math.PI;
             }
 
-            float damageBlocked = blocksAttacks.resolveBlockedDamage(source, damage, angle);
-            blocksAttacks.hurtBlockingItem(this.level(), blockingWith, this, this.getUsedItemHand(), damageBlocked);
-            if (damageBlocked > 0.0F && !source.is(DamageTypeTags.IS_PROJECTILE) && source.getDirectEntity() instanceof LivingEntity livingEntity) {
-               this.blockUsingItem(level, livingEntity, source, damage, damageBlocked >= damage);
+            ItemStack weapon = source.getWeaponItem();
+            if (weapon != null && weapon.is(ItemTags.KNOCKS_BACK_PLAYERS_EVEN_WITH_ZERO_DAMAGE)) {
+               return blocksAttacks.resolveBlockedDamage(source, 1.0F, angle).map(var0 -> 0.0F);
+            }
+
+            if (damage <= 0.0F) {
+               return Optional.empty();
+            }
+
+            Optional<Float> damageBlocked = blocksAttacks.resolveBlockedDamage(source, damage, angle);
+            blocksAttacks.hurtBlockingItem(this.level(), blockingWith, this, this.getUsedItemHand(), damageBlocked.orElse(0.0F));
+            if (damageBlocked.isPresent() && !source.is(DamageTypeTags.IS_PROJECTILE) && source.getDirectEntity() instanceof LivingEntity livingEntity) {
+               this.blockUsingItem(level, livingEntity, source, damage, damageBlocked.get() >= damage);
             }
 
             return damageBlocked;
          }
       } else {
-         return 0.0F;
+         return Optional.empty();
       }
    }
 
@@ -2171,13 +2179,13 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
 
    private void makeDrownParticles() {
       Vec3 movement = this.getDeltaMovement();
+      double baseY = this.getY() + this.getEyeHeight();
 
       for (int i = 0; i < 8; i++) {
          double offsetX = this.random.triangle(0.0, 1.0);
          double offsetY = this.random.triangle(0.0, 1.0);
          double offsetZ = this.random.triangle(0.0, 1.0);
-         this.level()
-            .addParticle(ParticleTypes.BUBBLE, this.getX() + offsetX, this.getY() + offsetY, this.getZ() + offsetZ, movement.x, movement.y, movement.z);
+         this.level().addParticle(ParticleTypes.BUBBLE, this.getX() + offsetX, baseY + offsetY, this.getZ() + offsetZ, movement.x, movement.y, movement.z);
       }
    }
 

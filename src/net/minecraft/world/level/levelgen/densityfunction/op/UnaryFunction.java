@@ -230,7 +230,19 @@ public record UnaryFunction(UnaryFunction.Type type, DensityFunction input) impl
 
       @Override
       public float sampleValue(final SamplerContext context, final int blockX, final int blockY, final int blockZ) {
-         return apply(this.input.sampleValue(context, blockX, blockY, blockZ));
+         // $VF: Couldn't be decompiled
+         // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+         //
+         // Bytecode:
+         // 00: aload 0
+         // 01: getfield net/minecraft/world/level/levelgen/densityfunction/op/UnaryFunction$SqueezeSampler.input Lnet/minecraft/world/level/levelgen/densityfunction/DensitySampler;
+         // 04: aload 1
+         // 05: iload 2
+         // 06: iload 3
+         // 07: iload 4
+         // 09: invokeinterface net/minecraft/world/level/levelgen/densityfunction/DensitySampler.sampleValue (Lnet/minecraft/world/level/levelgen/densityfunction/SamplerContext;III)F 5
+         // 0e: invokestatic net/minecraft/world/level/levelgen/densityfunction/op/UnaryFunction$SqueezeSampler.apply (F)F
+         // 11: freturn
       }
    }
 

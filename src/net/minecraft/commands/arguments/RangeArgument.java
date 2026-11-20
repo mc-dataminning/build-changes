@@ -21,7 +21,7 @@ public interface RangeArgument<T extends MinMaxBounds<?>> extends SerializableAr
    SerializableArgument.Type<? extends RangeArgument<T>> type();
 
    class Floats implements RangeArgument<MinMaxBounds.Doubles> {
-      private static final RangeArgument.Floats INSTANCE = new RangeArgument.Floats();
+      public static final RangeArgument.Floats INSTANCE = new RangeArgument.Floats();
       public static final SerializableArgument.Type<RangeArgument.Floats> TYPE = SerializableArgument.singletonType(INSTANCE);
       private static final Collection<String> EXAMPLES = List.of("0..5.2", "0", "-5.4", "-100.76..", "..100");
 
@@ -48,7 +48,7 @@ public interface RangeArgument<T extends MinMaxBounds<?>> extends SerializableAr
    }
 
    class Ints implements RangeArgument<MinMaxBounds.Ints> {
-      private static final RangeArgument.Ints INSTANCE = new RangeArgument.Ints();
+      public static final RangeArgument.Ints INSTANCE = new RangeArgument.Ints();
       public static final SerializableArgument.Type<RangeArgument.Ints> TYPE = SerializableArgument.singletonType(INSTANCE);
       private static final Collection<String> EXAMPLES = List.of("0..5", "0", "-5", "-100..", "..100");
 

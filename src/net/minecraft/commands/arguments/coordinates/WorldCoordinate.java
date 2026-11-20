@@ -9,14 +9,21 @@ public record WorldCoordinate(boolean relative, double value) {
    private static final char PREFIX_RELATIVE = '~';
    public static final SimpleCommandExceptionType ERROR_EXPECTED_DOUBLE = new SimpleCommandExceptionType(Component.translatable("argument.pos.missing.double"));
    public static final SimpleCommandExceptionType ERROR_EXPECTED_INT = new SimpleCommandExceptionType(Component.translatable("argument.pos.missing.int"));
+   public static final WorldCoordinate.Parser INT_PARSER = WorldCoordinate::parseInt;
+   public static final WorldCoordinate.Parser DOUBLE_PARSER_CENTER = reader -> parseDouble(reader, true);
+   public static final WorldCoordinate.Parser DOUBLE_PARSER_CORNER = reader -> parseDouble(reader, false);
 
    public double get(final double original) {
       return this.relative ? this.value + original : this.value;
    }
 
+   public static WorldCoordinate.Parser doubleParser(final boolean center) {
+      return center ? DOUBLE_PARSER_CENTER : DOUBLE_PARSER_CORNER;
+   }
+
    public static WorldCoordinate parseDouble(final StringReader reader, final boolean center) throws CommandSyntaxException {
       if (reader.canRead() && reader.peek() == '^') {
-         throw Vec3Argument.ERROR_MIXED_TYPE.createWithContext(reader);
+         throw WorldCoordinates.ERROR_MIXED_TYPE.createWithContext(reader);
       }
 
       if (!reader.canRead()) {
@@ -40,7 +47,7 @@ public record WorldCoordinate(boolean relative, double value) {
 
    public static WorldCoordinate parseInt(final StringReader reader) throws CommandSyntaxException {
       if (reader.canRead() && reader.peek() == '^') {
-         throw Vec3Argument.ERROR_MIXED_TYPE.createWithContext(reader);
+         throw WorldCoordinates.ERROR_MIXED_TYPE.createWithContext(reader);
       }
 
       if (!reader.canRead()) {
@@ -72,5 +79,10 @@ public record WorldCoordinate(boolean relative, double value) {
 
    public boolean isRelative() {
       return this.relative;
+   }
+
+   @FunctionalInterface
+   public interface Parser {
+      WorldCoordinate parse(StringReader reader) throws CommandSyntaxException;
    }
 }

@@ -30,6 +30,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.RegistrySynchronization;
 import net.minecraft.core.component.BlockTransformer;
+import net.minecraft.core.dispenser.DispenseBehavior;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.GameTestInstance;
@@ -151,7 +152,8 @@ public class RegistryDataLoader {
       new RegistryDataLoader.RegistryData<>(Registries.DECORATED_POT_PATTERN, DecoratedPotPattern.CODEC),
       new RegistryDataLoader.RegistryData<>(Registries.BLOCK_TRANSFORMER, BlockTransformer.DIRECT_CODEC),
       new RegistryDataLoader.RegistryData<>(Registries.BLOCK_STATE_PROVIDER, BlockStateProvider.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.BLOCK_SOUND_SET, BlockSoundSet.DIRECT_CODEC)
+      new RegistryDataLoader.RegistryData<>(Registries.BLOCK_SOUND_SET, BlockSoundSet.DIRECT_CODEC),
+      new RegistryDataLoader.RegistryData<>(Registries.DISPENSE_BEHAVIOR, DispenseBehavior.LIST_CODEC)
    );
    public static final List<RegistryDataLoader.RegistryData<?>> DIMENSION_REGISTRIES = List.of(
       new RegistryDataLoader.RegistryData<>(Registries.LEVEL_STEM, LevelStem.CODEC)
@@ -199,7 +201,8 @@ public class RegistryDataLoader {
       new RegistryDataLoader.RegistryData<>(Registries.DECORATED_POT_PATTERN, DecoratedPotPattern.CODEC),
       new RegistryDataLoader.RegistryData<>(Registries.BLOCK_TRANSFORMER, BlockTransformer.DIRECT_CODEC),
       new RegistryDataLoader.RegistryData<>(Registries.BLOCK_STATE_PROVIDER, BlockStateProvider.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.BLOCK_SOUND_SET, BlockSoundSet.DIRECT_CODEC)
+      new RegistryDataLoader.RegistryData<>(Registries.BLOCK_SOUND_SET, BlockSoundSet.DIRECT_CODEC),
+      new RegistryDataLoader.RegistryData<>(Registries.DISPENSE_BEHAVIOR, DispenseBehavior.LIST_CODEC)
    );
 
    public static Stream<ResourceKey<? extends Registry<?>>> allLoadableRegistries() {

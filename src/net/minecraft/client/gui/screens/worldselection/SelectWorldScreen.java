@@ -184,6 +184,13 @@ public class SelectWorldScreen extends Screen {
    }
 
    @Override
+   public void added() {
+      if (this.list != null) {
+         this.list.children().forEach(WorldSelectionList.Entry::reopen);
+      }
+   }
+
+   @Override
    public void removed() {
       if (this.list != null) {
          this.list.children().forEach(WorldSelectionList.Entry::close);

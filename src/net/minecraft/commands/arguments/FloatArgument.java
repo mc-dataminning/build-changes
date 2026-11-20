@@ -19,7 +19,7 @@ public class FloatArgument extends BrigadierWrapperArgument<Float, FloatArgument
    public static final SerializableArgument.Type<FloatArgument> TYPE = new SerializableArgument.Type<>(MAP_CODEC, STREAM_CODEC);
    private final MinMaxBounds.Bounds<Float> bounds;
 
-   private FloatArgument(final MinMaxBounds.Bounds<Float> bounds) {
+   public FloatArgument(final MinMaxBounds.Bounds<Float> bounds) {
       super(FloatArgumentType.floatArg(bounds.min().orElse(MIN), bounds.max().orElse(MAX)));
       this.bounds = bounds;
    }

@@ -224,7 +224,7 @@ public interface SuggestionContext extends ParseContext {
       return suggest(result, builder);
    }
 
-   static CompletableFuture<Suggestions> suggest2DCoordinates(
+   static CompletableFuture<Suggestions> suggestXZCoordinates(
       final String currentInput,
       final Collection<SuggestionContext.TextCoordinates> allSuggestions,
       final SuggestionsBuilder builder,

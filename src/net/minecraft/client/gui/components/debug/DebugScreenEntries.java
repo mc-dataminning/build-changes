@@ -23,6 +23,7 @@ public class DebugScreenEntries {
    public static final ResourceKey<DebugScreenEntry> LOOKING_AT_ENTITY_TAGS = key("looking_at_entity_tags");
    public static final ResourceKey<DebugScreenEntry> CHUNK_RENDER_STATS = key("chunk_render_stats");
    public static final ResourceKey<DebugScreenEntry> CHUNK_GENERATION_STATS = key("chunk_generation_stats");
+   public static final ResourceKey<DebugScreenEntry> CHUNK_SOURCE_STATS = key("chunk_source_stats");
    public static final ResourceKey<DebugScreenEntry> ENTITY_RENDER_STATS = key("entity_render_stats");
    public static final ResourceKey<DebugScreenEntry> PARTICLE_RENDER_STATS = key("particle_render_stats");
    public static final ResourceKey<DebugScreenEntry> CHUNK_SECTION_STATUS = key("chunk_section_status");
@@ -80,6 +81,7 @@ public class DebugScreenEntries {
       Registry.register(registry, LOOKING_AT_ENTITY_TAGS, new DebugEntryLookingAtEntityTags());
       Registry.register(registry, CHUNK_RENDER_STATS, new DebugEntryChunkRenderStats());
       Registry.register(registry, CHUNK_GENERATION_STATS, new DebugEntryChunkGeneration());
+      Registry.register(registry, CHUNK_SOURCE_STATS, new DebugEntryChunkSourceStats());
       Registry.register(registry, ENTITY_RENDER_STATS, new DebugEntryEntityRenderStats());
       Registry.register(registry, PARTICLE_RENDER_STATS, new DebugEntryParticleRenderStats());
       Registry.register(registry, CHUNK_SECTION_STATUS, new DebugEntryChunkSectionStatus());

@@ -69,8 +69,8 @@ public class ConfirmScreen extends Screen {
    }
 
    protected void addButtons(final LinearLayout buttonLayout) {
-      this.yesButton = buttonLayout.addChild(Button.builder(this.yesButtonComponent, button -> this.callback.accept(true)).build());
-      this.noButton = buttonLayout.addChild(Button.builder(this.noButtonComponent, button -> this.callback.accept(false)).build());
+      this.yesButton = buttonLayout.addChild(Button.builder(this.yesButtonComponent, var1 -> this.callback.accept(true)).build());
+      this.noButton = buttonLayout.addChild(Button.builder(this.noButtonComponent, var1 -> this.callback.accept(false)).build());
    }
 
    public void setDelay(final int delay) {
@@ -95,11 +95,15 @@ public class ConfirmScreen extends Screen {
 
    @Override
    public boolean keyPressed(final KeyEvent event) {
-      if (this.delayTicker <= 0 && event.isEscape()) {
+      if (this.hasPressedEscape(event)) {
          this.callback.accept(false);
          return true;
       } else {
          return super.keyPressed(event);
       }
+   }
+
+   public boolean hasPressedEscape(final KeyEvent event) {
+      return this.delayTicker <= 0 && event.isEscape();
    }
 }

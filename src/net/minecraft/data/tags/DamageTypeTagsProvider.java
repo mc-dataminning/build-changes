@@ -210,7 +210,8 @@ public class DamageTypeTagsProvider extends TagsProvider<DamageType> {
          )
          .addTag(DamageTypeTags.IS_PLAYER_ATTACK);
       this.tag(DamageTypeTags.IS_MACE_SMASH).add(DamageTypes.MACE_SMASH);
-      this.tag(DamageTypeTags.BYPASSES_COOLDOWN);
+      this.tag(DamageTypeTags.BYPASSES_COOLDOWN).add(DamageTypes.GENERIC_KILL);
+      this.tag(DamageTypeTags.CANNOT_HURT_PERCHING_ENDER_DRAGON).add(DamageTypes.ARROW, DamageTypes.THROWN, DamageTypes.TRIDENT, DamageTypes.WIND_CHARGE);
       this.tag(DamageTypeTags.NO_HURT_SOUND);
    }
 }

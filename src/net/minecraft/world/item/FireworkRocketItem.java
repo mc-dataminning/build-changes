@@ -2,7 +2,6 @@ package net.minecraft.world.item;
 
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
-import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -77,20 +76,5 @@ public class FireworkRocketItem extends Item implements ProjectileItem {
    @Override
    public Projectile asProjectile(final Level level, final Position position, final ItemStack itemStack, final Direction direction) {
       return new FireworkRocketEntity(level, itemStack.copyWithCount(1), position.x(), position.y(), position.z(), true);
-   }
-
-   @Override
-   public ProjectileItem.DispenseConfig createDispenseConfig() {
-      return ProjectileItem.DispenseConfig.builder()
-         .positionFunction(FireworkRocketItem::getEntityJustOutsideOfBlockPos)
-         .uncertainty(1.0F)
-         .power(0.5F)
-         .overrideDispenseEvent(1004)
-         .build();
-   }
-
-   private static Vec3 getEntityJustOutsideOfBlockPos(final BlockSource source, final Direction direction) {
-      return source.center()
-         .add(direction.getStepX() * 0.5000099999997474, direction.getStepY() * 0.5000099999997474, direction.getStepZ() * 0.5000099999997474);
    }
 }

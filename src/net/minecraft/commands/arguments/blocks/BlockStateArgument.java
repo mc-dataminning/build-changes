@@ -17,9 +17,9 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
 
 public class BlockStateArgument implements SerializableArgument<BlockInput> {
-   private static final BlockStateArgument INSTANCE = new BlockStateArgument();
+   public static final BlockStateArgument INSTANCE = new BlockStateArgument();
    public static final SerializableArgument.Type<BlockStateArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
-   private static final Collection<String> EXAMPLES = List.of("stone", "minecraft:stone", "stone[foo=bar]", "foo{bar=baz}");
+   private static final Collection<String> EXAMPLES = List.of("stone", "minecraft:stone", "wheat[age=0]", "stone{bar:baz}");
 
    private BlockStateArgument() {
    }

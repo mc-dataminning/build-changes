@@ -142,7 +142,26 @@ public record MultifaceGrowthFeature(
    }
 
    private List<Direction> getShuffledDirectionsExcept(final RandomSource random, final Direction excludeDirection) {
-      return Util.toShuffledList(this.validDirections().stream().filter(direction -> direction != excludeDirection), random);
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.OutOfMemoryError: Java heap space
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.getAllVarVersions(StackVarsProcessor.java:1017)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.iterateExprent(StackVarsProcessor.java:453)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.iterateStatements(StackVarsProcessor.java:192)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.simplifyStackVars(StackVarsProcessor.java:74)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.simplifyStackVars(StackVarsProcessor.java:43)
+      //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:238)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: invokevirtual net/minecraft/world/level/levelgen/feature/MultifaceGrowthFeature.validDirections ()Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+      // 04: invokevirtual it/unimi/dsi/fastutil/objects/ObjectArrayList.stream ()Ljava/util/stream/Stream;
+      // 07: aload 2
+      // 08: invokedynamic test (Lnet/minecraft/core/Direction;)Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, net/minecraft/world/level/levelgen/feature/MultifaceGrowthFeature.lambda$getShuffledDirectionsExcept$0 (Lnet/minecraft/core/Direction;Lnet/minecraft/core/Direction;)Z, (Lnet/minecraft/core/Direction;)Z ]
+      // 0d: invokeinterface java/util/stream/Stream.filter (Ljava/util/function/Predicate;)Ljava/util/stream/Stream; 2
+      // 12: aload 1
+      // 13: invokestatic net/minecraft/util/Util.toShuffledList (Ljava/util/stream/Stream;Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+      // 16: areturn
    }
 
    private List<Direction> getShuffledDirections(final RandomSource random) {

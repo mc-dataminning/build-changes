@@ -20,7 +20,10 @@ public class Fluids {
             .explosionResistance(100.0F)
             .drag(0.8F)
             .fogType(FogType.WATER)
+            .useCameraPositionForFogDetection()
             .fallDistanceMultiplier(0.0F)
+            .dripstoneTransferProbability(0.17578125)
+            .pathfindable()
       )
    );
    public static final FlowingFluid LAVA = register(
@@ -35,6 +38,7 @@ public class Fluids {
             .drag(0.5F)
             .fogType(FogType.LAVA)
             .fallDistanceMultiplier(0.5F)
+            .dripstoneTransferProbability(0.05859375)
       )
    );
 

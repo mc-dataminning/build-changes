@@ -13,13 +13,17 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
 import java.util.BitSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import net.minecraft.CrashReport;
 import net.minecraft.CrashReportCategory;
 import net.minecraft.ReportedException;
+import net.minecraft.util.datafix.schemas.NamespacedSchema;
 
 public class ExtraDataFixUtils {
    public static Dynamic<?> fixBlockPos(final Dynamic<?> pos) {
@@ -55,14 +59,14 @@ public class ExtraDataFixUtils {
    }
 
    private static <A, B> TypeRewriteRule typePatcher(final Type<A> inputEntityType, final Type<B> outputEntityType) {
-      RewriteResult<A, B> view = RewriteResult.create(View.create("Patcher", inputEntityType, outputEntityType, ops -> a -> {
+      RewriteResult<A, B> view = RewriteResult.create(View.create("Patcher", inputEntityType, outputEntityType, var0 -> var0x -> {
          throw new UnsupportedOperationException();
       }), new BitSet());
       return TypeRewriteRule.everywhere(TypeRewriteRule.ifSame(inputEntityType, view), PointFreeRule.nop(), true, true);
    }
 
    @SafeVarargs
-   public static <T> Function<Typed<?>, Typed<?>> chainAllFilters(final Function<Typed<?>, Typed<?>>... fixers) {
+   public static Function<Typed<?>, Typed<?>> chainAllFilters(final Function<Typed<?>, Typed<?>>... fixers) {
       return typed -> {
          for (Function<Typed<?>, Typed<?>> fixer : fixers) {
             typed = fixer.apply(typed);
@@ -77,7 +81,7 @@ public class ExtraDataFixUtils {
    }
 
    public static Optional<String> getPlainTranslationKey(final Dynamic<?> textComponent) {
-      return textComponent.getMapValues().result().filter(fields -> fields.size() == 1).flatMap(fields -> textComponent.get("translate").asString().result());
+      return textComponent.getMapValues().result().filter(fields -> fields.size() == 1).flatMap(var1 -> textComponent.get("translate").asString().result());
    }
 
    public static String dyeColorIdToName(final int id) {
@@ -125,6 +129,66 @@ public class ExtraDataFixUtils {
          category.setDetail("Data", dynamic);
          category.setDetail("Type", type);
          throw new ReportedException(report);
+      }
+   }
+
+   public static <T> Dynamic<T> fixComponentsIds(
+      Dynamic<T> remainder, final ExtraDataFixUtils.ComponentIdManipulator manipulator, final boolean renameValuesInRemainder
+   ) {
+      remainder = remainder.update("minecraft:tooltip_display", tooltipDisplay -> fixComponentIdsInTooltipDisplay(tooltipDisplay, manipulator));
+      return fixRemovedComponentIds(remainder, manipulator, renameValuesInRemainder);
+   }
+
+   private static <T> Dynamic<T> fixComponentIdsInTooltipDisplay(final Dynamic<T> tooltipDisplay, final ExtraDataFixUtils.ComponentIdManipulator manipulator) {
+      return tooltipDisplay.update(
+         "hidden_components",
+         hiddenComponents -> (Dynamic)DataFixUtils.orElse(
+            hiddenComponents.asStreamOpt().result().map(stream -> hiddenComponents.createList(stream.flatMap(id -> {
+               Optional<String> maybeId = id.asString().result();
+               return maybeId.isPresent() ? manipulator.apply(NamespacedSchema.ensureNamespaced(maybeId.get())).map(id::createString) : Stream.of(id);
+            }))), hiddenComponents
+         )
+      );
+   }
+
+   private static <T> Dynamic<T> fixRemovedComponentIds(
+      final Dynamic<T> remainder, final ExtraDataFixUtils.ComponentIdManipulator manipulator, final boolean renameValuesInRemainder
+   ) {
+      Optional<Map<Dynamic<T>, Dynamic<T>>> maybeRemainderMap = remainder.getMapValues().result();
+      if (maybeRemainderMap.isPresent()) {
+         Map<Dynamic<T>, Dynamic<T>> newRemainderMap = new HashMap<>();
+         maybeRemainderMap.get().forEach((key, value) -> {
+            Optional<String> maybeStringKey = key.asString().result();
+            if (maybeStringKey.isPresent()) {
+               String stringKey = maybeStringKey.get();
+               if (stringKey.startsWith("!")) {
+                  String componentId = stringKey.substring(1);
+                  manipulator.apply(NamespacedSchema.ensureNamespaced(componentId)).forEach(newId -> newRemainderMap.put(key.createString("!" + newId), value));
+               } else if (renameValuesInRemainder) {
+                  manipulator.apply(NamespacedSchema.ensureNamespaced(stringKey)).forEach(newId -> newRemainderMap.put(key.createString(newId), value));
+               } else {
+                  newRemainderMap.put((Dynamic<T>)key, (Dynamic<T>)value);
+               }
+            } else {
+               newRemainderMap.put((Dynamic<T>)key, (Dynamic<T>)value);
+            }
+         });
+         return remainder.createMap(newRemainderMap);
+      } else {
+         return remainder;
+      }
+   }
+
+   @FunctionalInterface
+   public interface ComponentIdManipulator {
+      Stream<String> apply(String componentName);
+
+      static ExtraDataFixUtils.ComponentIdManipulator rename(final String from, final String to) {
+         return name -> name.equals(from) ? Stream.of(to) : Stream.of(name);
+      }
+
+      static ExtraDataFixUtils.ComponentIdManipulator remove(final String id) {
+         return name -> name.equals(id) ? Stream.empty() : Stream.of(name);
       }
    }
 }

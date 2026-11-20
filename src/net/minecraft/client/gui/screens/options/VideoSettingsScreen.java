@@ -64,10 +64,11 @@ public class VideoSettingsScreen extends OptionsSubScreen {
          options.menuBackgroundBlurriness(),
          options.cloudRange(),
          options.cutoutLeaves(),
-         options.improvedTransparency(),
+         options.weatherRadius(),
          options.textureFiltering(),
          options.maxAnisotropyBit(),
-         options.weatherRadius()
+         options.improvedFog(),
+         options.improvedTransparency()
       };
    }
 

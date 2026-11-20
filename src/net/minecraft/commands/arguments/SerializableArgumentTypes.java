@@ -48,6 +48,7 @@ public class SerializableArgumentTypes {
       Registry.register(registry, "function", FunctionArgument.TYPE);
       Registry.register(registry, "game_profile", GameProfileArgument.TYPE);
       Registry.register(registry, "gamemode", GameModeArgument.TYPE);
+      Registry.register(registry, "greedy_string", StringArgument.Greedy.TYPE);
       Registry.register(registry, "heightmap", HeightmapTypeArgument.TYPE);
       Registry.register(registry, "hex_color", HexColorArgument.TYPE);
       Registry.register(registry, "int_range", RangeArgument.Ints.TYPE);
@@ -69,6 +70,7 @@ public class SerializableArgumentTypes {
       Registry.register(registry, "operation", OperationArgument.TYPE);
       Registry.register(registry, "particle", ParticleArgument.TYPE);
       Registry.register(registry, "pattern", PatternStringArgument.TYPE);
+      Registry.register(registry, "quoted_string", StringArgument.Quoted.TYPE);
       Registry.register(registry, "resource", ResourceArgument.TYPE);
       Registry.register(registry, "resource_location", IdentifierArgument.TYPE);
       Registry.register(registry, "resource_or_tag", ResourceOrTagArgument.TYPE);
@@ -77,7 +79,6 @@ public class SerializableArgumentTypes {
       Registry.register(registry, "score_holder", ScoreHolderArgument.TYPE);
       Registry.register(registry, "scoreboard_slot", ScoreboardSlotArgument.TYPE);
       Registry.register(registry, "slot_source", SlotSourceArgument.TYPE);
-      Registry.register(registry, "string", StringArgument.TYPE);
       Registry.register(registry, "style", StyleArgument.TYPE);
       Registry.register(registry, "swing_animation", SwingAnimationArgument.TYPE);
       Registry.register(registry, "swizzle", SwizzleArgument.TYPE);
@@ -89,5 +90,6 @@ public class SerializableArgumentTypes {
       Registry.register(registry, "uuid", UuidArgument.TYPE);
       Registry.register(registry, "vec2", Vec2Argument.TYPE);
       Registry.register(registry, "vec3", Vec3Argument.TYPE);
+      Registry.register(registry, "word", StringArgument.Word.TYPE);
    }
 }

@@ -20,8 +20,7 @@ public class BindGroupLayouts {
    public static final BindGroupLayout SAMPLER1 = BindGroupLayout.builder().withUniform("Sampler1", UniformType.COMBINED_IMAGE_SAMPLER).build();
    public static final BindGroupLayout SAMPLER2 = BindGroupLayout.builder().withUniform("Sampler2", UniformType.COMBINED_IMAGE_SAMPLER).build();
    public static final BindGroupLayout SKY_SAMPLER = BindGroupLayout.builder().withUniform("SkySampler", UniformType.COMBINED_IMAGE_SAMPLER).build();
-   public static final BindGroupLayout SKY_CLOUDS_SAMPLER = BindGroupLayout.builder()
-      .withUniform("SkySampler", UniformType.COMBINED_IMAGE_SAMPLER)
+   public static final BindGroupLayout CLOUDS_SAMPLER = BindGroupLayout.builder()
       .withUniform("CloudsSampler", UniformType.COMBINED_IMAGE_SAMPLER)
       .withUniform("CloudsDepthSampler", UniformType.COMBINED_IMAGE_SAMPLER)
       .build();

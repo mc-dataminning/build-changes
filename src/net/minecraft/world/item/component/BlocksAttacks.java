@@ -124,14 +124,14 @@ public record BlocksAttacks(
       return Math.round(this.blockDelaySeconds * 20.0F);
    }
 
-   public float resolveBlockedDamage(final DamageSource source, final float dealtDamage, final double angle) {
+   public Optional<Float> resolveBlockedDamage(final DamageSource source, final float dealtDamage, final double angle) {
       float blockedDamage = 0.0F;
 
       for (BlocksAttacks.DamageReduction reduction : this.damageReductions) {
          blockedDamage += reduction.resolve(source, dealtDamage, angle);
       }
 
-      return Math.clamp(blockedDamage, 0.0F, dealtDamage);
+      return blockedDamage > 0.0F ? Optional.of(Math.min(blockedDamage, dealtDamage)) : Optional.empty();
    }
 
    public record DamageReduction(float horizontalBlockingAngle, Optional<HolderSet<DamageType>> type, float base, float factor) {

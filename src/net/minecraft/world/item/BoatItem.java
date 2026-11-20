@@ -11,6 +11,7 @@ import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
+import net.minecraft.world.item.component.TypedEntityData;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -20,11 +21,8 @@ import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 public class BoatItem extends Item {
-   private final EntityType<? extends AbstractBoat> entityType;
-
-   public BoatItem(final EntityType<? extends AbstractBoat> entityType, final Item.Properties properties) {
+   public BoatItem(final Item.Properties properties) {
       super(properties);
-      this.entityType = entityType;
    }
 
    @Override
@@ -74,15 +72,21 @@ public class BoatItem extends Item {
    }
 
    private @Nullable AbstractBoat getBoat(final Level level, final HitResult hitResult, final ItemStack itemStack, final Player player) {
-      AbstractBoat boat = this.entityType.create(level, EntitySpawnReason.SPAWN_ITEM_USE);
-      if (boat != null) {
+      EntityType<?> entityType = TypedEntityData.getType(itemStack);
+      if (entityType == null) {
+         return null;
+      }
+
+      if (entityType.create(level, EntitySpawnReason.SPAWN_ITEM_USE) instanceof AbstractBoat boat) {
          Vec3 location = hitResult.getLocation();
          boat.setInitialPos(location.x, location.y, location.z);
          if (level instanceof ServerLevel serverLevel) {
             EntityType.<AbstractBoat>createDefaultStackConfig(serverLevel, itemStack, player).apply(boat);
          }
-      }
 
-      return boat;
+         return boat;
+      } else {
+         return null;
+      }
    }
 }

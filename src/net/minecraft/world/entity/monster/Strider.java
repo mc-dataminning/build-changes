@@ -69,6 +69,8 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.pathfinder.PathFinder;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -129,6 +131,18 @@ public class Strider extends Animal implements ItemSteerable {
       super.defineSynchedData(entityData);
       entityData.define(DATA_BOOST_TIME, 0);
       entityData.define(DATA_SUFFOCATING, false);
+   }
+
+   @Override
+   protected void addAdditionalSaveData(final ValueOutput output) {
+      super.addAdditionalSaveData(output);
+      this.steering.save(output);
+   }
+
+   @Override
+   protected void readAdditionalSaveData(final ValueInput input) {
+      super.readAdditionalSaveData(input);
+      this.steering.load(input);
    }
 
    @Override

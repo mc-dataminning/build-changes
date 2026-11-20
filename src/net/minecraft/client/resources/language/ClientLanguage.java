@@ -7,10 +7,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import net.minecraft.locale.DeprecatedTranslationsInfo;
 import net.minecraft.locale.Language;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.resources.Identifier;
+import net.minecraft.server.packs.repository.KnownPack;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.FormattedCharSequence;
@@ -18,6 +20,7 @@ import org.slf4j.Logger;
 
 public class ClientLanguage extends Language {
    private static final Logger LOGGER = LogUtils.getLogger();
+   private static final Set<String> NON_REPLACEABLE_PREFIXES = Set.of("menu.custom_options", "menu.custom_screen_info");
    private final Map<String, String> storage;
    private final boolean defaultRightToLeft;
 
@@ -54,7 +57,14 @@ public class ClientLanguage extends Language {
    private static void appendFrom(final String languageCode, final List<Resource> resources, final Map<String, String> translations) {
       for (Resource resource : resources) {
          try (InputStream inputStream = resource.open()) {
-            Language.loadFromJson(inputStream, translations::put);
+            boolean isBuiltIn = resource.knownPackInfo().map(KnownPack::isVanilla).orElse(false);
+            Language.loadFromJson(inputStream, (key, value) -> {
+               if (!isBuiltIn && !NON_REPLACEABLE_PREFIXES.stream().noneMatch(key::startsWith)) {
+                  LOGGER.warn("Rejected language key {} from pack {} - this key cannot be replaced", key, resource.sourcePackId());
+               } else {
+                  translations.put(key, value);
+               }
+            });
          } catch (IOException e) {
             LOGGER.warn("Failed to load translations for {} from pack {}", new Object[]{languageCode, resource.sourcePackId(), e});
          }

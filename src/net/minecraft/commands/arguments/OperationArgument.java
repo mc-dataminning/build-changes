@@ -16,7 +16,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.scores.ScoreAccess;
 
 public class OperationArgument implements SerializableArgument.ContextFree<OperationArgument.Operation> {
-   private static final OperationArgument INSTANCE = new OperationArgument();
+   public static final OperationArgument INSTANCE = new OperationArgument();
    public static final SerializableArgument.Type<OperationArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
    private static final List<String> VALUES = List.of("=", "+=", "-=", "*=", "/=", "%=", "<", ">", "><");
    private static final SimpleCommandExceptionType ERROR_INVALID_OPERATION = new SimpleCommandExceptionType(

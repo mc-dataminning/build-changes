@@ -14,9 +14,9 @@ import net.minecraft.commands.arguments.SerializableArgument;
 import net.minecraft.commands.suggestions.SuggestionContext;
 
 public class ItemArgument implements SerializableArgument<ItemInput> {
-   private static final ItemArgument INSTANCE = new ItemArgument();
+   public static final ItemArgument INSTANCE = new ItemArgument();
    public static final SerializableArgument.Type<ItemArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
-   private static final Collection<String> EXAMPLES = List.of("stick", "minecraft:stick", "stick{foo=bar}");
+   private static final Collection<String> EXAMPLES = List.of("stick", "minecraft:stick", "stick[damage=0]");
 
    private ItemArgument() {
    }

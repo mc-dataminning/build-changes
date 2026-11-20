@@ -35,23 +35,13 @@ public class InventoryScreen extends AbstractRecipeBookScreen<InventoryMenu> {
    }
 
    @Override
-   protected void init() {
-      if (this.minecraft.player.hasInfiniteMaterials()) {
-         this.minecraft
-            .gui
-            .setScreen(
-               new CreativeModeInventoryScreen(
-                  this.minecraft.player, this.minecraft.player.connection.enabledFeatures(), this.minecraft.options.operatorItemsTab().get()
-               )
-            );
-      } else {
-         super.init();
-      }
+   protected ScreenPosition getRecipeBookButtonPosition() {
+      return new ScreenPosition(this.leftPos + 104, this.height / 2 - 22);
    }
 
    @Override
-   protected ScreenPosition getRecipeBookButtonPosition() {
-      return new ScreenPosition(this.leftPos + 104, this.height / 2 - 22);
+   protected int getRecipeBookButtonTabOrderGroup() {
+      return 9;
    }
 
    @Override

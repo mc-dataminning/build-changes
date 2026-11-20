@@ -113,11 +113,11 @@ public class TitleCommand {
                   .then(
                      Commands.literal("times")
                         .then(
-                           Commands.argument("fadeIn", TimeArgument.time())
+                           Commands.argument("fadeIn", TimeArgument.time(0))
                               .then(
-                                 Commands.argument("stay", TimeArgument.time())
+                                 Commands.argument("stay", TimeArgument.time(0))
                                     .then(
-                                       Commands.argument("fadeOut", TimeArgument.time())
+                                       Commands.argument("fadeOut", TimeArgument.time(0))
                                           .executes(
                                              c -> setTimes(
                                                 (CommandSourceStack)c.getSource(),

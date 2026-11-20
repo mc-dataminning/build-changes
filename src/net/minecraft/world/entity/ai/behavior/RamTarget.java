@@ -85,8 +85,8 @@ public class RamTarget extends Behavior<Goat> {
          float speedBoostPower = 0.25F * (movementSpeedLevel - movementSlowdownLevel);
          float speedFactor = Math.clamp(body.getSpeed() * 1.65F, 0.2F, 3.0F) + speedBoostPower;
          DamageSource source = level.damageSources().mobAttack(body);
-         float blockedDamage = ramTarget.applyItemBlocking(level, source, damage);
-         float blockingFactor = blockedDamage > 0.0F ? 0.5F : 1.0F;
+         Optional<Float> blockedDamage = ramTarget.applyItemBlocking(level, source, damage);
+         float blockingFactor = blockedDamage.isPresent() ? 0.5F : 1.0F;
          ramTarget.knockback(
             blockingFactor * speedFactor * this.getKnockbackForce.applyAsDouble(body), this.ramDirection.x(), this.ramDirection.z(), source, damage
          );

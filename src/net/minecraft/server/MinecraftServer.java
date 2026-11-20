@@ -17,7 +17,7 @@ import java.net.Proxy;
 import java.nio.file.FileStore;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.security.KeyPair;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -107,8 +107,6 @@ import net.minecraft.server.players.ServerOpListEntry;
 import net.minecraft.server.players.UserWhiteList;
 import net.minecraft.server.waypoints.ServerWaypointManager;
 import net.minecraft.tags.TagLoader;
-import net.minecraft.util.Crypt;
-import net.minecraft.util.CryptException;
 import net.minecraft.util.FileUtil;
 import net.minecraft.util.ModCheck;
 import net.minecraft.util.Mth;
@@ -117,6 +115,7 @@ import net.minecraft.util.PngInfo;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.Util;
+import net.minecraft.util.crypto.SessionKeyExchange;
 import net.minecraft.util.debug.ServerDebugSubscribers;
 import net.minecraft.util.debugchart.SampleLogger;
 import net.minecraft.util.debugchart.TpsDebugDimensions;
@@ -202,6 +201,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
    private static final int MAX_STATUS_PLAYER_SAMPLE = 12;
    public static final int SPAWN_POSITION_SEARCH_RADIUS = 5;
    private static final int SERVER_ACTIVITY_MONITOR_SECONDS_BETWEEN_NOTIFICATIONS = 30;
+   protected static final long DEFAULT_MIN_REKEY_TIME_MS = 60L * TimeUtil.MILLISECONDS_PER_SECOND;
    private static final int AUTOSAVE_INTERVAL = 6000;
    private static final int MIMINUM_AUTOSAVE_TICKS = 100;
    private static final int MAX_TICK_LATENCY = 3;
@@ -245,7 +245,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
    private int playerIdleTimeout;
    private final long[] tickTimesNanos = new long[100];
    private long aggregatedTickTimesNanos = 0L;
-   private @Nullable KeyPair keyPair;
+   private final SessionKeyExchange.ServerSideFactory connectionPeerFactory;
    private @Nullable GameProfile singleplayerProfile;
    private boolean isDemo;
    private volatile boolean isReady;
@@ -315,7 +315,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
       final Services services,
       final LevelLoadListener levelLoadListener,
       final boolean propagatesCrashes,
-      final NotificationManager notificationManager
+      final NotificationManager notificationManager,
+      final long minRekeyTimeMs
    ) {
       super("Server", propagatesCrashes);
       this.registries = worldStem.registries();
@@ -327,6 +328,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
       this.worldData = worldStem.worldDataAndGenSettings().data();
       this.worldGenSettings = worldStem.worldDataAndGenSettings().genSettings();
       this.savedDataStorage.set(WorldGenSettings.TYPE, this.worldGenSettings);
+      this.connectionPeerFactory = new SessionKeyExchange.ServerSideFactory(new SecureRandom(), minRekeyTimeMs);
       this.proxy = proxy;
       this.packRepository = packRepository;
       this.resources = new MinecraftServer.ReloadableResources(worldStem.resourceManager(), worldStem.dataPackResources());
@@ -1246,8 +1248,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
       LOGGER.info("System chat: {}", message.getString());
    }
 
-   public KeyPair getKeyPair() {
-      return Objects.requireNonNull(this.keyPair);
+   public SessionKeyExchange.ServerSideFactory connectionPeerFactory() {
+      return this.connectionPeerFactory;
    }
 
    public int getPort() {
@@ -1268,16 +1270,6 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
 
    public boolean isSingleplayer() {
       return this.singleplayerProfile != null;
-   }
-
-   protected void initializeKeyPair() {
-      LOGGER.info("Generating keypair");
-
-      try {
-         this.keyPair = Crypt.generateKeyPair();
-      } catch (CryptException e) {
-         throw new IllegalStateException("Failed to generate key pair", e);
-      }
    }
 
    public void setDifficulty(final Difficulty difficulty, final boolean ignoreLock) {

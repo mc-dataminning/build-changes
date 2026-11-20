@@ -201,7 +201,7 @@ public class KeyboardHandler {
          debugAction = true;
       }
 
-      if (options.keyDebugShowHitboxes.matches(event) && this.minecraft.player != null && !this.minecraft.player.isReducedDebugInfo()) {
+      if (options.keyDebugShowHitboxes.matches(event) && this.minecraft.player != null && !this.minecraft.showOnlyReducedInfo()) {
          boolean renderHitBoxes = this.minecraft.debugEntries.toggleStatus(DebugScreenEntries.ENTITY_HITBOXES);
          this.debugFeedbackTranslated(renderHitBoxes ? "debug.show_hitboxes.on" : "debug.show_hitboxes.off");
          debugAction = true;
@@ -212,7 +212,7 @@ public class KeyboardHandler {
          debugAction = true;
       }
 
-      if (options.keyDebugShowChunkBorders.matches(event) && this.minecraft.player != null && !this.minecraft.player.isReducedDebugInfo()) {
+      if (options.keyDebugShowChunkBorders.matches(event) && this.minecraft.player != null && !this.minecraft.showOnlyReducedInfo()) {
          boolean displayChunkborder = this.minecraft.debugEntries.toggleStatus(DebugScreenEntries.CHUNK_BORDERS);
          this.debugFeedbackTranslated(displayChunkborder ? "debug.chunk_boundaries.on" : "debug.chunk_boundaries.off");
          debugAction = true;
@@ -226,7 +226,7 @@ public class KeyboardHandler {
       }
 
       if (options.keyDebugCopyRecreateCommand.matches(event)) {
-         if (this.minecraft.player != null && !this.minecraft.player.isReducedDebugInfo()) {
+         if (this.minecraft.player != null && !this.minecraft.showOnlyReducedInfo()) {
             this.copyRecreateCommand(this.minecraft.player.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER), !event.hasShiftDown());
          }
 
@@ -319,7 +319,7 @@ public class KeyboardHandler {
          debugAction = true;
       }
 
-      if (options.keyDebugCopyLocation.matches(event) && this.minecraft.player != null && !this.minecraft.player.isReducedDebugInfo()) {
+      if (options.keyDebugCopyLocation.matches(event) && this.minecraft.player != null && !this.minecraft.showOnlyReducedInfo()) {
          this.debugFeedbackTranslated("debug.copy_location.message");
          this.setClipboard(
             String.format(

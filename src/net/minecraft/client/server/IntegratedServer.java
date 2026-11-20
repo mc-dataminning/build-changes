@@ -86,7 +86,8 @@ public class IntegratedServer extends MinecraftServer {
          services,
          levelLoadListener,
          false,
-         new NotificationManager()
+         new NotificationManager(),
+         DEFAULT_MIN_REKEY_TIME_MS
       );
       this.setSingleplayerProfile(minecraft.getGameProfile());
       this.setDemo(minecraft.isDemo());
@@ -98,7 +99,6 @@ public class IntegratedServer extends MinecraftServer {
    protected boolean initServer() {
       LOGGER.info("Starting integrated minecraft server version {}", SharedConstants.getCurrentVersion().name());
       this.setUsesAuthentication(true);
-      this.initializeKeyPair();
       this.loadLevel();
       GameProfile host = this.getSingleplayerProfile();
       String levelName = this.getWorldData().getLevelName();
@@ -114,7 +114,7 @@ public class IntegratedServer extends MinecraftServer {
 
    @Override
    protected void processPacketsAndTick(final boolean sprinting) {
-      try (Gizmos.TemporaryCollection ignored = Gizmos.withCollector(this.gizmoCollector)) {
+      try (Gizmos.TemporaryCollection var2 = Gizmos.withCollector(this.gizmoCollector)) {
          super.processPacketsAndTick(sprinting);
       }
 
@@ -160,6 +160,13 @@ public class IntegratedServer extends MinecraftServer {
 
    protected LocalSampleLogger getTickTimeLogger() {
       return this.minecraft.getDebugOverlay().getTickTimeLogger();
+   }
+
+   @Override
+   protected void waitUntilNextTick() {
+      try (Gizmos.TemporaryCollection var1 = Gizmos.withCollector(this.gizmoCollector)) {
+         super.waitUntilNextTick();
+      }
    }
 
    @Override

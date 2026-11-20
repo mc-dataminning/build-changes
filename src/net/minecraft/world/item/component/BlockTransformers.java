@@ -29,6 +29,7 @@ public class BlockTransformers {
    public static final ResourceKey<BlockTransformer> SHOVEL = createKey("shovel");
    public static final ResourceKey<BlockTransformer> AXE = createKey("axe");
    public static final ResourceKey<BlockTransformer> HOE = createKey("hoe");
+   public static final ResourceKey<BlockTransformer> HONEYCOMB = createKey("honeycomb");
 
    private static ResourceKey<BlockTransformer> createKey(final String name) {
       return ResourceKey.create(Registries.BLOCK_TRANSFORMER, Identifier.withDefaultNamespace(name));
@@ -54,8 +55,8 @@ public class BlockTransformers {
          new BlockTransformer(
             ImmutableList.builder()
                .addAll(List.of(axeStrippables()))
-               .addAll(axe(WeatheringCopper.PREVIOUS_BY_BLOCK.get().entrySet(), SoundEvents.AXE_SCRAPE, BlockTransformer.TransformParticle.SCRAPE))
-               .addAll(axe(HoneycombItem.WAX_OFF_BY_BLOCK.get().entrySet(), SoundEvents.AXE_WAX_OFF, BlockTransformer.TransformParticle.WAX_OFF))
+               .addAll(copper(WeatheringCopper.PREVIOUS_BY_BLOCK.get().entrySet(), SoundEvents.AXE_SCRAPE, BlockTransformer.TransformParticle.SCRAPE, false))
+               .addAll(copper(HoneycombItem.WAX_OFF_BY_BLOCK.get().entrySet(), SoundEvents.AXE_WAX_OFF, BlockTransformer.TransformParticle.WAX_OFF, false))
                .build()
          )
       );
@@ -81,6 +82,14 @@ public class BlockTransformers {
          .dropStrategy(BlockTransformer.DropStrategy.CLICKED_FACE)
          .build();
       context.register(HOE, new BlockTransformer(ImmutableList.builder().add(hoeDefault).add(hoeRootedDirt).build()));
+      context.register(
+         HONEYCOMB,
+         new BlockTransformer(
+            ImmutableList.builder()
+               .addAll(copper(HoneycombItem.WAXABLES.get().entrySet(), SoundEvents.HONEYCOMB_WAX_ON, BlockTransformer.TransformParticle.WAX_ON, true))
+               .build()
+         )
+      );
    }
 
    private static BlockTransformer.BlockTransformData axeStrippables() {
@@ -117,8 +126,8 @@ public class BlockTransformers {
          .build();
    }
 
-   private static List<BlockTransformer.BlockTransformData> axe(
-      final Set<Entry<Block, Block>> blocks, final Holder<SoundEvent> sound, final BlockTransformer.TransformParticle particle
+   private static List<BlockTransformer.BlockTransformData> copper(
+      final Set<Entry<Block, Block>> blocks, final Holder<SoundEvent> sound, final BlockTransformer.TransformParticle particle, final boolean consumeOnUse
    ) {
       RuleBasedStateProvider.Builder rules = RuleBasedStateProvider.builder();
       RuleBasedStateProvider.Builder chestRules = RuleBasedStateProvider.builder();
@@ -128,10 +137,10 @@ public class BlockTransformers {
          BlockPredicate predicate = BlockPredicate.matchesBlocks(entry.getKey());
          CopyPropertiesProvider provider = new CopyPropertiesProvider(entry.getValue());
          switch ((Block)entry.getKey()) {
-            case CopperChestBlock var12:
+            case CopperChestBlock var13:
                chestRules.ifTrueThenProvide(predicate, provider);
                break;
-            case DoorBlock var13:
+            case DoorBlock var14:
                doorRules.ifTrueThenProvide(predicate, provider);
                break;
             default:
@@ -140,14 +149,20 @@ public class BlockTransformers {
       }
 
       return List.of(
-         BlockTransformer.BlockTransformData.builder(rules.build()).sound(sound).particle(particle).build(),
+         BlockTransformer.BlockTransformData.builder(rules.build()).sound(sound).particle(particle).consumeOnUse(consumeOnUse).build(),
          BlockTransformer.BlockTransformData.builder(chestRules.build())
             .sound(sound)
             .particle(particle)
             .transformType(BlockTransformer.TransformType.COPPER_CHEST)
             .updateFromNeighbors(false)
+            .consumeOnUse(consumeOnUse)
             .build(),
-         BlockTransformer.BlockTransformData.builder(doorRules.build()).sound(sound).particle(particle).updateFromNeighbors(false).build()
+         BlockTransformer.BlockTransformData.builder(doorRules.build())
+            .sound(sound)
+            .particle(particle)
+            .updateFromNeighbors(false)
+            .consumeOnUse(consumeOnUse)
+            .build()
       );
    }
 }

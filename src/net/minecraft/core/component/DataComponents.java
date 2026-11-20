@@ -6,6 +6,7 @@ import java.util.function.UnaryOperator;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
+import net.minecraft.core.dispenser.DispenseBehavior;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
@@ -231,6 +232,9 @@ public class DataComponents {
    );
    public static final DataComponentType<VillagerFood> VILLAGER_FOOD = register(
       "villager_food", b -> b.persistent(VillagerFood.CODEC).networkSynchronized(VillagerFood.STREAM_CODEC)
+   );
+   public static final DataComponentType<Holder<List<DispenseBehavior>>> DISPENSE_BEHAVIOR = register(
+      "dispense_behavior", b -> b.persistent(DispenseBehavior.CODEC)
    );
    public static final DataComponentType<ItemEnchantments> STORED_ENCHANTMENTS = register(
       "stored_enchantments", b -> b.persistent(ItemEnchantments.CODEC).networkSynchronized(ItemEnchantments.STREAM_CODEC).cacheEncoding()

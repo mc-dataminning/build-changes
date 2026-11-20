@@ -16,9 +16,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.scores.DisplaySlot;
 
 public class ScoreboardSlotArgument implements SerializableArgument.ContextFree<DisplaySlot> {
-   private static final ScoreboardSlotArgument INSTANCE = new ScoreboardSlotArgument();
+   public static final ScoreboardSlotArgument INSTANCE = new ScoreboardSlotArgument();
    public static final SerializableArgument.Type<ScoreboardSlotArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
-   private static final Collection<String> EXAMPLES = List.of("sidebar", "foo.bar");
+   private static final Collection<String> EXAMPLES = List.of("sidebar", "sidebar.team.red");
    public static final DynamicCommandExceptionType ERROR_INVALID_VALUE = new DynamicCommandExceptionType(
       value -> Component.translatableEscape("argument.scoreboardDisplaySlot.invalid", value)
    );

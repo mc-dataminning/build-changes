@@ -35,11 +35,6 @@ class PendingTab extends AbstractFriendsTab {
       this.rearrangeElements();
    }
 
-   @Override
-   public Component getTabExtraNarration() {
-      return Component.empty();
-   }
-
    private void updateListView() {
       this.screen.refreshLists();
    }

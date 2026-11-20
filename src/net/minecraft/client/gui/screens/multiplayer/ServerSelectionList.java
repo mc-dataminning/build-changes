@@ -8,6 +8,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor;
 import net.minecraft.ChatFormatting;
@@ -105,6 +106,7 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
    }
 
    public void updateOnlineServers(final ServerList servers) {
+      this.onlineServers.forEach(ServerSelectionList.OnlineServerEntry::close);
       this.onlineServers.clear();
 
       for (int i = 0; i < servers.size(); i++) {
@@ -140,7 +142,21 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
       return 305;
    }
 
+   public void added() {
+      this.onlineServers.forEach(ServerSelectionList.OnlineServerEntry::reopen);
+   }
+
+   public void pingVisibleServers() {
+      for (ServerSelectionList.OnlineServerEntry entry : this.onlineServers) {
+         boolean isVisible = entry.getY() + entry.getHeight() >= this.getY() && entry.getY() <= this.getBottom();
+         if (isVisible) {
+            entry.pingIfNeeded();
+         }
+      }
+   }
+
    public void removed() {
+      this.onlineServers.forEach(ServerSelectionList.OnlineServerEntry::close);
    }
 
    public abstract static class Entry extends ObjectSelectionList.Entry<ServerSelectionList.Entry> implements AutoCloseable {
@@ -254,7 +270,7 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
       private final JoinMultiplayerScreen screen;
       private final Minecraft minecraft;
       private final ServerData serverData;
-      private final FaviconTexture icon;
+      private FaviconTexture icon;
       private byte @Nullable [] lastIconBytes;
       private @Nullable List<Component> onlinePlayersTooltip;
       private @Nullable Identifier statusIcon;
@@ -266,10 +282,10 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
          this.minecraft = Minecraft.getInstance();
          this.icon = FaviconTexture.forServer(this.minecraft.getTextureManager(), serverData.ip);
          this.refreshStatus();
+         this.refreshIcon();
       }
 
-      @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
+      private void pingIfNeeded() {
          if (this.serverData.state() == ServerData.State.INITIAL) {
             this.serverData.setState(ServerData.State.PINGING);
             this.serverData.motd = CommonComponents.EMPTY;
@@ -282,7 +298,7 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
                            .getPinger()
                            .pingServer(
                               this.serverData,
-                              () -> this.minecraft.execute(this::updateServerList),
+                              () -> this.minecraft.execute(this::onPersistentDataChanged),
                               () -> {
                                  this.serverData
                                     .setState(
@@ -306,7 +322,10 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
                   }
                );
          }
+      }
 
+      @Override
+      public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          graphics.text(this.minecraft.font, this.serverData.name, this.getContentX() + 32 + 3, this.getContentY() + 1, -1);
          List<FormattedCharSequence> lines = this.minecraft.font.split(this.serverData.motd, this.getContentWidth() - 32 - 2);
 
@@ -333,16 +352,6 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
          int statusIconX = this.getContentRight() - 10 - 5;
          if (this.statusIcon != null) {
             graphics.blitSprite(GuiPipeline.TEXTURED, this.statusIcon, statusIconX, this.getContentY(), 10, 8);
-         }
-
-         byte[] currentIconBytes = this.serverData.getIconBytes();
-         if (!Arrays.equals(currentIconBytes, this.lastIconBytes)) {
-            if (this.uploadServerIcon(currentIconBytes)) {
-               this.lastIconBytes = currentIconBytes;
-            } else {
-               this.serverData.setIconBytes(null);
-               this.updateServerList();
-            }
          }
 
          Component status = this.serverData.state() == ServerData.State.INCOMPATIBLE
@@ -435,6 +444,31 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
          this.screen.getServers().save();
       }
 
+      private void onPersistentDataChanged() {
+         this.updateServerList();
+
+         for (ServerSelectionList.OnlineServerEntry entry : ServerSelectionList.this.onlineServers) {
+            if (entry.serverData == this.serverData) {
+               entry.refreshIcon();
+            }
+         }
+      }
+
+      private void refreshIcon() {
+         if (!this.icon.isClosed()) {
+            byte[] currentIconBytes = this.serverData.getIconBytes();
+            if (!Arrays.equals(currentIconBytes, this.lastIconBytes)) {
+               if (this.uploadServerIcon(currentIconBytes)) {
+                  this.lastIconBytes = currentIconBytes;
+               } else {
+                  this.lastIconBytes = null;
+                  this.serverData.setIconBytes(null);
+                  this.updateServerList();
+               }
+            }
+         }
+      }
+
       protected void extractIcon(final GuiGraphicsExtractor graphics, final int rowLeft, final int rowTop, final Identifier location) {
          graphics.blit(GuiPipeline.TEXTURED, location, rowLeft, rowTop, 0.0F, 0.0F, 32, 32, 32, 32);
       }
@@ -462,7 +496,7 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
          }
 
          if (event.hasShiftDown()) {
-            ServerSelectionList list = this.screen.serverSelectionList;
+            ServerSelectionList list = Objects.requireNonNull(this.screen.serverSelectionList);
             int currentIndex = list.children().indexOf(this);
             if (currentIndex == -1) {
                return true;
@@ -484,7 +518,7 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
 
       private void swap(final int currentIndex, final int newIndex) {
          this.screen.getServers().swap(currentIndex, newIndex);
-         this.screen.serverSelectionList.swap(currentIndex, newIndex);
+         Objects.requireNonNull(this.screen.serverSelectionList).swap(currentIndex, newIndex);
       }
 
       @Override
@@ -497,7 +531,7 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
                return true;
             }
 
-            int currentIndex = this.screen.serverSelectionList.children().indexOf(this);
+            int currentIndex = Objects.requireNonNull(this.screen.serverSelectionList).children().indexOf(this);
             if (currentIndex > 0 && this.mouseOverTopLeftQuarter(relX, relY, 32)) {
                this.swap(currentIndex, currentIndex - 1);
                return true;
@@ -562,7 +596,17 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
 
       @Override
       public void close() {
-         this.icon.close();
+         if (!this.icon.isClosed()) {
+            this.icon.close();
+         }
+      }
+
+      public void reopen() {
+         if (this.icon.isClosed()) {
+            this.icon = FaviconTexture.forServer(this.minecraft.getTextureManager(), this.serverData.ip);
+            this.lastIconBytes = null;
+            this.refreshIcon();
+         }
       }
 
       @Override

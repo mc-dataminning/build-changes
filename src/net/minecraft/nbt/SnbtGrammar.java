@@ -267,7 +267,7 @@ public class SnbtGrammar {
       };
    }
 
-   public static <S extends CommandParserState, T> Grammar<CommandParserState, T> createParser(final DynamicOps<T> ops) {
+   public static <T> Grammar<CommandParserState, T> createParser(final DynamicOps<T> ops) {
       T trueValue = (T)ops.createBoolean(true);
       T falseValue = (T)ops.createBoolean(false);
       T emptyMapValue = (T)ops.emptyMap();

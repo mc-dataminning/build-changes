@@ -17,7 +17,7 @@ import net.minecraft.world.scores.PlayerTeam;
 import net.minecraft.world.scores.Scoreboard;
 
 public class TeamArgument implements SerializableArgument.ContextFree<String> {
-   private static final TeamArgument INSTANCE = new TeamArgument();
+   public static final TeamArgument INSTANCE = new TeamArgument();
    public static final SerializableArgument.Type<TeamArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
    private static final Collection<String> EXAMPLES = List.of("foo", "123");
    private static final DynamicCommandExceptionType ERROR_TEAM_NOT_FOUND = new DynamicCommandExceptionType(

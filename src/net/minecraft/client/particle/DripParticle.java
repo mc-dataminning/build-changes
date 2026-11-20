@@ -182,6 +182,7 @@ public class DripParticle extends SingleQuadParticle {
          final RandomSource random
       ) {
          DripParticle particle = new DripParticle.DripstoneFallAndLandParticle(level, x, y, z, Fluids.LAVA, ParticleTypes.LANDING_LAVA, this.sprite.get(random));
+         particle.isGlowing = true;
          particle.setColor(1.0F, 0.2857143F, 0.083333336F);
          return particle;
       }
@@ -205,7 +206,11 @@ public class DripParticle extends SingleQuadParticle {
          final double zAux,
          final RandomSource random
       ) {
-         return new DripParticle.CoolingDripHangParticle(level, x, y, z, Fluids.LAVA, ParticleTypes.FALLING_DRIPSTONE_LAVA, this.sprite.get(random));
+         DripParticle.CoolingDripHangParticle particle = new DripParticle.CoolingDripHangParticle(
+            level, x, y, z, Fluids.LAVA, ParticleTypes.FALLING_DRIPSTONE_LAVA, this.sprite.get(random)
+         );
+         particle.isGlowing = true;
+         return particle;
       }
    }
 
@@ -417,6 +422,7 @@ public class DripParticle extends SingleQuadParticle {
          final RandomSource random
       ) {
          DripParticle particle = new DripParticle.FallAndLandParticle(level, x, y, z, Fluids.LAVA, ParticleTypes.LANDING_LAVA, this.sprite.get(random));
+         particle.isGlowing = true;
          particle.setColor(1.0F, 0.2857143F, 0.083333336F);
          return particle;
       }
@@ -440,7 +446,11 @@ public class DripParticle extends SingleQuadParticle {
          final double zAux,
          final RandomSource random
       ) {
-         return new DripParticle.CoolingDripHangParticle(level, x, y, z, Fluids.LAVA, ParticleTypes.FALLING_LAVA, this.sprite.get(random));
+         DripParticle.CoolingDripHangParticle particle = new DripParticle.CoolingDripHangParticle(
+            level, x, y, z, Fluids.LAVA, ParticleTypes.FALLING_LAVA, this.sprite.get(random)
+         );
+         particle.isGlowing = true;
+         return particle;
       }
    }
 
@@ -463,6 +473,7 @@ public class DripParticle extends SingleQuadParticle {
          final RandomSource random
       ) {
          DripParticle particle = new DripParticle.DripLandParticle(level, x, y, z, Fluids.LAVA, this.sprite.get(random));
+         particle.isGlowing = true;
          particle.setColor(1.0F, 0.2857143F, 0.083333336F);
          return particle;
       }

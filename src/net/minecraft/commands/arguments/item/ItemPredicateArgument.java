@@ -40,9 +40,20 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class ItemPredicateArgument extends ParserBasedArgument<ItemPredicateArgument.Context, ItemPredicateArgument.Result> {
-   private static final ItemPredicateArgument INSTANCE = new ItemPredicateArgument();
+   public static final ItemPredicateArgument INSTANCE = new ItemPredicateArgument();
    public static final SerializableArgument.Type<ItemPredicateArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
-   private static final Collection<String> EXAMPLES = List.of("stick", "minecraft:stick", "#stick", "#stick{foo:'bar'}");
+   private static final Collection<String> EXAMPLES = List.of(
+      "*",
+      "stick",
+      "stick",
+      "minecraft:stick",
+      "stick[custom_data={foo:bar}]",
+      "stick[custom_data]",
+      "stick[!custom_data]",
+      "#stick",
+      "#stick[custom_data={foo:bar}]",
+      "#stick[custom_data~{foo:bar}]"
+   );
    private static final DynamicCommandExceptionType ERROR_UNKNOWN_ITEM = new DynamicCommandExceptionType(
       id -> Component.translatableEscape("argument.item.id.invalid", id)
    );

@@ -16,12 +16,16 @@ public sealed interface CustomSuggestion permits SerializableCustomSuggestion, S
       return new CustomSuggestion.BrigadierWrapper<>(this);
    }
 
-   static CustomSuggestion.BrigadierWrapper<?> unwrapOrThrow(final SuggestionProvider<?> original) {
-      if (original instanceof CustomSuggestion.BrigadierWrapper<?> wrapper) {
+   static <T> CustomSuggestion.BrigadierWrapper<T> castOrThrow(final SuggestionProvider<T> original) {
+      if (original instanceof CustomSuggestion.BrigadierWrapper<T> wrapper) {
          return wrapper;
       } else {
          throw new UnsupportedOperationException("Invalid suggestion type: " + original);
       }
+   }
+
+   static CustomSuggestion unwrapOrThrow(final SuggestionProvider<?> original) {
+      return castOrThrow(original).suggestion();
    }
 
    record BrigadierWrapper<T>(CustomSuggestion suggestion) implements SuggestionProvider<T> {

@@ -49,7 +49,7 @@ public class ScheduleCommand {
                         Commands.argument("function", FunctionArgument.functions())
                            .suggests(FunctionCommand.SUGGEST_FUNCTION)
                            .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("time", TimeArgument.time())
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("time", TimeArgument.time(0))
                                        .executes(
                                           c -> schedule(
                                              (CommandSourceStack)c.getSource(),

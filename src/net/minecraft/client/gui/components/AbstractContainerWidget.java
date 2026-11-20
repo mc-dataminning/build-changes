@@ -54,7 +54,9 @@ public abstract class AbstractContainerWidget extends AbstractScrollArea impleme
 
    @Override
    public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
-      if (!this.allowTabNavigationInside && navigationEvent instanceof FocusNavigationEvent.TabNavigation) {
+      if (!this.isActive()) {
+         return null;
+      } else if (!this.allowTabNavigationInside && navigationEvent instanceof FocusNavigationEvent.TabNavigation) {
          return this.isFocused() ? null : ContainerEventHandler.super.nextFocusPath(new FocusNavigationEvent.TabNavigation(true));
       } else {
          return ContainerEventHandler.super.nextFocusPath(navigationEvent);

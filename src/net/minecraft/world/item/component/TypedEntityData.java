@@ -14,6 +14,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.DefaultedRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentGetter;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
@@ -25,11 +26,13 @@ import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.SpawnData;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.storage.TagValueInput;
 import net.minecraft.world.level.storage.TagValueOutput;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
 public final class TypedEntityData<IdType> implements TooltipProvider {
@@ -96,6 +99,11 @@ public final class TypedEntityData<IdType> implements TooltipProvider {
       } else {
          return tag;
       }
+   }
+
+   public static @Nullable EntityType<?> getType(final ItemStack itemStack) {
+      TypedEntityData<EntityType<?>> entityData = itemStack.get(DataComponents.ENTITY_DATA);
+      return entityData != null ? entityData.type() : null;
    }
 
    public IdType type() {

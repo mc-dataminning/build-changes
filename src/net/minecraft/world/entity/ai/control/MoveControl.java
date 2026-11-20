@@ -92,8 +92,11 @@ public class MoveControl<T extends Mob> implements Control {
             return;
          }
 
-         float yRotD = (float)(Mth.atan2(zd, xd) * 180.0F / (float)Math.PI) - 90.0F;
-         this.mob.setYRot(this.rotlerp(this.mob.getYRot(), yRotD, 90.0F));
+         if (this.mob.isLookControlActive()) {
+            float yRotD = (float)(Mth.atan2(zd, xd) * 180.0F / (float)Math.PI) - 90.0F;
+            this.mob.setYRot(this.rotlerp(this.mob.getYRot(), yRotD, 90.0F));
+         }
+
          this.mob.setSpeed((float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
          BlockPos pos = this.mob.blockPosition();
          BlockState blockState = this.mob.level().getBlockState(pos);

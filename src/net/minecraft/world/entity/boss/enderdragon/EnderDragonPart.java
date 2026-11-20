@@ -55,8 +55,8 @@ public class EnderDragonPart extends Entity {
    }
 
    @Override
-   public boolean is(final Entity other) {
-      return this == other || this.parentMob == other;
+   public Entity getGraphRoot() {
+      return this.parentMob.getGraphRoot();
    }
 
    @Override

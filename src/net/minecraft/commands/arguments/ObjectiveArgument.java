@@ -17,9 +17,9 @@ import net.minecraft.world.scores.Objective;
 import net.minecraft.world.scores.Scoreboard;
 
 public class ObjectiveArgument implements SerializableArgument.ContextFree<String> {
-   private static final ObjectiveArgument INSTANCE = new ObjectiveArgument();
+   public static final ObjectiveArgument INSTANCE = new ObjectiveArgument();
    public static final SerializableArgument.Type<ObjectiveArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
-   private static final Collection<String> EXAMPLES = List.of("foo", "*", "012");
+   private static final Collection<String> EXAMPLES = List.of("foo", "012", "foo_bar");
    private static final DynamicCommandExceptionType ERROR_OBJECTIVE_NOT_FOUND = new DynamicCommandExceptionType(
       name -> Component.translatableEscape("arguments.objective.notFound", name)
    );

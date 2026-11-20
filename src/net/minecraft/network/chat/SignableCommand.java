@@ -7,6 +7,7 @@ import com.mojang.brigadier.tree.ArgumentCommandNode;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.commands.ArgumentVisitor;
+import net.minecraft.commands.arguments.SerializableArgument;
 import net.minecraft.commands.arguments.SignedArgument;
 import org.jspecify.annotations.Nullable;
 
@@ -25,7 +26,7 @@ public record SignableCommand<S>(List<SignableCommand.Argument<S>> arguments) {
       ArgumentVisitor.visitArguments(command, new ArgumentVisitor.Output<S>() {
          @Override
          public <T> void accept(final CommandContextBuilder<S> context, final ArgumentCommandNode<S, T> argument, final @Nullable ParsedArgument<S, T> value) {
-            if (value != null && argument.getType() instanceof SignedArgument) {
+            if (value != null && SerializableArgument.unwrapOrThrow(argument.getType()) instanceof SignedArgument) {
                String stringValue = value.getRange().get(commandString);
                arguments.add(new SignableCommand.Argument<>(argument, stringValue));
             }

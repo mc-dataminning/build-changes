@@ -111,4 +111,18 @@ public class RealmsSelectFileToUploadScreen extends RealmsScreen {
    public void onClose() {
       this.minecraft.gui.setScreen(this.lastScreen);
    }
+
+   @Override
+   public void added() {
+      if (this.list != null) {
+         this.list.children().forEach(WorldSelectionList.Entry::reopen);
+      }
+   }
+
+   @Override
+   public void removed() {
+      if (this.list != null) {
+         this.list.children().forEach(WorldSelectionList.Entry::close);
+      }
+   }
 }

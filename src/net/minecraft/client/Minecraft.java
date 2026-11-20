@@ -123,6 +123,7 @@ import net.minecraft.client.multiplayer.chat.ChatAbilities;
 import net.minecraft.client.multiplayer.chat.ChatRestriction;
 import net.minecraft.client.multiplayer.chat.report.ReportEnvironment;
 import net.minecraft.client.multiplayer.chat.report.ReportingContext;
+import net.minecraft.client.multiplayer.signaling.SignalingClient;
 import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.particle.ParticleResources;
 import net.minecraft.client.player.LocalPlayer;
@@ -292,6 +293,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
    private final MapRenderer mapRenderer;
    public final ParticleEngine particleEngine;
    private final User user;
+   private final SignalingClient signalingClient;
    public final Font font;
    public final Font fontFilterFishy;
    public final GameRenderer gameRenderer;
@@ -742,6 +744,9 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
             properties.put(TelemetryProperty.BACKEND_FAILURE_MISSING_CAPABILITIES, "");
          }
       });
+      this.signalingClient = new SignalingClient(this.user, discoveryService);
+      this.signalingClient.addPresenceListener(this.playerSocialManager.getPresenceHandler()::updatePresenceWith);
+      this.signalingClient.connect();
    }
 
    private void showWindow() {
@@ -1120,6 +1125,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
 
       try {
          this.playerSocialManager.getPresenceHandler().sendOfflinePresence();
+         this.signalingClient.close();
          this.remoteFriendListUpdateHandler.close();
          this.timerQuery.close();
          this.telemetryManager.close();
@@ -1924,7 +1930,12 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
             this.player.sendOpenInventory();
          } else {
             this.tutorial.onOpenInventory();
-            this.gui.setScreen(new InventoryScreen(this.player));
+            if (this.player.hasInfiniteMaterials()) {
+               this.gui
+                  .setScreen(new CreativeModeInventoryScreen(this.player, this.player.connection.enabledFeatures(), this.options.operatorItemsTab().get()));
+            } else {
+               this.gui.setScreen(new InventoryScreen(this.player));
+            }
          }
       }
 

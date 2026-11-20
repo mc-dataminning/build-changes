@@ -55,7 +55,7 @@ public class EntityArgument implements SerializableArgument<EntitySelector> {
       }
    };
    public static final SerializableArgument.Type<EntityArgument> TYPE = new SerializableArgument.Type<>(MAP_CODEC, STREAM_CODEC);
-   private static final Collection<String> EXAMPLES = List.of("Player", "0123", "@e", "@e[type=foo]", "dd12be42-52a9-4a91-a8a1-11c01849e498");
+   private static final Collection<String> EXAMPLES = List.of("Player", "0123", "@e", "@e[type=creeper]", "dd12be42-52a9-4a91-a8a1-11c01849e498");
    public static final SimpleCommandExceptionType ERROR_NOT_SINGLE_ENTITY = new SimpleCommandExceptionType(Component.translatable("argument.entity.toomany"));
    public static final SimpleCommandExceptionType ERROR_NOT_SINGLE_PLAYER = new SimpleCommandExceptionType(Component.translatable("argument.player.toomany"));
    public static final SimpleCommandExceptionType ERROR_ONLY_PLAYERS_ALLOWED = new SimpleCommandExceptionType(
@@ -69,7 +69,7 @@ public class EntityArgument implements SerializableArgument<EntitySelector> {
    private final boolean singleResult;
    private final boolean playersOnly;
 
-   protected EntityArgument(final boolean singleResult, final boolean playersOnly) {
+   public EntityArgument(final boolean singleResult, final boolean playersOnly) {
       this.singleResult = singleResult;
       this.playersOnly = playersOnly;
    }

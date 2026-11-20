@@ -9,6 +9,7 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.DispenseBehaviors;
 import net.minecraft.data.advancements.packs.VanillaAdvancementProvider;
 import net.minecraft.data.loot.packs.VanillaLootTableProvider;
 import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
@@ -131,7 +132,8 @@ public class VanillaRegistries {
       .add(Registries.DECORATED_POT_PATTERN, DecoratedPotPatterns::bootstrap)
       .add(Registries.BLOCK_TRANSFORMER, BlockTransformers::bootstrap)
       .add(Registries.BLOCK_STATE_PROVIDER, BlockStateProviders::bootstrap)
-      .add(Registries.BLOCK_SOUND_SET, BlockSoundSets::bootstrap);
+      .add(Registries.BLOCK_SOUND_SET, BlockSoundSets::bootstrap)
+      .add(Registries.DISPENSE_BEHAVIOR, DispenseBehaviors::bootstrap);
    private static final RegistrySetBuilder RELOADABLE_BUILDER = new RegistrySetBuilder()
       .add(Registries.LOOT_TABLE, VanillaLootTableProvider.create())
       .add(Registries.PREDICATE, LootPredicates::bootstrap)

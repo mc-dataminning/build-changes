@@ -130,6 +130,7 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
    public final boolean logIPs = this.get("log-ips", true);
    public final Settings<DedicatedServerProperties>.MutableValue<Integer> pauseWhenEmptySeconds = this.getMutable("pause-when-empty-seconds", 60);
    public final String allowedConnectionIds = this.get("allowed-connection-ids", "");
+   public final int keyRotationPeriodSeconds = this.get("key-rotation-period-seconds", 60);
    private final DedicatedServerProperties.WorldDimensionData worldDimensionData;
    public final WorldOptions worldOptions;
    public final Settings<DedicatedServerProperties>.MutableValue<Boolean> acceptsTransfers = this.getMutable("accepts-transfers", false);

@@ -9,7 +9,7 @@ import java.util.List;
 import net.minecraft.resources.Identifier;
 
 public class IdentifierArgument implements SerializableArgument.ContextFree<Identifier> {
-   private static final IdentifierArgument INSTANCE = new IdentifierArgument();
+   public static final IdentifierArgument INSTANCE = new IdentifierArgument();
    public static final SerializableArgument.Type<IdentifierArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
    private static final Collection<String> EXAMPLES = List.of("foo", "foo:bar", "012");
 

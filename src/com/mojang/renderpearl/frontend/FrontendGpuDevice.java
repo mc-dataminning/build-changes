@@ -205,7 +205,8 @@ public class FrontendGpuDevice implements GpuDevice {
    }
 
    @Override
-   public SpvModule createSpvModule(final String name, final ByteBuffer spv, final ShaderType type, final String entryPoint) {
+   public SpvModule createSpvModule(final String name, final ByteBuffer spv, final ShaderType type, final String entryPoint) throws ShaderCompileException {
+      PipelineValidator.validateSPIRV(name, spv, type);
       return new SPIRVModule(name, spv, type, entryPoint);
    }
 

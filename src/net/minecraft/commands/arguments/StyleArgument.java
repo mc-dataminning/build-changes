@@ -13,17 +13,19 @@ import net.minecraft.util.parsing.packrat.commands.CommandArgumentParser;
 import net.minecraft.util.parsing.packrat.commands.ParserBasedArgument;
 
 public class StyleArgument extends ParserBasedArgument<CommandArgumentParser.RegistryAwareState, Style> {
-   private static final StyleArgument INSTANCE = new StyleArgument();
+   public static final StyleArgument INSTANCE = new StyleArgument();
    public static final SerializableArgument.Type<StyleArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
    private static final Collection<String> EXAMPLES = List.of("{bold: true}", "{color: 'red'}", "{}");
-   public static final DynamicCommandExceptionType ERROR_INVALID_STYLE = new DynamicCommandExceptionType(
-      message -> Component.translatableEscape("argument.style.invalid", message)
-   );
 
    private StyleArgument() {
       super(
          CommandArgumentParser.RegistryAwareState.FACTORY,
-         CommandArgumentParser.withCodec(NbtOps.INSTANCE, SnbtGrammar.createParser(NbtOps.INSTANCE), Style.Serializer.CODEC, ERROR_INVALID_STYLE)
+         CommandArgumentParser.withCodec(
+            NbtOps.INSTANCE,
+            SnbtGrammar.createParser(NbtOps.INSTANCE),
+            Style.Serializer.CODEC,
+            new DynamicCommandExceptionType(message -> Component.translatableEscape("argument.style.invalid", message))
+         )
       );
    }
 

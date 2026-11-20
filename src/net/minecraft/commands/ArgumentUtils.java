@@ -47,10 +47,10 @@ public class ArgumentUtils {
             result.addProperty("type", "literal");
             break;
          case ArgumentCommandNode<S, ?> argumentNode:
-            serializeArgumentToJson(result, SerializableArgument.unwrapOrThrow(argumentNode.getType()).argument());
+            serializeArgumentToJson(result, SerializableArgument.unwrapOrThrow(argumentNode.getType()));
             SuggestionProvider<S> customSuggestions = argumentNode.getCustomSuggestions();
             if (customSuggestions != null) {
-               serializeSuggestionToJson(result, CustomSuggestion.unwrapOrThrow(customSuggestions).suggestion().serializable());
+               serializeSuggestionToJson(result, CustomSuggestion.unwrapOrThrow(customSuggestions).serializable());
             }
             break;
          default:

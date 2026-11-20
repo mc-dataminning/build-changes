@@ -44,12 +44,4 @@ public class ExperienceBottleItem extends Item implements ProjectileItem {
    public Projectile asProjectile(final Level level, final Position position, final ItemStack itemStack, final Direction direction) {
       return new ThrownExperienceBottle(level, position.x(), position.y(), position.z(), itemStack);
    }
-
-   @Override
-   public ProjectileItem.DispenseConfig createDispenseConfig() {
-      return ProjectileItem.DispenseConfig.builder()
-         .uncertainty(ProjectileItem.DispenseConfig.DEFAULT.uncertainty() * 0.5F)
-         .power(ProjectileItem.DispenseConfig.DEFAULT.power() * 1.25F)
-         .build();
-   }
 }

@@ -1739,21 +1739,20 @@ public abstract class Entity
          this.playSound(this.getSwimHighSpeedSplashSound(), speed, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.4F);
       }
 
-      float yt = Mth.floor(this.getY());
+      float width = this.dimensions.width();
+      float yt = Mth.floor(this.getY()) + this.level.getFluidState(this.blockPosition).getHeight(this.level, this.blockPosition);
 
-      for (int i = 0; i < 1.0F + this.dimensions.width() * 20.0F; i++) {
-         double xo = (this.random.nextDouble() * 2.0 - 1.0) * this.dimensions.width();
-         double zo = (this.random.nextDouble() * 2.0 - 1.0) * this.dimensions.width();
+      for (int i = 0; i < 1.0F + width * 20.0F; i++) {
+         double xo = (this.random.nextDouble() * 2.0 - 1.0) * width;
+         double zo = (this.random.nextDouble() * 2.0 - 1.0) * width;
          this.level()
-            .addParticle(
-               ParticleTypes.BUBBLE, this.getX() + xo, yt + 1.0F, this.getZ() + zo, movement.x, movement.y - this.random.nextDouble() * 0.2F, movement.z
-            );
+            .addParticle(ParticleTypes.BUBBLE, this.getX() + xo, yt, this.getZ() + zo, movement.x, movement.y - this.random.nextDouble() * 0.2F, movement.z);
       }
 
-      for (int i = 0; i < 1.0F + this.dimensions.width() * 20.0F; i++) {
-         double xo = (this.random.nextDouble() * 2.0 - 1.0) * this.dimensions.width();
-         double zo = (this.random.nextDouble() * 2.0 - 1.0) * this.dimensions.width();
-         this.level().addParticle(ParticleTypes.SPLASH, this.getX() + xo, yt + 1.0F, this.getZ() + zo, movement.x, movement.y, movement.z);
+      for (int i = 0; i < 1.0F + width * 20.0F; i++) {
+         double xo = (this.random.nextDouble() * 2.0 - 1.0) * width;
+         double zo = (this.random.nextDouble() * 2.0 - 1.0) * width;
+         this.level().addParticle(ParticleTypes.SPLASH, this.getX() + xo, yt, this.getZ() + zo, movement.x, movement.y, movement.z);
       }
 
       this.gameEvent(GameEvent.SPLASH);
@@ -2500,7 +2499,7 @@ public abstract class Entity
          return false;
       }
 
-      if (!entityToRide.couldAcceptPassenger()) {
+      if (!entityToRide.couldAcceptPassenger() || this.getSelfAndPassengers().anyMatch(e -> e == entityToRide)) {
          return false;
       }
 
@@ -3074,10 +3073,6 @@ public abstract class Entity
 
    protected Component getTypeName() {
       return this.type.getDescription();
-   }
-
-   public boolean is(final Entity other) {
-      return this == other;
    }
 
    public float getYHeadRot() {
@@ -3708,6 +3703,14 @@ public abstract class Entity
 
    public boolean hasExactlyOnePlayerPassenger() {
       return this.countPlayerPassengers() == 1;
+   }
+
+   public boolean isPartOfSameEntityGraph(final Entity other) {
+      return this.getGraphRoot() == other.getGraphRoot();
+   }
+
+   public Entity getGraphRoot() {
+      return this.getRootVehicle();
    }
 
    public Entity getRootVehicle() {

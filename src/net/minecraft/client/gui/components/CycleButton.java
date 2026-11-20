@@ -59,7 +59,7 @@ public class CycleButton<Value> extends AbstractCycleButton<Value> {
 
    @Override
    protected Component createLabelForValue(final Value newValue) {
-      return this.displayState == CycleButton.DisplayState.VALUE ? this.valueStringifier.apply(newValue) : this.createFullName(newValue);
+      return this.displayState == CycleButton.DisplayState.NAME_AND_VALUE ? this.createFullName(newValue) : this.valueStringifier.apply(newValue);
    }
 
    @Override
@@ -68,7 +68,7 @@ public class CycleButton<Value> extends AbstractCycleButton<Value> {
    }
 
    public MutableComponent createDefaultNarrationMessage() {
-      return wrapDefaultNarrationMessage(this.displayState == CycleButton.DisplayState.VALUE ? this.createFullName(this.value) : this.getMessage());
+      return wrapDefaultNarrationMessage(this.displayState == CycleButton.DisplayState.NAME_AND_VALUE ? this.getMessage() : this.createFullName(this.value));
    }
 
    public static <Value> CycleButton.Builder<Value> builder(final Function<Value, Component> valueStringifier, final Supplier<Value> defaultValueSupplier) {

@@ -29,9 +29,9 @@ import net.minecraft.world.level.block.state.properties.Property;
 import org.jspecify.annotations.Nullable;
 
 public class BlockPredicateArgument implements SerializableArgument<BlockPredicateArgument.Result> {
-   private static final BlockPredicateArgument INSTANCE = new BlockPredicateArgument();
+   public static final BlockPredicateArgument INSTANCE = new BlockPredicateArgument();
    public static final SerializableArgument.Type<BlockPredicateArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
-   private static final Collection<String> EXAMPLES = List.of("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
+   private static final Collection<String> EXAMPLES = List.of("stone", "minecraft:stone", "wheat[age=0]", "#stone", "#stone[foo=bar]{baz:nbt}");
 
    private BlockPredicateArgument() {
    }

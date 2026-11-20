@@ -95,7 +95,8 @@ public record NoiseGeneratorSettings(
          true,
          new NoiseGeneratorSettings.DebugFunctions(
             List.of(
-               new NoiseGeneratorSettings.DebugFunctionEntry("N", router.finalDensity()), new NoiseGeneratorSettings.DebugFunctionEntry("IS", router.erosion())
+               new NoiseGeneratorSettings.DebugFunctionEntry("Final Density", router.finalDensity()),
+               new NoiseGeneratorSettings.DebugFunctionEntry("Erosion", router.erosion())
             )
          )
       );
@@ -115,9 +116,9 @@ public record NoiseGeneratorSettings(
          true,
          new NoiseGeneratorSettings.DebugFunctions(
             List.of(
-               new NoiseGeneratorSettings.DebugFunctionEntry("N", router.finalDensity()),
-               new NoiseGeneratorSettings.DebugFunctionEntry("T", router.temperature()),
-               new NoiseGeneratorSettings.DebugFunctionEntry("V", router.vegetation())
+               new NoiseGeneratorSettings.DebugFunctionEntry("Final Density", router.finalDensity()),
+               new NoiseGeneratorSettings.DebugFunctionEntry("Temperature", router.temperature()),
+               new NoiseGeneratorSettings.DebugFunctionEntry("Vegetation", router.vegetation())
             )
          )
       );
@@ -150,7 +151,7 @@ public record NoiseGeneratorSettings(
          false,
          new NoiseGeneratorSettings.DebugFunctions(
             List.of(
-               new NoiseGeneratorSettings.DebugFunctionEntry("Final density", router.finalDensity()),
+               new NoiseGeneratorSettings.DebugFunctionEntry("Final Density", router.finalDensity()),
                new NoiseGeneratorSettings.DebugFunctionEntry("Temperature", router.temperature()),
                new NoiseGeneratorSettings.DebugFunctionEntry("Vegetation", router.vegetation()),
                new NoiseGeneratorSettings.DebugFunctionEntry("Continents", router.continents()),
@@ -176,7 +177,7 @@ public record NoiseGeneratorSettings(
          false,
          Optional.empty(),
          true,
-         new NoiseGeneratorSettings.DebugFunctions(List.of(new NoiseGeneratorSettings.DebugFunctionEntry("N", router.finalDensity())))
+         new NoiseGeneratorSettings.DebugFunctions(List.of(new NoiseGeneratorSettings.DebugFunctionEntry("Final Density", router.finalDensity())))
       );
    }
 
@@ -192,7 +193,7 @@ public record NoiseGeneratorSettings(
          false,
          Optional.empty(),
          true,
-         new NoiseGeneratorSettings.DebugFunctions(List.of(new NoiseGeneratorSettings.DebugFunctionEntry("N", router.finalDensity())))
+         new NoiseGeneratorSettings.DebugFunctions(List.of(new NoiseGeneratorSettings.DebugFunctionEntry("Final Density", router.finalDensity())))
       );
    }
 

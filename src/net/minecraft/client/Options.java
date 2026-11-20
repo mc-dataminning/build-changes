@@ -227,7 +227,11 @@ public class Options {
    private final OptionInstance<Boolean> vignette = OptionInstance.createBoolean(
       "options.vignette", OptionInstance.cachedConstantTooltip(GRAPHICS_TOOLTIP_VIGNETTE), true
    );
-   private static final Component GRAPHICS_TOOLTIP_IMPROVED_TRANSPARENCY = Component.translatable("options.improvedTransparency.oitWithImprovedFog.tooltip");
+   private static final Component GRAPHICS_TOOLTIP_IMPROVED_FOG = Component.translatable("options.improvedFog.tooltip");
+   private final OptionInstance<Boolean> improvedFog = OptionInstance.createBoolean(
+      "options.improvedFog", OptionInstance.cachedConstantTooltip(GRAPHICS_TOOLTIP_IMPROVED_FOG), true, var1 -> this.setGraphicsPresetToCustom()
+   );
+   private static final Component GRAPHICS_TOOLTIP_IMPROVED_TRANSPARENCY = Component.translatable("options.improvedTransparency.oitWithCloudsInFog.tooltip");
    private final OptionInstance<Boolean> improvedTransparency = OptionInstance.createBoolean(
       "options.improvedTransparency", OptionInstance.cachedConstantTooltip(GRAPHICS_TOOLTIP_IMPROVED_TRANSPARENCY), false, value -> {
          operateOnLevelExtractor(LevelExtractor::allChanged);
@@ -678,6 +682,7 @@ public class Options {
    public final KeyMapping keyInventory = new KeyMapping("key.inventory", 8, KeyMapping.Category.INVENTORY);
    public final KeyMapping keySwapOffhand = new KeyMapping("key.swapOffhand", 9, KeyMapping.Category.INVENTORY);
    public final KeyMapping keyDrop = new KeyMapping("key.drop", 20, KeyMapping.Category.INVENTORY);
+   public final KeyMapping keyRepeatRecipeOrTrade = new KeyMapping("key.repeatRecipeOrTrade", 21, KeyMapping.Category.INVENTORY);
    public final KeyMapping keyUse = new ToggleKeyMapping("key.use", InputConstants.Type.MOUSE, 3, KeyMapping.Category.GAMEPLAY, this.toggleUse::get, false);
    public final KeyMapping keyAttack = new ToggleKeyMapping(
       "key.attack", InputConstants.Type.MOUSE, 1, KeyMapping.Category.GAMEPLAY, this.toggleAttack::get, true
@@ -801,6 +806,7 @@ public class Options {
             this.keySpectatorOutlines,
             this.keySpectatorHotbar,
             this.keySwapOffhand,
+            this.keyRepeatRecipeOrTrade,
             this.keySaveHotbarActivator,
             this.keyLoadHotbarActivator,
             this.keyAdvancements,
@@ -1104,6 +1110,10 @@ public class Options {
 
    public OptionInstance<Boolean> vignette() {
       return this.vignette;
+   }
+
+   public OptionInstance<Boolean> improvedFog() {
+      return this.improvedFog;
    }
 
    public OptionInstance<Boolean> improvedTransparency() {
@@ -1582,6 +1592,7 @@ public class Options {
       access.process("maxAnisotropyBit", this.maxAnisotropyBit);
       access.process("textureFiltering", this.textureFiltering);
       access.process("maxFps", this.framerateLimit);
+      access.process("improvedFog", this.improvedFog);
       access.process("improvedTransparency", this.improvedTransparency);
       access.process("inactivityFpsLimit", this.inactivityFpsLimit);
       access.process("mipmapLevels", this.mipmapLevels);
@@ -2031,6 +2042,7 @@ public class Options {
    public void extractRenderState(final OptionsRenderState optionsState) {
       optionsState.cloudRange = this.cloudRange().get();
       optionsState.cutoutLeaves = this.cutoutLeaves().get();
+      optionsState.improvedFog = this.improvedFog().get();
       optionsState.improvedTransparency = this.improvedTransparency().get();
       optionsState.ambientOcclusion = this.ambientOcclusion().get();
       optionsState.menuBackgroundBlurriness = this.getMenuBackgroundBlurriness();

@@ -43,10 +43,14 @@ public class WhiteAshParticle extends BaseAshSmokeParticle {
          final double zAux,
          final RandomSource random
       ) {
-         double xa = random.nextFloat() * -1.9 * random.nextFloat() * 0.1;
+         double xa = this.randomDirection(random) * -1.9 * this.randomDirection(random) * 0.1;
          double ya = random.nextFloat() * -0.5 * random.nextFloat() * 0.1 * 5.0;
-         double za = random.nextFloat() * -1.9 * random.nextFloat() * 0.1;
+         double za = this.randomDirection(random) * -1.9 * this.randomDirection(random) * 0.1;
          return new WhiteAshParticle(level, x, y, z, xa, ya, za, 1.0F, this.sprites);
+      }
+
+      private float randomDirection(final RandomSource random) {
+         return 2.0F * random.nextFloat() - 1.0F;
       }
    }
 }

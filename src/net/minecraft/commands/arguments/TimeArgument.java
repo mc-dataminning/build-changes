@@ -42,7 +42,7 @@ public class TimeArgument implements SerializableArgument.ContextFree<Integer> {
    );
    private final MinMaxBounds.Bounds<Integer> bounds;
 
-   private TimeArgument(final MinMaxBounds.Bounds<Integer> bounds) {
+   public TimeArgument(final MinMaxBounds.Bounds<Integer> bounds) {
       this.bounds = bounds;
    }
 
@@ -51,7 +51,7 @@ public class TimeArgument implements SerializableArgument.ContextFree<Integer> {
       return TYPE;
    }
 
-   public static ArgumentType<Integer> time() {
+   public static ArgumentType<Integer> unboundedTime() {
       return new TimeArgument(MinMaxBounds.Bounds.any()).toBrigadier();
    }
 

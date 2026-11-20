@@ -1,5 +1,6 @@
 package net.minecraft.client;
 
+import java.util.Arrays;
 import net.minecraft.client.entity.ClientAvatarState;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.AbstractClientPlayer;
@@ -444,18 +445,27 @@ public class Camera implements TrackedWaypoint.Camera {
    }
 
    private FogType calculateFogType() {
+      FluidState cameraFluidState = this.level.getFluidState(this.blockPosition);
+      if (cameraFluidState.getType().getUseCameraPositionForFogDetection()
+         && this.position.y < this.blockPosition.getY() + cameraFluidState.getHeightForCamera(this.level, this.blockPosition)) {
+         return cameraFluidState.getType().getFogType();
+      }
+
       Camera.NearPlane plane = this.getNearPlane(this.minecraft.options.fov().get().intValue());
-      Vec3 offsetPos = this.position.add(plane.forward);
-      BlockPos checkPos = BlockPos.containing(offsetPos);
-      FluidState fluidState = this.level.getFluidState(checkPos);
-      if (!fluidState.isEmpty()) {
-         if (offsetPos.y <= fluidState.getHeightForCamera(this.level, checkPos) + checkPos.getY()) {
-            return fluidState.getType().getFogType();
-         }
-      } else {
-         BlockState state = this.level.getBlockState(checkPos);
-         if (state.is(Blocks.POWDER_SNOW)) {
-            return FogType.POWDER_SNOW;
+
+      for (Vec3 point : Arrays.asList(plane.forward, plane.getTopLeft(), plane.getTopRight(), plane.getBottomLeft(), plane.getBottomRight())) {
+         Vec3 offsetPos = this.position.add(point);
+         BlockPos checkPos = BlockPos.containing(offsetPos);
+         FluidState fluidState = this.level.getFluidState(checkPos);
+         if (!fluidState.isEmpty() && !fluidState.getType().getUseCameraPositionForFogDetection()) {
+            if (offsetPos.y <= fluidState.getHeightForCamera(this.level, checkPos) + checkPos.getY()) {
+               return fluidState.getType().getFogType();
+            }
+         } else {
+            BlockState state = this.level.getBlockState(checkPos);
+            if (state.is(Blocks.POWDER_SNOW)) {
+               return FogType.POWDER_SNOW;
+            }
          }
       }
 

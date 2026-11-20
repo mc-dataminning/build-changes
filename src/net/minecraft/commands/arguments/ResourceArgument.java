@@ -55,7 +55,7 @@ public class ResourceArgument implements SerializableArgument<Holder.Reference<?
    );
    private final ResourceKey<? extends Registry<?>> registryKey;
 
-   private ResourceArgument(final ResourceKey<? extends Registry<?>> registryKey) {
+   public ResourceArgument(final ResourceKey<? extends Registry<?>> registryKey) {
       this.registryKey = registryKey;
    }
 
@@ -128,7 +128,7 @@ public class ResourceArgument implements SerializableArgument<Holder.Reference<?
       ResourceKey<?> resourceId = ResourceKey.create(this.registryKey, Identifier.read(reader));
       return context.holderGetters()
          .get(resourceId)
-         .orElseThrow(() -> ERROR_UNKNOWN_RESOURCE.createWithContext(reader, resourceId, this.registryKey.identifier()));
+         .orElseThrow(() -> ERROR_UNKNOWN_RESOURCE.createWithContext(reader, resourceId.identifier(), this.registryKey.identifier()));
    }
 
    @Override

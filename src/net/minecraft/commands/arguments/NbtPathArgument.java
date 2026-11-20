@@ -31,7 +31,7 @@ import org.apache.commons.lang3.mutable.MutableBoolean;
 public class NbtPathArgument implements SerializableArgument.ContextFree<NbtPathArgument.NbtPath> {
    public static final NbtPathArgument INSTANCE = new NbtPathArgument();
    public static final SerializableArgument.Type<NbtPathArgument> TYPE = SerializableArgument.singletonType(INSTANCE);
-   private static final Collection<String> EXAMPLES = List.of("foo", "foo.bar", "foo[0]", "[0]", "[]", "{foo=bar}");
+   private static final Collection<String> EXAMPLES = List.of("foo", "foo.bar", "foo[0]", "[0]", "[]", "{foo:bar}");
    public static final SimpleCommandExceptionType ERROR_INVALID_NODE = new SimpleCommandExceptionType(Component.translatable("arguments.nbtpath.node.invalid"));
    public static final SimpleCommandExceptionType ERROR_DATA_TOO_DEEP = new SimpleCommandExceptionType(Component.translatable("arguments.nbtpath.too_deep"));
    public static final DynamicCommandExceptionType ERROR_NOTHING_FOUND = new DynamicCommandExceptionType(

@@ -45,7 +45,7 @@ public class ResourceOrTagArgument implements SerializableArgument<ResourceOrTag
    );
    private final ResourceKey<? extends Registry<?>> registryKey;
 
-   private ResourceOrTagArgument(final ResourceKey<? extends Registry<?>> registryKey) {
+   public ResourceOrTagArgument(final ResourceKey<? extends Registry<?>> registryKey) {
       this.registryKey = registryKey;
    }
 

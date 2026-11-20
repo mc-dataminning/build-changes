@@ -21,6 +21,8 @@ import net.minecraft.core.component.DataComponentInitializers;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.dispenser.DispenseBehavior;
+import net.minecraft.core.dispenser.DispenseBehaviorIds;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -390,12 +392,17 @@ public class Item implements ItemLike, FeatureElement {
    public static class Properties {
       private static final DependantName<Item, String> BLOCK_DESCRIPTION_ID = id -> Util.makeDescriptionId("block", id.identifier());
       private static final DependantName<Item, String> ITEM_DESCRIPTION_ID = id -> Util.makeDescriptionId("item", id.identifier());
-      private DataComponentInitializers.Initializer<Item> componentInitializer = (builder, var1, var2) -> builder.addAll(DataComponents.COMMON_ITEM_COMPONENTS);
+      private DataComponentInitializers.Initializer<Item> componentInitializer = (builder, context, var2) -> initDefault(builder, context);
       private @Nullable ItemStackTemplate craftingRemainingItem;
       private FeatureFlagSet requiredFeatures = FeatureFlags.VANILLA_SET;
       private @Nullable ResourceKey<Item> id;
       private DependantName<Item, String> descriptionId = ITEM_DESCRIPTION_ID;
       private final DependantName<Item, Identifier> model = ResourceKey::identifier;
+
+      private static void initDefault(final DataComponentMap.Builder builder, final HolderLookup.Provider context) {
+         builder.addAll(DataComponents.COMMON_ITEM_COMPONENTS);
+         builder.set(DataComponents.DISPENSE_BEHAVIOR, context.getOrThrow(DispenseBehaviorIds.DEFAULT));
+      }
 
       public Item.Properties food(final FoodProperties foodProperties) {
          return this.food(foodProperties, Consumables.DEFAULT_FOOD);
@@ -566,7 +573,7 @@ public class Item implements ItemLike, FeatureElement {
             .component(DataComponents.WEAPON, new Weapon(1));
       }
 
-      public Item.Properties spawnEgg(final EntityType<?> type) {
+      public Item.Properties spawns(final EntityType<?> type) {
          return this.component(DataComponents.ENTITY_DATA, TypedEntityData.of(type, new CompoundTag())).requiredFeatures(type.requiredFeatures());
       }
 
@@ -575,6 +582,7 @@ public class Item implements ItemLike, FeatureElement {
             .attributes(material.createAttributes(type))
             .enchantable(material.enchantmentValue())
             .component(DataComponents.EQUIPPABLE, Equippable.builder(type.getSlot()).setEquipSound(material.equipSound()).setAsset(material.assetId()).build())
+            .dispensed(DispenseBehaviorIds.EQUIPMENT)
             .repairable(material.repairIngredient());
       }
 
@@ -592,6 +600,7 @@ public class Item implements ItemLike, FeatureElement {
                   .setShearingSound(SoundEvents.ARMOR_UNEQUIP_WOLF)
                   .build()
             )
+            .dispensed(DispenseBehaviorIds.EQUIPMENT)
             .component(DataComponents.BREAK_SOUND, SoundEvents.WOLF_ARMOR_BREAK)
             .stacksTo(1);
       }
@@ -609,6 +618,7 @@ public class Item implements ItemLike, FeatureElement {
                   .setShearingSound(SoundEvents.HORSE_ARMOR_UNEQUIP)
                   .build()
             )
+            .dispensed(DispenseBehaviorIds.EQUIPMENT)
             .stacksTo(1);
       }
 
@@ -626,6 +636,7 @@ public class Item implements ItemLike, FeatureElement {
                   .setShearingSound(SoundEvents.ARMOR_UNEQUIP_NAUTILUS)
                   .build()
             )
+            .dispensed(DispenseBehaviorIds.EQUIPMENT)
             .stacksTo(1);
       }
 
@@ -705,6 +716,10 @@ public class Item implements ItemLike, FeatureElement {
 
       public Item.Properties compostable(final ResourceKey<ContextIntProvider> layers) {
          return this.component(DataComponents.COMPOSTABLE, new Compostable(layers));
+      }
+
+      public Item.Properties dispensed(final ResourceKey<List<DispenseBehavior>> behaviors) {
+         return this.delayedComponent(DataComponents.DISPENSE_BEHAVIOR, context -> context.getOrThrow(behaviors));
       }
 
       @SafeVarargs

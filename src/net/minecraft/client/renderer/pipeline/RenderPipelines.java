@@ -86,8 +86,12 @@ public class RenderPipelines {
       .withBindGroupLayout(BindGroupLayouts.GLINT_SAMPLER)
       .buildSnippet();
    private static final RenderPipeline.Snippet IMPROVED_FOG_SNIPPET = RenderPipeline.builder()
-      .withBindGroupLayout(BindGroupLayouts.SKY_CLOUDS_SAMPLER)
+      .withBindGroupLayout(BindGroupLayouts.SKY_SAMPLER)
       .withShaderDefine("IMPROVED_FOG")
+      .buildSnippet();
+   private static final RenderPipeline.Snippet CLOUDS_IN_FOG_SNIPPET = RenderPipeline.builder()
+      .withBindGroupLayout(BindGroupLayouts.CLOUDS_SAMPLER)
+      .withShaderDefine("CLOUDS_IN_FOG")
       .buildSnippet();
    private static final RenderPipeline.Snippet OUTLINE_SNIPPET = RenderPipeline.builder(GLOBALS_SNIPPET)
       .withBindGroupLayout(BindGroupLayouts.PROJECTION)
@@ -358,7 +362,17 @@ public class RenderPipelines {
          precompiledVariant(
             dynamicPipelines,
             variant,
-            stage -> terrain(new RenderPipelines.TerrainParameters(variant, improvedTransparency, context.multidraw(), false, stage)),
+            stage -> terrain(
+               new RenderPipelines.TerrainParameters(variant, context.options().improvedFog, improvedTransparency, context.multidraw(), false, stage, false)
+            ),
+            improvedTransparency
+         );
+         precompiledVariant(
+            dynamicPipelines,
+            variant,
+            stage -> terrain(
+               new RenderPipelines.TerrainParameters(variant, context.options().improvedFog, improvedTransparency, context.multidraw(), false, stage, true)
+            ),
             improvedTransparency
          );
       }
@@ -367,7 +381,7 @@ public class RenderPipelines {
          precompiledDynamic(
             dynamicPipelines,
             sky(new RenderPipelines.SkyParameters(skyElement)),
-            improvedTransparency ? RenderPassLayouts.COLOR_ONLY : RenderPassLayouts.COLOR_DEPTH
+            context.options().improvedFog ? RenderPassLayouts.COLOR_ONLY : RenderPassLayouts.COLOR_DEPTH
          );
       }
 
@@ -571,34 +585,38 @@ public class RenderPipelines {
                builder.withShaderDefine("ALPHA_CUTOUT", parameters.variant.alphaCutoutThreshold());
             }
 
-            if (parameters.variant.supportsOit()) {
+            if (parameters.variant.supportsOit() && parameters.checkWaterMask()) {
                builder.withShaderDefine("CHECK_WATER_MASK").withBindGroupLayout(BindGroupLayouts.WATER_MASK_SAMPLER);
             }
 
             String locationPostfix = parameters.variant.name()
                + (parameters.improvedFog ? "_improved_fog" : "")
+               + (parameters.cloudsInFog ? "_with_clouds" : "")
                + (parameters.multiDraw ? "_multi_draw" : "")
                + (parameters.wireframe ? "_wireframe" : "");
-            return finishDynamicPipeline(
-               builder,
-               "terrain",
-               parameters.variant.supportsOit(),
-               parameters.oitStage,
-               nonOitBuilder -> {
-                  nonOitBuilder.withBindGroupLayout(BindGroupLayouts.SAMPLER2);
-                  if (!parameters.wireframe) {
-                     nonOitBuilder.withColorTargetState(parameters.variant.nonOitColorTargetState());
-                     if (parameters.improvedFog) {
-                        builder.withSnippet(IMPROVED_FOG_SNIPPET);
-                     }
-                  } else {
-                     nonOitBuilder.withPolygonMode(PolygonMode.WIREFRAME).withColorTargetState(ColorTargetState.DEFAULT);
+            return finishDynamicPipeline(builder, "terrain", parameters.variant.supportsOit(), parameters.oitStage, nonOitBuilder -> {
+               nonOitBuilder.withBindGroupLayout(BindGroupLayouts.SAMPLER2);
+               if (parameters.improvedFog) {
+                  nonOitBuilder.withSnippet(IMPROVED_FOG_SNIPPET);
+               }
+
+               if (!parameters.wireframe) {
+                  nonOitBuilder.withColorTargetState(parameters.variant.nonOitColorTargetState());
+                  if (parameters.cloudsInFog) {
+                     nonOitBuilder.withSnippet(CLOUDS_IN_FOG_SNIPPET);
                   }
-               },
-               null,
-               oitAccumulateBuilder -> oitAccumulateBuilder.withSnippet(IMPROVED_FOG_SNIPPET).withBindGroupLayout(BindGroupLayouts.SAMPLER2),
-               locationPostfix
-            );
+               } else {
+                  nonOitBuilder.withPolygonMode(PolygonMode.WIREFRAME).withColorTargetState(ColorTargetState.DEFAULT);
+               }
+            }, null, oitAccumulateBuilder -> {
+               oitAccumulateBuilder.withBindGroupLayout(BindGroupLayouts.SAMPLER2);
+               if (parameters.improvedFog) {
+                  oitAccumulateBuilder.withSnippet(IMPROVED_FOG_SNIPPET);
+                  if (parameters.cloudsInFog) {
+                     oitAccumulateBuilder.withSnippet(CLOUDS_IN_FOG_SNIPPET);
+                  }
+               }
+            }, locationPostfix);
          }
       );
    }
@@ -1214,7 +1232,15 @@ public class RenderPipelines {
    public record SkyParameters(SkyRenderer.SkyElement element) {
    }
 
-   public record TerrainParameters(TerrainRenderPipelineVariant variant, boolean improvedFog, boolean multiDraw, boolean wireframe, @Nullable OitStage oitStage) {
+   public record TerrainParameters(
+      TerrainRenderPipelineVariant variant,
+      boolean improvedFog,
+      boolean cloudsInFog,
+      boolean multiDraw,
+      boolean wireframe,
+      @Nullable OitStage oitStage,
+      boolean checkWaterMask
+   ) {
    }
 
    public record TextParameters(TextRenderPipelineVariant variant, @Nullable OitStage oitStage) {

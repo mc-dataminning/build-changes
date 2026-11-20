@@ -116,6 +116,10 @@ public class AreaEffectCloud extends Entity implements TraceableEntity {
       }
    }
 
+   @Override
+   protected void doWaterSplashEffect() {
+   }
+
    public void addEffect(final MobEffectInstance effect) {
       this.setPotionContents(this.potionContents.withEffectAdded(effect));
    }

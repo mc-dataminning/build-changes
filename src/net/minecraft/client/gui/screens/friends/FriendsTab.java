@@ -17,7 +17,6 @@ import net.minecraft.client.gui.layouts.LayoutSettings;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.PrivacyConfirmLinkScreen;
 import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.CommonLinks;
@@ -96,11 +95,6 @@ class FriendsTab extends AbstractFriendsTab {
 
    private void updateListView() {
       this.screen.refreshLists();
-   }
-
-   @Override
-   public Component getTabExtraNarration() {
-      return CommonComponents.EMPTY;
    }
 
    public void updateEntries(final List<FriendEntry> friendEntries) {

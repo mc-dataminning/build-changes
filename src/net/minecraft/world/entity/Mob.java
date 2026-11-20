@@ -128,6 +128,7 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
    public static final String TAG_PERSISTENCE_REQUIRED = "PersistenceRequired";
    public int ambientSoundTime;
    protected int xpReward;
+   protected boolean overrideLookControl;
    protected LookControl lookControl;
    protected MoveControl moveControl;
    protected JumpControl jumpControl;
@@ -217,6 +218,14 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
 
    public PathNavigation getNavigation() {
       return this.getControlledVehicle() instanceof Mob riding ? riding.getNavigation() : this.navigation;
+   }
+
+   public void disableLookControlThisTick() {
+      this.overrideLookControl = true;
+   }
+
+   public boolean isLookControlActive() {
+      return !this.overrideLookControl;
    }
 
    @Override
@@ -347,6 +356,8 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
       if (!this.level().isClientSide() && this.tickCount % 5 == 0) {
          this.updateControlFlags();
       }
+
+      this.overrideLookControl = false;
    }
 
    protected void updateControlFlags() {
@@ -741,8 +752,11 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
       profiler.push("controls");
       profiler.push("move");
       this.moveControl.tick();
-      profiler.popPush("look");
-      this.lookControl.tick();
+      if (this.isLookControlActive()) {
+         profiler.popPush("look");
+         this.lookControl.tick();
+      }
+
       profiler.popPush("jump");
       this.jumpControl.tick();
       profiler.pop();
