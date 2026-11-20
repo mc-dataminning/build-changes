@@ -24,293 +24,60 @@ public record IcebergFeature(BlockState state) implements Feature {
 
    @Override
    public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, BlockPos origin) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      //
-      // Bytecode:
-      // 000: new net/minecraft/core/BlockPos
-      // 003: dup
-      // 004: aload 4
-      // 006: invokevirtual net/minecraft/core/BlockPos.getX ()I
-      // 009: aload 2
-      // 00a: invokevirtual net/minecraft/world/level/chunk/ChunkGenerator.getSeaLevel ()I
-      // 00d: aload 4
-      // 00f: invokevirtual net/minecraft/core/BlockPos.getZ ()I
-      // 012: invokespecial net/minecraft/core/BlockPos.<init> (III)V
-      // 015: astore 4
-      // 017: aload 3
-      // 018: invokeinterface net/minecraft/util/RandomSource.nextDouble ()D 1
-      // 01d: ldc2_w 0.7
-      // 020: dcmpl
-      // 021: ifle 028
-      // 024: bipush 1
-      // 025: goto 029
-      // 028: bipush 0
-      // 029: istore 5
-      // 02b: aload 0
-      // 02c: getfield net/minecraft/world/level/levelgen/feature/IcebergFeature.state Lnet/minecraft/world/level/block/state/BlockState;
-      // 02f: astore 6
-      // 031: aload 3
-      // 032: invokeinterface net/minecraft/util/RandomSource.nextDouble ()D 1
-      // 037: ldc2_w 2.0
-      // 03a: dmul
-      // 03b: ldc2_w 3.141592653589793
-      // 03e: dmul
-      // 03f: dstore 7
-      // 041: bipush 11
-      // 043: aload 3
-      // 044: bipush 5
-      // 045: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
-      // 04a: isub
-      // 04b: istore 9
-      // 04d: bipush 3
-      // 04e: aload 3
-      // 04f: bipush 3
-      // 050: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
-      // 055: iadd
-      // 056: istore 10
-      // 058: aload 3
-      // 059: invokeinterface net/minecraft/util/RandomSource.nextDouble ()D 1
-      // 05e: ldc2_w 0.7
-      // 061: dcmpl
-      // 062: ifle 069
-      // 065: bipush 1
-      // 066: goto 06a
-      // 069: bipush 0
-      // 06a: istore 11
-      // 06c: bipush 11
-      // 06e: istore 12
-      // 070: iload 11
-      // 072: ifeq 083
-      // 075: aload 3
-      // 076: bipush 6
-      // 078: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
-      // 07d: bipush 6
-      // 07f: iadd
-      // 080: goto 08d
-      // 083: aload 3
-      // 084: bipush 15
-      // 086: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
-      // 08b: bipush 3
-      // 08c: iadd
-      // 08d: istore 13
-      // 08f: iload 11
-      // 091: ifne 0b1
-      // 094: aload 3
-      // 095: invokeinterface net/minecraft/util/RandomSource.nextDouble ()D 1
-      // 09a: ldc2_w 0.9
-      // 09d: dcmpl
-      // 09e: ifle 0b1
-      // 0a1: iload 13
-      // 0a3: aload 3
-      // 0a4: bipush 19
-      // 0a6: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
-      // 0ab: bipush 7
-      // 0ad: iadd
-      // 0ae: iadd
-      // 0af: istore 13
-      // 0b1: iload 13
-      // 0b3: aload 3
-      // 0b4: bipush 11
-      // 0b6: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
-      // 0bb: iadd
-      // 0bc: bipush 18
-      // 0be: invokestatic java/lang/Math.min (II)I
-      // 0c1: istore 14
-      // 0c3: iload 13
-      // 0c5: aload 3
-      // 0c6: bipush 7
-      // 0c8: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
-      // 0cd: iadd
-      // 0ce: aload 3
-      // 0cf: bipush 5
-      // 0d0: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
-      // 0d5: isub
-      // 0d6: bipush 11
-      // 0d8: invokestatic java/lang/Math.min (II)I
-      // 0db: istore 15
-      // 0dd: iload 11
-      // 0df: ifeq 0e7
-      // 0e2: iload 9
-      // 0e4: goto 0e9
-      // 0e7: bipush 11
-      // 0e9: istore 16
-      // 0eb: iload 16
-      // 0ed: ineg
-      // 0ee: istore 17
-      // 0f0: iload 17
-      // 0f2: iload 16
-      // 0f4: if_icmpge 16b
-      // 0f7: iload 16
-      // 0f9: ineg
-      // 0fa: istore 18
-      // 0fc: iload 18
-      // 0fe: iload 16
-      // 100: if_icmpge 165
-      // 103: bipush 0
-      // 104: istore 19
-      // 106: iload 19
-      // 108: iload 13
-      // 10a: if_icmpge 15f
-      // 10d: iload 11
-      // 10f: ifeq 11f
-      // 112: aload 0
-      // 113: iload 19
-      // 115: iload 13
-      // 117: iload 15
-      // 119: invokevirtual net/minecraft/world/level/levelgen/feature/IcebergFeature.heightDependentRadiusEllipse (III)I
-      // 11c: goto 12a
-      // 11f: aload 0
-      // 120: aload 3
-      // 121: iload 19
-      // 123: iload 13
-      // 125: iload 15
-      // 127: invokevirtual net/minecraft/world/level/levelgen/feature/IcebergFeature.heightDependentRadiusRound (Lnet/minecraft/util/RandomSource;III)I
-      // 12a: istore 20
-      // 12c: iload 11
-      // 12e: ifne 13b
-      // 131: iload 17
-      // 133: iload 20
-      // 135: if_icmplt 13b
-      // 138: goto 159
-      // 13b: aload 0
-      // 13c: aload 1
-      // 13d: aload 3
-      // 13e: aload 4
-      // 140: iload 13
-      // 142: iload 17
-      // 144: iload 19
-      // 146: iload 18
-      // 148: iload 20
-      // 14a: iload 16
-      // 14c: iload 11
-      // 14e: iload 10
-      // 150: dload 7
-      // 152: iload 5
-      // 154: aload 6
-      // 156: invokevirtual net/minecraft/world/level/levelgen/feature/IcebergFeature.generateIcebergBlock (Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;IIIIIIZIDZLnet/minecraft/world/level/block/state/BlockState;)V
-      // 159: iinc 19 1
-      // 15c: goto 106
-      // 15f: iinc 18 1
-      // 162: goto 0fc
-      // 165: iinc 17 1
-      // 168: goto 0f0
-      // 16b: aload 0
-      // 16c: aload 1
-      // 16d: aload 4
-      // 16f: iload 15
-      // 171: iload 13
-      // 173: iload 11
-      // 175: iload 9
-      // 177: invokevirtual net/minecraft/world/level/levelgen/feature/IcebergFeature.smooth (Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;IIZI)V
-      // 17a: iload 16
-      // 17c: ineg
-      // 17d: istore 17
-      // 17f: iload 17
-      // 181: iload 16
-      // 183: if_icmpge 20b
-      // 186: iload 16
-      // 188: ineg
-      // 189: istore 18
-      // 18b: iload 18
-      // 18d: iload 16
-      // 18f: if_icmpge 205
-      // 192: bipush -1
-      // 193: istore 19
-      // 195: iload 19
-      // 197: iload 14
-      // 199: ineg
-      // 19a: if_icmple 1ff
-      // 19d: iload 11
-      // 19f: ifeq 1bf
-      // 1a2: iload 16
-      // 1a4: i2f
-      // 1a5: fconst_1
-      // 1a6: iload 19
-      // 1a8: i2d
-      // 1a9: ldc2_w 2.0
-      // 1ac: invokestatic java/lang/Math.pow (DD)D
-      // 1af: d2f
-      // 1b0: iload 14
-      // 1b2: i2f
-      // 1b3: ldc 8.0
-      // 1b5: fmul
-      // 1b6: fdiv
-      // 1b7: fsub
-      // 1b8: fmul
-      // 1b9: invokestatic net/minecraft/util/Mth.ceil (F)I
-      // 1bc: goto 1c1
-      // 1bf: iload 16
-      // 1c1: istore 20
-      // 1c3: aload 0
-      // 1c4: aload 3
-      // 1c5: iload 19
-      // 1c7: ineg
-      // 1c8: iload 14
-      // 1ca: iload 15
-      // 1cc: invokevirtual net/minecraft/world/level/levelgen/feature/IcebergFeature.heightDependentRadiusSteep (Lnet/minecraft/util/RandomSource;III)I
-      // 1cf: istore 21
-      // 1d1: iload 17
-      // 1d3: iload 21
-      // 1d5: if_icmplt 1db
-      // 1d8: goto 1f9
-      // 1db: aload 0
-      // 1dc: aload 1
-      // 1dd: aload 3
-      // 1de: aload 4
-      // 1e0: iload 14
-      // 1e2: iload 17
-      // 1e4: iload 19
-      // 1e6: iload 18
-      // 1e8: iload 21
-      // 1ea: iload 20
-      // 1ec: iload 11
-      // 1ee: iload 10
-      // 1f0: dload 7
-      // 1f2: iload 5
-      // 1f4: aload 6
-      // 1f6: invokevirtual net/minecraft/world/level/levelgen/feature/IcebergFeature.generateIcebergBlock (Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;IIIIIIZIDZLnet/minecraft/world/level/block/state/BlockState;)V
-      // 1f9: iinc 19 -1
-      // 1fc: goto 195
-      // 1ff: iinc 18 1
-      // 202: goto 18b
-      // 205: iinc 17 1
-      // 208: goto 17f
-      // 20b: iload 11
-      // 20d: ifeq 225
-      // 210: aload 3
-      // 211: invokeinterface net/minecraft/util/RandomSource.nextDouble ()D 1
-      // 216: ldc2_w 0.1
-      // 219: dcmpl
-      // 21a: ifle 221
-      // 21d: bipush 1
-      // 21e: goto 237
-      // 221: bipush 0
-      // 222: goto 237
-      // 225: aload 3
-      // 226: invokeinterface net/minecraft/util/RandomSource.nextDouble ()D 1
-      // 22b: ldc2_w 0.7
-      // 22e: dcmpl
-      // 22f: ifle 236
-      // 232: bipush 1
-      // 233: goto 237
-      // 236: bipush 0
-      // 237: istore 17
-      // 239: iload 17
-      // 23b: ifeq 252
-      // 23e: aload 0
-      // 23f: aload 3
-      // 240: aload 1
-      // 241: iload 15
-      // 243: iload 13
-      // 245: aload 4
-      // 247: iload 11
-      // 249: iload 9
-      // 24b: dload 7
-      // 24d: iload 10
-      // 24f: invokevirtual net/minecraft/world/level/levelgen/feature/IcebergFeature.generateCutOut (Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/LevelAccessor;IILnet/minecraft/core/BlockPos;ZIDI)V
-      // 252: bipush 1
-      // 253: ireturn
+      origin = new BlockPos(origin.getX(), chunkGenerator.getSeaLevel(), origin.getZ());
+      boolean snowOnTop = random.nextDouble() > 0.7;
+      BlockState mainBlockState = this.state;
+      double shapeAngle = random.nextDouble() * 2.0 * Math.PI;
+      int shapeEllipseA = 11 - random.nextInt(5);
+      int shapeEllipseC = 3 + random.nextInt(3);
+      boolean isEllipse = random.nextDouble() > 0.7;
+      int maxWidthRoundIceberg = 11;
+      int overWaterHeight = isEllipse ? random.nextInt(6) + 6 : random.nextInt(15) + 3;
+      if (!isEllipse && random.nextDouble() > 0.9) {
+         overWaterHeight += random.nextInt(19) + 7;
+      }
+
+      int underWaterHeight = Math.min(overWaterHeight + random.nextInt(11), 18);
+      int width = Math.min(overWaterHeight + random.nextInt(7) - random.nextInt(5), 11);
+      int a = isEllipse ? shapeEllipseA : 11;
+
+      for (int xo = -a; xo < a; xo++) {
+         for (int zo = -a; zo < a; zo++) {
+            for (int yOff = 0; yOff < overWaterHeight; yOff++) {
+               int radius = isEllipse
+                  ? this.heightDependentRadiusEllipse(yOff, overWaterHeight, width)
+                  : this.heightDependentRadiusRound(random, yOff, overWaterHeight, width);
+               if (isEllipse || xo < radius) {
+                  this.generateIcebergBlock(
+                     level, random, origin, overWaterHeight, xo, yOff, zo, radius, a, isEllipse, shapeEllipseC, shapeAngle, snowOnTop, mainBlockState
+                  );
+               }
+            }
+         }
+      }
+
+      this.smooth(level, origin, width, overWaterHeight, isEllipse, shapeEllipseA);
+
+      for (int xo = -a; xo < a; xo++) {
+         for (int zo = -a; zo < a; zo++) {
+            for (int yOff = -1; yOff > -underWaterHeight; yOff--) {
+               int newA = isEllipse ? Mth.ceil(a * (1.0F - (float)Math.pow(yOff, 2.0) / (underWaterHeight * 8.0F))) : a;
+               int radius = this.heightDependentRadiusSteep(random, -yOff, underWaterHeight, width);
+               if (xo < radius) {
+                  this.generateIcebergBlock(
+                     level, random, origin, underWaterHeight, xo, yOff, zo, radius, newA, isEllipse, shapeEllipseC, shapeAngle, snowOnTop, mainBlockState
+                  );
+               }
+            }
+         }
+      }
+
+      boolean doCutOut = isEllipse ? random.nextDouble() > 0.1 : random.nextDouble() > 0.7;
+      if (doCutOut) {
+         this.generateCutOut(random, level, width, overWaterHeight, origin, isEllipse, shapeEllipseA, shapeAngle, shapeEllipseC);
+      }
+
+      return true;
    }
 
    private void generateCutOut(

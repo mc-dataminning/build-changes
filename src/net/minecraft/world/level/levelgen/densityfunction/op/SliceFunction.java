@@ -157,76 +157,19 @@ public record SliceFunction(Direction.Axis axis, int coordinate, DensityFunction
    public record ZSampler(DensitySampler input, int z) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
-         // $VF: Couldn't be decompiled
-         // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-         //
-         // Bytecode:
-         // 00: aload 3
-         // 01: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityVolume.sizeZ ()I
-         // 04: bipush 1
-         // 05: if_icmpne 20
-         // 08: aload 3
-         // 09: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityVolume.minBlockZ ()I
-         // 0c: aload 0
-         // 0d: getfield net/minecraft/world/level/levelgen/densityfunction/op/SliceFunction$ZSampler.z I
-         // 10: if_icmpne 20
-         // 13: aload 0
-         // 14: getfield net/minecraft/world/level/levelgen/densityfunction/op/SliceFunction$ZSampler.input Lnet/minecraft/world/level/levelgen/densityfunction/DensitySampler;
-         // 17: aload 1
-         // 18: aload 2
-         // 19: aload 3
-         // 1a: invokeinterface net/minecraft/world/level/levelgen/densityfunction/DensitySampler.sampleVolume (Lnet/minecraft/world/level/levelgen/densityfunction/SamplerContext;Lnet/minecraft/world/level/levelgen/densityfunction/DensityBuffer;Lnet/minecraft/world/level/levelgen/densityfunction/DensityVolume;)V 4
-         // 1f: return
-         // 20: new net/minecraft/world/level/levelgen/densityfunction/DensityVolume
-         // 23: dup
-         // 24: aload 3
-         // 25: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityVolume.sizeX ()I
-         // 28: aload 3
-         // 29: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityVolume.sizeY ()I
-         // 2c: bipush 1
-         // 2d: aload 3
-         // 2e: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityVolume.minBlockX ()I
-         // 31: aload 3
-         // 32: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityVolume.minBlockY ()I
-         // 35: aload 0
-         // 36: getfield net/minecraft/world/level/levelgen/densityfunction/op/SliceFunction$ZSampler.z I
-         // 39: aload 3
-         // 3a: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityVolume.stepBlockX ()I
-         // 3d: aload 3
-         // 3e: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityVolume.stepBlockY ()I
-         // 41: aload 3
-         // 42: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityVolume.stepBlockZ ()I
-         // 45: invokespecial net/minecraft/world/level/levelgen/densityfunction/DensityVolume.<init> (IIIIIIIII)V
-         // 48: astore 4
-         // 4a: aload 4
-         // 4c: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityVolume.size ()I
-         // 4f: istore 5
-         // 51: aload 0
-         // 52: getfield net/minecraft/world/level/levelgen/densityfunction/op/SliceFunction$ZSampler.input Lnet/minecraft/world/level/levelgen/densityfunction/DensitySampler;
-         // 55: aload 1
-         // 56: aload 2
-         // 57: iload 5
-         // 59: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityBuffer.slice (I)Lnet/minecraft/world/level/levelgen/densityfunction/DensityBuffer;
-         // 5c: aload 4
-         // 5e: invokeinterface net/minecraft/world/level/levelgen/densityfunction/DensitySampler.sampleVolume (Lnet/minecraft/world/level/levelgen/densityfunction/SamplerContext;Lnet/minecraft/world/level/levelgen/densityfunction/DensityBuffer;Lnet/minecraft/world/level/levelgen/densityfunction/DensityVolume;)V 4
-         // 63: iload 5
-         // 65: istore 6
-         // 67: iload 6
-         // 69: aload 3
-         // 6a: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityVolume.size ()I
-         // 6d: if_icmpge 84
-         // 70: aload 2
-         // 71: aload 2
-         // 72: bipush 0
-         // 73: iload 6
-         // 75: iload 5
-         // 77: invokevirtual net/minecraft/world/level/levelgen/densityfunction/DensityBuffer.copyFrom (Lnet/minecraft/world/level/levelgen/densityfunction/DensityBuffer;III)V
-         // 7a: iload 6
-         // 7c: iload 5
-         // 7e: iadd
-         // 7f: istore 6
-         // 81: goto 67
-         // 84: return
+         if (volume.sizeZ() == 1 && volume.minBlockZ() == this.z) {
+            this.input.sampleVolume(context, outputBuffer, volume);
+         } else {
+            DensityVolume inputVolume = new DensityVolume(
+               volume.sizeX(), volume.sizeY(), 1, volume.minBlockX(), volume.minBlockY(), this.z, volume.stepBlockX(), volume.stepBlockY(), volume.stepBlockZ()
+            );
+            int sliceSize = inputVolume.size();
+            this.input.sampleVolume(context, outputBuffer.slice(sliceSize), inputVolume);
+
+            for (int i = sliceSize; i < volume.size(); i += sliceSize) {
+               outputBuffer.copyFrom(outputBuffer, 0, i, sliceSize);
+            }
+         }
       }
 
       @Override

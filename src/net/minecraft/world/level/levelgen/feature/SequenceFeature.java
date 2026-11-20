@@ -1,23 +1,44 @@
 package net.minecraft.world.level.levelgen.feature;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
+import net.minecraft.util.ExtraCodecs;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.placement.FeaturePlacer;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
-// $VF: Couldn't be decompiled
-// Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-// java.lang.NullPointerException
-//   at java.base/java.util.Objects.requireNonNull(Objects.java:220)
-//   at org.jetbrains.java.decompiler.modules.decompiler.vars.VarDefinitionHelper.rename(VarDefinitionHelper.java:2035)
-//   at org.jetbrains.java.decompiler.modules.decompiler.vars.VarDefinitionHelper.iterateClashingExprent(VarDefinitionHelper.java:1822)
-//   at org.jetbrains.java.decompiler.modules.decompiler.vars.VarDefinitionHelper.iterateClashingExprent(VarDefinitionHelper.java:2029)
-//   at org.jetbrains.java.decompiler.modules.decompiler.vars.VarDefinitionHelper.iterateClashingExprent(VarDefinitionHelper.java:2029)
-//   at org.jetbrains.java.decompiler.modules.decompiler.vars.VarDefinitionHelper.iterateClashingNames(VarDefinitionHelper.java:1619)
-//   at org.jetbrains.java.decompiler.modules.decompiler.vars.VarDefinitionHelper.iterateClashingNames(VarDefinitionHelper.java:1739)
-//   at org.jetbrains.java.decompiler.modules.decompiler.vars.VarDefinitionHelper.remapClashingNames(VarDefinitionHelper.java:1584)
-//   at org.jetbrains.java.decompiler.modules.decompiler.vars.VarProcessor.rerunClashing(VarProcessor.java:99)
-//   at org.jetbrains.java.decompiler.main.ClassWriter.invokeProcessors(ClassWriter.java:145)
-//   at org.jetbrains.java.decompiler.main.ClassWriter.writeClass(ClassWriter.java:379)
-//   at org.jetbrains.java.decompiler.main.ClassesProcessor.writeClass(ClassesProcessor.java:521)
-//   at org.jetbrains.java.decompiler.main.Fernflower.getClassContent(Fernflower.java:200)
-//   at org.jetbrains.java.decompiler.struct.ContextUnit.lambda$save$3(ContextUnit.java:221)
+public record SequenceFeature(HolderSet<PlacedFeature> features) implements Feature {
+   public static final MapCodec<SequenceFeature> CODEC = RecordCodecBuilder.mapCodec(
+      i -> i.group(ExtraCodecs.nonEmptyHolderSet(PlacedFeature.LIST_CODEC).fieldOf("features").forGetter(SequenceFeature::features))
+         .apply(i, SequenceFeature::new)
+   );
+
+   @Override
+   public MapCodec<SequenceFeature> codec() {
+      return CODEC;
+   }
+
+   @Override
+   public Stream<Holder<Feature>> getSubFeatures() {
+      return this.features.stream().flatMap(f -> f.value().getFeatures());
+   }
+
+   @Override
+   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
+      FeaturePlacer placer = new FeaturePlacer(level, chunkGenerator);
+
+      for (Holder<PlacedFeature> feature : this.features) {
+         if (!placer.place(feature.value(), random, origin)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+}

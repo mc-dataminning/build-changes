@@ -327,10 +327,12 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
       @Override
       public void extractContent(final GuiGraphicsExtractor graphics, final boolean hovered) {
          graphics.text(this.minecraft.font, this.serverData.name, this.getContentX() + 32 + 3, this.getContentY() + 1, -1);
-         List<FormattedCharSequence> lines = this.minecraft.font.split(this.serverData.motd, this.getContentWidth() - 32 - 2);
+         if (this.serverData.motd != null) {
+            List<FormattedCharSequence> lines = this.minecraft.font.split(this.serverData.motd, this.getContentWidth() - 32 - 2);
 
-         for (int i = 0; i < Math.min(lines.size(), 2); i++) {
-            graphics.text(this.minecraft.font, lines.get(i), this.getContentX() + 32 + 3, this.getContentY() + 12 + 9 * i, -8355712);
+            for (int i = 0; i < Math.min(lines.size(), 2); i++) {
+               graphics.text(this.minecraft.font, lines.get(i), this.getContentX() + 32 + 3, this.getContentY() + 12 + 9 * i, -8355712);
+            }
          }
 
          this.extractIcon(graphics, this.getContentX(), this.getContentY(), this.icon.textureLocation());
@@ -357,21 +359,23 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
          Component status = this.serverData.state() == ServerData.State.INCOMPATIBLE
             ? this.serverData.version.copy().withStyle(ChatFormatting.RED)
             : this.serverData.status;
-         int statusWidth = this.minecraft.font.width(status);
-         int statusX = statusIconX - statusWidth - 5;
-         graphics.text(this.minecraft.font, status, statusX, this.getContentY() + 1, -8355712);
-         if (this.statusIconTooltip != null
-            && graphics.mouseX() >= statusIconX
-            && graphics.mouseX() <= statusIconX + 10
-            && graphics.mouseY() >= this.getContentY()
-            && graphics.mouseY() <= this.getContentY() + 8) {
-            graphics.setTooltipForNextFrame(this.statusIconTooltip, graphics.mouseX(), graphics.mouseY());
-         } else if (this.onlinePlayersTooltip != null
-            && graphics.mouseX() >= statusX
-            && graphics.mouseX() <= statusX + statusWidth
-            && graphics.mouseY() >= this.getContentY()
-            && graphics.mouseY() <= this.getContentY() - 1 + 9) {
-            graphics.setTooltipForNextFrame(Lists.transform(this.onlinePlayersTooltip, Component::getVisualOrderText), graphics.mouseX(), graphics.mouseY());
+         if (status != null) {
+            int statusWidth = this.minecraft.font.width(status);
+            int statusX = statusIconX - statusWidth - 5;
+            graphics.text(this.minecraft.font, status, statusX, this.getContentY() + 1, -8355712);
+            if (this.statusIconTooltip != null
+               && graphics.mouseX() >= statusIconX
+               && graphics.mouseX() <= statusIconX + 10
+               && graphics.mouseY() >= this.getContentY()
+               && graphics.mouseY() <= this.getContentY() + 8) {
+               graphics.setTooltipForNextFrame(this.statusIconTooltip, graphics.mouseX(), graphics.mouseY());
+            } else if (this.onlinePlayersTooltip != null
+               && graphics.mouseX() >= statusX
+               && graphics.mouseX() <= statusX + statusWidth
+               && graphics.mouseY() >= this.getContentY()
+               && graphics.mouseY() <= this.getContentY() - 1 + 9) {
+               graphics.setTooltipForNextFrame(Lists.transform(this.onlinePlayersTooltip, Component::getVisualOrderText), graphics.mouseX(), graphics.mouseY());
+            }
          }
 
          if (hovered) {
