@@ -74,7 +74,7 @@ public class BucketItem extends Item implements DispensibleContainerItem {
                   ItemStack taken = bucketPickupBlock.pickupBlock(player, level, pos, blockState);
                   if (!taken.isEmpty()) {
                      player.awardStat(Stats.ITEM_USED.get(this));
-                     bucketPickupBlock.getPickupSound().ifPresent(soundEvent -> player.playSound(soundEvent, 1.0F, 1.0F));
+                     bucketPickupBlock.getPickupSound().ifPresent(player::playSound);
                      level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
                      ItemStack result = ItemUtils.createFilledResult(itemStack, player, taken);
                      if (!level.isClientSide()) {

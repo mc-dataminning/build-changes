@@ -592,7 +592,7 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
          .sorted(Comparator.comparingInt(TabOrderedElement::getTabOrderGroup))
          .toList();
       Screen.NarratableSearchResult result = findNarratableWidget(
-         activeNarratables, output.narrationTrigger() == NarrationTrigger.KEYBOARD ? null : this.lastNarratable
+         activeNarratables, output.narrationTrigger() == NarrationTrigger.KEYBOARD ? null : this.lastNarratable, output.narrationTrigger()
       );
       if (result != null) {
          if (result.priority.isTerminal()) {
@@ -617,7 +617,7 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
    }
 
    public static Screen.@Nullable NarratableSearchResult findNarratableWidget(
-      final List<? extends NarratableEntry> narratableEntries, final @Nullable NarratableEntry lastNarratable
+      final List<? extends NarratableEntry> narratableEntries, final @Nullable NarratableEntry lastNarratable, final NarrationTrigger narrationTrigger
    ) {
       Screen.NarratableSearchResult result = null;
       Screen.NarratableSearchResult lowPrioNarratable = null;
@@ -625,7 +625,7 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
 
       for (int narratablesSize = narratableEntries.size(); i < narratablesSize; i++) {
          NarratableEntry narratable = narratableEntries.get(i);
-         NarratableEntry.NarrationPriority priority = narratable.narrationPriority();
+         NarratableEntry.NarrationPriority priority = narratable.narrationPriority(narrationTrigger);
          if (priority.isTerminal()) {
             if (narratable != lastNarratable) {
                return new Screen.NarratableSearchResult(narratable, i, priority);

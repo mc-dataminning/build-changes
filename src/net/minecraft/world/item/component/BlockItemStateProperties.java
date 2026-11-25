@@ -59,7 +59,7 @@ public record BlockItemStateProperties(Map<String, String> properties) implement
    }
 
    private static <T extends Comparable<T>> BlockState updateState(final BlockState state, final Property<T> property, final String value) {
-      return property.getValue(value).map(v -> state.setValue(property, v)).orElse(state);
+      return property.getValue(value).map(v -> state.setValue(property, (T)v)).orElse(state);
    }
 
    public boolean isEmpty() {

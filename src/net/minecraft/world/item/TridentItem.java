@@ -84,7 +84,7 @@ public class TridentItem extends Item implements ProjectileItem {
                      trident.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                   }
 
-                  level.playSound(null, trident, sound.value(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                  level.playSound(null, trident, sound.value(), SoundSource.PLAYERS);
                   return true;
                }
             }
@@ -106,7 +106,7 @@ public class TridentItem extends Item implements ProjectileItem {
                   player.move(MoverType.SELF, new Vec3(0.0, 1.1999999F, 0.0));
                }
 
-               level.playSound(null, player, sound.value(), SoundSource.PLAYERS, 1.0F, 1.0F);
+               level.playSound(null, player, sound.value(), SoundSource.PLAYERS);
                return true;
             } else {
                return false;

@@ -102,7 +102,7 @@ public class FrogspawnBlock extends Block {
 
    private void hatchFrogspawn(final ServerLevel level, final BlockPos pos, final RandomSource random) {
       this.destroyBlock(level, pos);
-      level.playSound(null, pos, SoundEvents.FROGSPAWN_HATCH, SoundSource.BLOCKS, 1.0F, 1.0F);
+      level.playSound(null, pos, SoundEvents.FROGSPAWN_HATCH, SoundSource.BLOCKS);
       this.spawnTadpoles(level, pos, random);
    }
 

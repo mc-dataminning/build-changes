@@ -93,7 +93,7 @@ public abstract class Property<T extends Comparable<T>> {
 
    public <U, S extends StateHolder<?, S>> DataResult<S> parseValue(final DynamicOps<U> ops, final S state, final U value) {
       DataResult<T> parsed = this.codec.parse(ops, value);
-      return parsed.map(v -> state.setValue(this, v)).setPartial(state);
+      return parsed.map(v -> state.setValue(this, (T)v)).setPartial(state);
    }
 
    public record Value<T extends Comparable<T>>(Property<T> property, T value) {

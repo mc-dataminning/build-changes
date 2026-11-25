@@ -87,14 +87,18 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
 
                if (itemInHand.isStackable()) {
                   itemInHand.consume(transformData.consumeOnUse ? 1 : 0, player);
-               } else if (player != null) {
-                  itemInHand.hurtAndBreak(transformData.itemDamagePerUse, player, context.getHand().asEquipmentSlot());
+               } else if (level instanceof ServerLevel serverLevel) {
+                  itemInHand.hurtAndBreak(transformData.itemDamagePerUse, serverLevel, player instanceof ServerPlayer p ? p : null, brokenItem -> {
+                     if (player != null) {
+                        player.onEquippedItemBroken(brokenItem, context.getHand().asEquipmentSlot());
+                     }
+                  });
                }
 
                level.setBlock(pos, updatedShape, 11);
                Holder<SoundEvent> sound = transformData.sound.orElse(null);
                if (sound != null) {
-                  level.playSound(player, pos, sound.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                  level.playSound(player, pos, sound.value(), SoundSource.BLOCKS);
                }
 
                transformData.particle.send(level, player, pos);

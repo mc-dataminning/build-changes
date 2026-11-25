@@ -10,6 +10,8 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.entity.state.ZombieVillagerRenderState;
 
 public class BabyZombieVillagerModel<S extends ZombieVillagerRenderState> extends ZombieVillagerModel<S> {
+   private static final float CUSTOM_HEAD_LAYER_SCALE = 0.85F;
+
    public BabyZombieVillagerModel(final ModelPart root) {
       super(root);
    }
@@ -62,5 +64,10 @@ public class BabyZombieVillagerModel<S extends ZombieVillagerRenderState> extend
          mesh.getRoot().clearChild("head").clearRecursively();
          return mesh;
       });
+   }
+
+   @Override
+   public float getCustomHeadLayerScale() {
+      return 0.85F;
    }
 }

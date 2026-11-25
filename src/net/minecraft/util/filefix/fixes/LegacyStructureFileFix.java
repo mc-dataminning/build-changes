@@ -5,8 +5,8 @@ import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.OptionalDynamic;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
+import java.util.stream.Stream;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -70,11 +71,13 @@ public class LegacyStructureFileFix extends FileFix {
                .toList();
             RegionStorageInfo overworldInfo = new RegionStorageInfo("overworld", OVERWORLD_KEY, "chunk");
             List<FileAccess<SavedDataNbt>> netherStructureData = NETHER_LEGACY_STRUCTURES.stream()
-               .map(structureId -> getLegacyStructureData(files, structureId))
+               .flatMap(
+                  structureId -> Stream.of(getLegacyStructureData(files, structureId), getLegacyStructureData(files, FileRelation.OLD_NETHER, structureId))
+               )
                .toList();
             RegionStorageInfo netherInfo = new RegionStorageInfo("the_nether", NETHER_KEY, "chunk");
             List<FileAccess<SavedDataNbt>> endStructureData = END_LEGACY_STRUCTURES.stream()
-               .map(structureId -> getLegacyStructureData(files, structureId))
+               .flatMap(structureId -> Stream.of(getLegacyStructureData(files, structureId), getLegacyStructureData(files, FileRelation.OLD_END, structureId)))
                .toList();
             RegionStorageInfo endInfo = new RegionStorageInfo("the_end", END_KEY, "chunk");
             FileAccess<LevelDat> levelDat = files.getFileAccess(FileResourceTypes.LEVEL_DAT, FileRelation.ORIGIN.forFile("level.dat"));
@@ -150,9 +153,13 @@ public class LegacyStructureFileFix extends FileFix {
    }
 
    private static FileAccess<SavedDataNbt> getLegacyStructureData(final FileAccessProvider files, final String structureId) {
+      return getLegacyStructureData(files, FileRelation.OLD_OVERWORLD, structureId);
+   }
+
+   private static FileAccess<SavedDataNbt> getLegacyStructureData(final FileAccessProvider files, final FileRelation dimension, final String structureId) {
       return files.getFileAccess(
          FileResourceTypes.savedData(References.SAVED_DATA_STRUCTURE_FEATURE_INDICES, CompressedNbt.MissingSeverity.MINOR),
-         FileRelation.DATA.forFile(structureId + ".dat")
+         dimension.resolve(FileRelation.DATA).forFile(structureId + ".dat")
       );
    }
 
@@ -275,7 +282,7 @@ public class LegacyStructureFileFix extends FileFix {
       }
    }
 
-   public record LegacyStructureData(Map<String, Dynamic<?>> starts, Map<String, LongList> indexes) {
+   public record LegacyStructureData(Map<String, Dynamic<?>> starts, Map<String, LongSet> indexes) {
       public LegacyStructureData() {
          this(new HashMap<>(), new HashMap<>());
       }
@@ -285,7 +292,7 @@ public class LegacyStructureFileFix extends FileFix {
       }
 
       public void addIndex(final String id, final long sourcePos) {
-         this.indexes.computeIfAbsent(id, l -> new LongArrayList()).add(sourcePos);
+         this.indexes.computeIfAbsent(id, l -> new LongLinkedOpenHashSet()).add(sourcePos);
       }
    }
 }

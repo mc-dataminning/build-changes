@@ -416,7 +416,7 @@ public class ArmorStand extends LivingEntity {
    }
 
    private void playBrokenSound() {
-      this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ARMOR_STAND_BREAK, this.getSoundSource(), 1.0F, 1.0F);
+      this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ARMOR_STAND_BREAK, this.getSoundSource());
    }
 
    @Override

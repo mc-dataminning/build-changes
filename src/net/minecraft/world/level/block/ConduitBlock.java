@@ -80,7 +80,7 @@ public class ConduitBlock extends BaseEntityBlock implements SimpleWaterloggedBl
 
    @Override
    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
+      FluidState fluidState = context.getClickedFluidState();
       return this.defaultBlockState().setValue(WATERLOGGED, fluidState.is(FluidTags.WATER) && fluidState.isFull());
    }
 

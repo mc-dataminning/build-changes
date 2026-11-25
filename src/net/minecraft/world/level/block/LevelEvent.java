@@ -4,6 +4,10 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class LevelEvent {
    public static final int SOUND_DISPENSER_DISPENSE = 1000;
@@ -99,6 +103,15 @@ public class LevelEvent {
    public static final int PARTICLES_TRIAL_SPAWNER_DETECT_PLAYER_OMINOUS = 3019;
    public static final int PARTICLES_TRIAL_SPAWNER_BECOME_OMINOUS = 3020;
    public static final int PARTICLES_TRIAL_SPAWNER_SPAWN_ITEM = 3021;
+
+   public static void playParticlesAndSoundDestroyBlock(final Entity entity, final Level level, final BlockPos pos, final BlockState state) {
+      int data = Block.getId(state);
+      if (entity.isSilent()) {
+         level.levelEvent(2014, pos, data);
+      } else {
+         level.levelEvent(2001, pos, data);
+      }
+   }
 
    @Retention(RetentionPolicy.CLASS)
    @Target(ElementType.TYPE_USE)

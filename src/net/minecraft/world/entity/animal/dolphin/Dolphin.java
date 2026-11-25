@@ -184,7 +184,7 @@ public class Dolphin extends AgeableWaterCreature {
 
    @Override
    public void playAttackSound() {
-      this.playSound(SoundEvents.DOLPHIN_ATTACK, 1.0F, 1.0F);
+      this.playSound(SoundEvents.DOLPHIN_ATTACK);
    }
 
    @Override
@@ -308,7 +308,7 @@ public class Dolphin extends AgeableWaterCreature {
       ItemStack itemStack = player.getItemInHand(hand);
       if (!itemStack.isEmpty() && itemStack.is(ItemTags.FISHES)) {
          if (!this.level().isClientSide()) {
-            this.playSound(SoundEvents.DOLPHIN_EAT, 1.0F, 1.0F);
+            this.playSound(SoundEvents.DOLPHIN_EAT);
          }
 
          if (this.canAgeUp()) {
@@ -576,7 +576,7 @@ public class Dolphin extends AgeableWaterCreature {
             .getEntitiesOfClass(ItemEntity.class, Dolphin.this.getBoundingBox().inflate(8.0, 8.0, 8.0), Dolphin.ALLOWED_ITEMS);
          if (!items.isEmpty()) {
             Dolphin.this.getNavigation().moveTo(items.get(0), 1.2F);
-            Dolphin.this.playSound(SoundEvents.DOLPHIN_PLAY, 1.0F, 1.0F);
+            Dolphin.this.playSound(SoundEvents.DOLPHIN_PLAY);
          }
 
          this.cooldown = 0;

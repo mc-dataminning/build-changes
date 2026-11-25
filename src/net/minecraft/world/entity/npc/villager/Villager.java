@@ -83,7 +83,6 @@ import net.minecraft.world.food.VillagerFood;
 import net.minecraft.world.inventory.MerchantMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.item.trading.TradeSet;
@@ -264,8 +263,7 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
 
    @Override
    public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      if (itemStack.is(Items.VILLAGER_SPAWN_EGG) || !this.isAlive() || this.isTrading() || this.isSleeping()) {
+      if (!this.isAlive() || this.isTrading() || this.isSleeping()) {
          return super.mobInteract(player, hand);
       }
 

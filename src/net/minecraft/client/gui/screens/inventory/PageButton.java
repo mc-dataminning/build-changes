@@ -43,7 +43,7 @@ public class PageButton extends Button {
    @Override
    public void playDownSound(final SoundManager soundManager) {
       if (this.playTurnSound) {
-         soundManager.play(SimpleSoundInstance.forUI(SoundEvents.BOOK_PAGE_TURN, 1.0F));
+         soundManager.play(SimpleSoundInstance.forUI(SoundEvents.BOOK_PAGE_TURN));
       }
    }
 

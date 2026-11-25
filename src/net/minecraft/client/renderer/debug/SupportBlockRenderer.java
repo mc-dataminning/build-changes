@@ -20,7 +20,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SupportBlockRenderer implements DebugRenderer.SimpleDebugRenderer {
    private final Minecraft minecraft;
-   private double lastUpdateTime = Double.MIN_VALUE;
+   private double lastUpdateTime = Double.NEGATIVE_INFINITY;
    private List<Entity> surroundEntities = Collections.emptyList();
 
    public SupportBlockRenderer(final Minecraft minecraft) {

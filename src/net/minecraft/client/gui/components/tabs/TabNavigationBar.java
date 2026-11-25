@@ -24,6 +24,7 @@ import net.minecraft.client.gui.narration.GroupNarration;
 import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
+import net.minecraft.client.gui.narration.NarrationTrigger;
 import net.minecraft.client.gui.navigation.FocusNavigationEvent;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.client.input.InputQuirks;
@@ -152,8 +153,8 @@ public class TabNavigationBar extends AbstractContainerWidget {
    }
 
    @Override
-   public NarratableEntry.NarrationPriority narrationPriority() {
-      return NarratableEntry.NarrationPriority.of(this.isFocused(), this.getHoveredTabButton() != null);
+   public NarratableEntry.NarrationPriority narrationPriority(final NarrationTrigger narrationTrigger) {
+      return NarratableEntry.NarrationPriority.of(this.isFocused(), this.getHoveredTabButton() != null, narrationTrigger);
    }
 
    @Override

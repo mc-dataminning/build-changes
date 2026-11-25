@@ -91,12 +91,12 @@ public class RamTarget extends Behavior<Goat> {
             blockingFactor * speedFactor * this.getKnockbackForce.applyAsDouble(body), this.ramDirection.x(), this.ramDirection.z(), source, damage
          );
          this.finishRam(level, body);
-         level.playSound(null, body, this.getImpactSound.apply(body), SoundSource.NEUTRAL, 1.0F, 1.0F);
+         level.playSound(null, body, this.getImpactSound.apply(body), SoundSource.NEUTRAL);
       } else if (this.hasRammedHornBreakingBlock(level, body)) {
-         level.playSound(null, body, this.getImpactSound.apply(body), SoundSource.NEUTRAL, 1.0F, 1.0F);
+         level.playSound(null, body, this.getImpactSound.apply(body), SoundSource.NEUTRAL);
          boolean dropped = body.dropHorn();
          if (dropped) {
-            level.playSound(null, body, this.getHornBreakSound.apply(body), SoundSource.NEUTRAL, 1.0F, 1.0F);
+            level.playSound(null, body, this.getHornBreakSound.apply(body), SoundSource.NEUTRAL);
          }
 
          this.finishRam(level, body);

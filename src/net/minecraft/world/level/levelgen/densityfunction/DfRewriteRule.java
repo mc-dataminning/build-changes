@@ -1,13 +1,12 @@
 package net.minecraft.world.level.levelgen.densityfunction;
 
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.world.level.levelgen.densityfunction.generator.ConstantFunction;
 import net.minecraft.world.level.levelgen.densityfunction.op.SliceFunction;
 
 @FunctionalInterface
 public interface DfRewriteRule {
-   DfRewriteRule INLINE_REFERENCE = function -> function instanceof DensityFunctions.HolderHolder(Holder<DensityFunction> holder) ? holder.value() : function;
+   DfRewriteRule INLINE_REFERENCE = function -> function instanceof DensityFunctions.HolderHolder holder ? holder.function().value() : function;
    DfRewriteRule SLICE_UNIFORM_AXES = new DfRewriteRule.SliceUniformAxes(7);
 
    static DfRewriteRule sequence(final DfRewriteRule... rules) {

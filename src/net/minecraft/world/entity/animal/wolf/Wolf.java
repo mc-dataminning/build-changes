@@ -232,7 +232,7 @@ public class Wolf extends TamableAnimal implements NeutralMob {
 
    @Override
    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-      this.getSoundSet().stepSound().ifPresent(s -> this.playSound(s.value(), 0.15F, 1.0F));
+      this.getSoundSet().stepSound().ifPresent(s -> this.playSound((Holder<SoundEvent>)s, 0.15F, 1.0F));
    }
 
    @Override
@@ -463,7 +463,7 @@ public class Wolf extends TamableAnimal implements NeutralMob {
          if (itemStack.is(ItemTags.WOLF_COLLAR_DYES) && this.isOwnedBy(player)) {
             DyeColor color = itemStack.get(DataComponents.DYE);
             if (color != null && color != this.getCollarColor()) {
-               this.level().playSound(player, this, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
+               this.level().playSound(player, this, SoundEvents.DYE_USE, SoundSource.PLAYERS);
                this.setCollarColor(color);
                itemStack.consume(1, player);
                return InteractionResult.SUCCESS;

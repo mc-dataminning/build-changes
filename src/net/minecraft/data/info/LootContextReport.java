@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
@@ -15,6 +16,7 @@ import net.minecraft.util.context.ContextKey;
 import net.minecraft.util.context.ContextKeySet;
 
 public class LootContextReport implements DataProvider {
+   private static final Comparator<ContextKey<?>> SORT_BY_ID = Comparator.comparing(ContextKey::name);
    private final PackOutput output;
    private final CompletableFuture<HolderLookup.Provider> registries;
 
@@ -42,13 +44,9 @@ public class LootContextReport implements DataProvider {
       return result;
    }
 
-   private static JsonElement serializeList(final Set<ContextKey<?>> list) {
+   private static JsonElement serializeList(final Set<ContextKey<?>> entries) {
       JsonArray result = new JsonArray();
-
-      for (ContextKey<?> contextKey : list) {
-         result.add(contextKey.name().toString());
-      }
-
+      entries.stream().sorted(SORT_BY_ID).map(id -> id.name().toString()).forEach(result::add);
       return result;
    }
 

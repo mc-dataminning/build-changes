@@ -19,6 +19,7 @@ public record UploadSessionResponseDto(@SerializedName("result") UploadSessionRe
       @SerializedName("recommendedBlockSizeBytes") @Nullable BigDecimal recommendedBlockSizeBytes,
       @SerializedName("maxBlockCount") @Nullable BigDecimal maxBlockCount,
       @SerializedName("maxUploadSizeBytes") @Nullable BigDecimal maxUploadSizeBytes,
+      @SerializedName("maxParallelPuts") @Nullable BigDecimal maxParallelPuts,
       @SerializedName("acceptedArchiveFormats") @Nullable Set<String> acceptedArchiveFormats
    ) implements ReflectionBasedSerialization {
    }

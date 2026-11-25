@@ -141,7 +141,7 @@ public class Pufferfish extends AbstractFish {
          int puffState = this.getPuffState();
          if (mob.hurtServer(level, this.damageSources().mobAttack(this), 1 + puffState)) {
             mob.addEffect(new MobEffectInstance(MobEffects.POISON, 60 * puffState, 0), this);
-            this.playSound(SoundEvents.PUFFER_FISH_STING, 1.0F, 1.0F);
+            this.playSound(SoundEvents.PUFFER_FISH_STING);
          }
       }
    }

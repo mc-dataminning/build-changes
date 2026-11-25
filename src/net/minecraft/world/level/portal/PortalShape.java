@@ -131,14 +131,37 @@ public class PortalShape {
    private static boolean hasTopFrame(
       final BlockGetter level, final BlockPos bottomLeft, final Direction rightDir, final BlockPos.MutableBlockPos pos, final int width, final int height
    ) {
-      for (int i = 0; i < width; i++) {
-         BlockPos.MutableBlockPos framePos = pos.set(bottomLeft).move(Direction.UP, height).move(rightDir, i);
-         if (!FRAME.test(level.getBlockState(framePos))) {
-            return false;
-         }
-      }
-
-      return true;
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      //
+      // Bytecode:
+      // 00: bipush 0
+      // 01: istore 6
+      // 03: iload 6
+      // 05: iload 4
+      // 07: if_icmpge 3a
+      // 0a: aload 3
+      // 0b: aload 1
+      // 0c: invokevirtual net/minecraft/core/BlockPos$MutableBlockPos.set (Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      // 0f: getstatic net/minecraft/core/Direction.UP Lnet/minecraft/core/Direction;
+      // 12: iload 5
+      // 14: invokevirtual net/minecraft/core/BlockPos$MutableBlockPos.move (Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      // 17: aload 2
+      // 18: iload 6
+      // 1a: invokevirtual net/minecraft/core/BlockPos$MutableBlockPos.move (Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      // 1d: astore 7
+      // 1f: getstatic net/minecraft/world/level/portal/PortalShape.FRAME Ljava/util/function/Predicate;
+      // 22: aload 0
+      // 23: aload 7
+      // 25: invokeinterface net/minecraft/world/level/BlockGetter.getBlockState (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState; 2
+      // 2a: invokeinterface java/util/function/Predicate.test (Ljava/lang/Object;)Z 2
+      // 2f: ifne 34
+      // 32: bipush 0
+      // 33: ireturn
+      // 34: iinc 6 1
+      // 37: goto 03
+      // 3a: bipush 1
+      // 3b: ireturn
    }
 
    private static int getDistanceUntilTop(

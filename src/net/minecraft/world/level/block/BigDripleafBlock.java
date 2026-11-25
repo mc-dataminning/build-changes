@@ -264,7 +264,7 @@ public class BigDripleafBlock extends HorizontalDirectionalBlock implements Simp
    @Override
    public BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState belowState = context.getLevel().getBlockState(context.getClickedPos().below());
-      FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
+      FluidState fluidState = context.getClickedFluidState();
       boolean belowIsDripleafPart = belowState.is(Blocks.BIG_DRIPLEAF) || belowState.is(Blocks.BIG_DRIPLEAF_STEM);
       return this.defaultBlockState()
          .setValue(WATERLOGGED, fluidState.isSourceOfType(Fluids.WATER))

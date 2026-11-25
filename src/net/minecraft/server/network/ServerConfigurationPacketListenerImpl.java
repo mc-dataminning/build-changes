@@ -153,6 +153,7 @@ public class ServerConfigurationPacketListenerImpl extends ServerCommonPacketLis
 
    @Override
    public void handleAcceptCodeOfConduct(final ServerboundAcceptCodeOfConductPacket packet) {
+      PacketUtils.ensureRunningOnSameThread(packet, this, this.server.packetProcessor());
       this.finishCurrentTask(ServerCodeOfConductConfigurationTask.TYPE);
    }
 

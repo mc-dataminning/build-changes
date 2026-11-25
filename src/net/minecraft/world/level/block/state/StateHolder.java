@@ -103,7 +103,7 @@ public abstract class StateHolder<O, S> {
       return value != null ? value : defaultValue;
    }
 
-   public <T extends Comparable<T>, V extends T> S setValue(final Property<T> property, final V value) {
+   public <T extends Comparable<T>> S setValue(final Property<T> property, final T value) {
       int index = this.valueIndex(property);
       if (index == -1) {
          throw new IllegalArgumentException("Cannot set property " + property + " as it does not exist in " + this.owner);
@@ -112,13 +112,13 @@ public abstract class StateHolder<O, S> {
       }
    }
 
-   public <T extends Comparable<T>, V extends T> S trySetValue(final Property<T> property, final V value) {
+   public <T extends Comparable<T>> S trySetValue(final Property<T> property, final T value) {
       int index = this.valueIndex(property);
       return (S)(index == -1 ? this : this.setValueInternal(property, index, value));
    }
 
-   private <T extends Comparable<T>, V extends T> S setValueInternal(final Property<T> property, final int propertyIndex, final V value) {
-      int valueIndex = property.getInternalIndex((T)value);
+   private <T extends Comparable<T>> S setValueInternal(final Property<T> property, final int propertyIndex, final T value) {
+      int valueIndex = property.getInternalIndex(value);
       if (valueIndex < 0) {
          throw new IllegalArgumentException("Cannot set property " + property + " to " + value + " on " + this.owner + ", it is not an allowed value");
       } else {

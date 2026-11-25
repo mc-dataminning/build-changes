@@ -21,7 +21,7 @@ public class BrushArmadilloDispenseBehavior implements DispenseBehavior {
       ServerLevel level = source.level();
       BlockPos pos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
 
-      for (Armadillo armadillo : level.getEntitiesOfClass(Armadillo.class, new AABB(pos), EntitySelector.NO_SPECTATORS)) {
+      for (Armadillo armadillo : level.getEntitiesOfClass(Armadillo.class, new AABB(pos), EntitySelector.ENTITY_STILL_ALIVE)) {
          if (armadillo.brushOffScute(null, dispensed)) {
             dispensed.hurtAndBreak(16, level, null, item -> {});
             return DispenseBehavior.DispenseResult.success(dispensed);

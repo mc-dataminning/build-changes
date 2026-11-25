@@ -168,7 +168,7 @@ public class Chicken extends Animal {
 
    @Override
    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-      this.getSoundSet().stepSound().ifPresent(s -> this.playSound(s.value(), 0.15F, 1.0F));
+      this.getSoundSet().stepSound().ifPresent(s -> this.playSound((Holder<SoundEvent>)s, 0.15F, 1.0F));
    }
 
    public @Nullable Chicken getBreedOffspring(final ServerLevel level, final AgeableMob partner) {

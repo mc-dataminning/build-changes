@@ -52,7 +52,7 @@ public abstract class BaseCoralPlantTypeBlock extends Block implements SimpleWat
 
    @Override
    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
+      FluidState fluidState = context.getClickedFluidState();
       return this.defaultBlockState().setValue(WATERLOGGED, fluidState.is(FluidTags.WATER) && fluidState.isFull());
    }
 

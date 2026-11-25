@@ -39,6 +39,7 @@ import net.minecraft.world.level.levelgen.densityfunction.op.UnaryFunction;
 import net.minecraft.world.level.levelgen.densityfunction.op.upscale.UpscaleFunction;
 import net.minecraft.world.level.levelgen.synth.BlendedNoise;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
+import org.jspecify.annotations.Nullable;
 
 public final class DensityFunctions {
    public static final float MAX_REASONABLE_NOISE_VALUE = 1000000.0F;
@@ -411,7 +412,16 @@ public final class DensityFunctions {
       return remap(input.clamp(fromMin, fromMax), fromMin, fromMax, toMin, toMax);
    }
 
-   public record HolderHolder(Holder<DensityFunction> function) implements DensityFunction {
+   public static final class HolderHolder implements DensityFunction {
+      private static final int UNCOMPUTED_DOMAIN_AXES = -1;
+      private final Holder<DensityFunction> function;
+      private @Nullable Interval range;
+      private int domainAxes = -1;
+
+      public HolderHolder(final Holder<DensityFunction> function) {
+         this.function = function;
+      }
+
       @Override
       public DensitySampler compileSampler(final DensityFunction.CompileContext context) {
          return this.function.value().compileSampler(context);
@@ -425,12 +435,20 @@ public final class DensityFunctions {
 
       @Override
       public Interval range() {
-         return this.function.value().range();
+         if (this.range == null) {
+            this.range = this.function.value().range();
+         }
+
+         return this.range;
       }
 
       @Override
       public @DensityFunction.Axes int domainAxes() {
-         return this.function.value().domainAxes();
+         if (this.domainAxes == -1) {
+            this.domainAxes = this.function.value().domainAxes();
+         }
+
+         return this.domainAxes;
       }
 
       @Override
@@ -441,6 +459,25 @@ public final class DensityFunctions {
       @Override
       public String getDebugName() {
          return DensityFunction.idShortString(this.function);
+      }
+
+      public Holder<DensityFunction> function() {
+         return this.function;
+      }
+
+      @Override
+      public boolean equals(final Object obj) {
+         return obj == this ? true : obj instanceof DensityFunctions.HolderHolder holderHolder && this.function.equals(holderHolder.function);
+      }
+
+      @Override
+      public int hashCode() {
+         return this.function.hashCode();
+      }
+
+      @Override
+      public String toString() {
+         return "HolderHolder[" + this.function + "]";
       }
    }
 }

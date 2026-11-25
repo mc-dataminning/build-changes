@@ -40,7 +40,7 @@ public class SpongeBlock extends Block {
    protected void tryAbsorbWater(final Level level, final BlockPos pos) {
       if (this.removeWaterBreadthFirstSearch(level, pos)) {
          level.setBlock(pos, Blocks.WET_SPONGE.defaultBlockState(), 2);
-         level.playSound(null, pos, SoundEvents.SPONGE_ABSORB, SoundSource.BLOCKS, 1.0F, 1.0F);
+         level.playSound(null, pos, SoundEvents.SPONGE_ABSORB, SoundSource.BLOCKS);
       }
    }
 

@@ -8,6 +8,7 @@ import net.minecraft.CrashReport;
 import net.minecraft.CrashReportCategory;
 import net.minecraft.ReportedException;
 import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.client.entity.ClientAvatarEntity;
 import net.minecraft.client.entity.ClientMannequin;
@@ -35,6 +36,7 @@ import net.minecraft.world.entity.Avatar;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.PlayerModelType;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Quaternionf;
 import org.jspecify.annotations.Nullable;
@@ -137,6 +139,10 @@ public class EntityRenderDispatcher implements ResourceManagerReloadListener {
          rendererCategory.setDetail("Delta", partialTicks);
          throw new ReportedException(report);
       }
+   }
+
+   public <S extends EntityRenderState> void extractShadow(final S renderState, final Level level) {
+      this.getRenderer(renderState).extractShadow(renderState, Minecraft.getInstance(), level);
    }
 
    public <S extends EntityRenderState> void submit(

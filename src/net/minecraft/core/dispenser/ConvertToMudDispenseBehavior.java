@@ -38,15 +38,13 @@ public class ConvertToMudDispenseBehavior implements DispenseBehavior {
          return DispenseBehavior.DispenseResult.failure();
       }
 
-      if (!level.isClientSide()) {
-         RandomSource random = level.getRandom();
+      RandomSource random = level.getRandom();
 
-         for (int i = 0; i < 5; i++) {
-            level.sendParticles(ParticleTypes.SPLASH, pos.getX() + random.nextDouble(), pos.getY() + 1, pos.getZ() + random.nextDouble(), 1, 0.0, 0.0, 0.0, 1.0);
-         }
+      for (int i = 0; i < 5; i++) {
+         level.sendParticles(ParticleTypes.SPLASH, pos.getX() + random.nextDouble(), pos.getY() + 1, pos.getZ() + random.nextDouble(), 1, 0.0, 0.0, 0.0, 1.0);
       }
 
-      level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+      level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS);
       level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
       level.setBlockAndUpdate(target, Blocks.MUD.defaultBlockState());
       return DispenseBehavior.consumeWithRemainder(source, dispensed, new ItemStack(Items.GLASS_BOTTLE));

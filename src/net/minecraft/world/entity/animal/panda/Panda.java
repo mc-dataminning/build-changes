@@ -330,7 +330,7 @@ public class Panda extends Animal {
 
    @Override
    public void playAttackSound() {
-      this.playSound(SoundEvents.PANDA_BITE, 1.0F, 1.0F);
+      this.playSound(SoundEvents.PANDA_BITE);
    }
 
    @Override
@@ -357,7 +357,7 @@ public class Panda extends Animal {
          }
 
          if (this.getUnhappyCounter() == 29 || this.getUnhappyCounter() == 14) {
-            this.playSound(SoundEvents.PANDA_CANT_BREED, 1.0F, 1.0F);
+            this.playSound(SoundEvents.PANDA_CANT_BREED);
          }
 
          this.setUnhappyCounter(this.getUnhappyCounter() - 1);
@@ -369,7 +369,7 @@ public class Panda extends Animal {
             this.sneeze(false);
             this.afterSneeze();
          } else if (this.getSneezeCounter() == 1) {
-            this.playSound(SoundEvents.PANDA_PRE_SNEEZE, 1.0F, 1.0F);
+            this.playSound(SoundEvents.PANDA_PRE_SNEEZE);
          }
       }
 
@@ -514,7 +514,7 @@ public class Panda extends Animal {
          0.0,
          movement.z
       );
-      this.playSound(SoundEvents.PANDA_SNEEZE, 1.0F, 1.0F);
+      this.playSound(SoundEvents.PANDA_SNEEZE);
 
       for (Panda panda : level.getEntitiesOfClass(Panda.class, this.getBoundingBox().inflate(10.0))) {
          if (!panda.isBaby() && panda.onGround() && !panda.isInWater() && panda.canPerformAction()) {

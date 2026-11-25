@@ -31,7 +31,7 @@ public interface DensityFunction {
       };
    }, value -> {
       return switch (value) {
-         case DensityFunctions.HolderHolder(Holder<DensityFunction> function) -> function;
+         case DensityFunctions.HolderHolder holder -> holder.function();
          default -> Holder.direct(value);
       };
    });

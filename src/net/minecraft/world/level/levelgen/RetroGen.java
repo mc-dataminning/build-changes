@@ -138,4 +138,17 @@ public final class RetroGen {
    private boolean hasBelowZeroRetroGen() {
       return this.hasBelowZeroRetroGen;
    }
+
+   @Override
+   public String toString() {
+      return "RetroGen{targetStatus="
+         + this.targetStatus
+         + ", missingBedrock="
+         + this.missingBedrock
+         + ", statusesToRerun="
+         + this.statusesToRerun
+         + ", hasBelowZeroRetroGen="
+         + this.hasBelowZeroRetroGen
+         + "}";
+   }
 }

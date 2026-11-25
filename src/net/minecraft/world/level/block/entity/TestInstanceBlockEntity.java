@@ -302,7 +302,7 @@ public class TestInstanceBlockEntity extends BlockEntity implements BoundingBoxR
             );
             gameTestInfo.setTestBlockPos(pos);
             GameTestRunner runner = GameTestRunner.Builder.fromInfo(List.of(gameTestInfo), serverLevel.getServer()).build();
-            TestCommand.trackAndStartRunner(serverLevel.getServer().createCommandSourceStack(), runner);
+            TestCommand.trackAndStartRunner(serverLevel.getServer().createCommandSourceStack(serverLevel), runner);
          }
       }
    }

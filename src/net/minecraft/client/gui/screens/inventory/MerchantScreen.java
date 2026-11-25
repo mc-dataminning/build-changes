@@ -13,6 +13,7 @@ import net.minecraft.client.gui.narration.GroupNarration;
 import net.minecraft.client.gui.navigation.ScreenAxis;
 import net.minecraft.client.gui.screens.inventory.tooltip.BelowOrAboveWidgetTooltipPositioner;
 import net.minecraft.client.input.KeyEvent;
+import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -110,13 +111,22 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
 
    @Override
    public boolean keyPressed(final KeyEvent event) {
-      if (this.minecraft.options.keyRepeatRecipeOrTrade.matches(event) && !this.isInputCaptured() && this.hasSelectedTrade) {
-         AbstractWidget.playButtonClickSound(this.minecraft.getSoundManager());
-         this.selectTrade(this.selectedOfferIndex);
-         return true;
-      } else {
-         return super.keyPressed(event);
+      return this.minecraft.options.keyRepeatRecipeOrTrade.matches(event) && !this.isInputCaptured() && this.tryRepeatTrade() ? true : super.keyPressed(event);
+   }
+
+   @Override
+   public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
+      return this.minecraft.options.keyRepeatRecipeOrTrade.matchesMouse(event) && this.tryRepeatTrade() ? true : super.mouseClicked(event, doubleClick);
+   }
+
+   private boolean tryRepeatTrade() {
+      if (!this.hasSelectedTrade) {
+         return false;
       }
+
+      AbstractWidget.playButtonClickSound(this.minecraft.getSoundManager());
+      this.selectTrade(this.selectedOfferIndex);
+      return true;
    }
 
    @Override

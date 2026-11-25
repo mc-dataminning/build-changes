@@ -125,7 +125,7 @@ public class ChiseledBookShelfBlock extends BaseEntityBlock implements Selectabl
          player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
          SoundEvent soundEvent = itemStack.is(Items.ENCHANTED_BOOK) ? SoundEvents.CHISELED_BOOKSHELF_INSERT_ENCHANTED : SoundEvents.CHISELED_BOOKSHELF_INSERT;
          bookshelfBlock.setItem(slot, itemStack.consumeAndReturn(1, player));
-         level.playSound(null, pos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
+         level.playSound(null, pos, soundEvent, SoundSource.BLOCKS);
       }
    }
 
@@ -135,7 +135,7 @@ public class ChiseledBookShelfBlock extends BaseEntityBlock implements Selectabl
          SoundEvent soundEvent = retrievedBook.is(Items.ENCHANTED_BOOK)
             ? SoundEvents.CHISELED_BOOKSHELF_PICKUP_ENCHANTED
             : SoundEvents.CHISELED_BOOKSHELF_PICKUP;
-         level.playSound(null, pos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
+         level.playSound(null, pos, soundEvent, SoundSource.BLOCKS);
          if (!player.getInventory().add(retrievedBook)) {
             player.drop(retrievedBook, false, Prediction.SERVER_ONLY);
          }

@@ -14,11 +14,11 @@ public interface Noise {
    default void addToVolume(final DensityBuffer buffer, final DensityVolume volume, final double xzScale, final double yScale, final float amplitude) {
       int index = 0;
 
-      for (int indexZ = 0; indexZ < volume.sizeZ(); indexZ++) {
-         double z = volume.blockZ(indexZ) * xzScale;
+      for (int indexX = 0; indexX < volume.sizeX(); indexX++) {
+         double x = volume.blockX(indexX) * xzScale;
 
-         for (int indexX = 0; indexX < volume.sizeX(); indexX++) {
-            double x = volume.blockX(indexX) * xzScale;
+         for (int indexZ = 0; indexZ < volume.sizeZ(); indexZ++) {
+            double z = volume.blockZ(indexZ) * xzScale;
 
             for (int indexY = 0; indexY < volume.sizeY(); indexY++) {
                double y = volume.blockY(indexY) * yScale;

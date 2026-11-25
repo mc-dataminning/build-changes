@@ -10,9 +10,11 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.enchantment.EnchantedItemInUse;
 import net.minecraft.world.item.enchantment.LevelBasedValue;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.phys.Vec3;
@@ -39,16 +41,18 @@ public record ReplaceDisk(
 
    @Override
    public void apply(final ServerLevel serverLevel, final int enchantmentLevel, final EnchantedItemInUse item, final Entity entity, final Vec3 position) {
-      BlockPos centerBlock = BlockPos.containing(position).offset(this.offset);
-      RandomSource random = entity.getRandom();
-      int dist = (int)this.radius.calculate(enchantmentLevel);
-      int height = (int)this.height.calculate(enchantmentLevel);
+      if (!(entity instanceof Mob) || serverLevel.getGameRules().get(GameRules.MOB_GRIEFING)) {
+         BlockPos centerBlock = BlockPos.containing(position).offset(this.offset);
+         RandomSource random = entity.getRandom();
+         int dist = (int)this.radius.calculate(enchantmentLevel);
+         int height = (int)this.height.calculate(enchantmentLevel);
 
-      for (BlockPos pos : BlockPos.betweenClosed(centerBlock.offset(-dist, 0, -dist), centerBlock.offset(dist, Math.min(height - 1, 0), dist))) {
-         if (pos.distToCenterSqr(position.x(), pos.getY() + 0.5, position.z()) < Mth.square(dist)
-            && this.predicate.map(p -> p.test(serverLevel, pos)).orElse(true)
-            && serverLevel.setBlockAndUpdate(pos, this.blockState.value().getState(serverLevel, random, pos))) {
-            this.triggerGameEvent.ifPresent(event -> serverLevel.gameEvent(entity, (Holder<GameEvent>)event, pos));
+         for (BlockPos pos : BlockPos.betweenClosed(centerBlock.offset(-dist, 0, -dist), centerBlock.offset(dist, Math.min(height - 1, 0), dist))) {
+            if (pos.distToCenterSqr(position.x(), pos.getY() + 0.5, position.z()) < Mth.square(dist)
+               && this.predicate.map(p -> p.test(serverLevel, pos)).orElse(true)
+               && serverLevel.setBlockAndUpdate(pos, this.blockState.value().getState(serverLevel, random, pos))) {
+               this.triggerGameEvent.ifPresent(event -> serverLevel.gameEvent(entity, (Holder<GameEvent>)event, pos));
+            }
          }
       }
    }

@@ -154,7 +154,7 @@ public class TurtleEggBlock extends Block {
 
    @Override
    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState state = context.getLevel().getBlockState(context.getClickedPos());
+      BlockState state = context.getClickedBlockState();
       return state.is(this) ? state.setValue(EGGS, Math.min(4, state.getValue(EGGS) + 1)) : super.getStateForPlacement(context);
    }
 

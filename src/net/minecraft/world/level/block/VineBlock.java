@@ -8,8 +8,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
+import net.minecraft.world.damagesource.FellFromLocation;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -68,6 +71,11 @@ public class VineBlock extends Block {
    @Override
    protected boolean propagatesSkylightDown(final BlockState state) {
       return true;
+   }
+
+   @Override
+   protected FellFromLocation getFellFromLocation(final BlockState state, final Level level, final BlockPos pos, final LivingEntity mob) {
+      return FellFromLocation.VINES;
    }
 
    @Override
@@ -266,13 +274,13 @@ public class VineBlock extends Block {
 
    @Override
    protected boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-      BlockState clickedState = context.getLevel().getBlockState(context.getClickedPos());
+      BlockState clickedState = context.getClickedBlockState();
       return clickedState.is(this) ? this.countFaces(clickedState) < PROPERTY_BY_DIRECTION.size() : super.canBeReplaced(state, context);
    }
 
    @Override
    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState clickedState = context.getLevel().getBlockState(context.getClickedPos());
+      BlockState clickedState = context.getClickedBlockState();
       boolean clickedVine = clickedState.is(this);
       BlockState result = clickedVine ? clickedState : this.defaultBlockState();
 

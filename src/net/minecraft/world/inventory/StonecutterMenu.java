@@ -71,7 +71,7 @@ public class StonecutterMenu extends AbstractContainerMenu {
             access.execute((level, pos) -> {
                long gameTime = level.getGameTime();
                if (StonecutterMenu.this.lastSoundTime != gameTime) {
-                  level.playSound(null, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, 1.0F);
+                  level.playSound(null, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS);
                   StonecutterMenu.this.lastSoundTime = gameTime;
                }
             });

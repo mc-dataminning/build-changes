@@ -42,7 +42,7 @@ public abstract class CrackingIceBlock extends IceBlock {
          level.setBlock(pos, state.setValue(AGE, age + 1), 2);
          SoundEvent crackingSound = this.getCrackingIceSound();
          if (crackingSound != null) {
-            level.playSound(null, pos, crackingSound, SoundSource.BLOCKS, 1.0F, 1.0F);
+            level.playSound(null, pos, crackingSound, SoundSource.BLOCKS);
          }
 
          this.playCrackingIceParticle(state, level, pos);

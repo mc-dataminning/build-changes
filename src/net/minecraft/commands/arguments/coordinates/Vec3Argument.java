@@ -58,7 +58,7 @@ public class Vec3Argument implements SerializableArgument.ContextFree<Coordinate
    }
 
    public Coordinates parse(final StringReader reader) throws CommandSyntaxException {
-      return Coordinates.parseXYZ(reader, WorldCoordinate.doubleParser(this.centerCorrect));
+      return Coordinates.parseXYZ(reader, WorldCoordinate.doubleParser(this.centerCorrect), WorldCoordinate.DOUBLE_PARSER_CORNER);
    }
 
    @Override

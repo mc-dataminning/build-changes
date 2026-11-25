@@ -15,10 +15,11 @@ public record FunctionTagCallback(Identifier tagId) implements TimerCallback<Min
 
    public void handle(final MinecraftServer server, final TimerQueue<MinecraftServer> queue, final long time) {
       ServerFunctionManager functionManager = server.getFunctions();
-
-      for (CommandFunction<CommandSourceStack> function : functionManager.getTag(this.tagId)) {
-         ServerFunctionManager.execute(function, functionManager.getGameLoopSender());
-      }
+      functionManager.getTag(this.tagId).ifPresent(functions -> {
+         for (CommandFunction<CommandSourceStack> function : functions) {
+            ServerFunctionManager.execute(function, functionManager.getGameLoopSender());
+         }
+      });
    }
 
    @Override

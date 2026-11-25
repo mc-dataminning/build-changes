@@ -56,7 +56,7 @@ public class Cushion extends BlockAttachedEntity {
 
    @Override
    public void dropItem(final ServerLevel level, final @Nullable Entity causedBy) {
-      this.playSound(SoundEvents.CUSHION_BREAK, 1.0F, 1.0F);
+      this.playSound(SoundEvents.CUSHION_BREAK);
       this.showBreakingParticles();
       if (level.getGameRules().get(GameRules.ENTITY_DROPS)) {
          if (!(causedBy instanceof Player player && player.hasInfiniteMaterials())) {
@@ -91,7 +91,7 @@ public class Cushion extends BlockAttachedEntity {
       if (player.isSecondaryUseActive() || this.isVehicle()) {
          return InteractionResult.PASS;
       } else if (!this.level().isClientSide() && player.startRiding(this)) {
-         this.playSound(SoundEvents.CUSHION_SIT, 1.0F, 1.0F);
+         this.playSound(SoundEvents.CUSHION_SIT);
          return InteractionResult.SUCCESS_SERVER;
       } else {
          return InteractionResult.CONSUME;
@@ -102,7 +102,7 @@ public class Cushion extends BlockAttachedEntity {
    protected void removePassenger(final Entity passenger) {
       super.removePassenger(passenger);
       if (!this.level().isClientSide() && this.getRemovalReason() == null) {
-         this.playSound(SoundEvents.CUSHION_GET_UP, 1.0F, 1.0F);
+         this.playSound(SoundEvents.CUSHION_GET_UP);
       }
    }
 

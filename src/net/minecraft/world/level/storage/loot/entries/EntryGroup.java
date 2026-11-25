@@ -25,7 +25,13 @@ public class EntryGroup extends CompositeEntryBase {
    protected ComposableEntryContainer compose(final List<? extends ComposableEntryContainer> entries) {
       return switch (entries.size()) {
          case 0 -> ALWAYS_TRUE;
-         case 1 -> (ComposableEntryContainer)entries.get(0);
+         case 1 -> {
+            ComposableEntryContainer entry = entries.get(0);
+            yield (context, output) -> {
+               entry.expand(context, output);
+               return true;
+            };
+         }
          case 2 -> {
             ComposableEntryContainer first = entries.get(0);
             ComposableEntryContainer second = entries.get(1);

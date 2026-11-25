@@ -37,6 +37,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
@@ -320,8 +321,8 @@ public class FishingHook extends Projectile {
             double fishX = this.getX() + angleSin * this.timeUntilHooked * 0.1F;
             double fishY = Mth.floor(this.getY()) + 1.0F;
             double fishZ = this.getZ() + angleCos * this.timeUntilHooked * 0.1F;
-            BlockState splashBlockState = serverLevel.getBlockState(BlockPos.containing(fishX, fishY - 1.0, fishZ));
-            if (splashBlockState.is(Blocks.WATER)) {
+            FluidState splashFluidState = serverLevel.getFluidState(BlockPos.containing(fishX, fishY - 1.0, fishZ));
+            if (splashFluidState.is(Fluids.WATER)) {
                if (this.random.nextFloat() < 0.15F) {
                   serverLevel.sendParticles(ParticleTypes.BUBBLE, fishX, fishY - 0.1F, fishZ, 1, angleSin, 0.1, angleCos, 0.0);
                }
@@ -360,8 +361,8 @@ public class FishingHook extends Projectile {
             double fishX = this.getX() + Mth.sin(angle) * dist * 0.1;
             double fishY = Mth.floor(this.getY()) + 1.0F;
             double fishZ = this.getZ() + Mth.cos(angle) * dist * 0.1;
-            BlockState splashBlockState = serverLevel.getBlockState(BlockPos.containing(fishX, fishY - 1.0, fishZ));
-            if (splashBlockState.is(Blocks.WATER)) {
+            FluidState splashFluidState = serverLevel.getFluidState(BlockPos.containing(fishX, fishY - 1.0, fishZ));
+            if (splashFluidState.is(Fluids.WATER)) {
                serverLevel.sendParticles(ParticleTypes.SPLASH, fishX, fishY, fishZ, 2 + this.random.nextInt(2), 0.1F, 0.0, 0.1F, 0.0);
             }
          }

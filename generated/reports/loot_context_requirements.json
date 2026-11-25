@@ -11,17 +11,17 @@
   },
   "minecraft:advancement_location": {
     "allowed": [
+      "minecraft:block_entity",
       "minecraft:block_state",
-      "minecraft:tool",
       "minecraft:origin",
       "minecraft:this_entity",
-      "minecraft:block_entity"
+      "minecraft:tool"
     ],
     "required": [
       "minecraft:block_state",
+      "minecraft:origin",
       "minecraft:this_entity",
-      "minecraft:tool",
-      "minecraft:origin"
+      "minecraft:tool"
     ]
   },
   "minecraft:advancement_reward": {
@@ -37,13 +37,13 @@
   "minecraft:archaeology": {
     "allowed": [
       "minecraft:origin",
-      "minecraft:tool",
-      "minecraft:this_entity"
+      "minecraft:this_entity",
+      "minecraft:tool"
     ],
     "required": [
       "minecraft:origin",
-      "minecraft:tool",
-      "minecraft:this_entity"
+      "minecraft:this_entity",
+      "minecraft:tool"
     ]
   },
   "minecraft:barter": {
@@ -56,41 +56,41 @@
   },
   "minecraft:block": {
     "allowed": [
-      "minecraft:origin",
-      "minecraft:explosion_radius",
       "minecraft:block_entity",
-      "minecraft:tool",
       "minecraft:block_state",
-      "minecraft:this_entity"
+      "minecraft:explosion_radius",
+      "minecraft:origin",
+      "minecraft:this_entity",
+      "minecraft:tool"
     ],
     "required": [
+      "minecraft:block_state",
       "minecraft:origin",
-      "minecraft:tool",
-      "minecraft:block_state"
+      "minecraft:tool"
     ]
   },
   "minecraft:block_interact": {
     "allowed": [
+      "minecraft:block_entity",
       "minecraft:block_state",
       "minecraft:interacting_entity",
-      "minecraft:tool",
       "minecraft:origin",
-      "minecraft:block_entity"
+      "minecraft:tool"
     ],
     "required": [
-      "minecraft:origin",
-      "minecraft:block_state"
+      "minecraft:block_state",
+      "minecraft:origin"
     ]
   },
   "minecraft:block_use": {
     "allowed": [
-      "minecraft:origin",
       "minecraft:block_state",
+      "minecraft:origin",
       "minecraft:this_entity"
     ],
     "required": [
-      "minecraft:origin",
       "minecraft:block_state",
+      "minecraft:origin",
       "minecraft:this_entity"
     ]
   },
@@ -125,14 +125,14 @@
   },
   "minecraft:command_compute_position": {
     "allowed": [
+      "minecraft:block_entity",
       "minecraft:block_state",
-      "minecraft:this_entity",
       "minecraft:origin",
-      "minecraft:block_entity"
+      "minecraft:this_entity"
     ],
     "required": [
-      "minecraft:origin",
-      "minecraft:block_state"
+      "minecraft:block_state",
+      "minecraft:origin"
     ]
   },
   "minecraft:command_modifier": {
@@ -155,27 +155,27 @@
   },
   "minecraft:command_slot_source": {
     "allowed": [
+      "minecraft:container",
       "minecraft:origin",
-      "minecraft:this_entity",
-      "minecraft:container"
+      "minecraft:this_entity"
     ],
     "required": [
-      "minecraft:origin",
-      "minecraft:container"
+      "minecraft:container",
+      "minecraft:origin"
     ]
   },
   "minecraft:container_process": {
     "allowed": [
-      "minecraft:container",
+      "minecraft:block_entity",
       "minecraft:block_state",
-      "minecraft:origin",
-      "minecraft:block_entity"
+      "minecraft:container",
+      "minecraft:origin"
     ],
     "required": [
-      "minecraft:container",
+      "minecraft:block_entity",
       "minecraft:block_state",
-      "minecraft:origin",
-      "minecraft:block_entity"
+      "minecraft:container",
+      "minecraft:origin"
     ]
   },
   "minecraft:empty": {
@@ -184,18 +184,18 @@
   },
   "minecraft:enchanted_damage": {
     "allowed": [
-      "minecraft:origin",
+      "minecraft:attacking_entity",
       "minecraft:damage_source",
       "minecraft:direct_attacking_entity",
-      "minecraft:this_entity",
-      "minecraft:attacking_entity",
-      "minecraft:enchantment_level"
-    ],
-    "required": [
-      "minecraft:this_entity",
       "minecraft:enchantment_level",
       "minecraft:origin",
-      "minecraft:damage_source"
+      "minecraft:this_entity"
+    ],
+    "required": [
+      "minecraft:damage_source",
+      "minecraft:enchantment_level",
+      "minecraft:origin",
+      "minecraft:this_entity"
     ]
   },
   "minecraft:enchanted_entity": {
@@ -212,48 +212,48 @@
   },
   "minecraft:enchanted_item": {
     "allowed": [
-      "minecraft:tool",
-      "minecraft:enchantment_level"
+      "minecraft:enchantment_level",
+      "minecraft:tool"
     ],
     "required": [
-      "minecraft:tool",
-      "minecraft:enchantment_level"
+      "minecraft:enchantment_level",
+      "minecraft:tool"
     ]
   },
   "minecraft:enchanted_location": {
     "allowed": [
       "minecraft:enchantment_active",
-      "minecraft:this_entity",
       "minecraft:enchantment_level",
-      "minecraft:origin"
+      "minecraft:origin",
+      "minecraft:this_entity"
     ],
     "required": [
       "minecraft:enchantment_active",
-      "minecraft:this_entity",
       "minecraft:enchantment_level",
-      "minecraft:origin"
+      "minecraft:origin",
+      "minecraft:this_entity"
     ]
   },
   "minecraft:entity": {
     "allowed": [
-      "minecraft:origin",
-      "minecraft:damage_source",
-      "minecraft:last_damage_player",
-      "minecraft:this_entity",
       "minecraft:attacking_entity",
-      "minecraft:direct_attacking_entity"
+      "minecraft:damage_source",
+      "minecraft:direct_attacking_entity",
+      "minecraft:last_damage_player",
+      "minecraft:origin",
+      "minecraft:this_entity"
     ],
     "required": [
-      "minecraft:origin",
       "minecraft:damage_source",
+      "minecraft:origin",
       "minecraft:this_entity"
     ]
   },
   "minecraft:entity_interact": {
     "allowed": [
       "minecraft:interacting_entity",
-      "minecraft:tool",
-      "minecraft:target_entity"
+      "minecraft:target_entity",
+      "minecraft:tool"
     ],
     "required": [
       "minecraft:target_entity",
@@ -273,8 +273,8 @@
   "minecraft:fishing": {
     "allowed": [
       "minecraft:origin",
-      "minecraft:tool",
-      "minecraft:this_entity"
+      "minecraft:this_entity",
+      "minecraft:tool"
     ],
     "required": [
       "minecraft:origin",
@@ -283,40 +283,40 @@
   },
   "minecraft:generic": {
     "allowed": [
-      "minecraft:tool",
-      "minecraft:enchantment_level",
-      "minecraft:origin",
+      "minecraft:additional_cost_component_allowed",
       "minecraft:attacking_entity",
-      "minecraft:last_damage_player",
+      "minecraft:block_entity",
+      "minecraft:block_state",
+      "minecraft:container",
       "minecraft:damage_source",
       "minecraft:direct_attacking_entity",
-      "minecraft:block_entity",
-      "minecraft:explosion_radius",
-      "minecraft:additional_cost_component_allowed",
-      "minecraft:target_entity",
       "minecraft:enchantment_active",
-      "minecraft:container",
+      "minecraft:enchantment_level",
+      "minecraft:explosion_radius",
       "minecraft:interacting_entity",
-      "minecraft:block_state",
-      "minecraft:this_entity"
+      "minecraft:last_damage_player",
+      "minecraft:origin",
+      "minecraft:target_entity",
+      "minecraft:this_entity",
+      "minecraft:tool"
     ],
     "required": [
-      "minecraft:tool",
-      "minecraft:enchantment_level",
-      "minecraft:origin",
+      "minecraft:additional_cost_component_allowed",
       "minecraft:attacking_entity",
-      "minecraft:last_damage_player",
+      "minecraft:block_entity",
+      "minecraft:block_state",
+      "minecraft:container",
       "minecraft:damage_source",
       "minecraft:direct_attacking_entity",
-      "minecraft:block_entity",
-      "minecraft:explosion_radius",
-      "minecraft:additional_cost_component_allowed",
-      "minecraft:target_entity",
       "minecraft:enchantment_active",
-      "minecraft:container",
+      "minecraft:enchantment_level",
+      "minecraft:explosion_radius",
       "minecraft:interacting_entity",
-      "minecraft:block_state",
-      "minecraft:this_entity"
+      "minecraft:last_damage_player",
+      "minecraft:origin",
+      "minecraft:target_entity",
+      "minecraft:this_entity",
+      "minecraft:tool"
     ]
   },
   "minecraft:gift": {
@@ -332,15 +332,15 @@
   "minecraft:hit_block": {
     "allowed": [
       "minecraft:block_state",
-      "minecraft:this_entity",
       "minecraft:enchantment_level",
-      "minecraft:origin"
+      "minecraft:origin",
+      "minecraft:this_entity"
     ],
     "required": [
       "minecraft:block_state",
-      "minecraft:this_entity",
       "minecraft:enchantment_level",
-      "minecraft:origin"
+      "minecraft:origin",
+      "minecraft:this_entity"
     ]
   },
   "minecraft:selector": {
@@ -356,20 +356,20 @@
   "minecraft:shearing": {
     "allowed": [
       "minecraft:origin",
-      "minecraft:tool",
-      "minecraft:this_entity"
+      "minecraft:this_entity",
+      "minecraft:tool"
     ],
     "required": [
       "minecraft:origin",
-      "minecraft:tool",
-      "minecraft:this_entity"
+      "minecraft:this_entity",
+      "minecraft:tool"
     ]
   },
   "minecraft:vault": {
     "allowed": [
       "minecraft:origin",
-      "minecraft:tool",
-      "minecraft:this_entity"
+      "minecraft:this_entity",
+      "minecraft:tool"
     ],
     "required": [
       "minecraft:origin"
@@ -377,13 +377,13 @@
   },
   "minecraft:villager_trade": {
     "allowed": [
-      "minecraft:origin",
       "minecraft:additional_cost_component_allowed",
+      "minecraft:origin",
       "minecraft:this_entity"
     ],
     "required": [
-      "minecraft:origin",
       "minecraft:additional_cost_component_allowed",
+      "minecraft:origin",
       "minecraft:this_entity"
     ]
   }

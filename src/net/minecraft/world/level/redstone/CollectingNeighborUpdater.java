@@ -85,30 +85,90 @@ public class CollectingNeighborUpdater implements NeighborUpdater {
    }
 
    private void runUpdates() {
-      try {
-         while (!this.stack.isEmpty() || !this.addedThisLayer.isEmpty()) {
-            for (int i = this.addedThisLayer.size() - 1; i >= 0; i--) {
-               this.stack.push(this.addedThisLayer.get(i));
-            }
-
-            this.addedThisLayer.clear();
-            CollectingNeighborUpdater.NeighborUpdates nextUpdates = this.stack.peek();
-            if (this.debugListener != null) {
-               nextUpdates.forEachUpdatedPos(this.debugListener);
-            }
-
-            while (this.addedThisLayer.isEmpty()) {
-               if (!nextUpdates.runNext(this.level)) {
-                  this.stack.pop();
-                  break;
-               }
-            }
-         }
-      } finally {
-         this.stack.clear();
-         this.addedThisLayer.clear();
-         this.count = 0;
-      }
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.stack Ljava/util/ArrayDeque;
+      // 04: invokevirtual java/util/ArrayDeque.isEmpty ()Z
+      // 07: ifeq 16
+      // 0a: aload 0
+      // 0b: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.addedThisLayer Ljava/util/List;
+      // 0e: invokeinterface java/util/List.isEmpty ()Z 1
+      // 13: ifne 8c
+      // 16: aload 0
+      // 17: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.addedThisLayer Ljava/util/List;
+      // 1a: invokeinterface java/util/List.size ()I 1
+      // 1f: bipush 1
+      // 20: isub
+      // 21: istore 1
+      // 22: iload 1
+      // 23: iflt 40
+      // 26: aload 0
+      // 27: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.stack Ljava/util/ArrayDeque;
+      // 2a: aload 0
+      // 2b: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.addedThisLayer Ljava/util/List;
+      // 2e: iload 1
+      // 2f: invokeinterface java/util/List.get (I)Ljava/lang/Object; 2
+      // 34: checkcast net/minecraft/world/level/redstone/CollectingNeighborUpdater$NeighborUpdates
+      // 37: invokevirtual java/util/ArrayDeque.push (Ljava/lang/Object;)V
+      // 3a: iinc 1 -1
+      // 3d: goto 22
+      // 40: aload 0
+      // 41: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.addedThisLayer Ljava/util/List;
+      // 44: invokeinterface java/util/List.clear ()V 1
+      // 49: aload 0
+      // 4a: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.stack Ljava/util/ArrayDeque;
+      // 4d: invokevirtual java/util/ArrayDeque.peek ()Ljava/lang/Object;
+      // 50: checkcast net/minecraft/world/level/redstone/CollectingNeighborUpdater$NeighborUpdates
+      // 53: astore 1
+      // 54: aload 0
+      // 55: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.debugListener Ljava/util/function/Consumer;
+      // 58: ifnull 65
+      // 5b: aload 1
+      // 5c: aload 0
+      // 5d: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.debugListener Ljava/util/function/Consumer;
+      // 60: invokeinterface net/minecraft/world/level/redstone/CollectingNeighborUpdater$NeighborUpdates.forEachUpdatedPos (Ljava/util/function/Consumer;)V 2
+      // 65: aload 0
+      // 66: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.addedThisLayer Ljava/util/List;
+      // 69: invokeinterface java/util/List.isEmpty ()Z 1
+      // 6e: ifeq 89
+      // 71: aload 1
+      // 72: aload 0
+      // 73: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.level Lnet/minecraft/world/level/Level;
+      // 76: invokeinterface net/minecraft/world/level/redstone/CollectingNeighborUpdater$NeighborUpdates.runNext (Lnet/minecraft/world/level/Level;)Z 2
+      // 7b: ifne 65
+      // 7e: aload 0
+      // 7f: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.stack Ljava/util/ArrayDeque;
+      // 82: invokevirtual java/util/ArrayDeque.pop ()Ljava/lang/Object;
+      // 85: pop
+      // 86: goto 89
+      // 89: goto 00
+      // 8c: aload 0
+      // 8d: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.stack Ljava/util/ArrayDeque;
+      // 90: invokevirtual java/util/ArrayDeque.clear ()V
+      // 93: aload 0
+      // 94: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.addedThisLayer Ljava/util/List;
+      // 97: invokeinterface java/util/List.clear ()V 1
+      // 9c: aload 0
+      // 9d: bipush 0
+      // 9e: putfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.count I
+      // a1: goto bc
+      // a4: astore 2
+      // a5: aload 0
+      // a6: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.stack Ljava/util/ArrayDeque;
+      // a9: invokevirtual java/util/ArrayDeque.clear ()V
+      // ac: aload 0
+      // ad: getfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.addedThisLayer Ljava/util/List;
+      // b0: invokeinterface java/util/List.clear ()V 1
+      // b5: aload 0
+      // b6: bipush 0
+      // b7: putfield net/minecraft/world/level/redstone/CollectingNeighborUpdater.count I
+      // ba: aload 2
+      // bb: athrow
+      // bc: return
+      // try (0 -> 56): 66 null
    }
 
    private record FullNeighborUpdate(BlockState state, BlockPos pos, Block block, @Nullable Orientation orientation, boolean movedByPiston)

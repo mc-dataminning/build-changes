@@ -60,7 +60,7 @@ public class SleepInBed extends Behavior<LivingEntity> {
       BlockState blockState = level.getBlockState(target.pos());
       return target.pos().closerToCenterThan(body.position(), 2.0)
          && blockState.is(BlockTags.VILLAGERS_CAN_SLEEP_ON_BED)
-         && !blockState.getValue(AbstractBedBlock.OCCUPIED);
+         && !blockState.getValueOrElse(AbstractBedBlock.OCCUPIED, false);
    }
 
    @Override

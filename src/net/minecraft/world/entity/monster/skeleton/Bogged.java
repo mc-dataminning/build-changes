@@ -125,7 +125,7 @@ public class Bogged extends AbstractSkeleton implements Shearable {
 
    @Override
    public void shear(final ServerLevel level, final SoundSource soundSource, final ItemStack tool) {
-      level.playSound(null, this, SoundEvents.BOGGED_SHEAR, soundSource, 1.0F, 1.0F);
+      level.playSound(null, this, SoundEvents.BOGGED_SHEAR, soundSource);
       this.spawnShearedMushrooms(level, tool);
       this.setSheared(true);
    }

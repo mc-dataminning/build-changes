@@ -26,7 +26,7 @@ import org.jspecify.annotations.Nullable;
 
 public class ChunkDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
    private final Minecraft minecraft;
-   private double lastUpdateTime = Double.MIN_VALUE;
+   private double lastUpdateTime = Double.NEGATIVE_INFINITY;
    private final int radius = 12;
    private ChunkDebugRenderer.@Nullable ChunkData data;
 

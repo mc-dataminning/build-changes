@@ -583,7 +583,7 @@ public class Options {
       var0 -> {
          SoundManager soundManager = Minecraft.getInstance().getSoundManager();
          soundManager.reload();
-         soundManager.play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+         soundManager.play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK));
       }
    );
    private final OptionInstance<Boolean> backgroundForChatOnly = new OptionInstance<>(
@@ -999,7 +999,7 @@ public class Options {
       var0 -> {
          SoundManager soundManager = Minecraft.getInstance().getSoundManager();
          soundManager.reload();
-         soundManager.play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+         soundManager.play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK));
       }
    );
    public boolean onboardAccessibility = true;

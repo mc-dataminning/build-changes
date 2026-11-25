@@ -96,7 +96,7 @@ public class LoomMenu extends AbstractContainerMenu {
             access.execute((level, pos) -> {
                long gameTime = level.getGameTime();
                if (LoomMenu.this.lastSoundTime != gameTime) {
-                  level.playSound(null, pos, SoundEvents.UI_LOOM_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, 1.0F);
+                  level.playSound(null, pos, SoundEvents.UI_LOOM_TAKE_RESULT, SoundSource.BLOCKS);
                   LoomMenu.this.lastSoundTime = gameTime;
                }
             });

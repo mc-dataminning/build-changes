@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.Map.Entry;
 import net.minecraft.SharedConstants;
@@ -152,6 +154,15 @@ public class SocialInteractionsPlayerList {
 
    public boolean isEmpty() {
       return this.players.isEmpty();
+   }
+
+   public int countAllPlayersExceptMe() {
+      ClientPacketListener connection = this.minecraft.player.connection;
+      Set<UUID> playerIds = new HashSet<>(connection.getOnlinePlayerIds());
+      playerIds.addAll(connection.getSeenPlayers().keySet());
+      playerIds.addAll(collectProfilesFromChatLog(this.minecraft.getReportingContext().chatLog()).keySet());
+      playerIds.removeIf(this.minecraft::isLocalPlayer);
+      return playerIds.size();
    }
 
    public void addPlayer(final PlayerInfo player, final SocialInteractionsScreen.Page page) {

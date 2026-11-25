@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Predicate;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.HotbarManager;
@@ -112,8 +111,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
          this.originalSlots = null;
       }
    });
-   private final Function<Slot, Tooltip> tooltipSupplier = slot -> {
-      ItemStack item = slot.getItem();
+   private final SlotWidget.TooltipProvider tooltipProvider = (slot, item) -> {
       boolean isCreativeSlot = slot instanceof CreativeModeInventoryScreen.CustomCreativeSlot;
       boolean isSingleCategoryTab = selectedTab.getType() == CreativeModeTab.Type.CATEGORY;
       boolean isSearchTab = selectedTab.getType() == CreativeModeTab.Type.SEARCH;
@@ -521,7 +519,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
    private void refreshSearchResults() {
       this.menu.items.clear();
       this.visibleTags.clear();
-      String searchTerm = this.searchBox.getValue();
+      String searchTerm = this.searchBox.getValue().toLowerCase(Locale.ROOT);
       if (searchTerm.isEmpty()) {
          this.menu.items.addAll(selectedTab.getDisplayItems());
       } else {
@@ -537,7 +535,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
                tree = searchTrees.creativeNameSearch();
             }
 
-            this.menu.items.addAll(tree.search(searchTerm.toLowerCase(Locale.ROOT)));
+            this.menu.items.addAll(tree.search(searchTerm));
          }
       }
 
@@ -701,7 +699,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
          } else if (slot instanceof CreativeModeInventoryScreen.CustomCreativeSlot) {
             widgets.add(new CreativeModeInventoryScreen.CreativeItemSlotWidget(slot));
          } else {
-            widgets.add(new SlotWidget(slot, this.minecraft, this.imageWidth, this.leftPos, this.topPos, this.tooltipSupplier, () -> null));
+            widgets.add(new SlotWidget(slot, this.minecraft, this.imageWidth, this.leftPos, this.topPos, this.tooltipProvider));
          }
       }
 
@@ -858,8 +856,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
             CreativeModeInventoryScreen.this.imageWidth,
             CreativeModeInventoryScreen.this.leftPos,
             CreativeModeInventoryScreen.this.topPos,
-            CreativeModeInventoryScreen.this.tooltipSupplier,
-            () -> null
+            CreativeModeInventoryScreen.this.tooltipProvider
          );
       }
 
@@ -869,9 +866,8 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
          Component tabName = CreativeModeInventoryScreen.selectedTab.getDisplayName();
          int index = CreativeModeInventoryScreen.this.menu.getRowIndexForScroll(CreativeModeInventoryScreen.this.scrollOffs) * 9
             + this.slot().getContainerSlot();
-         Component position = index < CreativeModeInventoryScreen.this.menu.items.size()
-            ? GRID_NARRATION.position(index, CreativeModeInventoryScreen.this.menu.items.size())
-            : null;
+         int count = Math.max(CreativeModeInventoryScreen.this.menu.items.size(), 45);
+         Component position = GRID_NARRATION.position(index, count);
          return position == null
             ? Component.translatable("narration.creative_item", contents, tabName)
             : Component.translatable("narration.creative_item.located", contents, tabName, position);
@@ -940,7 +936,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
       private static final Tooltip TOOLTIP = Tooltip.create(CreativeModeInventoryScreen.DESTROY_ITEM_SLOT_NAME);
 
       public DestroyItemSlotWidget(final Slot slot, final Minecraft minecraft, final int containerWidth, final int leftPos, final int topPos) {
-         super(slot, minecraft, containerWidth, leftPos, topPos, () -> TOOLTIP);
+         super(slot, minecraft, containerWidth, leftPos, topPos, SlotWidget.defaultTooltipWithCustomEmpty(minecraft, TOOLTIP));
       }
 
       @Override

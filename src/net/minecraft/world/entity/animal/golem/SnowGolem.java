@@ -156,7 +156,7 @@ public class SnowGolem extends AbstractGolem implements RangedAttackMob, Shearab
 
    @Override
    public void shear(final ServerLevel level, final SoundSource soundSource, final ItemStack tool) {
-      level.playSound(null, this, SoundEvents.SNOW_GOLEM_SHEAR, soundSource, 1.0F, 1.0F);
+      level.playSound(null, this, SoundEvents.SNOW_GOLEM_SHEAR, soundSource);
       this.setPumpkin(false);
       this.dropFromShearingLootTable(level, BuiltInLootTables.SHEAR_SNOW_GOLEM, tool, (l, drop) -> this.spawnAtLocation(l, drop, this.getEyeHeight()));
    }

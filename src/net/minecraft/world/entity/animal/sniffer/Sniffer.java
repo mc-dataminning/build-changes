@@ -212,14 +212,14 @@ public class Sniffer extends Animal {
             this.setState(Sniffer.State.IDLING);
             break;
          case FEELING_HAPPY:
-            this.playSound(SoundEvents.SNIFFER_HAPPY, 1.0F, 1.0F);
+            this.playSound(SoundEvents.SNIFFER_HAPPY);
             this.setState(Sniffer.State.FEELING_HAPPY);
             break;
          case SCENTING:
             this.setState(Sniffer.State.SCENTING).onScentingStart();
             break;
          case SNIFFING:
-            this.playSound(SoundEvents.SNIFFER_SNIFFING, 1.0F, 1.0F);
+            this.playSound(SoundEvents.SNIFFER_SNIFFING);
             this.setState(Sniffer.State.SNIFFING);
             break;
          case SEARCHING:
@@ -229,7 +229,7 @@ public class Sniffer extends Animal {
             this.setState(Sniffer.State.DIGGING).onDiggingStart();
             break;
          case RISING:
-            this.playSound(SoundEvents.SNIFFER_DIGGING_STOP, 1.0F, 1.0F);
+            this.playSound(SoundEvents.SNIFFER_DIGGING_STOP);
             this.setState(Sniffer.State.RISING);
       }
 
@@ -290,7 +290,7 @@ public class Sniffer extends Animal {
             entity.setDefaultPickUpDelay();
             l.addFreshEntity(entity);
          });
-         this.playSound(SoundEvents.SNIFFER_DROP_SEED, 1.0F, 1.0F);
+         this.playSound(SoundEvents.SNIFFER_DROP_SEED);
       }
    }
 

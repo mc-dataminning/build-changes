@@ -32,11 +32,17 @@ public class ItemPickupParticleGroup extends ParticleGroup<ItemPickupParticle> {
          double xt = Mth.lerp(partialTickTime, particle.targetXOld, particle.targetX);
          double yt = Mth.lerp(partialTickTime, particle.targetYOld, particle.targetY);
          double zt = Mth.lerp(partialTickTime, particle.targetZOld, particle.targetZ);
-         double xx = Mth.lerp(time, particle.itemRenderState.x, xt);
-         double yy = Mth.lerp(time, particle.itemRenderState.y, yt);
-         double zz = Mth.lerp(time, particle.itemRenderState.z, zt);
+         double xx = Mth.lerp(time, particle.x, xt);
+         double yy = Mth.lerp(time, particle.y, yt);
+         double zz = Mth.lerp(time, particle.z, zt);
          Vec3 pos = camera.position();
-         return new ItemPickupParticleGroup.ParticleInstance(particle.itemRenderState, xx - pos.x(), yy - pos.y(), zz - pos.z());
+         EntityRenderState state = particle.itemRenderState;
+         state.x = xx;
+         state.y = yy;
+         state.z = zz;
+         state.distanceToCameraSq = pos.distanceToSqr(xx, yy, zz);
+         Minecraft.getInstance().getEntityRenderDispatcher().extractShadow(state, particle.level);
+         return new ItemPickupParticleGroup.ParticleInstance(state, xx - pos.x(), yy - pos.y(), zz - pos.z());
       }
    }
 

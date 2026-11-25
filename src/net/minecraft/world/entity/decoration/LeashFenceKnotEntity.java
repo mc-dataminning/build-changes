@@ -60,7 +60,7 @@ public class LeashFenceKnotEntity extends BlockAttachedEntity {
 
    @Override
    public void dropItem(final ServerLevel level, final @Nullable Entity causedBy) {
-      this.playSound(SoundEvents.LEAD_UNTIED, 1.0F, 1.0F);
+      this.playSound(SoundEvents.LEAD_UNTIED);
    }
 
    @Override
@@ -149,7 +149,7 @@ public class LeashFenceKnotEntity extends BlockAttachedEntity {
    }
 
    public void playPlacementSound() {
-      this.playSound(SoundEvents.LEAD_TIED, 1.0F, 1.0F);
+      this.playSound(SoundEvents.LEAD_TIED);
    }
 
    @Override

@@ -93,6 +93,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CaveVines;
+import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -239,7 +240,7 @@ public class Fox extends Animal {
 
       super.aiStep();
       if (this.isDefending() && this.random.nextFloat() < 0.05F) {
-         this.playSound(SoundEvents.FOX_AGGRO, 1.0F, 1.0F);
+         this.playSound(SoundEvents.FOX_AGGRO);
       }
    }
 
@@ -374,7 +375,7 @@ public class Fox extends Animal {
 
    @Override
    protected void playEatingSound() {
-      this.playSound(SoundEvents.FOX_EAT, 1.0F, 1.0F);
+      this.playSound(SoundEvents.FOX_EAT);
    }
 
    @Override
@@ -519,7 +520,7 @@ public class Fox extends Animal {
          );
          thrownItem.setPickUpDelay(40);
          thrownItem.setThrower(this);
-         this.playSound(SoundEvents.FOX_SPIT, 1.0F, 1.0F);
+         this.playSound(SoundEvents.FOX_SPIT);
          this.level().addFreshEntity(thrownItem);
       }
    }
@@ -553,7 +554,8 @@ public class Fox extends Animal {
       super.tick();
       if (this.isEffectiveAi()) {
          boolean inWater = this.isInWater();
-         if (inWater || this.getTarget() != null || this.level().isThundering()) {
+         Level level = this.level();
+         if (inWater || this.getTarget() != null || level.isThundering()) {
             this.wakeUp();
          }
 
@@ -561,10 +563,10 @@ public class Fox extends Animal {
             this.setSitting(false);
          }
 
-         if (this.isFaceplanted() && this.level().getRandom().nextFloat() < 0.2F) {
+         if (this.isFaceplanted() && level.getRandom().nextFloat() < 0.2F) {
             BlockPos pos = this.blockPosition();
-            BlockState state = this.level().getBlockState(pos);
-            this.level().levelEvent(2001, pos, Block.getId(state));
+            BlockState state = level.getBlockState(pos);
+            LevelEvent.playParticlesAndSoundDestroyBlock(this, level, pos, state);
          }
       }
 
@@ -776,7 +778,7 @@ public class Fox extends Animal {
             this.timestamp = this.trustedLastHurt.getLastHurtByMobTimestamp();
          }
 
-         Fox.this.playSound(SoundEvents.FOX_AGGRO, 1.0F, 1.0F);
+         Fox.this.playSound(SoundEvents.FOX_AGGRO);
          Fox.this.setDefending(true);
          Fox.this.wakeUp();
          super.start();
@@ -936,7 +938,7 @@ public class Fox extends Animal {
                this.ticksWaited++;
             }
          } else if (!this.isReachedTarget() && Fox.this.random.nextFloat() < 0.05F) {
-            Fox.this.playSound(SoundEvents.FOX_SNIFF, 1.0F, 1.0F);
+            Fox.this.playSound(SoundEvents.FOX_SNIFF);
          }
 
          super.tick();
@@ -971,7 +973,7 @@ public class Fox extends Animal {
             Block.popResource(Fox.this.level(), this.blockPos, new ItemStack(Items.SWEET_BERRIES, count));
          }
 
-         Fox.this.playSound(SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, 1.0F, 1.0F);
+         Fox.this.playSound(SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES);
          Fox.this.level().setBlock(this.blockPos, state.setValue(SweetBerryBushBlock.AGE, 1), 2);
          Fox.this.level().gameEvent(GameEvent.BLOCK_CHANGE, this.blockPos, GameEvent.Context.of(Fox.this));
       }
@@ -1084,7 +1086,7 @@ public class Fox extends Animal {
          if (this.canPerformAttack(target)) {
             this.resetAttackCooldown();
             this.mob.doHurtTarget(getServerLevel(this.mob), target);
-            Fox.this.playSound(SoundEvents.FOX_BITE, 1.0F, 1.0F);
+            Fox.this.playSound(SoundEvents.FOX_BITE);
          }
       }
 

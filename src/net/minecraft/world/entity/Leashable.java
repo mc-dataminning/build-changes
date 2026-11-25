@@ -158,7 +158,7 @@ public interface Leashable {
             double distanceTo = entity.leashDistanceTo(leashHolder);
             entity.whenLeashedTo(leashHolder);
             if (distanceTo > entity.leashSnapDistance()) {
-               level.playSound(null, leashHolder.getX(), leashHolder.getY(), leashHolder.getZ(), SoundEvents.LEAD_BREAK, SoundSource.NEUTRAL, 1.0F, 1.0F);
+               level.playSound(null, leashHolder.getX(), leashHolder.getY(), leashHolder.getZ(), SoundEvents.LEAD_BREAK, SoundSource.NEUTRAL);
                entity.leashTooFarBehaviour();
             } else if (distanceTo > entity.leashElasticDistance() - leashHolder.getBbWidth() - entity.getBbWidth()
                && entity.checkElasticInteractions(leashHolder, leashData)) {

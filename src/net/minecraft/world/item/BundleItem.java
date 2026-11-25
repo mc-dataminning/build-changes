@@ -264,7 +264,7 @@ public class BundleItem extends Item {
    }
 
    private static void playInsertFailSound(final Entity entity) {
-      entity.playSound(SoundEvents.BUNDLE_INSERT_FAIL, 1.0F, 1.0F);
+      entity.playSound(SoundEvents.BUNDLE_INSERT_FAIL);
    }
 
    private static void playDropContentsSound(final Level level, final Entity entity) {

@@ -5,7 +5,7 @@ import java.util.List;
 import net.minecraft.client.gui.components.TabOrderedElement;
 
 public interface NarratableEntry extends NarrationSupplier, TabOrderedElement {
-   NarratableEntry.NarrationPriority narrationPriority();
+   NarratableEntry.NarrationPriority narrationPriority(NarrationTrigger narrationTrigger);
 
    default boolean isActive() {
       return true;
@@ -24,8 +24,12 @@ public interface NarratableEntry extends NarrationSupplier, TabOrderedElement {
          return this == FOCUSED;
       }
 
-      public static NarratableEntry.NarrationPriority of(final boolean focused, final boolean hovered) {
-         return focused ? FOCUSED : (hovered ? HOVERED : NONE);
+      public static NarratableEntry.NarrationPriority of(final boolean focused, final boolean hovered, final NarrationTrigger narrationTrigger) {
+         if (narrationTrigger == NarrationTrigger.MOUSE && !hovered) {
+            return NONE;
+         } else {
+            return focused ? FOCUSED : (hovered ? HOVERED : NONE);
+         }
       }
    }
 }

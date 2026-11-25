@@ -40,7 +40,7 @@ public class PotionItem extends Item {
       PotionContents potionContents = itemStack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
       BlockState blockState = level.getBlockState(pos);
       if (context.getClickedFace() != Direction.DOWN && blockState.is(BlockTags.CONVERTIBLE_TO_MUD) && potionContents.is(Potions.WATER)) {
-         level.playSound(null, pos, SoundEvents.GENERIC_SPLASH, SoundSource.BLOCKS, 1.0F, 1.0F);
+         level.playSound(null, pos, SoundEvents.GENERIC_SPLASH, SoundSource.BLOCKS);
          itemStack.consume(1, player);
          if (!level.isClientSide()) {
             ServerLevel serverLevel = (ServerLevel)level;
@@ -60,7 +60,7 @@ public class PotionItem extends Item {
             }
          }
 
-         level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+         level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS);
          level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
          level.setBlockAndUpdate(pos, Blocks.MUD.defaultBlockState());
          return InteractionResult.SUCCESS;

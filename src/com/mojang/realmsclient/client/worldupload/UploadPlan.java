@@ -6,7 +6,7 @@ import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 
-public record UploadPlan(Path archive, long fileSize, long blockSize) {
+public record UploadPlan(Path archive, long fileSize, long blockSize, long maxParallelPuts) {
    public static UploadPlan create(final Path archive, final String archiveFormat, final UploadSession session) {
       BasicFileAttributes attributes;
       try {
@@ -26,7 +26,7 @@ public record UploadPlan(Path archive, long fileSize, long blockSize) {
          }
 
          if (fileSize <= session.maxSinglePutSizeBytes()) {
-            return new UploadPlan(archive, fileSize, 0L);
+            return new UploadPlan(archive, fileSize, 0L, session.maxParallelPuts());
          }
 
          if (!session.supportsBlockUpload()) {
@@ -40,7 +40,7 @@ public record UploadPlan(Path archive, long fileSize, long blockSize) {
             if (blockCount > maxBlockCount) {
                throw new ContentV2UploadException(ContentV2UploadException.Error.FILE_TOO_LARGE);
             } else {
-               return new UploadPlan(archive, fileSize, blockSize);
+               return new UploadPlan(archive, fileSize, blockSize, session.maxParallelPuts());
             }
          } else {
             throw new ContentV2UploadException(ContentV2UploadException.Error.INVALID_SESSION_RESPONSE);

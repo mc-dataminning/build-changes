@@ -103,6 +103,10 @@ public class NoiseColumn {
       return this.minBlockY + this.topIndexY;
    }
 
+   public int maxBlockY() {
+      return this.minBlockY + this.blocks.length - 1;
+   }
+
    public int surfaceGradientX() {
       return this.surfaceGradientX;
    }

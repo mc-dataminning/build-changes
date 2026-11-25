@@ -766,7 +766,7 @@ public class RealmsMainScreen extends RealmsScreen {
       }
 
       private void addSnapshotRealm() {
-         RealmsMainScreen.this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+         RealmsMainScreen.this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK));
          RealmsMainScreen.this.minecraft
             .gui
             .setScreen(
@@ -1267,12 +1267,12 @@ public class RealmsMainScreen extends RealmsScreen {
       }
 
       private void playRealm() {
-         RealmsMainScreen.this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+         RealmsMainScreen.this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK));
          RealmsMainScreen.play(this.serverData, RealmsMainScreen.this);
       }
 
       private void createUninitializedRealm() {
-         RealmsMainScreen.this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+         RealmsMainScreen.this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK));
          RealmsCreateRealmScreen createScreen = new RealmsCreateRealmScreen(RealmsMainScreen.this, this.serverData, this.serverData.isSnapshotRealm());
          RealmsMainScreen.this.minecraft.gui.setScreen(createScreen);
       }

@@ -31,7 +31,7 @@ public class StandingSignBlock extends SignBlock implements PlainSignBlock {
 
    @Override
    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
+      FluidState replacedFluidState = context.getClickedFluidState();
       return this.defaultBlockState()
          .setValue(ROTATION, RotationSegment.convertToSegment(context.getRotation() + 180.0F))
          .setValue(WATERLOGGED, replacedFluidState.isSourceOfType(Fluids.WATER));

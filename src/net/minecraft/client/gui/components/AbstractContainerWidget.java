@@ -41,15 +41,17 @@ public abstract class AbstractContainerWidget extends AbstractScrollArea impleme
 
    @Override
    public void setFocused(final @Nullable GuiEventListener focused) {
-      if (this.focused != null) {
-         this.focused.setFocused(false);
-      }
+      if (this.focused != focused) {
+         if (this.focused != null) {
+            this.focused.setFocused(false);
+         }
 
-      if (focused != null) {
-         focused.setFocused(true);
-      }
+         if (focused != null) {
+            focused.setFocused(true);
+         }
 
-      this.focused = focused;
+         this.focused = focused;
+      }
    }
 
    @Override

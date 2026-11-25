@@ -17,6 +17,11 @@ public class ErrorScreen extends Screen {
    }
 
    @Override
+   public Component getNarrationMessage() {
+      return CommonComponents.joinForNarration(super.getNarrationMessage(), this.messageText);
+   }
+
+   @Override
    protected void init() {
       super.init();
       this.message = MultiLineLabel.create(this.font, this.messageText, this.width - 50);

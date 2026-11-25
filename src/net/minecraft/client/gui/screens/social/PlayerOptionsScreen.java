@@ -304,7 +304,6 @@ public class PlayerOptionsScreen extends Screen {
 
    @Override
    public void tick() {
-      this.minecraft.getPlayerSocialManager().getPresenceHandler().tryUpdatePresence();
       this.playerRenderState.ageInTicks++;
    }
 

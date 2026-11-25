@@ -68,7 +68,7 @@ public class BarrierBlock extends Block implements SimpleWaterloggedBlock {
 
    @Override
    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).isSourceOfType(Fluids.WATER));
+      return this.defaultBlockState().setValue(WATERLOGGED, context.getClickedFluidState().isSourceOfType(Fluids.WATER));
    }
 
    @Override

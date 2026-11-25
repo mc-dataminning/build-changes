@@ -57,7 +57,7 @@ public class PumpkinBlock extends Block {
                level.addFreshEntity(entity);
             }
          );
-         level.playSound(null, pos, SoundEvents.PUMPKIN_CARVE, SoundSource.BLOCKS, 1.0F, 1.0F);
+         level.playSound(null, pos, SoundEvents.PUMPKIN_CARVE, SoundSource.BLOCKS);
          level.setBlock(pos, Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, direction), 11);
          itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
          level.gameEvent(player, GameEvent.SHEAR, pos);

@@ -23,6 +23,7 @@ public record UploadSession(
    long recommendedBlockSizeBytes,
    long maxBlockCount,
    long maxUploadSizeBytes,
+   long maxParallelPuts,
    Set<String> acceptedArchiveFormats
 ) {
    private static final GuardedSerializer SERIALIZER = new GuardedSerializer();
@@ -52,6 +53,7 @@ public record UploadSession(
          this.recommendedBlockSizeBytes,
          this.maxBlockCount,
          this.maxUploadSizeBytes,
+         this.maxParallelPuts,
          this.acceptedArchiveFormats
       );
    }
@@ -69,6 +71,7 @@ public record UploadSession(
       long recommendedBlockSizeBytes = supportsBlockUpload ? requiredPositiveLong(response.recommendedBlockSizeBytes(), "recommendedBlockSizeBytes") : 0L;
       long maxBlockCount = supportsBlockUpload ? requiredPositiveLong(response.maxBlockCount(), "maxBlockCount") : 0L;
       long maxUploadSizeBytes = requiredLong(response.maxUploadSizeBytes(), "maxUploadSizeBytes");
+      long maxParallelPuts = response.maxParallelPuts() == null ? 1L : requiredPositiveLong(response.maxParallelPuts(), "maxParallelPuts");
       Set<String> acceptedArchiveFormats = requiredFormats(response.acceptedArchiveFormats());
       return new UploadSession(
          token,
@@ -83,6 +86,7 @@ public record UploadSession(
          recommendedBlockSizeBytes,
          maxBlockCount,
          maxUploadSizeBytes,
+         maxParallelPuts,
          acceptedArchiveFormats
       );
    }

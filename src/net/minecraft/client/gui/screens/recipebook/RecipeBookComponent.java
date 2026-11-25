@@ -450,7 +450,8 @@ public abstract class RecipeBookComponent<T extends RecipeBookMenu> extends Abst
 
          return true;
       } else {
-         if (this.searchBox != null
+         if (event.isLeftMouse()
+            && this.searchBox != null
             && this.magnifierIconPlacement != null
             && this.magnifierIconPlacement.containsPoint(Mth.floor(event.x()), Mth.floor(event.y()))) {
             this.setFocused(this.searchBox);

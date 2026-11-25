@@ -119,7 +119,7 @@ public class MushroomCow extends AbstractCow implements Shearable {
             milkSound = SoundEvents.MOOSHROOM_MILK;
          }
 
-         this.playSound(milkSound, 1.0F, 1.0F);
+         this.playSound(milkSound);
          return InteractionResult.SUCCESS;
       } else if (itemStack.is(Items.SHEARS) && this.readyForShearing()) {
          if (this.level() instanceof ServerLevel level) {
@@ -184,7 +184,7 @@ public class MushroomCow extends AbstractCow implements Shearable {
 
    @Override
    public void shear(final ServerLevel level, final SoundSource soundSource, final ItemStack tool) {
-      level.playSound(null, this, SoundEvents.MOOSHROOM_SHEAR, soundSource, 1.0F, 1.0F);
+      level.playSound(null, this, SoundEvents.MOOSHROOM_SHEAR, soundSource);
       this.convertTo(EntityTypes.COW, ConversionParams.single(this, false, false), cow -> {
          level.sendParticles(ParticleTypes.EXPLOSION, this.getX(), this.getY(0.5), this.getZ(), 1, 0.0, 0.0, 0.0, 0.0);
          this.dropFromShearingLootTable(level, BuiltInLootTables.SHEAR_MOOSHROOM, tool, (l, drop) -> {

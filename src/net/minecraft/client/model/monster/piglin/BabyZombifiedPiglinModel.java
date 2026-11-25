@@ -4,6 +4,8 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 
 public class BabyZombifiedPiglinModel extends ZombifiedPiglinModel {
+   private static final float CUSTOM_HEAD_LAYER_SCALE = 0.9F;
+
    public BabyZombifiedPiglinModel(final ModelPart root) {
       super(root);
    }
@@ -15,5 +17,10 @@ public class BabyZombifiedPiglinModel extends ZombifiedPiglinModel {
    @Override
    protected float getDefaultEarAngleInDegrees() {
       return 5.0F;
+   }
+
+   @Override
+   public float getCustomHeadLayerScale() {
+      return 0.9F;
    }
 }

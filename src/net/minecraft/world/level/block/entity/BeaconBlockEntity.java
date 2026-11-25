@@ -289,7 +289,7 @@ public class BeaconBlockEntity extends BlockEntity implements MenuProvider, Name
    }
 
    public static void playSound(final Level level, final BlockPos worldPosition, final SoundEvent event) {
-      level.playSound(null, worldPosition, event, SoundSource.BLOCKS, 1.0F, 1.0F);
+      level.playSound(null, worldPosition, event, SoundSource.BLOCKS);
    }
 
    @Override

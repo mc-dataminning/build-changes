@@ -95,7 +95,16 @@ public abstract class AbstractRecipeBookScreen<T extends RecipeBookMenu> extends
       List<SlotWidget> widgets = new ArrayList<>();
 
       for (Slot slot : this.menu.slots) {
-         widgets.add(new SlotWidget(slot, this.minecraft, this.imageWidth, this.leftPos, this.topPos, () -> this.recipeBookComponent.getGhostSlotTooltip(slot)));
+         widgets.add(
+            new SlotWidget(
+               slot,
+               this.minecraft,
+               this.imageWidth,
+               this.leftPos,
+               this.topPos,
+               SlotWidget.defaultTooltipWithCustomEmpty(this.minecraft, this.recipeBookComponent::getGhostSlotTooltip)
+            )
+         );
       }
 
       this.setSlotWidgets(widgets);
@@ -127,15 +136,15 @@ public abstract class AbstractRecipeBookScreen<T extends RecipeBookMenu> extends
             this.setFocused(this.recipeBookComponent);
             return true;
          }
-
-         if (this.minecraft.options.keyRepeatRecipeOrTrade.matches(event)
-            && !this.isInputCaptured()
-            && this.recipeBookComponent.repeatLastRecipe(event.hasShiftDown())) {
-            return true;
-         }
       }
 
-      return super.keyPressed(event);
+      return this.minecraft.options.keyRepeatRecipeOrTrade.matches(event) && !this.isInputCaptured() && this.tryRepeatLastRecipe(event.hasShiftDown())
+         ? true
+         : super.keyPressed(event);
+   }
+
+   private boolean tryRepeatLastRecipe(final boolean useMaxItems) {
+      return this.recipeBookComponent.isVisible() && !this.minecraft.player.isSpectator() && this.recipeBookComponent.repeatLastRecipe(useMaxItems);
    }
 
    @Override
@@ -145,7 +154,9 @@ public abstract class AbstractRecipeBookScreen<T extends RecipeBookMenu> extends
 
    @Override
    public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-      if (this.recipeBookComponent.mouseClicked(event, doubleClick)) {
+      if (this.minecraft.options.keyRepeatRecipeOrTrade.matchesMouse(event) && this.tryRepeatLastRecipe(event.hasShiftDown())) {
+         return true;
+      } else if (this.recipeBookComponent.mouseClicked(event, doubleClick)) {
          this.setFocused(this.recipeBookComponent);
          return true;
       } else {

@@ -39,12 +39,12 @@ public class SeaPickleBlock extends VegetationBlock implements SimpleWaterlogged
 
    @Override
    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState state = context.getLevel().getBlockState(context.getClickedPos());
+      BlockState state = context.getClickedBlockState();
       if (state.is(this)) {
          return state.setValue(PICKLES, Math.min(4, state.getValue(PICKLES) + 1));
       }
 
-      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
+      FluidState replacedFluidState = context.getClickedFluidState();
       boolean isWaterSource = replacedFluidState.isSourceOfType(Fluids.WATER);
       return super.getStateForPlacement(context).setValue(WATERLOGGED, isWaterSource);
    }

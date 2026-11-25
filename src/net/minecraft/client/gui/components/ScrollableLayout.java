@@ -12,6 +12,7 @@ import net.minecraft.client.gui.layouts.LayoutElement;
 import net.minecraft.client.gui.narration.GroupNarration;
 import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
+import net.minecraft.client.gui.narration.NarrationTrigger;
 import net.minecraft.client.gui.navigation.ScreenDirection;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.network.chat.CommonComponents;
@@ -194,8 +195,8 @@ public class ScrollableLayout implements Layout {
       }
 
       @Override
-      public NarratableEntry.NarrationPriority narrationPriority() {
-         return NarratableEntry.NarrationPriority.of(this.isFocused(), this.getHoveredChild() != null);
+      public NarratableEntry.NarrationPriority narrationPriority(final NarrationTrigger narrationTrigger) {
+         return NarratableEntry.NarrationPriority.of(this.isFocused(), this.getHoveredChild() != null, narrationTrigger);
       }
 
       @Override

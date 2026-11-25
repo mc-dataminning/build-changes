@@ -580,8 +580,6 @@ public class WorldOptionsScreen extends Screen implements HasGamemasterPermissio
          if (this.wantedMultiplayerScope != MinecraftServer.MultiplayerScope.OFF) {
             this.publish(singleplayerServer, this.wantedMultiplayerScope);
          }
-
-         this.minecraft.getPlayerSocialManager().getPresenceHandler().tryUpdatePresence();
       }
    }
 

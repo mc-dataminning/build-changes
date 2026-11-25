@@ -379,6 +379,7 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
                   this.activeLocationDependentEffects.add(effect.effect());
                }
             } else if (active) {
+               effect.effect().onDeactivated(itemInUse, this, this.position(), 1);
                this.activeLocationDependentEffects.remove(effect.effect());
             }
          }
@@ -550,7 +551,7 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
          } else {
             this.primeTime(false);
             if (heldItem.is(Items.FLINT_AND_STEEL)) {
-               FlintAndSteelItem.playSound(this.level(), this.blockPosition());
+               FlintAndSteelItem.playSound(this.level(), this.blockPosition(), player.getSoundSource());
                heldItem.hurtAndBreak(1, player, hand.asEquipmentSlot());
             } else {
                FireChargeItem.playSound(this.level(), this.blockPosition());
@@ -564,34 +565,34 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
    }
 
    public boolean equipItem(final ItemStack heldItem) {
-      if (this.isBaby()) {
+      if (!this.isBaby() && !this.isPrimed()) {
+         if (this.hasBodyItem()) {
+            Item swallowedItem = this.getItemBySlot(EquipmentSlot.BODY).getItem();
+            if (heldItem.is(swallowedItem)) {
+               return false;
+            }
+
+            Vec3 equipmentSpawnOffset = this.getAttachments().getAverage(EntityAttachment.PASSENGER);
+            if (this.level() instanceof ServerLevel serverLevel) {
+               this.spawnAtLocation(serverLevel, this.getItemBySlot(EquipmentSlot.BODY), equipmentSpawnOffset);
+            }
+         }
+
+         if (!this.level().isClientSide()) {
+            ItemStack swallowedItem = this.getItemBySlot(EquipmentSlot.BODY);
+            this.setItemSlotAndDropWhenKilled(EquipmentSlot.BODY, heldItem.copyWithCount(1));
+            if (!swallowedItem.isEmpty()) {
+               Map<EquipmentSlot, ItemStack> lastEquipmentItems = Util.makeEnumMap(EquipmentSlot.class, slot -> ItemStack.EMPTY);
+               lastEquipmentItems.put(EquipmentSlot.BODY, swallowedItem);
+               this.collectEquipmentChanges(lastEquipmentItems);
+            }
+         }
+
+         this.playSound(this.getAbsorbSound());
+         return true;
+      } else {
          return false;
       }
-
-      if (this.hasBodyItem()) {
-         Item swallowedItem = this.getItemBySlot(EquipmentSlot.BODY).getItem();
-         if (heldItem.is(swallowedItem)) {
-            return false;
-         }
-
-         Vec3 equipmentSpawnOffset = this.getAttachments().getAverage(EntityAttachment.PASSENGER);
-         if (this.level() instanceof ServerLevel serverLevel) {
-            this.spawnAtLocation(serverLevel, this.getItemBySlot(EquipmentSlot.BODY), equipmentSpawnOffset);
-         }
-      }
-
-      if (!this.level().isClientSide()) {
-         ItemStack swallowedItem = this.getItemBySlot(EquipmentSlot.BODY);
-         this.setItemSlotAndDropWhenKilled(EquipmentSlot.BODY, heldItem.copyWithCount(1));
-         if (!swallowedItem.isEmpty()) {
-            Map<EquipmentSlot, ItemStack> lastEquipmentItems = Util.makeEnumMap(EquipmentSlot.class, slot -> ItemStack.EMPTY);
-            lastEquipmentItems.put(EquipmentSlot.BODY, swallowedItem);
-            this.collectEquipmentChanges(lastEquipmentItems);
-         }
-      }
-
-      this.playSound(this.getAbsorbSound());
-      return true;
    }
 
    private void applyContactDamage(final Entity entity) {
@@ -944,7 +945,7 @@ public class SulfurCube extends AbstractCubeMob implements Bucketable, Shearable
          verticalPower = Math.clamp(verticalPower, -128.0F, 128.0F);
          Vec3 horizontalKnockback = new Vec3(xd, 0.0, zd).normalize().scale(horizontalPower);
          this.addDeltaMovement(-horizontalKnockback.x, verticalPower * 1.2, -horizontalKnockback.z);
-         this.soundSettings.hitSound().ifPresent(s -> this.playSound(s.value()));
+         this.soundSettings.hitSound().ifPresent(this::playSound);
       } else {
          super.knockback(power, xd, zd, source, damage, comesFromEffect);
       }

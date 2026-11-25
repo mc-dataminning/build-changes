@@ -25,7 +25,7 @@ public record PlaySoundConsumeEffect(Holder<SoundEvent> sound) implements Consum
 
    @Override
    public boolean apply(final Level level, final ItemStack stack, final LivingEntity user) {
-      level.playSound(null, user.blockPosition(), this.sound.value(), user.getSoundSource(), 1.0F, 1.0F);
+      level.playSound(null, user.blockPosition(), this.sound.value(), user.getSoundSource());
       return true;
    }
 }

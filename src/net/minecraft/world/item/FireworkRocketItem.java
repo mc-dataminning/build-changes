@@ -59,7 +59,7 @@ public class FireworkRocketItem extends Item implements ProjectileItem {
          ItemStack itemStack = player.getItemInHand(hand);
          if (level instanceof ServerLevel serverLevel) {
             if (player.dropAllLeashConnections(null)) {
-               level.playSound(null, player, SoundEvents.LEAD_BREAK, SoundSource.NEUTRAL, 1.0F, 1.0F);
+               level.playSound(null, player, SoundEvents.LEAD_BREAK, SoundSource.NEUTRAL);
             }
 
             Projectile.spawnProjectile(new FireworkRocketEntity(level, itemStack, player), serverLevel, itemStack);

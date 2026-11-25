@@ -154,12 +154,12 @@ public class Pig extends Animal implements ItemSteerable {
 
    @Override
    protected void playEatingSound() {
-      this.getSoundSet().eatSound().ifPresent(s -> this.makeSound(s.value()));
+      this.getSoundSet().eatSound().ifPresent(this::makeSound);
    }
 
    @Override
    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-      this.getSoundSet().stepSound().ifPresent(s -> this.playSound(s.value(), 0.15F, 1.0F));
+      this.getSoundSet().stepSound().ifPresent(s -> this.playSound((Holder<SoundEvent>)s, 0.15F, 1.0F));
    }
 
    @Override

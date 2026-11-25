@@ -50,7 +50,7 @@ public class MouseHandler {
    private double accumulatedDX;
    private double accumulatedDY;
    private final ScrollWheelHandler scrollWheelHandler;
-   private double lastHandleMovementTime = Double.MIN_VALUE;
+   private double lastHandleMovementTime = 0.0;
    private double inputTypeAnchorX;
    private double inputTypeAnchorY;
    private boolean cursorHidden;

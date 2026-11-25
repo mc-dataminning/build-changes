@@ -836,6 +836,10 @@ public abstract class Player extends Avatar implements ContainerUser {
          return InteractionResult.PASS;
       } else {
          ItemStack itemStack = this.getItemInHand(hand);
+         if (this.getCooldowns().isOnCooldown(itemStack)) {
+            return InteractionResult.PASS;
+         }
+
          ItemStack itemStackClone = itemStack.copy();
          InteractionResult interact = entity.interact(this, hand, location);
          if (interact.consumesAction()) {
@@ -843,7 +847,9 @@ public abstract class Player extends Avatar implements ContainerUser {
                itemStack.setCount(itemStackClone.getCount());
             }
 
-            return interact;
+            return interact instanceof InteractionResult.Success success
+               ? itemStack.transformAfterSuccessfulInteraction(success, this, itemStackClone)
+               : interact;
          } else {
             if (!itemStack.isEmpty() && entity instanceof LivingEntity livingEntity) {
                if (this.hasInfiniteMaterials()) {
@@ -1013,7 +1019,7 @@ public abstract class Player extends Avatar implements ContainerUser {
    }
 
    private void playServerSideSound(final SoundEvent sound) {
-      this.level().playSound(null, this.getX(), this.getY(), this.getZ(), sound, this.getSoundSource(), 1.0F, 1.0F);
+      this.level().playSound(null, this.getX(), this.getY(), this.getZ(), sound, this.getSoundSource());
    }
 
    private DamageSource createAttackSource(final ItemStack attackingItemStack) {
@@ -1845,6 +1851,10 @@ public abstract class Player extends Avatar implements ContainerUser {
 
    public void resetOnlyAttackStrengthTicker() {
       this.attackStrengthTicker = 0;
+   }
+
+   public void cancelUsingItem() {
+      this.stopUsingItem();
    }
 
    public ItemCooldowns getCooldowns() {

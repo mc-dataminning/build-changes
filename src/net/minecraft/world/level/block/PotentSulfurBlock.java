@@ -101,9 +101,7 @@ public class PotentSulfurBlock extends BaseEntityBlock {
             null,
             pos,
             state.getValue(STATE) == PotentSulfurState.CONTINUOUS ? SoundEvents.GEYSER_CONTINUOUS_START : SoundEvents.GEYSER_ERUPTION_START,
-            SoundSource.BLOCKS,
-            1.0F,
-            1.0F
+            SoundSource.BLOCKS
          );
          level.gameEvent(GameEvent.BLOCK_ACTIVATE, pos, GameEvent.Context.of(state));
       }

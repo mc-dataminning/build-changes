@@ -49,6 +49,8 @@ public abstract class RangedZombie extends Zombie implements RangedAttackMob {
 
    protected abstract SoundEvent getRangedAttackSound();
 
+   protected abstract float getMaxRangedAttackDistance();
+
    @Override
    public void performRangedAttack(final LivingEntity target, final float power) {
       ItemStack mainHandItem = this.getMainHandItem();
@@ -81,6 +83,11 @@ public abstract class RangedZombie extends Zombie implements RangedAttackMob {
 
       LivingEntity target = this.getTarget();
       if (target != null && target.isAlive()) {
+         float maxRange = this.getMaxRangedAttackDistance();
+         if (this.distanceToSqr(target) > maxRange * maxRange) {
+            return false;
+         }
+
          float rangeThreshold = this.isRanged ? 9.0F : 25.0F;
          if (this.distanceToSqr(target) >= rangeThreshold) {
             return true;

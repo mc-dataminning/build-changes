@@ -66,7 +66,7 @@ public class BellBlockEntity extends BlockEntity {
 
       if (entity.ticks >= 5 && entity.resonationTicks == 0 && areRaidersNearby(pos, entity.nearbyEntities)) {
          entity.resonating = true;
-         level.playSound(null, pos, SoundEvents.BELL_RESONATE, SoundSource.BLOCKS, 1.0F, 1.0F);
+         level.playSound(null, pos, SoundEvents.BELL_RESONATE, SoundSource.BLOCKS);
       }
 
       if (entity.resonating) {

@@ -54,11 +54,11 @@ public class ChunkTerrainBuilder {
       }
 
       try {
-         for (int z = 0; z < volume.sizeZ(); z++) {
-            int blockZ = volume.blockZ(z);
+         for (int x = 0; x < volume.sizeX(); x++) {
+            int blockX = volume.blockX(x);
 
-            for (int x = 0; x < volume.sizeX(); x++) {
-               int blockX = volume.blockX(x);
+            for (int z = 0; z < volume.sizeZ(); z++) {
+               int blockZ = volume.blockZ(z);
                NoiseColumn column = noiseChunk.prepareColumn(x, z);
                int initialHeight = column.topBlockY() + 1;
                Holder<Biome> surfaceBiome = chunk.getBiome(blockX, initialHeight, blockZ);

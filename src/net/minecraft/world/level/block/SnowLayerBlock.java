@@ -116,7 +116,7 @@ public class SnowLayerBlock extends Block {
 
    @Override
    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState state = context.getLevel().getBlockState(context.getClickedPos());
+      BlockState state = context.getClickedBlockState();
       if (state.is(this)) {
          int layers = state.getValue(LAYERS);
          return state.setValue(LAYERS, Math.min(8, layers + 1));

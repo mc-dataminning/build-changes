@@ -74,6 +74,7 @@ public class ServerboundPlayerActionPacket implements Packet<ServerGamePacketLis
       DROP_ALL_ITEMS,
       DROP_ITEM,
       RELEASE_USE_ITEM,
+      CANCEL_USE_ITEM,
       SWAP_ITEM_WITH_OFFHAND,
       STAB;
    }

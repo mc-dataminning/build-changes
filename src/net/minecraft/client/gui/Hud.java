@@ -130,7 +130,7 @@ public class Hud implements Renderable, Updatable {
    private static final int HEART_SEPARATION = 8;
    private static final int NUM_AIR_BUBBLES = 10;
    private static final int AIR_BUBBLE_SIZE = 9;
-   private static final int AIR_BUBBLE_SEPERATION = 8;
+   private static final int AIR_BUBBLE_SEPARATION = 8;
    private static final int AIR_BUBBLE_POPPING_DURATION = 2;
    private static final int EMPTY_AIR_BUBBLE_DELAY_DURATION = 1;
    private static final float AIR_BUBBLE_POP_SOUND_VOLUME_BASE = 0.5F;
@@ -1351,7 +1351,7 @@ public class Hud implements Renderable, Updatable {
          Identifier.withDefaultNamespace("hud/heart/hardcore_half"),
          Identifier.withDefaultNamespace("hud/heart/hardcore_half_blinking")
       ),
-      POISIONED(
+      POISONED(
          Identifier.withDefaultNamespace("hud/heart/poisoned_full"),
          Identifier.withDefaultNamespace("hud/heart/poisoned_full_blinking"),
          Identifier.withDefaultNamespace("hud/heart/poisoned_half"),
@@ -1438,7 +1438,7 @@ public class Hud implements Renderable, Updatable {
       private static Hud.HeartType forPlayer(final Player player) {
          Hud.HeartType type;
          if (player.hasEffect(MobEffects.POISON)) {
-            type = POISIONED;
+            type = POISONED;
          } else if (player.hasEffect(MobEffects.WITHER)) {
             type = WITHERED;
          } else if (player.isFullyFrozen()) {

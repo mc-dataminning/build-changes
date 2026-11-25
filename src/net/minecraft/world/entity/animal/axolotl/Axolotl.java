@@ -397,7 +397,7 @@ public class Axolotl extends Animal implements Bucketable {
 
    @Override
    public void playAttackSound() {
-      this.playSound(SoundEvents.AXOLOTL_ATTACK, 1.0F, 1.0F);
+      this.playSound(SoundEvents.AXOLOTL_ATTACK);
    }
 
    @Override

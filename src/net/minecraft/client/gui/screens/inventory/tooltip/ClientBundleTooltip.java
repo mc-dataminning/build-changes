@@ -184,7 +184,7 @@ public class ClientBundleTooltip implements ClientTooltipComponent {
             y - 15,
             DefaultTooltipPositioner.INSTANCE,
             itemStack.get(DataComponents.TOOLTIP_STYLE),
-            false
+            0
          );
       }
    }

@@ -171,7 +171,7 @@ public class BeehiveBlockEntity extends BlockEntity {
             }
 
             BlockPos blockPos = this.getBlockPos();
-            this.level.playSound(null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.BEEHIVE_ENTER, SoundSource.BLOCKS, 1.0F, 1.0F);
+            this.level.playSound(null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.BEEHIVE_ENTER, SoundSource.BLOCKS);
             this.level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(bee, this.getBlockState()));
          }
 
@@ -240,7 +240,7 @@ public class BeehiveBlockEntity extends BlockEntity {
             entity.snapTo(spawnX, spawnY, spawnZ, entity.getYRot(), entity.getXRot());
          }
 
-         level.playSound(null, blockPos, SoundEvents.BEEHIVE_EXIT, SoundSource.BLOCKS, 1.0F, 1.0F);
+         level.playSound(null, blockPos, SoundEvents.BEEHIVE_EXIT, SoundSource.BLOCKS);
          level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(entity, level.getBlockState(blockPos)));
          return level.addFreshEntity(entity);
       } else {
@@ -282,7 +282,7 @@ public class BeehiveBlockEntity extends BlockEntity {
          double x = blockPos.getX() + 0.5;
          double y = blockPos.getY();
          double z = blockPos.getZ() + 0.5;
-         level.playSound(null, x, y, z, SoundEvents.BEEHIVE_WORK, SoundSource.BLOCKS, 1.0F, 1.0F);
+         level.playSound(null, x, y, z, SoundEvents.BEEHIVE_WORK, SoundSource.BLOCKS);
       }
    }
 

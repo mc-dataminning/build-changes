@@ -81,7 +81,7 @@ public class ShelfMushroomBlock extends HorizontalDirectionalBlock implements Bo
    @Override
    public void bounceOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
       if (!(entity instanceof ItemEntity) && !(entity instanceof PrimedTnt)) {
-         level.playSound(null, pos, SoundEvents.SHELF_MUSHROOM_BOUNCE, SoundSource.BLOCKS, 1.0F, 1.0F);
+         level.playSound(null, pos, SoundEvents.SHELF_MUSHROOM_BOUNCE, SoundSource.BLOCKS);
       }
    }
 

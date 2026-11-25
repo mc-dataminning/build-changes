@@ -13,8 +13,6 @@ public class Vec2 {
    public static final Vec2 NEG_UNIT_X = new Vec2(-1.0F, 0.0F);
    public static final Vec2 UNIT_Y = new Vec2(0.0F, 1.0F);
    public static final Vec2 NEG_UNIT_Y = new Vec2(0.0F, -1.0F);
-   public static final Vec2 MAX = new Vec2(Float.MAX_VALUE, Float.MAX_VALUE);
-   public static final Vec2 MIN = new Vec2(Float.MIN_VALUE, Float.MIN_VALUE);
    public static final Codec<Vec2> CODEC = Codec.FLOAT
       .listOf()
       .comapFlatMap(input -> Util.fixedSize(input, 2).map(floats -> new Vec2((Float)floats.get(0), (Float)floats.get(1))), vec -> List.of(vec.x, vec.y));

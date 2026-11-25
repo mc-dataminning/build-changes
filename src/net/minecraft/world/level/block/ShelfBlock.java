@@ -118,7 +118,7 @@ public class ShelfBlock extends BaseEntityBlock implements SelectableSlotContain
 
    @Override
    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
+      FluidState replacedFluidState = context.getClickedFluidState();
       return this.defaultBlockState()
          .setValue(FACING, context.getHorizontalDirection().getOpposite())
          .setValue(POWERED, context.getLevel().hasNeighborSignal(context.getClickedPos()))

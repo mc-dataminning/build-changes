@@ -72,7 +72,7 @@ public class VillagerGoalPackages {
 
    private static boolean validateBedPoi(final ServerLevel level, final BlockPos blockPos) {
       BlockState blockState = level.getBlockState(blockPos);
-      return blockState.is(BlockTags.VILLAGERS_CAN_SLEEP_ON_BED) && !blockState.getValue(BedBlock.OCCUPIED);
+      return blockState.is(BlockTags.VILLAGERS_CAN_SLEEP_ON_BED) && !blockState.getValueOrElse(BedBlock.OCCUPIED, false);
    }
 
    public static ImmutableList<Pair<Integer, ? extends BehaviorControl<? super Villager>>> getWorkPackage(

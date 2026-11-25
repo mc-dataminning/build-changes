@@ -57,9 +57,9 @@ public class SectionOcclusionGraph {
    private final LongOpenHashSet emptySections = new LongOpenHashSet();
    private final LongOpenHashSet loadedChunks = new LongOpenHashSet();
    private volatile @Nullable BlockingQueue<SectionRenderDispatcher.RenderSection> nextSectionsToPropagateFrom;
-   private double prevCamX = Double.MIN_VALUE;
-   private double prevCamY = Double.MIN_VALUE;
-   private double prevCamZ = Double.MIN_VALUE;
+   private double prevCamX = Double.NaN;
+   private double prevCamY = Double.NaN;
+   private double prevCamZ = Double.NaN;
    private int prevFov = Integer.MAX_VALUE;
    private boolean lastSmartCull = true;
 

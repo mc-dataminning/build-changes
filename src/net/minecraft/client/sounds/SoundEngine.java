@@ -301,7 +301,7 @@ public class SoundEngine {
       float range = getRange(instance.isRelative(), instance.getAttenuation(), attenuationDistance);
 
       for (SoundEventListener listener : this.listeners) {
-         listener.onPlaySound(instance, soundEvent, range);
+         listener.onPlaySound(instance, soundEvent, range, this.loaded);
       }
    }
 
@@ -348,10 +348,6 @@ public class SoundEngine {
    }
 
    public SoundEngine.PlayResult play(final SoundInstance instance) {
-      if (!this.loaded) {
-         return SoundEngine.PlayResult.NOT_STARTED;
-      }
-
       if (!instance.canPlaySound()) {
          return SoundEngine.PlayResult.NOT_STARTED;
       }
@@ -370,6 +366,10 @@ public class SoundEngine {
          float attenuationDistance = sound.getAttenuationDistance(instanceVolume);
          if (!this.listeners.isEmpty()) {
             this.notifyListeners(instance, soundEvent, attenuationDistance);
+         }
+
+         if (!this.loaded) {
+            return SoundEngine.PlayResult.NOT_STARTED;
          }
 
          SoundSource soundSource = instance.getSource();
@@ -477,9 +477,14 @@ public class SoundEngine {
    }
 
    public void updateSource(final Camera camera) {
-      if (this.loaded && camera.isInitialized()) {
+      if (camera.isInitialized()) {
          ListenerTransform transform = new ListenerTransform(camera.position(), new Vec3(camera.forwardVector()), new Vec3(camera.upVector()));
-         this.executor.execute(() -> this.listener.setTransform(transform));
+         this.executor.execute(() -> {
+            this.listener.setTransform(transform);
+            if (this.loaded) {
+               this.listener.update();
+            }
+         });
       }
    }
 

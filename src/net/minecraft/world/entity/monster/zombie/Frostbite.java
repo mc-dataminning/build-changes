@@ -40,6 +40,7 @@ import net.minecraft.world.phys.Vec3;
 public class Frostbite extends RangedZombie {
    private static final int MELEE_ATTACK_TICKS = 30;
    private static final int FREEZING_TICKS_ON_MELEE = 60;
+   private static final float MAX_RANGED_ATTACK_DISTANCE = 16.0F;
 
    public Frostbite(final EntityType<? extends Frostbite> type, final Level level) {
       super(type, level);
@@ -97,6 +98,11 @@ public class Frostbite extends RangedZombie {
    @Override
    public Item getRangedWeaponType() {
       return Items.ICE_BALL;
+   }
+
+   @Override
+   protected float getMaxRangedAttackDistance() {
+      return 16.0F;
    }
 
    @Override

@@ -113,11 +113,11 @@ public record NoiseFunction(
                this.shiftZ.sampleVolume(context, shiftZBuffer, volume);
                int index = 0;
 
-               for (int z = 0; z < volume.sizeZ(); z++) {
-                  double baseNoiseZ = volume.blockZ(z) * this.xzScale;
+               for (int x = 0; x < volume.sizeX(); x++) {
+                  double baseNoiseX = volume.blockX(x) * this.xzScale;
 
-                  for (int x = 0; x < volume.sizeX(); x++) {
-                     double baseNoiseX = volume.blockX(x) * this.xzScale;
+                  for (int z = 0; z < volume.sizeZ(); z++) {
+                     double baseNoiseZ = volume.blockZ(z) * this.xzScale;
 
                      for (int y = 0; y < volume.sizeY(); y++) {
                         double noiseX = baseNoiseX + outputBuffer.get(index);
@@ -150,11 +150,11 @@ public record NoiseFunction(
             this.shiftZ.sampleVolume(context, shiftZBuffer, volume);
             int index = 0;
 
-            for (int z = 0; z < volume.sizeZ(); z++) {
-               double baseNoiseZ = volume.blockZ(z) * this.xzScale;
+            for (int x = 0; x < volume.sizeX(); x++) {
+               double baseNoiseX = volume.blockX(x) * this.xzScale;
 
-               for (int x = 0; x < volume.sizeX(); x++) {
-                  double baseNoiseX = volume.blockX(x) * this.xzScale;
+               for (int z = 0; z < volume.sizeZ(); z++) {
+                  double baseNoiseZ = volume.blockZ(z) * this.xzScale;
 
                   for (int y = 0; y < volume.sizeY(); y++) {
                      double noiseX = baseNoiseX + outputBuffer.get(index);

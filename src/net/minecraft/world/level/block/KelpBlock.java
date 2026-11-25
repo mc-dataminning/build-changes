@@ -58,7 +58,7 @@ public class KelpBlock extends GrowingPlantHeadBlock implements LiquidBlockConta
 
    @Override
    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
+      FluidState fluidState = context.getClickedFluidState();
       return fluidState.is(FluidTags.WATER) && fluidState.isFull() ? super.getStateForPlacement(context) : null;
    }
 

@@ -36,7 +36,7 @@ public class BottleItem extends Item {
       if (!clouds.isEmpty()) {
          AreaEffectCloud cloud = clouds.get(0);
          cloud.setRadius(cloud.getRadius() - 0.5F);
-         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_FILL_DRAGONBREATH, SoundSource.NEUTRAL, 1.0F, 1.0F);
+         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_FILL_DRAGONBREATH, SoundSource.NEUTRAL);
          level.gameEvent(player, GameEvent.FLUID_PICKUP, player.position());
          if (player instanceof ServerPlayer serverPlayer) {
             CriteriaTriggers.PLAYER_INTERACTED_WITH_ENTITY.trigger(serverPlayer, itemStack, cloud);
@@ -72,7 +72,7 @@ public class BottleItem extends Item {
    }
 
    public static void playGlassBottleFillSound(final Level level, final @Nullable Player player, final double x, final double y, final double z) {
-      level.playSound(player, x, y, z, SoundEvents.BOTTLE_FILL, SoundSource.NEUTRAL, 1.0F, 1.0F);
+      level.playSound(player, x, y, z, SoundEvents.BOTTLE_FILL, SoundSource.NEUTRAL);
    }
 
    protected ItemStack turnBottleIntoItem(final ItemStack itemStack, final Player player, final ItemStack itemStackToTurnInto) {

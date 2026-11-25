@@ -12,6 +12,7 @@ import com.mojang.authlib.services.FriendsService;
 import com.mojang.authlib.services.MinecraftServicesDiscoveryService;
 import com.mojang.authlib.services.ProfileActionType;
 import com.mojang.authlib.services.ProfileResult;
+import com.mojang.authlib.services.signaling.MinecraftServicesSignalingService;
 import com.mojang.blaze3d.TracyFrameCapture;
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.platform.ClientShutdownWatchdog;
@@ -123,7 +124,6 @@ import net.minecraft.client.multiplayer.chat.ChatAbilities;
 import net.minecraft.client.multiplayer.chat.ChatRestriction;
 import net.minecraft.client.multiplayer.chat.report.ReportEnvironment;
 import net.minecraft.client.multiplayer.chat.report.ReportingContext;
-import net.minecraft.client.multiplayer.signaling.SignalingClient;
 import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.particle.ParticleResources;
 import net.minecraft.client.player.LocalPlayer;
@@ -293,7 +293,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
    private final MapRenderer mapRenderer;
    public final ParticleEngine particleEngine;
    private final User user;
-   private final SignalingClient signalingClient;
+   private final @Nullable MinecraftServicesSignalingService signalingClient;
    public final Font font;
    public final Font fontFilterFishy;
    public final GameRenderer gameRenderer;
@@ -744,9 +744,14 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
             properties.put(TelemetryProperty.BACKEND_FAILURE_MISSING_CAPABILITIES, "");
          }
       });
-      this.signalingClient = new SignalingClient(this.user, discoveryService);
-      this.signalingClient.addPresenceListener(this.playerSocialManager.getPresenceHandler()::updatePresenceWith);
-      this.signalingClient.connect();
+      if (this.offlineDeveloperMode) {
+         this.signalingClient = null;
+      } else {
+         this.signalingClient = discoveryService.createSignalingService(this.user.getAccessToken());
+         this.signalingClient.addPresenceListener(this.playerSocialManager.getPresenceHandler()::updatePresenceWith);
+         this.signalingClient.addFriendsListener(update -> this.remoteFriendListUpdateHandler.applyFriendUpdate(update.updateType(), update.friendDto()));
+         this.signalingClient.start();
+      }
    }
 
    private void showWindow() {
@@ -1125,7 +1130,10 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
 
       try {
          this.playerSocialManager.getPresenceHandler().sendOfflinePresence();
-         this.signalingClient.close();
+         if (this.signalingClient != null) {
+            this.signalingClient.close();
+         }
+
          this.remoteFriendListUpdateHandler.close();
          this.timerQuery.close();
          this.telemetryManager.close();
@@ -1608,6 +1616,9 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
    public void pauseGame(final boolean suppressPauseMenuIfWeReallyArePausing) {
       boolean canGameReallyBePaused = this.hasSingleplayerServer() && !this.singleplayerServer.isPublished();
       this.gui.setPauseScreen(suppressPauseMenuIfWeReallyArePausing, canGameReallyBePaused);
+      if (this.player != null && this.player.isUsingItem()) {
+         this.player.cancelUsingItem();
+      }
    }
 
    private void continueAttack(final boolean down) {
@@ -2088,7 +2099,6 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
       );
       connection.send(new ServerboundHelloPacket(this.getUser().getName(), this.getUser().getProfileId()));
       this.pendingConnection = connection;
-      this.getPlayerSocialManager().getPresenceHandler().tryUpdatePresence();
    }
 
    public void setLevel(final ClientLevel level) {

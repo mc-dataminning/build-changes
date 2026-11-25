@@ -23,12 +23,7 @@ public class DirectionalPlaceContext extends BlockPlaceContext {
 
    @Override
    public boolean canPlace() {
-      return this.getLevel().getBlockState(this.getHitResult().getBlockPos()).canBeReplaced(this);
-   }
-
-   @Override
-   public boolean replacingClickedOnBlock() {
-      return this.canPlace();
+      return this.getClickedBlockState().canBeReplaced(this);
    }
 
    @Override

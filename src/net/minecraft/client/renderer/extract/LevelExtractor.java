@@ -95,8 +95,8 @@ public class LevelExtractor implements ResourceManagerReloadListener {
    public final GameTestBlockHighlightRenderer gameTestBlockHighlightRenderer = new GameTestBlockHighlightRenderer();
    private final Deque<TransientBlock> transientBlockQueue = new ArrayDeque<>();
    private final SimpleGizmoCollector mainThreadGizmos = new SimpleGizmoCollector();
-   private double prevCamRotX = Double.MIN_VALUE;
-   private double prevCamRotY = Double.MIN_VALUE;
+   private double prevCamRotX = Double.NaN;
+   private double prevCamRotY = Double.NaN;
    private int lastViewDistance = -1;
    private boolean shouldInvalidateCompiledGeometry;
    private boolean shouldResetLevelRenderData;

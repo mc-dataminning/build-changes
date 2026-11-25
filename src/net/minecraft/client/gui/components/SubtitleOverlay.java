@@ -106,7 +106,7 @@ public class SubtitleOverlay implements SoundEventListener, Renderable {
    }
 
    @Override
-   public void onPlaySound(final SoundInstance sound, final WeighedSoundEvents soundEvent, final float range) {
+   public void onPlaySound(final SoundInstance sound, final WeighedSoundEvents soundEvent, final float range, final boolean soundEngineLoaded) {
       if (soundEvent.getSubtitle() != null) {
          Component text = soundEvent.getSubtitle();
          if (!this.subtitles.isEmpty()) {

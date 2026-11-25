@@ -34,7 +34,7 @@ public record DensityVolume(int sizeX, int sizeY, int sizeZ, int minBlockX, int 
    }
 
    public int indexUnchecked(final int indexX, final int indexY, final int indexZ) {
-      return indexY + (indexX + indexZ * this.sizeX) * this.sizeY;
+      return indexY + (indexZ + indexX * this.sizeZ) * this.sizeY;
    }
 
    public int blockX(final int x) {
@@ -66,7 +66,7 @@ public record DensityVolume(int sizeX, int sizeY, int sizeZ, int minBlockX, int 
    }
 
    public int strideX() {
-      return this.sizeY;
+      return this.sizeZ * this.sizeY;
    }
 
    public int strideY() {
@@ -74,7 +74,7 @@ public record DensityVolume(int sizeX, int sizeY, int sizeZ, int minBlockX, int 
    }
 
    public int strideZ() {
-      return this.sizeX * this.sizeY;
+      return this.sizeY;
    }
 
    public boolean intersects(final BoundingBox box) {

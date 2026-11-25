@@ -53,7 +53,7 @@ public class BlockPlaceContext extends UseOnContext {
    }
 
    public boolean canPlace() {
-      return this.replaceClicked || this.getLevel().getBlockState(this.getClickedPos()).canBeReplaced(this);
+      return this.replaceClicked || this.getClickedBlockState().canBeReplaced(this);
    }
 
    public boolean replacingClickedOnBlock() {

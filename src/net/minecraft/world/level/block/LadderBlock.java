@@ -4,8 +4,11 @@ import java.util.Map;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.damagesource.FellFromLocation;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -81,7 +84,7 @@ public class LadderBlock extends Block implements SimpleWaterloggedBlock {
       BlockState state = this.defaultBlockState();
       LevelReader level = context.getLevel();
       BlockPos pos = context.getClickedPos();
-      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
+      FluidState replacedFluidState = context.getClickedFluidState();
 
       for (Direction direction : context.getNearestLookingDirections()) {
          if (direction.getAxis().isHorizontal()) {
@@ -113,5 +116,10 @@ public class LadderBlock extends Block implements SimpleWaterloggedBlock {
    @Override
    protected FluidState getFluidState(final BlockState state) {
       return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource() : super.getFluidState(state);
+   }
+
+   @Override
+   protected FellFromLocation getFellFromLocation(final BlockState state, final Level level, final BlockPos pos, final LivingEntity mob) {
+      return FellFromLocation.LADDER;
    }
 }

@@ -45,7 +45,10 @@ public interface DispenseBehaviors {
       context.register(DispenseBehaviorIds.BOAT, List.of(PlaceBoatDispenseBehavior.INSTANCE, DropItemDispenseBehavior.INSTANCE));
       context.register(DispenseBehaviorIds.BONE_MEAL, List.of(GrowPlantDispenseBehavior.INSTANCE));
       context.register(DispenseBehaviorIds.BRUSH, List.of(BrushArmadilloDispenseBehavior.INSTANCE));
-      context.register(DispenseBehaviorIds.CARVED_PUMPKIN, List.of(SpawnGolemFromCarvedPumpkinDispenseBehavior.INSTANCE, EquipDispenseBehavior.INSTANCE));
+      context.register(
+         DispenseBehaviorIds.CARVED_PUMPKIN,
+         List.of(SpawnGolemFromCarvedPumpkinDispenseBehavior.INSTANCE, EquipSulfurCubeDispenseBehavior.INSTANCE, EquipDispenseBehavior.INSTANCE)
+      );
       context.register(DispenseBehaviorIds.CHEST, List.of(EquipChestBehavior.INSTANCE, DropItemDispenseBehavior.INSTANCE));
       context.register(DispenseBehaviorIds.DEFAULT, List.of(EquipSulfurCubeDispenseBehavior.INSTANCE, DropItemDispenseBehavior.INSTANCE));
       context.register(DispenseBehaviorIds.DEFAULT_PROJECTILE, List.of(ShootProjectileDispenseBehavior.DEFAULT));
@@ -77,7 +80,10 @@ public interface DispenseBehaviors {
       );
       context.register(DispenseBehaviorIds.FLINT_AND_STEEL, List.of(IgniteDispenseBehavior.INSTANCE));
       context.register(DispenseBehaviorIds.GLASS_BOTTLE, List.of(FillBottleDispenseBehavior.INSTANCE, DropItemDispenseBehavior.INSTANCE));
-      context.register(DispenseBehaviorIds.GLOWSTONE, List.of(ChargeRespawnAnchorDispenseBehavior.INSTANCE, DropItemDispenseBehavior.INSTANCE));
+      context.register(
+         DispenseBehaviorIds.GLOWSTONE,
+         List.of(ChargeRespawnAnchorDispenseBehavior.INSTANCE, EquipSulfurCubeDispenseBehavior.INSTANCE, DropItemDispenseBehavior.INSTANCE)
+      );
       context.register(
          DispenseBehaviorIds.HONEYCOMB,
          List.of(new TransformBlockDispenseBehavior(blockTransformers.getOrThrow(BlockTransformers.HONEYCOMB)), DropItemDispenseBehavior.INSTANCE)

@@ -80,12 +80,12 @@ public class HoneycombItem extends Item implements SignApplicator {
          level.setBlock(pos, waxedState, 11);
          level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, waxedState));
          level.levelEvent(player, 3003, pos, 0);
-         level.playSound(player, pos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0F, 1.0F);
+         level.playSound(player, pos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS);
          if (oldState.getBlock() instanceof ChestBlock && oldState.getValue(ChestBlock.TYPE) != ChestType.SINGLE) {
             BlockPos neighborPos = ChestBlock.getConnectedBlockPos(pos, oldState);
             level.gameEvent(GameEvent.BLOCK_CHANGE, neighborPos, GameEvent.Context.of(player, level.getBlockState(neighborPos)));
             level.levelEvent(player, 3003, neighborPos, 0);
-            level.playSound(player, pos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0F, 1.0F);
+            level.playSound(player, pos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS);
          }
 
          return InteractionResult.SUCCESS;
@@ -101,7 +101,7 @@ public class HoneycombItem extends Item implements SignApplicator {
       if (sign.setWaxed(true)) {
          BlockPos blockPos = sign.getBlockPos();
          level.levelEvent(null, 3003, blockPos, 0);
-         level.playSound(null, blockPos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0F, 1.0F);
+         level.playSound(null, blockPos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS);
          return true;
       } else {
          return false;

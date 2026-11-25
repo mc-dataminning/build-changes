@@ -322,7 +322,7 @@ public enum Direction implements Directional, StringRepresentable {
 
    public static Direction getApproximateNearest(final float dx, final float dy, final float dz) {
       Direction result = NORTH;
-      float highestDot = Float.MIN_VALUE;
+      float highestDot = Float.NEGATIVE_INFINITY;
 
       for (Direction direction : VALUES) {
          float dot = dx * direction.normal.getX() + dy * direction.normal.getY() + dz * direction.normal.getZ();

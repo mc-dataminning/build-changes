@@ -198,8 +198,11 @@ public class ServerExplosion implements Explosion {
                      Vec3 knockback = direction.scale(knockbackPower);
                      if (entity.getControllingPassengerOrSelf() instanceof ServerPlayer serverPlayer) {
                         serverPlayer.connection.send(new ClientboundAddEntityMotionPacket(entity.getId(), knockback));
+                        if (entity.canSimulateMovement()) {
+                           entity.pushFromExplosion(knockback);
+                        }
                      } else {
-                        entity.push(knockback);
+                        entity.pushFromExplosion(knockback);
                      }
                   }
 

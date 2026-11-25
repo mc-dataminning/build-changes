@@ -2,6 +2,7 @@ package net.minecraft.core.dispenser;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -26,8 +27,9 @@ public record TransformBlockDispenseBehavior(Holder<BlockTransformer> transforme
       Vec3 positionAtEdgeOfBlock = Vec3.atCenterOf(source.pos()).relative(direction, 0.5000099999997474);
       BlockHitResult hitResult = new BlockHitResult(positionAtEdgeOfBlock, direction, pos, false);
       UseOnContext context = UseOnContext.nonPlayer(source.level(), dispensed, hitResult);
-      InteractionResult result = this.transformer.value().transformBlock(context);
-      return result.consumesAction() ? DispenseBehavior.DispenseResult.success(dispensed) : DispenseBehavior.DispenseResult.failure();
+      return this.transformer.value().transformBlock(context) instanceof InteractionResult.Success success
+         ? DispenseBehavior.DispenseResult.success(Objects.requireNonNullElse(success.heldItemTransformedTo(), dispensed))
+         : DispenseBehavior.DispenseResult.failure();
    }
 
    @Override

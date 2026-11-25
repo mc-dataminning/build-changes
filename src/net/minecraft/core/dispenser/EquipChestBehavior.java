@@ -2,6 +2,9 @@ package net.minecraft.core.dispenser;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.animal.equine.AbstractChestedHorse;
 import net.minecraft.world.item.ItemStack;
@@ -24,7 +27,9 @@ public class EquipChestBehavior implements DispenseBehavior {
          if (abstractChestedHorse.isTamed()) {
             SlotAccess slot = abstractChestedHorse.getSlot(499);
             if (slot != null && slot.set(dispensed)) {
-               abstractChestedHorse.playChestEquipsSound();
+               SoundEvent sound = abstractChestedHorse.getChestEquipSound();
+               RandomSource random = source.level().getRandom();
+               source.level().playSound(null, pos, sound, SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
                dispensed.shrink(1);
                return DispenseBehavior.DispenseResult.success(dispensed);
             }

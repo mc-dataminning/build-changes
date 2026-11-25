@@ -14,6 +14,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.sprite.SpriteId;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.client.sounds.SoundManager;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvent;
@@ -22,7 +23,7 @@ import net.minecraft.world.item.ItemStack;
 public final class IconRadioButton extends Button {
    private final WidgetSprites sprites;
    private final IconRadioButton.Icon icon;
-   private final SoundEvent selectSound;
+   private final Holder<SoundEvent> selectSound;
    private final Supplier<Tooltip> tooltip;
    private final BooleanSupplier selected;
 
@@ -32,7 +33,7 @@ public final class IconRadioButton extends Button {
       final Component message,
       final WidgetSprites sprites,
       final IconRadioButton.Icon icon,
-      final SoundEvent selectSound,
+      final Holder<SoundEvent> selectSound,
       final Button.OnPress onPress,
       final Button.CreateNarration createNarration,
       final Supplier<Tooltip> tooltip,
@@ -75,7 +76,7 @@ public final class IconRadioButton extends Button {
    @Override
    public void playDownSound(final SoundManager soundManager) {
       if (!this.selected.getAsBoolean()) {
-         soundManager.play(SimpleSoundInstance.forUI(this.selectSound, 1.0F));
+         soundManager.play(SimpleSoundInstance.forUI(this.selectSound));
       }
    }
 

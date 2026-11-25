@@ -96,16 +96,18 @@ public class SculkShriekerBlockEntity extends BlockEntity implements GameEventLi
          return player;
       } else if (sourceEntity instanceof ItemEntity item && item.getOwner() instanceof ServerPlayer player) {
          return player;
-      } else if (sourceEntity instanceof BlockAttachedEntity entity
-         && entity.getLastDamageSource() != null
-         && entity.getLastDamageSource().getEntity() instanceof ServerPlayer player) {
-         return player;
       } else {
-         return sourceEntity instanceof ArmorStand armorStand
-               && armorStand.getLastDamageSource() != null
-               && armorStand.getLastDamageSource().getEntity() instanceof ServerPlayer player
-            ? player
-            : null;
+         return getLastDamagingEntity(sourceEntity) instanceof ServerPlayer player ? player : null;
+      }
+   }
+
+   public static @Nullable Entity getLastDamagingEntity(final @Nullable Entity sourceEntity) {
+      if (sourceEntity instanceof BlockAttachedEntity entity && entity.getLastDamageSource() != null) {
+         return entity.getLastDamageSource().getEntity();
+      } else {
+         return sourceEntity instanceof ArmorStand armorStand && armorStand.getLastDamageSource() != null
+            ? armorStand.getLastDamageSource().getEntity()
+            : sourceEntity;
       }
    }
 

@@ -60,7 +60,7 @@ public class Breeze extends Monster {
    private int jumpTrailStartedTick = 0;
    private int soundTick = 0;
    private static final ProjectileDeflection PROJECTILE_DEFLECTION = (projectile, entity, random, power) -> {
-      entity.level().playSound(null, entity, SoundEvents.BREEZE_DEFLECT, entity.getSoundSource(), 1.0F, 1.0F);
+      entity.level().playSound(null, entity, SoundEvents.BREEZE_DEFLECT, entity.getSoundSource());
       ProjectileDeflection.REVERSE.deflect(projectile, entity, random, power);
    };
 
@@ -273,7 +273,7 @@ public class Breeze extends Monster {
    @Override
    public boolean causeFallDamage(final double fallDistance, final float damageModifier, final DamageSource damageSource) {
       if (fallDistance > 3.0) {
-         this.playSound(SoundEvents.BREEZE_LAND, 1.0F, 1.0F);
+         this.playSound(SoundEvents.BREEZE_LAND);
       }
 
       return super.causeFallDamage(fallDistance, damageModifier, damageSource);

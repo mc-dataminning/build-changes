@@ -27,15 +27,13 @@ public class ShearDispenseBehavior implements DispenseBehavior {
    @Override
    public DispenseBehavior.DispenseResult execute(final BlockSource source, final ItemStack dispensed) {
       ServerLevel level = source.level();
-      if (!level.isClientSide()) {
-         BlockPos pos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
-         if (tryShearBeehive(level, dispensed, pos) || tryShearEntity(level, pos, dispensed)) {
-            dispensed.hurtAndBreak(1, level, null, var0 -> {});
-            return DispenseBehavior.DispenseResult.success(dispensed);
-         }
+      BlockPos pos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
+      if (!tryShearBeehive(level, dispensed, pos) && !tryShearEntity(level, pos, dispensed)) {
+         return DispenseBehavior.DispenseResult.failure();
       }
 
-      return DispenseBehavior.DispenseResult.failure();
+      dispensed.hurtAndBreak(1, level, null, var0 -> {});
+      return DispenseBehavior.DispenseResult.success(dispensed);
    }
 
    private static boolean tryShearBeehive(final ServerLevel level, final ItemStack tool, final BlockPos pos) {
@@ -43,7 +41,7 @@ public class ShearDispenseBehavior implements DispenseBehavior {
       if (state.is(BlockTags.BEEHIVES, s -> s.getBlock() instanceof BeehiveBlock)) {
          int honeyLevel = state.getValueOrElse(BeehiveBlock.HONEY_LEVEL, 0);
          if (honeyLevel >= 5) {
-            level.playSound(null, pos, SoundEvents.BEEHIVE_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
+            level.playSound(null, pos, SoundEvents.BEEHIVE_SHEAR, SoundSource.BLOCKS);
             BeehiveBlock.dropHoneycomb(level, tool, state, level.getBlockEntity(pos), null, pos);
             ((BeehiveBlock)state.getBlock()).releaseBeesAndResetHoneyLevel(level, state, pos, null, BeehiveBlockEntity.BeeReleaseStatus.BEE_RELEASED);
             level.gameEvent(null, GameEvent.SHEAR, pos);

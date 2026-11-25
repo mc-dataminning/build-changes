@@ -229,6 +229,12 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
    }
 
    @Override
+   public void forceSetRotation(final float yRot, final boolean relativeY, final float xRot, final boolean relativeX) {
+      super.forceSetRotation(yRot, relativeY, xRot, relativeX);
+      this.disableLookControlThisTick();
+   }
+
+   @Override
    public @Nullable LivingEntity getControllingPassenger() {
       Entity firstPassenger = this.getFirstPassenger();
       return !this.isNoAi() && firstPassenger instanceof Mob passenger && firstPassenger.canControlVehicle() ? passenger : null;

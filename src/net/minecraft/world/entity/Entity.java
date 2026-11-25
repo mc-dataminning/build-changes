@@ -923,11 +923,11 @@ public abstract class Entity
          this.finalMovementsThisTick.add(new Entity.Movement(this.finalMovementsThisTick.getLast().to, this.position()));
       }
 
-      this.applyEffectsFromBlocks(this.finalMovementsThisTick);
+      this.applyEffectsFromBlocks(this.finalMovementsThisTick, true);
    }
 
    protected void applyEffectsFromBlocksForLastMovements() {
-      this.applyEffectsFromBlocks(this.finalMovementsThisTick);
+      this.applyEffectsFromBlocks(this.finalMovementsThisTick, true);
    }
 
    private void addMovementThisTick(final Entity.Movement movement) {
@@ -956,10 +956,10 @@ public abstract class Entity
    }
 
    public void applyEffectsFromBlocks(final Vec3 from, final Vec3 to) {
-      this.applyEffectsFromBlocks(List.of(new Entity.Movement(from, to)));
+      this.applyEffectsFromBlocks(List.of(new Entity.Movement(from, to)), true);
    }
 
-   private void applyEffectsFromBlocks(final List<Entity.Movement> movements) {
+   protected void applyEffectsFromBlocks(final List<Entity.Movement> movements, final boolean accumulateFallDistace) {
       if (this.isAffectedByBlocks()) {
          BlockPos effectPos = this.getOnPosLegacy();
          BlockState effectState = this.level().getBlockState(effectPos);
@@ -972,7 +972,7 @@ public abstract class Entity
          int previousRemainingFireTicks = this.getRemainingFireTicks();
          this.checkInsideBlocks(movements, this.insideEffectCollector);
          this.insideEffectCollector.applyAndClear(this);
-         if (this.isLocalInstanceAuthoritative()) {
+         if (this.isLocalInstanceAuthoritative() && accumulateFallDistace) {
             double y = 0.0;
 
             for (Entity.Movement movementPart : movements) {
@@ -1035,17 +1035,19 @@ public abstract class Entity
    protected void playEntityOnFireExtinguishedSound() {
       if (!this.level.isClientSide() && this.extinguishSoundCooldown <= 0) {
          this.extinguishSoundCooldown = 20;
-         this.level()
-            .playSound(
-               null,
-               this.getX(),
-               this.getY(),
-               this.getZ(),
-               SoundEvents.GENERIC_EXTINGUISH_FIRE,
-               this.getSoundSource(),
-               0.7F,
-               1.6F + (this.random.nextFloat() - this.random.nextFloat()) * 0.4F
-            );
+         if (!this.isSilent()) {
+            this.level()
+               .playSound(
+                  null,
+                  this.getX(),
+                  this.getY(),
+                  this.getZ(),
+                  SoundEvents.GENERIC_EXTINGUISH_FIRE,
+                  this.getSoundSource(),
+                  0.7F,
+                  1.6F + (this.random.nextFloat() - this.random.nextFloat()) * 0.4F
+               );
+         }
       }
    }
 
@@ -1595,7 +1597,7 @@ public abstract class Entity
       }
    }
 
-   protected void updateFallDistanceAndCheckFallDamage(final double movementY, final boolean onGround, final BlockState state, final BlockPos pos) {
+   protected final void updateFallDistanceAndCheckFallDamage(final double movementY, final boolean onGround, final BlockState state, final BlockPos pos) {
       if (movementY < 0.0) {
          this.fallDistance -= movementY;
       }
@@ -1956,6 +1958,10 @@ public abstract class Entity
       if (impulse.isFinite()) {
          this.push(impulse.x, impulse.y, impulse.z);
       }
+   }
+
+   public void pushFromExplosion(final Vec3 impulse) {
+      this.push(impulse);
    }
 
    public void push(final double xa, final double ya, final double za) {
@@ -2410,9 +2416,7 @@ public abstract class Entity
    public boolean shearOffAllLeashConnections(final @Nullable Player player) {
       boolean dropped = this.dropAllLeashConnections(player);
       if (dropped && this.level() instanceof ServerLevel serverLevel) {
-         serverLevel.playSound(
-            null, this.blockPosition(), SoundEvents.SHEARS_SNIP, player != null ? player.getSoundSource() : this.getSoundSource(), 1.0F, 1.0F
-         );
+         serverLevel.playSound(null, this.blockPosition(), SoundEvents.SHEARS_SNIP, player != null ? player.getSoundSource() : this.getSoundSource());
       }
 
       return dropped;
@@ -4284,7 +4288,7 @@ public abstract class Entity
       void accept(Entity target, double x, double y, double z);
    }
 
-   private record Movement(Vec3 from, Vec3 to, Optional<Vec3> axisDependentOriginalMovement) {
+   protected record Movement(Vec3 from, Vec3 to, Optional<Vec3> axisDependentOriginalMovement) {
       public Movement(final Vec3 from, final Vec3 to, final Vec3 axisDependentOriginalMovement) {
          this(from, to, Optional.of(axisDependentOriginalMovement));
       }

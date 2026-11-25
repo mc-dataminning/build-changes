@@ -51,7 +51,7 @@ public class WidgetTooltipHolder {
             this.wasDisplayed = shouldDisplay;
          }
 
-         if (shouldDisplay && Util.getMillis() - this.displayStartTime > this.delay.toMillis()) {
+         if (shouldDisplay && Util.getMillis() - this.displayStartTime >= this.delay.toMillis()) {
             graphics.setTooltipForNextFrame(
                minecraft.font,
                this.tooltip.toCharSequence(minecraft),
@@ -61,7 +61,7 @@ public class WidgetTooltipHolder {
                mouseY,
                isFocused,
                this.tooltip.style(),
-               this.tooltip.extraSpaceAfterFirstLine()
+               this.tooltip.linesBeforeExtraSpace(minecraft)
             );
          }
       }

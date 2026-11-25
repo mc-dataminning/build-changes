@@ -597,12 +597,16 @@ public class Zombie extends Monster {
 
       @Override
       public void playDestroyProgressSound(final LevelAccessor level, final BlockPos pos) {
-         level.playSound(null, pos, SoundEvents.ZOMBIE_DESTROY_EGG, SoundSource.HOSTILE, 0.5F, 0.9F + Zombie.this.random.nextFloat() * 0.2F);
+         if (!Zombie.this.isSilent()) {
+            level.playSound(null, pos, SoundEvents.ZOMBIE_DESTROY_EGG, SoundSource.HOSTILE, 0.5F, 0.9F + Zombie.this.random.nextFloat() * 0.2F);
+         }
       }
 
       @Override
       public void playBreakSound(final Level level, final BlockPos pos) {
-         level.playSound(null, pos, SoundEvents.TURTLE_EGG_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F + level.getRandom().nextFloat() * 0.2F);
+         if (!Zombie.this.isSilent()) {
+            level.playSound(null, pos, SoundEvents.TURTLE_EGG_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F + level.getRandom().nextFloat() * 0.2F);
+         }
       }
 
       @Override

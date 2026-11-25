@@ -274,7 +274,7 @@ public class Cat extends TamableAnimal {
    }
 
    public void hiss() {
-      this.getSoundSet().hissSound().ifPresent(s -> this.makeSound(s.value()));
+      this.getSoundSet().hissSound().ifPresent(this::makeSound);
    }
 
    @Override
@@ -298,14 +298,14 @@ public class Cat extends TamableAnimal {
 
    @Override
    protected void playEatingSound() {
-      this.getSoundSet().eatSound().ifPresent(s -> this.playSound(s.value(), 1.0F, 1.0F));
+      this.getSoundSet().eatSound().ifPresent(this::playSound);
    }
 
    @Override
    public void tick() {
       super.tick();
       if (this.temptGoal != null && this.temptGoal.isRunning() && !this.isTame() && this.tickCount % 100 == 0) {
-         this.getSoundSet().begForFoodSound().ifPresent(s -> this.playSound(s.value(), 1.0F, 1.0F));
+         this.getSoundSet().begForFoodSound().ifPresent(this::playSound);
       }
 
       this.handleLieDown();
@@ -313,7 +313,9 @@ public class Cat extends TamableAnimal {
 
    private void handleLieDown() {
       if ((this.isLying() || this.isRelaxStateOne()) && this.tickCount % 5 == 0) {
-         this.getSoundSet().purrSound().ifPresent(s -> this.playSound(s.value(), 0.6F + 0.4F * (this.random.nextFloat() - this.random.nextFloat()), 1.0F));
+         this.getSoundSet()
+            .purrSound()
+            .ifPresent(s -> this.playSound((Holder<SoundEvent>)s, 0.6F + 0.4F * (this.random.nextFloat() - this.random.nextFloat()), 1.0F));
       }
 
       this.updateLieDownAmount();
@@ -417,7 +419,7 @@ public class Cat extends TamableAnimal {
                DyeColor color = itemStack.get(DataComponents.DYE);
                if (color != null && color != this.getCollarColor()) {
                   if (!this.level().isClientSide()) {
-                     this.level().playSound(null, this, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
+                     this.level().playSound(null, this, SoundEvents.DYE_USE, SoundSource.PLAYERS);
                      this.setCollarColor(color);
                      itemStack.consume(1, player);
                      this.setPersistenceRequired();

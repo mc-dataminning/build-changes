@@ -8,6 +8,8 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 
 public class BabyVillagerModel extends VillagerModel {
+   private static final float CUSTOM_HEAD_LAYER_SCALE = 0.85F;
+
    public BabyVillagerModel(final ModelPart root) {
       super(root);
    }
@@ -63,5 +65,10 @@ public class BabyVillagerModel extends VillagerModel {
          PartPose.offset(0.5F, 24.0F, 0.0F)
       );
       return mesh;
+   }
+
+   @Override
+   public float getCustomHeadLayerScale() {
+      return 0.85F;
    }
 }

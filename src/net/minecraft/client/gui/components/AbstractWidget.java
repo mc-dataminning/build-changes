@@ -13,6 +13,7 @@ import net.minecraft.client.gui.layouts.LayoutElement;
 import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
+import net.minecraft.client.gui.narration.NarrationTrigger;
 import net.minecraft.client.gui.navigation.FocusNavigationEvent;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.client.input.MouseButtonEvent;
@@ -178,7 +179,7 @@ public abstract class AbstractWidget implements LayoutElement, Renderable, GuiEv
    }
 
    public static void playButtonClickSound(final SoundManager soundManager) {
-      soundManager.play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+      soundManager.play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK));
    }
 
    @Override
@@ -247,8 +248,8 @@ public abstract class AbstractWidget implements LayoutElement, Renderable, GuiEv
    }
 
    @Override
-   public NarratableEntry.NarrationPriority narrationPriority() {
-      return NarratableEntry.NarrationPriority.of(this.isFocused(), this.isHovered());
+   public NarratableEntry.NarrationPriority narrationPriority(final NarrationTrigger narrationTrigger) {
+      return NarratableEntry.NarrationPriority.of(this.isFocused(), this.isHovered(), narrationTrigger);
    }
 
    @Override

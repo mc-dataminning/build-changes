@@ -95,19 +95,19 @@ public class PerlinNoise extends GradientNoise {
       float g111y = 0.0F;
       int index = 0;
 
-      for (int indexZ = 0; indexZ < volume.sizeZ(); indexZ++) {
-         double z = wrap(volume.blockZ(indexZ) * xzScale) + this.offsetZ;
-         int floorZ = Mth.floor(z);
-         float relativeZ = (float)(z - floorZ);
-         float alphaZ = Mth.smoothstep(relativeZ);
+      for (int indexX = 0; indexX < volume.sizeX(); indexX++) {
+         double x = wrap(volume.blockX(indexX) * xzScale) + this.offsetX;
+         int floorX = Mth.floor(x);
+         float relativeX = (float)(x - floorX);
+         int x0 = this.permute(floorX);
+         int x1 = this.permute(floorX + 1);
+         float alphaX = Mth.smoothstep(relativeX);
 
-         for (int indexX = 0; indexX < volume.sizeX(); indexX++) {
-            double x = wrap(volume.blockX(indexX) * xzScale) + this.offsetX;
-            int floorX = Mth.floor(x);
-            float relativeX = (float)(x - floorX);
-            int x0 = this.permute(floorX);
-            int x1 = this.permute(floorX + 1);
-            float alphaX = Mth.smoothstep(relativeX);
+         for (int indexZ = 0; indexZ < volume.sizeZ(); indexZ++) {
+            double z = wrap(volume.blockZ(indexZ) * xzScale) + this.offsetZ;
+            int floorZ = Mth.floor(z);
+            float relativeZ = (float)(z - floorZ);
+            float alphaZ = Mth.smoothstep(relativeZ);
             int lastFloorY = Integer.MIN_VALUE;
 
             for (int indexY = 0; indexY < volume.sizeY(); indexY++) {

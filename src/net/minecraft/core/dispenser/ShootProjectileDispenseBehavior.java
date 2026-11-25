@@ -58,10 +58,11 @@ public record ShootProjectileDispenseBehavior(
             this.power,
             this.uncertainty
          );
+         dispensed.shrink(1);
+         return DispenseBehavior.DispenseResult.success(dispensed);
+      } else {
+         return DispenseBehavior.DispenseResult.failure();
       }
-
-      dispensed.shrink(1);
-      return DispenseBehavior.DispenseResult.success(dispensed);
    }
 
    @Override
