@@ -45,7 +45,7 @@ public class EffectCommands {
       entityCount -> Component.translatableEscape("commands.effect.clear.specific.failed.multiple", entityCount)
    );
    private static final SimpleCommandExceptionType ERROR_NO_EFFECTS = new SimpleCommandExceptionType(Component.translatable("commands.effect.no_effects"));
-   private static final CommandResponseTracker.Messages<LivingEntity> RESPONSE_GIVE = CommandResponseTracker.messages(
+   private static final CommandResponseTracker.Messages<Entity> RESPONSE_GIVE = CommandResponseTracker.messages(
       (entity, effectCount) -> Component.translatable("commands.effect.give.success.single", effectCount, entity.getDisplayName()),
       (entityCount, effectCount) -> Component.translatable("commands.effect.give.success.multiple", effectCount, entityCount)
    );
@@ -58,7 +58,7 @@ public class EffectCommands {
       (entity, effectCount) -> Component.translatable("commands.effect.clear.specific.success.single", effectCount, entity.getDisplayName()),
       (entityCount, effectCount) -> Component.translatable("commands.effect.clear.specific.success.multiple", effectCount, entityCount)
    );
-   private static final CommandResponseTracker.DispatchWithArg<CommandSyntaxException, LivingEntity, Integer> ERROR_DISPATCH_GIVE = new CommandResponseTracker.DispatchWithArg<>(
+   private static final CommandResponseTracker.DispatchWithArg<CommandSyntaxException, Entity, Integer> ERROR_DISPATCH_GIVE = new CommandResponseTracker.DispatchWithArg<>(
       (entity, var1, effectCount) -> ERROR_GIVE_FAILED.create(effectCount, entity.getDisplayName()),
       (entityCount, var1, effectCount) -> ERROR_GIVE_FAILED_MULTIPLE.create(effectCount, entityCount)
    );
@@ -198,12 +198,15 @@ public class EffectCommands {
          throw ERROR_NO_EFFECTS.create();
       }
 
-      CommandResponseTracker<LivingEntity> tracker = CommandResponseTracker.create();
+      CommandResponseTracker<Entity> tracker = CommandResponseTracker.create();
 
       for (Entity entity : entities) {
+         int addedEffects = 0;
          if (entity instanceof LivingEntity livingEntity) {
-            tracker.track(livingEntity, addEffects(effects, livingEntity, source.getEntity(), seconds, amplifier, particles));
+            addedEffects = addEffects(effects, livingEntity, source.getEntity(), seconds, amplifier, particles);
          }
+
+         tracker.track(entity, addedEffects);
       }
 
       if (tracker.totalValue() == 0) {
@@ -247,12 +250,15 @@ public class EffectCommands {
    }
 
    private static int clearEffects(final CommandSourceStack source, final Collection<? extends Entity> entities) throws CommandSyntaxException {
-      CommandResponseTracker<LivingEntity> tracker = CommandResponseTracker.create();
+      CommandResponseTracker<Entity> tracker = CommandResponseTracker.create();
 
       for (Entity entity : entities) {
+         boolean allRemoved = false;
          if (entity instanceof LivingEntity livingEntity) {
-            tracker.track(livingEntity, livingEntity.removeAllEffects());
+            allRemoved = livingEntity.removeAllEffects();
          }
+
+         tracker.track(entity, allRemoved);
       }
 
       return tracker.sendFeedback(source, true, RESPONSE_CLEAR_ALL);
@@ -267,12 +273,15 @@ public class EffectCommands {
          throw ERROR_NO_EFFECTS.create();
       }
 
-      CommandResponseTracker<LivingEntity> tracker = CommandResponseTracker.create();
+      CommandResponseTracker<Entity> tracker = CommandResponseTracker.create();
 
       for (Entity entity : entities) {
+         int removedEffects = 0;
          if (entity instanceof LivingEntity livingEntity) {
-            tracker.track(livingEntity, removeEffects(effects, livingEntity));
+            removedEffects = removeEffects(effects, livingEntity);
          }
+
+         tracker.track(entity, removedEffects);
       }
 
       if (tracker.totalValue() == 0) {

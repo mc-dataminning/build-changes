@@ -193,9 +193,16 @@ public class WallBlock extends Block implements SimpleWaterloggedBlock {
       final boolean south,
       final boolean west
    ) {
-      VoxelShape aboveShape = topNeighbour.getCollisionShape(level, topPos).getFaceShape(Direction.DOWN);
-      BlockState sidesUpdatedState = this.updateSides(state, north, east, south, west, aboveShape);
-      return sidesUpdatedState.setValue(UP, this.shouldRaisePost(sidesUpdatedState, topNeighbour, aboveShape));
+      VoxelShape aboveShape;
+      if (topNeighbour.is(BlockTags.WALL_SIDE_SHAPE_OVERRIDE)) {
+         aboveShape = topNeighbour.getShape(level, topPos);
+      } else {
+         aboveShape = topNeighbour.getCollisionShape(level, topPos);
+      }
+
+      VoxelShape testShape = aboveShape.getFaceShape(Direction.DOWN);
+      BlockState sidesUpdatedState = this.updateSides(state, north, east, south, west, testShape);
+      return sidesUpdatedState.setValue(UP, this.shouldRaisePost(sidesUpdatedState, topNeighbour, testShape));
    }
 
    private boolean shouldRaisePost(final BlockState state, final BlockState topNeighbour, final VoxelShape aboveShape) {

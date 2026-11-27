@@ -167,136 +167,40 @@ public abstract class FlowingFluid extends Fluid {
    }
 
    protected FluidState getNewLiquid(final ServerLevel level, final BlockPos pos, final BlockState state) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      //
-      // Bytecode:
-      // 000: bipush 0
-      // 001: istore 4
-      // 003: bipush 0
-      // 004: istore 5
-      // 006: new net/minecraft/core/BlockPos$MutableBlockPos
-      // 009: dup
-      // 00a: invokespecial net/minecraft/core/BlockPos$MutableBlockPos.<init> ()V
-      // 00d: astore 6
-      // 00f: getstatic net/minecraft/core/Direction$Plane.HORIZONTAL Lnet/minecraft/core/Direction$Plane;
-      // 012: invokevirtual net/minecraft/core/Direction$Plane.iterator ()Ljava/util/Iterator;
-      // 015: astore 7
-      // 017: aload 7
-      // 019: invokeinterface java/util/Iterator.hasNext ()Z 1
-      // 01e: ifeq 07b
-      // 021: aload 7
-      // 023: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
-      // 028: checkcast net/minecraft/core/Direction
-      // 02b: astore 8
-      // 02d: aload 6
-      // 02f: aload 2
-      // 030: aload 8
-      // 032: invokevirtual net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset (Lnet/minecraft/core/Vec3i;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
-      // 035: astore 9
-      // 037: aload 1
-      // 038: aload 9
-      // 03a: invokevirtual net/minecraft/server/level/ServerLevel.getBlockState (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
-      // 03d: astore 10
-      // 03f: aload 10
-      // 041: invokevirtual net/minecraft/world/level/block/state/BlockState.getFluidState ()Lnet/minecraft/world/level/material/FluidState;
-      // 044: astore 11
-      // 046: aload 11
-      // 048: aload 0
-      // 049: invokevirtual net/minecraft/world/level/material/FluidState.is (Ljava/lang/Object;)Z
-      // 04c: ifne 052
-      // 04f: goto 017
-      // 052: aload 8
-      // 054: aload 1
-      // 055: aload 2
-      // 056: aload 3
-      // 057: aload 9
-      // 059: aload 10
-      // 05b: invokestatic net/minecraft/world/level/material/FlowingFluid.canPassThroughWall (Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
-      // 05e: ifeq 078
-      // 061: aload 11
-      // 063: invokevirtual net/minecraft/world/level/material/FluidState.isSource ()Z
-      // 066: ifeq 06c
-      // 069: iinc 5 1
-      // 06c: iload 4
-      // 06e: aload 11
-      // 070: invokevirtual net/minecraft/world/level/material/FluidState.getAmount ()I
-      // 073: invokestatic java/lang/Math.max (II)I
-      // 076: istore 4
-      // 078: goto 017
-      // 07b: iload 5
-      // 07d: bipush 2
-      // 07e: if_icmplt 0b5
-      // 081: aload 0
-      // 082: aload 1
-      // 083: invokevirtual net/minecraft/world/level/material/FlowingFluid.canConvertToSource (Lnet/minecraft/server/level/ServerLevel;)Z
-      // 086: ifeq 0b5
-      // 089: aload 1
-      // 08a: aload 6
-      // 08c: aload 2
-      // 08d: getstatic net/minecraft/core/Direction.DOWN Lnet/minecraft/core/Direction;
-      // 090: invokevirtual net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset (Lnet/minecraft/core/Vec3i;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
-      // 093: invokevirtual net/minecraft/server/level/ServerLevel.getBlockState (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
-      // 096: astore 7
-      // 098: aload 7
-      // 09a: invokevirtual net/minecraft/world/level/block/state/BlockState.getFluidState ()Lnet/minecraft/world/level/material/FluidState;
-      // 09d: astore 8
-      // 09f: aload 7
-      // 0a1: invokevirtual net/minecraft/world/level/block/state/BlockState.isSolid ()Z
-      // 0a4: ifne 0b0
-      // 0a7: aload 0
-      // 0a8: aload 8
-      // 0aa: invokevirtual net/minecraft/world/level/material/FlowingFluid.isSourceBlockOfThisType (Lnet/minecraft/world/level/material/FluidState;)Z
-      // 0ad: ifeq 0b5
-      // 0b0: aload 0
-      // 0b1: invokevirtual net/minecraft/world/level/material/FlowingFluid.getSource ()Lnet/minecraft/world/level/material/FluidState;
-      // 0b4: areturn
-      // 0b5: aload 6
-      // 0b7: aload 2
-      // 0b8: getstatic net/minecraft/core/Direction.UP Lnet/minecraft/core/Direction;
-      // 0bb: invokevirtual net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset (Lnet/minecraft/core/Vec3i;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
-      // 0be: astore 7
-      // 0c0: aload 1
-      // 0c1: aload 7
-      // 0c3: invokevirtual net/minecraft/server/level/ServerLevel.getBlockState (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
-      // 0c6: astore 8
-      // 0c8: aload 8
-      // 0ca: invokevirtual net/minecraft/world/level/block/state/BlockState.getFluidState ()Lnet/minecraft/world/level/material/FluidState;
-      // 0cd: astore 9
-      // 0cf: aload 9
-      // 0d1: invokevirtual net/minecraft/world/level/material/FluidState.isEmpty ()Z
-      // 0d4: ifne 0f7
-      // 0d7: aload 9
-      // 0d9: aload 0
-      // 0da: invokevirtual net/minecraft/world/level/material/FluidState.is (Ljava/lang/Object;)Z
-      // 0dd: ifeq 0f7
-      // 0e0: getstatic net/minecraft/core/Direction.UP Lnet/minecraft/core/Direction;
-      // 0e3: aload 1
-      // 0e4: aload 2
-      // 0e5: aload 3
-      // 0e6: aload 7
-      // 0e8: aload 8
-      // 0ea: invokestatic net/minecraft/world/level/material/FlowingFluid.canPassThroughWall (Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
-      // 0ed: ifeq 0f7
-      // 0f0: aload 0
-      // 0f1: bipush 8
-      // 0f3: invokevirtual net/minecraft/world/level/material/FlowingFluid.getFlowing (I)Lnet/minecraft/world/level/material/FluidState;
-      // 0f6: areturn
-      // 0f7: iload 4
-      // 0f9: aload 0
-      // 0fa: aload 1
-      // 0fb: invokevirtual net/minecraft/world/level/material/FlowingFluid.getDropOff (Lnet/minecraft/world/level/LevelReader;)I
-      // 0fe: isub
-      // 0ff: istore 10
-      // 101: iload 10
-      // 103: ifgt 10d
-      // 106: getstatic net/minecraft/world/level/material/Fluids.EMPTY Lnet/minecraft/world/level/material/Fluid;
-      // 109: invokevirtual net/minecraft/world/level/material/Fluid.defaultFluidState ()Lnet/minecraft/world/level/material/FluidState;
-      // 10c: areturn
-      // 10d: aload 0
-      // 10e: iload 10
-      // 110: invokevirtual net/minecraft/world/level/material/FlowingFluid.getFlowing (I)Lnet/minecraft/world/level/material/FluidState;
-      // 113: areturn
+      int highestNeighbor = 0;
+      int neighbourSources = 0;
+      BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
+
+      for (Direction direction : Direction.Plane.HORIZONTAL) {
+         BlockPos relativePos = mutablePos.setWithOffset(pos, direction);
+         BlockState blockState = level.getBlockState(relativePos);
+         FluidState fluidState = blockState.getFluidState();
+         if (fluidState.is(this) && canPassThroughWall(direction, level, pos, state, relativePos, blockState)) {
+            if (fluidState.isSource()) {
+               neighbourSources++;
+            }
+
+            highestNeighbor = Math.max(highestNeighbor, fluidState.getAmount());
+         }
+      }
+
+      if (neighbourSources >= 2 && this.canConvertToSource(level)) {
+         BlockState belowState = level.getBlockState(mutablePos.setWithOffset(pos, Direction.DOWN));
+         FluidState belowFluid = belowState.getFluidState();
+         if (belowState.isSolid() || this.isSourceBlockOfThisType(belowFluid)) {
+            return this.getSource();
+         }
+      }
+
+      BlockPos abovePos = mutablePos.setWithOffset(pos, Direction.UP);
+      BlockState aboveState = level.getBlockState(abovePos);
+      FluidState aboveFluid = aboveState.getFluidState();
+      if (!aboveFluid.isEmpty() && aboveFluid.is(this) && canPassThroughWall(Direction.UP, level, pos, state, abovePos, aboveState)) {
+         return this.getFlowing(8);
+      }
+
+      int amount = highestNeighbor - this.getDropOff(level);
+      return amount <= 0 ? Fluids.EMPTY.defaultFluidState() : this.getFlowing(amount);
    }
 
    private static boolean canPassThroughWall(

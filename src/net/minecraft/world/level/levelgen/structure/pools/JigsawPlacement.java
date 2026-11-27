@@ -432,9 +432,6 @@ public class JigsawPlacement {
                                  if (!Shapes.joinIsNotEmpty(
                                     (VoxelShape)childrenFree.get(), Shapes.create(AABB.of(targetBB).deflate(0.25)), BooleanOp.ONLY_SECOND
                                  )) {
-                                    childrenFree.setValue(
-                                       Shapes.joinUnoptimized((VoxelShape)childrenFree.get(), Shapes.create(AABB.of(targetBB)), BooleanOp.ONLY_FIRST)
-                                    );
                                     int sourceGroundLevelDelta = sourcePiece.getGroundLevelDelta();
                                     int targetGroundLevelDelta;
                                     if (targetRigid) {
@@ -445,6 +442,9 @@ public class JigsawPlacement {
 
                                     if (!targetElement.getCornerConstraint().isPresent()
                                        || targetElement.getCornerConstraint().get().test(targetBB, randomState)) {
+                                       childrenFree.setValue(
+                                          Shapes.joinUnoptimized((VoxelShape)childrenFree.get(), Shapes.create(AABB.of(targetBB)), BooleanOp.ONLY_FIRST)
+                                       );
                                        PoolElementStructurePiece targetPiece = new PoolElementStructurePiece(
                                           this.structureTemplateManager,
                                           targetElement,

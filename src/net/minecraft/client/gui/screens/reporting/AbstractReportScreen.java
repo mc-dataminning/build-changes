@@ -211,6 +211,12 @@ public abstract class AbstractReportScreen<B extends Report.Builder<?>> extends 
    }
 
    @Override
+   public void added() {
+      super.added();
+      this.closedIntentionally = false;
+   }
+
+   @Override
    public void removed() {
       if (!this.closedIntentionally) {
          this.closedIntentionally = true;

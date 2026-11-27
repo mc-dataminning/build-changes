@@ -119,18 +119,22 @@ public class BucketItem extends Item implements DispensibleContainerItem {
          boolean canPlaceFluidInsideBlock = blockState.isAir() || placeLiquid && (!shiftKeyDown || hitResult == null);
          if (canPlaceFluidInsideBlock) {
             if (level.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, pos) && this.content == Fluids.WATER) {
-               int x = pos.getX();
-               int y = pos.getY();
-               int z = pos.getZ();
-               RandomSource random = level.getRandom();
-               level.playSound(user, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 2.6F + (random.nextFloat() - random.nextFloat()) * 0.8F);
-               if (level instanceof ServerLevel serverLevel) {
-                  serverLevel.sendParticles(
-                     ParticleTypes.LARGE_SMOKE, x, y, z, 8, 1.0, 1.0, 1.0, 0.0, ClientboundLevelParticlesPacket.RandomizationType.ALTERNATIVE
-                  );
-               }
+               if (level.isInValidBounds(pos)) {
+                  int x = pos.getX();
+                  int y = pos.getY();
+                  int z = pos.getZ();
+                  RandomSource random = level.getRandom();
+                  level.playSound(user, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 2.6F + (random.nextFloat() - random.nextFloat()) * 0.8F);
+                  if (level instanceof ServerLevel serverLevel) {
+                     serverLevel.sendParticles(
+                        ParticleTypes.LARGE_SMOKE, x, y, z, 8, 1.0, 1.0, 1.0, 0.0, ClientboundLevelParticlesPacket.RandomizationType.ALTERNATIVE
+                     );
+                  }
 
-               return true;
+                  return true;
+               } else {
+                  return false;
+               }
             } else if (block instanceof LiquidBlockContainer container && this.content == Fluids.WATER) {
                container.placeLiquid(level, pos, blockState, flowingFluid.getSource());
                this.playEmptySound(user, level, pos);

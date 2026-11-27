@@ -14,6 +14,7 @@ public class ItemDisplayWidget extends AbstractWidget {
    private final int offsetY;
    private final ItemStack itemStack;
    private final boolean decorations;
+   private final boolean tooltip;
 
    public ItemDisplayWidget(
       final Minecraft minecraft,
@@ -32,9 +33,7 @@ public class ItemDisplayWidget extends AbstractWidget {
       this.offsetY = offsetY;
       this.itemStack = itemStack;
       this.decorations = decorations;
-      if (tooltip) {
-         this.setTooltip(Tooltip.createForItem(Screen.getTooltipFromItem(minecraft, itemStack), itemStack));
-      }
+      this.tooltip = tooltip;
    }
 
    @Override
@@ -48,5 +47,14 @@ public class ItemDisplayWidget extends AbstractWidget {
    @Override
    protected void updateWidgetNarration(final NarrationElementOutput output) {
       output.add(NarratedElementType.TITLE, Component.translatable("narration.item", this.itemStack.getHoverName()));
+   }
+
+   @Override
+   protected void extractTooltipForNextRenderPass(final GuiGraphicsExtractor graphics) {
+      if (this.tooltip && (this.isHovered() || this.isFocused() && this.minecraft.getLastInputType().isKeyboard())) {
+         this.setTooltip(Tooltip.createForItem(Screen.getTooltipFromItem(this.minecraft, this.itemStack), this.itemStack));
+      }
+
+      super.extractTooltipForNextRenderPass(graphics);
    }
 }

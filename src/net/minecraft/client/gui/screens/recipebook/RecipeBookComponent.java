@@ -246,6 +246,7 @@ public abstract class RecipeBookComponent<T extends RecipeBookMenu> extends Abst
 
    public boolean closeOverlay() {
       if (!this.overlay.isVisible()) {
+         this.setFocused(false);
          return false;
       }
 

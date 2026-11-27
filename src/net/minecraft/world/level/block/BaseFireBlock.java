@@ -169,7 +169,7 @@ public abstract class BaseFireBlock extends Block {
 
    public static boolean canBePlacedAt(final Level level, final BlockPos pos, final Direction forwardDirection) {
       BlockState state = level.getBlockState(pos);
-      return !state.isAir() ? false : getState(level, pos).canSurvive(level, pos) || isPortal(level, pos, forwardDirection);
+      return !state.isAir() ? false : level.isInValidBounds(pos) && getState(level, pos).canSurvive(level, pos) || isPortal(level, pos, forwardDirection);
    }
 
    private static boolean isPortal(final Level level, final BlockPos pos, final Direction forwardDirection) {

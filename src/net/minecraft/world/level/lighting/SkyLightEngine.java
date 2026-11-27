@@ -299,300 +299,60 @@ public final class SkyLightEngine extends LightEngine<SkyLightSectionStorage.Sky
 
    @Override
    public void propagateLightSources(final ChunkPos pos) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      //
-      // Bytecode:
-      // 000: aload 1
-      // 001: invokevirtual net/minecraft/world/level/ChunkPos.x ()I
-      // 004: aload 1
-      // 005: invokevirtual net/minecraft/world/level/ChunkPos.z ()I
-      // 008: invokestatic net/minecraft/core/SectionPos.getZeroNode (II)J
-      // 00b: lstore 2
-      // 00c: aload 0
-      // 00d: getfield net/minecraft/world/level/lighting/SkyLightEngine.storage Lnet/minecraft/world/level/lighting/LayerLightSectionStorage;
-      // 010: checkcast net/minecraft/world/level/lighting/SkyLightSectionStorage
-      // 013: lload 2
-      // 014: bipush 1
-      // 015: invokevirtual net/minecraft/world/level/lighting/SkyLightSectionStorage.setLightEnabled (JZ)V
-      // 018: aload 0
-      // 019: aload 1
-      // 01a: invokevirtual net/minecraft/world/level/ChunkPos.x ()I
-      // 01d: aload 1
-      // 01e: invokevirtual net/minecraft/world/level/ChunkPos.z ()I
-      // 021: invokevirtual net/minecraft/world/level/lighting/SkyLightEngine.getChunkSources (II)Lnet/minecraft/world/level/lighting/ChunkSkyLightSources;
-      // 024: aload 0
-      // 025: getfield net/minecraft/world/level/lighting/SkyLightEngine.emptyChunkSources Lnet/minecraft/world/level/lighting/ChunkSkyLightSources;
-      // 028: invokestatic java/util/Objects.requireNonNullElse (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-      // 02b: checkcast net/minecraft/world/level/lighting/ChunkSkyLightSources
-      // 02e: astore 4
-      // 030: aload 0
-      // 031: aload 1
-      // 032: invokevirtual net/minecraft/world/level/ChunkPos.x ()I
-      // 035: aload 1
-      // 036: invokevirtual net/minecraft/world/level/ChunkPos.z ()I
-      // 039: bipush 1
-      // 03a: isub
-      // 03b: invokevirtual net/minecraft/world/level/lighting/SkyLightEngine.getChunkSources (II)Lnet/minecraft/world/level/lighting/ChunkSkyLightSources;
-      // 03e: aload 0
-      // 03f: getfield net/minecraft/world/level/lighting/SkyLightEngine.emptyChunkSources Lnet/minecraft/world/level/lighting/ChunkSkyLightSources;
-      // 042: invokestatic java/util/Objects.requireNonNullElse (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-      // 045: checkcast net/minecraft/world/level/lighting/ChunkSkyLightSources
-      // 048: astore 5
-      // 04a: aload 0
-      // 04b: aload 1
-      // 04c: invokevirtual net/minecraft/world/level/ChunkPos.x ()I
-      // 04f: aload 1
-      // 050: invokevirtual net/minecraft/world/level/ChunkPos.z ()I
-      // 053: bipush 1
-      // 054: iadd
-      // 055: invokevirtual net/minecraft/world/level/lighting/SkyLightEngine.getChunkSources (II)Lnet/minecraft/world/level/lighting/ChunkSkyLightSources;
-      // 058: aload 0
-      // 059: getfield net/minecraft/world/level/lighting/SkyLightEngine.emptyChunkSources Lnet/minecraft/world/level/lighting/ChunkSkyLightSources;
-      // 05c: invokestatic java/util/Objects.requireNonNullElse (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-      // 05f: checkcast net/minecraft/world/level/lighting/ChunkSkyLightSources
-      // 062: astore 6
-      // 064: aload 0
-      // 065: aload 1
-      // 066: invokevirtual net/minecraft/world/level/ChunkPos.x ()I
-      // 069: bipush 1
-      // 06a: isub
-      // 06b: aload 1
-      // 06c: invokevirtual net/minecraft/world/level/ChunkPos.z ()I
-      // 06f: invokevirtual net/minecraft/world/level/lighting/SkyLightEngine.getChunkSources (II)Lnet/minecraft/world/level/lighting/ChunkSkyLightSources;
-      // 072: aload 0
-      // 073: getfield net/minecraft/world/level/lighting/SkyLightEngine.emptyChunkSources Lnet/minecraft/world/level/lighting/ChunkSkyLightSources;
-      // 076: invokestatic java/util/Objects.requireNonNullElse (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-      // 079: checkcast net/minecraft/world/level/lighting/ChunkSkyLightSources
-      // 07c: astore 7
-      // 07e: aload 0
-      // 07f: aload 1
-      // 080: invokevirtual net/minecraft/world/level/ChunkPos.x ()I
-      // 083: bipush 1
-      // 084: iadd
-      // 085: aload 1
-      // 086: invokevirtual net/minecraft/world/level/ChunkPos.z ()I
-      // 089: invokevirtual net/minecraft/world/level/lighting/SkyLightEngine.getChunkSources (II)Lnet/minecraft/world/level/lighting/ChunkSkyLightSources;
-      // 08c: aload 0
-      // 08d: getfield net/minecraft/world/level/lighting/SkyLightEngine.emptyChunkSources Lnet/minecraft/world/level/lighting/ChunkSkyLightSources;
-      // 090: invokestatic java/util/Objects.requireNonNullElse (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-      // 093: checkcast net/minecraft/world/level/lighting/ChunkSkyLightSources
-      // 096: astore 8
-      // 098: aload 0
-      // 099: getfield net/minecraft/world/level/lighting/SkyLightEngine.storage Lnet/minecraft/world/level/lighting/LayerLightSectionStorage;
-      // 09c: checkcast net/minecraft/world/level/lighting/SkyLightSectionStorage
-      // 09f: lload 2
-      // 0a0: invokevirtual net/minecraft/world/level/lighting/SkyLightSectionStorage.getTopSectionY (J)I
-      // 0a3: istore 9
-      // 0a5: aload 0
-      // 0a6: getfield net/minecraft/world/level/lighting/SkyLightEngine.storage Lnet/minecraft/world/level/lighting/LayerLightSectionStorage;
-      // 0a9: checkcast net/minecraft/world/level/lighting/SkyLightSectionStorage
-      // 0ac: invokevirtual net/minecraft/world/level/lighting/SkyLightSectionStorage.getBottomSectionY ()I
-      // 0af: istore 10
-      // 0b1: aload 1
-      // 0b2: invokevirtual net/minecraft/world/level/ChunkPos.x ()I
-      // 0b5: invokestatic net/minecraft/core/SectionPos.sectionToBlockCoord (I)I
-      // 0b8: istore 11
-      // 0ba: aload 1
-      // 0bb: invokevirtual net/minecraft/world/level/ChunkPos.z ()I
-      // 0be: invokestatic net/minecraft/core/SectionPos.sectionToBlockCoord (I)I
-      // 0c1: istore 12
-      // 0c3: iload 9
-      // 0c5: bipush 1
-      // 0c6: isub
-      // 0c7: istore 13
-      // 0c9: iload 13
-      // 0cb: iload 10
-      // 0cd: if_icmplt 26a
-      // 0d0: aload 1
-      // 0d1: invokevirtual net/minecraft/world/level/ChunkPos.x ()I
-      // 0d4: iload 13
-      // 0d6: aload 1
-      // 0d7: invokevirtual net/minecraft/world/level/ChunkPos.z ()I
-      // 0da: invokestatic net/minecraft/core/SectionPos.asLong (III)J
-      // 0dd: lstore 14
-      // 0df: aload 0
-      // 0e0: getfield net/minecraft/world/level/lighting/SkyLightEngine.storage Lnet/minecraft/world/level/lighting/LayerLightSectionStorage;
-      // 0e3: checkcast net/minecraft/world/level/lighting/SkyLightSectionStorage
-      // 0e6: lload 14
-      // 0e8: invokevirtual net/minecraft/world/level/lighting/SkyLightSectionStorage.getDataLayerToWrite (J)Lnet/minecraft/world/level/chunk/DataLayer;
-      // 0eb: astore 16
-      // 0ed: aload 16
-      // 0ef: ifnonnull 0f5
-      // 0f2: goto 264
-      // 0f5: iload 13
-      // 0f7: invokestatic net/minecraft/core/SectionPos.sectionToBlockCoord (I)I
-      // 0fa: istore 17
-      // 0fc: iload 17
-      // 0fe: bipush 15
-      // 100: iadd
-      // 101: istore 18
-      // 103: bipush 0
-      // 104: istore 19
-      // 106: bipush 0
-      // 107: istore 20
-      // 109: iload 20
-      // 10b: bipush 16
-      // 10d: if_icmpge 25c
-      // 110: bipush 0
-      // 111: istore 21
-      // 113: iload 21
-      // 115: bipush 16
-      // 117: if_icmpge 256
-      // 11a: aload 4
-      // 11c: iload 21
-      // 11e: iload 20
-      // 120: invokevirtual net/minecraft/world/level/lighting/ChunkSkyLightSources.getLowestSourceY (II)I
-      // 123: istore 22
-      // 125: iload 22
-      // 127: iload 18
-      // 129: if_icmple 12f
-      // 12c: goto 250
-      // 12f: iload 20
-      // 131: ifne 140
-      // 134: aload 5
-      // 136: iload 21
-      // 138: bipush 15
-      // 13a: invokevirtual net/minecraft/world/level/lighting/ChunkSkyLightSources.getLowestSourceY (II)I
-      // 13d: goto 14b
-      // 140: aload 4
-      // 142: iload 21
-      // 144: iload 20
-      // 146: bipush 1
-      // 147: isub
-      // 148: invokevirtual net/minecraft/world/level/lighting/ChunkSkyLightSources.getLowestSourceY (II)I
-      // 14b: istore 23
-      // 14d: iload 20
-      // 14f: bipush 15
-      // 151: if_icmpne 15f
-      // 154: aload 6
-      // 156: iload 21
-      // 158: bipush 0
-      // 159: invokevirtual net/minecraft/world/level/lighting/ChunkSkyLightSources.getLowestSourceY (II)I
-      // 15c: goto 16a
-      // 15f: aload 4
-      // 161: iload 21
-      // 163: iload 20
-      // 165: bipush 1
-      // 166: iadd
-      // 167: invokevirtual net/minecraft/world/level/lighting/ChunkSkyLightSources.getLowestSourceY (II)I
-      // 16a: istore 24
-      // 16c: iload 21
-      // 16e: ifne 17d
-      // 171: aload 7
-      // 173: bipush 15
-      // 175: iload 20
-      // 177: invokevirtual net/minecraft/world/level/lighting/ChunkSkyLightSources.getLowestSourceY (II)I
-      // 17a: goto 188
-      // 17d: aload 4
-      // 17f: iload 21
-      // 181: bipush 1
-      // 182: isub
-      // 183: iload 20
-      // 185: invokevirtual net/minecraft/world/level/lighting/ChunkSkyLightSources.getLowestSourceY (II)I
-      // 188: istore 25
-      // 18a: iload 21
-      // 18c: bipush 15
-      // 18e: if_icmpne 19c
-      // 191: aload 8
-      // 193: bipush 0
-      // 194: iload 20
-      // 196: invokevirtual net/minecraft/world/level/lighting/ChunkSkyLightSources.getLowestSourceY (II)I
-      // 199: goto 1a7
-      // 19c: aload 4
-      // 19e: iload 21
-      // 1a0: bipush 1
-      // 1a1: iadd
-      // 1a2: iload 20
-      // 1a4: invokevirtual net/minecraft/world/level/lighting/ChunkSkyLightSources.getLowestSourceY (II)I
-      // 1a7: istore 26
-      // 1a9: iload 23
-      // 1ab: iload 24
-      // 1ad: invokestatic java/lang/Math.max (II)I
-      // 1b0: iload 25
-      // 1b2: iload 26
-      // 1b4: invokestatic java/lang/Math.max (II)I
-      // 1b7: invokestatic java/lang/Math.max (II)I
-      // 1ba: istore 27
-      // 1bc: iload 18
-      // 1be: istore 28
-      // 1c0: iload 28
-      // 1c2: iload 17
-      // 1c4: iload 22
-      // 1c6: invokestatic java/lang/Math.max (II)I
-      // 1c9: if_icmplt 246
-      // 1cc: aload 16
-      // 1ce: iload 21
-      // 1d0: iload 28
-      // 1d2: invokestatic net/minecraft/core/SectionPos.sectionRelative (I)I
-      // 1d5: iload 20
-      // 1d7: bipush 15
-      // 1d9: invokevirtual net/minecraft/world/level/chunk/DataLayer.set (IIII)V
-      // 1dc: iload 28
-      // 1de: iload 22
-      // 1e0: if_icmpeq 1ea
-      // 1e3: iload 28
-      // 1e5: iload 27
-      // 1e7: if_icmpge 240
-      // 1ea: iload 11
-      // 1ec: iload 21
-      // 1ee: iadd
-      // 1ef: iload 28
-      // 1f1: iload 12
-      // 1f3: iload 20
-      // 1f5: iadd
-      // 1f6: invokestatic net/minecraft/core/BlockPos.asLong (III)J
-      // 1f9: lstore 29
-      // 1fb: aload 0
-      // 1fc: lload 29
-      // 1fe: iload 28
-      // 200: iload 22
-      // 202: if_icmpne 209
-      // 205: bipush 1
-      // 206: goto 20a
-      // 209: bipush 0
-      // 20a: iload 28
-      // 20c: iload 23
-      // 20e: if_icmpge 215
-      // 211: bipush 1
-      // 212: goto 216
-      // 215: bipush 0
-      // 216: iload 28
-      // 218: iload 24
-      // 21a: if_icmpge 221
-      // 21d: bipush 1
-      // 21e: goto 222
-      // 221: bipush 0
-      // 222: iload 28
-      // 224: iload 25
-      // 226: if_icmpge 22d
-      // 229: bipush 1
-      // 22a: goto 22e
-      // 22d: bipush 0
-      // 22e: iload 28
-      // 230: iload 26
-      // 232: if_icmpge 239
-      // 235: bipush 1
-      // 236: goto 23a
-      // 239: bipush 0
-      // 23a: invokestatic net/minecraft/world/level/lighting/LightEngine$QueueEntry.increaseSkySourceInDirections (ZZZZZ)J
-      // 23d: invokevirtual net/minecraft/world/level/lighting/SkyLightEngine.enqueueIncrease (JJ)V
-      // 240: iinc 28 -1
-      // 243: goto 1c0
-      // 246: iload 22
-      // 248: iload 17
-      // 24a: if_icmpge 250
-      // 24d: bipush 1
-      // 24e: istore 19
-      // 250: iinc 21 1
-      // 253: goto 113
-      // 256: iinc 20 1
-      // 259: goto 109
-      // 25c: iload 19
-      // 25e: ifne 264
-      // 261: goto 26a
-      // 264: iinc 13 -1
-      // 267: goto 0c9
-      // 26a: return
+      long zeroNode = SectionPos.getZeroNode(pos.x(), pos.z());
+      this.storage.setLightEnabled(zeroNode, true);
+      ChunkSkyLightSources sources = Objects.requireNonNullElse(this.getChunkSources(pos.x(), pos.z()), this.emptyChunkSources);
+      ChunkSkyLightSources northSources = Objects.requireNonNullElse(this.getChunkSources(pos.x(), pos.z() - 1), this.emptyChunkSources);
+      ChunkSkyLightSources southSources = Objects.requireNonNullElse(this.getChunkSources(pos.x(), pos.z() + 1), this.emptyChunkSources);
+      ChunkSkyLightSources westSources = Objects.requireNonNullElse(this.getChunkSources(pos.x() - 1, pos.z()), this.emptyChunkSources);
+      ChunkSkyLightSources eastSources = Objects.requireNonNullElse(this.getChunkSources(pos.x() + 1, pos.z()), this.emptyChunkSources);
+      int topSectionY = this.storage.getTopSectionY(zeroNode);
+      int bottomSectionY = this.storage.getBottomSectionY();
+      int sectionMinX = SectionPos.sectionToBlockCoord(pos.x());
+      int sectionMinZ = SectionPos.sectionToBlockCoord(pos.z());
+
+      for (int sectionY = topSectionY - 1; sectionY >= bottomSectionY; sectionY--) {
+         long sectionNode = SectionPos.asLong(pos.x(), sectionY, pos.z());
+         DataLayer dataLayer = this.storage.getDataLayerToWrite(sectionNode);
+         if (dataLayer != null) {
+            int sectionMinY = SectionPos.sectionToBlockCoord(sectionY);
+            int sectionMaxY = sectionMinY + 15;
+            boolean sourcesBelow = false;
+
+            for (int z = 0; z < 16; z++) {
+               for (int x = 0; x < 16; x++) {
+                  int lowestSourceY = sources.getLowestSourceY(x, z);
+                  if (lowestSourceY <= sectionMaxY) {
+                     int northLowestSourceY = z == 0 ? northSources.getLowestSourceY(x, 15) : sources.getLowestSourceY(x, z - 1);
+                     int southLowestSourceY = z == 15 ? southSources.getLowestSourceY(x, 0) : sources.getLowestSourceY(x, z + 1);
+                     int westLowestSourceY = x == 0 ? westSources.getLowestSourceY(15, z) : sources.getLowestSourceY(x - 1, z);
+                     int eastLowestSourceY = x == 15 ? eastSources.getLowestSourceY(0, z) : sources.getLowestSourceY(x + 1, z);
+                     int neighborLowestSourceY = Math.max(Math.max(northLowestSourceY, southLowestSourceY), Math.max(westLowestSourceY, eastLowestSourceY));
+
+                     for (int y = sectionMaxY; y >= Math.max(sectionMinY, lowestSourceY); y--) {
+                        dataLayer.set(x, SectionPos.sectionRelative(y), z, 15);
+                        if (y == lowestSourceY || y < neighborLowestSourceY) {
+                           long blockNode = BlockPos.asLong(sectionMinX + x, y, sectionMinZ + z);
+                           this.enqueueIncrease(
+                              blockNode,
+                              LightEngine.QueueEntry.increaseSkySourceInDirections(
+                                 y == lowestSourceY, y < northLowestSourceY, y < southLowestSourceY, y < westLowestSourceY, y < eastLowestSourceY
+                              )
+                           );
+                        }
+                     }
+
+                     if (lowestSourceY < sectionMinY) {
+                        sourcesBelow = true;
+                     }
+                  }
+               }
+            }
+
+            if (!sourcesBelow) {
+               break;
+            }
+         }
+      }
    }
 }

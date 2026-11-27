@@ -50,6 +50,10 @@ public abstract class AbstractFriendsEntryContainerWidget extends AbstractContai
       return this.playerName;
    }
 
+   protected Component getTitleNarration() {
+      return this.nameWidget.getMessage();
+   }
+
    protected abstract Component getEntryNarration();
 
    protected static Button.CreateNarration getSpriteIconNarration(final Component actionDescription) {
@@ -58,7 +62,7 @@ public abstract class AbstractFriendsEntryContainerWidget extends AbstractContai
 
    @Override
    protected void updateWidgetNarration(final NarrationElementOutput output) {
-      output.add(NarratedElementType.TITLE, this.nameWidget.getMessage());
+      output.add(NarratedElementType.TITLE, this.getTitleNarration());
       if (this.getFocused() instanceof AbstractWidget focusedWidget) {
          focusedWidget.updateNarration(output.nest());
       } else {

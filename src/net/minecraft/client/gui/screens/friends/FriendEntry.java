@@ -14,6 +14,7 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.social.PlayerSocialManager;
 import net.minecraft.client.gui.screens.social.PlayerStatus;
 import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
@@ -92,6 +93,11 @@ public class FriendEntry extends AbstractFriendsEntryContainerWidget {
 
    @Override
    public void disable() {
+   }
+
+   @Override
+   protected Component getTitleNarration() {
+      return CommonComponents.joinForNarration(super.getTitleNarration(), this.statusWidget.getMessage());
    }
 
    @Override

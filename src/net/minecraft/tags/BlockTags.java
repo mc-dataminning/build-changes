@@ -108,6 +108,7 @@ public final class BlockTags {
    public static final TagKey<Block> BEACON_BASE_BLOCKS = create("beacon_base_blocks");
    public static final TagKey<Block> SOUL_SPEED_BLOCKS = create("soul_speed_blocks");
    public static final TagKey<Block> WALL_POST_OVERRIDE = create("wall_post_override");
+   public static final TagKey<Block> WALL_SIDE_SHAPE_OVERRIDE = create("wall_side_shape_override");
    public static final TagKey<Block> CLIMBABLE = create("climbable");
    public static final TagKey<Block> FALL_DAMAGE_RESETTING = create("fall_damage_resetting");
    public static final TagKey<Block> HOGLIN_REPELLENTS = create("hoglin_repellents");

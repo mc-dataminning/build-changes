@@ -24,7 +24,16 @@ public class FancyTrunkPlacer extends TrunkPlacer {
    private static final double BRANCH_LENGTH_MAGIC = 0.328;
 
    public FancyTrunkPlacer(final int baseHeight, final int heightRandA, final int heightRandB) {
-      super(baseHeight, heightRandA, heightRandB);
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      //
+      // Bytecode:
+      // 0: aload 0
+      // 1: iload 1
+      // 2: iload 2
+      // 3: iload 3
+      // 4: invokespecial net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacer.<init> (III)V
+      // 7: return
    }
 
    @Override

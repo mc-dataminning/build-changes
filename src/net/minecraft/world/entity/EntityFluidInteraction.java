@@ -70,6 +70,7 @@ public class EntityFluidInteraction {
                         }
                      }
 
+                     tracker.pos = mutablePos.immutable();
                      if (x == eyeBlockX && z == eyeBlockZ && eyeY >= fluidBottom) {
                         double fluidTopForCamera = fluidBottom + fluidState.getHeightForCamera(level, mutablePos);
                         if (eyeY <= fluidTopForCamera) {
@@ -161,6 +162,16 @@ public class EntityFluidInteraction {
 
          entity.addDeltaMovement(impulse);
       }
+   }
+
+   public @Nullable BlockPos getFluidPos(final TagKey<Fluid> fluid) {
+      for (EntityFluidInteraction.Tracker tracker : this.fluidTrackers) {
+         if (tracker.fluidType.is(fluid)) {
+            return tracker.pos;
+         }
+      }
+
+      return null;
    }
 
    public double getFluidHeight(final TagKey<Fluid> fluid) {
@@ -318,6 +329,7 @@ public class EntityFluidInteraction {
    private static class Tracker {
       private final Holder<Fluid> fluidType;
       private boolean wasInFluid;
+      private @Nullable BlockPos pos;
       private double height;
       private boolean eyesInside;
       private boolean touchedWhileMoving;
@@ -333,6 +345,7 @@ public class EntityFluidInteraction {
          }
 
          this.wasInFluid = true;
+         this.pos = null;
          this.height = 0.0;
          this.eyesInside = false;
          this.touchedWhileMoving = false;

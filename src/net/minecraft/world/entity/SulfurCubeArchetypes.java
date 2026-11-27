@@ -195,7 +195,7 @@ public class SulfurCubeArchetypes {
          Optional.empty(),
          Optional.empty(),
          knockBackHitScale(0.6625F, 0.09F),
-         soundSettings(SoundEvents.SULFUR_CUBE_FAST_SLIDING_HIT, SoundEvents.SULFUR_CUBE_FAST_SLIDING_HIT, 0.05F, 1.0F),
+         soundSettings(SoundEvents.SULFUR_CUBE_FAST_SLIDING_HIT, SoundEvents.SULFUR_CUBE_FAST_SLIDING_PUSH, 0.05F, 1.0F),
          List.of(
             new ConditionalEffect<>(
                new ReplaceDisk(

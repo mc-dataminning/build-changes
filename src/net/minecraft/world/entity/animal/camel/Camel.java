@@ -11,7 +11,6 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
@@ -189,7 +188,7 @@ public class Camel extends AbstractHorse {
       if (this.dashCooldown > 0) {
          this.dashCooldown--;
          if (this.dashCooldown == 0) {
-            this.level().playSound(null, this.blockPosition(), this.getDashReadySound(), SoundSource.NEUTRAL);
+            this.playSound(this.getDashReadySound());
          }
       }
 
@@ -444,17 +443,7 @@ public class Camel extends AbstractHorse {
       if (!this.isSilent()) {
          SoundEvent eatingSound = this.getEatingSound();
          if (eatingSound != null) {
-            this.level()
-               .playSound(
-                  null,
-                  this.getX(),
-                  this.getY(),
-                  this.getZ(),
-                  eatingSound,
-                  this.getSoundSource(),
-                  1.0F,
-                  1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F
-               );
+            this.playSound(eatingSound, 1.0F, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F);
          }
       }
 

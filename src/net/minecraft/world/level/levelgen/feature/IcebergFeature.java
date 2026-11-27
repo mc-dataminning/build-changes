@@ -91,34 +91,181 @@ public record IcebergFeature(BlockState state) implements Feature {
       final double shapeAngle,
       final int shapeEllipseC
    ) {
-      int randomSignX = random.nextBoolean() ? -1 : 1;
-      int randomSignZ = random.nextBoolean() ? -1 : 1;
-      int xOff = random.nextInt(Math.max(width / 2 - 2, 1));
-      if (random.nextBoolean()) {
-         xOff = width / 2 + 1 - random.nextInt(Math.max(width - width / 2 - 1, 1));
-      }
-
-      int zOff = random.nextInt(Math.max(width / 2 - 2, 1));
-      if (random.nextBoolean()) {
-         zOff = width / 2 + 1 - random.nextInt(Math.max(width - width / 2 - 1, 1));
-      }
-
-      if (isEllipse) {
-         xOff = zOff = random.nextInt(Math.max(shapeEllipseA - 5, 1));
-      }
-
-      BlockPos localOrigin = new BlockPos(randomSignX * xOff, 0, randomSignZ * zOff);
-      double angle = isEllipse ? shapeAngle + (Math.PI / 2) : random.nextDouble() * 2.0 * Math.PI;
-
-      for (int yOff = 0; yOff < height - 3; yOff++) {
-         int radius = this.heightDependentRadiusRound(random, yOff, height, width);
-         this.carve(radius, yOff, globalOrigin, level, false, angle, localOrigin, shapeEllipseA, shapeEllipseC);
-      }
-
-      for (int yOff = -1; yOff > -height + random.nextInt(5); yOff--) {
-         int radius = this.heightDependentRadiusSteep(random, -yOff, height, width);
-         this.carve(radius, yOff, globalOrigin, level, true, angle, localOrigin, shapeEllipseA, shapeEllipseC);
-      }
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      //
+      // Bytecode:
+      // 000: aload 1
+      // 001: invokeinterface net/minecraft/util/RandomSource.nextBoolean ()Z 1
+      // 006: ifeq 00d
+      // 009: bipush -1
+      // 00a: goto 00e
+      // 00d: bipush 1
+      // 00e: istore 11
+      // 010: aload 1
+      // 011: invokeinterface net/minecraft/util/RandomSource.nextBoolean ()Z 1
+      // 016: ifeq 01d
+      // 019: bipush -1
+      // 01a: goto 01e
+      // 01d: bipush 1
+      // 01e: istore 12
+      // 020: aload 1
+      // 021: iload 3
+      // 022: bipush 2
+      // 023: idiv
+      // 024: bipush 2
+      // 025: isub
+      // 026: bipush 1
+      // 027: invokestatic java/lang/Math.max (II)I
+      // 02a: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+      // 02f: istore 13
+      // 031: aload 1
+      // 032: invokeinterface net/minecraft/util/RandomSource.nextBoolean ()Z 1
+      // 037: ifeq 053
+      // 03a: iload 3
+      // 03b: bipush 2
+      // 03c: idiv
+      // 03d: bipush 1
+      // 03e: iadd
+      // 03f: aload 1
+      // 040: iload 3
+      // 041: iload 3
+      // 042: bipush 2
+      // 043: idiv
+      // 044: isub
+      // 045: bipush 1
+      // 046: isub
+      // 047: bipush 1
+      // 048: invokestatic java/lang/Math.max (II)I
+      // 04b: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+      // 050: isub
+      // 051: istore 13
+      // 053: aload 1
+      // 054: iload 3
+      // 055: bipush 2
+      // 056: idiv
+      // 057: bipush 2
+      // 058: isub
+      // 059: bipush 1
+      // 05a: invokestatic java/lang/Math.max (II)I
+      // 05d: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+      // 062: istore 14
+      // 064: aload 1
+      // 065: invokeinterface net/minecraft/util/RandomSource.nextBoolean ()Z 1
+      // 06a: ifeq 086
+      // 06d: iload 3
+      // 06e: bipush 2
+      // 06f: idiv
+      // 070: bipush 1
+      // 071: iadd
+      // 072: aload 1
+      // 073: iload 3
+      // 074: iload 3
+      // 075: bipush 2
+      // 076: idiv
+      // 077: isub
+      // 078: bipush 1
+      // 079: isub
+      // 07a: bipush 1
+      // 07b: invokestatic java/lang/Math.max (II)I
+      // 07e: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+      // 083: isub
+      // 084: istore 14
+      // 086: iload 6
+      // 088: ifeq 09e
+      // 08b: aload 1
+      // 08c: iload 7
+      // 08e: bipush 5
+      // 08f: isub
+      // 090: bipush 1
+      // 091: invokestatic java/lang/Math.max (II)I
+      // 094: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+      // 099: dup
+      // 09a: istore 14
+      // 09c: istore 13
+      // 09e: new net/minecraft/core/BlockPos
+      // 0a1: dup
+      // 0a2: iload 11
+      // 0a4: iload 13
+      // 0a6: imul
+      // 0a7: bipush 0
+      // 0a8: iload 12
+      // 0aa: iload 14
+      // 0ac: imul
+      // 0ad: invokespecial net/minecraft/core/BlockPos.<init> (III)V
+      // 0b0: astore 15
+      // 0b2: iload 6
+      // 0b4: ifeq 0c0
+      // 0b7: dload 8
+      // 0b9: ldc2_w 1.5707963267948966
+      // 0bc: dadd
+      // 0bd: goto 0ce
+      // 0c0: aload 1
+      // 0c1: invokeinterface net/minecraft/util/RandomSource.nextDouble ()D 1
+      // 0c6: ldc2_w 2.0
+      // 0c9: dmul
+      // 0ca: ldc2_w 3.141592653589793
+      // 0cd: dmul
+      // 0ce: dstore 16
+      // 0d0: bipush 0
+      // 0d1: istore 18
+      // 0d3: iload 18
+      // 0d5: iload 4
+      // 0d7: bipush 3
+      // 0d8: isub
+      // 0d9: if_icmpge 102
+      // 0dc: aload 0
+      // 0dd: aload 1
+      // 0de: iload 18
+      // 0e0: iload 4
+      // 0e2: iload 3
+      // 0e3: invokevirtual net/minecraft/world/level/levelgen/feature/IcebergFeature.heightDependentRadiusRound (Lnet/minecraft/util/RandomSource;III)I
+      // 0e6: istore 19
+      // 0e8: aload 0
+      // 0e9: iload 19
+      // 0eb: iload 18
+      // 0ed: aload 5
+      // 0ef: aload 2
+      // 0f0: bipush 0
+      // 0f1: dload 16
+      // 0f3: aload 15
+      // 0f5: iload 7
+      // 0f7: iload 10
+      // 0f9: invokevirtual net/minecraft/world/level/levelgen/feature/IcebergFeature.carve (IILnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/LevelAccessor;ZDLnet/minecraft/core/BlockPos;II)V
+      // 0fc: iinc 18 1
+      // 0ff: goto 0d3
+      // 102: bipush -1
+      // 103: istore 18
+      // 105: iload 18
+      // 107: iload 4
+      // 109: ineg
+      // 10a: aload 1
+      // 10b: bipush 5
+      // 10c: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+      // 111: iadd
+      // 112: if_icmple 13c
+      // 115: aload 0
+      // 116: aload 1
+      // 117: iload 18
+      // 119: ineg
+      // 11a: iload 4
+      // 11c: iload 3
+      // 11d: invokevirtual net/minecraft/world/level/levelgen/feature/IcebergFeature.heightDependentRadiusSteep (Lnet/minecraft/util/RandomSource;III)I
+      // 120: istore 19
+      // 122: aload 0
+      // 123: iload 19
+      // 125: iload 18
+      // 127: aload 5
+      // 129: aload 2
+      // 12a: bipush 1
+      // 12b: dload 16
+      // 12d: aload 15
+      // 12f: iload 7
+      // 131: iload 10
+      // 133: invokevirtual net/minecraft/world/level/levelgen/feature/IcebergFeature.carve (IILnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/LevelAccessor;ZDLnet/minecraft/core/BlockPos;II)V
+      // 136: iinc 18 -1
+      // 139: goto 105
+      // 13c: return
    }
 
    private void carve(

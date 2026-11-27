@@ -388,7 +388,9 @@ public abstract class AbstractFurnaceBlockEntity extends BaseContainerBlockEntit
          Entry<ResourceKey<Recipe<?>>> entry = (Entry<ResourceKey<Recipe<?>>>)var4.next();
          level.recipeAccess().byKey((ResourceKey<Recipe<?>>)entry.getKey()).ifPresent(recipe -> {
             recipesToAward.add((RecipeHolder<?>)recipe);
-            createExperience(level, position, entry.getIntValue(), ((AbstractCookingRecipe)recipe.value()).experience());
+            if (recipe.value() instanceof AbstractCookingRecipe cookingRecipe) {
+               createExperience(level, position, entry.getIntValue(), cookingRecipe.experience());
+            }
          });
       }
 

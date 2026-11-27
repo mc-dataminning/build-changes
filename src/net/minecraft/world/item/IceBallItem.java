@@ -29,7 +29,7 @@ public class IceBallItem extends Item implements ProjectileItem {
          player.getY(),
          player.getZ(),
          SoundEvents.ICE_BALL_THROW,
-         SoundSource.NEUTRAL,
+         SoundSource.PLAYERS,
          0.5F,
          0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F)
       );

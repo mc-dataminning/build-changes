@@ -1742,7 +1742,9 @@ public abstract class Entity
       }
 
       float width = this.dimensions.width();
-      float yt = Mth.floor(this.getY()) + this.level.getFluidState(this.blockPosition).getHeight(this.level, this.blockPosition);
+      BlockPos fluidPos = this.fluidInteraction.getFluidPos(FluidTags.WATER);
+      BlockPos checkPos = fluidPos != null ? fluidPos : this.blockPosition;
+      float yt = Mth.floor(checkPos.getY()) + this.level.getFluidState(checkPos).getHeight(this.level, checkPos);
 
       for (int i = 0; i < 1.0F + width * 20.0F; i++) {
          double xo = (this.random.nextDouble() * 2.0 - 1.0) * width;

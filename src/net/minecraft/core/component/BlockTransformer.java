@@ -95,7 +95,10 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
                   });
                }
 
-               level.setBlock(pos, updatedShape, 11);
+               if (!level.isClientSide()) {
+                  level.setBlock(pos, updatedShape, 11);
+               }
+
                Holder<SoundEvent> sound = transformData.sound.orElse(null);
                if (sound != null) {
                   level.playSound(player, pos, sound.value(), SoundSource.BLOCKS);

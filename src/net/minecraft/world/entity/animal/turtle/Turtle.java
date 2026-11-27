@@ -457,7 +457,10 @@ public class Turtle extends Animal {
                this.turtle.setLayingEgg(true);
             } else if (this.turtle.layEggCounter > this.adjustedTickDelay(200)) {
                Level level = this.turtle.level();
-               level.playSound(null, turtlePos, SoundEvents.TURTLE_LAY_EGG, SoundSource.BLOCKS, 0.3F, 0.9F + level.getRandom().nextFloat() * 0.2F);
+               if (!this.turtle.isSilent()) {
+                  level.playSound(null, turtlePos, SoundEvents.TURTLE_LAY_EGG, SoundSource.BLOCKS, 0.3F, 0.9F + level.getRandom().nextFloat() * 0.2F);
+               }
+
                BlockPos eggPos = this.blockPos.above();
                BlockState eggState = Blocks.TURTLE_EGG.defaultBlockState().setValue(TurtleEggBlock.EGGS, this.turtle.random.nextInt(4) + 1);
                level.setBlockAndUpdate(eggPos, eggState);

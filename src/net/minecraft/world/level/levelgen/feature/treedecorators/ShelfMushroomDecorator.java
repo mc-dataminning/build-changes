@@ -44,18 +44,64 @@ public class ShelfMushroomDecorator extends TreeDecorator {
    }
 
    private static void placeOnStandingTree(final TreeDecorator.Context context, final List<BlockPos> logs, final RandomSource random) {
-      Direction[] directions = pickTwoPerpendicularDirections(random);
-      int treeBaseY = logs.getFirst().getY();
-
-      for (BlockPos logPos : logs) {
-         if (isWithinDecoratableHeight(logPos, treeBaseY)) {
-            for (Direction facing : directions) {
-               if (!(random.nextFloat() > 0.25F) && tryPlaceMushroomOnStandingTree(context, logPos, facing, random)) {
-                  break;
-               }
-            }
-         }
-      }
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      //
+      // Bytecode:
+      // 00: aload 2
+      // 01: invokestatic net/minecraft/world/level/levelgen/feature/treedecorators/ShelfMushroomDecorator.pickTwoPerpendicularDirections (Lnet/minecraft/util/RandomSource;)[Lnet/minecraft/core/Direction;
+      // 04: astore 3
+      // 05: aload 1
+      // 06: invokeinterface java/util/List.getFirst ()Ljava/lang/Object; 1
+      // 0b: checkcast net/minecraft/core/BlockPos
+      // 0e: invokevirtual net/minecraft/core/BlockPos.getY ()I
+      // 11: istore 4
+      // 13: aload 1
+      // 14: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
+      // 19: astore 5
+      // 1b: aload 5
+      // 1d: invokeinterface java/util/Iterator.hasNext ()Z 1
+      // 22: ifeq 7e
+      // 25: aload 5
+      // 27: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
+      // 2c: checkcast net/minecraft/core/BlockPos
+      // 2f: astore 6
+      // 31: aload 6
+      // 33: iload 4
+      // 35: invokestatic net/minecraft/world/level/levelgen/feature/treedecorators/ShelfMushroomDecorator.isWithinDecoratableHeight (Lnet/minecraft/core/BlockPos;I)Z
+      // 38: ifne 3e
+      // 3b: goto 1b
+      // 3e: aload 3
+      // 3f: astore 7
+      // 41: aload 7
+      // 43: arraylength
+      // 44: istore 8
+      // 46: bipush 0
+      // 47: istore 9
+      // 49: iload 9
+      // 4b: iload 8
+      // 4d: if_icmpge 7b
+      // 50: aload 7
+      // 52: iload 9
+      // 54: aaload
+      // 55: astore 10
+      // 57: aload 2
+      // 58: invokeinterface net/minecraft/util/RandomSource.nextFloat ()F 1
+      // 5d: ldc 0.25
+      // 5f: fcmpl
+      // 60: ifle 66
+      // 63: goto 75
+      // 66: aload 0
+      // 67: aload 6
+      // 69: aload 10
+      // 6b: aload 2
+      // 6c: invokestatic net/minecraft/world/level/levelgen/feature/treedecorators/ShelfMushroomDecorator.tryPlaceMushroomOnStandingTree (Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;Lnet/minecraft/util/RandomSource;)Z
+      // 6f: ifeq 75
+      // 72: goto 7b
+      // 75: iinc 9 1
+      // 78: goto 49
+      // 7b: goto 1b
+      // 7e: return
    }
 
    private static void placeOnFallenLog(final TreeDecorator.Context context, final List<BlockPos> logs, final RandomSource random) {

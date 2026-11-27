@@ -5,8 +5,6 @@ import java.util.OptionalDouble;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Util;
 import net.minecraft.world.InteractionResult;
@@ -33,11 +31,6 @@ public class StrawBedBlock extends AbstractBedBlock {
       super(properties);
    }
 
-   private void destroyBed(final Level level, final BlockPos pos) {
-      level.playSound(null, pos, SoundEvents.STRAW_BED_BREAK_LEAVE, SoundSource.BLOCKS);
-      level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
-   }
-
    @Override
    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
       Map<Direction, VoxelShape> shapes = state.getValue(PART) == BedPart.HEAD ? HEAD_SHAPES : FOOT_SHAPES;
@@ -51,7 +44,11 @@ public class StrawBedBlock extends AbstractBedBlock {
 
    @Override
    public void spawnDestroyParticles(final Level level, final BlockPos pos, final BlockState state) {
-      level.levelEvent(2014, pos, getId(state));
+      if (level.getBlockState(pos.relative(getConnectedDirection(state))).is(this)) {
+         super.spawnDestroyParticles(level, pos, state);
+      } else {
+         level.levelEvent(2014, pos, getId(state));
+      }
    }
 
    @Override
@@ -79,12 +76,14 @@ public class StrawBedBlock extends AbstractBedBlock {
 
    @Override
    protected InteractionResult destroyOnUse(final BlockState state, final Level level, final BlockPos pos, final Player player) {
-      this.destroyBed(level, pos);
+      level.destroyBlock(pos, false);
       return InteractionResult.SUCCESS_SERVER;
    }
 
    @Override
    protected void destroyOnLeave(final Level level, final BlockPos pos) {
-      this.destroyBed(level, pos);
+      if (!level.isClientSide()) {
+         level.destroyBlock(pos, false);
+      }
    }
 }

@@ -225,19 +225,19 @@ public class AvatarRenderer<AvatarlikeEntity extends Avatar & ClientAvatarEntity
       state.capeFlap = state.capeFlap + Mth.sin(walkDistance * 6.0F) * 32.0F * pow;
    }
 
-   public void renderRightHand(
+   public void submitRightHand(
       final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final Identifier skinTexture, final boolean hasSleeve
    ) {
-      this.renderHand(poseStack, submitNodeCollector, lightCoords, skinTexture, this.model.rightArm, hasSleeve);
+      this.submitHand(poseStack, submitNodeCollector, lightCoords, skinTexture, this.model.rightArm, hasSleeve);
    }
 
-   public void renderLeftHand(
+   public void submitLeftHand(
       final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final Identifier skinTexture, final boolean hasSleeve
    ) {
-      this.renderHand(poseStack, submitNodeCollector, lightCoords, skinTexture, this.model.leftArm, hasSleeve);
+      this.submitHand(poseStack, submitNodeCollector, lightCoords, skinTexture, this.model.leftArm, hasSleeve);
    }
 
-   private void renderHand(
+   private void submitHand(
       final PoseStack poseStack,
       final SubmitNodeCollector submitNodeCollector,
       final int lightCoords,

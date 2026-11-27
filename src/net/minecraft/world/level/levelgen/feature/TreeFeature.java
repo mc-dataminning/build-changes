@@ -1,12 +1,10 @@
 package net.minecraft.world.level.levelgen.feature;
 
-import com.google.common.collect.Iterables;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
@@ -35,7 +33,6 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.phys.shapes.BitSetDiscreteVoxelShape;
 import net.minecraft.world.phys.shapes.DiscreteVoxelShape;
 
@@ -152,57 +149,122 @@ public record TreeFeature(
 
    @Override
    public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      Set<BlockPos> roots = new HashSet<>();
-      Set<BlockPos> trunks = new HashSet<>();
-      final Set<BlockPos> foliage = new HashSet<>();
-      Set<BlockPos> decorations = new HashSet<>();
-      BiConsumer<BlockPos, BlockState> rootSetter = (pos, state) -> {
-         roots.add(pos.immutable());
-         level.setBlock(pos, state, 19);
-      };
-      BiConsumer<BlockPos, BlockState> trunkSetter = (pos, state) -> {
-         trunks.add(pos.immutable());
-         level.setBlock(pos, state, 19);
-      };
-      FoliagePlacer.FoliageSetter foliageSetter = new FoliagePlacer.FoliageSetter() {
-         @Override
-         public void set(final BlockPos pos, final BlockState state) {
-            foliage.add(pos.immutable());
-            level.setBlock(pos, state, 19);
-         }
-
-         @Override
-         public boolean isSet(final BlockPos pos) {
-            return foliage.contains(pos);
-         }
-      };
-      BiConsumer<BlockPos, BlockState> decorationSetter = (pos, state) -> {
-         decorations.add(pos.immutable());
-         level.setBlock(pos, state, 19);
-      };
-      boolean result = this.doPlace(level, random, origin, rootSetter, trunkSetter, foliageSetter);
-      if (result && (!trunks.isEmpty() || !foliage.isEmpty())) {
-         if (!this.decorators.isEmpty()) {
-            TreeDecorator.Context decoratorContext = new TreeDecorator.Context(level, decorationSetter, random, trunks, foliage, roots);
-            this.decorators.forEach(decorator -> decorator.place(decoratorContext));
-         }
-
-         return BoundingBox.encapsulatingPositions(Iterables.concat(roots, trunks, foliage, decorations)).map(bounds -> {
-            DiscreteVoxelShape shape = updateLeaves(level, bounds, trunks, decorations, roots);
-            foliage.forEach(pos -> {
-               int x = pos.getX() - bounds.minX();
-               int y = pos.getY() - bounds.minY();
-               int z = pos.getZ() - bounds.minZ();
-               if (!shape.isFull(x, y, z)) {
-                  shape.fill(x, y, z);
-               }
-            });
-            StructureTemplate.updateShapeAtEdge(level, 3, shape, bounds.minX(), bounds.minY(), bounds.minZ());
-            return true;
-         }).orElse(false);
-      } else {
-         return false;
-      }
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.OutOfMemoryError: Java heap space
+      //   at java.base/jdk.internal.misc.Unsafe.allocateUninitializedArray(Unsafe.java:1396)
+      //   at java.base/java.lang.StringConcatHelper.newArray(StringConcatHelper.java:578)
+      //   at java.base/java.lang.StringConcatHelper.newArrayWithSuffix(StringConcatHelper.java:611)
+      //   at java.base/java.lang.String$$StringConcat/0x00000000900b1c00.concat(Unknown Source)
+      //   at java.base/java.lang.invoke.DirectMethodHandle$Holder.invokeSpecial(DirectMethodHandle$Holder)
+      //   at java.base/java.lang.invoke.LambdaForm$MH/0x00000000900b1400.invoke(LambdaForm$MH)
+      //   at java.base/java.lang.invoke.Invokers$Holder.linkToTargetMethod(Invokers$Holder)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.Exprent.getAllExprents(Exprent.java:133)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.Exprent.getAllExprents(Exprent.java:137)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.Exprent.getAllExprents(Exprent.java:120)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.Exprent.getAllExprents(Exprent.java:115)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.vars.VarTypeProcessor.lambda$resetExprentTypes$1(VarTypeProcessor.java:108)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.vars.VarTypeProcessor$$Lambda/0x00000000900cc168.processExprent(Unknown Source)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.flow.DirectGraph.iterateExprents(DirectGraph.java:114)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.vars.VarTypeProcessor.resetExprentTypes(VarTypeProcessor.java:107)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.vars.VarTypeProcessor.calculateVarTypes(VarTypeProcessor.java:41)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.vars.VarVersionsProcessor.setVarVersions(VarVersionsProcessor.java:68)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.vars.VarProcessor.setVarVersions(VarProcessor.java:47)
+      //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:241)
+      //
+      // Bytecode:
+      // 00: new java/util/HashSet
+      // 03: dup
+      // 04: invokespecial java/util/HashSet.<init> ()V
+      // 07: astore 5
+      // 09: new java/util/HashSet
+      // 0c: dup
+      // 0d: invokespecial java/util/HashSet.<init> ()V
+      // 10: astore 6
+      // 12: new java/util/HashSet
+      // 15: dup
+      // 16: invokespecial java/util/HashSet.<init> ()V
+      // 19: astore 7
+      // 1b: new java/util/HashSet
+      // 1e: dup
+      // 1f: invokespecial java/util/HashSet.<init> ()V
+      // 22: astore 8
+      // 24: aload 5
+      // 26: aload 1
+      // 27: invokedynamic accept (Ljava/util/Set;Lnet/minecraft/world/level/WorldGenLevel;)Ljava/util/function/BiConsumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;Ljava/lang/Object;)V, net/minecraft/world/level/levelgen/feature/TreeFeature.lambda$place$0 (Ljava/util/Set;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V, (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V ]
+      // 2c: astore 9
+      // 2e: aload 6
+      // 30: aload 1
+      // 31: invokedynamic accept (Ljava/util/Set;Lnet/minecraft/world/level/WorldGenLevel;)Ljava/util/function/BiConsumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;Ljava/lang/Object;)V, net/minecraft/world/level/levelgen/feature/TreeFeature.lambda$place$1 (Ljava/util/Set;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V, (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V ]
+      // 36: astore 10
+      // 38: new net/minecraft/world/level/levelgen/feature/TreeFeature$1
+      // 3b: dup
+      // 3c: aload 0
+      // 3d: aload 7
+      // 3f: aload 1
+      // 40: invokespecial net/minecraft/world/level/levelgen/feature/TreeFeature$1.<init> (Lnet/minecraft/world/level/levelgen/feature/TreeFeature;Ljava/util/Set;Lnet/minecraft/world/level/WorldGenLevel;)V
+      // 43: astore 11
+      // 45: aload 8
+      // 47: aload 1
+      // 48: invokedynamic accept (Ljava/util/Set;Lnet/minecraft/world/level/WorldGenLevel;)Ljava/util/function/BiConsumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;Ljava/lang/Object;)V, net/minecraft/world/level/levelgen/feature/TreeFeature.lambda$place$2 (Ljava/util/Set;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V, (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V ]
+      // 4d: astore 12
+      // 4f: aload 0
+      // 50: aload 1
+      // 51: aload 3
+      // 52: aload 4
+      // 54: aload 9
+      // 56: aload 10
+      // 58: aload 11
+      // 5a: invokevirtual net/minecraft/world/level/levelgen/feature/TreeFeature.doPlace (Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Ljava/util/function/BiConsumer;Ljava/util/function/BiConsumer;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;)Z
+      // 5d: istore 13
+      // 5f: iload 13
+      // 61: ifeq 78
+      // 64: aload 6
+      // 66: invokeinterface java/util/Set.isEmpty ()Z 1
+      // 6b: ifeq 7a
+      // 6e: aload 7
+      // 70: invokeinterface java/util/Set.isEmpty ()Z 1
+      // 75: ifeq 7a
+      // 78: bipush 0
+      // 79: ireturn
+      // 7a: aload 0
+      // 7b: getfield net/minecraft/world/level/levelgen/feature/TreeFeature.decorators Ljava/util/List;
+      // 7e: invokeinterface java/util/List.isEmpty ()Z 1
+      // 83: ifne a9
+      // 86: new net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context
+      // 89: dup
+      // 8a: aload 1
+      // 8b: aload 12
+      // 8d: aload 3
+      // 8e: aload 6
+      // 90: aload 7
+      // 92: aload 5
+      // 94: invokespecial net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.<init> (Lnet/minecraft/world/level/WorldGenLevel;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;)V
+      // 97: astore 14
+      // 99: aload 0
+      // 9a: getfield net/minecraft/world/level/levelgen/feature/TreeFeature.decorators Ljava/util/List;
+      // 9d: aload 14
+      // 9f: invokedynamic accept (Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context;)Ljava/util/function/Consumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)V, net/minecraft/world/level/levelgen/feature/TreeFeature.lambda$place$3 (Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context;Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator;)V, (Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator;)V ]
+      // a4: invokeinterface java/util/List.forEach (Ljava/util/function/Consumer;)V 2
+      // a9: aload 5
+      // ab: aload 6
+      // ad: aload 7
+      // af: aload 8
+      // b1: invokestatic com/google/common/collect/Iterables.concat (Ljava/lang/Iterable;Ljava/lang/Iterable;Ljava/lang/Iterable;Ljava/lang/Iterable;)Ljava/lang/Iterable;
+      // b4: invokestatic net/minecraft/world/level/levelgen/structure/BoundingBox.encapsulatingPositions (Ljava/lang/Iterable;)Ljava/util/Optional;
+      // b7: aload 1
+      // b8: aload 6
+      // ba: aload 8
+      // bc: aload 5
+      // be: aload 7
+      // c0: invokedynamic apply (Lnet/minecraft/world/level/WorldGenLevel;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;)Ljava/util/function/Function; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Ljava/lang/Object;, net/minecraft/world/level/levelgen/feature/TreeFeature.lambda$place$4 (Lnet/minecraft/world/level/WorldGenLevel;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Ljava/lang/Boolean;, (Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Ljava/lang/Boolean; ]
+      // c5: invokevirtual java/util/Optional.map (Ljava/util/function/Function;)Ljava/util/Optional;
+      // c8: bipush 0
+      // c9: invokestatic java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;
+      // cc: invokevirtual java/util/Optional.orElse (Ljava/lang/Object;)Ljava/lang/Object;
+      // cf: checkcast java/lang/Boolean
+      // d2: invokevirtual java/lang/Boolean.booleanValue ()Z
+      // d5: ireturn
    }
 
    private static DiscreteVoxelShape updateLeaves(

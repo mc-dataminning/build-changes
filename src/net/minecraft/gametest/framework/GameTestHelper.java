@@ -278,6 +278,10 @@ public class GameTestHelper {
       return this.spawnMob(entityType, pos).withNoFreeWill().spawn();
    }
 
+   public <E extends Mob> E spawnWithNoFreeWill(final EntityType<E> entityType, final BlockPos pos, final @Nullable EntitySpawnReason spawnReason) {
+      return this.spawnMob(entityType, pos).withNoFreeWill().spawnReason(spawnReason).spawn();
+   }
+
    public <E extends Mob> E spawnWithNoFreeWill(final EntityType<E> entityType, final int x, final int y, final int z) {
       return this.spawnWithNoFreeWill(entityType, new BlockPos(x, y, z));
    }

@@ -198,6 +198,7 @@ public abstract class AbstractSignEditScreen extends Screen {
       @Override
       public void setFocused(final boolean focused) {
          super.setFocused(focused);
+         this.setCanChangeValue(true);
          if (!focused) {
             this.moveCursorToEnd(false);
             this.setHighlightPos(this.getCursorPosition());

@@ -259,6 +259,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .addTag(BlockTags.PRESSURE_PLATES)
          .add(new BlockItemId[]{BlockItemIds.CACTUS_FLOWER})
          .add(BlockItemIds.BROWN_MUSHROOM, BlockItemIds.RED_MUSHROOM);
+      this.tag(BlockTags.WALL_SIDE_SHAPE_OVERRIDE).add(new BlockItemId[]{BlockItemIds.HONEY_BLOCK});
       this.tag(BlockTags.CLIMBABLE)
          .add(BlockItemIds.LADDER, BlockItemIds.VINE, BlockItemIds.SCAFFOLDING, BlockItemIds.WEEPING_VINES)
          .add(BlockIds.WEEPING_VINES_PLANT)

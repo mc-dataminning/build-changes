@@ -185,6 +185,8 @@ import net.minecraft.world.inventory.MerchantMenu;
 import net.minecraft.world.inventory.RecipeBookMenu;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.FireChargeItem;
+import net.minecraft.world.item.FlintAndSteelItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -1398,7 +1400,12 @@ public class ServerGamePacketListenerImpl
       }
 
       Item item = itemStack.getItem();
-      return (item instanceof BlockItem || item instanceof BucketItem bucket && bucket.getContent() != Fluids.EMPTY)
+      return (
+            item instanceof BlockItem
+               || item instanceof BucketItem bucket && bucket.getContent() != Fluids.EMPTY
+               || item instanceof FlintAndSteelItem
+               || item instanceof FireChargeItem
+         )
          && !player.getCooldowns().isOnCooldown(itemStack);
    }
 

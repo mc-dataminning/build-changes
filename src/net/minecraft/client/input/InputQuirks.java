@@ -10,7 +10,7 @@ public class InputQuirks {
    private static final boolean ON_WINDOWS = PLATFORM == Util.OS.WINDOWS;
    private static final boolean ON_OSX = PLATFORM == Util.OS.OSX;
    public static final boolean REPLACE_CTRL_KEY_WITH_CMD_KEY = ON_OSX;
-   public static final int EDIT_SHORTCUT_KEY_MODIFIER = REPLACE_CTRL_KEY_WITH_CMD_KEY ? 3072 : 192;
+   public static final @InputWithModifiers.Modifiers int EDIT_SHORTCUT_KEY_MODIFIER = REPLACE_CTRL_KEY_WITH_CMD_KEY ? 3072 : 192;
    public static final boolean EMULATE_RIGHT_CLICK_WITH_CTRL_KEY = ON_OSX;
    public static final boolean RESTORE_KEY_STATE_AFTER_MOUSE_GRAB = !ON_OSX;
    private static final Map<String, String> KEYBOARD_DISPLAY_OVERRIDES;

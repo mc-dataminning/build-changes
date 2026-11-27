@@ -72,6 +72,7 @@ public class MovingBlockFeatureRenderer extends RenderTypeFeatureRenderer<Moving
       VertexConsumer buffer;
       if (outlineColor != 0 && renderType.outline().isPresent()) {
          instance.setColor(outlineColor);
+         instance.setBrightness((short)255);
          buffer = this.getVertexBuilder(renderType.outline().get());
       } else {
          buffer = this.getVertexBuilder(renderType);

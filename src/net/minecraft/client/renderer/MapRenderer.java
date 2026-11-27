@@ -28,7 +28,7 @@ public class MapRenderer {
       this.mapTextureManager = mapTextureManager;
    }
 
-   public void render(
+   public void submit(
       final MapRenderState mapRenderState,
       final PoseStack poseStack,
       final SubmitNodeCollector submitNodeCollector,

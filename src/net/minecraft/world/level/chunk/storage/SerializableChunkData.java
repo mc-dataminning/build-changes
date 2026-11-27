@@ -673,6 +673,27 @@ public record SerializableChunkData(
    }
 
    public record SectionData(int y, @Nullable LevelChunkSection chunkSection, @Nullable DataLayer blockLight, @Nullable DataLayer skyLight) {
+      public SectionData(int y, @Nullable LevelChunkSection chunkSection, @Nullable DataLayer blockLight, @Nullable DataLayer skyLight) {
+         // $VF: Couldn't be decompiled
+         // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+         //
+         // Bytecode:
+         // 00: aload 0
+         // 01: invokespecial java/lang/Record.<init> ()V
+         // 04: aload 0
+         // 05: iload 1
+         // 06: putfield net/minecraft/world/level/chunk/storage/SerializableChunkData$SectionData.y I
+         // 09: aload 0
+         // 0a: aload 2
+         // 0b: putfield net/minecraft/world/level/chunk/storage/SerializableChunkData$SectionData.chunkSection Lnet/minecraft/world/level/chunk/LevelChunkSection;
+         // 0e: aload 0
+         // 0f: aload 3
+         // 10: putfield net/minecraft/world/level/chunk/storage/SerializableChunkData$SectionData.blockLight Lnet/minecraft/world/level/chunk/DataLayer;
+         // 13: aload 0
+         // 14: aload 4
+         // 16: putfield net/minecraft/world/level/chunk/storage/SerializableChunkData$SectionData.skyLight Lnet/minecraft/world/level/chunk/DataLayer;
+         // 19: return
+      }
    }
 
    public record StructureData(HolderGetter.Provider registryAccess, CompoundTag structuresTag) {

@@ -171,7 +171,13 @@ public record EndSpikeFeature(List<EndSpikeFeature.EndSpike> spikes, boolean cry
       }
 
       public int getHeight() {
-         return this.height;
+         // $VF: Couldn't be decompiled
+         // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+         //
+         // Bytecode:
+         // 0: aload 0
+         // 1: getfield net/minecraft/world/level/levelgen/feature/EndSpikeFeature$EndSpike.height I
+         // 4: ireturn
       }
 
       public boolean isGuarded() {
